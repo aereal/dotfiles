@@ -1,0 +1,30 @@
+escape ^t^t
+bind w windowlist -b
+defscrollback 10000
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+startup_message off
+autodetach on
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
+altscreen on
+termcapinfo xterm* ti@:te@
+term xterm-color
+termcap kterm hs@
+terminfo kterm hs@
+vbell off
+bell_msg "Bell in window %^G"
+bind r eval ‘echo “Resize window”‘ ‘command -c resize’
+bind -c resize ^] command
+bind -c resize j eval ‘resize +1′ ‘command -c resize’
+bind -c resize k eval ‘resize -1′ ‘command -c resize’
+
+caption splitonly "%3n %f %t"
+hardstatus alwayslastline "[%02c] %`%-Lw${=b bw}%n %t%{-}%+Lw"
+
+screen -t vim 1 vim
+screen 0
+
