@@ -1,0 +1,107 @@
+"2.1 (created: 2009/05/21 13:13:06)
+
+echo "loading .vimperatorrc ..."
+
+" key mappings
+noremap j 5j
+noremap k 5k
+noremap J 5<C-e>
+noremap K 5<C-y>
+" tab slide
+noremap h <C-n>
+noremap l <C-p>
+" swap yank key
+noremap y Y
+noremap Y y
+" Back / Forward
+noremap < <C-o>
+noremap > <C-i>
+
+noremap <C-m> <CR>
+
+noremap <BS> <Nop>
+
+map ,s :subscldr<CR>
+
+" yank
+cnoremap <C-y> <S-Insert>
+
+" Emacs like edit
+inoremap <C-y> <S-Insert>
+inoremap <C-p> <Up>
+inoremap <C-n> <Down>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+inoremap <C-h> <BS>
+inoremap <C-m> <CR>
+
+"" variables
+set complete=lf
+set editor=D:/Applications/xyzzy/xyzzycli.exe
+set focuscontent
+set hlsearch
+set insertmode
+set laststatus=2
+set newtab=all
+set popups=1
+set showmode
+set titlestring=Firefox\ (w/Vimperator)
+set visualbell
+hi Bell display: none;
+set wildoptions=sort
+
+set! browser.blink_allowed=false
+set! browser.enable_automatic_image_resizing=false
+set! browser.link.open_newwindow=3
+set! browser.link.open_newwindow.restriction=0
+set! browser.tabs.closeButton=2
+set! browser.tabs.closeWindowWithLastTab=false
+set! browser.tabs.loadBookmarksInBackground=true
+set! browser.tabs.loadDivertedInBackground=true
+set! browser.urlbar.maxRichResults=20
+set! extensions.getAddons.showPane=false
+set! network.http.max-connections=32
+set! network.http.max-connections-per-server=16
+set! network.http.max-persistent-connections-per-proxy=16
+set! network.http.max-persistent-connections-per-server=8
+set! network.http.pipelining=true
+set! network.http.pipelining.maxrequests=8
+set! network.http.pipelining.ssl=true
+set! network.http.proxy.pipelining=true
+set! network.http.redirection-limit=10
+set! network.standard-url.encode-query-utf8=true
+set! ui.caretWith=8
+set! ui.generalAccessKey=0
+
+" asdfghjkl.js
+let g:asdfghjkl_default = "true"
+
+" copy.js
+js <<EOM
+liberator.globalVariables.copy_templates = [
+  { label: 'hatena', value: '[%URL%:title=%TITLE%]' },
+  { label: 'quote::hatena', value: '>%URL%:title=%TITLE%>\n%SEL%\n<<' },
+];
+EOM
+
+" feedSomeKey_2.js
+autocmd LocationChange .* :fmapc
+autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > Z r q
+autocmd LocationChange '(www\.)?google\.(com|co\.jp)/search' :fmap! j k p l f v o i s
+
+" ime_control.js
+let g:ex_ime_mode = "inactive"
+
+" ldr_cooperation.js
+"let g:ldrc_captureMappings = "['j', 'k', 'p', 'o']"
+"let g:ldrc_intelligence_bind = "true"
+
+" js
+javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+
+echo "done."
+
+" vim: set ft=vimperator:
