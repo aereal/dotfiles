@@ -1,0 +1,32 @@
+[gui]
+	recentrepo = D:/Projects/GitRepos
+	fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	encoding = utf-8
+[user]
+	email = aoki.hanae@aereal.org
+	name = aereal
+[alias]
+	st = status
+	df = diff
+	co = checkout
+[color]
+	diff = auto
+	branch = auto
+	status = auto
+	interactive = auto
+[color "branch"]
+	current = red
+	local = yellow
+	remote = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color "diff"]
+	commit = black white bold
+	meta = blue
+	frag = black
+	old = red
+	new = green
+[i18n]
+	commitencoding= utf-8
