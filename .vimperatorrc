@@ -4,7 +4,6 @@ echo "loading .vimperatorrc ..."
 
 " key mappings
 "" Normal Mode
-noremap <C-@> <ESC>
 noremap . :buffer<Space>
 noremap <C-R> :source<Space>~/.vimperatorrc<CR>
 
@@ -13,12 +12,12 @@ noremap j 5j
 noremap k 5k
 
 """ History
-noremap h <C-o>
-noremap l <C-i>
+noremap a <C-o>
+noremap s <C-i>
 
 """ Tab
-noremap s <C-n>
-noremap a <C-p>
+noremap h <C-n>
+noremap l <C-p>
 noremap d <C-w>
 noremap t <C-t>
 
@@ -33,11 +32,13 @@ map ,s :subscldr<CR>
 
 "" Command Line
 cnoremap <C-m> <CR>
+cnoremap <C-@> <ESC>
 
 " yank
 cnoremap <C-y> <S-Insert>
 
 "" Insert Mode
+inoremap <C-@> <ESC>
 """ Emacs like edit
 inoremap <C-y> <S-Insert>
 inoremap <C-p> <Up>
