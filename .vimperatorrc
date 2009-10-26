@@ -3,30 +3,42 @@
 echo "loading .vimperatorrc ..."
 
 " key mappings
+"" Normal Mode
+noremap <C-@> <ESC>
+noremap . :buffer<Space>
+noremap <C-R> :source<Space>~/.vimperatorrc<CR>
+
+""" Scrolling
 noremap j 5j
 noremap k 5k
-noremap J 5<C-e>
-noremap K 5<C-y>
-" tab slide
-noremap h <C-n>
-noremap l <C-p>
-" swap yank key
+
+""" History
+noremap h <C-o>
+noremap l <C-i>
+
+""" Tab
+noremap s <C-n>
+noremap a <C-p>
+noremap d <C-w>
+noremap t <C-t>
+
+""" swap yank key
 noremap y Y
 noremap Y y
-" Back / Forward
-noremap < <C-o>
-noremap > <C-i>
 
 noremap <C-m> <CR>
-
 noremap <BS> <Nop>
 
 map ,s :subscldr<CR>
 
+"" Command Line
+cnoremap <C-m> <CR>
+
 " yank
 cnoremap <C-y> <S-Insert>
 
-" Emacs like edit
+"" Insert Mode
+""" Emacs like edit
 inoremap <C-y> <S-Insert>
 inoremap <C-p> <Up>
 inoremap <C-n> <Down>
@@ -38,7 +50,7 @@ inoremap <C-d> <Delete>
 inoremap <C-h> <BS>
 inoremap <C-m> <CR>
 
-"" variables
+" variables
 set complete=lf
 set editor=D:/Applications/xyzzy/xyzzycli.exe
 set focuscontent
@@ -53,6 +65,7 @@ set visualbell
 hi Bell display: none;
 set wildoptions=sort
 
+" Preferences
 set! browser.blink_allowed=false
 set! browser.enable_automatic_image_resizing=false
 set! browser.link.open_newwindow=3
@@ -73,13 +86,14 @@ set! network.http.pipelining.ssl=true
 set! network.http.proxy.pipelining=true
 set! network.http.redirection-limit=10
 set! network.standard-url.encode-query-utf8=true
-set! ui.caretWith=8
+set! ui.caretWith=10
 set! ui.generalAccessKey=0
 
-" asdfghjkl.js
+" Plugins
+"" asdfghjkl.js
 let g:asdfghjkl_default = "true"
 
-" copy.js
+"" copy.js
 js <<EOM
 liberator.globalVariables.copy_templates = [
   { label: 'hatena', value: '[%URL%:title=%TITLE%]' },
@@ -87,19 +101,20 @@ liberator.globalVariables.copy_templates = [
 ];
 EOM
 
-" feedSomeKey_2.js
+"" feedSomeKey_2.js
 autocmd LocationChange .* :fmapc
 autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > Z r q
-autocmd LocationChange '(www\.)?google\.(com|co\.jp)/search' :fmap! j k p l f v o i s
+"autocmd LocationChange '(www\.)?google\.(com|co\.jp)/search' :fmap! j k p l f v o i s
 
-" ime_control.js
+"" ime_control.js
 let g:ex_ime_mode = "inactive"
 
-" ldr_cooperation.js
-"let g:ldrc_captureMappings = "['j', 'k', 'p', 'o']"
+"" ldr_cooperation.js
+"let g:ldrc_captureMappings = "['j', 'k', 'p', 'o', 'v', 'i', 's']"
 "let g:ldrc_intelligence_bind = "true"
 
-" js
+" Add-ons
+"" Hatena Bookmark
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 echo "done."
