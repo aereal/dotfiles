@@ -76,7 +76,8 @@ function reload() {
 }
 
 precmd () {
-	PROMPT="$PROMPT_EXIT$PROMPT_CWD$PROMPT_CMD"
+	PROMPT="$PROMPT_EXIT$PROMPT_CMD"
+	RPROMPT="[%{$reset_color%}[%{$fg[yellow]%}%~%{$reset_color%}]"
 }
 
 function n () {
