@@ -2,43 +2,108 @@
 
 echo "loading .vimperatorrc ..."
 
+colorscheme abyss
+
+" variables
+set activate=quickmark,tabopen,paste
+set complete=lf
+set editor=D:/Applications/xyzzy/xyzzycli.exe
+set focuscontent
+set hlsearch
+set noincsearch
+set insertmode
+set laststatus=2
+set newtab=all
+set popups=1
+set showmode
+set showstatuslinks=1
+set showtabline=2
+set titlestring=Firefox\ (w/Vimperator)
+set verbose=5
+set visualbell
+set wildoptions=sort
+
+" Preferences
+set! browser.blink_allowed=false
+set! browser.enable_automatic_image_resizing=false
+set! browser.link.open_newwindow=3
+set! browser.link.open_newwindow.restriction=0
+set! browser.tabs.closeButton=2
+set! browser.tabs.closeWindowWithLastTab=false
+set! browser.tabs.loadBookmarksInBackground=true
+set! browser.tabs.loadDivertedInBackground=true
+set! browser.urlbar.maxRichResults=30
+set! extensions.getAddons.showPane=false
+set! network.http.max-connections=32
+set! network.http.max-connections-per-server=16
+set! network.http.max-persistent-connections-per-proxy=16
+set! network.http.max-persistent-connections-per-server=8
+set! network.http.pipelining=true
+set! network.http.pipelining.maxrequests=8
+set! network.http.pipelining.ssl=true
+set! network.http.proxy.pipelining=true
+set! network.http.redirection-limit=10
+set! network.standard-url.encode-query-utf8=true
+set! ui.caretWidth=5
+set! ui.generalAccessKey=0
+
 " key mappings
 "" Normal Mode
-noremap . :buffer<Space>
-noremap <C-R> :source<Space>~/.vimperatorrc<CR>
+noremap <C-.> :source<Space>~/.vimperatorrc<CR>
+noremap <C-S-r> :restart<CR>
+noremap <C-Space> :toggletst<CR>
 
 """ Scrolling
-noremap j 5j
-noremap k 5k
+noremap j     5<C-e>
+noremap k     5<C-y>
+noremap J     5<C-e>
+noremap K     5<C-y>
+noremap <C-j> 5<C-e>
+noremap <C-k> 5<C-y>
 
 """ History
-noremap a <C-o>
-noremap s <C-i>
+noremap { <C-o>
+noremap } <C-i>
 
 """ Tab
 noremap h <C-n>
 noremap l <C-p>
 noremap d <C-w>
-noremap t <C-t>
+noremap n :tabopen<Space>
+noremap e :open<Space>
 
 """ swap yank key
-noremap y Y
-noremap Y y
+"noremap y Y
+"noremap Y y
 
 noremap <C-m> <CR>
 noremap <BS> <Nop>
 
-map ,s :subscldr<CR>
+noremap ,s :subscldr<Space>
+noremap ,h :hatena<Space>
 
 "" Command Line
 cnoremap <C-m> <CR>
-cnoremap <C-@> <ESC>
+cnoremap <C-[> <ESC>
+cnoremap <C-j> <Tab>
+cnoremap <C-k> <S-Tab>
+cnoremap <C-h> <BS>
+cnoremap <C-a> <Home>
+cnoremap <C-d> <Delete>
+cnoremap <C-e> <End>
+
+cnoremap \" ""<Left>
+cnoremap \' ''<Left>
+cnoremap ` ``<Left>
+cnoremap ( ()<Left>
+cnoremap [ []<Left>
+cnoremap { {}<Left>
 
 " yank
 cnoremap <C-y> <S-Insert>
 
 "" Insert Mode
-inoremap <C-@> <ESC>
+inoremap <C-[> <ESC>
 """ Emacs like edit
 inoremap <C-y> <S-Insert>
 inoremap <C-p> <Up>
@@ -51,48 +116,31 @@ inoremap <C-d> <Delete>
 inoremap <C-h> <BS>
 inoremap <C-m> <CR>
 
-" variables
-set complete=lf
-set editor=D:/Applications/xyzzy/xyzzycli.exe
-set focuscontent
-set hlsearch
-set insertmode
-set laststatus=2
-set newtab=all
-set popups=1
-set showmode
-set titlestring=Firefox\ (w/Vimperator)
-set visualbell
-hi Bell display: none;
-set wildoptions=sort
+inoremap \" ""<Left>
+inoremap \' ''<Left>
+inoremap ` ``<Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
 
-" Preferences
-set! browser.blink_allowed=false
-set! browser.enable_automatic_image_resizing=false
-set! browser.link.open_newwindow=3
-set! browser.link.open_newwindow.restriction=0
-set! browser.tabs.closeButton=2
-set! browser.tabs.closeWindowWithLastTab=false
-set! browser.tabs.loadBookmarksInBackground=true
-set! browser.tabs.loadDivertedInBackground=true
-set! browser.urlbar.maxRichResults=20
-set! extensions.getAddons.showPane=false
-set! network.http.max-connections=32
-set! network.http.max-connections-per-server=16
-set! network.http.max-persistent-connections-per-proxy=16
-set! network.http.max-persistent-connections-per-server=8
-set! network.http.pipelining=true
-set! network.http.pipelining.maxrequests=8
-set! network.http.pipelining.ssl=true
-set! network.http.proxy.pipelining=true
-set! network.http.redirection-limit=10
-set! network.standard-url.encode-query-utf8=true
-set! ui.caretWith=10
-set! ui.generalAccessKey=0
+" User Commands
+javascript <<EOM
+[
+	[['toggletst'], 'show/hide "Tree Style Tab"', function() TreeStyleTabBrowserAutoHide.toggleMode()],
+	[['hatena'], 'access to Hatena', function (args) {
+		var args = args.string.split(' ');
+		var user_id = args.pop();
+		var hosts = args.length ? args : ['www'];
+		var url = 'http://' + hosts.join('.') + '.hatena.ne.jp/' + user_id + '/';
+		liberator.open(url, liberator.NEW_TAB);
+	}],
+].forEach(function([cmd, description, action]) commands.addUserCommand(cmd, description, action));
+EOM
 
 " Plugins
+
 "" asdfghjkl.js
-let g:asdfghjkl_default = "true"
+let g:asdfghjkl_default = 'true'
 
 "" copy.js
 js <<EOM
@@ -116,6 +164,14 @@ let g:ex_ime_mode = "inactive"
 
 " Add-ons
 "" Hatena Bookmark
+js <<EOM
+liberator.globalVariables.hBookmark_shortcuts = {
+	add     : ['b'],
+	comment : ['c'],
+};
+liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
+EOM
+
 javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 
 echo "done."

@@ -51,9 +51,9 @@ SAVEHIST=100000
 
 # command alias
 alias ..='cd ..'
-alias pb='cd $HOME/public_html'
+alias pub='cd $HOME/public_html'
 alias ls='ls -f --color'
-alias :q='screen -X quit; exit'
+alias unt='tar zxvf '
 
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
