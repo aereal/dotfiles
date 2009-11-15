@@ -7,7 +7,7 @@ colorscheme abyss
 " variables
 set activate=quickmark,tabopen,paste
 set complete=lf
-set editor=D:/Applications/xyzzy/xyzzycli.exe
+set editor=D:/Applications/vim72-kaoriya-w32j/gvim.exe
 set focuscontent
 set hlsearch
 set noincsearch
@@ -69,7 +69,6 @@ noremap } <C-i>
 noremap h <C-n>
 noremap l <C-p>
 noremap d <C-w>
-noremap n :tabopen<Space>
 noremap e :open<Space>
 
 """ swap yank key
@@ -85,8 +84,8 @@ noremap ,h :hatena<Space>
 "" Command Line
 cnoremap <C-m> <CR>
 cnoremap <C-[> <ESC>
-cnoremap <C-j> <Tab>
-cnoremap <C-k> <S-Tab>
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
 cnoremap <C-h> <BS>
 cnoremap <C-a> <Home>
 cnoremap <C-d> <Delete>
@@ -152,7 +151,7 @@ EOM
 
 "" feedSomeKey_2.js
 autocmd LocationChange .* :fmapc
-autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > Z r q
+autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q
 "autocmd LocationChange '(www\.)?google\.(com|co\.jp)/search' :fmap! j k p l f v o i s
 
 "" ime_control.js
