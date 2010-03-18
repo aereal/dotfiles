@@ -1,8 +1,32 @@
 # vim:set ft=zsh:
 
-export PATH=${(j.:.)PATHS}
-export LANG=ja_JP.UTF-8
+export GEM_HOME=$HOME/lib/ruby/gems
+export EDITOR=vim
 
+PATHS=(
+	/sbin
+	/bin
+	/usr/bin
+	/usr/local/bin
+	$HOME/bin
+	$HOME/local/bin
+	$HOME/lib/ruby/gems/1.8/bin
+	$GEM_HOME/bin
+	$PATH
+)
+
+RUBYLIBS=(
+	$HOME/lib
+	$HOME/lib/ruby
+	$HOME/lib/ruby/site_ruby/1.8
+)
+
+export PATH=${(j.:.)PATHS}
+export RUBYLIB=${(j.:.)RUBYLIBS}
+case $TERM in
+	linux) LANG=C ;;
+	*) LANG=ja_JP.UTF-8 ;;
+esac
 bindkey -v
 
 # options
