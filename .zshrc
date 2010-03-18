@@ -1,25 +1,9 @@
 # vim:set ft=zsh:
 
-# environment variables
-export GEM_HOME=$HOME/lib/ruby/gems
-export EDITOR=vim
-
-PATHS=(
-	$HOME/bin
-	$HOME/local/bin
-	$HOME/lib/ruby/gems/1.8/bin
-	$GEM_HOME/bin
-	$PATH
-)
 export PATH=${(j.:.)PATHS}
 export LANG=ja_JP.UTF-8
 
-RUBYLIBS=(
-	$HOME/lib
-	$HOME/lib/ruby
-	$HOME/lib/ruby/site_ruby/1.8
-)
-export RUBYLIB=${(j.:.)RUBYLIBS}
+bindkey -v
 
 # options
 setopt print_eight_bit
@@ -48,6 +32,12 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 HISTSIZE=100000
 HISTFILE=~/.zsh_history
 SAVEHIST=100000
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "" history-begenning-search-backward-end
+bindkey "" history-begenning-search-forward-end
 
 # command alias
 alias ..='cd ..'

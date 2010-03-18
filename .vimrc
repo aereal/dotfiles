@@ -16,7 +16,7 @@ set scrolloff=10000000
 set number
 set autoindent smartindent
 set smarttab
-set softtabstop=2 tabstop=2 shiftwidth=2
+set softtabstop=4 tabstop=4 shiftwidth=4
 set backspace=indent,eol,start
 set ignorecase smartcase
 set incsearch
@@ -31,6 +31,7 @@ set laststatus=2
 set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
+set fileformat=unix
 set hidden
 set viminfo+=!
 set nowrap
@@ -55,10 +56,12 @@ function! SnipMid(str, len, mask)
 	? a:str[-len_tail :] : '')
 endfunction
 
+noremap <Space> <C-f>
+noremap <S-Space> <C-b>
+
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
 inoremap " ""<Left>
 inoremap ' ''<Left>
-inoremap < <><Left>
 

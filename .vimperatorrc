@@ -2,11 +2,12 @@
 
 echo "loading .vimperatorrc ..."
 
+echo "load colorscheme ..."
 colorscheme abyss
 
-" variables
+echo "set Vimperator options ..."
 set activate=quickmark,tabopen,paste
-set complete=lf
+set complete=tls
 set editor=D:/Applications/vim72-kaoriya-w32j/gvim.exe
 set focuscontent
 set hlsearch
@@ -14,16 +15,17 @@ set noincsearch
 set insertmode
 set laststatus=2
 set newtab=all
-set popups=1
+set popups=tab
 set showmode
 set showstatuslinks=1
 set showtabline=2
 set titlestring=Firefox\ (w/Vimperator)
 set verbose=5
 set visualbell
+set wildmode=list:full
 set wildoptions=sort
 
-" Preferences
+echo "set Firefox options ..."
 set! browser.blink_allowed=false
 set! browser.enable_automatic_image_resizing=false
 set! browser.link.open_newwindow=3
@@ -32,7 +34,7 @@ set! browser.tabs.closeButton=2
 set! browser.tabs.closeWindowWithLastTab=false
 set! browser.tabs.loadBookmarksInBackground=true
 set! browser.tabs.loadDivertedInBackground=true
-set! browser.urlbar.maxRichResults=30
+set! browser.urlbar.maxRichResults=15
 set! extensions.getAddons.showPane=false
 set! network.http.max-connections=32
 set! network.http.max-connections-per-server=16
@@ -47,53 +49,47 @@ set! network.standard-url.encode-query-utf8=true
 set! ui.caretWidth=5
 set! ui.generalAccessKey=0
 
-" key mappings
-"" Normal Mode
+echo "setup key mappings ..."
+echo "normal mode key mappings ..."
 noremap <C-.> :source<Space>~/.vimperatorrc<CR>
 noremap <C-S-r> :restart<CR>
-noremap <C-Space> :toggletst<CR>
+noremap ` :hsearch<Space>
+
 
 """ Scrolling
 noremap j     5<C-e>
 noremap k     5<C-y>
 noremap J     5<C-e>
 noremap K     5<C-y>
-noremap <C-j> 5<C-e>
-noremap <C-k> 5<C-y>
 
 """ History
-noremap { <C-o>
-noremap } <C-i>
+noremap h <C-o>
+noremap l <C-i>
 
 """ Tab
-noremap h <C-n>
-noremap l <C-p>
 noremap d <C-w>
-noremap e :open<Space>
-
-""" swap yank key
-"noremap y Y
-"noremap Y y
 
 noremap <C-m> <CR>
 noremap <BS> <Nop>
 
 noremap ,s :subscldr<Space>
 noremap ,h :hatena<Space>
+noremap ,c :copy<Space>
 
-"" Command Line
+echo "Command-Line mode key mappings ..."
 cnoremap <C-m> <CR>
 cnoremap <C-[> <ESC>
-cnoremap <C-n> <Tab>
-cnoremap <C-p> <S-Tab>
+cmap <C-n> <Tab>
+cmap <C-p> <S-Tab>
 cnoremap <C-h> <BS>
-cnoremap <C-a> <Home>
-cnoremap <C-d> <Delete>
-cnoremap <C-e> <End>
+cnoremap <M-0> <Home>
+cnoremap <M-d> <Del>
+cnoremap <M-$> <End>
+cnoremap <M-h> <Left>
+cnoremap <M-l> <Right>
 
 cnoremap \" ""<Left>
 cnoremap \' ''<Left>
-cnoremap ` ``<Left>
 cnoremap ( ()<Left>
 cnoremap [ []<Left>
 cnoremap { {}<Left>
@@ -101,77 +97,96 @@ cnoremap { {}<Left>
 " yank
 cnoremap <C-y> <S-Insert>
 
-"" Insert Mode
+echo "Insert Mode key mappings ..."
 inoremap <C-[> <ESC>
 """ Emacs like edit
 inoremap <C-y> <S-Insert>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-d> <Delete>
+inoremap <M-k> <Up>
+inoremap <M-j> <Down>
+inoremap <M-h> <Left>
+inoremap <M-l> <Right>
+inoremap <C-0> <Home>
+inoremap <C-$> <End>
+inoremap <C-d> <Del>
 inoremap <C-h> <BS>
 inoremap <C-m> <CR>
 
 inoremap \" ""<Left>
 inoremap \' ''<Left>
-inoremap ` ``<Left>
 inoremap ( ()<Left>
 inoremap [ []<Left>
 inoremap { {}<Left>
 
-" User Commands
-javascript <<EOM
-[
-	[['toggletst'], 'show/hide "Tree Style Tab"', function() TreeStyleTabBrowserAutoHide.toggleMode()],
-	[['hatena'], 'access to Hatena', function (args) {
-		var args = args.string.split(' ');
-		var user_id = args.pop();
-		var hosts = args.length ? args : ['www'];
-		var url = 'http://' + hosts.join('.') + '.hatena.ne.jp/' + user_id + '/';
-		liberator.open(url, liberator.NEW_TAB);
-	}],
-].forEach(function([cmd, description, action]) commands.addUserCommand(cmd, description, action));
-EOM
-
-" Plugins
-
-"" asdfghjkl.js
+echo "initialize plugins setting ..."
+echo "asdfghjkl.js"
 let g:asdfghjkl_default = 'true'
 
-"" copy.js
-js <<EOM
-liberator.globalVariables.copy_templates = [
-  { label: 'hatena', value: '[%URL%:title=%TITLE%]' },
-  { label: 'quote::hatena', value: '>%URL%:title=%TITLE%>\n%SEL%\n<<' },
-];
-EOM
-
-"" feedSomeKey_2.js
+echo "feedSomeKey_2.js"
 autocmd LocationChange .* :fmapc
 autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q
-"autocmd LocationChange '(www\.)?google\.(com|co\.jp)/search' :fmap! j k p l f v o i s
 
-"" ime_control.js
+echo "ime_control.js"
 let g:ex_ime_mode = "inactive"
 
-"" ldr_cooperation.js
-"let g:ldrc_captureMappings = "['j', 'k', 'p', 'o', 'v', 'i', 's']"
-"let g:ldrc_intelligence_bind = "true"
+echo "ldrize_cooperation.js"
+let g:ldrc_intelligence_bind = "true"
 
-" Add-ons
-"" Hatena Bookmark
+echo "heuristic-search.js"
+let g:yahoo_app_id = 'Rq4MSQmxg67XgeUd11yG7AUu3gWW30JLthbvYbWQMekFZwSc_jvoHbFesbF6lGz8'
+
 js <<EOM
-liberator.globalVariables.hBookmark_shortcuts = {
-	add     : ['b'],
-	comment : ['c'],
-};
-liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
-EOM
+	// define user commands
 
-javascript if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+	mappings.addUserMap(
+		[modes.NORMAL],
+		['x'],
+		'Firebug Lite',
+		function (motion, count, args) {
+			var url = 'http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js';
+			liberator.open('javascript:var%20fb=document.createElement("script");fb.setAttribute("src", url);document.body.appendChild(fb);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(fb);')
+		}
+	);
+
+	[
+		[
+			['hatena'],
+			'access to ?',
+			function (args) {
+				args = args.string.split(' ');
+				var user = args.pop();
+				var host = args.length > 0 ? args : ['www'];
+				var url  = 'http://' + host.join('.') + '.hatena.ne.jp/' + user + '/';
+				liberator.open(url, liberator.NEW_TAB);
+			}
+		],
+	].forEach(function ([cmd, desc, action]) {
+		commands.addUserCommand(cmd, desc, action)
+	});
+
+	// copy.js
+	liberator.globalVariables.copy_templates = [
+		{ label: 'url', value: '%URL%' },
+		{ label: 'title', value: '%TITLE%' },
+		{ label: 'hatena::anchor', value: '[%URL%:title=%TITLE%]' },
+		{ label: 'hatena::quote', value: '>%URL%:title=%TITLE%>\n%SEL%\n<<' },
+		{ label: 'hatena::asin', value: 'copy ASIN code as ASIN/ISBN syntax (Hatena)', custom: function(){
+			return '[asin:' + content.document.getElementById('ASIN').value + ':title]';
+		} },
+		{ label: 'amazon', value: 'Copy URL from Amazon', custom: function () {
+			return 'http://www.amazon.co.jp/o/ASIN/' + content.document.getElementById('ASIN').value;
+		} },
+	];
+
+	// Hatena Bookmark Extension
+	liberator.globalVariables.hBookmark_shortcuts = {
+		add: ['b'],
+		comment: ['c'],
+	};
+
+	if (typeof hBookmark != 'undefined') {
+		liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+	}
+EOM
 
 echo "done."
 
