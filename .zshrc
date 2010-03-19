@@ -65,9 +65,9 @@ bindkey "" history-begenning-search-forward-end
 
 # command alias
 alias ..='cd ..'
-alias pub='cd $HOME/public_html'
 alias ls='ls -f --color'
 alias unt='tar zxvf '
+alias vsm='ruby ~/code/vim-script-manager/vsm.rb '
 
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
@@ -76,7 +76,7 @@ PROMPT_EXIT="%(?..exit %?
 "
 PROMPT_CWD="%{$reset_color%}[%{$fg[yellow]%}%~%{$reset_color%}]
 "
-PROMPT_CMD=" %{$reset_color%}%{$fg[green]%}/ _ / X < %{$reset_color%}"
+PROMPT_CMD=" %{$reset_color%}%{$fg[green]%}S | v | Z < %{$reset_color%}"
 
 function reload() {
 	local j
@@ -91,7 +91,7 @@ function reload() {
 
 precmd () {
 	PROMPT="$PROMPT_EXIT$PROMPT_CMD"
-	RPROMPT="[%{$reset_color%}[%{$fg[yellow]%}%~%{$reset_color%}]"
+	RPROMPT="%{$reset_color%}[%{$fg[yellow]%}%~%{$reset_color%}]"
 }
 
 function n () {
