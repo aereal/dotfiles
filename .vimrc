@@ -37,8 +37,7 @@ set viminfo+=!
 set nowrap
 set sidescroll=5
 set listchars+=precedes:<,extends:>
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c]
 
@@ -55,6 +54,9 @@ function! SnipMid(str, len, mask)
 	return (len_head > 0 ? a:str[: len_head - 1] : '') . a:mask . (len_tail > 0
 	? a:str[-len_tail :] : '')
 endfunction
+
+let g:user_zen_settings = {'indentation': "\t"}
+let g:use_zen_complete_tag = 1
 
 noremap <Space> <C-f>
 noremap <S-Space> <C-b>
