@@ -5,6 +5,8 @@ echo "loading .vimperatorrc ..."
 echo "load colorscheme ..."
 colorscheme abyss
 
+style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
+
 echo "set Vimperator options ..."
 set activate=quickmark,tabopen,paste
 set complete=tls
@@ -51,9 +53,10 @@ set! ui.generalAccessKey=0
 
 echo "setup key mappings ..."
 echo "normal mode key mappings ..."
-noremap <C-.> :source<Space>~/.vimperatorrc<CR>
-noremap <C-S-r> :restart<CR>
+noremap <C-.> :unmap<CR>:iunmap<CR>:cunmap<CR>:source<Space>~/.vimperatorrc<CR>
 noremap ` :hsearch<Space>
+noremap <silence> y :copy<Space>url<CR>
+noremap U :undo<CR>
 
 """ Scrolling
 noremap j     5<C-e>
@@ -62,10 +65,12 @@ noremap J     5<C-e>
 noremap K     5<C-y>
 
 """ History
-noremap h <C-o>
-noremap l <C-i>
+noremap u <C-o>
+noremap <C-r> <C-i>
 
 """ Tab
+noremap h <C-n>
+noremap l <C-p>
 noremap d <C-w>
 
 noremap <C-m> <CR>
@@ -74,6 +79,7 @@ noremap <BS> <Nop>
 noremap ,s :subscldr<Space>
 noremap ,h :hatena<Space>
 noremap ,c :copy<Space>
+noremap ,C :copy!<Space>
 
 echo "Command-Line mode key mappings ..."
 cnoremap <C-m> <CR>
