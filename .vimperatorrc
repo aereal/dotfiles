@@ -214,6 +214,8 @@ js <<EOM
 	}
 EOM
 
+source ~/.vimperatorrc.css
+
 echo "done."
 
 " vim: set ft=vimperator:

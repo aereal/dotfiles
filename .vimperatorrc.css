@@ -1,0 +1,16 @@
+
+@-moz-document
+domain('cnet.com'),
+domain("www.tsukuba.ac.jp"),
+domain("plusd.itmedia.co.jp"),
+domain("intel.co.jp"),
+domain("ascii.jp"),
+domain("piro.sakura.ne.jp"),
+domain("pixiv.net"),
+domain("runxz.blog4.fc2.com"),
+domain("meijigakuin.ac.jp"),
+domain('kakaku.com'),
+domain('apple.com') {
+	html, body { font-family: sans-serif !important; }
+}
+
