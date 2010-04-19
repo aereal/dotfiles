@@ -80,6 +80,7 @@ noremap ,s :subscldr<Space>
 noremap ,h :hatena<Space>
 noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
+noremap ,t :tombloo<Space>
 
 echo "Command-Line mode key mappings ..."
 cnoremap <C-m> <CR>
