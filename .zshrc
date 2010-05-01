@@ -69,5 +69,10 @@ function resume () {
 RPROMPT='[`rprompt-git-current-branch`%~]'
 PROMPT='%{[34m%} S | v | Z < %{[m%}'
 
+ostype=`uname`
+if [[ -f "$HOME/.zsh/$ostype.zshrc" ]]; then
+	source "$HOME/.zsh/$ostype.zshrc"
+fi
+
 tty > /tmp/screen-tty-$WINDOW
 
