@@ -1,5 +1,36 @@
 #vim:set ft=zsh:
 
+export GEM_HOME=$HOME/lib/ruby/gems
+export EDITOR=vim
+export LS_COLORS='di=33:ln=36:so=35:ex=31:su=41;32:sg=41;34:'
+export SCALA_HOME=/usr/share/scala
+export GAE_SDK_HOME=$HOME/sdk/google_appengine
+
+PATHS=(
+	$HOME/bin
+	$HOME/local/bin
+	$HOME/lib/ruby/gems/1.8/bin
+	$GEM_HOME/bin
+	$SCALA_HOME/bin
+	$GAE_SDK_HOME
+	$PATH
+)
+
+RUBYLIBS=(
+	/usr/lib/ruby/1.8
+	$HOME/lib
+	$HOME/lib/ruby
+	$HOME/lib/ruby/site_ruby/1.8
+)
+
+export PATH=${(j.:.)PATHS}
+export RUBYLIB=${(j.:.)RUBYLIBS}
+
+case $TERM in
+	linux) LANG=C ;;
+	*) LANG=ja_JP.UTF-8 ;;
+esac
+
 bindkey -v
 
 # options
@@ -34,6 +65,12 @@ autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+function screen-new-window-with-command-as-window-title () {
+	screen -t $1 $@
+}
+
+alias n='screen-new-window-with-command-as-window-title'
+
 function rprompt-git-current-branch {
 	# http://d.hatena.ne.jp/uasi/20091025/1256458798
 	local name st color gitdir action
@@ -60,10 +97,6 @@ function rprompt-git-current-branch {
 	fi
 
 	echo "$color$name$action%f%b "
-}
-
-function resume () {
-	screen -x workspace || screen -r workspace || screen -S workspace
 }
 
 RPROMPT='[`rprompt-git-current-branch`%~]'

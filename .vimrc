@@ -58,6 +58,21 @@ endfunction
 let g:user_zen_settings = {'indentation': "\t"}
 let g:use_zen_complete_tag = 1
 
+function! InsertTabWrapper()
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k'
+		return "\<TAB>"
+	else
+		if pumvisible()
+			return "\<C-N>"
+		else
+			return "\<C-N>\<C-P>"
+		end
+	endif
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
 noremap <Space> <C-f>
 noremap <S-Space> <C-b>
 
