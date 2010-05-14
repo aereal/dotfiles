@@ -35,7 +35,7 @@ if 'dotfiles'.expand.exist?
   cd 'dotfiles'
   sh 'git pull'
 else
-  sh 'git clone git@github.com:aereal/dotfiles.git dotfiles'
+  #sh 'git clone git@github.com:aereal/dotfiles.git dotfiles'
   cd 'dotfiles'
 end
 
@@ -57,7 +57,7 @@ end
 .zsh
 .zshenv
 .zshrc
-vimperator
+.vimperator
 ).each do |i|
   link i, "~/#{i}"
 end

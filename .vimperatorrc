@@ -2,7 +2,7 @@
 " load scripts/styles {{{
 colorscheme abyss
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
-source ~\.vimperatorrc.css
+source ~/.vimperatorrc.css
 " }}}
 
 " set! {{{
@@ -64,7 +64,7 @@ set! network.dns.disableIPv6=true
 " set {{{
 set activate=quickmark,tabopen,paste
 set complete=tls
-set editor=D:/Applications/vim72-kaoriya-w32j/gvim.exe
+set editor=vim
 set focuscontent
 set hlsearch
 set noincsearch

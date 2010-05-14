@@ -1,16 +1,57 @@
 
-@-moz-document
-domain('cnet.com'),
-domain("www.tsukuba.ac.jp"),
-domain("plusd.itmedia.co.jp"),
-domain("intel.co.jp"),
-domain("ascii.jp"),
-domain("piro.sakura.ne.jp"),
-domain("pixiv.net"),
-domain("runxz.blog4.fc2.com"),
-domain("meijigakuin.ac.jp"),
-domain('kakaku.com'),
-domain('apple.com') {
-	html, body { font-family: sans-serif !important; }
+@-moz-document url-prefix('http://reader.livedoor.com/reader/') {
+	* {
+		font-family: sans-serif !important;
+	}
+
+	pre,
+	code,
+	kbd,
+	samp,
+	var {
+		font-family: monospace !important;
+	}
+
+	.body img {
+		max-width: 100% !important;
+	}
+
+	.channel {
+		background-color: #ffffff !important;
+	}
+
+	.channel a {
+		color: #000000 !important;
+	}
+
+	.title {
+		font-size: 30px !important;
+	}
+
+	.channel_toolbar {
+		padding-bottom: 1em !important;
+		border-bottom: 1px solid #000000 !important;
+		background-color: #ffffff !important;
+	}
+
+	.item {
+		border-bottom: 1px solid #000000 !important;
+	}
+
+	.even {
+		background-color: #ffffff !important;
+	}
+
+	.hilight {
+		background-color: #ffffff !important;
+	}
+
+	.item_title {
+		font-size: 18px !important;
+	}
+
+	.adsWrapper {
+		margin: 0 !important;
+	}
 }
 

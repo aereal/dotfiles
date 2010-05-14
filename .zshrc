@@ -1,6 +1,6 @@
 #vim:set ft=zsh:
 
-export GEM_HOME=$HOME/lib/ruby/gems
+export GEM_HOME=/var/lib/gems/1.8
 export EDITOR=vim
 export LS_COLORS='di=33:ln=36:so=35:ex=31:su=41;32:sg=41;34:'
 export SCALA_HOME=/usr/share/scala
