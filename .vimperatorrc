@@ -127,6 +127,7 @@ noremap ,h :hatena<Space>
 noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
+noremap ,b :sbm<Space>
 " }}}
 
 " key maps (command line) {{{
@@ -170,6 +171,10 @@ let g:ldrc_intelligence_bind = "true"
 
 let g:yahoo_app_id = 'Rq4MSQmxg67XgeUd11yG7AUu3gWW30JLthbvYbWQMekFZwSc_jvoHbFesbF6lGz8'
 
+let g:direct_sbm_is_use_migemo       = "true"
+let g:direct_sbm_use_services_by_post = "h"
+let g:direct_sbm_use_services_by_tag  = "h"
+
 js <<EOM
 // copy.js
 liberator.globalVariables.copy_templates = [
@@ -185,16 +190,6 @@ liberator.globalVariables.copy_templates = [
 	} },
 ];
 
-// Hatena Bookmark Extension
-liberator.globalVariables.hBookmark_shortcuts = {
-	add: ['b'],
-	comment: ['c'],
-};
-
-if (typeof hBookmark != 'undefined') {
-	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-}
-EOM
 " }}}
 
 " vim: set ft=vimperator:

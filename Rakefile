@@ -2,10 +2,8 @@ require 'rubygems'
 require 'rake'
 
 module Enumerable
-	def like?(val, op=:===)
-		any? do |i|
-			i.__send__(op, val)
-		end
+	def like?(val, op = :===)
+		any? {|i| i.__send__(op, val) }
 	end
 end
 
@@ -25,9 +23,7 @@ TARGET_DIR    = HOME
 
 cd SOURCE_DIR
 EXCLUDE_FILES = [/\.$/, '.git', '.svn']
-DOTFILES   = FileList['.*'].reject do |f|
-	EXCLUDE_FILES.like?(f)
-end
+DOTFILES      = FileList['.*'].reject {|f| EXCLUDE_FILES.like?(f) }
 
 directory SOURCE_DIR
 directory TARGET_DIR
@@ -43,7 +39,7 @@ end
 desc "Installing dotfiles in your home directory"
 task :install do
 	DOTFILES.each do |f|
-		ln_sf f, "#{TARGET_DIR}/#{f}"
+		ln_sf "#{SOURCE_DIR}/#{f}", "#{TARGET_DIR}/#{f}"
 	end
 end
 
