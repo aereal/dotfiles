@@ -1,6 +1,6 @@
 // Vimperator plugin: 'Cooperation LDRize Mappings'
 // Version: 0.25
-// Last Change: 31-Jan-2010. Jan 2008
+// Last Change: 22-Jan-2010. Jan 2008
 // License: Creative Commons
 // Maintainer: Trapezoid <trapezoid.g@gmail.com> - http://unsigned.g.hatena.ne.jp/Trapezoid
 //
@@ -176,14 +176,14 @@ if (liberator.plugins.LDRizeCooperation == undefined) (function(){
                 this.addAfter(GreasemonkeyService,"evalInSandbox",function(code,codebase,sandbox){
                     if(sandbox.window.LDRize != undefined && sandbox.window.Minibuffer != undefined){
                         sandbox.window.addEventListener("focus",function(){
-                            self.LDRize = sandbox.LDRize.getSelf();
-                            self.Minibuffer = sandbox.Minibuffer.getSelf();
+                            self.LDRize = liberator.eval("self",sandbox.LDRize.getSiteinfo);
+                            self.Minibuffer = liberator.eval("command",sandbox.Minibuffer.addCommand);
                             if (typeof self.LDRize.getSiteinfo != 'function') self.LDRize = sandbox.LDRize;
                             if (typeof self.Minibuffer.addCommand != 'function') self.Minibuffer = sandbox.Minibuffer.command;
                         },false);
                         if(window.content.wrappedJSObject == sandbox.unsafeWindow){
-                            self.LDRize = sandbox.LDRize.getSelf();
-                            self.Minibuffer = sandbox.Minibuffer.getSelf();
+                            self.LDRize = liberator.eval("self",sandbox.LDRize.getSiteinfo);
+                            self.Minibuffer = liberator.eval("command",sandbox.Minibuffer.addCommand);
                             if (typeof self.LDRize.getSiteinfo != 'function') self.LDRize = sandbox.LDRize;
                             if (typeof self.Minibuffer.addCommand != 'function') self.Minibuffer = sandbox.Minibuffer.command;
                         }

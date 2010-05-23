@@ -71,6 +71,9 @@ function! InsertTabWrapper()
 	endif
 endfunction
 
+" screenに編集中のファイル名を出す
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | silent! exe '!echo -n "k%\\"' | endif
+
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 noremap <Space> <C-f>

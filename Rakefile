@@ -23,7 +23,7 @@ TARGET_DIR    = HOME
 
 cd SOURCE_DIR
 EXCLUDE_FILES = [/\.$/, '.git', '.svn']
-DOTFILES      = FileList['.*'].reject {|f| EXCLUDE_FILES.like?(f) }
+DOTFILES      = FileList['.*'].reject {|f| EXCLUDE_FILES.like?(f) }.sort
 
 directory SOURCE_DIR
 directory TARGET_DIR

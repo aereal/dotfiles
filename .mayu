@@ -1,0 +1,12 @@
+include "109.mayu"
+include "104on109.mayu"
+
+keymap Global
+mod shift += !!Space
+mod alt += !Convert
+mod alt += !NonConvert
+mod ctrl += !Eisuu
+
+key ~S-*SemiColon = Hyphen
+key ~S-*Hyphen    = SemiColon
+

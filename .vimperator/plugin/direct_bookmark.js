@@ -91,8 +91,8 @@ for Migemo search: require XUL/Migemo Extension
         }
     } catch(e) { liberator.log('warning: direct_bookmark.js is working with unsafe sandbox.'); }
 
-    var useServicesByPost = liberator.globalVariables.direct_sbm_use_services_by_post || 'h';
-    var useServicesByTag = liberator.globalVariables.direct_sbm_use_services_by_tag || 'h';
+    var useServicesByPost = liberator.globalVariables.direct_sbm_use_services_by_post || 'hdl';
+    var useServicesByTag = liberator.globalVariables.direct_sbm_use_services_by_tag || 'hdl';
     var echoType = liberator.globalVariables.direct_sbm_echo_type || 'multiline';
     var isNormalize = typeof liberator.globalVariables.direct_sbm_is_normalize == 'undefined' ? 
                       true : evalFunc(liberator.globalVariables.direct_sbm_is_normalize); 

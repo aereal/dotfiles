@@ -57,9 +57,10 @@ bindkey "^N" history-beginning-search-forward-end
 
 # command alias
 alias ..='cd ..'
-alias ls='ls -aFh --color'
+alias l='/bin/ls --color -AF'
+alias ls='/bin/ls --color -F'
+alias la='/bin/ls --color -AFl'
 alias unt='tar zxvf '
-alias vsm='ruby ~/code/vim-script-manager/vsm.rb '
 
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors

@@ -1,8 +1,18 @@
-
+" vim: set ft=vim:
 " load scripts/styles {{{
 colorscheme abyss
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
 source ~/.vimperatorrc.css
+" }}}
+
+" quickmarks {{{
+qmark c https://www.google.com/calendar/
+qmark f http://favotter.net/user/aereal
+qmark g https://mail.google.com/mail/
+qmark k http://wiki.kumetan.net/
+qmark l http://reader.livedoor.com/reader/
+qmark s http://favstar.fm/users/aereal/recent
+qmark t http://twitter.com/
 " }}}
 
 " set! {{{
@@ -82,28 +92,7 @@ set wildmode=list:full
 set wildoptions=sort
 " }}}
 
-" commands {{{
-js <<EOM
-[
-	[
-		['hatena'],
-		'access to ?',
-		function (args) {
-			args = args.string.split(' ');
-			var user = args.pop();
-			var host = args.length > 0 ? args : ['www'];
-			var url  = 'http://' + host.join('.') + '.hatena.ne.jp/' + user + '/';
-			liberator.open(url, liberator.NEW_TAB);
-		}
-	],
-].forEach(function ([cmd, desc, action]) {
-	commands.addUserCommand(cmd, desc, action)
-});
-EOM
-" }}}
-
 " key maps (normal) {{{
-noremap ` :hsearch<Space>
 noremap U :undo<CR>
 noremap <silent> y :copy url<CR>
 noremap j     5<C-e>
@@ -123,7 +112,7 @@ noremap <BS> <Nop>
 
 noremap ,. :unmap<CR>:iunmap<CR>:cunmap<CR>:source<Space>~/.vimperatorrc<CR>
 noremap ,s :subscldr<Space>
-noremap ,h :hatena<Space>
+noremap ,h :accesshatena<Space>
 noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
@@ -146,8 +135,6 @@ cnoremap <C-e> <End>
 cnoremap \" ""<Left>
 cnoremap \' ''<Left>
 cnoremap ( ()<Left>
-cnoremap [ []<Left>
-cnoremap { {}<Left>
 
 cnoremap <C-y> <S-Insert>
 " }}}
@@ -164,14 +151,15 @@ let g:asdfghjkl_default = 'true'
 
 autocmd LocationChange .* :fmapc
 autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q
+autocmd LocationChange 'mail\.google\.com/mail' :fmap! -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
 
 let g:ex_ime_mode = "inactive"
 
 let g:ldrc_intelligence_bind = "true"
 
-let g:yahoo_app_id = 'Rq4MSQmxg67XgeUd11yG7AUu3gWW30JLthbvYbWQMekFZwSc_jvoHbFesbF6lGz8'
+"let g:yahoo_app_id = 'Rq4MSQmxg67XgeUd11yG7AUu3gWW30JLthbvYbWQMekFZwSc_jvoHbFesbF6lGz8'
 
-let g:direct_sbm_is_use_migemo       = "true"
+let g:direct_sbm_is_use_migemo        = "true"
 let g:direct_sbm_use_services_by_post = "h"
 let g:direct_sbm_use_services_by_tag  = "h"
 
@@ -189,7 +177,6 @@ liberator.globalVariables.copy_templates = [
 		return 'http://www.amazon.co.jp/o/ASIN/' + content.document.getElementById('ASIN').value;
 	} },
 ];
-
+EOM
 " }}}
 
-" vim: set ft=vimperator:

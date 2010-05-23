@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+#
+# vim: set ft=ruby
+
+require 'rubygems'
+require 'rake'
+require 'spec'
+require 'spec/rake/spectask'
+require 'pathname'
+
+HOME          = ENV['HOME'] || File.expand_path('~')
+APP           = ENV['APP'] || Pathname.pwd.basename
+ANYRB_DIR     = "#{HOME}/.anyrb"
+SPEC_DIR      = 'spec'
+PRODUCT_DIR   = 'lib'
+SPEC_FILES    = FileList["#{SPEC_DIR}/**/*_spec.rb"]
+PRODUCT_FILES = SPEC_FILES.map {|spec|
+	spec.sub(/^#{SPEC_DIR}\//, "#{PRODUCT_DIR}/").sub('_spec', '')
+}
+
+directory SPEC_DIR
+directory PRODUCT_DIR
+
+task :default => [:init]
+
+task :init => [SPEC_DIR, PRODUCT_DIR] do
+	unless File.exist?(f = "#{SPEC_DIR}/#{APP}_spec.rb")
+		cp "#{ANYRB_DIR}/skeleton/spec.rb", f
+	end
+end
+
+# FileListをprerequisitiesに追加するときは配列展開してあげないといけない
+#
+# SRCS = FileList['**/*']
+# OK:
+# task :hoge => SRCS
+# task :hoge => [:init, *SRCS]
+# NG:
+# task :hoge => [:init, SRCS]
+
+task :generate => [:init, *PRODUCT_FILES]
+
+rule(/^#{PRODUCT_DIR}\/(.+)\.rb$/ => [proc {|t|
+	t.sub(/^#{PRODUCT_DIR}\//, "#{SPEC_DIR}/").sub(/\.rb$/, "_spec.rb")
+}]) do |t|
+	task_dir = File.dirname(t.name)
+	mkdir task_dir unless File.directory?(task_dir)
+	cp "#{ANYRB_DIR}/skeleton/product.rb", t.name
+end
+
