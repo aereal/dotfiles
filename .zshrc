@@ -1,6 +1,7 @@
 #vim:set ft=zsh:
 
 export GEM_HOME=/var/lib/gems/1.8
+export PAGER=less
 export EDITOR=vim
 export LS_COLORS='di=33:ln=36:so=35:ex=31:su=41;32:sg=41;34:'
 export SCALA_HOME=/usr/share/scala
@@ -66,21 +67,21 @@ autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
-typeset -A abbrev
-abbrev=(
+typeset -A myabbrev
+myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
 )
 
-expand-abbrev() {
+my-expand-abbrev() {
 	local left prefix
 	left=$(echo -nE "$LBUFFER" | sed -e "s/[_a-zA-Z0-9]*$//")
 	prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_a-zA-Z0-9]\([_a-zA-Z0-9]*\)$/\1/")
 	LBUFFER=$left${myabbrev[$prefix]:-$prefix}" "
 }
 
-zle -N expand-abbrev
-bindkey " " expand-abbrev
+zle -N my-expand-abbrev
+bindkey " " my-expand-abbrev
 
 function screen-new-window-with-command-as-window-title () {
 	screen -t $1 $@
