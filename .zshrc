@@ -66,6 +66,22 @@ autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+typeset -A abbrev
+abbrev=(
+	"L" "| \$PAGER"
+	"G" "| grep"
+)
+
+expand-abbrev() {
+	local left prefix
+	left=$(echo -nE "$LBUFFER" | sed -e "s/[_a-zA-Z0-9]*$//")
+	prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_a-zA-Z0-9]\([_a-zA-Z0-9]*\)$/\1/")
+	LBUFFER=$left${myabbrev[$prefix]:-$prefix}" "
+}
+
+zle -N expand-abbrev
+bindkey " " expand-abbrev
+
 function screen-new-window-with-command-as-window-title () {
 	screen -t $1 $@
 }
@@ -109,4 +125,8 @@ if [[ -f "$HOME/.zsh/$ostype.zshrc" ]]; then
 fi
 
 tty > /tmp/screen-tty-$WINDOW
+
+if [[ $SHLVL = 1 ]]; then
+	screen
+fi
 
