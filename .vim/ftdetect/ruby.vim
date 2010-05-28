@@ -12,3 +12,6 @@ au BufNewFile,BufRead [rR]antfile,*.rant		set filetype=ruby
 
 " eRuby
 au BufNewFile,BufRead *.erb,*.rhtml			set filetype=eruby
+
+" Rack-up
+au BufNewFile,BufRead *.ru set filetype=ruby
