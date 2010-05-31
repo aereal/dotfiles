@@ -6,7 +6,7 @@ encoding utf-8 utf-8
 defencoding utf-8
 startup_message off
 autodetach on
-logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+logfile "$HOME/.screen/log/screen-%Y%m%d-%n.log"
 log on
 deflog on
 altscreen on
@@ -27,6 +27,19 @@ bind -c resize ^] command
 bind -c resize j eval 'resize +' 'command -c resize'
 bind -c resize k eval 'resize -1' 'command -c resize'
 
-caption splitonly "%3n %f %t"
-hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w %=  %{..r} %0`"
+caption splitonly "%3n %t %f"
+#hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w %=  %{..r} %0`"
+#                          [%02c] ... 現在の時刻 HH:MM (24h)
+#                                 %-w ... すべてのウィンドウの番号と名前 ("-" 限定詞は現在のウィンドウまで)
+#                                     %{.r.} ___      %{dd} ... 色の変更と復帰
+#                                           %{!} ... 反転
+#                                               %n ... ウィンドウ番号
+#                                                 %f ... ウィンドウのフラグ
+#                                                   %t ... ウィンドウのタイトル
+#                                                           %+w すべてのウィンドウの番号と名前 ("+" 限定詞は現在のウィンドウ以降)
+#                                                               %= ... 余白を埋める
+#                                                                   %{..r} ... 文字色の変更
+#                                                                          %0` ...
+hardstatus alwayslastline "[%H] %-w %{.r.}%{!}%n%f%t%{dd} %+w %-07=[%02c]"
 
+source .screen/startup.screenrc
