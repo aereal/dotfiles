@@ -28,3 +28,5 @@ case $TERM in
 	*) LANG=ja_JP.UTF-8 ;;
 esac
 
+export SCREENDIR=$HOME/.screen/sessions
+

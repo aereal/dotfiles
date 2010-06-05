@@ -1,4 +1,3 @@
-" vim: set ft=vim:
 " load scripts/styles {{{
 colorscheme abyss
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
@@ -36,6 +35,9 @@ set! browser.tabs.loadDivertedInBackground=true
 
 " 補完候補をたくさん出す
 set! browser.urlbar.maxRichResults=30
+
+" ダウンロードマネージャはいらない
+set! browser.download.manager.showWhenStarting=false
 
 " 「アドオンを入手」のペインを消す
 set! extensions.getAddons.showPane=false
@@ -148,18 +150,16 @@ inoremap <C-m> <CR>
 
 " plugins {{{
 let g:asdfghjkl_default = 'true'
+let g:asdfghjkl_hintchars = '-asdfghjkl'
 
 autocmd LocationChange .* :fmapc
 autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
 
-let g:ex_ime_mode = "inactive"
-
 let g:ldrc_intelligence_bind = "true"
 
-"let g:yahoo_app_id = 'Rq4MSQmxg67XgeUd11yG7AUu3gWW30JLthbvYbWQMekFZwSc_jvoHbFesbF6lGz8'
-
 let g:direct_sbm_is_use_migemo        = "true"
+let g:direct_sbm_is_normalize         = "true"
 let g:direct_sbm_use_services_by_post = "h"
 let g:direct_sbm_use_services_by_tag  = "h"
 

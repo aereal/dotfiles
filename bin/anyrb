@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rake -f /home/aereal/.anyrb/Rakefile "$@"
+

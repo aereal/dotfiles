@@ -57,7 +57,7 @@ endfunction
 
 let g:user_zen_settings = {'indentation': "\t"}
 let g:use_zen_complete_tag = 1
-let g:hatena_user = 'aereal'
+let g:hatena_users = ['aereal', 'teq:aereal']
 
 function! InsertTabWrapper()
 	let col = col('.') - 1

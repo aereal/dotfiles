@@ -201,7 +201,7 @@ map ; :accesshatena
             var host = args[0] ? encodeURIComponent(args[0].toString()) : 'www';
             var id   = args[1] ? encodeURIComponent(args[1].toString()).replace('%2F', '/') : '';
             var uri  = 'http://' + host + '.hatena.ne.jp/' + id;
-            liberator.open(uri, liberator.NEW_TAB);
+            liberator.open(uri, liberator.CURRENT_TAB);
             lastLocation = '';
         }, {
             completer: function (context, args) {

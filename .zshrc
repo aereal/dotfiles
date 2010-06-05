@@ -117,7 +117,7 @@ function rprompt-git-current-branch {
 	echo "$color$name$action%f%b "
 }
 
-RPROMPT='[`rprompt-git-current-branch`%~]'
+RPROMPT='[%~]'
 PROMPT='%{[34m%} S | v | Z < %{[m%}'
 
 ostype=`uname`
