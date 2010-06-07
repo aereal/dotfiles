@@ -10,10 +10,9 @@ logfile "$HOME/.screen/log/screen-%Y%m%d-%n.log"
 log on
 deflog on
 altscreen on
-termcapinfo xterm* ti@:te@
-term xterm-color
-termcap kterm hs@
-terminfo kterm hs@
+defbce on
+termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
+term xterm-256color
 vbell off
 bell_msg "Bell in window %^G"
 
