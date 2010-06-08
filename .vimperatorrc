@@ -115,6 +115,7 @@ noremap <BS> <Nop>
 noremap ,. :unmap<CR>:iunmap<CR>:cunmap<CR>:source<Space>~/.vimperatorrc<CR>
 noremap ,s :subscldr<Space>
 noremap ,h :accesshatena<Space>
+noremap ,H :accesshatena!<Space>
 noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>

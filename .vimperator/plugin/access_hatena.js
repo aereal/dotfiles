@@ -141,10 +141,10 @@ map ; :accesshatena
                 if (!pageFor[host]) {
                     pageFor[host] = page;
                     isIncreased = true;
-                } else if (pageFor[host].uri.length > page.uri.length) { // より短いアドレスのタイトルが妥当
-                    pageFor[host] = page;
-                    isUpdated = true;
-                }
+                }// else if (pageFor[host].uri.length > page.uri.length) { // より短いアドレスのタイトルが妥当
+                 // pageFor[host] = page;
+                 // isUpdated = true;
+                 //}
 
                 if (_recent_hosts_length < maxRecentHostsSize && recentHosts.indexOf(host) == -1) {
                     recentHosts.push(host);
@@ -184,13 +184,7 @@ map ; :accesshatena
         req.onerror = function(e) { liberator.echoerr('Error in access_hatena.js: loadWedata'); };
         req.send(null);
     }
-
-    function registerIgnoreIds(e) {
-        var req = this;
-        var json = eval(req.responseText);
-        for (var i in json) if (json.hasOwnProperty(i)) {
-            var id = json[i].data.id;
-            if (ignoreIds.indexOf(id) == -1 && id != '') {
+function registerIgnoreIds(e) { var req = this; var json = eval(req.responseText); for (var i in json) if (json.hasOwnProperty(i)) { var id = json[i].data.id; if (ignoreIds.indexOf(id) == -1 && id != '') {
                 ignoreIds.push(id)
             }
         }
@@ -201,7 +195,8 @@ map ; :accesshatena
             var host = args[0] ? encodeURIComponent(args[0].toString()) : 'www';
             var id   = args[1] ? encodeURIComponent(args[1].toString()).replace('%2F', '/') : '';
             var uri  = 'http://' + host + '.hatena.ne.jp/' + id;
-            liberator.open(uri, liberator.CURRENT_TAB);
+            var targetTab = args.bang ? liberator.CURRENT_TAB : liberator.NEW_TAB;
+            liberator.open(uri, targetTab);
             lastLocation = '';
         }, {
             completer: function (context, args) {
@@ -217,8 +212,10 @@ map ; :accesshatena
                     context.title = ["ID", "Page"];
                     context.completions = [[ids[i], title.get(host, ids[i])] for (i in ids) if (ids.hasOwnProperty(i))];
                 }
-            }
-        }
+            },
+            bang: true
+        },
+        true
     );
 
     commands.addUserCommand(["accesshatenainit"], "Initialize Access Hatena",
