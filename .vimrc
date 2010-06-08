@@ -1,4 +1,5 @@
 syntax on
+colorscheme abyss256
 
 highlight ZenkakuSpace ctermbg=6
 match ZenkakuSpace /\s\+$|　/
