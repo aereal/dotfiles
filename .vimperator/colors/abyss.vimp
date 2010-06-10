@@ -3,13 +3,13 @@
 " ==/VimperatorColorSchema==
 
 hi Bell               display: none;
-hi CmdLine            font-family: monospace; font-size: 10pt; padding: 3px 2px;
+hi CmdLine            font-family: monospace; font-size: 9pt; padding: 3px 2px;
 
 hi CompResult         font-family: monospace; width: 35%; overflow: hidden;
-hi CompDesc           width: 60%; color: LightGray; font-size: 10pt;
-hi CompItem           font-size: 10pt; color: PaleGreen;
+hi CompDesc           width: 60%; color: LightGray; font-size: 9pt;
+hi CompItem           font-size: 9pt; color: PaleGreen;
 hi CompItem[selected] background-color: DimGray;
-hi CompTitle          color: DeepPink; font-size: 12pt;
+hi CompTitle          color: DeepPink; font-size: 11pt;
 
 hi Gradient           display: none;
 

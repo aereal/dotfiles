@@ -67,6 +67,12 @@ set! ui.generalAccessKey=0
 " LDRでたくさんピンを開けるようにする
 set! dom.popup_maximum=65536
 
+" 前回開いていたタブを開く
+set! browser.startup.page=3
+
+" タブを閉じるボタンを表示しない
+set! browser.tabs.closeButtons=2
+
 set! config.trim_on_minimize=true
 set! javascript.options.jit.content=true
 set! javascript.options.jit.chrome=true
