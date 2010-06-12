@@ -55,3 +55,8 @@
 	}
 }
 
+@-moz-document domain("ja.wikipedia.org") {
+	a[href^="/wiki"]:link { color: #2641C3 !important }
+	a[href^="/wiki"]:visited { color: #A56CD2 !important }
+}
+
