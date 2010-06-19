@@ -42,4 +42,4 @@ caption splitonly "%3n %t %f"
 #                                                                          %0` ...
 hardstatus alwayslastline "[%H] %-w %{.r.}%{!}%n%f%t%{dd} %+w %-07=[%02c]"
 
-source .screen/startup.screenrc
+#source .screen/startup.screenrc

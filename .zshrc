@@ -96,6 +96,6 @@ fi
 tty > /tmp/screen-tty-$WINDOW
 
 if [[ $SHLVL = 1 ]]; then
-	screen
+	screen -R
 fi
 
