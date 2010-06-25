@@ -1,89 +1,104 @@
+"" メッセージを英語に
+language message C
+
+"" シンタニックス・ハイライト
 syntax on
+
+"" カラースキーム
 colorscheme abyss256
 
-highlight ZenkakuSpace ctermbg=6
-match ZenkakuSpace /\s\+$|　/
-
-set listchars=tab:>.
-set list
-set directory=~/swp
-set wildmode=longest,list
-set ambiwidth=double
-set completeopt=menu,preview,longest,menuone
-set complete=.,w,b,u,k
-set nobackup
-set autoread
-set scrolloff=10000000
-set number
-set autoindent smartindent
-set smarttab
-set softtabstop=4 tabstop=4 shiftwidth=4
-set backspace=indent,eol,start
-set ignorecase smartcase
-set incsearch
-set wrapscan
-set showmatch
-set showcmd
-set whichwrap=b,s,h,l,<,>,[,]
-set wildmenu
-set splitbelow
-set nrformats="hex"
-set laststatus=2
-set termencoding=utf-8
-set encoding=utf-8
-set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
-set fileformat=unix
-set hidden
-set viminfo+=!
-set nowrap
-set sidescroll=5
-set listchars+=precedes:<,extends:>
+"" ファイル・タイプごとの設定を有効にする
 filetype plugin indent on
 
-set statusline=%{expand('%:p:t')}\ %<\(%{SnipMid(expand('%:p:h'),80-len(expand('%:p:t')),'...')}\)%=\ %m%r%y%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}[%3l,%3c]
+"" マルチバイト文字をよしなに
+set ambiwidth=double
 
-function! SnipMid(str, len, mask)
-	if a:len >= len(a:str)
-		return a:str
-	elseif a:len <= len(a:mask)
-		return a:mask
-	endif
+"" インデントをよしなに
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 
-	let len_head = (a:len - len(a:mask)) / 2
-	let len_tail = a:len - len(a:mask) - len_head
+"" 自動的に読み直して
+set autoread
 
-	return (len_head > 0 ? a:str[: len_head - 1] : '') . a:mask . (len_tail > 0
-	? a:str[-len_tail :] : '')
-endfunction
+"" Backspaceの動作について
+set backspace=indent,eol,start
 
-let g:user_zen_settings = {'indentation': "\t"}
+"" バックアップなどいらぬ
+set nobackup
+
+"" Viのことなどとうに忘れた
+set nocompatible
+
+"" ハードタブこそ至高の存在
+set noexpandtab
+
+"" よりタブエディタっぽく
+set hidden
+
+"" イカした検索
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+
+"" 多めのコマンドヒストリ
+set history=100
+
+"" ステータス・ラインを表示する
+set laststatus=2
+
+"" 見える化
+set list
+set listchars=tab:>.,precedes:<,extends:>
+
+"" 行番号を表示
+set number
+
+"" 括弧のマッチングをチェック
+set showmatch
+
+"" イカしたカーソル移動
+set whichwrap=b,s,h,l,<,>,[,]
+
+"" 補完
+set complete=.,w,b,u,k
+set completeopt=menu,preview,longest,menuone
+set wildmenu
+set wildmode=longest:full,list:longest
+
+"" カーソルを常に世界の中心に
+set scrolloff=100000
+
+set splitbelow
+set swapfile
+set modeline
+set showcmd
+set showmode
+set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
+set encoding=utf-8
+set termencoding=utf-8
+set fileformat=unix
+set directory=~/swp
+
+set statusline=[#%n]\ %f\ %=%h%w%r%m%y[%3l/%3L,%3c]
+
+"" hatena.vim
+let g:hatena_users = ['aereal','teq:aereal']
+
+"" zencoding.vim
 let g:use_zen_complete_tag = 1
-let g:hatena_users = ['aereal', 'teq:aereal']
+let g:user_zen_settings = {'indentation': "\t"}
 
-function! InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-		return "\<TAB>"
-	else
-		if pumvisible()
-			return "\<C-N>"
-		else
-			return "\<C-N>\<C-P>"
-		end
-	endif
-endfunction
-
-" screenに編集中のファイル名を出す
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | silent! exe '!echo -n "k%\\"' | endif
-
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-noremap <Space> <C-f>
+"" キーマップ
+noremap <Space>   <C-f>
 noremap <S-Space> <C-b>
 
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ( ()<Left>
-inoremap " ""<Left>
-inoremap ' ''<Left>
+"" autocmd
+"" screenに編集中のファイル名を出す
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 
