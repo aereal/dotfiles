@@ -9,7 +9,7 @@ class String
 end
 
 def notify(caption, body = nil)
-	system("notify-send -i #{SKYPE_ICON.quote} #{caption.quote} #{(body || "").quote}")
+	system("notify-send -t 5000 -i #{SKYPE_ICON.quote} #{caption.quote} #{(body || "").quote}")
 end
 
 @type, @sname, @fname, @fpath, @smessage, @fsize, @sskype = *ARGV.dup

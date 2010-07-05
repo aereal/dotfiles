@@ -56,6 +56,7 @@ function screen-new-window-with-command-as-window-title () {
 }
 
 alias n='screen-new-window-with-command-as-window-title'
+alias vim='screen vim'
 
 function rprompt-git-current-branch {
 	# http://d.hatena.ne.jp/uasi/20091025/1256458798

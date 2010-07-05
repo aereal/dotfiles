@@ -60,3 +60,8 @@
 	a[href^="/wiki"]:visited { color: #A56CD2 !important }
 }
 
+@-moz-document domain('b.hatena.ne.jp') {
+	ul.tag-cloud {
+		text-align: justify;
+	}
+}

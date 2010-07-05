@@ -102,3 +102,17 @@ noremap <S-Space> <C-b>
 "" screenに編集中のファイル名を出す
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 
+"" Functions
+function! TabWrapper(shift) 
+	let col = col('.') - 1
+	if !col || getline('.')[col - 1] !~ '\k\|< \|/\|\\'
+		return "\<Tab>"
+	elseif pumvisible()
+		return a:shift ? "\<C-p>" : "\<C-n>"
+	else
+		return "\<C-n>\<C-p>"
+	endif
+endfunction
+
+inoremap <Tab>   <C-r>=TabWrapper(0)<CR>
+inoremap <S-Tab> <C-r>=TabWrapper(1)<CR>
