@@ -8,7 +8,7 @@ class String
 	end
 end
 
-WORKPLACE  = '~/sketch'.expand
+WORKPLACE  = '~/sunny_place'.expand
 CONFIG_DIR = '~/.sketch'.expand
 
 EXTS = {
