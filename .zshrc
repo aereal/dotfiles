@@ -1,9 +1,5 @@
 #vim:set ft=zsh:
 
-if [[ -f "$HOME/functions.zsh" ]] then
-	source "$HOME/functions.zsh"
-fi
-
 bindkey -v
 
 # options
@@ -34,24 +30,28 @@ alias l='/bin/ls --color -AF'
 alias ls='/bin/ls --color -F'
 alias la='/bin/ls --color -AFl'
 alias unt='tar zxvf '
-alias n='screen-new-window-with-command-as-window-title'
+alias s='screen'
 
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+# Abbreviation
+autoload -U -z my-expand-abbrev
 typeset -A myabbrev
 myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
+	"C" "| xsel --input --clipboard"
 )
 
 zle -N my-expand-abbrev
 bindkey " " my-expand-abbrev
 
 RPROMPT='[%~]'
-PROMPT='%{[34m%} S | v | Z < %{[m%}'
+PROMPT='%{[38;5;75m%} S | v | Z < %{[m%}'
 
+autoload -U -z show-window-title
 preexec_functions=($preexec_functions show_window_title)
 
 ostype=`uname`
@@ -62,6 +62,6 @@ fi
 tty > /tmp/screen-tty-$WINDOW
 
 if [[ $SHLVL = 1 ]]; then
-	screen -R
+	screen -UxR
 fi
 
