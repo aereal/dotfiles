@@ -62,7 +62,7 @@ TERM xterm-debian
 NORMAL 00 # no color code at all
 FILE 00 # regular file: use no color at all
 RESET 0 # reset to "normal" color
-DIR 00;38;05;220 # directory
+DIR 00;38;05;227 # directory
 LINK 00;38;05;159 # symbolic link. (If you set this to 'target' instead of a
  # numerical value, the color is as for the file pointed to.)
 HARDLINK 44;37 # regular file with more than one link
