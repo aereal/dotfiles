@@ -52,7 +52,7 @@ RPROMPT='[%~]'
 PROMPT='%{[38;5;75m%} S | v | Z < %{[m%}'
 
 autoload -U -z show-window-title
-preexec_functions=($preexec_functions show_window_title)
+preexec_functions=($preexec_functions show-window-title)
 
 ostype=`uname`
 if [[ -f "$HOME/.zsh/$ostype.zshrc" ]]; then

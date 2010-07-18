@@ -1,6 +1,6 @@
 # vim:set ft=zsh:
 
-function show_window_title() {
+function show-window-title() {
 	emulate -L zsh
 	local -a cmd
 	cmd=(${(z)2})
