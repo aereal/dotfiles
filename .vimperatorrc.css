@@ -1,3 +1,9 @@
+@-moz-document url-prefix('http') {
+	*::selection {
+		color: #111211 !important;
+		background-color: #BCC5D0 !important;
+	}
+}
 
 @-moz-document url-prefix('http://reader.livedoor.com/reader/') {
 	* {
