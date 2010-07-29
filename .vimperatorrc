@@ -169,6 +169,7 @@ let g:ldrc_intelligence_bind = "true"
 let g:direct_sbm_use_services_by_tag = 'h'
 let g:direct_sbm_use_services_by_post = 'h'
 let g:direct_sbm_is_use_migemo = 'true'
+let g:direct_sbm_is_normalize = 'true'
 
 js <<EOM
 // copy.js
