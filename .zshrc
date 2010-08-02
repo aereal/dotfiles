@@ -39,8 +39,11 @@ myabbrev=(
 )
 
 
-RPROMPT='[%~]'
-PROMPT='%{[38;5;75m%} S | v | Z < %{[m%}'
+RPROMPT='[%{${fg[yellow]}%}%~%{${reset_color}%}]'
+PROMPT="%{${fg[green]}%} S | v | Z <%{${reset_color}%} "
+
+[ -n "${SSH_CONNECTION}" ] && PROMPT="%{${fg[red]}%}${HOST}
+${PROMPT}"
 
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
