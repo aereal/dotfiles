@@ -20,14 +20,3 @@ export PERL5LIB="$HOME/perl5/lib/perl5:$HOME/perl5/lib/perl5/i486-linux-gnu-thre
 export PATH=${(j.:.)PATHS}
 export RUBYLIB=${(j.:.)RUBYLIBS}
 
-case $TERM in
-	*-256color)
-		eval $(dircolors -b $HOME/.dir_colors256)
-		;;
-	*)
-		eval $(dircolors -b $HOME/.dir_colors)
-		;;
-esac
-
-#export SCREENDIR=$HOME/.screen/sessions
-
