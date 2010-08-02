@@ -27,9 +27,6 @@ bind -c resize ^] command
 bind -c resize j eval 'resize +1' 'command -c resize'
 bind -c resize k eval 'resize -1' 'command -c resize'
 
-backtick 0 10000 10000 /usr/bin/ruby -e 'puts File.read("/etc/hostname")'
-
 caption splitonly "%3n %t %f"
-hardstatus alwayslastline "[%0`] %-w %{.r.}%{!}%n%f%t%{dd} %+w %-07=[%02c]"
+hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w"
 
-#source .screen/startup.screenrc
