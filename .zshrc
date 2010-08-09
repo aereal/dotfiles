@@ -36,13 +36,14 @@ myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
 	"C" "| xsel --input --clipboard"
+	"N" "&& notify-send Finished!"
 )
 
 
 RPROMPT='[%{${fg[yellow]}%}%~%{${reset_color}%}]'
 PROMPT="%{${fg[green]}%} S | v | Z <%{${reset_color}%} "
 
-[ -n "${SSH_CONNECTION}" ] && PROMPT="%{${fg[red]}%}${HOST}
+[ -n "${SSH_CONNECTION}" ] && PROMPT=" %{${fg[red]}%}[${HOST}]:
 ${PROMPT}"
 
 autoload -U -z show-window-title
