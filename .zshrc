@@ -1,5 +1,7 @@
 #vim:set ft=zsh:
 
+[ ${STY} ] || screen -rx || screen -D -RR -U
+
 bindkey -v
 
 
@@ -58,8 +60,4 @@ if [[ -f "$HOME/.zsh/$ostype.zshrc" ]]; then
 fi
 
 tty > /tmp/screen-tty-$WINDOW
-
-if [[ $SHLVL = 1 ]]; then
-	screen -UxR
-fi
 
