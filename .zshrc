@@ -54,9 +54,8 @@ preexec_functions=($preexec_functions show-window-title)
 source $HOME/.zsh/key-bind.zsh
 source $HOME/.zsh/aliases.zsh
 
-ostype=`uname`
-if [[ -f "$HOME/.zsh/$ostype.zshrc" ]]; then
-	source "$HOME/.zsh/$ostype.zshrc"
+if [[ -f "$HOME/.zsh/$HOST.zshrc" ]]; then
+	source "$HOME/.zsh/$HOST.zshrc"
 fi
 
 tty > /tmp/screen-tty-$WINDOW

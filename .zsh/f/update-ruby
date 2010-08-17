@@ -1,0 +1,23 @@
+# vim:set ft=zsh:
+
+update-ruby() {
+	sudo /usr/sbin/update-alternatives \
+		--install /usr/local/bin/ruby   ruby   /usr/local/bin/ruby18 90\
+		--slave   /usr/local/bin/gem    gem    /usr/local/bin/gem18\
+		--slave   /usr/local/bin/erb    erb    /usr/local/bin/erb18\
+		--slave   /usr/local/bin/irb    irb    /usr/local/bin/irb18\
+		--slave   /usr/local/bin/ri     ri     /usr/local/bin/ri18\
+		--slave   /usr/local/bin/testrb testrb /usr/local/bin/testrb18\
+		--slave   /usr/local/bin/rake   rake   /opts/gems/bin/rake\
+		--slave   /usr/local/gems       gemdir /opts/gems
+	sudo /usr/sbin/update-alternatives \
+		--install /usr/local/bin/ruby   ruby   /usr/local/bin/ruby19 100\
+		--slave   /usr/local/bin/gem    gem    /usr/local/bin/gem19\
+		--slave   /usr/local/bin/erb    erb    /usr/local/bin/erb19\
+		--slave   /usr/local/bin/irb    irb    /usr/local/bin/irb19\
+		--slave   /usr/local/bin/ri     ri     /usr/local/bin/ri19\
+		--slave   /usr/local/bin/testrb testrb /usr/local/bin/testrb19\
+		--slave   /usr/local/bin/rake   rake   /usr/local/bin/rake19\
+		--slave   /usr/local/gems       gemdir /usr/local/lib/ruby19/gems
+}
+
