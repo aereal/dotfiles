@@ -51,12 +51,10 @@ ${PROMPT}"
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
 
-source $HOME/.zsh/key-bind.zsh
-source $HOME/.zsh/aliases.zsh
+. $HOME/.zsh/key-bind.zsh
+. $HOME/.zsh/aliases.zsh
 
-if [[ -f "$HOME/.zsh/$HOST.zshrc" ]]; then
-	source "$HOME/.zsh/$HOST.zshrc"
-fi
+[[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
 
 tty > /tmp/screen-tty-$WINDOW
 
