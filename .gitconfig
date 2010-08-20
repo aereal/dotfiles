@@ -1,9 +1,8 @@
 [gui]
-	recentrepo = D:/Projects/GitRepos
 	fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	encoding = utf-8
 [user]
-	email = aoki.hanae@aereal.org
+	email = aereal.h@gmail.com
 	name = aereal
 [alias]
 	st = status
