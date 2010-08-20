@@ -126,8 +126,8 @@ noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
 noremap ,T :tombloo!<Space>
-noremap ,b :tombloo Link
-noremap ,B :tombloo! Link
+noremap ,b :tombloo! Link
+"noremap ,B :tombloo! Link
 noremap ,v :viewSBMComments<CR>
 noremap ,w :twittperator
 " }}}
@@ -184,7 +184,7 @@ liberator.globalVariables.copy_templates = [
 	} },
 ];
 
-if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js',{__proto__: this});
+//if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js',{__proto__: this});
 EOM
 " }}}
 
