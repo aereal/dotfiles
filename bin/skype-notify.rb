@@ -1,63 +1,39 @@
 #!/usr/bin/env ruby
 
-SKYPE_ICON = "/home/aereal/skype.png"
+require "logger"
 
-class String
-	def quote
-		'"' + self + '"'
+log = Logger.new(File.expand_path('~/.skype-notify.log'))
+log.level = Logger::INFO
+log.progname = 'skype-notify.rb'
+icon_path = '/usr/share/icons/skype.png'
+
+def notify(summary, body='')
+	system("notify-send -i #{icon_path} '#{summary}' '#{body}'")
+end
+
+begin
+	type, sname, fname, fpath, smessage, fsize, sskype = *ARGV.dup
+	log.debug(ARGV.dup.inspect)
+
+	case type
+	when "CallRingingIn"
+		notify "Calling!", sname
+	when "ContactOnline"
+		notify "Login: #{sname}"
+	when "ContactOffline"
+		notify "Logout: #{sname}"
+	when "ContactAuthRequest"
+		notify 'Incoming Contact Request', sname
+	when "ChatIncomingInitial"
+		notify "#{sname} started chat", smessage
+	when "TransferRequest"
+		notify "Transfer Request from #{sname}", "#{fname}, [#{fsize}KB]"
+	when "TransferComplete"
+		notify "Transfer Completed!", "#{fname}, [#{fsize}KB]"
+	when "Birthday"
+		notify "Happy Birthday! #{sname}"
 	end
-end
-
-def notify(caption, body = nil)
-	system("notify-send -t 5000 -i #{SKYPE_ICON.quote} #{caption.quote} #{(body || "").quote}")
-end
-
-@type, @sname, @fname, @fpath, @smessage, @fsize, @sskype = *ARGV.dup
-
-case @type
-when "SkypeLogin"
-	notify "Login (#{@sskype})"
-when "SkypeLogout"
-when "SkypeLoginFailed"
-	notify "Failed Login (#{@sskype})"
-when "CallConnecting"
-when "CallRingingIn"
-	notify "Call from #{@sname}"
-when "CallRingingOut"
-when "CallAnswered"
-when "CallBusy"
-when "CallFailed"
-when "CallMissed"
-when "CallHold"
-when "CallResume"
-when "CallHangup"
-when "CallRemoteHangup"
-when "VoicemailReceived"
-when "VoicemailSent"
-when "ContactOnline"
-	notify "ONLINE", @sname.quote
-when "ContactOffline"
-when "ContactAuthRequest"
-	notify "Request (add to contact list)", "from #{@sname}"
-when "ContactAdded"
-when "ContactDeleted"
-when "ChatIncomingInitial"
-	notify "#{@sname} has started chat"
-when "ChatIncoming"
-	notify "New message from #{@sname}", @smessage.quote
-when "ChatOutgoing"
-when "ChatJoined"
-	notify "#{@sname} has joined"
-when "ChatParted"
-	notify "#{@sname} has left"
-when "TransferRequest"
-	notify "Download from #{@sname}", @fname.quote
-when "TransferComplete"
-	notify "Completed! (Download from #{@sname})", @fname.quote
-when "TransferFailed"
-	notify "Failed (Download from #{@sname})", @fname.quote
-when "SMSSent"
-when "SMSFailed"
-when "Birthday"
+rescue Exception => e
+	log.error(e.inspect)
 end
 
