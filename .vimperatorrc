@@ -126,7 +126,7 @@ noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
 noremap ,T :tombloo!<Space>
-noremap ,b :tombloo! Link
+noremap ,b :tombloo! Link<CR>
 "noremap ,B :tombloo! Link
 noremap ,v :viewSBMComments<CR>
 noremap ,w :twittperator

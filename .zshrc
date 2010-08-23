@@ -4,7 +4,6 @@
 
 bindkey -v
 
-
 # options
 setopt always_last_prompt auto_cd auto_pushd auto_menu auto_param_keys
 setopt auto_remove_slash correct cdable_vars extended_history extended_glob
