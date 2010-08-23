@@ -5,10 +5,9 @@ require "logger"
 log = Logger.new(File.expand_path('~/.skype-notify.log'))
 log.level = Logger::INFO
 log.progname = 'skype-notify.rb'
-icon_path = '/usr/share/icons/skype.png'
 
 def notify(summary, body='')
-	system("notify-send -i #{icon_path} '#{summary}' '#{body}'")
+	system("notify-send -i /usr/share/icons/skype.png '#{summary}' '#{body}'")
 end
 
 begin
