@@ -37,7 +37,7 @@ myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
 	"C" "| xsel --input --clipboard"
-	"N" "&& notify-send Finished!"
+	"N" "&& notify-send -i /usr/share/icons/Humaniti/actions/48/dialog-apply.svg Finished!"
 )
 
 
