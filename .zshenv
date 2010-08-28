@@ -4,6 +4,7 @@ export LANG=ja_JP.UTF-8
 export PAGER='less --RAW-CONTROL-CHARS'
 export EDITOR=vim
 export FPATH=$HOME/.zsh/f:$FPATH
+export LS_COLORS="di=33:ln=32:ex=31:pi=34"
 
 [[ -f "$HOME/.zsh/$HOST.zshenv" ]] && . "$HOME/.zsh/$HOST.zshenv"
 
