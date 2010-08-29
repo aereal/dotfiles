@@ -119,7 +119,7 @@ noremap <C-m> <CR>
 noremap <BS> <Nop>
 
 noremap ,. :unmap<CR>:iunmap<CR>:cunmap<CR>:source<Space>~/.vimperatorrc<CR>
-noremap ,s :subscldr<Space>
+noremap ,s :subldr<CR>
 noremap ,h :accesshatena<Space>
 noremap ,H :accesshatena!<Space>
 noremap ,c :copy<Space>
@@ -183,6 +183,18 @@ liberator.globalVariables.copy_templates = [
 		return 'http://www.amazon.co.jp/o/ASIN/' + content.document.getElementById('ASIN').value;
 	} },
 ];
+
+commands.addUserCommand(
+	["subldr"],
+	"Subscribe feed with livedoor Reader.",
+	function() {
+		var url = buffer.URL;
+		var endPoint = "http://reader.livedoor.com/subscribe/";
+		liberator.open(endPoint + url, liberator.NEW_TAB);
+	},
+	{},
+	true
+);
 
 //if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js',{__proto__: this});
 EOM
