@@ -137,3 +137,16 @@ function! s:init_cmdwin()
 	startinsert!
 endfunction
 
+
+" http://vim-users.jp/2009/07/hack42/
+nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
+nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
+nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
+nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
+
+function! s:good_width()
+	if winwidth(0) < 104
+		vertical resize 104
+	endif
+endfunction
+
