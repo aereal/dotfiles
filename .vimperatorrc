@@ -196,7 +196,19 @@ commands.addUserCommand(
 	true
 );
 
-//if (typeof hBookmark != 'undefined') liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js',{__proto__: this});
+// Show feed-button to statusbar
+(function() {
+	var feedPanel = document.createElement('statusbarpanel');
+	var feedButton = document.getElementById('feed-button');
+	feedPanel.setAttribute('id', 'feed-panel-clone');
+	feedPanel.appendChild(feedButton.cloneNode(true));
+	feedButton.parentNode.removeChild(feedButton);
+	document.getElementById('status-bar').insertBefore(
+		feedPanel,
+		document.getElementById('security-button')
+	);
+})();
+
 EOM
 " }}}
 
