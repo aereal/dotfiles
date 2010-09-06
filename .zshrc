@@ -53,7 +53,7 @@ myabbrev=(
 )
 
 RPROMPT='[%{${fg[yellow]}%}%~%{${reset_color}%}]'
-PROMPT="%{${fg[green]}%} -[] _ []-* <%{${reset_color}%} "
+PROMPT="%{${fg[blue]}%} -[] _ []- <%{${reset_color}%} "
 
 # SSHで接続した先だと、ホスト名を派手に出す。
 [ -n "${SSH_CONNECTION}" ] && PROMPT=" %{${fg[red]}%}[${HOST}]:
