@@ -66,7 +66,7 @@ set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
 
 "" 補完
-set complete=.,w,b,u,k
+set complete=.,w,b,u,k,i
 set completeopt=menu,preview,longest,menuone
 set wildmenu
 set wildmode=longest:full,list:longest
@@ -94,28 +94,9 @@ let g:hatena_users = ['aereal','teq:aereal']
 let g:use_zen_complete_tag = 1
 let g:user_zen_settings = {'indentation': "\t"}
 
-"" キーマップ
-noremap <Space>   <C-f>
-noremap <S-Space> <C-b>
-
 "" autocmd
 "" screenに編集中のファイル名を出す
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
-
-"" Functions
-function! TabWrapper(shift) 
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k\|< \|/\|\\'
-		return "\<Tab>"
-	elseif pumvisible()
-		return a:shift ? "\<C-p>" : "\<C-n>"
-	else
-		return "\<C-n>\<C-p>"
-	endif
-endfunction
-
-inoremap <Tab>   <C-r>=TabWrapper(0)<CR>
-inoremap <S-Tab> <C-r>=TabWrapper(1)<CR>
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap <sid>(command-line-enter) q:
@@ -145,8 +126,8 @@ nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
 nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
 
 function! s:good_width()
-	if winwidth(0) < 104
-		vertical resize 104
+	if winwidth(0) < 84
+		vertical resize 84
 	endif
 endfunction
 
