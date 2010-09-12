@@ -81,9 +81,10 @@ set! network.dns.disableIPv6=true
 
 " set {{{
 set activate=quickmark,tabopen,paste
-set complete=tls
+set complete=tHls
 set editor=vim
 set focuscontent
+set guioptions-=H
 set hlsearch
 set noincsearch
 set insertmode
@@ -209,6 +210,14 @@ commands.addUserCommand(
 	);
 })();
 
+if (typeof hBookmark != 'undefined') {
+	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
+	liberator.globalVariables.hBookmark_shortcuts = {
+		add: ['c'],
+		comment: ['C'],
+	};
+	liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
+}
 EOM
 " }}}
 
