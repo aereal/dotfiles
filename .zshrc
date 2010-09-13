@@ -39,7 +39,6 @@ zle -N history-beginning-search-forward-end history-search-end
 
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
-#autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 # Abbreviation
 autoload -U -z my-expand-abbrev
@@ -49,23 +48,16 @@ myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
 	"C" "| xsel --input --clipboard"
-	"N" "&& notify-send -i /usr/share/icons/Humaniti/actions/48/dialog-apply.svg Finished!"
+	"N" "&& notify-send -i /usr/share/icons/Humanity/actions/48/dialog-apply.svg Finished!"
 )
-
-RPROMPT='[%{${fg[yellow]}%}%~%{${reset_color}%}]'
-PROMPT="%{${fg[blue]}%} -[] _ []- <%{${reset_color}%} "
-
-# SSHで接続した先だと、ホスト名を派手に出す。
-[ -n "${SSH_CONNECTION}" ] && PROMPT=" %{${fg[red]}%}[${HOST}]:
-${PROMPT}"
 
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
+
+autoload -U -z set_prompt_flavor && set_prompt_flavor 'nori'
 
 . $HOME/.zsh/key-bind.zsh
 . $HOME/.zsh/aliases.zsh
 
 [[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
-
-tty > /tmp/screen-tty-$WINDOW
 

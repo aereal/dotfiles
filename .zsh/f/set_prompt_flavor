@@ -1,0 +1,18 @@
+# vim:set ft=zsh:
+
+set_prompt_flavor() {
+	typeset -A prompt_flavors
+	prompt_flavors=(
+		'yuno' "%{${fg[yellow]}%}X | v | X"
+		'sae'  "%{${fg[blue]}%}-[] _ []-"
+		'nori' "%{${fg[green]}%}S | v | Z"
+	)
+
+	flavor='yuno'
+	if [[ $# > 0 ]]; then
+		flavor=$1
+	fi
+	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
+	PROMPT=" %{%(!.${fg[red]}.${fg[magenta]})%}<%n@%m>
+ ${prompt_flavors[$flavor]} <%{${reset_color}%} "
+}
