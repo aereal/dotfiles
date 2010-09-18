@@ -3,13 +3,13 @@
 " ==/VimperatorColorSchema==
 
 hi Bell               display: none;
-hi CmdLine            font-family: monospace; font-size: 11pt; padding: 5px 3px;
+hi CmdLine            font-family: monospace; font-size: 12pt; padding: 5px 3px;
 
 hi CompResult         font-family: monospace; width: 35%; overflow: hidden;
-hi CompDesc           width: 60%; color: LightGray; font-size: 11pt;
+hi CompDesc           width: 60%; color: LightGray; font-size: 12pt;
 hi CompItem           font-size: 11pt; color: PaleGreen;
 hi CompItem[selected] background-color: DimGray;
-hi CompTitle          color: DeepPink; font-size: 13pt;
+hi CompTitle          color: DeepPink; font-size: 14pt;
 
 hi Gradient           display: none;
 
@@ -24,7 +24,7 @@ hi Normal             color: LightGray; background-color: #333;
 hi Question           color: LightGray; background-color: #333;
 
 " Status Line
-hi StatusLine         color: LightGray; background-color: #333; font-size: 11pt; font-family: monospace; font-weight: normal; padding: 5px 3px;
+hi StatusLine         color: LightGray; background-color: #333; font-size: 12pt; font-family: monospace; font-weight: normal; padding: 5px 3px;
 hi StatusLineBroken   color: Black; background-color: DarkRed;
 hi StatusLineSecure   color: Black; background-color: LimeGreen;
 
@@ -33,7 +33,7 @@ hi Title              color: DeepPink;
 hi URL                color: LimeGreen;
 
 " Messages
-hi Message            color: LightGray; background-color: #333; font-family: monospace; font-size: 11pt;
+hi Message            color: LightGray; background-color: #333; font-family: monospace; font-size: 12pt;
 hi ErrorMsg           background-color: DarkRed;
 hi InfoMsg            background-color: #333;
 hi ModeMsg            background-color: #333;
