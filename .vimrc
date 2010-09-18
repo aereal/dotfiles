@@ -5,7 +5,7 @@ language message C
 syntax on
 
 "" カラースキーム
-colorscheme abyss256
+colorscheme abyss
 
 "" ファイル・タイプごとの設定を有効にする
 filetype plugin indent on
