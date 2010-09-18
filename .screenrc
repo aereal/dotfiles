@@ -17,15 +17,19 @@ term xterm-256color
 vbell off
 bell_msg "Bell in window %^G"
 
-bind \^ focus top
-bind $ focus bottom
-bind j focus down
-bind k focus up
-bind w windowlist -b
-bind r eval 'echo "Resize window"' 'command -c resize'
-bind -c resize ^] command
-bind -c resize j eval 'resize +1' 'command -c resize'
-bind -c resize k eval 'resize -1' 'command -c resize'
+bind j next
+bind k prev
+bind w eval 'echo "Operate window"' 'command -c operate'
+bind -c operate ^] command
+bind -c operate j  eval 'focus down'   'command -c operate'
+bind -c operate k  eval 'focus up'     'command -c operate'
+bind -c operate \^ eval 'focus top'    'command -c operate'
+bind -c operate $  eval 'focus bottom' 'command -c operate'
+bind -c operate x  eval 'remove'       'command -c operate'
+bind -c operate s  eval 'split'        'command -c operate'
+bind -c operate v  eval 'split -v'     'command -c operate'
+bind -c operate +  eval 'resize +1'    'command -c operate'
+bind -c operate -  eval 'resize -1'    'command -c operate'
 
 caption splitonly "%3n %t %f"
 hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w"
