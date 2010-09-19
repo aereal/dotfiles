@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# http://github.com/cho45/dotfiles/blob/master/.screen/init-daemon.rb
+
+screen -X eval "escape ^y^y"
+screen -X eval "zombie QR"
+
+cd $HOME/projects/net-irc/examples
+screen zsh -c ./tig.rb --debug
+
+cd $HOME/projects/coderepos/lang/perl/tiarra
+screen zsh -c ./tiarra --debug
+
+screen -X detach
+
