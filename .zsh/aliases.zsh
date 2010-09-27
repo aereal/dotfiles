@@ -8,5 +8,5 @@ alias unt='tar zxvf'
 alias s='screen'
 alias :q='exit'
 alias ps='ps aux'
-alias sudo='sudo env PATH=$PATH'
+alias sudo='PATH=$PATH sudo'
 
