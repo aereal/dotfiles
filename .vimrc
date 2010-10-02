@@ -97,6 +97,8 @@ let g:user_zen_settings = {'indentation': "\t"}
 "" autocmd
 "" screenに編集中のファイル名を出す
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+"" HTMLとかはネストが深くなるのでインデント幅を小さく
+autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap <sid>(command-line-enter) q:
