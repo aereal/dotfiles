@@ -1,0 +1,6 @@
+" vim:set ft=vimperator:
+
+" Key mapping
+nnoremap w <nop>
+nnoremap W <nop>
+
