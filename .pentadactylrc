@@ -4,3 +4,8 @@
 nnoremap w <nop>
 nnoremap W <nop>
 
+noremap j 5<C-e>
+noremap k 5<C-y>
+
+cmap <C-n> <Tab>
+cmap <C-p> <S-Tab>
