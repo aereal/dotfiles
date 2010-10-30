@@ -6,6 +6,7 @@ source ~/.vimperatorrc.css
 
 " quickmarks {{{
 qmark c https://www.google.com/calendar/
+qmark d http://doc.google.com/
 qmark f http://favotter.net/user/aereal
 qmark g https://mail.google.com/mail/
 qmark k http://wiki.kumetan.net/
@@ -128,7 +129,6 @@ noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
 noremap ,T :tombloo!<Space>
 noremap ,b :tombloo! Link<CR>
-"noremap ,B :tombloo! Link
 noremap ,v :viewSBMComments<CR>
 noremap ,w :twittperator
 " }}}
@@ -212,10 +212,6 @@ commands.addUserCommand(
 
 if (typeof hBookmark != 'undefined') {
 	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
-	liberator.globalVariables.hBookmark_shortcuts = {
-		add: ['c'],
-		comment: ['C'],
-	};
 	liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
 }
 EOM
