@@ -1,0 +1,1 @@
+/home/aereal/.vim/vendor/unite.vim/syntax/unite.vim
