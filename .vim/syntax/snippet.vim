@@ -1,1 +1,1 @@
-/home/aereal/.vim/vendor/snipmate.vim/syntax/snippet.vim
+/home/aereal/.vim/vendor/neocomplcache/syntax/snippet.vim
