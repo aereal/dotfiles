@@ -119,6 +119,7 @@ noremap l <C-p>
 noremap d <C-w>
 noremap <C-m> <CR>
 noremap <BS> <Nop>
+noremap w <Nop>
 
 noremap ,. :unmap<CR>:iunmap<CR>:cunmap<CR>:source<Space>~/.vimperatorrc<CR>
 noremap ,s :subldr<CR>
