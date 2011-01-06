@@ -8,6 +8,7 @@
 	st = status
 	df = diff
 	co = checkout
+	fixup = commit --amend -C HEAD
 [color]
 	diff = auto
 	branch = auto
@@ -29,3 +30,5 @@
 	new = green
 [i18n]
 	commitencoding= utf-8
+[core]
+	editor = vim -u NONE -i NONE -N -c 'syntax on'
