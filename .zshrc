@@ -54,8 +54,6 @@ myabbrev=(
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
 
-autoload -U -z set_prompt_flavor && set_prompt_flavor 'nori'
-
 . $HOME/.zsh/key-bind.zsh
 . $HOME/.zsh/aliases.zsh
 
