@@ -1,0 +1,21 @@
+# -*- encoding: utf-8 -*-
+#
+# vim: set ft=ruby:
+
+Autotest.add_hook :green do
+	icon_path = "/usr/share/icons/Elegant-AwOken/clear/24x24/emblems/emblem-ok.png"
+	system "notify-send -i #{icon_path} OK"
+end
+
+Autotest.add_hook :red do
+	icon_path = "/usr/share/icons/Elegant-AwOken/clear/24x24/status/error.png"
+	system "notify-send -i #{icon_path} Failed"
+end
+
+Autotest.add_hook :initialize do |autotest|
+	%w(.git .DS_Store .*).each {|exception|
+		autotest.add_exception(exception)
+	}
+	false
+end
+
