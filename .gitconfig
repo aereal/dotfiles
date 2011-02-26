@@ -4,6 +4,8 @@
 [user]
 	email = aereal.h@gmail.com
 	name = aereal
+[github]
+	uesr = aereal
 [alias]
 	st = status
 	df = diff
