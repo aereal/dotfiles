@@ -129,7 +129,7 @@ noremap ,c :copy<Space>
 noremap ,C :copy!<Space>
 noremap ,t :tombloo<Space>
 noremap ,T :tombloo!<Space>
-noremap ,b :tombloo! Link<CR>
+noremap ,b :sbm<Space>
 noremap ,v :viewSBMComments<CR>
 noremap ,w :twittperator
 " }}}
@@ -170,6 +170,10 @@ autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Sp
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
 
 let g:ldrc_intelligence_bind = "true"
+let g:direct_sbm_use_services_by_tag = "h"
+let g:direct_sbm_use_services_by_post = "h"
+let g:direct_sbm_is_use_migemo = "true"
+let g:direct_sbm_is_normalize = "false"
 
 js <<EOM
 // copy.js
