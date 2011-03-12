@@ -1,0 +1,21 @@
+[submodule ".vim/vendor/hatena-vim"]
+	path = .vim/vendor/hatena-vim
+	url = git://github.com/motemen/hatena-vim.git
+[submodule ".vim/vendor/vim-surround"]
+	path = .vim/vendor/vim-surround
+	url = git://github.com/tpope/vim-surround
+[submodule ".vim/vendor/vim-quickrun"]
+	path = .vim/vendor/vim-quickrun
+	url = git://github.com/thinca/vim-quickrun
+[submodule ".vim/vendor/unite.vim"]
+	path = .vim/vendor/unite.vim
+	url = git://github.com/Shougo/unite.vim
+[submodule ".vim/vendor/neocomplcache"]
+	path = .vim/vendor/neocomplcache
+	url = git://github.com/Shougo/neocomplcache
+[submodule ".vim/vendor/snipmate.vim"]
+	path = .vim/vendor/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim
+[submodule ".vim/vendor/vim-ref"]
+	path = .vim/vendor/vim-ref
+	url = git://github.com/thinca/vim-ref
