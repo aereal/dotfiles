@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/asdfghjkl.js
+/home/aereal/projects/vimpr@vimperator-plugins/asdfghjkl.js

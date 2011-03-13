@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/maine_coon.js
+/home/aereal/projects/vimpr@vimperator-plugins/maine_coon.js

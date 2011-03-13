@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/stella.js
+/home/aereal/projects/vimpr@vimperator-plugins/stella.js
