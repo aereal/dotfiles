@@ -1,0 +1,1 @@
+/home/aereal/dotfiles/.vim/vendor/git-vim/plugin/git.vim

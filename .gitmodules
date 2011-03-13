@@ -19,3 +19,6 @@
 [submodule ".vim/vendor/vim-ref"]
 	path = .vim/vendor/vim-ref
 	url = git://github.com/thinca/vim-ref
+[submodule ".vim/vendor/git-vim"]
+	path = .vim/vendor/git-vim
+	url = git://github.com/motemen/git-vim.git
