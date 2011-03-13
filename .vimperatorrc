@@ -137,6 +137,7 @@ noremap ,w :twittperator
 " key maps (command line) {{{
 cmap <C-n> <Tab>
 cmap <C-p> <S-Tab>
+cmap <C-l> <Nop>
 cnoremap <C-m> <CR>
 cnoremap <C-[> <ESC>
 cnoremap <C-d> <Delete>
@@ -159,6 +160,12 @@ inoremap <C-[> <ESC>
 inoremap <C-y> <S-Insert>
 inoremap <C-h> <BS>
 inoremap <C-m> <CR>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
 " }}}
 
 " plugins {{{
