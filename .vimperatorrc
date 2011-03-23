@@ -173,7 +173,7 @@ let g:asdfghjkl_default = 'true'
 let g:asdfghjkl_hintchars = '-asdfghjkl'
 
 autocmd LocationChange .* :fmapc
-autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q
+autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q g
 autocmd LocationChange 'mail\.google\.com/mail' :fmap! -d 4 c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
 
 let g:ldrc_intelligence_bind = "true"
