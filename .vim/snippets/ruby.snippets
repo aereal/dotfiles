@@ -1,0 +1,284 @@
+# #!/usr/bin/env ruby
+snippet #!
+	#!/usr/bin/env ruby
+
+# New Block
+snippet =b
+	=begin rdoc
+		${1}
+	=end
+snippet y
+	:yields: ${1:arguments}
+snippet beg
+	begin
+		${3}
+	rescue ${1:Exception} => ${2:e}
+	end
+
+snippet req
+	require "${1}"${2}
+snippet #
+	# =>
+snippet end
+	__END__
+snippet case
+	case ${1:object}
+	when ${2:condition}
+		${3}
+	end
+snippet when
+	when ${1:condition}
+		${2}
+snippet def
+	def ${1:method_name}
+		${2}
+	end
+snippet if
+	if ${1:condition}
+		${2}
+	end
+snippet ife
+	if ${1:condition}
+		${2}
+	else
+		${3}
+	end
+snippet elsif
+	elsif ${1:condition}
+		${2}
+snippet else
+	else
+		${2}
+snippet unless
+	unless ${1:condition}
+		${2}
+	end
+snippet while
+	while ${1:condition}
+		${2}
+	end
+snippet for
+	for ${1:e} in ${2:c}
+		${3}
+	end		
+snippet until
+	until ${1:condition}
+		${2}
+	end
+snippet cla class .. end
+	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+		${2}
+	end
+snippet cla class .. initialize .. end
+	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+		def initialize(${2:args})
+			${3}
+		end
+
+
+	end
+snippet cla class .. < ParentClass .. initialize .. end
+	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < ${2:ParentClass}
+		def initialize(${3:args})
+			${4}
+		end
+
+
+	end
+snippet cla ClassName = Struct .. do .. end
+	${1:`substitute(Filename(), '^.', '\u&', '')`} = Struct.new(:${2:attr_names}) do
+		def ${3:method_name}
+			${4}
+		end
+
+
+	end
+snippet cla class BlankSlate .. initialize .. end
+	class ${1:BlankSlate}
+		instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
+snippet cla class << self .. end
+	class << ${1:self}
+		${2}
+	end
+# class .. < DelegateClass .. initialize .. end
+snippet cla-
+	class ${1:`substitute(Filename(), '^.', '\u&', '')`} < DelegateClass(${2:ParentClass})
+		def initialize(${3:args})
+			super(${4:del_obj})
+
+			${5}
+		end
+
+
+	end
+snippet mod module .. end
+	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+		${2}
+	end
+snippet mod module .. module_function .. end
+	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+		module_function
+
+		${2}
+	end
+snippet mod module .. ClassMethods .. end
+	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+		module ClassMethods
+			${2}
+		end
+
+		module InstanceMethods
+
+		end
+
+		def self.included(receiver)
+			receiver.extend         ClassMethods
+			receiver.send :include, InstanceMethods
+		end
+	end
+# attr_reader
+snippet r
+	attr_reader :${1:attr_names}
+# attr_writer
+snippet w
+	attr_writer :${1:attr_names}
+# attr_accessor
+snippet rw
+	attr_accessor :${1:attr_names}
+# include Enumerable
+snippet Enum
+	include Enumerable
+
+	def each(&block)
+		${1}
+	end
+# include Comparable
+snippet Comp
+	include Comparable
+
+	def <=>(other)
+		${1}
+	end
+# extend Forwardable
+snippet Forw-
+	extend Forwardable
+# def self
+snippet defs
+	def self.${1:class_method_name}
+		${2}
+	end
+# def method_missing
+snippet defmm
+	def method_missing(meth, *args, &blk)
+		${1}
+	end
+snippet am
+	alias_method :${1:new_name}, :${2:old_name}
+snippet app
+	if __FILE__ == $PROGRAM_NAME
+		${1}
+	end
+snippet array
+	Array.new(${1:10}) { |${2:i}| ${3} }
+snippet hash
+	Hash.new { |${1:hash}, ${2:key}| $1[$2] = ${3} }
+snippet file File.foreach() { |line| .. }
+	File.foreach(${1:"path/to/file"}) { |${2:line}| ${3} }
+snippet file File.read()
+	File.read(${1:"path/to/file"})${2}
+snippet Dir Dir.global() { |file| .. }
+	Dir.glob(${1:"dir/glob/*"}) { |${2:file}| ${3} }
+snippet Dir Dir[".."]
+	Dir[${1:"glob/**/*.rb"}]${2}
+snippet dir
+	Filename.dirname(__FILE__)
+snippet loo
+	loop { ${1} }
+snippet do
+	do |${1:variable}|
+		${2}
+	end
+snippet :
+	:${1:key} => ${2:"value"}${3}
+snippet ope
+	open(${1:"path/or/url/or/pipe"}, "${2:w}") {|${3:io}| ${4} }
+# path_from_here()
+snippet patfh
+	File.join(File.dirname(__FILE__), *%2[${1:rel path here}])${2}
+# Marshal.dump(.., file)
+snippet Md
+	File.open(${1:"path/to/file.dump"}, "wb") { |${2:file}| Marshal.dump(${3:obj}, $2) }${4}
+# Mashal.load(obj)
+snippet Ml
+	File.open(${1:"path/to/file.dump"}, "rb") { |${2:file}| Marshal.load($2) }${3}
+# deep_copy(..)
+snippet deec
+	Marshal.load(Marshal.dump(${1:obj_to_copy}))${2}
+snippet Pn-
+	PStore.new(${1:"file_name.pstore"})${2}
+snippet tra
+	transaction(${1:true}) { ${2} }
+# xmlread(..)
+snippet xml-
+	REXML::Document.new(File.read(${1:"path/to/file"}))${2}
+# xpath(..) { .. }
+snippet xpa
+	elements.each(${1:"//Xpath"}) do |${2:node}|
+		${3}
+	end
+# class_from_name()
+snippet clafn
+	split("::").inject(Object) { |par, const| par.const_get(const) }
+# singleton_class()
+snippet sinc
+	class << self; self end
+snippet nam
+	namespace :${1:`Filename()`} do
+		${2}
+	end
+snippet tas
+	desc "${1:Task description\}"
+	task :${2:task_name => [:dependent, :tasks]} do
+		${3}
+	end
+# RSpec
+snippet desc
+	describe ${1:object} do
+		${2}
+	end
+snippet it
+	it "${1:description}" do
+		${2}
+	end
+snippet con
+	context "${1:case}" do
+		${2}
+	end
+snippet bef
+	before do
+		${1}
+	end
+snippet befe
+	before :each do
+		${1}
+	end
+snippet befa
+	before :all do
+		${1}
+	end
+snippet aft
+	after do
+		${1}
+	end
+snippet afte
+	after :each do
+		${1}
+	end
+snippet afta
+	after :all do
+		${1}
+	end
+snippet subj
+	subject do
+		${1}
+	end
