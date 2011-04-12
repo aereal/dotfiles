@@ -171,9 +171,12 @@ inoremap <C-f> <Right>
 let g:asdfghjkl_default = 'true'
 let g:asdfghjkl_hintchars = ';asdfghjkl'
 
-"autocmd LocationChange .* :fmapc
-"autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q g
-"autocmd LocationChange 'mail\.google\.com/mail' :fmap! c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
+lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
 
 let g:ldrc_intelligence_bind = "true"
 let g:direct_sbm_use_services_by_tag = "h"
@@ -226,23 +229,23 @@ if (typeof hBookmark != 'undefined') {
 	liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
 }
 
-autocommands.add('VimperatorEnter', '.*',
-	function() {
-		let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
-			if (gm) {
-				gm = gm.getService().wrappedJSObject;
-				if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
-					gm.injectScripts = liberator.eval(
-						gm.injectScripts.toSource().replace(/(?=var firebugConsole)/,
-							'var sharedWindow = {};' +
-							'sharedWindow.window = sharedWindow;' +
-							'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);').replace(
-								/(?=sandbox\.__proto__)/, ' sandbox.window = sharedWindow;'),
-						gm.injectScripts
-					);
-				}
-			}
+autocommands.add('VimperatorEnter', '.*', function() {
+	let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
+	if (gm) {
+		gm = gm.getService().wrappedJSObject;
+		if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
+			gm.injectScripts = liberator.eval(
+				gm.injectScripts.toSource().replace(/(?=var firebugConsole)/,
+				'var sharedWindow = {};' +
+				'sharedWindow.window = sharedWindow;' +
+				'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);').replace(
+					/(?=sandbox\.__proto__)/, ' sandbox.window = sharedWindow;'),
+				gm.injectScripts
+			);
+		}
+	}
 });
+
 EOM
 " }}}
 

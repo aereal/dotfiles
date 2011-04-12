@@ -3,7 +3,7 @@
 " ==/VimperatorColorSchema==
 
 hi Bell               display: none;
-hi CmdLine            font-family: monospace; font-size: 11pt; padding: 5px 3px;
+hi CmdLine            color: white; font-family: monospace; font-size: 11pt; padding: 5px 3px;
 
 hi CompResult         font-family: monospace; width: 35%; overflow: hidden;
 hi CompDesc           width: 60%; color: LightGray; font-size: 11pt;
