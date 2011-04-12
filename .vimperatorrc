@@ -95,7 +95,7 @@ set popups=tab
 set showmode
 set showstatuslinks=1
 set showtabline=2
-set titlestring=Firefox\ (w/Vimperator)
+set titlestring=Vimperator
 set verbose=5
 set visualbell
 set wildmode=list:full
@@ -116,7 +116,6 @@ noremap <C-r> <C-i>
 
 noremap h <C-n>
 noremap l <C-p>
-noremap d <C-w>
 noremap <C-m> <CR>
 noremap <BS> <Nop>
 noremap w <Nop>
@@ -170,11 +169,11 @@ inoremap <C-f> <Right>
 
 " plugins {{{
 let g:asdfghjkl_default = 'true'
-let g:asdfghjkl_hintchars = '-asdfghjkl'
+let g:asdfghjkl_hintchars = ';asdfghjkl'
 
-autocmd LocationChange .* :fmapc
-autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q g
-autocmd LocationChange 'mail\.google\.com/mail' :fmap! c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
+"autocmd LocationChange .* :fmapc
+"autocmd LocationChange 'reader\.livedoor\.com/reader' :fmap! j k s a p o v c <Space> <S-Space> z b < > <S-z> r q g
+"autocmd LocationChange 'mail\.google\.com/mail' :fmap! c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc * !
 
 let g:ldrc_intelligence_bind = "true"
 let g:direct_sbm_use_services_by_tag = "h"
@@ -226,6 +225,24 @@ if (typeof hBookmark != 'undefined') {
 	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
 	liberator.globalVariables.hBookmark_bangFunction = 'openNewTab';
 }
+
+autocommands.add('VimperatorEnter', '.*',
+	function() {
+		let gm = Components.classes['@greasemonkey.mozdev.org/greasemonkey-service;1'];
+			if (gm) {
+				gm = gm.getService().wrappedJSObject;
+				if (gm.injectScripts.toSource().search('sharedWindow') == -1) {
+					gm.injectScripts = liberator.eval(
+						gm.injectScripts.toSource().replace(/(?=var firebugConsole)/,
+							'var sharedWindow = {};' +
+							'sharedWindow.window = sharedWindow;' +
+							'sharedWindow.__proto__ = new XPCNativeWrapper(unsafeContentWin);').replace(
+								/(?=sandbox\.__proto__)/, ' sandbox.window = sharedWindow;'),
+						gm.injectScripts
+					);
+				}
+			}
+});
 EOM
 " }}}
 
