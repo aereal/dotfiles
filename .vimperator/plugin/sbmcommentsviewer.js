@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/sbmcommentsviewer.js
+/Users/aereal/projects/vimpr@vimperator-plugins/sbmcommentsviewer.js

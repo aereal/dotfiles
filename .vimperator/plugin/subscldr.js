@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/subscldr.js
+/Users/aereal/projects/vimpr@vimperator-plugins/subscldr.js

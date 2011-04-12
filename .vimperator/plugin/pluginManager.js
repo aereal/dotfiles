@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/pluginManager.js
+/Users/aereal/projects/vimpr@vimperator-plugins/pluginManager.js

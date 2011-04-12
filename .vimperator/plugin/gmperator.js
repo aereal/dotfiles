@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/gmperator.js
+/Users/aereal/projects/vimpr@vimperator-plugins/gmperator.js

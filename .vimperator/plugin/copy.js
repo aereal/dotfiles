@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/copy.js
+/Users/aereal/projects/vimpr@vimperator-plugins/copy.js

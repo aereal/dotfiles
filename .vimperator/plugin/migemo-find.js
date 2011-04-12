@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/migemo-find.js
+/Users/aereal/projects/vimpr@vimperator-plugins/migemo-find.js

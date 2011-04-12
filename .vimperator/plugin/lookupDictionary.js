@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/lookupDictionary.js
+/Users/aereal/projects/vimpr@vimperator-plugins/lookupDictionary.js

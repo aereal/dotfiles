@@ -1,1 +1,1 @@
-/home/aereal/projects/coderepos/lang/javascript/vimperator-plugins/_libly.js
+/Users/aereal/projects/vimpr@vimperator-plugins/_libly.js
