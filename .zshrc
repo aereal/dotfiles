@@ -47,8 +47,6 @@ typeset -A myabbrev
 myabbrev=(
 	"L" "| \$PAGER"
 	"G" "| grep"
-	"C" "| xsel --input --clipboard"
-	"N" "&& notify-send -i /usr/share/icons/Humanity/actions/48/dialog-apply.svg Finished!"
 )
 
 autoload -U -z show-window-title
@@ -57,5 +55,20 @@ preexec_functions=($preexec_functions show-window-title)
 . $HOME/.zsh/key-bind.zsh
 . $HOME/.zsh/aliases.zsh
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+init_prompt() {
+	first_line="%{${fg[yellow]}%}<%n@%m>"
+	[[ -n "$rvm_ruby_string" ]] && first_line="$first_line %{${fg[red]}%}($rvm_ruby_string)"
+	second_line=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
+	PROMPT="${first_line}
+${second_line}"
+	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
+}
+
+precmd_functions=($precmd_functions init_prompt)
+
+uname=`uname`
+[[ -f "$HOME/.zsh/$uname.zshrc" ]] && . "$HOME/.zsh/$uname.zshrc"
 [[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
 

@@ -1,7 +1,7 @@
 # vim:set ft=zsh:
 
 export PERLBREW_ROOT=$HOME/perlbrew
-source $PERLBREW_ROOT/etc/bashrc
+[[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
 
 paths=(
 	$HOME/bin
@@ -11,11 +11,5 @@ paths=(
 	$PATH
 )
 
-perl5libs=(
-	$HOME/perl5/lib/perl5
-	$HOME/perl5/lib/perl5/i486-linux-gnu-thread-multi
-)
-
-export PERL5LIB=${(j.:.)perl5libs}
 export PATH=${(j.:.)paths}
 
