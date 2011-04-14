@@ -85,21 +85,17 @@ set activate=quickmark,tabopen,paste
 set complete=tHls
 set editor=vim
 set focuscontent
-set guioptions-=H
 set hlsearch
 set noincsearch
 set insertmode
-set laststatus=2
 set newtab=all
 set popups=tab
 set showmode
 set showstatuslinks=1
-set showtabline=2
 set titlestring=Vimperator
 set verbose=5
 set visualbell
 set wildmode=list:full
-set wildoptions=sort
 " }}}
 
 " key maps (normal) {{{
@@ -210,19 +206,6 @@ commands.addUserCommand(
 	{},
 	true
 );
-
-// Show feed-button to statusbar
-(function() {
-	var feedPanel = document.createElement('statusbarpanel');
-	var feedButton = document.getElementById('feed-button');
-	feedPanel.setAttribute('id', 'feed-panel-clone');
-	feedPanel.appendChild(feedButton.cloneNode(true));
-	feedButton.parentNode.removeChild(feedButton);
-	document.getElementById('status-bar').insertBefore(
-		feedPanel,
-		document.getElementById('security-button')
-	);
-})();
 
 if (typeof hBookmark != 'undefined') {
 	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});

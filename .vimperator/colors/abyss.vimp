@@ -11,8 +11,6 @@ hi CompItem           font-size: 10pt; color: PaleGreen;
 hi CompItem[selected] background-color: DimGray;
 hi CompTitle          color: DeepPink; font-size: 13pt;
 
-hi Gradient           display: none;
-
 " Hints
 hi Hint               font-family: monospace; font-size: 18px; font-weight: normal; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
 hi HintElem           background-color: Khaki; color: Black;
@@ -25,8 +23,6 @@ hi Question           color: LightGray; background-color: #333;
 
 " Status Line
 hi StatusLine         color: LightGray; background-color: #333; font-size: 11pt; font-family: monospace; font-weight: normal; padding: 5px 3px;
-hi StatusLineBroken   color: Black; background-color: DarkRed;
-hi StatusLineSecure   color: Black; background-color: LimeGreen;
 
 hi Tag                color: Orchid;
 hi Title              color: DeepPink;
