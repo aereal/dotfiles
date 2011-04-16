@@ -1,1 +1,0 @@
-/home/aereal/.vim/vendor/snipmate.vim/after/plugin/snipMate.vim

@@ -1,1 +1,0 @@
-/home/aereal/.vim/vendor/neocomplcache/doc/neocomplcache.txt

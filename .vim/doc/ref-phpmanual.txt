@@ -1,1 +1,0 @@
-/home/aereal/.vim/vendor/vim-ref/doc/ref-phpmanual.txt

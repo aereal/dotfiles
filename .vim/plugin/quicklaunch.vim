@@ -1,1 +1,0 @@
-/home/aereal/.vim/vendor/vim-quickrun/plugin/quicklaunch.vim
