@@ -48,6 +48,13 @@ class Backtick
 		rescue => e
 			@logger.error(e)
 		end
+
+		def notify_battery_status
+			return '' unless `uname`.strip.downcase == 'darwin'
+			"Battery: #{`pmset -g ps`.strip[/\d+%/]}"
+		rescue => e
+			@logger.error(e)
+		end
 	end
 end
 
