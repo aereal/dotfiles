@@ -1,5 +1,5 @@
 " load scripts/styles {{{
-colorscheme abyss
+colorscheme vimpwhite
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
 source ~/.vimperatorrc.css
 " }}}
@@ -141,6 +141,7 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <C-j> <Nop>
 
 " 括弧/引用符の補完
 cnoremap \" ""<Left>
@@ -165,13 +166,13 @@ inoremap <C-f> <Right>
 
 " plugins {{{
 let g:asdfghjkl_default = 'true'
-let g:asdfghjkl_hintchars = ';asdfghjkl'
+let g:asdfghjkl_hintchars = ':asdfghjkl'
 
 command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p r o v c i,p <Space> <S-Space> z b < > q w e,g
 lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
 
 let g:ldrc_intelligence_bind = "true"

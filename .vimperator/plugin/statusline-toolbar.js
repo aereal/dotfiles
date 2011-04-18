@@ -1,0 +1,1 @@
+/Users/aereal/projects/vimpr@vimperator-plugins/statusline-toolbar.js
