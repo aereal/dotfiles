@@ -1,5 +1,3 @@
-" abyssgui
-
 set background=dark
 hi clear
 
@@ -7,20 +5,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
-let colors_name = "abyss_gui"
-
-" Black    => #0a0a0f
-" Gray     => #686861
-" White    => #f7f7f5
-" Red      => #c44557
-" Green    => #8fb0a9
-" Yellow   => #dcb875
-" Blue     => #5b7498
-" Magenta  => #ffb9c4
-" Cyan     => #88afc0
-" DarkGreen => #3c4e4c
-" DarkMagenta => #986771
-" DarkCyan => #374a56
+let colors_name = "magica"
 
 hi Normal          guifg=#f7f7f5 guibg=#0a0a0f
 hi SpecialKey      guifg=#686861 ctermfg=darkgray
