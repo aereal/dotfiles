@@ -8,9 +8,9 @@ alias unt='tar zxvf'
 alias :q='exit'
 alias ps='ps aux'
 
-if [[ -x `which screen` ]]; then
-	alias j='screen'
-elif [[ -x `which tmux` ]]; then
+if [[ -x `which tmux` ]]; then
 	alias j='tmux new-window'
+elif [[ -x `which screen` ]]; then
+	alias j='screen'
 fi
 
