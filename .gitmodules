@@ -1,24 +1,3 @@
-[submodule ".vim/bundle/hatena-vim"]
-	path = .vim/bundle/hatena-vim
-	url = git://github.com/motemen/hatena-vim.git
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround
-[submodule ".vim/bundle/vim-quickrun"]
-	path = .vim/bundle/vim-quickrun
-	url = git://github.com/thinca/vim-quickrun
-[submodule ".vim/bundle/unite.vim"]
-	path = .vim/bundle/unite.vim
-	url = git://github.com/Shougo/unite.vim
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache
-[submodule ".vim/bundle/snipmate.vim"]
-	path = .vim/bundle/snipmate.vim
-	url = git://github.com/msanders/snipmate.vim
-[submodule ".vim/bundle/vim-ref"]
-	path = .vim/bundle/vim-ref
-	url = git://github.com/thinca/vim-ref
-[submodule ".vim/bundle/git-vim"]
-	path = .vim/bundle/git-vim
-	url = git://github.com/motemen/git-vim.git
+[submodule ".vim/vundle.git"]
+	path = .vim/vundle.git
+	url = git://github.com/gmarik/vundle.git

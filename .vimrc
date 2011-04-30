@@ -7,6 +7,19 @@ syntax on
 "" カラースキーム
 colorscheme abyss
 
+filetype off
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'motemen/git-vim'
+Bundle 'motemen/hatena-vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-surround'
+
 "" ファイル・タイプごとの設定を有効にする
 filetype plugin indent on
 
