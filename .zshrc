@@ -1,7 +1,10 @@
 #vim:set ft=zsh:
 
-# screenが起動していなければ、attachを試みる。attachするセッションがなければ新しくセッションを張る。
-[ ${STY} ] || screen -rx || screen -D -RR -U
+if [[ -x `which tmux` ]]; then
+	[ $TMUX ] || tmux -2u
+elif	[[ -x `which screen` ]]; then
+	[ $STY ] || screen -rx || screen -D -RR -U
+fi
 
 bindkey -v
 
