@@ -1,6 +1,7 @@
 " load scripts/styles {{{
 colorscheme vimpwhite
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
+style -name link-label     chrome://* #statusbar-display { display: none !important; }
 source ~/.vimperatorrc.css
 " }}}
 
