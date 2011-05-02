@@ -5,7 +5,7 @@ language message C
 syntax on
 
 "" カラースキーム
-colorscheme abyss
+colorscheme magica
 
 filetype off
 set rtp+=~/.vim/vundle.git/
