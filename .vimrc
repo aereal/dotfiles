@@ -19,6 +19,7 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
+Bundle 'kchmck/vim-coffee-script'
 
 "" ファイル・タイプごとの設定を有効にする
 filetype plugin indent on
