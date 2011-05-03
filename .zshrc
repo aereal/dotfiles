@@ -1,7 +1,7 @@
 #vim:set ft=zsh:
 
 if [[ -x `which tmux` ]]; then
-	[ $TMUX ] || tmux -2u
+	[ $TMUX ] || tmux attach || tmux -2u
 elif	[[ -x `which screen` ]]; then
 	[ $STY ] || screen -rx || screen -D -RR -U
 fi
