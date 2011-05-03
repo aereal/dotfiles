@@ -6,8 +6,11 @@ alias ls="ls -G -F"
 alias l="ls -G -AF"
 alias la="ls -G -AFl"
 
-myabbrev=(
-	"L" "| \$PAGER"
-	"G" "| grep"
-	"C" "| pbcopy"
+# inspired by https://gist.github.com/953741
+local grepish=$(([ -x `which ack` ] && echo ack) || echo grep)
+abbreviations=(
+	" L" " | \$PAGER"
+	" G" " | $grepish"
+	" C" " | pbcopy"
 )
+

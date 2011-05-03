@@ -44,13 +44,65 @@ autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 
 # Abbreviation
-autoload -U -z my-expand-abbrev
-zle -N my-expand-abbrev
-typeset -A myabbrev
-myabbrev=(
-	"L" "| \$PAGER"
-	"G" "| grep"
+#autoload -U -z my-expand-abbrev
+#zle -N my-expand-abbrev
+#typeset -A myabbrev
+#myabbrev=(
+#	" L" "| \$PAGER"
+#	" G" "| grep"
+#)
+
+# http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
+typeset -A abbreviations
+abbreviations=(
+	" L" " | \$PAGER"
+	" G" " | grep"
 )
+
+magic-abbrev-expand () {
+	local MATCH
+	LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9^]#}
+	LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+}
+
+magic-space () {
+	magic-abbrev-expand
+	zle self-insert
+}
+
+magic-abbrev-expand-and-insert () {
+	magic-abbrev-expand
+	zle self-insert
+}
+
+magic-abbrev-expand-and-insert-complete () {
+	magic-abbrev-expand
+	zle self-insert
+	zle expand-or-complete
+}
+
+magic-abbrev-expand-and-accept () {
+	magic-abbrev-expand
+	zle accept-line
+}
+
+magic-abbrev-expand-and-normal-complete () {
+	magic-abbrev-expand
+	zle expand-or-complete
+}
+
+no-magic-abbrev-expand () {
+	LBUFFER+=' '
+}
+
+zle -N magic-abbrev-expand
+zle -N magic-abbrev-expand-and-magic-space
+zle -N magic-abbrev-expand-and-insert
+zle -N magic-abbrev-expand-and-insert-complete
+zle -N magic-abbrev-expand-and-normal-complete
+zle -N magic-abbrev-expand-and-accept
+zle -N no-magic-abbrev-expand
+zle -N magic-space
 
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
