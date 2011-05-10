@@ -84,7 +84,7 @@ set! network.dns.disableIPv6=true
 " set {{{
 set activate=quickmark,tabopen,paste
 set complete=tHls
-set editor=vim
+set editor='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 set focuscontent
 set hlsearch
 set noincsearch
