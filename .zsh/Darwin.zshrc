@@ -1,7 +1,7 @@
 # vim: set ft=zsh:
 
-alias vi="/Applications/MacVim.app/Contents/MacOS/Vim"
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias macvim='/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-tab-silent "$@"'
 alias ls="ls -G -F"
 alias l="ls -G -AF"
 alias la="ls -G -AFl"
