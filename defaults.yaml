@@ -1,0 +1,18 @@
+---
+-g:
+   NSNavPanelExpandedStateForSaveMode: true
+com.apple.dashboard:
+   mcx-disabled: true
+com.apple.dock:
+   no-glass: true
+   mouse-over-hilite-stack: true
+com.apple.iTunes:
+   invertStoreLinks: true
+   full-window: -1
+com.apple.screencapture:
+   type: jpg
+   location: ~/Pictures/Screenshots/
+com.apple.desktopservices:
+   DSDontWriteNetworkStores: true
+org.vim.MacVim:
+   MMZoomBoth: true
