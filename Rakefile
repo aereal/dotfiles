@@ -138,6 +138,15 @@ namespace :osx do
 				end
 			end
 		end
+
+		desc "delete defaults"
+		task :delete do
+			DEFAULTS_CONFIG.each do |domain, config|
+				config.each do |key, value|
+					sh "defaults delete #{domain} #{key} #{value}"
+				end
+			end
+		end
 	end
 end
 
