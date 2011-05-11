@@ -39,6 +39,11 @@ MODE =
 		:default
 	end
 
+def sh(*args)
+	STDERR.puts args.join(" ") if MODE == :dryrun || MODE == :verbose
+	system *args unless MODE == :dryrun || MODE == :nowrite
+end
+
 task :default => :usage
 
 desc "show usage messages"
