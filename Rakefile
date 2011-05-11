@@ -107,3 +107,14 @@ end
 desc "export dotfiles"
 task :export => :install
 
+namespace :osx do
+	LOCALIZATIONS = FileList[(HOME + "*/.localized").to_s]
+
+	desc "remove .localized from directories"
+	task :unlocalize => LOCALIZATIONS do |t|
+		t.prerequisites.each do |p|
+			mv p, p.ext("old")
+		end
+	end
+end
+
