@@ -23,16 +23,21 @@ end
 
 COPYFILES = DOTFILES.pathmap("#{HOME}/%f")
 
-case ENV['MODE'] || CONFIG['mode']
-when /^d(?:ry(?:run)?)?$/
-	include FileUtils::DryRun
-when /^v(?:erbose)?$/
-	include FileUtils::Verbose
-when /^(?:nw|nowrite)$/
-	include FileUtils::NoWrite
-else
-	include FileUtils
-end
+MODE = 
+	case ENV["MODE"] || CONFIG["mode"]
+	when /^d(?:ry(?:run)?)?$/
+		include FileUtils::DryRun
+		:dryrun
+	when /^v(?:erbose)?$/
+		include FileUtils::Verbose
+		:verbose
+	when /^(?:nw|nowrite)$/
+		include FileUtils::NoWrite
+		:nowrite
+	else
+		include FileUtils
+		:default
+	end
 
 task :default => :usage
 
