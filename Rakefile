@@ -126,5 +126,18 @@ namespace :osx do
 			mv p, p.ext("old")
 		end
 	end
+
+	namespace :defaults do
+		DEFAULTS_CONFIG = YAML.load_file(PWD + "defaults.yaml")
+
+		desc "write defaults"
+		task :write do
+			DEFAULTS_CONFIG.each do |domain, config|
+				config.each do |key, value|
+					sh "defaults write #{domain} #{key} #{value}"
+				end
+			end
+		end
+	end
 end
 
