@@ -44,78 +44,80 @@ def sh(*args)
 	system *args unless MODE == :dryrun || MODE == :nowrite
 end
 
-task :default => :usage
+task :default => 'dotfiles:usage'
 
-desc "show usage messages"
-task :usage do
-	STDOUT.puts <<USAGE
-Install/Export dotfiles to your home
-	$ ls -AF
-	.bashrc .vimrc .vim/
-	$ ls -AF ~
-	$ rake install
-	$ ls -AF ~
-	.bashrc@ .vimrc@ .vim@
+namespace :dotfiles do
+	desc "show usage messages"
+	task :usage do
+		STDOUT.puts <<-USAGE
+	Install/Export dotfiles to your home
+		$ ls -AF
+		.bashrc .vimrc .vim/
+		$ ls -AF ~
+		$ rake install
+		$ ls -AF ~
+		.bashrc@ .vimrc@ .vim@
 
-	Make symlink which refer to working directory's file in your home,
-	or copy files from working directory.
+		Make symlink which refer to working directory's file in your home,
+		or copy files from working directory.
 
-	!!! If a file exists in your home and working directory, it is replaced by working directory's one.
+		!!! If a file exists in your home and working directory, it is replaced by working directory's one.
 
-Uninstall dotfiles from your home
-	$ ls -AF ~
-	.bashrc@ .vimrc .vim@
-	$ rake uninstall
-	$ ls -AF ~
-	.vimrc.uninstalled
+	Uninstall dotfiles from your home
+		$ ls -AF ~
+		.bashrc@ .vimrc .vim@
+		$ rake uninstall
+		$ ls -AF ~
+		.vimrc.uninstalled
 
-	Remove symlink from your home, but normal files which copied are suffixed
-	to `.uninstalled'.
+		Remove symlink from your home, but normal files which copied are suffixed
+		to `.uninstalled'.
 
 
-Import dotfiles from your home
-	$ ls -AF ~
-	.gvimrc .vimrc@
-	$ ls -AF
-	.vimrc
-	$ rake import
-	$ ls -AF
-	.gvimrc .vimrc
+	Import dotfiles from your home
+		$ ls -AF ~
+		.gvimrc .vimrc@
+		$ ls -AF
+		.vimrc
+		$ rake import
+		$ ls -AF
+		.gvimrc .vimrc
 
-	Copy files which not in working directory to working directory,
-	and you may run `rake install' or something else.
+		Copy files which not in working directory to working directory,
+		and you may run `rake install' or something else.
 
-USAGE
-end
-
-desc "install dotfiles"
-task :install => :uninstall do
-	DOTFILES.existing.each do |file|
-		ln_s file, file.pathmap("#{HOME}/%f")
+	USAGE
 	end
-end
 
-desc "uninstall dotfiles"
-task :uninstall do
-	COPYFILES.existing.each do |file|
-		if File.symlink? file
-			rm file
-		else
-			mv file, file.pathmap("%p.uninstalled")
+	desc "install dotfiles"
+	task :install => :uninstall do
+		DOTFILES.existing.each do |file|
+			ln_s file, file.pathmap("#{HOME}/%f")
 		end
 	end
-end
 
-desc "import dotfiles"
-task :import do
-	unmanaged = FileList[HOMEFILES.pathmap('%f') - DOTFILES.pathmap('%f')]
-	unmanaged.each do |f|
-		cp_r HOME + f, PWD + f
+	desc "uninstall dotfiles"
+	task :uninstall do
+		COPYFILES.existing.each do |file|
+			if File.symlink? file
+				rm file
+			else
+				mv file, file.pathmap("%p.uninstalled")
+			end
+		end
 	end
-end
 
-desc "export dotfiles"
-task :export => :install
+	desc "import dotfiles"
+	task :import do
+		unmanaged = FileList[HOMEFILES.pathmap('%f') - DOTFILES.pathmap('%f')]
+		unmanaged.each do |f|
+			cp_r HOME + f, PWD + f
+		end
+	end
+
+	desc "export dotfiles"
+	task :export => :install
+end
 
 namespace :osx do
 	LOCALIZATIONS = FileList[(HOME + "*/.localized").to_s]
