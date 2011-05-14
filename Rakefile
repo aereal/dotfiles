@@ -2,10 +2,13 @@
 
 require "fileutils"
 require "pathname"
+require "uri"
+require "open-uri"
 require "yaml"
 
 HOME      = Pathname(ENV['HOME'])
 PWD       = Pathname.pwd
+TMPDIR    = PWD + "tmp/"
 CONFIG    = YAML.load_file(PWD + 'dotfiles.yaml')
 DOTFILES  = FileList[(PWD + '.*').to_s].exclude(/\.$/)
 HOMEFILES = FileList[(HOME + '.*').to_s].exclude(/\.$/)
@@ -149,6 +152,37 @@ namespace :osx do
 				end
 			end
 		end
+	end
+end
+
+namespace :rvm do
+	workdir   = TMPDIR + "rvm-#{$$}"
+	installer = workdir + "rvm-installer"
+	fetch_uri = URI("https://rvm.beginrescueend.com/install/rvm")
+	rvm_script = HOME + ".rvm/scripts/rvm"
+
+	desc "install rvm"
+	task :install => :fetch do
+		chmod 0755, installer
+		sh installer, '--version', 'latest'
+	end
+
+	desc "fetch rvm installer"
+	task :fetch do
+		mkdir workdir
+		content = fetch_uri.read
+		installer.open("w+") {|f| f << content }
+	end
+
+	desc "cleaning installer script"
+	task :clean do
+		rm installer
+		rmdir workdir
+	end
+
+	desc "using rvm"
+	task :use => [rvm_script.to_s] do
+		sh %Q![[ -s "#{rvm_script}" ]] && source #{rvm_script}!
 	end
 end
 
