@@ -107,6 +107,7 @@ preexec_functions=($preexec_functions show-window-title)
 . $HOME/.zsh/aliases.zsh
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
 
 init_prompt() {
 	first_line="%{${fg[yellow]}%}<%n@%m>"
