@@ -111,7 +111,20 @@ preexec_functions=($preexec_functions show-window-title)
 
 init_prompt() {
 	first_line="%{${fg[yellow]}%}<%n@%m>"
-	[[ -n "$rvm_ruby_string" ]] && first_line="$first_line %{${fg[red]}%}($rvm_ruby_string)"
+	if [[ -n "$rvm_ruby_string" ]]; then
+		first_line="$first_line %{${fg[red]}%}($rvm_ruby_string)"
+	fi
+	if [[ -n "$PERLBREW_PERL" ]]; then
+		first_line="$first_line %{${fg[blue]}%}($PERLBREW_PERL)"
+	fi
+	if [[ -n "$PATH_PYTHONBREW" ]]; then
+		local python_version
+		python_version=$(basename $(dirname $(dirname $(which python))))
+		python_version=$(ruby -e 'x=ARGV[0];puts x if x[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
+		if [[ -n "$python_version" ]]; then
+		first_line="$first_line %{${fg[yellow]}%}($python_version)"
+		fi
+	fi
 	second_line=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
 	PROMPT="${first_line}
 ${second_line}"
