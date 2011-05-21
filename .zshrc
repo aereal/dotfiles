@@ -39,15 +39,6 @@ zle -N history-beginning-search-forward-end history-search-end
 autoload -U promptinit ; promptinit
 autoload -U colors     ; colors
 
-# Abbreviation
-#autoload -U -z my-expand-abbrev
-#zle -N my-expand-abbrev
-#typeset -A myabbrev
-#myabbrev=(
-#	" L" "| \$PAGER"
-#	" G" "| grep"
-#)
-
 # http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
 typeset -A abbreviations
 abbreviations=(
@@ -103,12 +94,6 @@ zle -N magic-space
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
 
-. $HOME/.zsh/key-bind.zsh
-. $HOME/.zsh/aliases.zsh
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
-
 init_prompt() {
 	first_line="%{${fg[yellow]}%}<%n@%m>"
 	if [[ -n "$rvm_ruby_string" ]]; then
@@ -120,9 +105,9 @@ init_prompt() {
 	if [[ -n "$PATH_PYTHONBREW" ]]; then
 		local python_version
 		python_version=$(basename $(dirname $(dirname $(which python))))
-		python_version=$(ruby -e 'x=ARGV[0];puts x if x[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
+		python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
 		if [[ -n "$python_version" ]]; then
-		first_line="$first_line %{${fg[yellow]}%}($python_version)"
+			first_line="$first_line %{${fg[yellow]}%}($python_version)"
 		fi
 	fi
 	second_line=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
@@ -136,4 +121,9 @@ precmd_functions=($precmd_functions init_prompt)
 uname=`uname`
 [[ -f "$HOME/.zsh/$uname.zshrc" ]] && . "$HOME/.zsh/$uname.zshrc"
 [[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
+[[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
+[[ -f "$HOME/.zsh/key-bind.zsh" ]] && . $HOME/.zsh/key-bind.zsh
+[[ -f "$HOME/.zsh/aliases.zsh" ]] && . $HOME/.zsh/aliases.zsh
 
