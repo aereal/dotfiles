@@ -65,6 +65,7 @@ set! ui.caretWidth=5
 
 " アクセスキーを殺す
 set! ui.generalAccessKey=0
+set! ui.key.contentAccess=5
 
 " LDRでたくさんピンを開けるようにする
 set! dom.popup_maximum=65536
