@@ -184,5 +184,10 @@ namespace :rvm do
 	task :use => [rvm_script.to_s] do
 		sh %Q![[ -s "#{rvm_script}" ]] && source #{rvm_script}!
 	end
+
+	desc "uninstall rvm"
+	task :uninstall => [:clean] do
+		rmdir HOME + ".rvm"
+	end
 end
 
