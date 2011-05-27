@@ -17,6 +17,7 @@ hi Search          guibg=#dcb875 ctermbg=yellow
 hi Visual          guibg=#686861 ctermbg=darkgray
 hi StatusLine      guibg=#374a56 gui=NONE ctermbg=cyan cterm=NONE
 hi StatusLineNC    guibg=#686861 gui=NONE ctermbg=gray
+hi Title           guifg=#ffb9c4 ctermfg=magenta
 
 " Popup
 hi Pmenu           guibg=#686861 ctermbg=darkgrey
@@ -29,7 +30,7 @@ hi MoreMsg         guifg=#374a56 gui=bold ctermfg=cyan cterm=bold
 hi WarningMsg      guifg=#dcb875 gui=bold ctermfg=yellow cterm=bold
 
 " Syntax
-hi Comment         guifg=#3c4e4c ctermfg=green
+hi Comment         guifg=#6c7e7c ctermfg=green
 
 hi Constant        guifg=#8fb0a9 ctermfg=darkgreen
 hi Identifier      guifg=#986771 ctermfg=magenta
