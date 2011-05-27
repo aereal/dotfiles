@@ -1,8 +1,7 @@
 require "rubygems"
-require "wirble"
+require "wirb"
 
-Wirble.init(:skip_prompt => :DEFAULT)
-Wirble.colorize
+Wirb.start
 
 module Kernel
 	alias_method :say, :puts
