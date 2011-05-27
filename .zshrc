@@ -124,6 +124,7 @@ uname=`uname`
 [[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
 [[ -f "$HOME/.zsh/key-bind.zsh" ]] && . $HOME/.zsh/key-bind.zsh
 [[ -f "$HOME/.zsh/aliases.zsh" ]] && . $HOME/.zsh/aliases.zsh
+[[ -d "$HOME/.zsh/plugins" ]] && . $HOME/.zsh/plugins/*
 [[ -f "$HOME/.zsh/$uname.zshrc" ]] && . "$HOME/.zsh/$uname.zshrc"
 [[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
 
