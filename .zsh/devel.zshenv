@@ -1,7 +1,6 @@
 # vim:set ft=zsh:
 
-export JAVA_HOME=/usr/java/default
-export CASSANDRA_HOME=/var/cassandra
+export CASSANDRA_HOME=$HOME/local/casssandra
 
 paths=(
 	$CASSANDRA_HOME/bin
