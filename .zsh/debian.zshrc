@@ -1,5 +1,3 @@
 
-[ ${STY} ] && screen -X eval "escape ^t^t"
+[ ${STY} ] && screen -X eval "escape ^y^y"
 
-export PATH=/usr/local/gems/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
-export RUBYLIB=/usr/local/gems
