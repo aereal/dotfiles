@@ -1,4 +1,4 @@
-escape ^tt
+escape ^kk
 defscrollback 10000
 defutf8 on
 defkanji utf-8

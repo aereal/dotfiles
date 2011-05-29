@@ -1,3 +1,3 @@
 
-[ ${STY} ] && screen -X eval "escape ^y^y"
+[ ${STY} ] && screen -X eval "escape ^tt"
 
