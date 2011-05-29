@@ -118,13 +118,31 @@ ${second_line}"
 
 precmd_functions=($precmd_functions init_prompt)
 
+# key-bindings
+bindkey "\r" magic-abbrev-expand-and-accept
+bindkey " "  magic-space
+bindkey "."  magic-abbrev-expand-and-insert
+bindkey "^F" push-input
+bindkey "^I" magic-abbrev-expand-and-normal-complete
+bindkey "^J" accept-line
+bindkey "^N" history-beginning-search-forward-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^R" history-incremental-search-backward
+bindkey "^S" history-incremental-search-forward
+
+# aliases
+alias ..='cd ..'
+alias l='/bin/ls --color -AF'
+alias ls='/bin/ls --color -F'
+alias la='/bin/ls --color -AFl'
+alias :q='exit'
+alias ps='ps aux'
+
 uname=`uname`
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
 [[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
-[[ -f "$HOME/.zsh/key-bind.zsh" ]] && . $HOME/.zsh/key-bind.zsh
-[[ -f "$HOME/.zsh/aliases.zsh" ]] && . $HOME/.zsh/aliases.zsh
 [[ -d "$HOME/.zsh/plugins" ]] && . $HOME/.zsh/plugins/*
-[[ -f "$HOME/.zsh/$uname.zshrc" ]] && . "$HOME/.zsh/$uname.zshrc"
-[[ -f "$HOME/.zsh/$HOST.zshrc" ]] && . "$HOME/.zsh/$HOST.zshrc"
+[[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
+[[ -f "$HOME/.zsh/hosts/$HOST.zshrc" ]] && . "$HOME/.zsh/hosts/$HOST.zshrc"
 
