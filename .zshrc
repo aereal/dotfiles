@@ -139,10 +139,10 @@ alias :q='exit'
 alias ps='ps aux'
 
 uname=`uname`
+#[[ -d "$HOME/.zsh/plugins" ]] && . $HOME/.zsh/plugins/*
+[[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
+[[ -f "$HOME/.zsh/hosts/$HOST.zshrc" ]] && . "$HOME/.zsh/hosts/$HOST.zshrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
 [[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
-[[ -d "$HOME/.zsh/plugins" ]] && . $HOME/.zsh/plugins/*
-[[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
-[[ -f "$HOME/.zsh/hosts/$HOST.zshrc" ]] && . "$HOME/.zsh/hosts/$HOST.zshrc"
 
