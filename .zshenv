@@ -9,4 +9,5 @@ export LS_COLORS="di=33:ln=32:ex=31:pi=34"
 uname=`uname`
 [[ -f "$HOME/.zsh/os/$uname.zshenv" ]] && . "$HOME/.zsh/os/$uname.zshenv"
 [[ -f "$HOME/.zsh/hosts/$HOST.zshenv" ]] && . "$HOME/.zsh/hosts/$HOST.zshenv"
+[[ -f "$HOME/.zsh/perlbrew.zshenv" ]] && . "$HOME/.zsh/perlbrew.zshenv"
 
