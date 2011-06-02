@@ -139,7 +139,7 @@ alias :q='exit'
 alias ps='ps aux'
 
 uname=`uname`
-#[[ -d "$HOME/.zsh/plugins" ]] && . $HOME/.zsh/plugins/*
+[[ -f "$HOME/.zsh/f/git-flow-completion" ]] && . "$HOME/.zsh/f/git-flow-completion"
 [[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
 [[ -f "$HOME/.zsh/hosts/$HOST.zshrc" ]] && . "$HOME/.zsh/hosts/$HOST.zshrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
