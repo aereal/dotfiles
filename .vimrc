@@ -153,3 +153,8 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 
+" unite.vim
+nnoremap <silent> ,b :<C-u>Unite buffer<CR>
+nnoremap <silent> ,o :<C-u>Unite file<CR>
+nnoremap <silent> ,r :<C-u>UniteWithBufferDir file_mru<CR>
+
