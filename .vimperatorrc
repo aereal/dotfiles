@@ -167,6 +167,14 @@ inoremap <C-f> <Right>
 " }}}
 
 " plugins {{{
+js <<EOM
+liberator.globalVariables.plugin_loader_roots = ["~/projects/vimperator-plugins"];
+liberator.globalVariables.plugin_loader_plugins = [
+	"_libly", "access_hatena", "asdfghjkl", "copy", "feedSomeKeys_3",
+	"hint-tombloo", "ldrize_cooperation", "migemo-find", "prevent-pseudo-domain",
+	"statusline-toolbar", "subscldr", "tombloo", "twittperator", "readitlater"
+];
+EOM
 let g:asdfghjkl_default = 'true'
 let g:asdfghjkl_hintchars = ':asdfghjkl'
 
@@ -174,14 +182,10 @@ command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
 lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
-lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p r o v c i,p <Space> <S-Space> z b < > q w e,g
+lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p r o v c i,p <Space> <S-Space> z b < > q w e,g f
 lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
 
 let g:ldrc_intelligence_bind = "true"
-let g:direct_sbm_use_services_by_tag = "h"
-let g:direct_sbm_use_services_by_post = "h"
-let g:direct_sbm_is_use_migemo = "true"
-let g:direct_sbm_is_normalize = "false"
 
 js <<EOM
 // copy.js
