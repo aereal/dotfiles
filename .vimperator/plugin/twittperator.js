@@ -1,1 +1,0 @@
-/home/aereal/projects/vimpr@vimperator-plugins/twittperator.js

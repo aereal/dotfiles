@@ -1,1 +1,0 @@
-/Users/aereal/projects/vimpr@vimperator-plugins/ldrize_cooperation.js
