@@ -154,7 +154,11 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 
 " unite.vim
-nnoremap <silent> ,b :<C-u>Unite buffer<CR>
-nnoremap <silent> ,o :<C-u>Unite file<CR>
-nnoremap <silent> ,r :<C-u>UniteWithBufferDir file_mru<CR>
+nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ;uo :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ;ur :<C-u>UniteWithBufferDir file_mru<CR>
+au FileType unite nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
+au FileType unite nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
