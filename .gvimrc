@@ -4,11 +4,11 @@ set encoding=utf-8
 colorscheme magica
 
 if has("gui_gtk2")
-	set guifont=Anonymous\ 14
+	set guifont=Anonymous\ 12
 endif
 
 if has("gui_macvim")
-	set guifont=Monaco:h14
+	set guifont=Monaco:h12
 	set guioptions-=T
 
 	if has("kaoriya")
