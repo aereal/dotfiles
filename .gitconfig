@@ -7,10 +7,12 @@
 [github]
 	user = aereal
 [alias]
-	st = status
+	st = status -s
 	df = diff
 	co = checkout
 	fixup = commit --amend -C HEAD
+	svn-push = !git stash && git svn dcommit && git stash pop
+	svn-pull = !git stash && git svn rebase && git stash pop
 [color]
 	diff = auto
 	branch = auto
