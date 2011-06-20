@@ -21,6 +21,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails'
+Bundle 'ujihisa/unite-rake'
 
 "" ファイル・タイプごとの設定を有効にする
 filetype plugin indent on
