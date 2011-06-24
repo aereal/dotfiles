@@ -20,7 +20,6 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails'
 Bundle 'ujihisa/unite-rake'
 
 "" ファイル・タイプごとの設定を有効にする
@@ -163,10 +162,4 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('split
 au FileType unite inoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-
-" rails.vim
-nnoremap <silent> ;rm :<C-u>Rmodel<CR>
-nnoremap <silent> ;rc :<C-u>Rcontroller<CR>
-nnoremap <silent> ;rv :<C-u>Rview<CR>
-nnoremap <silent> ;rl :<C-u>Rlog<CR>
 
