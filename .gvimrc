@@ -1,7 +1,7 @@
 set number
 set encoding=utf-8
 
-colorscheme magica
+colorscheme tiro_finale
 
 if has("gui_gtk2")
 	set guifont=Anonymous\ 12

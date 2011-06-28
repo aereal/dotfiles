@@ -5,7 +5,7 @@ language message C
 syntax on
 
 "" カラースキーム
-colorscheme magica
+colorscheme desert
 
 filetype off
 set rtp+=~/.vim/vundle.git/
@@ -21,6 +21,7 @@ Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'ujihisa/unite-rake'
+Bundle 'ujihisa/unite-colorscheme'
 Bundle 'wavded/vim-stylus'
 
 "" ファイル・タイプごとの設定を有効にする
