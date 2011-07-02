@@ -96,7 +96,7 @@ preexec_functions=($preexec_functions show-window-title)
 
 init_prompt() {
 	first_line="%{${fg[yellow]}%}<%n@%m>"
-	if [[ -x "$HOME/bin/rvm-prompt" ]]; then
+	if [[ -x `which rvm-prompt` ]]; then
 		first_line="$first_line %{${fg[red]}%}(`rvm-prompt`)"
 	fi
 	if [[ -n "$PERLBREW_PERL" ]]; then
