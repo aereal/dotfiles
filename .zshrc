@@ -1,7 +1,5 @@
 #vim:set ft=zsh:
 
-[ $STY ] || screen -rx || screen -D -RR -U
-
 bindkey -v
 
 # options
@@ -137,6 +135,12 @@ alias ls='/bin/ls --color -F'
 alias la='/bin/ls --color -AFl'
 alias :q='exit'
 alias ps='ps aux'
+
+if [[ -x `which tscreen` ]]; then
+	alias screen=tscreen
+fi
+
+[ $STY ] || screen -rx || screen -D -RR -U
 
 uname=`uname`
 [[ -f "$HOME/.zsh/f/git-flow-completion" ]] && . "$HOME/.zsh/f/git-flow-completion"
