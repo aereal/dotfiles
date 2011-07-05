@@ -83,18 +83,20 @@ set! network.dns.disableIPv6=true
 " }}}
 
 " set {{{
-set activate=quickmark,tabopen,paste
-set complete=tHls
+set activate=all
+set animations
+set complete=tHSl
 set editor='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 set focuscontent
 set hlsearch
-set noincsearch
+set incsearch
 set insertmode
 set newtab=all
 set popups=tab
 set showmode
-set showstatuslinks=1
+set showstatuslinks=2
 set titlestring=Vimperator
+set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs,nohatenaBookmarks,statuslinetoolbar
 set verbose=5
 set visualbell
 set wildmode=list:full
