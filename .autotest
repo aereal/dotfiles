@@ -2,7 +2,6 @@
 # vim:set ft=ruby:
 
 require "autotest/growl"
-require "autotest/bundler"
 
 Autotest.add_hook :initialize do |autotest|
 	%w(.git .DS_Store .*).each {|exception|
