@@ -1,9 +1,8 @@
 [gui]
-	fontdiff = -family Consolas -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	encoding = utf-8
 [user]
-	email = aereal.h@gmail.com
-	name = aereal
+	email = aereal@kerare.org
+	name = AOKI Hanae
 [github]
 	user = aereal
 [alias]
