@@ -131,6 +131,8 @@ noremap ,T :tombloo!<Space>
 noremap ,b :tombloo! Link<CR>
 noremap ,v :viewSBMComments<CR>
 noremap ,w :twittperator
+noremap ,ro :ril<Space>open<Space>
+noremap ,ra :ril<Space>add<CR>
 " }}}
 
 " key maps (command line) {{{
