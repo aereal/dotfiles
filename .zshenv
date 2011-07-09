@@ -5,6 +5,7 @@ export PAGER='less --RAW-CONTROL-CHARS'
 export EDITOR=vim
 export FPATH=$HOME/.zsh/f:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
+export REFE2_HOME=$HOME/local/refe2
 
 uname=`uname`
 [[ -f "$HOME/.zsh/os/$uname.zshenv" ]] && . "$HOME/.zsh/os/$uname.zshenv"

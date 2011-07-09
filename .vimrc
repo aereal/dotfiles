@@ -1,4 +1,3 @@
-language message C
 syntax on
 colorscheme desert
 
@@ -123,4 +122,11 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('split
 au FileType unite inoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
 au FileType unite nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+
+" indent
+au BufEnter,BufWritePost */social_mythology/* setlocal ts=2 sts=2 sw=2
+au BufEnter,BufWritePost */social_mythology/* %retab!
+au BufEnter,BufWritePost */social_mythology/* setlocal ts=3 sts=3 sw=3
+au BufWritePre */social_mythology/* setlocal ts=2 sts=2 sw=2
+au BufWritePre */social_mythology/* %retab
 
