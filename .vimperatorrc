@@ -1,5 +1,5 @@
 " load scripts/styles {{{
-colorscheme vimpwhitemod
+colorscheme vimpwhite
 style -name tree-style-tab chrome://* .tabs-newtab-button { display: none !important; }
 style -name link-label     chrome://* #statusbar-display { display: none !important; }
 source ~/.vimperatorrc.css
@@ -175,8 +175,9 @@ js <<EOM
 liberator.globalVariables.plugin_loader_roots = ["~/projects/vimperator-plugins"];
 liberator.globalVariables.plugin_loader_plugins = [
 	"_libly", "access_hatena", "asdfghjkl", "copy", "feedSomeKeys_3",
-	"hint-tombloo", "ldrize_cooperation", "migemo-find", "prevent-pseudo-domain",
-	"statusline-toolbar", "subscldr", "tombloo", "twittperator", "readitlater"
+	"hint-tombloo", "migemo-find", "prevent-pseudo-domain",
+	"statusline-toolbar", "tombloo", "twittperator", "readitlater",
+	"bitly", "feeder", "multi_requester"
 ];
 EOM
 let g:asdfghjkl_default = 'true'
