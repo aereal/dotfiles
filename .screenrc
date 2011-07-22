@@ -32,6 +32,6 @@ bind -c operate +  eval 'resize +1'    'command -c operate'
 bind -c operate -  eval 'resize -1'    'command -c operate'
 
 caption splitonly "%3n %t %f"
-hardstatus alwayslastline "[%02c] %-w %{.b.}%{!}%n%f%t%{dd} %+w %= %0`"
+hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w %= %0`"
 
 backtick 0 0 0 ${HOME}/.screen/backtick.rb
