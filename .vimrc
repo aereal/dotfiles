@@ -7,7 +7,6 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 Bundle 'motemen/git-vim'
-Bundle 'motemen/hatena-vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'msanders/snipmate.vim'
@@ -15,9 +14,14 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'ujihisa/unite-rake'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'wavded/vim-stylus'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'mattn/zencoding-vim'
+Bundle 'gerardc/vim-padrino'
+Bundle 'tpope/vim-rails'
+Bundle 'Align'
+Bundle 'eregex.vim'
 
 filetype plugin indent on
 set ambiwidth=double
