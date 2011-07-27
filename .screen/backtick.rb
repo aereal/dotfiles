@@ -38,20 +38,16 @@ class Backtick
 
 	module Functions
 		module_function
-		def notify_ldr
-			ret = ''
-			open("http://rpc.reader.livedoor.com/notify?user=aereal") do |out|
-				ret << out.read
-			end
-			count = ret.split('|')[1]
-			"LDR: #{count}"
-		rescue => e
-			@logger.error(e)
-		end
-
 		def notify_battery_status
-			return '' unless `uname`.strip.downcase == 'darwin'
-			"Battery: #{`pmset -g ps`.strip[/\d+%/]}"
+			if `uname`.strip.downcase == 'darwin'
+				status = `pmset -g ps`.strip
+				source = status[/'(\w+) Power'/, 1]
+				charging = status[/(charged|discharging);/, 1]
+				capacity = status[/(\d+%)/, 1]
+				"#{source}: #{capacity} (#{charging})"
+			else
+				''
+			end
 		rescue => e
 			@logger.error(e)
 		end
