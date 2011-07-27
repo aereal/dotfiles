@@ -1,5 +1,5 @@
 syntax on
-colorscheme desert
+colorscheme desert256mod
 
 " vundle
 filetype off
@@ -26,11 +26,12 @@ Bundle 'eregex.vim'
 filetype plugin indent on
 set ambiwidth=double
 set autoindent
+set autoread
 set smartindent
 set smarttab
-set shiftwidth=3
-set tabstop=3
-set softtabstop=3
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set autoread
 set backspace=indent,eol,start
 set nobackup
@@ -64,7 +65,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformat=unix
 set directory=~/swp
-set statusline=[#%n]\ %f\ %=%h%w%r%m%y[%3l/%3L,%3c]
+"set statusline=[#%n]\ %f\ %=%h%w%r%m%y[%3l/%3L,%3c]
+set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 "" autocmd
 "" screenに編集中のファイル名を出す
@@ -72,8 +74,6 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n
 "" HTMLとかはネストが深くなるのでインデント幅を小さく
 autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 
-"" hatena.vim
-let g:hatena_users = ['aereal','teq:aereal']
 
 "" zencoding.vim
 let g:use_zen_complete_tag = 1
@@ -128,9 +128,9 @@ au FileType unite nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vspli
 au FileType unite inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
 
 " indent
-au BufEnter,BufWritePost */social_mythology/* setlocal ts=2 sts=2 sw=2
+au BufEnter,BufWritePost */social_mythology/* setlocal ts=2 sts=2 sw=2 noet
 au BufEnter,BufWritePost */social_mythology/* %retab!
-au BufEnter,BufWritePost */social_mythology/* setlocal ts=3 sts=3 sw=3
-au BufWritePre */social_mythology/* setlocal ts=2 sts=2 sw=2
+au BufEnter,BufWritePost */social_mythology/* setlocal ts=4 sts=4 sw=4
+au BufWritePre */social_mythology/* setlocal ts=2 sts=2 sw=2 et
 au BufWritePre */social_mythology/* %retab
 
