@@ -18,10 +18,11 @@ Bundle 'ujihisa/unite-colorscheme'
 Bundle 'wavded/vim-stylus'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'mattn/zencoding-vim'
-Bundle 'gerardc/vim-padrino'
-Bundle 'tpope/vim-rails'
 Bundle 'Align'
 Bundle 'eregex.vim'
+Bundle 'hallison/vim-markdown'
+Bundle 'Sixeight/unite-grep'
+Bundle 'h1mesuke/unite-outline'
 
 filetype plugin indent on
 set ambiwidth=double
@@ -63,7 +64,7 @@ set showmode
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
 set encoding=utf-8
 set termencoding=utf-8
-set fileformat=unix
+set fileformats=unix,dos,mac
 set directory=~/swp
 "set statusline=[#%n]\ %f\ %=%h%w%r%m%y[%3l/%3L,%3c]
 set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
@@ -95,7 +96,10 @@ function! s:init_cmdwin()
 	inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
 	inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
 	inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+	inoremap <buffer><expr><C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+	inoremap <buffer><expr>: col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
 	inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+	setlocal nonumber
 	startinsert!
 endfunction
 
@@ -117,15 +121,17 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_dictionary_filetype_lists = {'ruby' : $HOME . '/.vim/dict/ruby.dict', 'io'   : $HOME . '/.vim/dict/io.dict'}
+inoremap <buffer><expr><Space> pumvisible() ? "\<C-y>\<Space>" : "\<Space>"
+inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " unite.vim
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ;uo :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ;ur :<C-u>UniteWithBufferDir file_mru<CR>
-au FileType unite nnoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-s> unite#do_action('split')
-au FileType unite nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
+au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
+au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
+au FileType unite inoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
 
 " indent
 au BufEnter,BufWritePost */social_mythology/* setlocal ts=2 sts=2 sw=2 noet
