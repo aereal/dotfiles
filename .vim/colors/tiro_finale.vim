@@ -16,6 +16,7 @@ hi Normal guifg=#eaeaea guibg=#121111
 hi SpecialKey guifg=#555555
 hi Cursor guifg=bg guibg=fg
 hi LineNr guifg=#e7abc2
+hi MatchParen gui=underline cterm=underline
 hi NonText guifg=#872c2a
 hi DiffAdd guifg=#5f8486 guibg=bg
 hi DiffChange guifg=#e19860 guibg=bg
@@ -27,10 +28,13 @@ hi PmenuSbar guifg=#dddddd guibg=#dddddd
 hi Search guifg=bg guibg=#e39343 gui=underline,bold
 hi IncSearch guifg=bg guibg=#e39343 gui=underline,bold
 hi StatusLine guifg=#121111 guibg=#e19860 gui=NONE
-hi StatusLineNC guifg=#e19860 guibg=#121111 gui=NONE
+hi StatusLineNC guifg=#e19860 guibg=#121111 gui=underline
 hi MoreMsg guifg=#306ada
 hi ModeMsg guifg=#cccccc
 hi ErrorMsg guifg=white guibg=#6e0b23
+hi Todo guifg=fg guibg=bg gui=underline
+hi Title guifg=#c2537e
+hi WarningMsg guifg=#e39343
 
 hi Comment guifg=#876d59
 hi Constant guifg=#f3bc92
