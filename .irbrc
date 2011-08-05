@@ -1,7 +1,12 @@
 require "rubygems"
-require "wirb"
 
-Wirb.start
+begin
+	require "wirb"
+
+	Wirb.load_colorizer :Paint
+	Wirb.start
+rescue LoadError
+end
 
 module Kernel
 	alias_method :say, :puts
