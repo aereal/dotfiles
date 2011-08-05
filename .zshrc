@@ -140,8 +140,6 @@ if [[ -x `which tscreen` ]]; then
 	alias screen=tscreen
 fi
 
-[ $STY ] || screen -rx || screen -D -RR -U
-
 uname=`uname`
 [[ -f "$HOME/.zsh/f/git-flow-completion" ]] && . "$HOME/.zsh/f/git-flow-completion"
 [[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
