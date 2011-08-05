@@ -8,10 +8,9 @@ alias la="ls -G -AFl"
 alias ql='qlmanage -p "$@" >& /dev/null'
 
 # inspired by https://gist.github.com/953741
-local grepish=$(([ -x `which ack` ] && echo ack) || echo grep)
 abbreviations=(
 	" L" " | \$PAGER"
-	" G" " | $grepish"
+	" G" " | grep"
 	" C" " | pbcopy"
 )
 
