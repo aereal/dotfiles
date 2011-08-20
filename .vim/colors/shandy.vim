@@ -43,8 +43,8 @@ hi PmenuSel     guifg=fg      guibg=bg      gui=reverse
 hi Comment      guifg=#98a3b2
 hi Constant     guifg=#7d95a6
 hi Identifier   guifg=#7d95a6
-hi Statement    guifg=#7da67d
-hi PreProc      guifg=#7da67d
+hi Statement    guifg=#7d8c7d
+hi PreProc      guifg=#7d8c7d
 hi Type         guifg=#997da6
 hi Delimiter    guifg=#98a3b2
 hi Special      guifg=#a6a67d
