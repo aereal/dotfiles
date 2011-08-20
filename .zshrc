@@ -132,7 +132,7 @@ bindkey "^S" history-incremental-search-forward
 alias ..='cd ..'
 alias l='/bin/ls --color -AF'
 alias ls='/bin/ls --color -F'
-alias la='/bin/ls --color -AFl'
+alias ll='/bin/ls --color -AFl'
 alias :q='exit'
 alias ps='ps aux'
 
