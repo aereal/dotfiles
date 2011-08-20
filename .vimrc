@@ -6,23 +6,24 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
-Bundle 'motemen/git-vim'
+Bundle 'Align'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'Sixeight/unite-grep'
+Bundle 'bbommarito/vim-slim'
+Bundle 'eregex.vim'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'hallison/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mattn/zencoding-vim'
+Bundle 'motemen/git-vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
 Bundle 'tpope/vim-surround'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'ujihisa/unite-colorscheme'
-Bundle 'wavded/vim-stylus'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'mattn/zencoding-vim'
-Bundle 'Align'
-Bundle 'eregex.vim'
-Bundle 'hallison/vim-markdown'
-Bundle 'Sixeight/unite-grep'
-Bundle 'h1mesuke/unite-outline'
+Bundle 'wavded/vim-stylus'
 
 filetype plugin indent on
 set ambiwidth=double
@@ -66,7 +67,6 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/swp
-"set statusline=[#%n]\ %f\ %=%h%w%r%m%y[%3l/%3L,%3c]
 set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 "" autocmd
@@ -75,16 +75,13 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n
 "" HTMLとかはネストが深くなるのでインデント幅を小さく
 autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 
-
 "" zencoding.vim
 let g:use_zen_complete_tag = 1
-let g:user_zen_settings = {'indentation': "\t"}
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap <sid>(command-line-enter) q:
 xnoremap <sid>(command-line-enter) q:
 nnoremap <sid>(command-line-norange) q:<C-u>
-
 nmap : <sid>(command-line-enter)
 xmap : <sid>(command-line-enter)
 
@@ -120,9 +117,7 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_dictionary_filetype_lists = {'ruby' : $HOME . '/.vim/dict/ruby.dict', 'io'   : $HOME . '/.vim/dict/io.dict'}
 inoremap <buffer><expr><Space> pumvisible() ? "\<C-y>\<Space>" : "\<Space>"
-inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " unite.vim
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
