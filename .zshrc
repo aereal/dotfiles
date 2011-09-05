@@ -7,19 +7,42 @@ SAVEHIST=100000
 bindkey -v
 
 # options
-setopt always_last_prompt auto_cd auto_pushd auto_menu auto_param_keys
-setopt auto_remove_slash correct cdable_vars extended_history extended_glob
-setopt hist_ignore_dups hist_ignore_space ignore_eof list_types no_beep
-setopt print_eight_bit pushd_ignore_dups prompt_subst sh_word_split 
+setopt always_last_prompt
+setopt auto_cd
+setopt auto_pushd
+setopt auto_menu
+setopt auto_param_keys
+setopt auto_remove_slash
+setopt correct
+setopt cdable_vars
+setopt complete_in_word
+setopt extended_history
+setopt extended_glob
+setopt glob_complete
+setopt hist_expand
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt ignore_eof
+setopt inc_append_history
+setopt list_types
+setopt magic_equal_subst
+setopt no_beep
+setopt print_eight_bit
+setopt pushd_ignore_dups
+setopt prompt_subst
+setopt sh_word_split 
+setopt share_history
 
 # completion
 autoload -U compinit
 compinit -u 
 
-zstyle ':completion:*:default' menu select=1
-zstyle ':completion:*:sudo' command-path $PATH
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*:sudo' command-path $PATH
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
 autoload history-search-end
@@ -85,7 +108,7 @@ autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
 
 init_prompt() {
-	first_line="%{${fg[yellow]}%}<%n@%m>"
+	first_line="%{${fg[yellow]}%}<%n%#%m>"
 	if [[ -x `which rvm-prompt` ]]; then
 		first_line="$first_line %{${fg[red]}%}(`rvm-prompt`)"
 	fi
