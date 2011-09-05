@@ -4,12 +4,12 @@ export EDITOR="/Applications/MacVim.app/MacOS/Vim"
 export FLEX_HOME=$HOME/sdk/flex
 
 paths=(
-	$HOME/bin
-	$FLEX_HOME/bin
-	$HOME/local/bin
-	$HOME/local/sbin
-	/usr/local/bin
-	/usr/local/sbin
+	$HOME/bin(N-/)
+	$FLEX_HOME/bin(N-/)
+	$HOME/local/bin(N-/)
+	$HOME/local/sbin(N-/)
+	/usr/local/bin(N-/)
+	/usr/local/sbin(N-/)
 	$PATH
 )
 

@@ -7,6 +7,9 @@ export FPATH=$HOME/.zsh/f:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
 export REFE2_HOME=$HOME/local/refe2
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
+
 uname=`uname`
 [[ -f "$HOME/.zsh/os/$uname.zshenv" ]] && . "$HOME/.zsh/os/$uname.zshenv"
 [[ -f "$HOME/.zsh/hosts/$HOST.zshenv" ]] && . "$HOME/.zsh/hosts/$HOST.zshenv"

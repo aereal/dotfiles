@@ -11,4 +11,3 @@ paths=(
 
 export PATH=${(j.:.)paths}
 
-

@@ -1,5 +1,9 @@
 #vim:set ft=zsh:
 
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
 bindkey -v
 
 # options
@@ -13,29 +17,17 @@ autoload -U compinit
 compinit -u 
 
 zstyle ':completion:*:default' menu select=1
-
-# sudoも補完
 zstyle ':completion:*:sudo' command-path $PATH
-
-# lower-caseでもupper-caseにマッチするように
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# ファイル補完にも色つけたい
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# cdで補完するときに、PATHの通っているディレクトリの優先度を下げる
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
-
-HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-autoload -U promptinit ; promptinit
-autoload -U colors     ; colors
+autoload -U promptinit; promptinit
+autoload -U colors;     colors
 
 # http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
 typeset -A abbreviations
@@ -141,10 +133,6 @@ if [[ -x `which tscreen` ]]; then
 fi
 
 uname=`uname`
-[[ -f "$HOME/.zsh/f/git-flow-completion" ]] && . "$HOME/.zsh/f/git-flow-completion"
 [[ -f "$HOME/.zsh/os/$uname.zshrc" ]] && . "$HOME/.zsh/os/$uname.zshrc"
 [[ -f "$HOME/.zsh/hosts/$HOST.zshrc" ]] && . "$HOME/.zsh/hosts/$HOST.zshrc"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
-[[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
 
