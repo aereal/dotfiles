@@ -21,7 +21,7 @@ hi Cursor       guifg=bg      guibg=fg
 hi MatchParen   guifg=fg      guibg=bg      gui=underline
 hi NonText      guifg=#454545
 hi SpecialKey   guifg=#454545
-hi LineNr       guifg=#91a7c2
+hi LineNr       guifg=#626872
 hi Visual       guifg=fg      guibg=#738499
 hi Title        guifg=#a6a67d
 
@@ -40,11 +40,11 @@ hi WarningMsg   guifg=#a6a67d guibg=fg      gui=reverse
 hi Pmenu        guibg=#5b6477
 hi PmenuSel     guifg=fg      guibg=bg      gui=reverse
 
-hi Comment      guifg=#98a3b2
+hi Comment      guifg=#575d66
 hi Constant     guifg=#7d95a6
 hi Identifier   guifg=#7d95a6
-hi Statement    guifg=#7d8c7d
-hi PreProc      guifg=#7d8c7d
+hi Statement    guifg=#626872
+hi PreProc      guifg=#626872
 hi Type         guifg=#997da6
 hi Delimiter    guifg=#98a3b2
 hi Special      guifg=#a6a67d

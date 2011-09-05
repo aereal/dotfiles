@@ -76,7 +76,7 @@ autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n
 autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 
 "" zencoding.vim
-let g:use_zen_complete_tag = 1
+let g:user_zen_leader_key = '<C-e>'
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap <sid>(command-line-enter) q:
