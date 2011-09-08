@@ -24,6 +24,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
+Bundle 't9md/vim-surround_custom_mapping'
 
 filetype plugin indent on
 set ambiwidth=double
@@ -135,3 +136,9 @@ au BufEnter,BufWritePost */social_mythology/* setlocal ts=4 sts=4 sw=4
 au BufWritePre */social_mythology/* setlocal ts=2 sts=2 sw=2 et
 au BufWritePre */social_mythology/* %retab
 
+" surround.vim
+let g:surround_custom_mapping = {}
+let g:surround_custom_mapping.eruby = {
+	\ '-': "<% \r %>",
+	\ '=': "<%= \r %>",
+	\ }
