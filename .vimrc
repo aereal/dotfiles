@@ -141,4 +141,5 @@ let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.eruby = {
 	\ '-': "<% \r %>",
 	\ '=': "<%= \r %>",
+	\ '#': "#{\r}",
 	\ }
