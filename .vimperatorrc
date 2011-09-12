@@ -172,7 +172,7 @@ inoremap <C-f> <Right>
 
 " plugins {{{
 js <<EOM
-liberator.globalVariables.plugin_loader_roots = ["~/projects/vimperator-plugins"];
+liberator.globalVariables.plugin_loader_roots = ["~/proj/vimperator-plugins"];
 liberator.globalVariables.plugin_loader_plugins = [
 	"_libly", "access_hatena", "asdfghjkl", "copy", "feedSomeKeys_3",
 	"hint-tombloo", "migemo-find", "prevent-pseudo-domain",
