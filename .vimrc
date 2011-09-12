@@ -138,6 +138,9 @@ au BufWritePre */social_mythology/* %retab
 
 " surround.vim
 let g:surround_custom_mapping = {}
+let g:surround_custom_mapping.ruby  = {
+	\ '#': "#{\r}",
+	\ }
 let g:surround_custom_mapping.eruby = {
 	\ '-': "<% \r %>",
 	\ '=': "<%= \r %>",
