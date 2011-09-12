@@ -124,6 +124,7 @@ inoremap <buffer><expr><Space> pumvisible() ? "\<C-y>\<Space>" : "\<Space>"
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ;uo :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ;ur :<C-u>UniteWithBufferDir file_mru<CR>
+nnoremap <silent> ;uu :<C-u>Unite outline<CR>
 au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
