@@ -1,5 +1,4 @@
 syntax on
-colorscheme desert256mod
 
 " vundle
 filetype off
