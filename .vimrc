@@ -130,11 +130,11 @@ au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
 au FileType unite inoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
 
 " indent
-au BufEnter,BufWritePost */social_mythology/* setlocal ts=2 sts=2 sw=2 noet
-au BufEnter,BufWritePost */social_mythology/* %retab!
-au BufEnter,BufWritePost */social_mythology/* setlocal ts=4 sts=4 sw=4
-au BufWritePre */social_mythology/* setlocal ts=2 sts=2 sw=2 et
-au BufWritePre */social_mythology/* %retab
+au BufEnter,BufWritePost */hekk/* setlocal ts=2 sts=2 sw=2 noet
+au BufEnter,BufWritePost */hekk/* %retab!
+au BufEnter,BufWritePost */hekk/* setlocal ts=4 sts=4 sw=4
+au BufWritePre */hekk/* setlocal ts=2 sts=2 sw=2 et
+au BufWritePre */hekk/* %retab
 
 " surround.vim
 let g:surround_custom_mapping = {}
