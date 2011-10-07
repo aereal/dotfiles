@@ -107,26 +107,29 @@ zle -N magic-space
 autoload -U -z show-window-title
 preexec_functions=($preexec_functions show-window-title)
 
+autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+autoload -U -z rprompt-git-current-branch
+
 init_prompt() {
-	first_line="%{${fg[yellow]}%}<%n%#%m>"
 	if [[ -x `which rvm-prompt` ]]; then
-		first_line="$first_line %{${fg[red]}%}(`rvm-prompt`)"
+		PROMPT_RVM="%{${fg[red]}%}(`rvm-prompt`)"
 	fi
 	if [[ -n "$PERLBREW_PERL" ]]; then
-		first_line="$first_line %{${fg[blue]}%}($PERLBREW_PERL)"
+		PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
 	fi
 	if [[ -n "$PATH_PYTHONBREW" ]]; then
 		local python_version
 		python_version=$(basename $(dirname $(dirname $(which python))))
 		python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
 		if [[ -n "$python_version" ]]; then
-			first_line="$first_line %{${fg[yellow]}%}($python_version)"
+			PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)"
 		fi
 	fi
-	second_line=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
-	PROMPT="${first_line}
-${second_line}"
-	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
+	PROMPT_USER="%{${fg[yellow]}%}<%n%#%m>"
+	PROMPT_CMD=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
+	PROMPT="$PROMPT_USER $PROMPT_RVM $PROMPT_PERLBREW $PROMPT_PTYHONBREW
+$PROMPT_CMD"
+	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%} (`rprompt-git-current-branch`)]"
 }
 
 precmd_functions=($precmd_functions init_prompt)
