@@ -117,15 +117,20 @@ endfunction
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_min_syntax_length = 3
-inoremap <buffer><expr><Space> pumvisible() ? "\<C-y>\<Space>" : "\<Space>"
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplcache#close_popup()
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 " unite.vim
-nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ;uo :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ;ur :<C-u>UniteWithBufferDir file_mru<CR>
-nnoremap <silent> ;uu :<C-u>Unite outline<CR>
+nnoremap <silent> ,b :<C-u>Unite buffer<CR>
+nnoremap <silent> ,o :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ,r :<C-u>UniteWithBufferDir file_mru<CR>
+nnoremap <silent> ,u :<C-u>Unite outline<CR>
 au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
