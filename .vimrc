@@ -7,6 +7,7 @@ call vundle#rc()
 
 " from vim.org
 Bundle 'Align'
+Bundle 'xoria256.vim'
 
 " from GitHub
 Bundle 'Shougo/neocomplcache'
@@ -36,6 +37,7 @@ Bundle 'soh335/vim-ref-jquery'
 " from others
 Bundle 'git://github.com/vim-jp/vimdoc-ja.git'
 
+colorscheme xoria256
 filetype plugin indent on
 set ambiwidth=double
 set autoindent
