@@ -81,7 +81,10 @@ set fileformats=unix,dos,mac
 set directory=~/swp
 set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
-nnoremap <Space><Space> :update<CR>
+let mapleader = ' '
+let g:mapleader = ' '
+
+nnoremap <Leader><Space> :update<CR>
 
 "" autocmd
 "" screenに編集中のファイル名を出す
