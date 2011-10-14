@@ -171,3 +171,10 @@ let g:surround_custom_mapping.eruby = {
 	\ '=': "<%= \r %>",
 	\ '#': "#{\r}",
 	\ }
+
+" gabbrev.vim
+augroup RUBY
+	autocmd!
+	autocmd FileType ruby :setlocal iskeyword+=:
+	autocmd FileType ruby inoremap <buffer> <silent> <expr> <C-]> gabbrev#i_start()
+augroup END
