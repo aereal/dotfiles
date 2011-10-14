@@ -11,6 +11,7 @@ Bundle 'Align'
 " from GitHub
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc'
 Bundle 'bbommarito/vim-slim'
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'h1mesuke/unite-outline'
