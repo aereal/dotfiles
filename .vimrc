@@ -86,6 +86,8 @@ let mapleader = ' '
 let g:mapleader = ' '
 
 nnoremap <Leader><Space> :update<CR>
+inoremap <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
+inoremap <expr> . smartchr#loop('.', '=>', '->')
 
 "" autocmd
 "" screenに編集中のファイル名を出す
