@@ -5,16 +5,18 @@ filetype off
 set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
+" from vim.org
 Bundle 'Align'
+
+" from GitHub
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
-Bundle 'Sixeight/unite-grep'
 Bundle 'bbommarito/vim-slim'
-Bundle 'eregex.vim'
+Bundle 'davidoc/taskpaper.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'hallison/vim-markdown'
-Bundle 'jQuery'
 Bundle 'kana/vim-smartchr'
+Bundle 'kana/vim-textobj-indent'
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'motemen/git-vim'
@@ -22,11 +24,16 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-surround'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
 Bundle 't9md/vim-surround_custom_mapping'
+Bundle 'hail2u/vim-css3-syntax'
+Bundle 'soh335/vim-ref-jquery'
+
+" from others
 Bundle 'git://github.com/vim-jp/vimdoc-ja.git'
 
 filetype plugin indent on
