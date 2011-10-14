@@ -24,7 +24,6 @@ Bundle 'mattn/gist-vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'motemen/git-vim'
 Bundle 'motemen/vim-guess-abbrev'
-Bundle 'msanders/snipmate.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'soh335/vim-ref-jquery'
 Bundle 't9md/vim-surround_custom_mapping'
@@ -143,6 +142,8 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 " unite.vim
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
