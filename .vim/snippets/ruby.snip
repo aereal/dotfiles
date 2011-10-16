@@ -1,11 +1,12 @@
-snippet #!
-abbr shebang
+# vim:set ft=snippet noet:
+snippet shebang
 	#!/usr/bin/env ruby
 
 snippet =b
 	=begin rdoc
 		${1}
 	=end
+
 snippet beg
 abbr begin rescue end
 	begin
@@ -15,124 +16,154 @@ abbr begin rescue end
 
 snippet req
 	require "${1}"${2}
+
 snippet case
 	case ${1:object}
 	when ${2:condition}
 		${3}
 	end
+
 snippet when
 	when ${1:condition}
 		${2}
-snippet def
-	def ${1:method_name}
-		${2}
-	end
+
 snippet if
 	if ${1:condition}
 		${2}
 	end
-snippet ife
+
+snippet if else
 	if ${1:condition}
 		${2}
 	else
 		${3}
 	end
+
 snippet unless
 	unless ${1:condition}
 		${2}
 	end
+
 snippet while
 	while ${1:condition}
 		${2}
 	end
+
 snippet for
 	for ${1:e} in ${2:c}
 		${3}
 	end
+
 snippet until
 	until ${1:condition}
 		${2}
 	end
-snippet class class .. end
-abbr class ... end
-	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+
+snippet module
+	module ${1:ModuleName}
 		${2}
 	end
-snippet mod
-abbr module ... end
-	module ${1:`substitute(Filename(), '^.', '\u&', '')`}
+
+snippet class
+	class ${1:ClassName}
 		${2}
 	end
-snippet atr
-abbr attr_reader
-	attr_reader :${1:attr_names}
-snippet atw
-abbr attr_writer
-	attr_writer :${1:attr_names}
-snippet ata
-abbr attr_accessor
-	attr_accessor :${1:attr_names}
+
+snippet class self
+abbr class << self
+	class << self
+		${1}
+	end
+
+snippet def
+	def ${1:method_name}
+		${2}
+	end
+
 snippet defs
+abbr def self.method ... end
 	def self.${1:class_method_name}
 		${2}
 	end
-snippet do_var
+
+snippet atr
+abbr attr_reader
+	attr_reader :${1:attr_names}
+
+snippet atw
+abbr attr_writer
+	attr_writer :${1:attr_names}
+
+snippet ata
+abbr attr_accessor
+	attr_accessor :${1:attr_names}
+
+snippet do var end
 abbr do |var| ... end
 	do |${1:variable}|
 		${2}
 	end
-snippet do
+
+snippet do end
 abbr do ... end
 	do
 		${1}
 	end
+
 snippet open
-	open(${1:"path/or/url/or/pipe"}, "${2:w}") { |${3:io}| ${4} }
-snippet namespace
-	namespace :${1:`Filename()`} do
-		${2}
-	end
+	open(${1:"path/or/url/or/pipe"}, "${2:w}") {|${3:io}| ${4} }
+
 snippet task
 	desc "${1:Task description\}"
 	task :${2:task_name => [:dependent, :tasks]} do
 		${3}
 	end
+
 snippet describe
 	describe ${1:object} do
 		${2}
 	end
+
 snippet it
 	it "${1:description}" do
 		${2}
 	end
+
 snippet context
 	context "${1:case}" do
 		${2}
 	end
+
 snippet before
 	before do
 		${1}
 	end
-snippet beforeeach
+
+snippet before each
 	before :each do
 		${1}
 	end
-snippet beforeall
+
+snippet before all
 	before :all do
 		${1}
 	end
+
 snippet after
 	after do
 		${1}
 	end
-snippet aftereach
+
+snippet after each
 	after :each do
 		${1}
 	end
-snippet afterall
+
+snippet after all
 	after :all do
 		${1}
 	end
+
 snippet subject
 	subject do
 		${1}
