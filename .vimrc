@@ -87,7 +87,7 @@ let g:mapleader = ' '
 
 nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC> :hlsearch<CR>
-inoremap <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
+inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 inoremap <expr> . smartchr#loop('.', '=>', '->')
 
 "" autocmd
