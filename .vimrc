@@ -88,7 +88,7 @@ let g:mapleader = ' '
 nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC> :hlsearch<CR>
 inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-inoremap <expr> . smartchr#loop('.', '=>', '->')
+inoremap <expr> . smartchr#loop('.', ' => ', '=>', '->', ' -> ')
 
 "" autocmd
 "" screenに編集中のファイル名を出す
@@ -150,7 +150,10 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>o :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <Leader>r :<C-u>UniteWithBufferDir file_mru<CR>
-nnoremap <silent> <Leader>u :<C-u>Unite outline<CR>
+nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
+nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
+nnoremap <silent> <Leader>' :<C-u>Unite register<CR>
+nnoremap <silent> <Leader>u :<C-u>Unite<Space>
 au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
