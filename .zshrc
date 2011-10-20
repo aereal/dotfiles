@@ -112,7 +112,9 @@ autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
 	if [[ -x `which rvm-prompt` ]]; then
-		PROMPT_RVM="%{${fg[red]}%}(`rvm-prompt`)"
+		PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)"
+	elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
+		PROMPT_RUBY="%{${fg[red]}%}(`rbenv version-name`)"
 	fi
 	if [[ -n "$PERLBREW_PERL" ]]; then
 		PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
@@ -127,7 +129,7 @@ init_prompt() {
 	fi
 	PROMPT_USER="%{${fg[yellow]}%}<%n%#%m>"
 	PROMPT_CMD=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
-	PROMPT="$PROMPT_USER $PROMPT_RVM $PROMPT_PERLBREW $PROMPT_PTYHONBREW
+	PROMPT="$PROMPT_USER $PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW
 $PROMPT_CMD"
 	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%} (`rprompt-git-current-branch`)]"
 }

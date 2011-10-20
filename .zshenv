@@ -11,6 +11,7 @@ typeset -U path
 path=(
 	$HOME/bin(N-/)
 	$HOME/local/bin(N-/)
+	$HOME/.rbenv/bin(N-/)
 	/usr/local/bin(N-/)
 	/usr/local/sbin(N-/)
 	/usr/bin(N-/)
@@ -19,7 +20,11 @@ path=(
 	/sbin(N-/)
 )
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+	. "$HOME/.rvm/scripts/rvm"
+elif [[ -s "$HOME/.rbenv" ]]; then
+	eval "$(rbenv init -)"
+fi
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
 
 uname=`uname`
