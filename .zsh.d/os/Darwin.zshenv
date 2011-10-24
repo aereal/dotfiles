@@ -1,6 +1,6 @@
 # vim:set ft=zsh:
 
-export EDITOR="/Applications/MacVim.app/MacOS/Vim"
+export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 export FLEX_HOME=$HOME/sdk/flex
 
 path=(
