@@ -86,15 +86,17 @@ let mapleader = ' '
 let g:mapleader = ' '
 
 nnoremap <Leader><Space> :update<CR>
-nnoremap <ESC><ESC> :hlsearch<CR>
-inoremap <expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-inoremap <expr> . smartchr#loop('.', ' => ', '=>', '->', ' -> ')
+nnoremap <ESC><ESC> :nohlsearch<CR>
+inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 
 "" autocmd
 "" screenに編集中のファイル名を出す
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 "" HTMLとかはネストが深くなるのでインデント幅を小さく
 autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+autocmd FileType ruby inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+autocmd FileType ruby inoremap <buffer><expr> , smartchr#loop(',', ' => ')
 
 "" zencoding.vim
 let g:user_zen_leader_key = '<C-e>'
