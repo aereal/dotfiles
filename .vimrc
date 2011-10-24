@@ -7,7 +7,7 @@ call vundle#rc()
 
 " from vim.org
 Bundle 'Align'
-Bundle 'xoria256.vim'
+Bundle 'desert.vim'
 
 " from GitHub
 Bundle 'Shougo/neocomplcache'
@@ -37,7 +37,7 @@ Bundle 'vim-jp/vimdoc-ja'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
 
-colorscheme xoria256
+colorscheme desert
 filetype plugin indent on
 set ambiwidth=double
 set autoindent
