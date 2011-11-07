@@ -35,7 +35,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'vim-jp/vimdoc-ja'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wavded/vim-stylus'
 
 colorscheme desert
 filetype plugin indent on
@@ -44,9 +43,9 @@ set autoindent
 set autoread
 set smartindent
 set smarttab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set autoread
 set backspace=indent,eol,start
 set nobackup
@@ -97,6 +96,8 @@ autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType ruby inoremap <buffer><expr> , smartchr#loop(',', ' => ')
+autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 
 "" zencoding.vim
 let g:user_zen_leader_key = '<C-e>'
@@ -162,11 +163,12 @@ au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
 au FileType unite inoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
 
 " indent
-au BufEnter,BufWritePost */hekk/* setlocal ts=2 sts=2 sw=2 noet
-au BufEnter,BufWritePost */hekk/* %retab!
-au BufEnter,BufWritePost */hekk/* setlocal ts=4 sts=4 sw=4
-au BufWritePre */hekk/* setlocal ts=2 sts=2 sw=2 et
-au BufWritePre */hekk/* %retab
+"au BufEnter,BufWritePost */hekk/* setlocal ts=3 sts=3 sw=3 noet
+"au BufEnter,BufWritePost */hekk/* %retab!
+"au BufEnter,BufWritePost */hekk/* setlocal ts=3 sts=3 sw=3
+"au BufWritePre */hekk/* setlocal ts=3 sts=3 sw=3 et
+"au BufWritePre */hekk/* %retab
+au BufEnter */hekk/* setlocal ts=2 sts=2 sw=2 et
 
 " surround.vim
 let g:surround_custom_mapping = {}
@@ -182,6 +184,5 @@ let g:surround_custom_mapping.eruby = {
 " gabbrev.vim
 augroup RUBY
 	autocmd!
-	autocmd FileType ruby :setlocal iskeyword+=:
 	autocmd FileType ruby inoremap <buffer> <silent> <expr> <C-]> gabbrev#i_start()
 augroup END
