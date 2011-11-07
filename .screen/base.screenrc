@@ -18,5 +18,5 @@ termcapinfo xterm-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 vbell off
 bell_msg "Bell in window %^G"
 
-caption always " %-w%{.ky}%n %t%{-}%+w %="
+caption always "[%{= wk}%S%{-}] %-w%{.ky}%n %t%{-}%+w %="
 hardstatus ignore

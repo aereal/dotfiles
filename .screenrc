@@ -14,6 +14,6 @@ bind -c operate v  eval 'split -v'     'command -c operate'
 bind -c operate +  eval 'resize +1'    'command -c operate'
 bind -c operate -  eval 'resize -1'    'command -c operate'
 
-hardstatus alwayslastline "[%Y/%02m/%02d %02c:%02s] %0` %= Session: %{= g}%S%{-} User: %{= c}$USER%{-} Host: %{= b}%H%{-}"
+hardstatus alwayslastline "[%Y/%02m/%02d %02c:%02s] %0` %=User: %{= c}$USER%{-} Host: %{= b}%H%{-}"
 
 backtick 0 0 0 ${HOME}/.screen/backtick.rb
