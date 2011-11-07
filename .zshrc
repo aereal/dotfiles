@@ -30,12 +30,12 @@ setopt no_beep
 setopt print_eight_bit
 setopt pushd_ignore_dups
 setopt prompt_subst
-setopt sh_word_split 
+setopt sh_word_split
 setopt share_history
 
 # completion
 autoload -U compinit
-compinit -u 
+compinit -u
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
