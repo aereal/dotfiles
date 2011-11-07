@@ -1,24 +1,7 @@
-escape ^jj
-defscrollback 10000
-defutf8 on
-defkanji utf-8
-encoding utf-8 utf-8
-defencoding utf-8
-startup_message off
-autodetach on
-logfile "$HOME/.screen/log/screen-%Y%m%d-%n.log"
-log on
-deflog on
-altscreen on
-defbce on
-termcapinfo xterm*|screen* ti@:te@
-term xterm-256color
-termcapinfo xterm-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
-vbell off
-bell_msg "Bell in window %^G"
+source "$HOME/.screen/base.screenrc"
 
-bind j focus down
-bind k focus up
+escape ^jj
+
 bind w eval 'echo "Operate window"' 'command -c operate'
 bind -c operate ^] command
 bind -c operate j  eval 'focus down'   'command -c operate'
@@ -31,7 +14,6 @@ bind -c operate v  eval 'split -v'     'command -c operate'
 bind -c operate +  eval 'resize +1'    'command -c operate'
 bind -c operate -  eval 'resize -1'    'command -c operate'
 
-caption splitonly "%3n %t %f"
-hardstatus alwayslastline "[%02c] %-w %{.ky}%{!}%n%f%t%{dd} %+w %= %0`"
+hardstatus alwayslastline "[%Y/%02m/%02d %02c:%02s] %0` %= Session: %{= g}%S%{-} User: %{= c}$USER%{-} Host: %{= b}%H%{-}"
 
 backtick 0 0 0 ${HOME}/.screen/backtick.rb
