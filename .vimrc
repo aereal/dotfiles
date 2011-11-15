@@ -157,6 +157,9 @@ nnoremap <silent> <Leader>r :<C-u>UniteWithBufferDir file_mru<CR>
 nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
 nnoremap <silent> <Leader>' :<C-u>Unite register<CR>
+nnoremap <silent> <Leader>h :<C-u>Unite register<CR>
+nnoremap <silent> <Leader>\r :<C-u>Unite -start-insert ref/refe<CR>
+nnoremap <silent> <Leader>s :<C-u>Unite -start-insert snippet<CR>
 nnoremap <silent> <Leader>u :<C-u>Unite<Space>
 au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
 au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
