@@ -12,6 +12,7 @@
 	fixup = commit --amend -C HEAD
 	svn-push = !git stash && git svn dcommit && git stash pop
 	svn-pull = !git stash && git svn rebase && git stash pop
+	dfst = diff --staged
 [color]
 	diff = auto
 	branch = auto
