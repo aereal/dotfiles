@@ -96,8 +96,6 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 "" autocmd
 "" screenに編集中のファイル名を出す
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
-"" HTMLとかはネストが深くなるのでインデント幅を小さく
-autocmd FileType html :set shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType ruby inoremap <buffer><expr> , smartchr#loop(',', ' => ')
@@ -151,31 +149,36 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <C-k> <Plug>(neocomplcache_start_unite_snippet)
+smap <C-k> <Plug>(neocomplcache_start_unite_snippet)
 
 " unite.vim
-nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>o :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <Leader>r :<C-u>UniteWithBufferDir file_mru<CR>
+nnoremap <silent> ; :<C-u>UniteWithBufferDir buffer file_mru file<CR>
 nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
 nnoremap <silent> <Leader>' :<C-u>Unite register<CR>
-nnoremap <silent> <Leader>h :<C-u>Unite register<CR>
-nnoremap <silent> <Leader>\r :<C-u>Unite -start-insert ref/refe<CR>
+nnoremap <silent> <Leader>/r :<C-u>Unite -start-insert -no-quit -default-action=split ref/refe<CR>
 nnoremap <silent> <Leader>s :<C-u>Unite -start-insert snippet<CR>
-nnoremap <silent> <Leader>u :<C-u>Unite<Space>
-au FileType unite nnoremap <silent><buffer><expr><C-s> unite#do_action('split')
-au FileType unite inoremap <silent><buffer><expr><C-s> unite#do_action('split')
-au FileType unite nnoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
-au FileType unite inoremap <silent><buffer><expr><C-v> unite#do_action('vsplit')
+nnoremap <silent> <Leader>w :<C-u>Unite -immediately window:no-current
+nnoremap <silent> <Leader>rr :<C-u>Unite source -input=rails/<CR>
+
+autocmd FileType unite call s:unite_local_settings()
+function! s:unite_local_settings()
+	nnoremap <silent><buffer><expr> <C-w>s unite#do_action('split')
+	inoremap <silent><buffer><expr> <C-w>s unite#do_action('split')
+	nnoremap <silent><buffer><expr> <C-w>v unite#do_action('vsplit')
+	inoremap <silent><buffer><expr> <C-w>v unite#do_action('vsplit')
+	nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+	inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+	nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+	inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+	nnoremap <silent><buffer><expr> <C-w>k unite#do_action('below')
+	inoremap <silent><buffer><expr> <C-w>k unite#do_action('below')
+	nnoremap <silent><buffer><expr> <C-w>j unite#do_action('above')
+	inoremap <silent><buffer><expr> <C-w>j unite#do_action('above')
+endfunction
 
 " indent
-"au BufEnter,BufWritePost */hekk/* setlocal ts=3 sts=3 sw=3 noet
-"au BufEnter,BufWritePost */hekk/* %retab!
-"au BufEnter,BufWritePost */hekk/* setlocal ts=3 sts=3 sw=3
-"au BufWritePre */hekk/* setlocal ts=3 sts=3 sw=3 et
-"au BufWritePre */hekk/* %retab
 au BufEnter */hekk/* setlocal ts=2 sts=2 sw=2 et
 
 " surround.vim
