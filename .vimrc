@@ -1,45 +1,53 @@
 syntax on
 
-" vundle
+" NeoBundle.vim
 filetype off
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
+if has('vim_starting')
+	set rtp+=~/.vim/neobundle.vim/
+	call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
-" from vim.org
-Bundle 'Align'
-Bundle 'desert.vim'
+" colorschems
+NeoBundle 'desert.vim'
+NeoBundle 'Sorcerer'
 
-" from GitHub
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite-help'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc'
-Bundle 'aereal/unite-strftime_format'
-Bundle 'basyura/unite-rails'
-Bundle 'bbommarito/vim-slim'
-Bundle 'davidoc/taskpaper.vim'
-Bundle 'depuracao/vim-rdoc'
-Bundle 'h1mesuke/unite-outline'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'hallison/vim-markdown'
-Bundle 'kana/vim-smartchr'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/zencoding-vim'
-Bundle 'motemen/git-vim'
-Bundle 'motemen/vim-guess-abbrev'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'othree/html5.vim'
-Bundle 'sgur/unite-qf'
-Bundle 't9md/vim-surround_custom_mapping'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-surround'
-Bundle 'ujihisa/unite-colorscheme'
-Bundle 'ujihisa/unite-rake'
-Bundle 'vim-jp/vimdoc-ja'
-Bundle 'vim-ruby/vim-ruby'
+" life changing
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'motemen/git-vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'h1mesuke/vim-alignta'
+
+" unite sources
+NeoBundle 'Shougo/unite-help'
+NeoBundle 'aereal/unite-strftime_format'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-rake'
+
+" language support
+NeoBundle 'bbommarito/vim-slim'
+NeoBundle 'depuracao/vim-rdoc'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'hallison/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'vim-ruby/vim-ruby'
+
+NeoBundle 'davidoc/taskpaper.vim'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'motemen/vim-guess-abbrev'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 't9md/vim-surround_custom_mapping'
 
 colorscheme desert
 filetype plugin indent on
