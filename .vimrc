@@ -157,33 +157,35 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
-imap <C-k> <Plug>(neocomplcache_start_unite_snippet)
-smap <C-k> <Plug>(neocomplcache_start_unite_snippet)
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <C-s> <Plug>(neocomplcache_start_unite_snippet)
 
 " unite.vim
 nnoremap <silent> ; :<C-u>UniteWithBufferDir buffer file_mru file<CR>
+nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>model
 nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
 nnoremap <silent> <Leader>' :<C-u>Unite register<CR>
 nnoremap <silent> <Leader>/r :<C-u>Unite -start-insert -no-quit -default-action=split ref/refe<CR>
 nnoremap <silent> <Leader>s :<C-u>Unite -start-insert snippet<CR>
-nnoremap <silent> <Leader>w :<C-u>Unite -immediately window:no-current
-nnoremap <silent> <Leader>rr :<C-u>Unite source -input=rails/<CR>
+nnoremap <silent> <Leader>w :<C-u>Unite -immediately window:no-current<CR>
+nnoremap <silent> <Leader>r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
+nnoremap <silent> <Leader>rc :<C-u>Unite rails/controller<CR>
+nnoremap <silent> <Leader>rv :<C-u>Unite rails/view<CR>
+nnoremap <silent> <Leader>rm :<C-u>Unite rails/model<CR>
+nnoremap <silent> <Leader>rh :<C-u>Unite rails/helper<CR>
 
 autocmd FileType unite call s:unite_local_settings()
 function! s:unite_local_settings()
-	nnoremap <silent><buffer><expr> <C-w>s unite#do_action('split')
-	inoremap <silent><buffer><expr> <C-w>s unite#do_action('split')
-	nnoremap <silent><buffer><expr> <C-w>v unite#do_action('vsplit')
-	inoremap <silent><buffer><expr> <C-w>v unite#do_action('vsplit')
 	nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
 	inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
 	nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
 	inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-	nnoremap <silent><buffer><expr> <C-w>k unite#do_action('below')
-	inoremap <silent><buffer><expr> <C-w>k unite#do_action('below')
-	nnoremap <silent><buffer><expr> <C-w>j unite#do_action('above')
-	inoremap <silent><buffer><expr> <C-w>j unite#do_action('above')
+	nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+	inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+	nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+	inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
 endfunction
 
 " indent
