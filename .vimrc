@@ -65,7 +65,7 @@ set wrapscan
 set history=100
 set laststatus=2
 set list
-set listchars=tab:>.,precedes:<,extends:>
+set listchars=tab:>.,precedes:<,extends:>,eol:¬
 set number
 set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
