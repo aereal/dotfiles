@@ -126,16 +126,16 @@ xmap : <sid>(command-line-enter)
 autocmd CmdwinEnter * call s:init_cmdwin()
 
 function! s:init_cmdwin()
-	nnoremap <buffer> q :<C-u>quit<CR>
-	nnoremap <buffer> <TAB> :<C-u>quit<CR>
-	inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-	inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-	inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-	inoremap <buffer><expr><C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-	inoremap <buffer><expr>: col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
-	inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-	setlocal nonumber
-	startinsert!
+  nnoremap <buffer> q :<C-u>quit<CR>
+  nnoremap <buffer> <TAB> :<C-u>quit<CR>
+  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr><C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr>: col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
+  inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  setlocal nonumber
+  startinsert!
 endfunction
 
 " http://vim-users.jp/2009/07/hack42/
@@ -145,9 +145,9 @@ nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
 nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
 
 function! s:good_width()
-	if winwidth(0) < 84
-		vertical resize 84
-	endif
+  if winwidth(0) < 84
+    vertical resize 84
+  endif
 endfunction
 
 " neocomplcache
@@ -181,32 +181,38 @@ nnoremap <silent> <Leader>rh :<C-u>Unite rails/helper<CR>
 
 autocmd FileType unite call s:unite_local_settings()
 function! s:unite_local_settings()
-	nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-	inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-	nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-	inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-	nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-	inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-	nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
-	inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+  nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+  inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+  nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+  inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+  nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+  inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+  nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+  inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
 endfunction
 
 " indent
 au BufEnter */hekk/* setlocal ts=2 sts=2 sw=2 et
+au BufEnter */love-lang-hub/* setlocal et
 
 " surround.vim
 let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.ruby  = {
-	\ '#': "#{\r}",
-	\ }
+  \ '#': "#{\r}",
+  \ }
 let g:surround_custom_mapping.eruby = {
-	\ '-': "<% \r %>",
-	\ '=': "<%= \r %>",
-	\ '#': "#{\r}",
-	\ }
+  \ '-': "<% \r %>",
+  \ '=': "<%= \r %>",
+  \ '#': "#{\r}",
+  \ }
 
 " gabbrev.vim
 augroup RUBY
-	autocmd!
-	autocmd FileType ruby inoremap <buffer> <silent> <expr> <C-]> gabbrev#i_start()
+  autocmd!
+  autocmd FileType ruby inoremap <buffer> <silent> <expr> <C-]> gabbrev#i_start()
 augroup END
+
+" indent-guides.vim
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 5
+let g:indent_guides_guide_size = 2
