@@ -1,28 +1,31 @@
+" vim:set et:
 syntax on
 
 " NeoBundle.vim
 filetype off
 if has('vim_starting')
-	set rtp+=~/.vim/neobundle.vim/
-	call neobundle#rc(expand('~/.vim/bundle'))
+  set rtp+=~/.vim/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
 " colorschems
+NeoBundle 'ChrisKempson/Vim-Tomorrow-Theme'
 NeoBundle 'desert.vim'
-NeoBundle 'Sorcerer'
 
 " life changing
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'motemen/git-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'h1mesuke/vim-alignta'
 
 " unite sources
 NeoBundle 'Shougo/unite-help'
