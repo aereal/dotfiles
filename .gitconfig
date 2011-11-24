@@ -13,6 +13,8 @@
 	svn-push = !git stash && git svn dcommit && git stash pop
 	svn-pull = !git stash && git svn rebase && git stash pop
 	dfst = diff --staged
+	onelog = log --oneline
+	squashed-merge = merge --squash
 [color]
 	diff = auto
 	branch = auto
