@@ -9,8 +9,11 @@ if has('vim_starting')
 endif
 
 " colorschems
-NeoBundle 'ChrisKempson/Vim-Tomorrow-Theme'
-NeoBundle 'desert.vim'
+NeoBundle 'fugalh/desert.vim'
+NeoBundle 'pyte'
+NeoBundle 'dusk'
+NeoBundle 'vylight'
+NeoBundle 'Mustang2'
 
 " life changing
 NeoBundle 'Shougo/neocomplcache'
@@ -21,20 +24,21 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'motemen/git-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-jp/vimdoc-ja'
 
 " unite sources
 NeoBundle 'Shougo/unite-help'
-NeoBundle 'aereal/unite-strftime_format'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'sgur/unite-qf'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ujihisa/unite-rake'
+
+" neco
+NeoBundle 'ujihisa/neco-ghc'
 
 " language support
 NeoBundle 'bbommarito/vim-slim'
@@ -48,7 +52,6 @@ NeoBundle 'vim-ruby/vim-ruby'
 
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'mattn/gist-vim'
-NeoBundle 'motemen/vim-guess-abbrev'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 't9md/vim-surround_custom_mapping'
 
@@ -205,12 +208,6 @@ let g:surround_custom_mapping.eruby = {
   \ '=': "<%= \r %>",
   \ '#': "#{\r}",
   \ }
-
-" gabbrev.vim
-augroup RUBY
-  autocmd!
-  autocmd FileType ruby inoremap <buffer> <silent> <expr> <C-]> gabbrev#i_start()
-augroup END
 
 " indent-guides.vim
 let g:indent_guides_enable_on_vim_startup = 1
