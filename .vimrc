@@ -4,7 +4,7 @@ syntax on
 " NeoBundle.vim
 filetype off
 if has('vim_starting')
-  set rtp+=~/.vim/neobundle.vim/
+  set rtp+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
@@ -16,6 +16,7 @@ NeoBundle 'vylight'
 NeoBundle 'Mustang2'
 
 " life changing
+NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
