@@ -56,19 +56,23 @@ NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'thinca/vim-localrc'
 
 filetype plugin indent on
-set ambiwidth=double
+
+" indentation
 set autoindent
-set autoread
-set smartindent
+set nosmartindent
+set nocindent
 set smarttab
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set expandtab
+
+set ambiwidth=double
+set autoread
 set autoread
 set backspace=indent,eol,start
 set nobackup
 set nocompatible
-set noexpandtab
 set hidden
 set hlsearch
 set ignorecase
@@ -80,6 +84,7 @@ set laststatus=2
 set list
 set listchars=tab:>.,precedes:<,extends:>,eol:¬
 set number
+set ruler
 set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
 set complete=.,w,b,u,k,i
