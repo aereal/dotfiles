@@ -10,10 +10,8 @@ endif
 
 " colorschems
 NeoBundle 'fugalh/desert.vim'
-NeoBundle 'pyte'
-NeoBundle 'dusk'
-NeoBundle 'vylight'
-NeoBundle 'Mustang2'
+NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'fmoralesc/vim-vitamins'
 
 " life changing
 NeoBundle 'Shougo/neobundle.vim'
@@ -25,9 +23,9 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'motemen/git-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-jp/vimdoc-ja'
 
@@ -54,9 +52,10 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'thinca/vim-localrc'
 
-colorscheme desert
 filetype plugin indent on
 set ambiwidth=double
 set autoindent
