@@ -171,7 +171,8 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 imap <C-s> <Plug>(neocomplcache_start_unite_snippet)
 
 " unite.vim
-nnoremap <silent> ; :<C-u>UniteWithBufferDir buffer file_mru file<CR>
+nnoremap <silent> ; :<C-u>call <SID>unite_project('-start-insert')<CR>
+nnoremap <silent> <Leader>o :<C-u>UniteWithBufferDir buffer file_mru file<CR>
 nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>model
 nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
@@ -195,6 +196,12 @@ function! s:unite_local_settings()
   inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
   nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
   inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+endfunction
+
+function! s:unite_project(...)
+  let opts = (a:0 ? join(a:000, ' ') : '')
+  let dir = unite#util#path2project_directory(expand('%'))
+  execute 'Unite' opts 'file_rec:' . dir
 endfunction
 
 " indent
