@@ -214,3 +214,25 @@ let g:surround_custom_mapping.eruby = {
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent = 5
 let g:indent_guides_guide_size = 2
+
+" colorscheme
+function! s:caprice_colorscheme()
+  let candidates = map(
+        \ split(globpath(&runtimepath, 'colors/*.vim'), '\n'),
+        \ 'fnamemodify(v:val, ":t:r")')
+  if len(candidates) <= 0
+    return
+  endif
+
+  if has('reltime')
+    " http://vim-users.jp/2009/11/hack98/
+    let match_end = matchend(reltimestr(reltime()), '\d\+\.') + 1
+    let pos = reltimestr(reltime())[match_end : ] % len(candidates)
+  else
+    let pos = 0
+  endif
+
+  execute 'colorscheme ' . candidates[pos]
+endfunction
+
+autocmd BufEnter * call <SID>caprice_colorscheme()
