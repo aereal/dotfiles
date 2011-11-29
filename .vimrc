@@ -226,9 +226,7 @@ let g:indent_guides_guide_size = 2
 
 " colorscheme
 function! s:caprice_colorscheme()
-  let candidates = map(
-        \ split(globpath(&runtimepath, 'colors/*.vim'), '\n'),
-        \ 'fnamemodify(v:val, ":t:r")')
+  let candidates = s:candidates_colorschemes()
   if len(candidates) <= 0
     return
   endif
@@ -244,4 +242,9 @@ function! s:caprice_colorscheme()
   execute 'colorscheme ' . candidates[pos]
 endfunction
 
-autocmd BufEnter * call <SID>caprice_colorscheme()
+function! s:candidates_colorschemes()
+  return map(split(globpath(&runtimepath, 'colors/*.vim'), '\n'), 'fnamemodify(v:val, ":t:r")')
+endfunction
+
+" autocmd BufEnter * call <SID>caprice_colorscheme()
+colorscheme magica

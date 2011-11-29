@@ -22,5 +22,6 @@ endif
 
 if has("gui_running")
 	set fuoptions=maxvert,maxhorz
+	colorscheme film
 endif
 
