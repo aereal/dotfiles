@@ -1,4 +1,3 @@
-" vim:set et:
 syntax on
 
 " NeoBundle.vim
@@ -100,21 +99,22 @@ set fileformats=unix,dos,mac
 set directory=~/swp
 set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
-let mapleader = ' '
+let mapleader   = ' '
 let g:mapleader = ' '
 
 nnoremap <Leader><Space> :update<CR>
-nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap <ESC><ESC>      :nohlsearch<CR>
+
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 
 "" autocmd
 "" screenに編集中のファイル名を出す
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
-autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
-autocmd FileType ruby inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-autocmd FileType ruby inoremap <buffer><expr> , smartchr#loop(',', ' => ')
-autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(',', ' => ')
+autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 autocmd FileType haskell setlocal et
 autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
 autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
@@ -124,23 +124,23 @@ autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
 let g:user_zen_leader_key = '<C-e>'
 
 " http://vim-users.jp/2010/07/hack161/
-nnoremap <sid>(command-line-enter) q:
-xnoremap <sid>(command-line-enter) q:
-nnoremap <sid>(command-line-norange) q:<C-u>
-nmap : <sid>(command-line-enter)
-xmap : <sid>(command-line-enter)
+nnoremap   <sid>(command-line-enter) q:
+xnoremap   <sid>(command-line-enter) q:
+nnoremap   <sid>(command-line-norange) q:<C-u>
+nmap     : <sid>(command-line-enter)
+xmap     : <sid>(command-line-enter)
 
 autocmd CmdwinEnter * call s:init_cmdwin()
 
 function! s:init_cmdwin()
-  nnoremap <buffer> q :<C-u>quit<CR>
-  nnoremap <buffer> <TAB> :<C-u>quit<CR>
-  inoremap <buffer><expr><CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-  inoremap <buffer><expr><C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  inoremap <buffer><expr><BS> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  inoremap <buffer><expr><C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-  inoremap <buffer><expr>: col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
-  inoremap <buffer><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  nnoremap <buffer>       q     :<C-u>quit<CR>
+  nnoremap <buffer>       <TAB> :<C-u>quit<CR>
+  inoremap <buffer><expr> <CR>  pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+  inoremap <buffer><expr> <C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr> <BS>  pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr> <C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+  inoremap <buffer><expr> :     col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
+  inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
   setlocal nonumber
   startinsert!
 endfunction
@@ -161,30 +161,31 @@ endfunction
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-imap <C-s> <Plug>(neocomplcache_start_unite_snippet)
+
+inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+imap     <C-k> <Plug>(neocomplcache_snippets_expand)
+smap     <C-k> <Plug>(neocomplcache_snippets_expand)
+imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 
 " unite.vim
-nnoremap <silent> ; :<C-u>call <SID>unite_project('-start-insert')<CR>
-nnoremap <silent> <Leader>o :<C-u>UniteWithBufferDir buffer file_mru file<CR>
-nnoremap <silent> <Leader>b :<C-u>Unite buffer<CR>model
-nnoremap <silent> <Leader>[ :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>. :<C-u>Unite source<CR>
-nnoremap <silent> <Leader>' :<C-u>Unite register<CR>
-nnoremap <silent> <Leader>/r :<C-u>Unite -start-insert -no-quit -default-action=split ref/refe<CR>
-nnoremap <silent> <Leader>s :<C-u>Unite -start-insert snippet<CR>
-nnoremap <silent> <Leader>w :<C-u>Unite -immediately window:no-current<CR>
+nnoremap <silent> ;                :<C-u>call <SID>unite_project('-start-insert')<CR>
+nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir buffer file_mru file<CR>
+nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>model
+nnoremap <silent> <Leader>[        :<C-u>Unite outline<CR>
+nnoremap <silent> <Leader>.        :<C-u>Unite source<CR>
+nnoremap <silent> <Leader>'        :<C-u>Unite register<CR>
+nnoremap <silent> <Leader>/r       :<C-u>Unite -start-insert -no-quit -default-action=split ref/refe<CR>
+nnoremap <silent> <Leader>s        :<C-u>Unite -start-insert snippet<CR>
+nnoremap <silent> <Leader>w        :<C-u>Unite -immediately window:no-current<CR>
 nnoremap <silent> <Leader>r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
-nnoremap <silent> <Leader>rc :<C-u>Unite rails/controller<CR>
-nnoremap <silent> <Leader>rv :<C-u>Unite rails/view<CR>
-nnoremap <silent> <Leader>rm :<C-u>Unite rails/model<CR>
-nnoremap <silent> <Leader>rh :<C-u>Unite rails/helper<CR>
+nnoremap <silent> <Leader>rc       :<C-u>Unite rails/controller<CR>
+nnoremap <silent> <Leader>rv       :<C-u>Unite rails/view<CR>
+nnoremap <silent> <Leader>rm       :<C-u>Unite rails/model<CR>
+nnoremap <silent> <Leader>rh       :<C-u>Unite rails/helper<CR>
 
 autocmd FileType unite call s:unite_local_settings()
 function! s:unite_local_settings()
@@ -201,7 +202,7 @@ endfunction
 function! s:unite_project(...)
   let opts = (a:0 ? join(a:000, ' ') : '')
   let dir = unite#util#path2project_directory(expand('%'))
-  execute 'Unite' opts 'file_rec:' . dir
+  execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
 endfunction
 
 " indent
@@ -220,9 +221,10 @@ let g:surround_custom_mapping.eruby = {
   \ }
 
 " indent-guides.vim
+let g:indent_guides_auto_colors           = 1
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 5
-let g:indent_guides_guide_size = &sw
+let g:indent_guides_color_change_percent  = 5
+let g:indent_guides_guide_size            = &sw / 2
 
 " colorscheme
 function! s:caprice_colorscheme()
@@ -248,3 +250,5 @@ endfunction
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
 colorscheme magica
+
+" vim:set et:
