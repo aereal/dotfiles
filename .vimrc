@@ -102,7 +102,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/swp
-set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+set statusline=%<\ %f\ (%{GitBranch()})%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
 let g:mapleader = ' '
@@ -229,7 +229,7 @@ let g:surround_custom_mapping.eruby = {
 let g:indent_guides_auto_colors           = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent  = 5
-let g:indent_guides_guide_size            = &sw / 2
+let g:indent_guides_guide_size            = &sw
 
 " colorscheme
 function! s:caprice_colorscheme()
@@ -254,6 +254,10 @@ function! s:candidates_colorschemes()
 endfunction
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
-colorscheme magica
+if &term =~ 'xterm-256color'
+  colorscheme desert256mod
+else
+  colorscheme desert
+endif
 
 " vim:set et:
