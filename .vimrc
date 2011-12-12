@@ -46,6 +46,7 @@ NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'tpope/vim-haml'
+NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'vim-ruby/vim-ruby'
 
 NeoBundle 'davidoc/taskpaper.vim'
