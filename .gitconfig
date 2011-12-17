@@ -2,11 +2,11 @@
 	encoding = utf-8
 [user]
 	email = aereal@kerare.org
-	name = AOKI Hanae
+	name = aereal
 [github]
 	user = aereal
 [alias]
-	st = status -s
+	st = status -sb
 	df = diff
 	co = checkout
 	fixup = commit --amend -C HEAD
@@ -15,6 +15,7 @@
 	dfst = diff --staged
 	onelog = log --oneline
 	squashed-merge = merge --squash
+	track = checkout -t
 [color]
 	diff = auto
 	branch = auto
@@ -38,3 +39,8 @@
 	commitencoding= utf-8
 [core]
 	editor = vim -u NONE -i NONE -N -c 'syntax on'
+	quotepath = false
+[push]
+	default = tracking
+[branch]
+	autosetuprebase = always
