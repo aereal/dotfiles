@@ -21,6 +21,14 @@ path=(
   /sbin(N-/)
 )
 
+if [[ -s `which tmux` ]]; then
+  export MULTIPLEXOR=tmux
+elif [[ -s `which tscreen` ]]; then
+  export MULTIPLEXOR=tscreen
+elif [[ -s `which screen` ]]; then
+  export MULTIPLEXOR=screen
+fi
+
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   . "$HOME/.rvm/scripts/rvm"
 elif [[ -s "$HOME/.rbenv" ]]; then

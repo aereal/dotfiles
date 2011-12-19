@@ -164,5 +164,12 @@ uname=`uname`
 [[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
 [[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
 
-[ $STY ] || screen -rx || screen -D -RR -U
-
+case $MULTIPLEXOR in
+  tmux)
+    ;;
+  tscreen|screen)
+    [ $STY ] || screen -rx || screen -D -RR -U
+    ;;
+  *)
+    ;;
+esac
