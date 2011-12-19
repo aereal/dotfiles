@@ -12,10 +12,14 @@
 	fixup = commit --amend -C HEAD
 	svn-push = !git stash && git svn dcommit && git stash pop
 	svn-pull = !git stash && git svn rebase && git stash pop
-	dfst = diff --staged
 	onelog = log --oneline
 	squashed-merge = merge --squash
 	track = checkout -t
+	unstage = reset HEAD --
+	fdf = diff -W
+	diff-funcon = diff -W
+	diff-funcon-staged = diff --cached -W
+	ds = diff --staged
 [color]
 	diff = auto
 	branch = auto
@@ -40,6 +44,7 @@
 [core]
 	editor = vim -u NONE -i NONE -N -c 'syntax on'
 	quotepath = false
+	whitespace = cr-at-eol
 [push]
 	default = tracking
 [branch]
