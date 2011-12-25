@@ -45,7 +45,10 @@
 	editor = vim -u NONE -i NONE -N -c 'syntax on'
 	quotepath = false
 	whitespace = cr-at-eol
+	pager = lv -c
 [push]
 	default = tracking
 [branch]
 	autosetuprebase = always
+[gitflow "branch"]
+	develop = devel
