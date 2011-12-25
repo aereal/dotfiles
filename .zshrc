@@ -55,44 +55,44 @@ autoload -U colors;     colors
 # http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
 typeset -A abbreviations
 abbreviations=(
-	" L" " | \$PAGER"
-	" G" " | grep"
+  " L" " | \$PAGER"
+  " G" " | grep"
 )
 
 magic-abbrev-expand () {
-	local MATCH
-	LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9^]#}
-	LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+  local MATCH
+  LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9^]#}
+  LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
 }
 
 magic-space () {
-	magic-abbrev-expand
-	zle self-insert
+  magic-abbrev-expand
+  zle self-insert
 }
 
 magic-abbrev-expand-and-insert () {
-	magic-abbrev-expand
-	zle self-insert
+  magic-abbrev-expand
+  zle self-insert
 }
 
 magic-abbrev-expand-and-insert-complete () {
-	magic-abbrev-expand
-	zle self-insert
-	zle expand-or-complete
+  magic-abbrev-expand
+  zle self-insert
+  zle expand-or-complete
 }
 
 magic-abbrev-expand-and-accept () {
-	magic-abbrev-expand
-	zle accept-line
+  magic-abbrev-expand
+  zle accept-line
 }
 
 magic-abbrev-expand-and-normal-complete () {
-	magic-abbrev-expand
-	zle expand-or-complete
+  magic-abbrev-expand
+  zle expand-or-complete
 }
 
 no-magic-abbrev-expand () {
-	LBUFFER+=' '
+  LBUFFER+=' '
 }
 
 zle -N magic-abbrev-expand
@@ -111,27 +111,27 @@ autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
-	if [[ -x `which rvm-prompt` ]]; then
-		PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)"
-	elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
-		PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)"
-	fi
-	if [[ -n "$PERLBREW_PERL" ]]; then
-		PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
-	fi
-	if [[ -n "$PATH_PYTHONBREW" ]]; then
-		local python_version
-		python_version=$(basename $(dirname $(dirname $(which python))))
-		python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
-		if [[ -n "$python_version" ]]; then
-			PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)"
-		fi
-	fi
-	PROMPT_USER="%{${fg[yellow]}%}<%n%#%m>"
-	PROMPT_CMD=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
-	PROMPT="$PROMPT_USER $PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW
+  if [[ -x `which rvm-prompt` ]]; then
+    PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)"
+  elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
+    PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)"
+  fi
+  if [[ -n "$PERLBREW_PERL" ]]; then
+    PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
+  fi
+  if [[ -n "$PATH_PYTHONBREW" ]]; then
+    local python_version
+    python_version=$(basename $(dirname $(dirname $(which python))))
+    python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
+    if [[ -n "$python_version" ]]; then
+      PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)"
+    fi
+  fi
+  PROMPT_USER="%{${fg[yellow]}%}<%n%#%m>"
+  PROMPT_CMD=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
+  PROMPT="$PROMPT_USER $PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW
 $PROMPT_CMD"
-	RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%} (`rprompt-git-current-branch`)]"
+  RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%} (`rprompt-git-current-branch`)]"
 }
 
 precmd_functions=($precmd_functions init_prompt)
@@ -157,7 +157,7 @@ alias :q='exit'
 alias ps='ps aux'
 
 if [[ -x `which tscreen` ]]; then
-	alias screen=tscreen
+  alias screen=tscreen
 fi
 
 uname=`uname`

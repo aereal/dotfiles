@@ -9,8 +9,8 @@ alias ql='qlmanage -p "$@" >& /dev/null'
 
 # inspired by https://gist.github.com/953741
 abbreviations=(
-	" L" " | \$PAGER"
-	" G" " | grep"
-	" C" " | pbcopy"
+  " L" " | \$PAGER"
+  " G" " | grep"
+  " C" " | pbcopy"
 )
 

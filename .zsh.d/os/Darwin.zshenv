@@ -5,6 +5,6 @@ export FLEX_HOME=$HOME/sdk/flex
 export LSCOLORS="dxcxgxdxbxegedabagacad"
 
 path=(
-	$FLEX_HOME/bin(N-/)
-	$path
+  $FLEX_HOME/bin(N-/)
+  $path
 )
