@@ -104,34 +104,81 @@ zle -N magic-abbrev-expand-and-accept
 zle -N no-magic-abbrev-expand
 zle -N magic-space
 
-autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-autoload -U -z rprompt-git-current-branch
+# autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+# autoload -U -z rprompt-git-current-branch
+
+# ~ (master) のように git レポジトリ以下では git のブランチを表示する
+update-git-status () {
+  local gitdir="$(command git rev-parse --git-dir 2>/dev/null)"
+  if [[ $gitdir != "" ]]; then
+    local ret=''
+    if   [[ -d "$gitdir/rebase-apply" ]]; then
+      local next=$(< $gitdir/rebase-apply/next)
+      local last=$(< $gitdir/rebase-apply/last)
+      if [[ -n $next && -n $last ]]; then
+        local curr=$[ $next - 1]
+      fi
+      ret="rebase[$curr/$last]"
+    elif [[ -d "$gitdir/rebase-merge" ]]; then
+      if [[ -f "$gitdir/rebase-merge/interactive" ]]; then
+        local left=$(grep '^[pes]' $git_dir/rebase-merge/git-rebase-todo | wc -l)
+        if [[ -n $left ]]; then
+          left=$[ $left + 1 ]
+        fi
+        ret="rebase[i, $left left]"
+      else
+        ret="rebase[m]"
+      fi
+    elif [[ -f "$gitdir/MERGE_HEAD" ]]; then
+      ret="merge[]"
+    elif [[ -f "$gitdir/BISECT_START" ]]; then
+      local start=$(< $gitdir/BISECT_START)
+      local bad=$(command git rev-parse --verify refs/bisect/bad)
+      local good="$(command git for-each-ref --format='^%(objectname)' "refs/bisect/good-*" | tr '\012' ' ')"
+      local skip=$(command git for-each-ref --format='%(objectname)' "refs/bisect/skip-*" | tr '\012' ' ')
+      eval "$(command git rev-list --bisect-vars "$good" "$bad" -- $(< $gitdir/BISECT_NAMES))"
+
+      ret="bisect[$start, $bisect_nr left]"
+    else
+      ret=$(command git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
+      if [[ $ret == "(nobranch)" ]]; then
+        ret=$(command git name-rev --name-only HEAD)
+        ret="($ret)"
+      fi
+    fi
+
+    if [[ -n $ret ]]; then
+      git_status="[32m%}($ret)%{[m%}"
+    fi
+  fi
+}
 
 init_prompt() {
   if [[ -x `which rvm-prompt` ]]; then
-    PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)"
+    PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
   elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
-    PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)"
+    PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)%{${reset_color}%}"
   fi
   if [[ -n "$PERLBREW_PERL" ]]; then
-    PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
+    PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)%{${reset_color}%}"
   fi
   if [[ -n "$PATH_PYTHONBREW" ]]; then
     local python_version
     python_version=$(basename $(dirname $(dirname $(which python))))
     python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
     if [[ -n "$python_version" ]]; then
-      PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)"
+      PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)%{${reset_color}%}"
     fi
   fi
-  PROMPT_USER="%{${fg[yellow]}%}<%n%#%m>"
-  PROMPT_CMD=" %{${fg[green]}%}S | v | Z %{${reset_color}%}< "
-  PROMPT="$PROMPT_USER $PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW
+  PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
+  PROMPT_CWD="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
+  PROMPT_CMD=" %{${fg[blue]}%}S | v | Z %{${reset_color}%}< "
+  PROMPT="$PROMPT_USER $PROMPT_CWD $git_status
 $PROMPT_CMD"
-  RPROMPT="[%{${fg[yellow]}%}%~%{${reset_color}%} (`rprompt-git-current-branch`)]"
+  RPROMPT="[$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW]"
 }
 
-precmd_functions=($precmd_functions init_prompt)
+precmd_functions=($precmd_functions update-git-status init_prompt)
 
 # key-bindings
 bindkey "\r" magic-abbrev-expand-and-accept
