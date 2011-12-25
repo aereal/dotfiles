@@ -114,7 +114,7 @@ init_prompt() {
 	if [[ -x `which rvm-prompt` ]]; then
 		PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)"
 	elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
-		PROMPT_RUBY="%{${fg[red]}%}(`rbenv version-name`)"
+		PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)"
 	fi
 	if [[ -n "$PERLBREW_PERL" ]]; then
 		PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)"
