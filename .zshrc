@@ -104,9 +104,6 @@ zle -N magic-abbrev-expand-and-accept
 zle -N no-magic-abbrev-expand
 zle -N magic-space
 
-autoload -U -z show-window-title
-preexec_functions=($preexec_functions show-window-title)
-
 autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 
@@ -156,18 +153,22 @@ alias ll='/bin/ls --color -AFl'
 alias :q='exit'
 alias ps='ps aux'
 
-if [[ -x `which tscreen` ]]; then
-  alias screen=tscreen
-fi
-
 uname=`uname`
 [[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
 [[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
+
+if [[ "x$MULTIPLEXOR" != "x" ]]; then
+  autoload -U -z show-window-title
+  preexec_functions=($preexec_functions show-window-title)
+fi
 
 case $MULTIPLEXOR in
   tmux)
     ;;
   tscreen|screen)
+    if [[ $MULTIPLEXOR == "tscreen" ]]; then
+      alias screen=tscreen
+    fi
     [ $STY ] || screen -rx || screen -D -RR -U
     ;;
   *)
