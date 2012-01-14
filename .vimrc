@@ -92,7 +92,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/swp
-set statusline=%<\ %f\ (%{GitBranch()})%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
 let g:mapleader = ' '
