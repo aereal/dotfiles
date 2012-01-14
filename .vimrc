@@ -9,8 +9,6 @@ endif
 
 " colorschems
 NeoBundle 'fugalh/desert.vim'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'fmoralesc/vim-vitamins'
 
 " life changing
 NeoBundle 'Shougo/neobundle.vim'
@@ -22,21 +20,15 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'motemen/git-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'tpope/vim-fugitive'
 
 " unite sources
-NeoBundle 'Shougo/unite-help'
-NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'ujihisa/unite-rake'
-
-" neco
-NeoBundle 'ujihisa/neco-ghc'
 
 " language support
 NeoBundle 'bbommarito/vim-slim'
@@ -46,15 +38,12 @@ NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'vim-ruby/vim-ruby'
 
 NeoBundle 'davidoc/taskpaper.vim'
-NeoBundle 'mattn/gist-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'thinca/vim-localrc'
+NeoBundle 'tyru/caw'
 
 filetype plugin indent on
 
