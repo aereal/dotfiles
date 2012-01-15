@@ -246,4 +246,14 @@ else
   colorscheme desert
 endif
 
+" vim-fugitive {{{
+nnoremap <Leader>gs :<C-u>Gstatus<CR>
+nnoremap <Leader>gc :<C-u>Gcommit<CR>
+nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
+nnoremap <Leader>gb :<C-u>Gblame<CR>
+nnoremap <Leader>ga :<C-u>Gwrite<CR>
+nnoremap <Leader>gd :<C-u>Gdiff<CR>
+nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+" }}}
+
 " vim:set et:
