@@ -200,10 +200,6 @@ function! s:unite_project(...)
   execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
 endfunction
 
-" indent
-au BufEnter */hekk/* setlocal ts=2 sts=2 sw=2 et
-au BufEnter */love-lang-hub/* setlocal et
-
 " surround.vim
 let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.ruby  = {
