@@ -104,54 +104,8 @@ zle -N magic-abbrev-expand-and-accept
 zle -N no-magic-abbrev-expand
 zle -N magic-space
 
-# autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-# autoload -U -z rprompt-git-current-branch
-
-# ~ (master) のように git レポジトリ以下では git のブランチを表示する
-update-git-status () {
-  local gitdir="$(command git rev-parse --git-dir 2>/dev/null)"
-  if [[ $gitdir != "" ]]; then
-    local ret=''
-    if   [[ -d "$gitdir/rebase-apply" ]]; then
-      local next=$(< $gitdir/rebase-apply/next)
-      local last=$(< $gitdir/rebase-apply/last)
-      if [[ -n $next && -n $last ]]; then
-        local curr=$[ $next - 1]
-      fi
-      ret="rebase[$curr/$last]"
-    elif [[ -d "$gitdir/rebase-merge" ]]; then
-      if [[ -f "$gitdir/rebase-merge/interactive" ]]; then
-        local left=$(grep '^[pes]' $git_dir/rebase-merge/git-rebase-todo | wc -l)
-        if [[ -n $left ]]; then
-          left=$[ $left + 1 ]
-        fi
-        ret="rebase[i, $left left]"
-      else
-        ret="rebase[m]"
-      fi
-    elif [[ -f "$gitdir/MERGE_HEAD" ]]; then
-      ret="merge[]"
-    elif [[ -f "$gitdir/BISECT_START" ]]; then
-      local start=$(< $gitdir/BISECT_START)
-      local bad=$(command git rev-parse --verify refs/bisect/bad)
-      local good="$(command git for-each-ref --format='^%(objectname)' "refs/bisect/good-*" | tr '\012' ' ')"
-      local skip=$(command git for-each-ref --format='%(objectname)' "refs/bisect/skip-*" | tr '\012' ' ')
-      eval "$(command git rev-list --bisect-vars "$good" "$bad" -- $(< $gitdir/BISECT_NAMES))"
-
-      ret="bisect[$start, $bisect_nr left]"
-    else
-      ret=$(command git branch -a 2>/dev/null | grep "^*" | tr -d '\* ')
-      if [[ $ret == "(nobranch)" ]]; then
-        ret=$(command git name-rev --name-only HEAD)
-        ret="($ret)"
-      fi
-    fi
-
-    if [[ -n $ret ]]; then
-      git_status="[32m%}($ret)%{[m%}"
-    fi
-  fi
-}
+autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
   if [[ -x `which rvm-prompt` ]]; then
@@ -173,12 +127,12 @@ init_prompt() {
   PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
   PROMPT_CWD="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
   PROMPT_CMD=" %{${fg[blue]}%}S | v | Z %{${reset_color}%}< "
-  PROMPT="$PROMPT_USER $PROMPT_CWD $git_status
+  PROMPT="$PROMPT_USER $PROMPT_CWD (`rprompt-git-current-branch`)
 $PROMPT_CMD"
   RPROMPT="[$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW]"
 }
 
-precmd_functions=($precmd_functions update-git-status init_prompt)
+precmd_functions=(init_prompt $precmd_functions)
 
 # key-bindings
 bindkey "\r" magic-abbrev-expand-and-accept
