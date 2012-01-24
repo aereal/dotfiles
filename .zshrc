@@ -126,10 +126,10 @@ init_prompt() {
   fi
   PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
   PROMPT_CWD="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
-  PROMPT_CMD=" %{${fg[blue]}%}S | v | Z %{${reset_color}%}< "
-  PROMPT="$PROMPT_USER $PROMPT_CWD (`rprompt-git-current-branch`)
+  PROMPT_CMD=" %(?,%{${fg[blue]}%}S | v | Z%{${reset_color}%},%{${fg[red]}%}S ; _ ; Z%{${reset_color}%}) < "
+  PROMPT="$PROMPT_CWD (`rprompt-git-current-branch`)
 $PROMPT_CMD"
-  RPROMPT="[$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW]"
+  RPROMPT="$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW"
 }
 
 precmd_functions=(init_prompt $precmd_functions)
