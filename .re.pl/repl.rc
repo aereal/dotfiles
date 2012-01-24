@@ -1,0 +1,9 @@
+# vim:set ft=perl:
+Devel::REPL::Script->current->_repl->load_plugin($_) for qw(Colors LexEnv History DDS Packages);
+Devel::REPL::Script->current->_repl->load_plugin($_) for qw(Commands MultiLine::PPI FancyPrompt);
+Devel::REPL::Script->current->_repl->fancy_prompt(sub {
+  my $self = shift;
+  sprintf "%03d%s X | _ | X < ",
+    $self->lines_read,
+    $self->can("line_depth") ? ":" . $self->line_depth : "";
+});
