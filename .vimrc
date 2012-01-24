@@ -7,13 +7,11 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-" colorschems
-NeoBundle 'fugalh/desert.vim'
-
 " life changing
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
@@ -22,12 +20,14 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'tpope/vim-fugitive'
 
 " unite sources
+NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 
 " language support
@@ -42,6 +42,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'skammer/vim-css-color'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tyru/caw'
 
