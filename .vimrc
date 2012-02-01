@@ -46,6 +46,8 @@ NeoBundle 'skammer/vim-css-color'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tyru/caw'
 
+NeoBundle 'altercation/vim-colors-solarized'
+
 filetype plugin indent on
 
 " indentation
