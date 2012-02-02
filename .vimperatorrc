@@ -85,7 +85,6 @@ set! network.dns.disableIPv6=true
 " set {{{
 set activate=all
 set animations
-set complete=tHSl
 set editor='/Applications/MacVim.app/Contents/MacOS/Vim -g'
 set focuscontent
 set hlsearch
@@ -96,7 +95,6 @@ set popups=tab
 set showmode
 set showstatuslinks=2
 set titlestring=Vimperator
-set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs,nohatenaBookmarks,statuslinetoolbar
 set verbose=5
 set visualbell
 set wildmode=list:full
@@ -175,8 +173,8 @@ js <<EOM
 liberator.globalVariables.plugin_loader_roots = ["~/proj/vimperator-plugins"];
 liberator.globalVariables.plugin_loader_plugins = [
 	"_libly", "access_hatena", "asdfghjkl", "copy", "feedSomeKeys_3",
-	"hint-tombloo", "migemo-find", "prevent-pseudo-domain",
-	"statusline-toolbar", "tombloo", "twittperator", "readitlater",
+	"hint-tombloo", "prevent-pseudo-domain",
+	"statusline-toolbar", "tombloo",  "readitlater",
 	"bitly", "feeder", "multi_requester"
 ];
 EOM
@@ -189,8 +187,6 @@ lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x
 lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
 lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p r o v c i,p <Space> <S-Space> z b < > q w e,g f
 lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
-
-let g:ldrc_intelligence_bind = "true"
 
 js <<EOM
 // copy.js
@@ -206,18 +202,6 @@ liberator.globalVariables.copy_templates = [
 		return 'http://www.amazon.co.jp/o/ASIN/' + content.document.getElementById('ASIN').value;
 	} },
 ];
-
-commands.addUserCommand(
-	["subldr"],
-	"Subscribe feed with livedoor Reader.",
-	function() {
-		var url = buffer.URL;
-		var endPoint = "http://reader.livedoor.com/subscribe/";
-		liberator.open(endPoint + url, liberator.NEW_TAB);
-	},
-	{},
-	true
-);
 
 if (typeof hBookmark != 'undefined') {
 	liberator.loadScript('chrome://hatenabookmark/content/vimperator/plugin/hatenabookmark.js', {__proto__: this});
