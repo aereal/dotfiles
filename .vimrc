@@ -13,16 +13,30 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
+
+" Visualization
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'skammer/vim-css-color'
+
+" Editting Support
 NeoBundle 'kana/vim-smartchr'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'tyru/caw'
+
+" Text Object Extensions
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'tpope/vim-fugitive'
+NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'tpope/vim-surround'
+
+" Help & Document
+NeoBundle 'thinca/vim-ref'
 NeoBundle 'vim-jp/vimdoc-ja'
+
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-fugitive'
 
 " unite sources
 NeoBundle 'Shougo/unite-ssh'
@@ -30,8 +44,9 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 
-" language support
+" Language Support
 NeoBundle 'bbommarito/vim-slim'
+NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'depuracao/vim-rdoc'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hallison/vim-markdown'
@@ -40,13 +55,8 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 
-NeoBundle 'davidoc/taskpaper.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'skammer/vim-css-color'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'tyru/caw'
-
-NeoBundle 'altercation/vim-colors-solarized'
+" Colors
+NeoBundle 'veloce/vim-aldmeris'
 
 filetype plugin indent on
 
@@ -95,7 +105,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/swp
-set statusline=%<\ %f%=%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
 let g:mapleader = ' '
