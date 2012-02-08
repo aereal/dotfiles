@@ -23,6 +23,6 @@ endif
 if has("gui_running")
   set fuoptions=maxvert,maxhorz
   set bg=light
-  colorscheme solarized
+  colorscheme h2u_black
 endif
 
