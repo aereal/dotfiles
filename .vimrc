@@ -10,6 +10,7 @@ endif
 " life changing
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
@@ -183,7 +184,7 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 " unite.vim
 nnoremap <silent> ;                :<C-u>call <SID>unite_project('-start-insert')<CR>
 nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir buffer file_mru file<CR>
-nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>model
+nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>[        :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>.        :<C-u>Unite source<CR>
 nnoremap <silent> <Leader>'        :<C-u>Unite register<CR>
