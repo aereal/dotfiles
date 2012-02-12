@@ -15,9 +15,10 @@ altscreen on
 defbce on
 termcapinfo xterm*|screen* ti@:te@
 term xterm-256color
-termcapinfo xterm-256color 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
+termcapinfo xterm* 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 vbell off
 bell_msg "Bell in window %^G"
 
-caption always "%{= gk} %-w%{.dy}%n %t%{-}%+w %=[%S]"
+#caption always "%{= wk} %-w%{.dr}%n %t%{-}%+w %=[%S]"
+caption always "%{.Kw}%-w %{.wk}%{!}%n %f%t%{.Kw} %+w %="
 hardstatus ignore
