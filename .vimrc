@@ -24,9 +24,10 @@ NeoBundle 'skammer/vim-css-color'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 't9md/vim-textmanip'
-NeoBundle 'tyru/caw'
+NeoBundle 'tyru/caw.vim'
 
 " Text Object Extensions
+NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 't9md/vim-surround_custom_mapping'
@@ -57,7 +58,9 @@ NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
 
 " Colors
-NeoBundle 'veloce/vim-aldmeris'
+NeoBundle 'noahfrederick/Hemisu'
+
+NeoBundle 'Lokaltog/vim-powerline'
 
 filetype plugin indent on
 
@@ -106,7 +109,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/swp
-set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+"set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
 let g:mapleader = ' '
