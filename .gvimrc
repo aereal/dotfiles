@@ -22,7 +22,7 @@ endif
 
 if has("gui_running")
   set fuoptions=maxvert,maxhorz
-  set bg=light
-  colorscheme h2u_black
+  set bg=dark
+  colorscheme hemisu
 endif
 
