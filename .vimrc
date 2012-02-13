@@ -1,4 +1,5 @@
 syntax on
+set bg=dark
 
 " NeoBundle.vim
 filetype off
@@ -259,7 +260,7 @@ endfunction
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
 if &term =~ 'xterm-256color'
-  colorscheme desert256mod
+  colorscheme hemisu
 else
   colorscheme desert
 endif
