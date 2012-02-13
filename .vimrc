@@ -77,7 +77,6 @@ set expandtab
 
 set ambiwidth=double
 set autoread
-set autoread
 set backspace=indent,eol,start
 set nobackup
 set nocompatible
