@@ -62,6 +62,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'noahfrederick/Hemisu'
 
 NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 
