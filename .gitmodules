@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/neobundle.vim"]
 	path = .vim/bundle/neobundle.vim
 	url = git://github.com/Shougo/neobundle.vim
+[submodule ".zsh.d/plugins/zaw"]
+	path = .zsh.d/plugins/zaw
+	url = git://github.com/zsh-users/zaw.git
