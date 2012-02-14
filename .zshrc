@@ -154,6 +154,10 @@ alias ll='/bin/ls --color -AFl'
 alias :q='exit'
 alias ps='ps aux'
 
+if [[ -d "$HOME/.zsh.d/plugins/zaw" ]] && [[ -r "$HOME/.zsh.d/plugins/zaw/zaw.zsh" ]]; then
+  source "$HOME/.zsh.d/plugins/zaw/zaw.zsh"
+fi
+
 uname=`uname`
 [[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
 [[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
