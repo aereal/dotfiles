@@ -60,6 +60,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 
 " Colors
 NeoBundle 'noahfrederick/Hemisu'
+NeoBundle 'aereal/vim-magica-colors'
 
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'scrooloose/syntastic'
@@ -260,7 +261,7 @@ endfunction
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
 if &term =~ 'xterm-256color'
-  colorscheme hemisu
+  colorscheme magica
 else
   colorscheme desert
 endif
