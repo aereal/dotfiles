@@ -281,4 +281,11 @@ nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 " }}}
 
+" vim-textmanip {{{
+vmap j <Plug>(Textmanip.move_selection_down)
+vmap k <Plug>(Textmanip.move_selection_up)
+vmap h <Plug>(Textmanip.move_selection_left)
+vmap k <Plug>(Textmanip.move_selection_right)
+" }}}
+
 " vim:set et foldmethod=marker:
