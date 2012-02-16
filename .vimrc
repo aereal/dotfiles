@@ -121,7 +121,7 @@ nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 
-"" autocmd
+"" autocmd {{{
 "" screenに編集中のファイル名を出す
 autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
@@ -134,9 +134,11 @@ autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
 autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
 autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(',', '->')
+" }}}
 
-"" zencoding.vim
+"" zencoding.vim {{{
 let g:user_zen_leader_key = '<C-e>'
+" }}}
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap   <sid>(command-line-enter) q:
@@ -172,7 +174,7 @@ function! s:good_width()
   endif
 endfunction
 
-" neocomplcache
+" neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
@@ -185,8 +187,9 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 imap     <C-k> <Plug>(neocomplcache_snippets_expand)
 smap     <C-k> <Plug>(neocomplcache_snippets_expand)
 imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
+" }}}
 
-" unite.vim
+" unite.vim {{{
 nnoremap <silent> ;                :<C-u>call <SID>unite_project('-start-insert')<CR>
 nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir buffer file_mru file<CR>
 nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>
@@ -214,13 +217,14 @@ function! s:unite_local_settings()
   inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
 endfunction
 
-function! s:unite_project(...)
+function! s:unite_project(...) " s:unite_project(...) {{{
   let opts = (a:0 ? join(a:000, ' ') : '')
   let dir = unite#util#path2project_directory(expand('%'))
   execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
-endfunction
+endfunction " }}}
+" }}}
 
-" surround.vim
+" surround.vim {{{
 let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.ruby  = {
   \ '#': "#{\r}",
@@ -230,15 +234,16 @@ let g:surround_custom_mapping.eruby = {
   \ '=': "<%= \r %>",
   \ '#': "#{\r}",
   \ }
+" }}}
 
-" indent-guides.vim
+" indent-guides.vim {{{
 let g:indent_guides_auto_colors           = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent  = 5
 let g:indent_guides_guide_size            = &sw
+" }}}
 
-" colorscheme
-function! s:caprice_colorscheme()
+function! s:caprice_colorscheme() " s:caprice_colorscheme() {{{
   let candidates = s:candidates_colorschemes()
   if len(candidates) <= 0
     return
@@ -253,11 +258,11 @@ function! s:caprice_colorscheme()
   endif
 
   execute 'colorscheme ' . candidates[pos]
-endfunction
+endfunction " }}}
 
-function! s:candidates_colorschemes()
+function! s:candidates_colorschemes() " s:candidates_colorschemes() {{{
   return map(split(globpath(&runtimepath, 'colors/*.vim'), '\n'), 'fnamemodify(v:val, ":t:r")')
-endfunction
+endfunction " }}}
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
 if &term =~ 'xterm-256color'
@@ -276,4 +281,4 @@ nnoremap <Leader>gd :<C-u>Gdiff<CR>
 nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 " }}}
 
-" vim:set et:
+" vim:set et foldmethod=marker:
