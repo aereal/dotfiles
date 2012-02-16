@@ -23,6 +23,6 @@ endif
 if has("gui_running")
   set fuoptions=maxvert,maxhorz
   set bg=dark
-  colorscheme hemisu
+  colorscheme magica
 endif
 
