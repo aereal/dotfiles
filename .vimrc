@@ -1,12 +1,13 @@
 syntax on
 set bg=dark
 
-" NeoBundle.vim
+" NeoBundle.vim {{{
 filetype off
 if has('vim_starting')
   set rtp+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
+" }}}
 
 " life changing
 NeoBundle 'Shougo/neobundle.vim'
@@ -244,7 +245,7 @@ let g:indent_guides_color_change_percent  = 5
 let g:indent_guides_guide_size            = &sw
 " }}}
 
-function! s:caprice_colorscheme() " s:caprice_colorscheme() {{{
+function! s:caprice_colorscheme() " {{{
   let candidates = s:candidates_colorschemes()
   if len(candidates) <= 0
     return
@@ -261,7 +262,7 @@ function! s:caprice_colorscheme() " s:caprice_colorscheme() {{{
   execute 'colorscheme ' . candidates[pos]
 endfunction " }}}
 
-function! s:candidates_colorschemes() " s:candidates_colorschemes() {{{
+function! s:candidates_colorschemes() " {{{
   return map(split(globpath(&runtimepath, 'colors/*.vim'), '\n'), 'fnamemodify(v:val, ":t:r")')
 endfunction " }}}
 
