@@ -127,6 +127,7 @@ autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!e
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(',', ' => ')
+autocmd FileType ruby    setlocal foldmethod=syntax
 autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 autocmd FileType haskell setlocal et
