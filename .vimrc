@@ -19,13 +19,13 @@ NeoBundle 'Shougo/vimproc'
 " Visualization
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'skammer/vim-css-color'
+"NeoBundle 'skammer/vim-css-color'
 
 " Editting Support
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 't9md/vim-textmanip'
-NeoBundle 'tyru/caw.vim'
+NeoBundle 'scrooloose/nerdcommenter'
 
 " Text Object Extensions
 NeoBundle 'h1mesuke/textobj-wiw'
