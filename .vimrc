@@ -292,4 +292,12 @@ vmap h <Plug>(Textmanip.move_selection_left)
 vmap k <Plug>(Textmanip.move_selection_right)
 " }}}
 
+" vim-altr {{{
+nmap <Leader><C-[> <Plug>(altr-forward)
+nmap <Leader><C-]> <Plug>(altr-back)
+
+call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
+call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+" }}}
+
 " vim:set et foldmethod=marker:
