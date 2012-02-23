@@ -1,6 +1,6 @@
 # vim:set ft=zsh:
 
-export PERLBREW_ROOT=$HOME/perlbrew
+export PERLBREW_ROOT=$HOME/.perlbrew
 [[ -f "$PERLBREW_ROOT/etc/bashrc" ]] && . $PERLBREW_ROOT/etc/bashrc
 
 paths=(
