@@ -286,10 +286,10 @@ nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 " }}}
 
 " vim-textmanip {{{
-vmap j <Plug>(Textmanip.move_selection_down)
-vmap k <Plug>(Textmanip.move_selection_up)
-vmap h <Plug>(Textmanip.move_selection_left)
-vmap k <Plug>(Textmanip.move_selection_right)
+"vmap <M-j> <Plug>(Textmanip.move_selection_down)
+"vmap <M-k> <Plug>(Textmanip.move_selection_up)
+"vmap <M-h> <Plug>(Textmanip.move_selection_left)
+"vmap <M-k> <Plug>(Textmanip.move_selection_right)
 " }}}
 
 " vim-altr {{{
