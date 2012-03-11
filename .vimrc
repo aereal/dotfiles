@@ -61,6 +61,7 @@ NeoBundle 'mr-szymanski/prefixr'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'elixir-lang/vim-elixir'
 
 " Colors
 NeoBundle 'noahfrederick/Hemisu'
