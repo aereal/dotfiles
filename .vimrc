@@ -114,7 +114,7 @@ set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
 set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
-set directory=~/swp
+set directory=~/.vim/swp
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
