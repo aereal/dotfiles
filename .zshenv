@@ -6,6 +6,7 @@ export PAGER=lv
 export EDITOR=vim
 export FPATH=$ZSH_USER_DIR/f:$ZSH_USER_DIR/completions:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
+export XDG_DATA_HOME=/usr/local/share
 
 typeset -U path
 path=(
