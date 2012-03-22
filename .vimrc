@@ -139,7 +139,9 @@ autocmd FileType haskell setlocal et
 autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
 autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
 autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(',', '->')
+autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('->', '.')
+autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', '=>', ',')
+autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
 
 "" zencoding.vim {{{
