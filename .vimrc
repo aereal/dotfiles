@@ -142,6 +142,9 @@ autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
 autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('->', '.')
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', '=>', ',')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
+autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
+autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
 " }}}
 
 "" zencoding.vim {{{
@@ -302,6 +305,11 @@ nmap <Leader><C-]> <Plug>(altr-back)
 
 call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
 call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+" }}}
+
+" quickrun {{{
+let g:quickrun_config = {}
+let g:quickrun_config['perl.tap'] = {'command': 'prove'}
 " }}}
 
 " vim:set et foldmethod=marker:
