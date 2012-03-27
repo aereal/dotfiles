@@ -20,9 +20,9 @@ NeoBundle 'Shougo/vimproc'
 " Visualization
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'h1mesuke/vim-alignta'
-"NeoBundle 'skammer/vim-css-color'
 
 " Editting Support
+NeoBundle 'kana/vim-altr'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 't9md/vim-textmanip'
@@ -45,8 +45,10 @@ NeoBundle 'tpope/vim-fugitive'
 " unite sources
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'kmnk/vim-unite-giti'
 
 " Language Support
 NeoBundle 'bbommarito/vim-slim'
@@ -55,9 +57,11 @@ NeoBundle 'depuracao/vim-rdoc'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mr-szymanski/prefixr'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'elixir-lang/vim-elixir'
 
 " Colors
 NeoBundle 'noahfrederick/Hemisu'
@@ -111,7 +115,7 @@ set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
 set encoding=utf-8
 set termencoding=utf-8
 set fileformats=unix,dos,mac
-set directory=~/swp
+set directory=~/.vim/swp
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
 let mapleader   = ' '
@@ -128,14 +132,19 @@ autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!e
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(',', ' => ')
-autocmd FileType ruby    setlocal foldmethod=syntax
+"autocmd FileType ruby    setlocal foldmethod=syntax
 autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 autocmd FileType haskell setlocal et
 autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
 autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
 autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(',', '->')
+autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('->', '.')
+autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', '=>', ',')
+autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
+autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
+autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
 " }}}
 
 "" zencoding.vim {{{
@@ -275,7 +284,7 @@ endif
 
 " vim-fugitive {{{
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gc :<C-u>Gcommit<CR>
+nnoremap <Leader>gc :<C-u>Gcommit --verbose<CR>
 nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
 nnoremap <Leader>gb :<C-u>Gblame<CR>
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
@@ -284,10 +293,23 @@ nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 " }}}
 
 " vim-textmanip {{{
-vmap j <Plug>(Textmanip.move_selection_down)
-vmap k <Plug>(Textmanip.move_selection_up)
-vmap h <Plug>(Textmanip.move_selection_left)
-vmap k <Plug>(Textmanip.move_selection_right)
+"vmap <M-j> <Plug>(Textmanip.move_selection_down)
+"vmap <M-k> <Plug>(Textmanip.move_selection_up)
+"vmap <M-h> <Plug>(Textmanip.move_selection_left)
+"vmap <M-k> <Plug>(Textmanip.move_selection_right)
+" }}}
+
+" vim-altr {{{
+nmap <Leader><C-[> <Plug>(altr-forward)
+nmap <Leader><C-]> <Plug>(altr-back)
+
+call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
+call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+" }}}
+
+" quickrun {{{
+let g:quickrun_config = {}
+let g:quickrun_config['perl.tap'] = {'command': 'prove'}
 " }}}
 
 " vim:set et foldmethod=marker:

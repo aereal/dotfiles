@@ -7,3 +7,4 @@
 .screen/backtick.log*
 .irssi/config
 .irssi/default.theme
+.vim/swp/*
