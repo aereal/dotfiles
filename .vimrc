@@ -132,6 +132,7 @@ autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!e
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(',', ' => ')
+autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
 "autocmd FileType ruby    setlocal foldmethod=syntax
 autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
@@ -142,6 +143,7 @@ autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
 autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('->', '.')
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', '=>', ',')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
 autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
