@@ -131,7 +131,7 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(',', ' => ')
+autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
 autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
 "autocmd FileType ruby    setlocal foldmethod=syntax
 autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
