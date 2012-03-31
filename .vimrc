@@ -30,6 +30,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 
 " Text Object Extensions
 NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 't9md/vim-surround_custom_mapping'
