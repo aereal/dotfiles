@@ -44,12 +44,11 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 
 " unite sources
-NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'kmnk/vim-unite-giti'
 
 " Language Support
 NeoBundle 'bbommarito/vim-slim'
