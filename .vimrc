@@ -205,13 +205,12 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 
 " unite.vim {{{
 nnoremap <silent> ;                :<C-u>call <SID>unite_project('-start-insert')<CR>
-nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir buffer file_mru file<CR>
+nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir file_mru file file/new<CR>
 nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>
 nnoremap <silent> <Leader>[        :<C-u>Unite outline<CR>
 nnoremap <silent> <Leader>.        :<C-u>Unite source<CR>
-nnoremap <silent> <Leader>'        :<C-u>Unite register<CR>
-nnoremap <silent> <Leader>/r       :<C-u>Unite -start-insert -no-quit -default-action=split ref/refe<CR>
-nnoremap <silent> <Leader>s        :<C-u>Unite -start-insert snippet<CR>
+nnoremap <silent> //               :<C-u>Unite line -start-insert<CR>
+nnoremap <silent> <Leader>s        :<C-u>Unite session<CR>
 nnoremap <silent> <Leader>w        :<C-u>Unite -immediately window:no-current<CR>
 nnoremap <silent> <Leader>r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
 nnoremap <silent> <Leader>rc       :<C-u>Unite rails/controller<CR>
