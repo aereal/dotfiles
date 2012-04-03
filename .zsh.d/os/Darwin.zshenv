@@ -2,7 +2,7 @@
 
 export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 export FLEX_HOME=$HOME/sdk/flex
-export LSCOLORS="dxcxgxdxbxegedabagacad"
+export LSCOLORS="cxexfxdxbxegedabagacad"
 
 path=(
   $FLEX_HOME/bin(N-/)
