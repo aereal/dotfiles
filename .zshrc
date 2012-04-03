@@ -124,9 +124,9 @@ init_prompt() {
       PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)%{${reset_color}%}"
     fi
   fi
-  PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
-  PROMPT_CWD="[%{${fg[yellow]}%}%~%{${reset_color}%}]"
-  PROMPT_CMD=" %(?,%{${fg[green]}%}S | v | Z%{${reset_color}%},%{${fg[red]}%}S ; _ ; Z%{${reset_color}%}) < "
+  # PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
+  PROMPT_CWD="[%{${fg[magenta]}%}%~%{${reset_color}%}]"
+  PROMPT_CMD=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
   PROMPT="$PROMPT_CWD (`rprompt-git-current-branch`)
 $PROMPT_CMD"
   RPROMPT="$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW"
