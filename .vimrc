@@ -305,8 +305,14 @@ nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 nmap <Leader><C-[> <Plug>(altr-forward)
 nmap <Leader><C-]> <Plug>(altr-back)
 
-call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
-call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+"call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
+"call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+
+" Rails rules
+call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
+call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
+call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
+call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 " }}}
 
 " quickrun {{{
