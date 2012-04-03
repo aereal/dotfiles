@@ -147,6 +147,7 @@ autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-i
 autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
+autocmd BufEnter */Hatena/* setlocal et ts=4 sts=4 sw=4
 " }}}
 
 "" zencoding.vim {{{
