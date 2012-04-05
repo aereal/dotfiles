@@ -49,6 +49,7 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'tsukkee/unite-tag'
 
 " Language Support
 NeoBundle 'bbommarito/vim-slim'
