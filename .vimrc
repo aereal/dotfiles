@@ -150,6 +150,8 @@ autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
 autocmd BufEnter */Hatena/* setlocal et ts=4 sts=4 sw=4
+autocmd BufEnter */nginx/*.conf set ft=nginx
+autocmd BufEnter */*.nginx.conf set ft=nginx
 " }}}
 
 "" zencoding.vim {{{
