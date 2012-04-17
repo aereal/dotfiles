@@ -15,9 +15,7 @@ if has("gui_macvim")
   set guioptions-=L
   set guioptions-=b
 
-  if has("kaoriya")
-    set transparency=5
-  endif
+  set transparency=10
 endif
 
 if has("gui_running")
