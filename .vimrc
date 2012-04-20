@@ -16,6 +16,7 @@ NeoBundle 'Shougo/neocomplcache-snippets-complete'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
 
 " Visualization
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -323,6 +324,14 @@ call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 " quickrun {{{
 let g:quickrun_config = {}
 let g:quickrun_config['perl.tap'] = {'command': 'prove'}
+" }}}
+
+" vimshell {{{
+let g:vimshell_prompt = " X | _ | X < "
+let g:vimshell_right_prompt = 'getcwd()'
+let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
+
+hi vimshellPrompt guifg=#f9d59d ctermfg=yellow
 " }}}
 
 " vim:set et foldmethod=marker:
