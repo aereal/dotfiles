@@ -186,7 +186,7 @@ __rails_generate() {
             {-c,--scaffold-controller}'[Scaffold controller to be invoked]:NAME' \
             {-e,--template-engine}'[Template engine to be invoked]:NAME' \
             {-y,--stylesheets}'[Generate Stylesheets]:boolean:(true false)' \
-            {-se,--stylesheet-engine}'[Engine for Stylesheets]:STYLESHEET_ENGINE'
+            {-se,--stylesheet-engine}'[Engine for Stylesheets]:STYLESHEET_ENGINE' \
             --force-plural'[Forces the use of a plural ModelName]' \
             --assets'[Indicates where to generate assets]:boolean:(true false)' \
             --helper'[Indicates when to generate helper]:boolean:(true false)'
