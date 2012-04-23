@@ -110,6 +110,7 @@ __padrino_generate() {
           ;;
         project)
           _arguments $_generators_options \
+            '*:APP' \
             {-n,--app}'[The application name]:APP' \
             {-b,--bundle}'[Run bundle install]' \
             --dev'[Use padrino from a git checkout]' \
