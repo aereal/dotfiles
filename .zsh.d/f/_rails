@@ -105,21 +105,21 @@ __rails_generate() {
     command)
       _arguments -C $_runtime_options
       _values 'rails generators' \
-        'assets' \
-        'controller' \
-        'generator' \
-        'helper' \
-        'integration_test' \
-        'mailer' \
-        'migration' \
-        'model' \
-        'observer' \
-        'performance_test' \
-        'resource' \
-        'scaffold' \
-        'scaffold_controller' \
-        'session_migration' \
-        'task'
+        'assets[Stubs out new asset placeholders.]' \
+        'controller[Stubs out a new controller and its views.]' \
+        'generator[Stubs out a new generator at lib/generators.]' \
+        'helper[Stubs out a new helper.]' \
+        'integration_test[Create rails files for integration_test generator]' \
+        'mailer[Stubs out a new maiiler and its views.]' \
+        'migration[Create rails files for migration generator.]' \
+        'model[Create rails files for model generator.]' \
+        'observer[Create rails files for observer generator.]' \
+        'performance_test[Create rails files for performance_test generator.]' \
+        'resource[Create rails files for resource generator.]' \
+        'scaffold[Scaffolds an entire resource, from model and migration to controller and views, along with a full test suite]' \
+        'scaffold_controller[Stubs out a scaffolded controller and its views.]' \
+        'session_migration[Create rails files for session_migration generator.]' \
+        'task[Stubs out a new Rake task.]'
       ;;
     options)
       case $line[1] in
