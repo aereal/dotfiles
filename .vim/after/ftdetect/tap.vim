@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.t set ft+=.tap
+au BufEnter *.t set ft+=.tap
