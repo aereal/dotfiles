@@ -1,0 +1,5 @@
+--lib
+--shuffle
+--color
+--failures
+-Imodules/*/lib
