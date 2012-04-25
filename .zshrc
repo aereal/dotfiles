@@ -108,6 +108,7 @@ autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
+  local git_branch=$(rprompt-git-current-branch)
   if [[ -x `which rvm-prompt` ]]; then
     PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
   elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
@@ -124,11 +125,19 @@ init_prompt() {
       PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)%{${reset_color}%}"
     fi
   fi
-  # PROMPT_USER="%{${fg[magenta]}%}<%n%#%m>%{${reset_color}%}"
+  PROMPT_USER="%{${fg[red]}%}<%n%#%m>%{${reset_color}%}"
   PROMPT_CWD="[%{${fg[magenta]}%}%~%{${reset_color}%}]"
+  if [[ "x$SSH_CLIENT" != "x" ]]; then
+    PROMPT_CWD="$PROMPT_CWD $PROMPT_USER"
+  fi
   PROMPT_CMD=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
-  PROMPT="$PROMPT_CWD (`rprompt-git-current-branch`)
+  if [[ "x$git_branch" != "x" ]]; then
+    PROMPT="$PROMPT_CWD ($git_branch)
 $PROMPT_CMD"
+  else
+    PROMPT="$PROMPT_CWD
+$PROMPT_CMD"
+  fi
   RPROMPT="$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW"
 }
 
