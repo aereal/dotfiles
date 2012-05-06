@@ -214,19 +214,22 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 " }}}
 
 " unite.vim {{{
-nnoremap <silent> ;                :<C-u>call <SID>unite_project('-start-insert')<CR>
-nnoremap <silent> <Leader>o        :<C-u>UniteWithBufferDir file_mru file file/new<CR>
-nnoremap <silent> <Leader>b        :<C-u>Unite buffer<CR>
-nnoremap <silent> <Leader>[        :<C-u>Unite outline<CR>
-nnoremap <silent> <Leader>.        :<C-u>Unite source<CR>
+nnoremap [unite] <Nop>
+nmap ; [unite]
+nnoremap <silent> [unite]o        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
+nnoremap <silent> [unite]O        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
+nnoremap <silent> [unite]b        :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
+nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
+nnoremap <silent> [unite].        :<C-u>Unite source<CR>
 nnoremap <silent> //               :<C-u>Unite line -start-insert<CR>
-nnoremap <silent> <Leader>s        :<C-u>Unite session<CR>
-nnoremap <silent> <Leader>w        :<C-u>Unite -immediately window:no-current<CR>
-nnoremap <silent> <Leader>r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
-nnoremap <silent> <Leader>rc       :<C-u>Unite rails/controller<CR>
-nnoremap <silent> <Leader>rv       :<C-u>Unite rails/view<CR>
-nnoremap <silent> <Leader>rm       :<C-u>Unite rails/model<CR>
-nnoremap <silent> <Leader>rh       :<C-u>Unite rails/helper<CR>
+nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
+nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
+nnoremap <silent> [unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
+nnoremap <silent> [unite]rc       :<C-u>Unite rails/controller<CR>
+nnoremap <silent> [unite]rv       :<C-u>Unite rails/view<CR>
+nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
+nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
 
 autocmd FileType unite call s:unite_local_settings()
 function! s:unite_local_settings()
