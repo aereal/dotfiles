@@ -108,37 +108,37 @@ autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
-  local git_branch=$(rprompt-git-current-branch)
+  local git_branch _python_version python_version ruby_version perl_version
+  local prompt_user prompt_command prompt_cwd
+  git_branch=$(rprompt-git-current-branch)
   if [[ -x `which rvm-prompt` ]]; then
-    PROMPT_RUBY="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
+    ruby_version="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
   elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
-    PROMPT_RUBY="%{${fg[red]}%}(ruby-`rbenv version-name`)%{${reset_color}%}"
+    ruby_version="%{${fg[red]}%}(ruby-`rbenv version-name`)%{${reset_color}%}"
   fi
   if [[ -n "$PERLBREW_PERL" ]]; then
-    PROMPT_PERLBREW="%{${fg[blue]}%}($PERLBREW_PERL)%{${reset_color}%}"
+    perl_version="%{${fg[blue]}%}($PERLBREW_PERL)%{${reset_color}%}"
   fi
   if [[ -n "$PATH_PYTHONBREW" ]]; then
-    local python_version
-    python_version=$(basename $(dirname $(dirname $(which python))))
-    python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $python_version))
+    _python_version=$(basename $(dirname $(dirname $(which python))))
+    _python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $_python_version))
     if [[ -n "$python_version" ]]; then
-      PROMPT_PYTHONBREW="%{${fg[yellow]}%}($python_version)%{${reset_color}%}"
+      python_version="%{${fg[yellow]}%}($_python_version)%{${reset_color}%}"
     fi
   fi
-  PROMPT_USER="%{${fg[red]}%}<%n%#%m>%{${reset_color}%}"
-  PROMPT_CWD="[%{${fg[magenta]}%}%~%{${reset_color}%}]"
-  if [[ "x$SSH_CLIENT" != "x" ]]; then
-    PROMPT_CWD="$PROMPT_CWD $PROMPT_USER"
-  fi
-  PROMPT_CMD=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
+  # prompt_user="%{${fg[red]}%}<%n%#%m>%{${reset_color}%}"
+  prompt_cwd="[%{${fg[magenta]}%}%~%{${reset_color}%}]"
+  prompt_command=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
+  # if [[ "x$SSH_CLIENT" != "x" ]]; then
+  #   prompt_cwd="$prompt_cwd $prompt_user"
+  # fi
+  PROMPT="$ruby_version $perl_version $python_version
+$prompt_command"
   if [[ "x$git_branch" != "x" ]]; then
-    PROMPT="$PROMPT_CWD ($git_branch)
-$PROMPT_CMD"
+    RPROMPT="($git_branch) $prompt_cwd"
   else
-    PROMPT="$PROMPT_CWD
-$PROMPT_CMD"
+    RPROMPT="$prompt_cwd"
   fi
-  RPROMPT="$PROMPT_RUBY $PROMPT_PERLBREW $PROMPT_PTYHONBREW"
 }
 
 precmd_functions=(init_prompt $precmd_functions)
