@@ -178,6 +178,13 @@ fi
 
 case $MULTIPLEXOR in
   tmux)
+    if [ -z $TMUX ]; then
+      if $(tmux has-session); then
+        tmux attach
+      else
+        tmux
+      fi
+    fi
     ;;
   tscreen|screen)
     if [[ $MULTIPLEXOR == "tscreen" ]]; then
