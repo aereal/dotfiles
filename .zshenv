@@ -2,7 +2,8 @@
 
 export ZSH_USER_DIR=$HOME/.zsh.d
 export LANG=ja_JP.UTF-8
-export PAGER=lv
+export PAGER='less --RAW-CONTROL-CHARS'
+export LESS='-i'
 export EDITOR=vim
 export FPATH=$ZSH_USER_DIR/f:$ZSH_USER_DIR/completions:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
