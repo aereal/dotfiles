@@ -121,8 +121,8 @@ set fileformats=unix,dos,mac
 set directory=~/.vim/swp
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 
-let mapleader   = ' '
-let g:mapleader = ' '
+let mapleader   = ';'
+let g:mapleader = ';'
 
 nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
