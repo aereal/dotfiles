@@ -291,7 +291,7 @@ function! s:candidates_colorschemes() " {{{
 endfunction " }}}
 
 " autocmd BufEnter * call <SID>caprice_colorscheme()
-if &term =~ 'xterm-256color'
+if &term =~ '256color'
   colorscheme magica
 else
   colorscheme desert
