@@ -68,7 +68,7 @@ NeoBundle 'nginx.vim'
 
 " Colors
 NeoBundle 'noahfrederick/Hemisu'
-NeoBundle 'aereal/vim-magica-colors'
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
 
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'scrooloose/syntastic'
