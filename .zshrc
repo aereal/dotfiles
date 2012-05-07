@@ -167,6 +167,11 @@ if [[ -d "$HOME/.zsh.d/plugins/zaw" ]] && [[ -r "$HOME/.zsh.d/plugins/zaw/zaw.zs
   source "$HOME/.zsh.d/plugins/zaw/zaw.zsh"
 fi
 
+if [[ -r "$ZSH_USER_DIR/plugins/cdd/cdd" ]]; then
+  . "$ZSH_USER_DIR/plugins/cdd/cdd"
+  chpwd_functions=(_cdd_chpwd $chpwd_functions)
+fi
+
 uname=`uname`
 [[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
 [[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
