@@ -1,5 +1,4 @@
---lib
---shuffle
 --color
---failures
--Imodules/*/lib
+--merge
+-Ilib
+-It/lib
