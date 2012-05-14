@@ -9,7 +9,7 @@ if has('vim_starting')
 endif
 " }}}
 
-" life changing
+NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
@@ -17,17 +17,21 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
-
-" Visualization
-NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'h1mesuke/vim-alignta'
-
-" Editting Support
 NeoBundle 'kana/vim-altr'
 NeoBundle 'kana/vim-smartchr'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'mattn/zencoding-vim'
-NeoBundle 't9md/vim-textmanip'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'sickill/vim-pasta'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'errormarker.vim'
 
 " Text Object Extensions
 NeoBundle 'h1mesuke/textobj-wiw'
@@ -35,44 +39,43 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'vimtaku/vim-textobj-sigil'
 
 " Help & Document
+NeoBundle 'soh335/vim-ref-jquery'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'vim-jp/vimdoc-ja'
-
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-fugitive'
 
 " unite sources
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'tsukkee/unite-help'
-NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'ujihisa/unite-colorscheme'
 
 " Language Support
 NeoBundle 'bbommarito/vim-slim'
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'depuracao/vim-rdoc'
+NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mr-szymanski/prefixr'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'nginx.vim'
+NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'vim-ruby/vim-ruby'
 
 " Colors
 NeoBundle 'noahfrederick/Hemisu'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-
-NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 
