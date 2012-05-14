@@ -347,4 +347,5 @@ let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b
 hi vimshellPrompt guifg=#f9d59d ctermfg=yellow
 " }}}
 
+hi! link CoffeeSpecialVar Constant
 " vim:set et foldmethod=marker:
