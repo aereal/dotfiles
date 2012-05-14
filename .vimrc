@@ -1,5 +1,5 @@
 syntax on
-set bg=light
+set bg=dark
 
 " NeoBundle.vim {{{
 filetype off
