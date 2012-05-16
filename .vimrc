@@ -346,7 +346,7 @@ let g:vimshell_prompt = " X | _ | X < "
 let g:vimshell_right_prompt = 'getcwd()'
 let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
 
-hi vimshellPrompt guifg=#f9d59d ctermfg=yellow
+hi vimshellPrompt ctermfg=yellow
 " }}}
 
 hi! link CoffeeSpecialVar Constant
