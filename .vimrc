@@ -269,9 +269,8 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 " unite.vim {{{
 nnoremap [unite] <Nop>
 nmap <Space> [unite]
-nnoremap <silent> [unite]o        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
-nnoremap <silent> [unite]O        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
-nnoremap <silent> [unite]b        :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
+nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
 nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
 nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
 nnoremap <silent> [unite].        :<C-u>Unite source<CR>
