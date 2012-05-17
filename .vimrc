@@ -9,6 +9,9 @@ if has('vim_starting')
 endif
 " }}}
 
+" Bundles {{{
+
+" Awesome {{{
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
@@ -17,7 +20,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'errormarker.vim'
+"NeoBundle 'errormarker.vim'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-altr'
@@ -34,8 +37,9 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
+" }}}
 
-" Text Object Extensions
+" Text Object Extensions {{{
 NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-textobj-indent'
@@ -45,14 +49,16 @@ NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vimtaku/vim-textobj-sigil'
+" }}}
 
-" Help & Document
+" Help & Document {{{
 NeoBundle 'soh335/vim-ref-jquery'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'vim-jp/vimdoc-ja'
+" }}}
 
-" unite sources
+" unite sources {{{
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'pasela/unite-webcolorname'
@@ -60,8 +66,9 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
+" }}}
 
-" Language Support
+" Language Support {{{
 NeoBundle 'bbommarito/vim-slim'
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'depuracao/vim-rdoc'
@@ -76,14 +83,20 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'vim-ruby/vim-ruby'
+" }}}
 
-" Colors
+" Colors {{{
 NeoBundle 'noahfrederick/Hemisu'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
+" }}}
+
+" }}}
 
 filetype plugin indent on
 
-" indentation
+" Configurations {{{
+
+" indentation {{{
 set autoindent
 set nosmartindent
 set nocindent
@@ -92,6 +105,7 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set expandtab
+" }}}
 
 set ambiwidth=double
 set autoread
@@ -129,6 +143,7 @@ set fileformats=unix,dos,mac
 set directory=~/.vim/swp
 set shortmess+=I
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+" }}}
 
 let mapleader   = ';'
 let g:mapleader = ';'
@@ -138,40 +153,53 @@ nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 
-"" autocmd {{{
-"" screenに編集中のファイル名を出す
+" autocmd {{{
+" screenに編集中のファイル名を出す
 autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+
+" ruby {{{
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
 autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
 autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
 autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
 "autocmd FileType ruby    setlocal foldmethod=syntax
+" }}}
+
+" coffee {{{
 autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+" }}}
+
+" haskell {{{
 autocmd FileType haskell setlocal et
 autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
 autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
 autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+" }}}
+
+" perl {{{
 autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
 autocmd FileType perl    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', ' lt ', ' le ', '<')
 autocmd FileType perl    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', ' gt ', ' ge ', '>')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-autocmd BufEnter */Sorter/* setlocal ts=4 sts=4 sw=4
-autocmd BufEnter */my-list/* setlocal ts=4 sts=4 sw=4
-autocmd BufEnter */diary.pl/* setlocal ts=4 sts=4 sw=4
+" }}}
+
 autocmd BufEnter */Hatena/* setlocal et ts=4 sts=4 sw=4
 autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+
 autocmd BufEnter */nginx/*.conf set ft=nginx
 autocmd BufEnter */*.nginx.conf set ft=nginx
 " }}}
 
-"" zencoding.vim {{{
+" zencoding.vim {{{
 let g:user_zen_leader_key = '<C-e>'
 " }}}
+
+" Command-line Window {{{
 
 " http://vim-users.jp/2010/07/hack161/
 nnoremap   <sid>(command-line-enter) q:
@@ -194,7 +222,9 @@ function! s:init_cmdwin()
   setlocal nonumber
   startinsert!
 endfunction
+" }}}
 
+" Adjust splitted-window width {{{
 " http://vim-users.jp/2009/07/hack42/
 nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
 nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
@@ -206,6 +236,7 @@ function! s:good_width()
     vertical resize 120
   endif
 endfunction
+" }}}
 
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
