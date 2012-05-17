@@ -17,10 +17,6 @@ termcapinfo xterm* 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 vbell off
 bell_msg "Bell in window %^G"
 
-#caption always "%{= wk} %-w%{.dr}%n %t%{-}%+w %=[%S]"
-caption always "%{.Kw}%-w %{.wk}%{!}%n %f%t%{.Kw} %+w %="
-hardstatus ignore
-
 bind w eval 'echo "Operate window"' 'command -c operate'
 bind -c operate ^] command
 bind -c operate j  eval 'focus down'   'command -c operate'
@@ -33,6 +29,7 @@ bind -c operate v  eval 'split -v'     'command -c operate'
 bind -c operate +  eval 'resize +1'    'command -c operate'
 bind -c operate -  eval 'resize -1'    'command -c operate'
 
-hardstatus alwayslastline "[%Y/%02m/%02d %02c:%02s] %0` %=User: %{= c}$USER%{-} Host: %{= b}%H%{-}"
+caption splitonly "%3n %f %t"
+hardstatus alwayslastline "%{.Kw}[%02c] %-w %{.wk}%{!}%n %f%t%{.Kw} %+w %=  %0`"
 
 backtick 0 0 0 ${HOME}/.screen/backtick.rb
