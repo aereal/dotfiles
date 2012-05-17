@@ -166,8 +166,8 @@ autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function 
 " ruby {{{
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
-autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
+"autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
+"autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
 autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
 "autocmd FileType ruby    setlocal foldmethod=syntax
 " }}}
