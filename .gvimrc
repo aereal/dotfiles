@@ -6,7 +6,7 @@ if has("gui_gtk2")
 endif
 
 if has("gui_macvim")
-  set guifont=Monaco:h14
+  set guifont=Consolas:h16
   set guioptions-=T
   set guioptions-=m
   set guioptions-=r
