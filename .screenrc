@@ -1,4 +1,4 @@
-escape "^t^t"
+escape ^jj
 defscrollback 10000
 defutf8 on
 defkanji utf-8
@@ -20,8 +20,6 @@ bell_msg "Bell in window %^G"
 #caption always "%{= wk} %-w%{.dr}%n %t%{-}%+w %=[%S]"
 caption always "%{.Kw}%-w %{.wk}%{!}%n %f%t%{.Kw} %+w %="
 hardstatus ignore
-
-escape ^jj
 
 bind w eval 'echo "Operate window"' 'command -c operate'
 bind -c operate ^] command
