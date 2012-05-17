@@ -162,6 +162,8 @@ autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 " javascript {{{
 autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
 autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
 " }}}
 
 " ruby {{{
