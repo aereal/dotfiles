@@ -52,7 +52,7 @@ NeoBundle 'vimtaku/vim-textobj-sigil'
 " }}}
 
 " Help & Document {{{
-NeoBundle 'soh335/vim-ref-jquery'
+NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -198,6 +198,11 @@ autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
 
 autocmd BufEnter */nginx/*.conf set ft=nginx
 autocmd BufEnter */*.nginx.conf set ft=nginx
+" }}}
+
+" ref.vim {{{
+let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
+let g:ref_jquery_use_cache = 1
 " }}}
 
 " zencoding.vim {{{
