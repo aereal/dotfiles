@@ -158,6 +158,11 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 
+" javascript {{{
+autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+" }}}
+
 " ruby {{{
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
