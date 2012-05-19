@@ -87,6 +87,9 @@ setopt sh_word_split
 # ヒストリを共有する
 setopt share_history
 
+# コマンド実行後は右プロンプトを消す
+setopt transient_rprompt
+
 # completion
 autoload -U compinit
 compinit -u
