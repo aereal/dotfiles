@@ -15,14 +15,14 @@ setopt always_last_prompt
 # ディレクトリ名だけでcd
 # setopt auto_cd
 
-# 自動的にpushd
-setopt auto_pushd
-
 # TABで補完候補をめぐる
 setopt auto_menu
 
 # 括弧などを補完
 setopt auto_param_keys
+
+# 自動的にpushd
+setopt auto_pushd
 
 # 最後のスラッシュを自動的に削除する
 setopt auto_remove_slash
@@ -30,20 +30,20 @@ setopt auto_remove_slash
 # suspendされているプロセスと同じコマンドを叩いたらfg
 setopt auto_resume
 
-# スペルチェック
-setopt correct
-
 # ディレクトリ名として展開しようとする
 setopt cdable_vars
 
 # カーソル位置で補完
 setopt complete_in_word
 
-# 開始、終了時刻をヒストリに書き込む
-setopt extended_history
+# スペルチェック
+setopt correct
 
 # 拡張glob
 setopt extended_glob
+
+# 開始、終了時刻をヒストリに書き込む
+setopt extended_history
 
 # globを展開しないで候補から補完する
 setopt glob_complete
@@ -75,11 +75,11 @@ setopt no_beep
 # 8-bitを通す
 setopt print_eight_bit
 
-# 同じディレクトリはpushdしない
-setopt pushd_ignore_dups
-
 # いいプロンプト
 setopt prompt_subst
+
+# 同じディレクトリはpushdしない
+setopt pushd_ignore_dups
 
 # 互換性のある空白の扱い
 setopt sh_word_split
