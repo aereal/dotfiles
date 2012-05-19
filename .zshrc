@@ -3,6 +3,7 @@
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
+REPORTTIME=3
 
 # Vi風キーバインド
 bindkey -v
