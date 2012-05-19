@@ -1,8 +1,8 @@
 #vim:set ft=zsh:
 
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
 # Vi風キーバインド
 bindkey -v
