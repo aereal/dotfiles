@@ -4,33 +4,87 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# Vi風キーバインド
 bindkey -v
 
 # options
+
+# カーソル位置を保持したまま補完表示
 setopt always_last_prompt
-setopt auto_cd
+
+# ディレクトリ名だけでcd
+# setopt auto_cd
+
+# 自動的にpushd
 setopt auto_pushd
+
+# TABで補完候補をめぐる
 setopt auto_menu
+
+# 括弧などを補完
 setopt auto_param_keys
+
+# 最後のスラッシュを自動的に削除する
 setopt auto_remove_slash
+
+# suspendされているプロセスと同じコマンドを叩いたらfg
+setopt auto_resume
+
+# スペルチェック
 setopt correct
+
+# ディレクトリ名として展開しようとする
 setopt cdable_vars
+
+# カーソル位置で補完
 setopt complete_in_word
+
+# 開始、終了時刻をヒストリに書き込む
 setopt extended_history
+
+# 拡張glob
 setopt extended_glob
+
+# globを展開しないで候補から補完する
 setopt glob_complete
+
+# 補完したらヒストリを展開
 setopt hist_expand
+
+# 直前と同じコマンドをヒストリに追加しない
 setopt hist_ignore_dups
+
+# スペースから始まる場合ヒストリに追加しない
 setopt hist_ignore_space
+
+# ^Dでログアウトしない
 setopt ignore_eof
+
+# すぐにヒストリを追記
 setopt inc_append_history
+
+# 補完候補にファイル種別を表示
 setopt list_types
+
+# --prefix= とかも補完する
 setopt magic_equal_subst
+
+# うるさい
 setopt no_beep
+
+# 8-bitを通す
 setopt print_eight_bit
+
+# 同じディレクトリはpushdしない
 setopt pushd_ignore_dups
+
+# いいプロンプト
 setopt prompt_subst
+
+# 互換性のある空白の扱い
 setopt sh_word_split
+
+# ヒストリを共有する
 setopt share_history
 
 # completion
