@@ -94,7 +94,7 @@ setopt transient_rprompt
 autoload -U compinit
 compinit -u
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*' group-name ''
