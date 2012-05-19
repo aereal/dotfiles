@@ -98,6 +98,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' verbose yes
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*:sudo' command-path $PATH
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
