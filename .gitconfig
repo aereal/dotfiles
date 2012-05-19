@@ -22,6 +22,7 @@
 	ds = diff --staged
 	network = log --graph --all --decorate --oneline
 	summary = status --short --branch
+	vizlog = log --graph --date-order -C -M --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
 [color]
 	diff = auto
 	branch = auto
