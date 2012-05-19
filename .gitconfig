@@ -20,6 +20,7 @@
 	diff-funcon = diff -W
 	diff-funcon-staged = diff --cached -W
 	ds = diff --staged
+	network = log --graph --all --decorate --oneline
 [color]
 	diff = auto
 	branch = auto
