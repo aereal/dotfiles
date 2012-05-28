@@ -184,8 +184,6 @@ autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
 " perl {{{
 autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-autocmd FileType perl    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', ' lt ', ' le ', '<')
-autocmd FileType perl    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', ' gt ', ' ge ', '>')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
 " }}}
