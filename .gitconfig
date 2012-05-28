@@ -57,4 +57,4 @@
 [gitflow "branch"]
 	develop = devel
 [grep]
-	lineNumbers = true
+	lineNumber = true
