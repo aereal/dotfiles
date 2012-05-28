@@ -28,6 +28,7 @@
 	branch = auto
 	status = auto
 	interactive = auto
+	grep = auto
 [color "branch"]
 	current = red
 	local = yellow
