@@ -136,6 +136,7 @@ set fileformats=unix,dos,mac
 set directory=~/.vim/swp
 set shortmess+=I
 set nofoldenable
+set cursorline
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
 " }}}
 
