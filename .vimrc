@@ -191,8 +191,12 @@ autocmd BufEnter *.tt    set ft=tt2
 autocmd BufEnter */t/*.t set ft=perl.tap
 " }}}
 
-autocmd BufEnter */Hatena/* setlocal et ts=4 sts=4 sw=4
+autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
 autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
+autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+autocmd BufEnter */Hatena/*.html     set ft=tt2.html
+autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
 
 autocmd BufEnter */nginx/*.conf set ft=nginx
 autocmd BufEnter */*.nginx.conf set ft=nginx
