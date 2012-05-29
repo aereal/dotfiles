@@ -187,6 +187,8 @@ autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+autocmd BufEnter *.tt    set ft=tt2
+autocmd BufEnter */t/*.t set ft=perl.tap
 " }}}
 
 autocmd BufEnter */Hatena/* setlocal et ts=4 sts=4 sw=4
