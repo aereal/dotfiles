@@ -8,6 +8,7 @@ export EDITOR=vim
 export FPATH=$ZSH_USER_DIR/f:$ZSH_USER_DIR/completions:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
 export XDG_DATA_HOME=/usr/local/share
+export MYSQL_PS1="$(echo -e "<\\\U> [\\\d]\\\n(L:\\\c) \e[33mX | _ | X\e[m < ")"
 
 typeset -U path
 path=(
