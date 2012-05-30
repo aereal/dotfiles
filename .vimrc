@@ -209,6 +209,9 @@ let g:ref_jquery_use_cache = 1
 
 " zencoding.vim {{{
 let g:user_zen_leader_key = '<C-e>'
+let g:user_zen_settings = {
+      \ 'indentation': ' ',
+      \ }
 " }}}
 
 " Command-line Window {{{
