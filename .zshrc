@@ -169,7 +169,7 @@ autoload -U -z rprompt-git-current-branch
 
 init_prompt() {
   local git_branch _python_version python_version ruby_version perl_version
-  local prompt_user prompt_command prompt_cwd
+  local prompt_user prompt_command prompt_cwd first_line next_line
   git_branch=$(rprompt-git-current-branch)
   if [[ -x `which rvm-prompt` ]]; then
     ruby_version="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
@@ -192,13 +192,15 @@ init_prompt() {
   # if [[ "x$SSH_CLIENT" != "x" ]]; then
   #   prompt_cwd="$prompt_cwd $prompt_user"
   # fi
-  PROMPT="$ruby_version $perl_version $python_version
-$prompt_command"
   if [[ "x$git_branch" != "x" ]]; then
-    RPROMPT="($git_branch) $prompt_cwd"
+    first_line="[$git_branch] $ruby_version $perl_version $python_version"
   else
-    RPROMPT="$prompt_cwd"
+    first_line="$ruby_version $perl_version $python_version"
   fi
+  next_line="$prompt_command"
+  PROMPT="$first_line
+$next_line"
+  RPROMPT="$prompt_cwd"
 }
 
 precmd_functions=(init_prompt $precmd_functions)
