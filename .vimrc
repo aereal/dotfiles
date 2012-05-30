@@ -244,8 +244,8 @@ nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
 nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
 
 function! s:good_width()
-  if winwidth(0) < 120
-    vertical resize 120
+  if winwidth(0) < 80
+    vertical resize 80
   endif
 endfunction
 " }}}
