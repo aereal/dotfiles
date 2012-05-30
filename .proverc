@@ -1,3 +1,4 @@
 --color
 -Ilib
 -It/lib
+--failure
