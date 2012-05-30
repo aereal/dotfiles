@@ -330,7 +330,7 @@ endif
 
 " vim-fugitive {{{
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gc :<C-u>Gcommit --verbose<CR>
+nnoremap <Leader>gc :<C-u>Gcommit<CR>
 nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
 nnoremap <Leader>gb :<C-u>Gblame<CR>
 nnoremap <Leader>ga :<C-u>Gwrite<CR>
