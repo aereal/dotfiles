@@ -2,7 +2,7 @@
 
 function rprompt-git-current-branch {
   # http://d.hatena.ne.jp/uasi/20091025/1256458798
-  local name st color gitdir action
+  local name st color gitdir action annotation
   if [[ "$PWD" =~ '\.git(/.*)?$' ]]; then
     return
   fi
@@ -14,17 +14,34 @@ function rprompt-git-current-branch {
   gitdir=`git rev-parse --git-dir 2> /dev/null`
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
 
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    color=%F{green}
-  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+  st=`git status --short --porcelain -b 2> /dev/null`
+
+  if [[ -n `echo "$st" | grep "^[UMADRC]"` ]]; then
+    # Staged
+    annotation="$annotation*"
     color=%F{yellow}
-  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-    color=%B%F{red}
-  else
+  fi
+
+  if [[ -n `echo "$st" | grep "??"` ]]; then
+    # Untracked
+    annotation="$annotation?"
+    color=%F{yellow}
+  fi
+
+  if [[ -n `echo "$st" | grep "^[ ][MD]"` ]]; then
+    # Changed, but not staged
+    annotation="$annotation!"
     color=%F{red}
   fi
 
-  echo "$color$name$action%f%b"
+  if [[ -n `echo "$st" | grep "^##.\+]$"` ]]; then
+    name="+$name"
+  fi
+
+  if [[ -z "$color" ]]; then
+    color=%F{green}
+  fi
+
+  echo "$color$name$action$annotation%f%b"
 }
 
