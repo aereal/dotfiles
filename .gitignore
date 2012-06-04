@@ -1,6 +1,6 @@
 .vimperator/info/
 .vim/cookies/
-.vim/bundle/
+.vim/bundle/*
 .atig/oauth
 .vim/netrwhist
 .vim/.netrwhist
@@ -8,3 +8,4 @@
 .irssi/config
 .irssi/default.theme
 .vim/swp/*
+!.vim/bundle/neobundle.vim
