@@ -84,6 +84,11 @@ NeoBundle 'vim-ruby/vim-ruby'
 
 " Colors {{{
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
+NeoBundle 'mayansmoke.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'noahfrederick/Hemisu'
+NeoBundle 'molokai.vim'
 " }}}
 
 NeoBundle 'mattn/sonictemplate-vim'
