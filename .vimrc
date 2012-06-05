@@ -86,6 +86,7 @@ NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
 " }}}
 
 " }}}
+NeoBundle 'mattn/sonictemplate-vim'
 
 filetype plugin indent on
 
