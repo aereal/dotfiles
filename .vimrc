@@ -85,10 +85,9 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
 " }}}
 
-" }}}
 NeoBundle 'mattn/sonictemplate-vim'
 
-filetype plugin indent on
+" }}}
 
 " Configurations {{{
 
@@ -138,11 +137,13 @@ set termencoding=utf-8
 set fileformats=unix,dos,mac
 set directory=~/.vim/swp
 set shortmess+=I
-set nofoldenable
 set cursorline
 "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+
+filetype plugin indent on
 " }}}
 
+" Key mappings {{{
 let mapleader   = ';'
 let g:mapleader = ';'
 
@@ -150,6 +151,7 @@ nnoremap <Space><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+" }}}
 
 " autocmd {{{
 " screenに編集中のファイル名を出す
@@ -208,20 +210,7 @@ autocmd BufEnter */nginx/*.conf set ft=nginx
 autocmd BufEnter */*.nginx.conf set ft=nginx
 " }}}
 
-" ref.vim {{{
-let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
-let g:ref_jquery_use_cache = 1
-" }}}
-
-" zencoding.vim {{{
-let g:user_zen_leader_key = '<C-e>'
-let g:user_zen_settings = {
-      \ 'indentation': ' ',
-      \ }
-" }}}
-
 " Command-line Window {{{
-
 " http://vim-users.jp/2010/07/hack161/
 nnoremap   <sid>(command-line-enter) q:
 xnoremap   <sid>(command-line-enter) q:
@@ -259,6 +248,18 @@ function! s:good_width()
 endfunction
 " }}}
 
+" ref.vim {{{
+let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
+let g:ref_jquery_use_cache = 1
+" }}}
+
+" zencoding.vim {{{
+let g:user_zen_leader_key = '<C-e>'
+let g:user_zen_settings = {
+      \ 'indentation': ' ',
+      \ }
+" }}}
+
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -294,7 +295,7 @@ nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
 nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
 
 autocmd FileType unite call s:unite_local_settings()
-function! s:unite_local_settings()
+function! s:unite_local_settings()"{{{
   nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
   inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
   nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
@@ -303,7 +304,7 @@ function! s:unite_local_settings()
   inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
   nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
   inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
-endfunction
+endfunction " }}}
 
 function! s:unite_project(...) " s:unite_project(...) {{{
   let opts = (a:0 ? join(a:000, ' ') : '')
@@ -330,12 +331,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent  = 10
 let g:indent_guides_guide_size            = &sw
 " }}}
-
-if &term =~ '256color'
-  colorscheme magica
-else
-  colorscheme desert
-endif
 
 " vim-fugitive {{{
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
@@ -380,6 +375,14 @@ let g:vimshell_right_prompt = 'getcwd()'
 let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
 
 hi vimshellPrompt ctermfg=yellow
+" }}}
+
+" Color scheme {{{
+if &term =~ '256color'
+  colorscheme magica
+else
+  colorscheme desert
+endif
 " }}}
 
 hi! link CoffeeSpecialVar Constant
