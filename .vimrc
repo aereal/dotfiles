@@ -259,6 +259,7 @@ endfunction
 " ref.vim {{{
 let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
 let g:ref_jquery_use_cache = 1
+let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
 
 " zencoding.vim {{{

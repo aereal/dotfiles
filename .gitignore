@@ -10,3 +10,4 @@
 .vim/swp/*
 !.vim/bundle/neobundle.vim
 .vim/.neocon/*
+.vim/.ref/*
