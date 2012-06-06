@@ -11,3 +11,4 @@
 !.vim/bundle/neobundle.vim
 .vim/.neocon/*
 .vim/.ref/*
+.vim/.unite/*

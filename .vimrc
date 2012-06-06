@@ -288,6 +288,8 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 " }}}
 
 " unite.vim {{{
+let g:unite_data_directory = $HOME . '.vim/.unite'
+
 nnoremap [unite] <Nop>
 nmap <Space> [unite]
 nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
