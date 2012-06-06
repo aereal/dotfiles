@@ -272,6 +272,9 @@ let g:user_zen_settings = {
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
 
 inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"

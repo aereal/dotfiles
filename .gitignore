@@ -9,3 +9,4 @@
 .irssi/default.theme
 .vim/swp/*
 !.vim/bundle/neobundle.vim
+.vim/.neocon/*
