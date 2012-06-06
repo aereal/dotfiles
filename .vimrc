@@ -288,7 +288,7 @@ imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
 " }}}
 
 " unite.vim {{{
-let g:unite_data_directory = $HOME . '.vim/.unite'
+let g:unite_data_directory = '~/.vim/.unite'
 
 nnoremap [unite] <Nop>
 nmap <Space> [unite]
