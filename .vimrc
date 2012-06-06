@@ -90,7 +90,7 @@ NeoBundle 'mayansmoke.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'noahfrederick/Hemisu'
-NeoBundle 'molokai.vim'
+NeoBundle 'tomasr/molokai.vim'
 " }}}
 
 NeoBundle 'mattn/sonictemplate-vim'
