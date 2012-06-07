@@ -1,0 +1,360 @@
+#compdef cabal
+
+local WORDS
+
+_cabal ()
+{
+    WORDS=()
+    for w in $words[1,(($CURRENT - 1))]; do
+        if [[ $w != -* ]]; then WORDS+=$w; fi
+    done
+    if (( $#WORDS == 1 )); then
+        _arguments \
+            {-h,--help}'[Show help]' \
+            {-V,--version}'[Print version information]' \
+            '--numeric-version[Print just the version number]' \
+            '*::command:_cabal_command'
+    else
+        _arguments '*::command:_cabal_command'
+    fi
+}
+
+_cabal_command ()
+{
+    local -a _cabal_cmds
+    _cabal_cmds=(
+        'configure:Prepare to build the package'
+        'install:Installs a list of packages'
+        'list:List packages matching a search string'
+        'info:Display detailed information about a particular package'
+        'update:Updates list of known packages'
+        'upgrade:Upgrades installed packages to the latest available version'
+        'fetch:Downloads packages for later installation or study'
+        'upload:Uploads source packages to Hackage'
+        'check:Check the package for common mistakes'
+        'sdist:Generate a source distribution file (.tar.gz)'
+        'report:Upload build reports to a remote server'
+        'unpack:Unpacks packages for user inspection'
+        'build:Make this package ready for installation'
+        'copy:Copy the files into the install locations'
+        'haddock:Generate Haddock HTML documentation'
+        'clean:Clean up after a build'
+        'hscolour:Generate HsColour colourised code, in HTML format'
+        'register:Register this package with the compiler'
+        'test:Run the test suite, if any (configure with UserHooks)'
+        'help:Help about commands'
+    )
+    if (( CURRENT == 1 )) then
+        _describe -t commands 'command' _cabal_cmds || compadd "$@"
+    else
+      local curcontext="$curcontext"
+      cmd="${${_cabal_cmds[(r)$WORDS[2]:*]%%:*}}"
+        if (( $#cmd )); then
+            _call_function ret _cabal_$cmd
+        else
+            _message "unknown cabal command: $WORDS[2]"
+        fi            
+    fi
+}
+
+_cabal_build ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated build files]:directory:_files -/'
+}
+
+_cabal_check ()
+{
+    _arguments {-h,--help}'[Show help]'
+}
+
+_cabal_clean ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated build files]:directory:_files -/' \
+        {-s,--save-configure}'[Do not remove the configuration file]'
+}
+
+_cabal_configure ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated build files]:directory:_files -/' \
+        {-g,--ghc}'[Compile with GHC]' \
+        '--nhc98[Compile with NHC]' \
+        '--jhc[Compile with JHC]' \
+        '--hugs[Compile with Hugs]' \
+        {-w,--with-compiler=}'[Give the path to a particular compiler]:file:_files' \
+        '--with-hc-pkg=[Give the path to the package tool]:file:_files' \
+        '--prefix=[Take this prefix in preparation of installation]:directory:_files -/' \
+        '--bindir=[Installation directory for executables]:directory:_files -/' \
+        '--libdir=[Installation directory for libraries]:directory:_files -/' \
+        '--libsubdir=[Subdirectory of libdir in which libs are installed]:directory:_files -/' \
+        '--libexecdir=[Iinstallation directory for program executables]:directory:_files -/' \
+        '--datadir=[Installation directory for read-only data]:directory:_files -/' \
+        '--datasubdir=[Subdirectory of datadir in which data files are installed]:directory:_files -/' \
+        '--docdir=[Installation directory for documentation]:directory:_files -/' \
+        '--htmldir=[Installation directory for HTML]:directory:_files -/' \
+        '--haddockdir=[Installation directory for haddock interfaces]:directory:_files -/' \
+        {-b,--scratchdir=}'[Directory to receive the built package]:directory:_files -/' \
+        '--program-prefix=[Prefix to be applied to installed executables]' \
+        '--program-suffix=[Suffix to be applied to installed executables]' \
+        '--enable-library-vanilla[Enable Vanilla libraries]' \
+        '--disable-library-vanilla[Disable Vanilla libraries]' \
+        {-p,--enable-library-profiling}'[Enable Library profiling]' \
+        '--disable-library-profiling[Disable Library profiling]' \
+        '--enable-shared[Enable Shared library]' \
+        '--disable-shared[Disable Shared library]' \
+        '--enable-executable-profiling[Enable Executable profiling]' \
+        '--disable-executable-profiling[Disable Executable profiling]' \
+        {-O-,--enable-optimization=}'[Build with optimization]:level:(0 1 2)' \
+        '--disable-optimization[Build without optimization]' \
+        '--enable-library-for-ghci[Enable compile library for use with GHCi]' \
+        '--disable-library-for-ghci[Disable compile library for use with GHCi]' \
+        '--enable-split-objs[Enable split library into smaller objects]' \
+        '--disable-split-objs[Disable split library into smaller objects]' \
+        '--enable-executable-stripping[Enable strip executables upon installation]' \
+        '--disable-executable-stripping[Disable strip executables upon installation]' \
+        '--configure-option=[Extra option for configure]' \
+        '--user[Enable doing a per-user installation]' \
+        '--global[Disable doing a per-user installation]' \
+        '--package-db=[Use a specific package database]:files:_files' \
+        {-f,--flags=}'[Force values for the given flags]:flags:' \
+        '--extra-include-dirs=[A list of directories to search for header files]:directory:_files -/' \
+        '--extra-lib-dirs=[A list of directories to search for externallibraries]:directory:_files -/' \
+        '--constraint=[A list of additional constraints on the dependencies]' \
+        '--cabal-lib-version=[Select which version of the Cabal lib to use]' \
+        '--preference=[Specify preferences on the version of a package]'    
+}
+
+_cabal_copy ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--enable-shell-wrappers[Enable using shell script wrappers]' \
+        '--disable-shell-wrappers[Disable using shell script wrappers]' \
+        '--builddir=[The directory where Cabal puts generated build]:directory:_files -/' \
+        '--inplace[Copy the package in the install subdirectory of the dist prefix]' \
+        '--destdir=[Directory to copy files to]:directory:_files -/'
+}
+
+_cabal_fetch ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '*:package:_cabal_list_packages'
+}
+
+_cabal_haddock ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--hoogle[Generate a hoogle database]' \
+        '--executables[Run haddock for Executables targets]' \
+        '--internal[Run haddock for internal modules]' \
+        '--hyperlink-source[Hyperlink the documentation to the source code]' \
+        '--builddir=[The directory where Cabal puts generated files]:directory:_files -/' \
+        '--html-location=[Location of HTML documentation]:url:' \
+        '--css=[Path to the haddock stylesheet]:file:_files' \
+        '--hscolour-css=[Path to the HsColour stylesheet]:file:_files' \
+        '--with-haddock=[Path to haddock]:file:_files' \
+        '--haddock-options=[Extra options to haddock]:option:' \
+        '--haddock-option=[Extra options to haddock]:option:'
+}
+
+
+_cabal_help ()
+{
+    local -a cmds
+    cmds=(configure install list info update upgrade fetch upload
+        check sdist report unpack build copy haddock clean hscolour register test help)
+    _arguments \
+        {-h,--help}'[Show help]' \
+        '*::command:( $cmds )'
+}
+
+_cabal_hscolour ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated files]:directory:_files -/' \
+        '--executables[Run hscolour for Executables targets]' \
+        '--css=[Path to stylesheet]:file:_files'
+}
+
+_cabal_info ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '*:package:_cabal_list_packages'
+}
+
+_cabal_install ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated build files]:directory:_files -/' \
+        {-g,--ghc}'[Compile with GHC]' \
+        '--nhc98[Compile with NHC]' \
+        '--jhc[Compile with JHC]' \
+        '--hugs[Compile with Hugs]' \
+        {-w,--with-compiler=}'[Give the path to a particular compiler]:file:_files' \
+        '--with-hc-pkg=[Give the path to the package tool]:file:_files' \
+        '--prefix=[Take this prefix in preparation of installation]:directory:_files -/' \
+        '--bindir=[Installation directory for executables]:directory:_files -/' \
+        '--libdir=[Installation directory for libraries]:directory:_files -/' \
+        '--libsubdir=[Subdirectory of libdir in which libs are installed]:directory:_files -/' \
+        '--libexecdir=[Iinstallation directory for program executables]:directory:_files -/' \
+        '--datadir=[Installation directory for read-only data]:directory:_files -/' \
+        '--datasubdir=[Subdirectory of datadir in which data files are installed]:directory:_files -/' \
+        '--docdir=[Installation directory for documentation]:directory:_files -/' \
+        '--htmldir=[Installation directory for HTML]:directory:_files -/' \
+        '--haddockdir=[Installation directory for haddock interfaces]:directory:_files -/' \
+        {-b,--scratchdir=}'[Directory to receive the built package]:directory:_files -/' \
+        '--program-prefix=[Prefix to be applied to installed executables]' \
+        '--program-suffix=[Suffix to be applied to installed executables]' \
+        '--enable-library-vanilla[Enable Vanilla libraries]' \
+        '--disable-library-vanilla[Disable Vanilla libraries]' \
+        {-p,--enable-library-profiling}'[Enable Library profiling]' \
+        '--disable-library-profiling[Disable Library profiling]' \
+        '--enable-shared[Enable Shared library]' \
+        '--disable-shared[Disable Shared library]' \
+        '--enable-executable-profiling[Enable Executable profiling]' \
+        '--disable-executable-profiling[Disable Executable profiling]' \
+        {-O-,--enable-optimization=}'[Build with optimization]:level:(0 1 2)' \
+        '--disable-optimization[Build without optimization]' \
+        '--enable-library-for-ghci[Enable compile library for use with GHCi]' \
+        '--disable-library-for-ghci[Disable compile library for use with GHCi]' \
+        '--enable-split-objs[Enable split library into smaller objects]' \
+        '--disable-split-objs[Disable split library into smaller objects]' \
+        '--enable-executable-stripping[Enable strip executables upon installation]' \
+        '--disable-executable-stripping[Disable strip executables upon installation]' \
+        '--configure-option=[Extra option for configure]' \
+        '--user[Enable doing a per-user installation]' \
+        '--global[Disable doing a per-user installation]' \
+        '--package-db=[Use a specific package database]:files:_files' \
+        {-f,--flags=}'[Force values for the given flags]:flags:' \
+        '--extra-include-dirs=[A list of directories to search for header files]:directory:_files -/' \
+        '--extra-lib-dirs=[A list of directories to search for externallibraries]:directory:_files -/' \
+        '--constraint=[A list of additional constraints on the dependencies]' \
+        '--cabal-lib-version=[Select which version of the Cabal lib to use]' \
+        '--preference=[Specify preferences on the version of a package]' \
+        \
+        '--enable-documentation[Enable building of documentation]' \
+        '--disable-documentation[Disable building of documentation]' \
+        '--dry-run[Do not install anything]' \
+        '--reinstall[Always install]' \
+        '--root-cmd=[Command used to gain root privileges]::' \
+        '--symlink-bindir=[Add symlinks into this directory]:directory:_files -/' \
+        '--build-summary=[Save build summaries to file]:file:_files' \
+        '--build-log=[Log all builds to file]:file:_files' \
+        '--remote-build-reporting=[Generate build reports to send to a remote]:level:(none anonymous detailed)' \
+        '*:package:_cabal_list_packages'        
+}
+
+_cabal_list ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--installed[Only print installed packages]' \
+        '--simple-output[Print in a easy-to-parse format]' \
+        '*:package:_cabal_list_packages'
+}
+
+_cabal_register ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated files]:directory:_files -/' \
+        "--user[Register in user's local package database]" \
+        "--global[Register in the system-wide package database]" \
+        '--inplace[Register in build location]' \
+        '--gen-script[Generate a script to register later]' \
+        '--gen-pkg-config=[Generate package registration file]'
+}
+
+_cabal_report ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)'
+}
+
+_cabal_sdist ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated files]:directory:_files -/' \
+        '--snapshot[Produce a snapshot source distribution]'
+}
+
+_cabal_test ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        '--builddir=[The directory where Cabal puts generated files]:directory:_files -/' \
+ }
+
+_cabal_unpack ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        {-d,--destdir=}'[Where to unpack the packages]:directory:_files -/' \
+        '*:package:_cabal_list_packages'
+}
+
+_cabal_update ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)'
+}
+
+_cabal_upgrade ()
+{
+    _cabal_install
+}
+
+_cabal_upload ()
+{
+    _arguments \
+        {-h,--help}'[Show help]' \
+        {-v-,--verbose=}'[Control verbosity]:level:(0 1 2 3)' \
+        {-c,--check}'[Do not upload, just do QA checks]' \
+        {-u,--username=}'[Hackage username]' \
+        {-p,--password=}'[Hackage password]' \
+        '*:file:_files -g "*.tar.gz"'
+}
+
+_cabal_list_packages () {
+    _cabal_get_available_packages
+    compadd "$@" -a -- _cabal_available_packages
+}
+
+_cabal_get_available_packages ()
+{
+    if ( [[ ${+_cabal_available_packages} -eq 0 ]] || _cache_invalid CABAL_AVAILABLE_PACKAGES ) &&
+	! _retrieve_cache CABAL_AVAILABLE_PACKAGES;
+    then
+        _cabal_available_packages=( $(cabal list --simple-output | cut -d' ' -f1 | uniq) )
+        _store_cache CABAL_AVAILABLE_PACKAGES _cabal_available_packages
+    fi
+}
+
+_cabal "$@"
