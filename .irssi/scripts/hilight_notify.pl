@@ -1,0 +1,1 @@
+/Users/aereal/.irssi/scripts/autoload/hilight_notify.pl
