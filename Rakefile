@@ -30,4 +30,5 @@ namespace :dotfiles do
   distribution_task :pry,        %w(.pryrc)
   distribution_task :irb,        %w(.irbrc)
   distribution_task :perl,       %w(.proverc .re.pl)
+  distribution_task :irssi,      %w(.irssi)
 end
