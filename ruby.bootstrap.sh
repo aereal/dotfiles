@@ -12,3 +12,8 @@ eval "$(rbenv init -)"
 
 echo "Install 1.9.3-p194"
 rbenv install 1.9.3-p194
+
+gem update --system
+gem update
+gem install bundler hub
+rbenv rehash
