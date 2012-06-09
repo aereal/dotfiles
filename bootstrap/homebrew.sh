@@ -24,7 +24,7 @@ echo "rbenv and ruby-build"
 brew install rbenv ruby-build
 
 echo "Databases"
-brew install mongodb mysql postgresql redis
+brew install mysql redis
 
 echo "Install Node.js"
 brew install node
@@ -41,8 +41,3 @@ brew install irssi
 
 echo "Other tools"
 brew install keychain proctools ssh-copy-id coreutils
-
-echo "Other language runtimes"
-brew install \
-  clojure clojure-contrib dmd erlang gauche \
-  haskell-platform haxe io lua objective-caml scala
