@@ -15,6 +15,5 @@ abbreviations=(
 )
 
 gyazolife() {
-  screencapture -i ~/Pictures/screencaptures/$(date +'%Y%m%d%H%M%S').png
-  open 'http://f.hatena.ne.jp/aereal/up?folder=screenshot'
+  [[ -d "/Applications/Gyazolife.app" ]] && open /Applications/Gyazolife.app/
 }
