@@ -1,14 +1,12 @@
 #!/bin/sh -v
 
 if [[ ! -x `which brew` ]]; then
-  echo "Homebrew is not installed or brew command is not in PATH"
-  exit 1
+  echo "Homebrew is not found, try to install"
+  /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 fi
 
-if [[ ! -x `which git` ]]; then
-  echo "Git is not installed, so install it"
-  brew install git
-fi
+echo "First, install Git"
+brew install git
 
 brew update
 
