@@ -13,3 +13,10 @@ perlbrew install-cpanm
 
 echo "Switch to $__PERL_VERSION"
 perlbrew switch $__PERL_VERSION
+
+cpanm --notest \
+  HTTP::Request::Common \
+  Growl::GNTP \
+  AnyEvent::HTTP \
+  Project::Libs \
+  Module::Install
