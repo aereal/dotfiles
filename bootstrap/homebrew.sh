@@ -36,6 +36,9 @@ brew install wget --enable-iri
 echo "encfs"
 brew install encfs
 
+echo "Irssi"
+brew install irssi
+
 echo "Other tools"
 brew install keychain proctools ssh-copy-id coreutils
 
