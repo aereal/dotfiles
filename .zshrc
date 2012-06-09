@@ -245,6 +245,7 @@ fi
 
 case $MULTIPLEXOR in
   tmux)
+    autoload -U -z nw
     if [ -z $TMUX ]; then
       if $(tmux has-session); then
         tmux attach
