@@ -17,8 +17,8 @@ echo "Heavy duty tools"
 brew install tig tmux zsh
 brew install reattach-to-user-namespace
 
-echo "Install MacVim"
-brew install macvim
+# echo "Install MacVim"
+# brew install macvim
 
 echo "rbenv and ruby-build"
 brew install rbenv ruby-build
@@ -33,11 +33,11 @@ echo "Web tools"
 brew install curl w3m
 brew install wget --enable-iri
 
-echo "encfs"
-brew install encfs
+# echo "encfs"
+# brew install encfs
 
 echo "Irssi"
 brew install irssi
 
 echo "Other tools"
-brew install keychain proctools ssh-copy-id coreutils
+brew install keychain ssh-copy-id coreutils
