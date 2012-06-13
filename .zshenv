@@ -5,10 +5,16 @@ export LANG=ja_JP.UTF-8
 export PAGER='less --RAW-CONTROL-CHARS'
 export LESS='-i'
 export EDITOR=vim
-export FPATH=$ZSH_USER_DIR/f:$ZSH_USER_DIR/completions:$FPATH
 export LS_COLORS="di=33:ln=32:ex=31:pi=34"
 export XDG_DATA_HOME=/usr/local/share
 export MYSQL_PS1="$(echo -e "<\\\U> [\\\d]\\\n(L:\\\c) \e[33mX | _ | X\e[m < ")"
+
+typeset -U fpath
+fpath=(
+  $ZSH_USER_DIR/f(N-/)
+  $ZSH_USER_DIR/completions(N-/)
+  $fpath
+)
 
 typeset -U path
 path=(
