@@ -93,6 +93,10 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'noahfrederick/Hemisu'
 NeoBundle 'git://gist.github.com/187578.git'
 NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'tpope/vim-vividchalk'
+NeoBundle 'mrkn256.vim'
+NeoBundle 'railscasts.vim'
+NeoBundle 'wombat.vim'
 " }}}
 
 NeoBundle 'mattn/sonictemplate-vim'
