@@ -91,7 +91,6 @@ NeoBundle 'mayansmoke.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'noahfrederick/Hemisu'
-NeoBundle 'tomasr/molokai.vim'
 NeoBundle 'git://gist.github.com/187578.git'
 NeoBundle 'nelstrom/vim-mac-classic-theme'
 " }}}
