@@ -20,11 +20,8 @@ endif
 
 if has("gui_running")
   set fuoptions=maxvert,maxhorz
-  "set bg=dark
-  "colorscheme magica
-
-  set bg=light
-  colorscheme solarized
+  set bg=dark
+  colorscheme magica
 
   hi vimshellPrompt guifg=#f9d59d
 endif
