@@ -22,6 +22,7 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'errormarker.vim'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-altr'
+NeoBundle 'kana/vim-arpeggio'
 NeoBundle 'kana/vim-gf-diff'
 NeoBundle 'kana/vim-gf-user'
 NeoBundle 'kana/vim-smartchr'
@@ -29,11 +30,10 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'sickill/vim-pasta'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'sudo.vim'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'sudo.vim'
-NeoBundle 'kana/vim-arpeggio'
 " }}}
 
 " Text Object Extensions {{{
@@ -86,16 +86,16 @@ NeoBundle 'vim-ruby/vim-ruby'
 " }}}
 
 " Colors {{{
-NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-NeoBundle 'mayansmoke.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'noahfrederick/Hemisu'
 NeoBundle 'git://gist.github.com/187578.git'
-NeoBundle 'nelstrom/vim-mac-classic-theme'
-NeoBundle 'tpope/vim-vividchalk'
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
+NeoBundle 'mayansmoke.vim'
 NeoBundle 'mrkn256.vim'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'noahfrederick/Hemisu'
 NeoBundle 'railscasts.vim'
+NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'wombat.vim'
 " }}}
 
