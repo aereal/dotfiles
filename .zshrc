@@ -225,6 +225,10 @@ alias ll='ls --color -AFl'
 alias :q='exit'
 alias ps='ps aux'
 
+if [[ -x `which hub` ]]; then
+  eval "$(hub alias -s zsh)"
+fi
+
 if [[ -d "$HOME/.zsh.d/plugins/zaw" ]] && [[ -r "$HOME/.zsh.d/plugins/zaw/zaw.zsh" ]]; then
   source "$HOME/.zsh.d/plugins/zaw/zaw.zsh"
 fi
