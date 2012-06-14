@@ -2,7 +2,7 @@
 
 function rprompt-git-current-branch {
   # http://d.hatena.ne.jp/uasi/20091025/1256458798
-  local name st color gitdir action annotation
+  local name st color gitdir action annotation stashes
   if [[ "$PWD" =~ '\.git(/.*)?$' ]]; then
     return
   fi
@@ -13,6 +13,9 @@ function rprompt-git-current-branch {
 
   gitdir=`git rev-parse --git-dir 2> /dev/null`
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+
+  stashes=$(git --no-pager stash list 2> /dev/null | wc -l)
+  [[ "$stashes" != "" ]] && stashes=" %{${fg[magenta]}%}@$stashes"
 
   st=`git status --short --porcelain -b 2> /dev/null`
 
@@ -42,6 +45,6 @@ function rprompt-git-current-branch {
     color=%F{green}
   fi
 
-  echo "$color$name$action$annotation%f%b"
+  echo "$color$name$action$annotation$stashes%f%b"
 }
 
