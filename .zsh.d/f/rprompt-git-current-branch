@@ -6,7 +6,7 @@ function rprompt-git-current-branch {
   if [[ "$PWD" =~ '\.git(/.*)?$' ]]; then
     return
   fi
-  name=`git branch 2> /dev/null | grep '^\*' | cut -b 3-`
+  name=$(git symbolic-ref --short HEAD 2> /dev/null)
   if [[ -z $name ]]; then
     return
   fi
