@@ -65,6 +65,10 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
 " }}}
 
+" Visualization{{{
+NeoBundle 'lilydjwg/colorizer'
+" }}}
+
 " Language Support {{{
 NeoBundle 'bbommarito/vim-slim'
 NeoBundle 'davidoc/taskpaper.vim'
@@ -74,7 +78,6 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'nginx.vim'
 NeoBundle 'nono/jquery.vim'
 NeoBundle 'othree/html5.vim'
@@ -85,6 +88,10 @@ NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'vim-ruby/vim-ruby'
+" }}}
+
+" Some utilities {{{
+NeoBundle 'mattn/sonictemplate-vim'
 " }}}
 
 " Colors {{{
@@ -101,8 +108,6 @@ NeoBundle 'railscasts.vim'
 NeoBundle 'tpope/vim-vividchalk'
 NeoBundle 'wombat.vim'
 " }}}
-
-NeoBundle 'mattn/sonictemplate-vim'
 
 " }}}
 
