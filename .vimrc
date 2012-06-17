@@ -407,7 +407,7 @@ hi vimshellPrompt ctermfg=yellow
 
 " Color scheme {{{
 if &term =~ '256color'
-  colorscheme magica
+  colorscheme jellybeans
 else
   colorscheme desert
 endif
