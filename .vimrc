@@ -47,6 +47,13 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vimtaku/vim-textobj-sigil'
 " }}}
 
+" Text Operators {{{
+NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'tyru/operator-camelize.vim'
+" }}}
+
 " Help & Document {{{
 NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'thinca/vim-ref'
