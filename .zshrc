@@ -196,10 +196,10 @@ init_prompt() { #{{{
   local git_branch _python_version python_version ruby_version perl_version
   local prompt_user prompt_command prompt_cwd first_line next_line
   git_branch=$(rprompt-git-current-branch)
-  if [[ -x `which rvm-prompt` ]]; then
-    ruby_version="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
-  elif [[ `type rbenv` = 'rbenv is a shell function' ]]; then
+  if [[ `type rbenv` = 'rbenv is a shell function' ]]; then
     ruby_version="%{${fg[red]}%}(ruby-`rbenv version-name`)%{${reset_color}%}"
+  elif [[ -x `which rvm-prompt` ]]; then
+    ruby_version="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
   fi
   if [[ -n "$PERLBREW_PERL" ]]; then
     perl_version="%{${fg[blue]}%}($PERLBREW_PERL)%{${reset_color}%}"
