@@ -212,20 +212,20 @@ init_prompt() { #{{{
     fi
   fi
   # prompt_user="%{${fg[red]}%}<%n%#%m>%{${reset_color}%}"
-  prompt_cwd="[%{${fg[magenta]}%}%~%{${reset_color}%}]"
+  prompt_cwd="%{${fg[magenta]}%}%~%{${reset_color}%}"
   prompt_command=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
   # if [[ "x$SSH_CLIENT" != "x" ]]; then
   #   prompt_cwd="$prompt_cwd $prompt_user"
   # fi
   if [[ "x$git_branch" != "x" ]]; then
-    first_line="[$git_branch] $ruby_version $perl_version $python_version"
+    first_line=" $prompt_cwd ($git_branch)"
   else
-    first_line="$ruby_version $perl_version $python_version"
+    first_line=" $prompt_cwd"
   fi
   next_line="$prompt_command"
   PROMPT="$first_line
 $next_line"
-  RPROMPT="$prompt_cwd"
+  RPROMPT="$ruby_version $perl_version $python_version"
 } #}}}
 
 precmd_functions=(init_prompt $precmd_functions)
