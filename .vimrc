@@ -105,14 +105,10 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'git://gist.github.com/187578.git'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-NeoBundle 'mayansmoke.vim'
 NeoBundle 'mrkn256.vim'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nelstrom/vim-mac-classic-theme'
 NeoBundle 'noahfrederick/Hemisu'
-NeoBundle 'railscasts.vim'
-NeoBundle 'tpope/vim-vividchalk'
-NeoBundle 'wombat.vim'
 " }}}
 
 " }}}
