@@ -15,7 +15,7 @@ function rprompt-git-current-branch {
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
 
   stashes=$(git --no-pager stash list 2> /dev/null | wc -l)
-  [[ "$stashes" != "" ]] && stashes=" %{${fg[magenta]}%}@$stashes"
+  [[ "$stashes" != "" ]] && stashes=" %{${fg[yellow]}%}@$stashes"
 
   st=`git status --short --porcelain -b 2> /dev/null`
 
