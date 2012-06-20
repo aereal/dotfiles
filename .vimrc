@@ -309,8 +309,10 @@ let g:unite_data_directory = '~/.vim/.unite'
 
 nnoremap [unite] <Nop>
 nmap <Space> [unite]
+nnoremap <silent> [unite]\c       :<C-u>Unite colorscheme -auto-preview<CR>
 nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
-nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
+nnoremap <silent> [unite]b        :<C-u>Unite buffer_tab -immediately<CR>
+nnoremap <silent> [unite]B        :<C-u>Unite buffer -immediately<CR>
 nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
 nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
 nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
