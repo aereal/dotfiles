@@ -64,6 +64,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 " unite sources {{{
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/unite-qfreplace'
 NeoBundle 'tsukkee/unite-help'
@@ -310,6 +311,7 @@ nnoremap [unite] <Nop>
 nmap <Space> [unite]
 nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
 nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
+nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
 nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
 nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
 nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
