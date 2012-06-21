@@ -33,6 +33,7 @@ NeoBundle 'sudo.vim'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'int3/vim-extradite'
 " }}}
 
 " Text Object Extensions {{{
