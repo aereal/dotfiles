@@ -12,3 +12,4 @@
 .vim/.neocon/*
 .vim/.ref/*
 .vim/.unite/*
+.vim/undo/*
