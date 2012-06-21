@@ -29,7 +29,6 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'sickill/vim-pasta'
-NeoBundle 'sjl/gundo.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'thinca/vim-quickrun'
@@ -67,7 +66,6 @@ NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'sgur/unite-qf'
-NeoBundle 'thinca/unite-qfreplace'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -97,10 +95,6 @@ NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'vim-ruby/vim-ruby'
-" }}}
-
-" Some utilities {{{
-NeoBundle 'mattn/sonictemplate-vim'
 " }}}
 
 " Colors {{{
