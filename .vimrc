@@ -70,6 +70,7 @@ NeoBundle 'thinca/unite-qfreplace'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
 " }}}
 
 " Visualization{{{
