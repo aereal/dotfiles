@@ -12,6 +12,7 @@ endif
 " Bundles {{{
 
 " Awesome {{{
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
