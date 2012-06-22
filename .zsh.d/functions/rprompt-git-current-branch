@@ -43,24 +43,27 @@ function rprompt-git-current-branch {
   ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
   behind=$((${revs_count} - ${ahead}))
 
-  # 色つけたい
-  if [[ ! $ahead == 0 ]]; then
+  if [[ $ahead -ge 0 ]]; then
+    local __ahead_revs
     if [[ $revs_count -lt $threshold ]]; then
       for i in $(seq ${ahead}); do
-        behind_and_ahead=">$behind_and_ahead"
+        __ahead_revs=">$__ahead_revs"
       done
     else
-      behind_and_ahead=">${ahead}${behind_and_ahead}"
+      __ahead_revs=">$ahead"
     fi
+    behind_and_ahead="%{${fg[green]}%}$__ahead_revs%f%b${behind_and_ahead}"
   fi
-  if [[ ! $behind == 0 ]]; then
+  if [[ $behind -ge 0 ]]; then
+    local __behind_revs
     if [[ $revs_count -lt $threshold ]]; then
       for i in $(seq ${behind}); do
-        behind_and_ahead="<$behind_and_ahead"
+        __behind_revs="<${__behind_revs}"
       done
     else
-      behind_and_ahead="<${behind}${behind_and_ahead}"
+      __behind_revs="<${__behind_revs}"
     fi
+    behind_and_ahead="%{${fg[red]}%}${__behind_revs}%f%b${behind_and_ahead}"
   fi
   if [[ ! "$behind_and_ahead" == "" ]]; then
     behind_and_ahead="$behind_and_ahead "
