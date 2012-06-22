@@ -1,22 +1,19 @@
 # vim:set ft=zsh foldmethod=marker:
 
-# {{{
+# Zsh Environment {{{
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 REPORTTIME=3
 # }}}
-
 # Autoload{{{
 autoload -U promptinit; promptinit
 autoload -U colors;     colors
 autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 # }}}
-
 # Key-bind{{{
 # }}}
-
 # Options{{{
 # カーソル位置を保持したまま補完表示
 setopt always_last_prompt
@@ -99,7 +96,6 @@ setopt share_history
 # コマンド実行後は右プロンプトを消す
 setopt transient_rprompt
 # }}}
-
 # Completion{{{
 autoload -U compinit
 compinit -u
@@ -114,13 +110,11 @@ zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*:sudo' command-path $PATH
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 # }}}
-
 # History{{{
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 # }}}
-
 # magic abbreviations (http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377){{{
 # abbreviations{{{
 typeset -A abbreviations
@@ -177,7 +171,6 @@ no-magic-abbrev-expand () { #{{{
   zle -N magic-space
   # }}}
 # }}}
-
 # Easy-childa{{{
 function expand-to-home-or-complete() { #{{{
   if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
@@ -190,7 +183,6 @@ function expand-to-home-or-complete() { #{{{
 zle -N expand-to-home-or-complete
 bindkey "\\" expand-to-home-or-complete
 # }}}
-
 # prompt{{{
 init_prompt() { #{{{
   local git_branch _python_version python_version ruby_version perl_version
@@ -230,7 +222,6 @@ $next_line"
 
 precmd_functions=(init_prompt $precmd_functions)
 # }}}
-
 # key-bindings{{{
 # Vi風キーバインド
 bindkey -v
@@ -246,7 +237,6 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^R" history-incremental-search-backward
 bindkey "^S" history-incremental-search-forward
 # }}}
-
 # aliases{{{
 alias ..='cd ..'
 alias l='ls --color -AF'
@@ -261,33 +251,28 @@ alias ps='ps aux'
   fi
   # }}}
 # }}}
-
 # zaw.zsh{{{
 if [[ -d "$HOME/.zsh.d/plugins/zaw" ]] && [[ -r "$HOME/.zsh.d/plugins/zaw/zaw.zsh" ]]; then
   source "$HOME/.zsh.d/plugins/zaw/zaw.zsh"
 fi
 # }}}
-
 # cdd{{{
 if [[ -r "$ZSH_USER_DIR/plugins/cdd/cdd" ]]; then
   . "$ZSH_USER_DIR/plugins/cdd/cdd"
   chpwd_functions=(_cdd_chpwd $chpwd_functions)
 fi
 # }}}
-
 # Host or Operating System specific configurations{{{
 uname=`uname`
 [[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
 [[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
 # }}}
-
 # show-window-title{{{
 if [[ "x$MULTIPLEXOR" != "x" ]]; then
   autoload -U -z show-window-title
   preexec_functions=($preexec_functions show-window-title)
 fi
 # }}}
-
 # Auto-reattaching{{{
 case $MULTIPLEXOR in
   tmux)
