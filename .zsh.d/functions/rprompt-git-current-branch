@@ -14,37 +14,94 @@ function rprompt-git-current-branch {
   gitdir=`git rev-parse --git-dir 2> /dev/null`
   action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
 
+  # Remote and Local changes {{{
+  local \
+    threshold \
+    current_remote \
+    merge_name \
+    remote_ref \
+    remote_local_revs \
+    revs_count \
+    behind \
+    ahead \
+    behind_and_ahead
+
+  threshold=999
+  current_remote=$(git config branch.${name}.remote 2> /dev/null)
+  merge_name=$(git config branch.${name}.merge 2> /dev/null)
+
+  if [[ '.' == "$current_remote" ]]; then
+    # Clone from local
+    remote_ref=$merge_name
+    remote_local_revs=$(git rev-list --left-right ${merge_name}...HEAD)
+  else
+    remote_ref="refs/remotes/${current_remote}/$(echo $merge_name | sed -e 's/^refs\/heads\///')"
+    remote_local_revs=$(git rev-list --left-right ${remote_ref}...HEAD)
+  fi
+
+  revs_count=$(echo "${remote_local_revs}" | wc -l)
+  ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
+  behind=$((${revs_count} - ${ahead}))
+
+  # 色つけたい
+  if [[ ! $ahead == 0 ]]; then
+    if [[ $revs_count -lt $threshold ]]; then
+      for i in $(seq ${ahead}); do
+        behind_and_ahead=">$behind_and_ahead"
+      done
+    else
+      behind_and_ahead=">${ahead}${behind_and_ahead}"
+    fi
+  fi
+  if [[ ! $behind == 0 ]]; then
+    if [[ $revs_count -lt $threshold ]]; then
+      for i in $(seq ${behind}); do
+        behind_and_ahead="<$behind_and_ahead"
+      done
+    else
+      behind_and_ahead="<${behind}${behind_and_ahead}"
+    fi
+  fi
+  if [[ ! "$behind_and_ahead" == "" ]]; then
+    behind_and_ahead="$behind_and_ahead "
+  fi
+  # }}}
+
+  # stashes count {{{
   stashes=$(git --no-pager stash list 2> /dev/null | wc -l)
   [[ "$stashes" != "" ]] && stashes=" %{${fg[yellow]}%}@$stashes"
+  # }}}
 
   st=`git status --short --porcelain -b 2> /dev/null`
 
+  # Staged changes {{{
   if [[ -n `echo "$st" | grep "^[UMADRC]"` ]]; then
     # Staged
     annotation="$annotation*"
     color=%F{yellow}
   fi
+  # }}}
 
+  # Untracked changes {{{
   if [[ -n `echo "$st" | grep "??"` ]]; then
     # Untracked
     annotation="$annotation?"
     color=%F{yellow}
   fi
+  # }}}
 
+  # Changed, but not staged {{{
   if [[ -n `echo "$st" | grep "^[ ][MD]"` ]]; then
     # Changed, but not staged
     annotation="$annotation!"
     color=%F{red}
   fi
-
-  if [[ -n `echo "$st" | grep "^##.\+]$"` ]]; then
-    name="+$name"
-  fi
+  # }}}
 
   if [[ -z "$color" ]]; then
     color=%F{green}
   fi
 
-  echo "$color$name$action$annotation$stashes%f%b"
+  echo "$behind_and_ahead$color$name$action$annotation$stashes%f%b"
 }
 
