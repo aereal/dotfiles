@@ -31,13 +31,10 @@ path=(
   /sbin(N-/)
 )
 
-if [[ -s `which tmux` ]]; then
-  export MULTIPLEXOR=tmux
-elif [[ -s `which tscreen` ]]; then
-  export MULTIPLEXOR=tscreen
-elif [[ -s `which screen` ]]; then
-  export MULTIPLEXOR=screen
-fi
+uname=`uname`
+[[ -f "$ZSH_USER_DIR/os/$uname.zshenv" ]] && . "$ZSH_USER_DIR/os/$uname.zshenv"
+[[ -f "$ZSH_USER_DIR/hosts/$HOST.zshenv" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshenv"
+[[ -f "$ZSH_USER_DIR/perlbrew.zshenv" ]] && . "$ZSH_USER_DIR/perlbrew.zshenv"
 
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   . "$HOME/.rvm/scripts/rvm"
@@ -46,7 +43,10 @@ elif [[ -s "$HOME/.rbenv" ]]; then
 fi
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && . "$HOME/.pythonbrew/etc/bashrc"
 
-uname=`uname`
-[[ -f "$ZSH_USER_DIR/os/$uname.zshenv" ]] && . "$ZSH_USER_DIR/os/$uname.zshenv"
-[[ -f "$ZSH_USER_DIR/hosts/$HOST.zshenv" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshenv"
-[[ -f "$ZSH_USER_DIR/perlbrew.zshenv" ]] && . "$ZSH_USER_DIR/perlbrew.zshenv"
+if [[ -s `which tmux` ]]; then
+  export MULTIPLEXOR=tmux
+elif [[ -s `which tscreen` ]]; then
+  export MULTIPLEXOR=tscreen
+elif [[ -s `which screen` ]]; then
+  export MULTIPLEXOR=screen
+fi
