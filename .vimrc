@@ -279,6 +279,18 @@ endfunction " }}}
 " }}}
 
 " # Plugins {{{
+  " ## vim-operator-sort {{{
+  map \s <Plug>(operator-sort)
+  " }}}
+
+  " ## vim-operator-camelize {{{
+  map \c <Plug>(operator-camelize-toggle)
+  " }}}
+
+  " ## vim-operator-replace {{{
+  map \r <Plug>(operator-replace)
+  " }}}
+
   " ## ref.vim {{{
   let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
   let g:ref_jquery_use_cache = 1
