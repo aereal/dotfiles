@@ -19,10 +19,8 @@ fpath=(
 typeset -U path
 path=(
   $HOME/bin(N-/)
-  $HOME/local/bin(N-/)
   $HOME/.cabal/bin(N-/)
   $HOME/.rbenv/bin(N-/)
-  $(brew --prefix coreutils)/libexec/gnubin(N-/)
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /usr/bin(N-/)
