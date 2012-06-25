@@ -30,7 +30,7 @@ function rprompt-git-current-branch {
   current_remote=$(git config branch.${name}.remote 2> /dev/null)
   merge_name=$(git config branch.${name}.merge 2> /dev/null)
 
-  if [[ '.' == "$current_remote" ]]; then
+  if [[ "." = "$current_remote" ]] || [[ "x" = "x$current_remote" ]]; then
     # Clone from local
     remote_ref=$merge_name
     remote_local_revs=$(git rev-list --left-right ${merge_name}...HEAD)
