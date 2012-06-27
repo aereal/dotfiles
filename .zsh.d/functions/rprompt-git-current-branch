@@ -43,7 +43,7 @@ function rprompt-git-current-branch {
   ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
   behind=$((${revs_count} - ${ahead}))
 
-  if [[ $ahead -ge 0 ]]; then
+  if [[ $ahead -gt 0 ]]; then
     local __ahead_revs
     if [[ $revs_count -lt $threshold ]]; then
       for i in $(seq ${ahead}); do
@@ -54,7 +54,7 @@ function rprompt-git-current-branch {
     fi
     behind_and_ahead="%{${fg[green]}%}$__ahead_revs%f%b${behind_and_ahead}"
   fi
-  if [[ $behind -ge 0 ]]; then
+  if [[ $behind -gt 0 ]]; then
     local __behind_revs
     if [[ $revs_count -lt $threshold ]]; then
       for i in $(seq ${behind}); do
