@@ -39,7 +39,7 @@ function rprompt-git-current-branch {
     remote_local_revs=$(git rev-list --left-right ${remote_ref}...HEAD)
   fi
 
-  revs_count=$(echo "${remote_local_revs}" | wc -l)
+  revs_count=$(echo "${remote_local_revs}" | sed -e '/^$/d' | wc -l)
   ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
   behind=$((${revs_count} - ${ahead}))
 
