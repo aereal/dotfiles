@@ -106,6 +106,7 @@ endif
   NeoBundle 'nanotech/jellybeans.vim'
   NeoBundle 'nelstrom/vim-mac-classic-theme'
   NeoBundle 'noahfrederick/Hemisu'
+  NeoBundle 'trapd00r/neverland-vim-theme'
   " }}}
 " }}}
 
