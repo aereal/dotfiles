@@ -1,6 +1,6 @@
-#!/bin/sh -v
+#!/bin/bash
 
-if [[ -x `which npm` ]]; then
+if [[ ! -x "$(/usr/bin/which -s npm)" ]]; then
   curl http://npmjs.org/install.sh | sh
 fi
 

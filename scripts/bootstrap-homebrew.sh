@@ -1,9 +1,10 @@
-#!/bin/sh -v
+#!/bin/bash
 
-if [[ ! -x `which brew` ]]; then
+if [[ ! -x $(/usr/bin/which -s brew) ]]; then
   echo "Homebrew is not found, try to install"
-  [[ -d "$HOME/local" ]] || mkdir $HOME/local
-  curl -fsSL https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/local
+  /usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+  # [[ -d "$HOME/local" ]] || mkdir $HOME/local
+  # curl -fsSL https://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C $HOME/local
 fi
 
 echo "First, install Git"
