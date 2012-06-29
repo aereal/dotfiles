@@ -27,6 +27,7 @@ endif
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'mattn/zencoding-vim'
   NeoBundle 'motemen/hatena-vim'
+  NeoBundle 'myusuf3/numbers.vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'sickill/vim-pasta'
