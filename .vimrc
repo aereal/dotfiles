@@ -26,6 +26,7 @@ endif
   NeoBundle 'kana/vim-gf-user'
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'mattn/zencoding-vim'
+  NeoBundle 'motemen/hatena-vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
   NeoBundle 'sickill/vim-pasta'
   NeoBundle 'sudo.vim'
