@@ -11,7 +11,6 @@ endif
 
 " # Bundles {{{
   " ## Awesome {{{
-  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'Lokaltog/vim-powerline'
   NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'Shougo/neocomplcache'
@@ -20,6 +19,7 @@ endif
   NeoBundle 'Shougo/vimproc'
   NeoBundle 'errormarker.vim'
   NeoBundle 'h1mesuke/vim-alignta'
+  NeoBundle 'int3/vim-extradite'
   NeoBundle 'kana/vim-altr'
   NeoBundle 'kana/vim-arpeggio'
   NeoBundle 'kana/vim-gf-diff'
@@ -28,12 +28,12 @@ endif
   NeoBundle 'mattn/zencoding-vim'
   NeoBundle 'motemen/hatena-vim'
   NeoBundle 'nathanaelkane/vim-indent-guides'
+  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'sickill/vim-pasta'
   NeoBundle 'sudo.vim'
   NeoBundle 't9md/vim-textmanip'
   NeoBundle 'thinca/vim-quickrun'
   NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'int3/vim-extradite'
   " }}}
 
   " ## Text Object Extensions {{{
