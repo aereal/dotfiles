@@ -210,7 +210,7 @@ init_prompt() { #{{{
   #   prompt_cwd="$prompt_cwd $prompt_user"
   # fi
   if [[ "x$git_branch" != "x" ]]; then
-    first_line="[$git_branch] $prompt_cwd"
+    first_line="$git_branch $prompt_cwd"
   else
     first_line=" $prompt_cwd"
   fi
