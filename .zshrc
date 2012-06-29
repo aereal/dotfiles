@@ -185,17 +185,21 @@ bindkey "\\" expand-to-home-or-complete
 # }}}
 # prompt{{{
 init_prompt() { #{{{
-  local git_branch _python_version python_version ruby_version perl_version
-  local prompt_user prompt_command prompt_cwd first_line next_line
+  local \
+    git_branch _python_version python_version ruby_version perl_version \
+    prompt_account prompt_user prompt_command prompt_cwd first_line next_line
   git_branch=$(rprompt-git-current-branch)
+
   if [[ `type rbenv` = 'rbenv is a shell function' ]]; then
     ruby_version="%{${fg[red]}%}(ruby-`rbenv version-name`)%{${reset_color}%}"
   elif [[ -x `which rvm-prompt` ]]; then
     ruby_version="%{${fg[red]}%}(`rvm-prompt`)%{${reset_color}%}"
   fi
+
   if [[ -n "$PERLBREW_PERL" ]]; then
     perl_version="%{${fg[blue]}%}($PERLBREW_PERL)%{${reset_color}%}"
   fi
+
   if [[ -n "$PATH_PYTHONBREW" ]]; then
     _python_version=$(basename $(dirname $(dirname $(which python))))
     _python_version=$(ruby -e 'x=ARGV[0];puts x if x.strip[/^Python-(\d+\.?)+$/]' -- $(echo $_python_version))
@@ -203,7 +207,7 @@ init_prompt() { #{{{
       python_version="%{${fg[yellow]}%}($_python_version)%{${reset_color}%}"
     fi
   fi
-  # prompt_user="%{${fg[red]}%}<%n%#%m>%{${reset_color}%}"
+
   prompt_cwd="%{${fg[magenta]}%}%~%{${reset_color}%}"
   prompt_command=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
   # if [[ "x$SSH_CLIENT" != "x" ]]; then
