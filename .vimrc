@@ -10,34 +10,37 @@ endif
 " }}}
 
 " # Bundles {{{
-  " ## Awesome {{{
+  " ## Essentials {{{
+  NeoBundle 'Shougo/vimproc'
+  " }}}
+  " ## UI {{{
   NeoBundle 'Lokaltog/vim-powerline'
-  NeoBundle 'Shougo/neobundle.vim'
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  " }}}
+  " ## Editing {{{
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neocomplcache-snippets-complete'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimproc'
-  NeoBundle 'errormarker.vim'
   NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'int3/vim-extradite'
-  NeoBundle 'kana/vim-altr'
-  NeoBundle 'kana/vim-arpeggio'
-  NeoBundle 'kana/vim-gf-diff'
-  NeoBundle 'kana/vim-gf-user'
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'mattn/zencoding-vim'
-  NeoBundle 'motemen/hatena-vim'
-  NeoBundle 'myusuf3/numbers.vim'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'sickill/vim-pasta'
-  NeoBundle 'sudo.vim'
-  NeoBundle 't9md/vim-textmanip'
+  " }}}
+  " ## Development {{{
+  NeoBundle 'errormarker.vim'
+  NeoBundle 'int3/vim-extradite'
+  NeoBundle 'scrooloose/syntastic'
   NeoBundle 'thinca/vim-quickrun'
   NeoBundle 'tpope/vim-fugitive'
   " }}}
-
-  " ## Text Object Extensions {{{
+  " ## Files, Buffers {{{
+  NeoBundle 'Shougo/neobundle.vim'
+  NeoBundle 'kana/vim-altr'
+  NeoBundle 'sudo.vim'
+  " }}}
+  " ## Key-mappings {{{
+  NeoBundle 'kana/vim-arpeggio'
+  " }}}
+  " ## Text Object {{{
   NeoBundle 'h1mesuke/textobj-wiw'
   NeoBundle 'kana/vim-smartinput'
   NeoBundle 'kana/vim-textobj-indent'
@@ -48,36 +51,30 @@ endif
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'vimtaku/vim-textobj-sigil'
   " }}}
-
   " ## Text Operators {{{
   NeoBundle 'emonkak/vim-operator-sort'
   NeoBundle 'kana/vim-operator-replace'
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'tyru/operator-camelize.vim'
   " }}}
-
   " ## Help & Document {{{
   NeoBundle 'mojako/ref-sources.vim'
   NeoBundle 'thinca/vim-ref'
   NeoBundle 'ujihisa/ref-hoogle'
   NeoBundle 'vim-jp/vimdoc-ja'
   " }}}
-
-  " ## unite sources {{{
+  " ## Unite {{{
+  NeoBundle 'Shougo/unite.vim'
   NeoBundle 'basyura/unite-rails'
   NeoBundle 'h1mesuke/unite-outline'
   NeoBundle 'sgur/unite-git_grep'
   NeoBundle 'sgur/unite-qf'
   NeoBundle 'tsukkee/unite-help'
-  NeoBundle 'tsukkee/unite-tag'
   NeoBundle 'ujihisa/unite-colorscheme'
-  NeoBundle 'ujihisa/unite-font'
   " }}}
-
   " ## Visualization {{{
   NeoBundle 'lilydjwg/colorizer'
   " }}}
-
   " ## Language Support {{{
   NeoBundle 'bbommarito/vim-slim'
   NeoBundle 'davidoc/taskpaper.vim'
@@ -87,6 +84,7 @@ endif
   NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'hallison/vim-markdown'
   NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'motemen/hatena-vim'
   NeoBundle 'nginx.vim'
   NeoBundle 'nono/jquery.vim'
   NeoBundle 'othree/html5.vim'
@@ -98,7 +96,6 @@ endif
   NeoBundle 'ujihisa/neco-ghc'
   NeoBundle 'vim-ruby/vim-ruby'
   " }}}
-
   " ## Colors {{{
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'chriskempson/vim-tomorrow-theme'
