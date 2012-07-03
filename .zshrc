@@ -12,6 +12,7 @@ autoload -U colors;     colors
 autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 autoload -U -z add-zsh-hook
+autoload -U -z show-window-title
 # }}}
 # Key-bind{{{
 # }}}
@@ -274,7 +275,6 @@ uname=`uname`
 # }}}
 # show-window-title{{{
 if [[ "x$MULTIPLEXOR" != "x" ]]; then
-  autoload -U -z show-window-title
   add-zsh-hook preexec show-window-title
 fi
 # }}}
