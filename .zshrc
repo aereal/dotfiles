@@ -17,86 +17,33 @@ autoload -U -z show-window-title
 # Key-bind{{{
 # }}}
 # Options{{{
-# カーソル位置を保持したまま補完表示
-setopt always_last_prompt
-
-# ディレクトリ名だけでcd
-# setopt auto_cd
-
-# TABで補完候補をめぐる
-setopt auto_menu
-
-# 括弧などを補完
-setopt auto_param_keys
-
-# 自動的にpushd
-setopt auto_pushd
-
-# 最後のスラッシュを自動的に削除する
-setopt auto_remove_slash
-
-# suspendされているプロセスと同じコマンドを叩いたらfg
-setopt auto_resume
-
-# ディレクトリ名として展開しようとする
-setopt cdable_vars
-
-# カーソル位置で補完
-setopt complete_in_word
-
-# スペルチェック
-setopt correct
-
-# 拡張glob
-setopt extended_glob
-
-# 開始、終了時刻をヒストリに書き込む
-setopt extended_history
-
-# globを展開しないで候補から補完する
-setopt glob_complete
-
-# 補完したらヒストリを展開
-setopt hist_expand
-
-# 直前と同じコマンドをヒストリに追加しない
-setopt hist_ignore_dups
-
-# スペースから始まる場合ヒストリに追加しない
-setopt hist_ignore_space
-
-# ^Dでログアウトしない
-setopt ignore_eof
-
-# すぐにヒストリを追記
-setopt inc_append_history
-
-# 補完候補にファイル種別を表示
-setopt list_types
-
-# --prefix= とかも補完する
-setopt magic_equal_subst
-
-# うるさい
-setopt no_beep
-
-# 8-bitを通す
-setopt print_eight_bit
-
-# いいプロンプト
-setopt prompt_subst
-
-# 同じディレクトリはpushdしない
-setopt pushd_ignore_dups
-
-# 互換性のある空白の扱い
-setopt sh_word_split
-
-# ヒストリを共有する
-setopt share_history
-
-# コマンド実行後は右プロンプトを消す
-setopt transient_rprompt
+setopt always_last_prompt # カーソル位置を保持したまま補完表示
+# setopt auto_cd # ディレクトリ名だけでcd
+setopt auto_menu # TABで補完候補をめぐる
+setopt auto_param_keys # 括弧などを補完
+setopt auto_pushd # 自動的にpushd
+setopt auto_remove_slash # 最後のスラッシュを自動的に削除する
+setopt auto_resume # suspendされているプロセスと同じコマンドを叩いたらfg
+setopt cdable_vars # ディレクトリ名として展開しようとする
+setopt complete_in_word # カーソル位置で補完
+setopt correct # スペルチェック
+setopt extended_glob # 拡張glob
+setopt extended_history # 開始、終了時刻をヒストリに書き込む
+setopt glob_complete # globを展開しないで候補から補完する
+setopt hist_expand # 補完したらヒストリを展開
+setopt hist_ignore_dups # 直前と同じコマンドをヒストリに追加しない
+setopt hist_ignore_space # スペースから始まる場合ヒストリに追加しない
+setopt ignore_eof # ^Dでログアウトしない
+setopt inc_append_history # すぐにヒストリを追記
+setopt list_types # 補完候補にファイル種別を表示
+setopt magic_equal_subst # --prefix= とかも補完する
+setopt no_beep # うるさい
+setopt print_eight_bit # 8-bitを通す
+setopt prompt_subst # いいプロンプト
+setopt pushd_ignore_dups # 同じディレクトリはpushdしない
+setopt sh_word_split # 互換性のある空白の扱い
+setopt share_history # ヒストリを共有する
+setopt transient_rprompt # コマンド実行後は右プロンプトを消す
 # }}}
 # Completion{{{
 autoload -U compinit
