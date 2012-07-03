@@ -11,6 +11,7 @@ autoload -U promptinit; promptinit
 autoload -U colors;     colors
 autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
+autoload -U -z add-zsh-hook
 # }}}
 # Key-bind{{{
 # }}}
@@ -224,7 +225,7 @@ $next_line"
   RPROMPT="$ruby_version $perl_version $python_version"
 } #}}}
 
-precmd_functions=(init_prompt $precmd_functions)
+add-zsh-hook precmd init_prompt
 # }}}
 # key-bindings{{{
 # Vi風キーバインド
@@ -263,7 +264,7 @@ fi
 # cdd{{{
 if [[ -r "$ZSH_USER_DIR/plugins/cdd/cdd" ]]; then
   . "$ZSH_USER_DIR/plugins/cdd/cdd"
-  chpwd_functions=(_cdd_chpwd $chpwd_functions)
+  add-zsh-hook chpwd _cdd_chpwd
 fi
 # }}}
 # Host or Operating System specific configurations{{{
@@ -274,7 +275,7 @@ uname=`uname`
 # show-window-title{{{
 if [[ "x$MULTIPLEXOR" != "x" ]]; then
   autoload -U -z show-window-title
-  preexec_functions=($preexec_functions show-window-title)
+  add-zsh-hook preexec show-window-title
 fi
 # }}}
 # Auto-reattaching{{{
