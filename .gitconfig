@@ -31,9 +31,9 @@
 	interactive = auto
 	grep = auto
 [color "branch"]
-	current = blue reverse
+	current = green reverse
 	local = green
-	remote = red
+	remote = yellow
 [color "status"]
 	added = yellow
 	changed = green
