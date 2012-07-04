@@ -24,6 +24,7 @@
 	summary = status --short --branch
 	vizlog = log --graph --date-order -C -M --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
 	branch-name = name-rev --name-only
+	gr = grep --heading --break
 [color]
 	diff = auto
 	branch = auto
