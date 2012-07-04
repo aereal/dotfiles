@@ -185,8 +185,8 @@ bindkey "^I" magic-abbrev-expand-and-normal-complete
 bindkey "^J" accept-line
 bindkey "^N" history-beginning-search-forward-end
 bindkey "^P" history-beginning-search-backward-end
-bindkey "^R" history-incremental-search-backward
-bindkey "^S" history-incremental-search-forward
+bindkey "^R" history-incremental-pattern-search-backward
+bindkey "^S" history-incremental-pattern-search-forward
 # }}}
 # aliases{{{
 alias ..='cd ..'
