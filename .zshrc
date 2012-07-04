@@ -128,7 +128,6 @@ function expand-to-home-or-complete() { #{{{
 } #}}}
 
 zle -N expand-to-home-or-complete
-bindkey "\\" expand-to-home-or-complete
 # }}}
 # prompt{{{
 init_prompt() { #{{{
@@ -177,6 +176,7 @@ add-zsh-hook precmd init_prompt
 # Vi風キーバインド
 bindkey -v
 
+bindkey "\\" expand-to-home-or-complete
 bindkey "\r" magic-abbrev-expand-and-accept
 bindkey " "  magic-space
 bindkey "."  magic-abbrev-expand-and-insert
