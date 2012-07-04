@@ -14,8 +14,6 @@ autoload -U -z rprompt-git-current-branch
 autoload -U -z add-zsh-hook
 autoload -U -z show-window-title
 # }}}
-# Key-bind{{{
-# }}}
 # Options{{{
 setopt always_last_prompt # カーソル位置を保持したまま補完表示
 # setopt auto_cd # ディレクトリ名だけでcd
