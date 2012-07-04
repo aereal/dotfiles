@@ -63,5 +63,5 @@
 	commit-order = topo
 	tab-size = 2
 [tig "bind"]
-  generic = g move-first-line
+	generic = g move-first-line
 	generic = G move-last-line
