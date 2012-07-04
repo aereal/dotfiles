@@ -166,6 +166,12 @@ set cursorline
   endif
   " }}}
 
+  " ## Share clipboard namespace {{{
+  if has('clipboard')
+    set clipboard=unnamed,autoselect
+  endif
+  " }}}
+
 filetype plugin indent on
 " }}}
 
