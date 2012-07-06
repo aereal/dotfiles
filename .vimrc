@@ -189,6 +189,7 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " screenに編集中のファイル名を出す
 autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
 autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+autocmd ColorScheme *    hi! link CoffeeSpecialVar Constant
 
   " ## io {{{
   autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
@@ -457,5 +458,4 @@ else
 endif
 " }}}
 
-hi! link CoffeeSpecialVar Constant
 " vim:set et foldmethod=marker:
