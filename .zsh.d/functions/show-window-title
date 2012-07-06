@@ -16,20 +16,12 @@ function show-window-title() {
     %*)
       cmd=(builtin jobs -l $cmd[1])
       ;;
-    cd)
-      if (( $#cmd == 2 )); then
-        cmd[1]=$cmd[2]
-      fi
-      ;;
-    ls|clear)
+    ls|clear|pwd)
       echo -n "k$ZSH_NAME\\"
       return
       ;;
-    sudo)
+    sudo|screen|cd)
       echo -n "k$cmd[1] $cmd[2]:t\\"
-      return
-      ;;
-    screen|pwd)
       return
       ;;
     *)
