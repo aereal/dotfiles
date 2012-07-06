@@ -451,11 +451,7 @@ endfunction " }}}
 " }}}
 
 " # Color scheme {{{
-if &term =~ '256color'
-  colorscheme jellybeans
-else
-  colorscheme desert
-endif
+colorscheme peachpuff
 " }}}
 
 " vim:set et foldmethod=marker:
