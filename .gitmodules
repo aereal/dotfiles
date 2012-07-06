@@ -10,3 +10,6 @@
 [submodule ".zsh.d/plugins/cdd"]
 	path = .zsh.d/plugins/cdd
 	url = git://github.com/m4i/cdd.git
+[submodule "colors/magica"]
+	path = colors/magica
+	url = git@github.com:aereal/magica-colors.git
