@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # フルキーボードアクセスを有効にする (Tabですべてのコントロールにフォーカスできるようになる)
 defaults write -g AppleKeyboardUIMode -int 3
@@ -72,5 +72,64 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -bool
 
 # ウィンドウ状態の保存をしない
 defaults write -g NSQuitAlwaysKeepsWindows -bool false
+
+# ポインタを最大に
+defaults write com.apple.universalaccess mouseDriverCursorSize -int 4
+
+# Activity Monitor.app {{{
+# Dockのアイコンをメモリ使用量に
+defaults write com.apple.ActivityMonitor IconType -int 4
+# }}}
+
+# Alfred.app {{{
+# ステータスバーのアイコンを隠す
+defaults write com.alfredapp.Alfred appearance.hideStatusBarIcon -bool true
+
+# 歯車アイコンを隠す
+defaults write com.alfredapp.Alfred appearance.hidePreferencesCogIcon -bool true
+
+# 帽子アイコンを隠す
+defaults write com.alfredapp.Alfred appearance.hideHat -bool true
+
+# Light theme
+defaults write com.alfredapp.Alfred appearance.themeuid -string 'alfred.theme.light'
+
+# enable eject command
+defaults write com.alfredapp.Alfred system.eject -bool true
+# }}}
+
+# Divvy.app {{{
+# hide menu-bar icon
+defaults write com.mizage.divvy showMenuIcon -bool false
+
+# ショートカットキーを押すたび複数ディスプレイ間を移動する
+defaults write com.mizage.divvy useMonitorCycling -bool true
+
+# 10 x 10
+defaults write com.mizage.divvy defaultColumnCount -int 10
+defaults write com.mizage.divvy defaultRowCount -int 10
+# }}}
+
+# Reeder.app {{{
+# open links in background
+defaults write com.reederapp.mac OpenLinksInBackground -bool true
+
+# Disable services
+defaults write com.reederapp.mac ServiceAlternateBrowserDisabled -bool true
+defaults write com.reederapp.mac ServiceBlogDisabled -bool true
+defaults write com.reederapp.mac ServiceDeliciousDisabled -bool true
+defaults write com.reederapp.mac ServiceEvernoteDisabled -bool true
+defaults write com.reederapp.mac ServiceGoogleMobilizerDisabled -bool true
+defaults write com.reederapp.mac ServiceInstapaperDisabled -bool true
+defaults write com.reederapp.mac ServiceInstapaperMobilizerDisabled -bool true
+defaults write com.reederapp.mac ServiceMailLinkDisabled -bool true
+defaults write com.reederapp.mac ServicePinboardDisabled -bool true
+defaults write com.reederapp.mac ServiceReadabilityDisabled -bool true
+defaults write com.reederapp.mac ServiceSafariReadingListDisabled -bool true
+defaults write com.reederapp.mac ServiceTwitterDisabled -bool true
+defaults write com.reederapp.mac ServiceZootoolDisabled -bool true
+
+defaults write com.reederapp.mac ServiceReadItLaterShowInSiderbar -bool true
+# }}}
 
 for app in Finder Dock SystemUIServer; do killall $app >/dev/null 2>&1; done
