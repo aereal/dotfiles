@@ -1,6 +1,5 @@
 .vimperator/info/
 .vim/cookies/
-.vim/bundle/*
 .atig/oauth
 .vim/netrwhist
 .vim/.netrwhist
