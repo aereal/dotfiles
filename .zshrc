@@ -204,8 +204,8 @@ alias ps='ps aux'
   # }}}
 # }}}
 # zaw.zsh{{{
-if [[ -d "$HOME/.zsh.d/plugins/zaw" ]] && [[ -r "$HOME/.zsh.d/plugins/zaw/zaw.zsh" ]]; then
-  source "$HOME/.zsh.d/plugins/zaw/zaw.zsh"
+if [[ -d "${ZSH_USER_DIR}/plugins/zaw" ]] && [[ -r "${ZSH_USER_DIR}/plugins/zaw/zaw.zsh" ]]; then
+  source ${ZSH_USER_DIR}/plugins/zaw/zaw.zsh
 fi
 # }}}
 # cdd{{{
