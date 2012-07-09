@@ -410,6 +410,8 @@ endfunction " }}}
   nnoremap <Leader>ga :<C-u>Gwrite<CR>
   nnoremap <Leader>gd :<C-u>Gdiff<CR>
   nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+
+  autocmd BufReadPost fugitive://* set bufhidden=delete
   " }}}
 
   " ## vim-textmanip {{{
