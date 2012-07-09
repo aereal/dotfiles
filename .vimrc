@@ -1,5 +1,4 @@
 syntax on
-set bg=dark
 
 " # Setup for neobundle.vim {{{
 filetype off
@@ -448,6 +447,14 @@ endfunction " }}}
   hi vimshellPrompt ctermfg=yellow
   " }}}
 
+" }}}
+
+" # Background color detection {{{
+if $TERMINAL_BACKGROUND != ''
+  set bg=$TERMINAL_BACKGROUND
+else
+  set bg=dark
+endif
 " }}}
 
 " # Color scheme {{{
