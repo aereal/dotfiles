@@ -458,7 +458,15 @@ endif
 " }}}
 
 " # Color scheme {{{
-colorscheme peachpuff
+if &bg == 'dark'
+  if &term =~ '256color'
+    colorscheme jellybeans
+  else
+    colorscheme desert
+  endif
+else
+  colorscheme peachpuff
+endif
 " }}}
 
 " vim:set et foldmethod=marker:
