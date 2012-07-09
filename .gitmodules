@@ -145,3 +145,6 @@
 [submodule ".vim/bundle/ref-hoogle"]
 	path = .vim/bundle/ref-hoogle
 	url = git://github.com/ujihisa/ref-hoogle.git
+[submodule ".vim/bundle/vim-slim"]
+	path = .vim/bundle/vim-slim
+	url = git://github.com/bbommarito/vim-slim.git
