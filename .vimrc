@@ -10,103 +10,103 @@ endif
 " }}}
 
 " # Bundles {{{
-  " ## Essentials {{{
-  NeoBundle 'Shougo/vimproc'
-  " }}}
-  " ## UI {{{
-  NeoBundle 'Lokaltog/vim-powerline'
-  NeoBundle 'nathanaelkane/vim-indent-guides'
-  " }}}
-  " ## Editing {{{
-  NeoBundle 'Shougo/neocomplcache'
-  NeoBundle 'Shougo/neocomplcache-snippets-complete'
-  NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'kana/vim-smartchr'
-  NeoBundle 'mattn/zencoding-vim'
-  NeoBundle 'sickill/vim-pasta'
-  " }}}
-  " ## Development {{{
-  NeoBundle 'errormarker.vim'
-  NeoBundle 'int3/vim-extradite'
-  NeoBundle 'scrooloose/syntastic'
-  NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'tpope/vim-fugitive'
-  " }}}
-  " ## Files, Buffers {{{
-  NeoBundle 'Shougo/neobundle.vim'
-  NeoBundle 'kana/vim-altr'
-  NeoBundle 'sudo.vim'
-  " }}}
-  " ## Key-mappings {{{
-  NeoBundle 'kana/vim-arpeggio'
-  " }}}
-  " ## Text Object {{{
-  NeoBundle 'h1mesuke/textobj-wiw'
-  NeoBundle 'kana/vim-smartinput'
-  NeoBundle 'kana/vim-textobj-indent'
-  NeoBundle 'kana/vim-textobj-line'
-  NeoBundle 'kana/vim-textobj-user'
-  NeoBundle 't9md/vim-surround_custom_mapping'
-  NeoBundle 'thinca/vim-textobj-comment'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'vimtaku/vim-textobj-sigil'
-  " }}}
-  " ## Text Operators {{{
-  NeoBundle 'emonkak/vim-operator-sort'
-  NeoBundle 'kana/vim-operator-replace'
-  NeoBundle 'kana/vim-operator-user'
-  NeoBundle 'tyru/operator-camelize.vim'
-  " }}}
-  " ## Help & Document {{{
-  NeoBundle 'mojako/ref-sources.vim'
-  NeoBundle 'thinca/vim-ref'
-  NeoBundle 'ujihisa/ref-hoogle'
-  NeoBundle 'vim-jp/vimdoc-ja'
-  " }}}
-  " ## Unite {{{
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'basyura/unite-rails'
-  NeoBundle 'h1mesuke/unite-outline'
-  NeoBundle 'sgur/unite-git_grep'
-  NeoBundle 'sgur/unite-qf'
-  NeoBundle 'tsukkee/unite-help'
-  NeoBundle 'ujihisa/unite-colorscheme'
-  " }}}
-  " ## Visualization {{{
-  NeoBundle 'lilydjwg/colorizer'
-  " }}}
-  " ## Language Support {{{
-  NeoBundle 'bbommarito/vim-slim'
-  NeoBundle 'davidoc/taskpaper.vim'
-  NeoBundle 'depuracao/vim-rdoc'
-  NeoBundle 'elixir-lang/vim-elixir'
-  NeoBundle 'groenewege/vim-less'
-  NeoBundle 'hail2u/vim-css3-syntax'
-  NeoBundle 'hallison/vim-markdown'
-  NeoBundle 'kchmck/vim-coffee-script'
-  NeoBundle 'motemen/hatena-vim'
-  NeoBundle 'nginx.vim'
-  NeoBundle 'nono/jquery.vim'
-  NeoBundle 'othree/html5.vim'
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'petdance/vim-perl'
-  NeoBundle 'rosstimson/scala-vim-support'
-  NeoBundle 'teramako/jscomplete-vim'
-  NeoBundle 'tpope/vim-haml'
-  NeoBundle 'ujihisa/neco-ghc'
-  NeoBundle 'vim-ruby/vim-ruby'
-  " }}}
-  " ## Colors {{{
-  NeoBundle 'altercation/vim-colors-solarized'
-  NeoBundle 'chriskempson/vim-tomorrow-theme'
-  NeoBundle 'git://gist.github.com/187578.git'
-  NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-  NeoBundle 'mrkn256.vim'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'nelstrom/vim-mac-classic-theme'
-  NeoBundle 'noahfrederick/Hemisu'
-  NeoBundle 'trapd00r/neverland-vim-theme'
-  " }}}
+" ## Essentials {{{
+NeoBundle 'Shougo/vimproc'
+" }}}
+" ## UI {{{
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" }}}
+" ## Editing {{{
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'sickill/vim-pasta'
+" }}}
+" ## Development {{{
+NeoBundle 'errormarker.vim'
+NeoBundle 'int3/vim-extradite'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-fugitive'
+" }}}
+" ## Files, Buffers {{{
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'kana/vim-altr'
+NeoBundle 'sudo.vim'
+" }}}
+" ## Key-mappings {{{
+NeoBundle 'kana/vim-arpeggio'
+" }}}
+" ## Text Object {{{
+NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'thinca/vim-textobj-comment'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vimtaku/vim-textobj-sigil'
+" }}}
+" ## Text Operators {{{
+NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'tyru/operator-camelize.vim'
+" }}}
+" ## Help & Document {{{
+NeoBundle 'mojako/ref-sources.vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'vim-jp/vimdoc-ja'
+" }}}
+" ## Unite {{{
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'ujihisa/unite-colorscheme'
+" }}}
+" ## Visualization {{{
+NeoBundle 'lilydjwg/colorizer'
+" }}}
+" ## Language Support {{{
+NeoBundle 'bbommarito/vim-slim'
+NeoBundle 'davidoc/taskpaper.vim'
+NeoBundle 'depuracao/vim-rdoc'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'hallison/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'nginx.vim'
+NeoBundle 'nono/jquery.vim'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'petdance/vim-perl'
+NeoBundle 'rosstimson/scala-vim-support'
+NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'vim-ruby/vim-ruby'
+" }}}
+" ## Colors {{{
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'git://gist.github.com/187578.git'
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
+NeoBundle 'mrkn256.vim'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'noahfrederick/Hemisu'
+NeoBundle 'trapd00r/neverland-vim-theme'
+" }}}
 " }}}
 
 " # Configurations {{{
