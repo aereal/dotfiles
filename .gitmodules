@@ -142,3 +142,6 @@
 [submodule ".vim/bundle/ref-sources.vim"]
 	path = .vim/bundle/ref-sources.vim
 	url = git://github.com/mojako/ref-sources.vim.git
+[submodule ".vim/bundle/ref-hoogle"]
+	path = .vim/bundle/ref-hoogle
+	url = git://github.com/ujihisa/ref-hoogle.git
