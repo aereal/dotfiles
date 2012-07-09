@@ -154,3 +154,6 @@
 [submodule ".vim/bundle/vim-less"]
 	path = .vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
+[submodule ".vim/bundle/hatena-vim"]
+	path = .vim/bundle/hatena-vim
+	url = git://github.com/motemen/hatena-vim.git
