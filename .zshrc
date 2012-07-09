@@ -204,20 +204,20 @@ alias ps='ps aux'
   # }}}
 # }}}
 # zaw.zsh{{{
-if [[ -d "${ZSH_USER_DIR}/plugins/zaw" ]] && [[ -r "${ZSH_USER_DIR}/plugins/zaw/zaw.zsh" ]]; then
-  source ${ZSH_USER_DIR}/plugins/zaw/zaw.zsh
+if [[ -d "${ZSH_HOME}/plugins/zaw" ]] && [[ -r "${ZSH_HOME}/plugins/zaw/zaw.zsh" ]]; then
+  source ${ZSH_HOME}/plugins/zaw/zaw.zsh
 fi
 # }}}
 # cdd{{{
-if [[ -r "$ZSH_USER_DIR/plugins/cdd/cdd" ]]; then
-  . "$ZSH_USER_DIR/plugins/cdd/cdd"
+if [[ -r "${ZSH_HOME}/plugins/cdd/cdd" ]]; then
+  . "${ZSH_HOME}/plugins/cdd/cdd"
   add-zsh-hook chpwd _cdd_chpwd
 fi
 # }}}
 # Host or Operating System specific configurations{{{
 uname=`uname`
-[[ -f "$ZSH_USER_DIR/os/$uname.zshrc" ]] && . "$ZSH_USER_DIR/os/$uname.zshrc"
-[[ -f "$ZSH_USER_DIR/hosts/$HOST.zshrc" ]] && . "$ZSH_USER_DIR/hosts/$HOST.zshrc"
+[[ -f "${ZSH_HOME}/os/$uname.zshrc" ]] && . "${ZSH_HOME}/os/$uname.zshrc"
+[[ -f "${ZSH_HOME}/hosts/$HOST.zshrc" ]] && . "${ZSH_HOME}/hosts/$HOST.zshrc"
 # }}}
 # show-window-title{{{
 if [[ "x$MULTIPLEXOR" != "x" ]]; then
