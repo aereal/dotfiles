@@ -139,3 +139,6 @@
 [submodule ".vim/bundle/jellybeans.vim"]
 	path = .vim/bundle/jellybeans.vim
 	url = git://github.com/nanotech/jellybeans.vim.git
+[submodule ".vim/bundle/ref-sources.vim"]
+	path = .vim/bundle/ref-sources.vim
+	url = git://github.com/mojako/ref-sources.vim.git
