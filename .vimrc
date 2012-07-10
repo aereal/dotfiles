@@ -36,9 +36,6 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'kana/vim-altr'
 NeoBundle 'sudo.vim'
 " }}}
-" ## Key-mappings {{{
-NeoBundle 'kana/vim-arpeggio'
-" }}}
 " ## Text Object {{{
 NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'kana/vim-smartinput'
@@ -48,13 +45,6 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'vimtaku/vim-textobj-sigil'
-" }}}
-" ## Text Operators {{{
-NeoBundle 'emonkak/vim-operator-sort'
-NeoBundle 'kana/vim-operator-replace'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'tyru/operator-camelize.vim'
 " }}}
 " ## Help & Document {{{
 NeoBundle 'mojako/ref-sources.vim'
@@ -71,14 +61,9 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 " }}}
-" ## Visualization {{{
-NeoBundle 'lilydjwg/colorizer'
-" }}}
 " ## Language Support {{{
 NeoBundle 'bbommarito/vim-slim'
-NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'depuracao/vim-rdoc'
-NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hallison/vim-markdown'
@@ -90,21 +75,15 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'rosstimson/scala-vim-support'
-NeoBundle 'teramako/jscomplete-vim'
+"NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'vim-ruby/vim-ruby'
 " }}}
 " ## Colors {{{
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'git://gist.github.com/187578.git'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-NeoBundle 'mrkn256.vim'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'nelstrom/vim-mac-classic-theme'
-NeoBundle 'noahfrederick/Hemisu'
-NeoBundle 'trapd00r/neverland-vim-theme'
 " }}}
 " }}}
 
