@@ -25,6 +25,7 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'sickill/vim-pasta'
 " }}}
 " ## Development {{{
+NeoBundle 'Shougo/vimshell'
 NeoBundle 'errormarker.vim'
 NeoBundle 'int3/vim-extradite'
 NeoBundle 'scrooloose/syntastic'

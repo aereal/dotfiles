@@ -157,3 +157,6 @@
 [submodule ".vim/bundle/hatena-vim"]
 	path = .vim/bundle/hatena-vim
 	url = git://github.com/motemen/hatena-vim.git
+[submodule ".vim/bundle/vimshell"]
+	path = .vim/bundle/vimshell
+	url = git://github.com/Shougo/vimshell.git
