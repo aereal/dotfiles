@@ -12,3 +12,4 @@
 .vim/.ref/*
 .vim/.unite/*
 .vim/undo/*
+.vim/bundle/*
