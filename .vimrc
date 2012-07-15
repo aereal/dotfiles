@@ -13,7 +13,7 @@ endif
 NeoBundle 'Shougo/vimproc'
 " }}}
 " ## UI {{{
-NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'Lokaltog/vim-powerline', 'develop'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 " }}}
 " ## Editing {{{
