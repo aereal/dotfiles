@@ -9,37 +9,22 @@ endif
 " }}}
 
 " # Bundles {{{
-" ## Essentials {{{
-NeoBundle 'Shougo/vimproc'
-" }}}
-" ## UI {{{
-NeoBundle 'Lokaltog/vim-powerline', 'develop'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" }}}
-" ## Editing {{{
+" ## Completion {{{
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'sickill/vim-pasta'
+"NeoBundle 'teramako/jscomplete-vim'
+NeoBundle 'ujihisa/neco-ghc'
 " }}}
-" ## Development {{{
-NeoBundle 'Shougo/vimshell'
+" ## Syntax check {{{
 NeoBundle 'errormarker.vim'
-NeoBundle 'int3/vim-extradite'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'thinca/vim-quickrun'
+" }}}
+" ## Git {{{
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'int3/vim-extradite'
 " }}}
-" ## Files, Buffers {{{
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'kana/vim-altr'
-NeoBundle 'sudo.vim'
-" }}}
-" ## Text Object {{{
+" ## Text objects {{{
 NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'kana/vim-smartinput'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-user'
@@ -47,7 +32,14 @@ NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'tpope/vim-surround'
 " }}}
-" ## Help & Document {{{
+" ## Editing {{{
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'sickill/vim-pasta'
+" }}}
+" ## Document {{{
 NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'ujihisa/ref-hoogle'
@@ -62,7 +54,7 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 " }}}
-" ## Language Support {{{
+" ## Language support {{{
 NeoBundle 'bbommarito/vim-slim'
 NeoBundle 'depuracao/vim-rdoc'
 NeoBundle 'groenewege/vim-less'
@@ -76,15 +68,25 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'rosstimson/scala-vim-support'
-"NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'tpope/vim-haml'
-NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'vim-ruby/vim-ruby'
+" }}}
+" ## UI {{{
+NeoBundle 'Lokaltog/vim-powerline', 'develop'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " }}}
 " ## Colors {{{
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
 NeoBundle 'nanotech/jellybeans.vim'
+" }}}
+" ## Misc. {{{
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'kana/vim-altr'
+NeoBundle 'sudo.vim'
 " }}}
 " }}}
 
