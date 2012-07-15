@@ -39,6 +39,15 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'sickill/vim-pasta'
 " }}}
+" ## Operators {{{
+NeoBundle 'emonkak/vim-operator-comment'
+NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'tyru/operator-camelize.vim'
+NeoBundle 'tyru/operator-html-escape.vim'
+NeoBundle 'tyru/operator-reveerse.vim'
+" }}}
 " ## Document {{{
 NeoBundle 'mojako/ref-sources.vim'
 NeoBundle 'thinca/vim-ref'
