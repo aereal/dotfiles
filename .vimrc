@@ -60,6 +60,7 @@ NeoBundle 'basyura/unite-rails'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'sgur/unite-qf'
+NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 " }}}
