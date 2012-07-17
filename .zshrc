@@ -199,7 +199,11 @@ alias ps='ps aux'
 
   # hub{{{
   if [[ -x `which hub` ]]; then
-    eval "$(hub alias -s zsh)"
+    # eval "$(hub alias -s zsh)"
+
+    function git() {
+      hub $@
+    }
   fi
   # }}}
 # }}}
