@@ -97,6 +97,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'kana/vim-altr'
 NeoBundle 'sudo.vim'
+NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
 " }}}
