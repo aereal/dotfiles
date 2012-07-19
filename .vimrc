@@ -230,6 +230,10 @@ autocmd BufEnter */t/*.t set ft=perl.tap
 autocmd FileType vim inoremap <buffer> = =
 " }}}
 
+" ## markdown {{{
+autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
+" }}}
+
 autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
 autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
 autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
