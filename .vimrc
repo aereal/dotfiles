@@ -91,15 +91,15 @@ NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
 NeoBundle 'nanotech/jellybeans.vim'
 " }}}
 " ## Misc. {{{
+NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'kana/vim-altr'
-NeoBundle 'sudo.vim'
-NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
+NeoBundle 'sudo.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tyru/current-func-info.vim'
 " }}}
 " }}}
 
