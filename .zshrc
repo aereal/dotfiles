@@ -207,6 +207,11 @@ alias ps='ps aux'
   fi
   # }}}
 # }}}
+in-terminal-multiplexor() { # {{{
+  local result
+  result="$([[ -n "$TMUX" ]] || [[ -n "$PTY" ]])"
+  return $result
+} # }}}
 # zaw.zsh{{{
 if [[ -d "${ZSH_HOME}/plugins/zaw" ]] && [[ -r "${ZSH_HOME}/plugins/zaw/zaw.zsh" ]]; then
   source ${ZSH_HOME}/plugins/zaw/zaw.zsh
@@ -224,7 +229,7 @@ uname=`uname`
 [[ -f "${ZSH_HOME}/hosts/$HOST.zshrc" ]] && . "${ZSH_HOME}/hosts/$HOST.zshrc"
 # }}}
 # show-window-title{{{
-if [[ "x$MULTIPLEXOR" != "x" ]]; then
+if [ in-terminal-multiplexor ]; then
   add-zsh-hook preexec show-window-title
 fi
 # }}}
