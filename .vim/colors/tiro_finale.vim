@@ -15,6 +15,7 @@ set background=dark
 hi Normal guifg=#eaeaea guibg=#121111
 hi SpecialKey guifg=#555555
 hi Cursor guifg=bg guibg=fg
+hi CursorLine guifg=fg guibg=bg gui=underline
 hi LineNr guifg=#e7abc2
 hi MatchParen gui=underline cterm=underline
 hi NonText guifg=#872c2a
