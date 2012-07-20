@@ -92,6 +92,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 " }}}
 " ## Misc. {{{
 NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'kana/vim-altr'
