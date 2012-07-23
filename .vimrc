@@ -239,6 +239,11 @@ endif
       vmap <Left> <Plug>(Textmanip.move_selection_left)
       vmap <Right> <Plug>(Textmanip.move_selection_right)
     " }}}
+    NeoBundle 'LeafCage/foldCC' " {{{
+      set foldtext=FoldCCtext()
+      set foldcolumn=4
+      " set fillchars=vert:\|
+    " }}}
   " }}}
 " }}}
 
