@@ -63,6 +63,7 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
 " }}}
 " ## Language support {{{
 NeoBundle 'bbommarito/vim-slim'
