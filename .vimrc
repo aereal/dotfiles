@@ -8,6 +8,190 @@ if has('vim_starting')
 endif
 " }}}
 
+" # Configurations {{{
+  " ## indentation {{{
+    set autoindent
+    set nosmartindent
+    set nocindent
+    set smarttab
+    set shiftwidth=2
+    set tabstop=2
+    set softtabstop=2
+    set expandtab
+  " }}}
+
+  set ambiwidth=double
+  set autoread
+  set backspace=indent,eol,start
+  set nobackup
+  set nocompatible
+  set hidden
+  set hlsearch
+  set ignorecase
+  set smartcase
+  set incsearch
+  set wrapscan
+  set history=100
+  set laststatus=2
+  set list
+  set listchars=tab:>.,precedes:<,extends:>,eol:¬
+  set number
+  set ruler
+  set showmatch
+  set whichwrap=b,s,h,l,<,>,[,]
+  set complete=.,w,b,u,k,i
+  set completeopt=menu,preview,longest,menuone
+  set wildmenu
+  set wildmode=longest:full,list:longest
+  set scrolloff=100000
+  set splitbelow
+  set swapfile
+  set modeline
+  set showcmd
+  set showmode
+  set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
+  set encoding=utf-8
+  set termencoding=utf-8
+  set fileformats=unix,dos,mac
+  set directory=~/.vim/swp
+  set shortmess+=I
+  set cursorline
+  "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+
+    " ## Persistent Undo {{{
+      if has('persistent_undo')
+        set undodir=~/.vim/undo
+        set undofile
+      endif
+    " }}}
+
+    " ## Share clipboard namespace {{{
+      if has('clipboard')
+        set clipboard=unnamed,autoselect
+      endif
+    " }}}
+
+  filetype plugin indent on
+" }}}
+
+" # Key mappings {{{
+  let mapleader   = ';'
+  let g:mapleader = ';'
+
+  nnoremap <Space><Space> :update<CR>
+  nnoremap <ESC><ESC>      :nohlsearch<CR>
+
+  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+" }}}
+
+" # autocmd {{{
+  autocmd ColorScheme *    hi! link CoffeeSpecialVar Constant
+  " screenに編集中のファイル名を出す {{{
+    autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+  " }}}
+
+  " ## sh {{{
+    autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+  " }}}
+
+  " ## io {{{
+    autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
+  " }}}
+
+  " ## javascript {{{
+    autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+    autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+    autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+    autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
+  " }}}
+
+  " ## ruby {{{
+    autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+    autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+    "autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
+    "autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
+    autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+    "autocmd FileType ruby    setlocal foldmethod=syntax
+  " }}}
+
+  " ## coffee {{{
+    autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+    autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+  " }}}
+
+  " ## haskell {{{
+    autocmd FileType haskell setlocal et
+    autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+    autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+    autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  " }}}
+
+  " ## perl {{{
+    autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+    autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+    autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+    autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+    autocmd BufEnter *.tt    set ft=tt2
+    autocmd BufEnter */t/*.t set ft=perl.tap
+  " }}}
+
+  " ## vim {{{
+    autocmd FileType vim inoremap <buffer> = =
+  " }}}
+
+  " ## markdown {{{
+    autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
+  " }}}
+
+  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
+  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html     set ft=tt2.html
+  autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
+
+  autocmd BufEnter */nginx/*.conf set ft=nginx
+  autocmd BufEnter */*.nginx.conf set ft=nginx
+" }}}
+
+" # Command-line Window {{{
+" http://vim-users.jp/2010/07/hack161/
+  nnoremap   <sid>(command-line-enter) q:
+  xnoremap   <sid>(command-line-enter) q:
+  nnoremap   <sid>(command-line-norange) q:<C-u>
+  nmap     : <sid>(command-line-enter)
+  xmap     : <sid>(command-line-enter)
+
+  autocmd CmdwinEnter * call s:init_cmdwin()
+
+  function! s:init_cmdwin() "{{{
+    nnoremap <buffer>       q     :<C-u>quit<CR>
+    nnoremap <buffer>       <TAB> :<C-u>quit<CR>
+    inoremap <buffer><expr> <CR>  pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
+    inoremap <buffer><expr> <C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+    inoremap <buffer><expr> <BS>  pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+    inoremap <buffer><expr> <C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
+    inoremap <buffer><expr> :     col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
+    inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    setlocal nonumber
+    startinsert!
+  endfunction " }}}
+" }}}
+
+" # Adjust splitted-window width {{{
+  " http://vim-users.jp/2009/07/hack42/
+  nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
+  nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
+  nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
+  nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
+
+  function! s:good_width() "{{{
+    if winwidth(0) < 80
+      vertical resize 80
+    endif
+  endfunction " }}}
+" }}}
+
 " # Plugins {{{
   " ## Completion {{{
     "NeoBundle 'teramako/jscomplete-vim'
@@ -245,190 +429,6 @@ endif
       " set fillchars=vert:\|
     " }}}
   " }}}
-" }}}
-
-" # Configurations {{{
-  " ## indentation {{{
-    set autoindent
-    set nosmartindent
-    set nocindent
-    set smarttab
-    set shiftwidth=2
-    set tabstop=2
-    set softtabstop=2
-    set expandtab
-  " }}}
-
-  set ambiwidth=double
-  set autoread
-  set backspace=indent,eol,start
-  set nobackup
-  set nocompatible
-  set hidden
-  set hlsearch
-  set ignorecase
-  set smartcase
-  set incsearch
-  set wrapscan
-  set history=100
-  set laststatus=2
-  set list
-  set listchars=tab:>.,precedes:<,extends:>,eol:¬
-  set number
-  set ruler
-  set showmatch
-  set whichwrap=b,s,h,l,<,>,[,]
-  set complete=.,w,b,u,k,i
-  set completeopt=menu,preview,longest,menuone
-  set wildmenu
-  set wildmode=longest:full,list:longest
-  set scrolloff=100000
-  set splitbelow
-  set swapfile
-  set modeline
-  set showcmd
-  set showmode
-  set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
-  set encoding=utf-8
-  set termencoding=utf-8
-  set fileformats=unix,dos,mac
-  set directory=~/.vim/swp
-  set shortmess+=I
-  set cursorline
-  "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
-
-    " ## Persistent Undo {{{
-      if has('persistent_undo')
-        set undodir=~/.vim/undo
-        set undofile
-      endif
-    " }}}
-
-    " ## Share clipboard namespace {{{
-      if has('clipboard')
-        set clipboard=unnamed,autoselect
-      endif
-    " }}}
-
-  filetype plugin indent on
-" }}}
-
-" # Key mappings {{{
-  let mapleader   = ';'
-  let g:mapleader = ';'
-
-  nnoremap <Space><Space> :update<CR>
-  nnoremap <ESC><ESC>      :nohlsearch<CR>
-
-  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
-" }}}
-
-" # autocmd {{{
-  autocmd ColorScheme *    hi! link CoffeeSpecialVar Constant
-  " screenに編集中のファイル名を出す {{{
-    autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
-  " }}}
-
-  " ## sh {{{
-    autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
-  " }}}
-
-  " ## io {{{
-    autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
-  " }}}
-
-  " ## javascript {{{
-    autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-    autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
-    autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-    autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
-  " }}}
-
-  " ## ruby {{{
-    autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-    autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-    "autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
-    "autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
-    autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-    "autocmd FileType ruby    setlocal foldmethod=syntax
-  " }}}
-
-  " ## coffee {{{
-    autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-    autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-  " }}}
-
-  " ## haskell {{{
-    autocmd FileType haskell setlocal et
-    autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-    autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-    autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-  " }}}
-
-  " ## perl {{{
-    autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-    autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-    autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
-    autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-    autocmd BufEnter *.tt    set ft=tt2
-    autocmd BufEnter */t/*.t set ft=perl.tap
-  " }}}
-
-  " ## vim {{{
-    autocmd FileType vim inoremap <buffer> = =
-  " }}}
-
-  " ## markdown {{{
-    autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
-  " }}}
-
-  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
-  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     set ft=tt2.html
-  autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
-
-  autocmd BufEnter */nginx/*.conf set ft=nginx
-  autocmd BufEnter */*.nginx.conf set ft=nginx
-" }}}
-
-" # Command-line Window {{{
-" http://vim-users.jp/2010/07/hack161/
-  nnoremap   <sid>(command-line-enter) q:
-  xnoremap   <sid>(command-line-enter) q:
-  nnoremap   <sid>(command-line-norange) q:<C-u>
-  nmap     : <sid>(command-line-enter)
-  xmap     : <sid>(command-line-enter)
-
-  autocmd CmdwinEnter * call s:init_cmdwin()
-
-  function! s:init_cmdwin() "{{{
-    nnoremap <buffer>       q     :<C-u>quit<CR>
-    nnoremap <buffer>       <TAB> :<C-u>quit<CR>
-    inoremap <buffer><expr> <CR>  pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-    inoremap <buffer><expr> <C-h> pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-    inoremap <buffer><expr> <BS>  pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-    inoremap <buffer><expr> <C-h> col('.') == 1 ? "\<ESC>:quit\<CR>" : pumvisible() ? "\<C-y>\<C-h>" : "\<C-h>"
-    inoremap <buffer><expr> :     col('.') == 1 ? "VimProcBang " : col('.') == 2 && getline('.')[0] == 'r' ? "<BS>VimProcRead " : ":"
-    inoremap <buffer><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-    setlocal nonumber
-    startinsert!
-  endfunction " }}}
-" }}}
-
-" # Adjust splitted-window width {{{
-  " http://vim-users.jp/2009/07/hack42/
-  nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
-  nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
-  nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
-  nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
-
-  function! s:good_width() "{{{
-    if winwidth(0) < 80
-      vertical resize 80
-    endif
-  endfunction " }}}
 " }}}
 
 " # Background color detection {{{
