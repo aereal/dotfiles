@@ -8,101 +8,238 @@ if has('vim_starting')
 endif
 " }}}
 
-" # Bundles {{{
-" ## Completion {{{
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
-"NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'ujihisa/neco-ghc'
-" }}}
-" ## Syntax check {{{
-NeoBundle 'errormarker.vim'
-NeoBundle 'scrooloose/syntastic'
-" }}}
-" ## Git {{{
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'int3/vim-extradite'
-" }}}
-" ## Text objects {{{
-NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'thinca/vim-textobj-comment'
-NeoBundle 'tpope/vim-surround'
-" }}}
-" ## Editing {{{
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'sickill/vim-pasta'
-" }}}
-" ## Operators {{{
-NeoBundle 'emonkak/vim-operator-comment'
-NeoBundle 'emonkak/vim-operator-sort'
-NeoBundle 'kana/vim-operator-replace'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'tyru/operator-camelize.vim'
-NeoBundle 'tyru/operator-html-escape.vim'
-NeoBundle 'tyru/operator-reveerse.vim'
-" }}}
-" ## Document {{{
-NeoBundle 'mojako/ref-sources.vim'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'ujihisa/ref-hoogle'
-NeoBundle 'vim-jp/vimdoc-ja'
-" }}}
-" ## Unite {{{
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'sgur/unite-qf'
-NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'ujihisa/unite-font'
-" }}}
-" ## Language support {{{
-NeoBundle 'bbommarito/vim-slim'
-NeoBundle 'depuracao/vim-rdoc'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim'
-NeoBundle 'nginx.vim'
-NeoBundle 'nono/jquery.vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'petdance/vim-perl'
-NeoBundle 'rosstimson/scala-vim-support'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'vim-ruby/vim-ruby'
-" }}}
-" ## UI {{{
-NeoBundle 'Lokaltog/vim-powerline', 'develop'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" }}}
-" ## Colors {{{
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
-NeoBundle 'nanotech/jellybeans.vim'
-" }}}
-" ## Misc. {{{
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'kana/vim-altr'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tyru/current-func-info.vim'
-" }}}
+" # Plugins {{{
+  " ## Completion {{{
+    "NeoBundle 'teramako/jscomplete-vim'
+    NeoBundle 'Shougo/neocomplcache-snippets-complete'
+    NeoBundle 'ujihisa/neco-ghc'
+    NeoBundle 'Shougo/neocomplcache' " {{{
+      let g:neocomplcache_enable_at_startup = 1
+      let g:neocomplcache_enable_smart_case = 1
+      let g:neocomplcache_min_syntax_length = 3
+      let g:neocomplcache_enable_camel_case_completion = 1
+      let g:neocomplcache_enable_underbar_completion = 1
+      let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
+
+      inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
+      inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+      inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+      inoremap <expr><C-y>  neocomplcache#close_popup()
+      inoremap <expr><C-e>  neocomplcache#cancel_popup()
+      imap     <C-k> <Plug>(neocomplcache_snippets_expand)
+      smap     <C-k> <Plug>(neocomplcache_snippets_expand)
+      imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
+    " }}}
+  " }}}
+  " ## Syntax check {{{
+    NeoBundle 'errormarker.vim'
+    NeoBundle 'scrooloose/syntastic'
+  " }}}
+  " ## Git {{{
+    NeoBundle 'int3/vim-extradite'
+    NeoBundle 'tpope/vim-fugitive' " {{{
+      nnoremap <Leader>gs :<C-u>Gstatus<CR>
+      nnoremap <Leader>gc :<C-u>Gcommit<CR>
+      nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
+      nnoremap <Leader>gb :<C-u>Gblame<CR>
+      nnoremap <Leader>ga :<C-u>Gwrite<CR>
+      nnoremap <Leader>gd :<C-u>Gdiff<CR>
+      nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+
+      autocmd BufReadPost fugitive://* set bufhidden=delete
+    " }}}
+  " }}}
+  " ## Text objects {{{
+    NeoBundle 'h1mesuke/textobj-wiw'
+    NeoBundle 'kana/vim-textobj-indent'
+    NeoBundle 'kana/vim-textobj-line'
+    NeoBundle 'kana/vim-textobj-user'
+    NeoBundle 't9md/vim-surround_custom_mapping'
+    NeoBundle 'thinca/vim-textobj-comment'
+    NeoBundle 'tpope/vim-surround' " {{{
+      let g:surround_custom_mapping = {}
+      let g:surround_custom_mapping.ruby  = {
+        \ '#': "#{\r}",
+        \ }
+      let g:surround_custom_mapping.eruby = {
+        \ '-': "<% \r %>",
+        \ '=': "<%= \r %>",
+        \ '#': "#{\r}",
+        \ }
+      let g:surround_custom_mapping.tt2 = {
+            \ '%': "[% \r %]",
+            \ }
+    " }}}
+  " }}}
+  " ## Editing {{{
+    NeoBundle 'h1mesuke/vim-alignta'
+    NeoBundle 'kana/vim-smartchr'
+    NeoBundle 'kana/vim-smartinput'
+    NeoBundle 'sickill/vim-pasta'
+    NeoBundle 'mattn/zencoding-vim' " {{{
+      let g:user_zen_leader_key = '<C-e>'
+      let g:user_zen_settings = {
+            \ 'indentation': ' ',
+            \ }
+    " }}}
+  " }}}
+  " ## Operators {{{
+    " NeoBundle 'emonkak/vim-operator-comment'
+    " NeoBundle 'tyru/operator-html-escape.vim'
+    " NeoBundle 'tyru/operator-reverse.vim'
+    NeoBundle 'kana/vim-operator-user'
+    NeoBundle 'emonkak/vim-operator-sort' " {{{
+      map \s <Plug>(operator-sort)
+    " }}}
+    NeoBundle 'kana/vim-operator-replace' " {{{
+      map \r <Plug>(operator-replace)
+    " }}}
+    NeoBundle 'tyru/operator-camelize.vim' " {{{
+      map \c <Plug>(operator-camelize-toggle)
+    " }}}
+  " }}}
+  " ## Document {{{
+    NeoBundle 'vim-jp/vimdoc-ja'
+    NeoBundle 'thinca/vim-ref' " {{{
+      let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
+      let g:ref_jquery_use_cache = 1
+      let g:ref_cache_dir = $HOME . '/.vim/.ref'
+    " }}}
+    NeoBundle 'mojako/ref-sources.vim'
+    NeoBundle 'ujihisa/ref-hoogle'
+  " }}}
+  " ## Unite {{{
+    NeoBundle 'Shougo/unite.vim' " {{{
+      let g:unite_data_directory = '~/.vim/.unite'
+
+      nnoremap [unite] <Nop>
+      nmap <Space> [unite]
+      nnoremap <silent> [unite]\c       :<C-u>Unite colorscheme -auto-preview<CR>
+      nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
+
+      if has('gui_running')
+        nnoremap <silent> [unite]b        :<C-u>Unite buffer_tab -immediately<CR>
+        nnoremap <silent> [unite]B        :<C-u>Unite buffer -immediately<CR>
+      else
+        nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
+      endif
+
+      nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
+      nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
+      nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
+      nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
+      nnoremap <silent> [unite].        :<C-u>Unite source<CR>
+      nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
+      nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
+      nnoremap <silent> [unite]q        :<C-u>Unite qf -no-quit<CR>
+      nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
+
+      autocmd FileType unite call s:unite_local_settings()
+      function! s:unite_local_settings() "{{{
+        nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+        inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
+        nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+        inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
+        nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+        inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
+        nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+        inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+      endfunction " }}}
+
+      function! s:unite_project(...) " {{{
+        let opts = (a:0 ? join(a:000, ' ') : '')
+        let dir = unite#util#path2project_directory(expand('%'))
+        execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
+      endfunction " }}}
+    " }}}
+    NeoBundle 'basyura/unite-rails' " {{{
+      nnoremap <silent> [unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
+      nnoremap <silent> [unite]rc       :<C-u>Unite rails/controller<CR>
+      nnoremap <silent> [unite]rv       :<C-u>Unite rails/view<CR>
+      nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
+      nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
+    " }}}
+    NeoBundle 'h1mesuke/unite-outline'
+    NeoBundle 'sgur/unite-git_grep'
+    NeoBundle 'sgur/unite-qf'
+    NeoBundle 'thinca/vim-unite-history'
+    NeoBundle 'tsukkee/unite-help'
+    NeoBundle 'ujihisa/unite-colorscheme'
+    NeoBundle 'ujihisa/unite-font'
+  " }}}
+  " ## Language support {{{
+    NeoBundle 'bbommarito/vim-slim'
+    NeoBundle 'depuracao/vim-rdoc'
+    NeoBundle 'groenewege/vim-less'
+    NeoBundle 'hail2u/vim-css3-syntax'
+    NeoBundle 'hallison/vim-markdown'
+    NeoBundle 'kchmck/vim-coffee-script'
+    NeoBundle 'motemen/hatena-vim'
+    NeoBundle 'nginx.vim'
+    NeoBundle 'nono/jquery.vim'
+    NeoBundle 'othree/html5.vim'
+    NeoBundle 'pangloss/vim-javascript'
+    NeoBundle 'petdance/vim-perl'
+    NeoBundle 'rosstimson/scala-vim-support'
+    NeoBundle 'tpope/vim-haml'
+    NeoBundle 'vim-ruby/vim-ruby'
+  " }}}
+  " ## UI {{{
+    NeoBundle 'Lokaltog/vim-powerline', 'develop' " {{{
+      let g:Powerline_symbols = 'fancy'
+    " }}}
+    NeoBundle 'nathanaelkane/vim-indent-guides' " {{{
+      let g:indent_guides_auto_colors           = 1
+      let g:indent_guides_enable_on_vim_startup = 1
+      let g:indent_guides_color_change_percent  = 10
+      let g:indent_guides_guide_size            = &sw
+    " }}}
+  " }}}
+  " ## Colors {{{
+    NeoBundle 'altercation/vim-colors-solarized'
+    NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
+    NeoBundle 'nanotech/jellybeans.vim'
+  " }}}
+  " ## Misc. {{{
+    NeoBundle 'Shougo/vimproc'
+    NeoBundle 'Shougo/neobundle.vim'
+    NeoBundle 'Shougo/vimfiler'
+    NeoBundle 'mattn/gist-vim'
+    NeoBundle 'mattn/webapi-vim'
+    NeoBundle 'sudo.vim'
+    NeoBundle 'tyru/current-func-info.vim'
+    NeoBundle 'Shougo/vimshell' " {{{
+      nnoremap <silent> <Leader>; :VimShell<CR>
+      let g:vimshell_prompt = " X | _ | X < "
+      let g:vimshell_right_prompt = 'getcwd()'
+      let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
+
+      hi vimshellPrompt ctermfg=yellow
+    " }}}
+    NeoBundle 'kana/vim-altr' " {{{
+      nmap <Leader><C-[> <Plug>(altr-forward)
+      nmap <Leader><C-]> <Plug>(altr-back)
+
+      "call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
+      "call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
+
+      " Rails rules
+      call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
+      call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
+      call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
+      call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+    " }}}
+    NeoBundle 'thinca/vim-quickrun' " {{{
+      let g:quickrun_config = {}
+      let g:quickrun_config['perl.tap'] = {'command': 'prove'}
+    " }}}
+    " NeoBundle 't9md/vim-textmanip' " {{{
+      vmap <Down> <Plug>(Textmanip.move_selection_down)
+      vmap <Up> <Plug>(Textmanip.move_selection_up)
+      vmap <Left> <Plug>(Textmanip.move_selection_left)
+      vmap <Right> <Plug>(Textmanip.move_selection_right)
+    " }}}
+  " }}}
 " }}}
 
 " # Configurations {{{
@@ -283,176 +420,6 @@ function! s:good_width() "{{{
     vertical resize 80
   endif
 endfunction " }}}
-" }}}
-
-" # Plugins {{{
-" ## vim-operator-sort {{{
-map \s <Plug>(operator-sort)
-" }}}
-
-" ## vim-operator-camelize {{{
-map \c <Plug>(operator-camelize-toggle)
-" }}}
-
-" ## vim-operator-replace {{{
-map \r <Plug>(operator-replace)
-" }}}
-
-" ## ref.vim {{{
-let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
-let g:ref_jquery_use_cache = 1
-let g:ref_cache_dir = $HOME . '/.vim/.ref'
-" }}}
-
-" ## zencoding.vim {{{
-let g:user_zen_leader_key = '<C-e>'
-let g:user_zen_settings = {
-      \ 'indentation': ' ',
-      \ }
-" }}}
-
-" ## neocomplcache {{{
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
-
-inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-imap     <C-k> <Plug>(neocomplcache_snippets_expand)
-smap     <C-k> <Plug>(neocomplcache_snippets_expand)
-imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
-" }}}
-
-" ## unite.vim {{{
-let g:unite_data_directory = '~/.vim/.unite'
-
-nnoremap [unite] <Nop>
-nmap <Space> [unite]
-nnoremap <silent> [unite]\c       :<C-u>Unite colorscheme -auto-preview<CR>
-nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
-
-if has('gui_running')
-  nnoremap <silent> [unite]b        :<C-u>Unite buffer_tab -immediately<CR>
-  nnoremap <silent> [unite]B        :<C-u>Unite buffer -immediately<CR>
-else
-  nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
-endif
-
-nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
-nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
-nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
-nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
-nnoremap <silent> [unite].        :<C-u>Unite source<CR>
-nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
-nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
-nnoremap <silent> [unite]q        :<C-u>Unite qf -no-quit<CR>
-nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
-
-" ### unite-rails {{{
-nnoremap <silent> [unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
-nnoremap <silent> [unite]rc       :<C-u>Unite rails/controller<CR>
-nnoremap <silent> [unite]rv       :<C-u>Unite rails/view<CR>
-nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
-nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
-" }}}
-
-autocmd FileType unite call s:unite_local_settings()
-function! s:unite_local_settings() "{{{
-  nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-  inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-  nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-  inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-  nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-  inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-  nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
-  inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
-endfunction " }}}
-
-function! s:unite_project(...) " {{{
-  let opts = (a:0 ? join(a:000, ' ') : '')
-  let dir = unite#util#path2project_directory(expand('%'))
-  execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
-endfunction " }}}
-" }}}
-
-" ## surround.vim {{{
-let g:surround_custom_mapping = {}
-let g:surround_custom_mapping.ruby  = {
-  \ '#': "#{\r}",
-  \ }
-let g:surround_custom_mapping.eruby = {
-  \ '-': "<% \r %>",
-  \ '=': "<%= \r %>",
-  \ '#': "#{\r}",
-  \ }
-let g:surround_custom_mapping.tt2 = {
-      \ '%': "[% \r %]",
-      \ }
-" }}}
-
-" ## indent-guides.vim {{{
-let g:indent_guides_auto_colors           = 1
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent  = 10
-let g:indent_guides_guide_size            = &sw
-" }}}
-
-" ## vim-fugitive {{{
-nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gc :<C-u>Gcommit<CR>
-nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
-nnoremap <Leader>gb :<C-u>Gblame<CR>
-nnoremap <Leader>ga :<C-u>Gwrite<CR>
-nnoremap <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
-
-autocmd BufReadPost fugitive://* set bufhidden=delete
-" }}}
-
-" ## vim-textmanip {{{
-vmap <Down> <Plug>(Textmanip.move_selection_down)
-vmap <Up> <Plug>(Textmanip.move_selection_up)
-vmap <Left> <Plug>(Textmanip.move_selection_left)
-vmap <Right> <Plug>(Textmanip.move_selection_right)
-" }}}
-
-" ## vim-altr {{{
-nmap <Leader><C-[> <Plug>(altr-forward)
-nmap <Leader><C-]> <Plug>(altr-back)
-
-"call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
-"call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
-
-" Rails rules
-call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
-call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
-call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
-call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
-" }}}
-
-" ## quickrun {{{
-let g:quickrun_config = {}
-let g:quickrun_config['perl.tap'] = {'command': 'prove'}
-" }}}
-
-" ## vimshell {{{
-nnoremap <silent> <Leader>; :VimShell<CR>
-let g:vimshell_prompt = " X | _ | X < "
-let g:vimshell_right_prompt = 'getcwd()'
-let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
-
-hi vimshellPrompt ctermfg=yellow
-" }}}
-
-" ## powerline {{{
-let g:Powerline_symbols = 'fancy'
-" }}}
 " }}}
 
 " # Background color detection {{{
