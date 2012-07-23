@@ -13,6 +13,7 @@ autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z rprompt-git-current-branch
 autoload -U -z add-zsh-hook
 autoload -U -z show-window-title
+autoload -U -z is-at-least
 # }}}
 # Options{{{
 setopt always_last_prompt # カーソル位置を保持したまま補完表示
@@ -42,6 +43,10 @@ setopt pushd_ignore_dups # 同じディレクトリはpushdしない
 setopt sh_word_split # 互換性のある空白の扱い
 setopt share_history # ヒストリを共有する
 setopt transient_rprompt # コマンド実行後は右プロンプトを消す
+
+if is-at-least 5.0.0; then
+  setopt combining_chars
+fi
 # }}}
 # Completion{{{
 autoload -U compinit
