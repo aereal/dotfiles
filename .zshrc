@@ -195,12 +195,10 @@ bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 # }}}
 # aliases{{{
-alias ..='cd ..'
 alias l='ls --color -AF'
 alias ls='ls --color -AF'
 alias ll='ls --color -AFl'
 alias :q='exit'
-alias ps='ps aux'
 
   # hub{{{
   if [[ -x `which hub` ]]; then
