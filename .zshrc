@@ -210,10 +210,15 @@ alias :q='exit'
   fi
   # }}}
 # }}}
+in-tmux() { # {{{
+  test -n "$TMUX"
+} # }}}
+in-screen() { # {{{
+  test -n "$STY"
+} # }}}
 in-terminal-multiplexor() { # {{{
-  local result
-  result="$([[ -n "$TMUX" ]] || [[ -n "$PTY" ]])"
-  return $result
+  in-tmux || in-screen
+} # }}}
 } # }}}
 # zaw.zsh{{{
 if [[ -d "${ZSH_HOME}/plugins/zaw" ]] && [[ -r "${ZSH_HOME}/plugins/zaw/zaw.zsh" ]]; then
