@@ -17,6 +17,7 @@ termcapinfo xterm* 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
 vbell off
 bell_msg "Bell in window %^G"
 
+bind j exec | uim-fep -s lastline -S
 bind w eval 'echo "Operate window"' 'command -c operate'
 bind -c operate ^] command
 bind -c operate j  eval 'focus down'   'command -c operate'
