@@ -393,6 +393,7 @@ endif
     NeoBundle 'mattn/webapi-vim'
     NeoBundle 'sudo.vim'
     NeoBundle 'tyru/current-func-info.vim'
+    NeoBundle 'kien/ctrlp.vim'
     NeoBundle 'Shougo/vimshell' " {{{
       nnoremap <silent> <Leader>; :VimShell<CR>
       let g:vimshell_prompt = " X | _ | X < "
