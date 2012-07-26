@@ -385,6 +385,7 @@ endif
     NeoBundle 'nanotech/jellybeans.vim'
   " }}}
   " ## Misc. {{{
+    NeoBundle 'Shougo/echodoc'
     NeoBundle 'Shougo/vimproc'
     NeoBundle 'Shougo/neobundle.vim'
     NeoBundle 'Shougo/vimfiler'
