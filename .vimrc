@@ -32,6 +32,7 @@ endif
   set incsearch
   set wrapscan
   set history=100
+  set langmenu=none
   set laststatus=2
   set list
   set listchars=tab:>.,precedes:<,extends:>,eol:¬
@@ -394,6 +395,7 @@ endif
     NeoBundle 'sudo.vim'
     NeoBundle 'tyru/current-func-info.vim'
     NeoBundle 'kien/ctrlp.vim'
+    NeoBundle 'kana/vim-narrow'
     NeoBundle 'Shougo/vimshell' " {{{
       nnoremap <silent> <Leader>; :VimShell<CR>
       let g:vimshell_prompt = " X | _ | X < "
