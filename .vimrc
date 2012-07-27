@@ -316,11 +316,12 @@ endif
       nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
       nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
       nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
-      nnoremap <silent> [unite][        :<C-u>Unite outline<CR>
+      nnoremap <silent> [unite][        :<C-u>Unite outline -vertical -winwidth=40<CR>
+      nnoremap <silent> [unite]{        :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
       nnoremap <silent> [unite].        :<C-u>Unite source<CR>
-      nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
+      nnoremap <silent> /               :<C-u>Unite line -start-insert -keep-focus -no-quit<CR>
       nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
-      nnoremap <silent> [unite]q        :<C-u>Unite qf -no-quit<CR>
+      nnoremap <silent> [unite]q        :<C-u>Unite qf -auto-preview -no-quit<CR>
       nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
       autocmd FileType unite call s:unite_local_settings()
