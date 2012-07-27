@@ -15,6 +15,13 @@ def distribution_task(name, files)
         ln_s @pwd + f, @home + f
       end
     end
+
+    desc "Unlink #{name.to_s.capitalize} files from #HOME"
+    task :unlink => :env do
+      @exists_files.map { |f| @home + f }.select(&:symlink?).each do |path|
+        remove path
+      end
+    end
   end
 end
 
