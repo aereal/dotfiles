@@ -398,7 +398,14 @@ endif
     NeoBundle 'mattn/webapi-vim'
     NeoBundle 'sudo.vim'
     NeoBundle 'tyru/current-func-info.vim'
-    NeoBundle 'kien/ctrlp.vim'
+    NeoBundle 'kien/ctrlp.vim' " {{{
+      let g:ctrlp_regpex = 1
+      let g:ctrlp_tabpage_position = 'al'
+      let g:ctrlp_clear_cache_on_exit = 0
+      let g:ctrlp_open_new_file = 't'
+      let g:ctrlp_open_multiple_files = 'tj'
+      let g:ctrlp_lazy_update = 1
+    " }}}
     NeoBundle 'kana/vim-narrow'
     NeoBundle 'Shougo/vimshell' " {{{
       nnoremap <silent> <Leader>; :VimShell<CR>
