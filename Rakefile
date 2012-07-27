@@ -6,7 +6,7 @@ def distribution_task(name, files)
       @home = Pathname.new('~').expand_path
       @pwd = Pathname.pwd.expand_path
       @files = FileList.new.include(files)
-      @exists_files, @missing_files = @files.select {|f| (@pwd + f).exist? }
+      @exists_files, @missing_files = @files.partition {|f| (@home + f).exist? }
     end
 
     desc "Export #{name.to_s.capitalize} files to $HOME"
