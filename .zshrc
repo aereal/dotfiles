@@ -160,7 +160,7 @@ init_prompt() { #{{{
   fi
 
   prompt_cwd="%{${fg[magenta]}%}%~%{${reset_color}%}"
-  prompt_command=" %(?,%{${fg[yellow]}%}X | _ | X%{${reset_color}%},%{${fg[red]}%}X > _ < X%{${reset_color}%}) < "
+  prompt_command=" %(?,%{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%},%{${fg[red]}%}✘>_<✘%{${reset_color}%}) < "
   # if [[ "x$SSH_CLIENT" != "x" ]]; then
   #   prompt_cwd="$prompt_cwd $prompt_user"
   # fi
