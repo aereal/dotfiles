@@ -324,6 +324,8 @@ endif
       nnoremap <silent> [unite]q        :<C-u>Unite qf -auto-preview -no-quit<CR>
       nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
+      nnoremap <silent> [unite]gc       :<C-u>UniteWithCurrentDir git/conflicts -buffer-name=files<CR>
+
       autocmd FileType unite call s:unite_local_settings()
       function! s:unite_local_settings() "{{{
         nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
@@ -467,6 +469,24 @@ endif
   else
     colorscheme peachpuff
   endif
+" }}}
+
+" unite-git-conflict {{{
+let s:unite_git_conflicts = {
+      \ 'name': 'git/conflicts',
+      \ }
+function! s:unite_git_conflicts.gather_candidates(args, context)
+  let output = unite#util#system('git diff-files --name-status')
+  let conflicts = filter(split(output, "\n"), 'v:val[0] == "U"')
+  let files = map(conflicts, 'fnamemodify(split(v:val, "\\\s\\\+")[1], ":p")')
+  return map(files, '{
+        \ "word": v:val,
+        \ "source": "git/conflicts",
+        \ "kind": "file",
+        \ "action__path": v:val
+        \ }')
+endfunction
+call unite#define_source(s:unite_git_conflicts)
 " }}}
 
 " vim:set et foldmethod=marker:
