@@ -351,7 +351,9 @@ endif
     NeoBundle 'h1mesuke/unite-outline'
     NeoBundle 'sgur/unite-git_grep'
     NeoBundle 'sgur/unite-qf'
-    NeoBundle 'thinca/vim-unite-history'
+    NeoBundle 'thinca/vim-unite-history' " {{{
+      nnoremap <silent> [unite]: :<C-u>Unite history/command -start-insert<CR>
+    " }}}
     NeoBundle 'tsukkee/unite-help'
     NeoBundle 'ujihisa/unite-colorscheme'
     NeoBundle 'ujihisa/unite-font'
