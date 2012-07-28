@@ -303,7 +303,6 @@ endif
 
       nnoremap [unite] <Nop>
       nmap <Space> [unite]
-      nnoremap <silent> [unite]\c       :<C-u>Unite colorscheme -auto-preview<CR>
       nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
 
       if has('gui_running')
@@ -313,15 +312,10 @@ endif
         nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
       endif
 
-      nnoremap <silent> [unite]g        :<C-u>Unite vcs_grep -start-insert<CR>
       nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
-      nnoremap <silent> [unite]h        :<C-u>Unite help -start-insert<CR>
-      nnoremap <silent> [unite][        :<C-u>Unite outline -vertical -winwidth=40<CR>
-      nnoremap <silent> [unite]{        :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
       nnoremap <silent> [unite].        :<C-u>Unite source<CR>
       nnoremap <silent> /               :<C-u>Unite line -start-insert -keep-focus -no-quit<CR>
       nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
-      nnoremap <silent> [unite]q        :<C-u>Unite qf -auto-preview -no-quit<CR>
       nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
       nnoremap <silent> [unite]gc       :<C-u>UniteWithCurrentDir git/conflicts -buffer-name=files<CR>
@@ -351,14 +345,25 @@ endif
       nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
       nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
     " }}}
-    NeoBundle 'h1mesuke/unite-outline'
-    NeoBundle 'sgur/unite-git_grep'
-    NeoBundle 'sgur/unite-qf'
+    NeoBundle 'h1mesuke/unite-outline' " {{{
+      nnoremap <silent> [unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
+      nnoremap <silent> [unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
+    " }}}
+    NeoBundle 'sgur/unite-git_grep' " {{{
+      nnoremap <silent> [unite]g :<C-u>Unite vcs_grep -start-insert<CR>
+    " }}}
+    NeoBundle 'sgur/unite-qf' " {{{
+      nnoremap <silent> [unite]q :<C-u>Unite qf -auto-preview -no-quit<CR>
+    " }}}
     NeoBundle 'thinca/vim-unite-history' " {{{
       nnoremap <silent> [unite]: :<C-u>Unite history/command -start-insert<CR>
     " }}}
-    NeoBundle 'tsukkee/unite-help'
-    NeoBundle 'ujihisa/unite-colorscheme'
+    NeoBundle 'tsukkee/unite-help' " {{{
+      nnoremap <silent> [unite]h :<C-u>Unite help -start-insert<CR>
+    " }}}
+    NeoBundle 'ujihisa/unite-colorscheme' " {{{
+      nnoremap <silent> [unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
+    " }}}
     NeoBundle 'ujihisa/unite-font'
   " }}}
   " ## Language support {{{
