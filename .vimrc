@@ -1,15 +1,22 @@
-syntax on
-
-" # Setup for neobundle.vim {{{
+" vim:set et foldmethod=marker:
+" Setup for neobundle.vim {{{
 filetype off
 if has('vim_starting')
   set rtp+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle'))
 endif
 " }}}
+" Configurations {{{
+  " Basic {{{
+    syntax on
+    filetype plugin indent on
 
-" # Configurations {{{
-  " ## indentation {{{
+    set nocompatible
+    set hidden
+    set history=100
+    set autoread
+  " }}}
+  " Indentation {{{
     set autoindent
     set nosmartindent
     set nocindent
@@ -19,63 +26,65 @@ endif
     set softtabstop=2
     set expandtab
   " }}}
-
-  set ambiwidth=double
-  set autoread
-  set backspace=indent,eol,start
-  set nobackup
-  set nocompatible
-  set hidden
-  set hlsearch
-  set ignorecase
-  set smartcase
-  set incsearch
-  set wrapscan
-  set history=100
-  set langmenu=none
-  set laststatus=2
-  set list
-  set listchars=tab:>.,precedes:<,extends:>,eol:¬
-  set number
-  set ruler
-  set showmatch
-  set whichwrap=b,s,h,l,<,>,[,]
-  set complete=.,w,b,u,k,i
-  set completeopt=menu,preview,longest,menuone
-  set wildmenu
-  set wildmode=longest:full,list:longest
-  set scrolloff=100000
-  set splitbelow
-  set swapfile
-  set modeline
-  set showcmd
-  set showmode
-  set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
-  set encoding=utf-8
-  set termencoding=utf-8
-  set fileformats=unix,dos,mac
-  set directory=~/.vim/swp
-  set shortmess+=I
-  set cursorline
-  "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
-
-    " ## Persistent Undo {{{
-      if has('persistent_undo')
-        set undodir=~/.vim/undo
-        set undofile
-      endif
-    " }}}
-
-    " ## Share clipboard namespace {{{
-      if has('clipboard')
-        set clipboard=unnamed,autoselect
-      endif
-    " }}}
-
-  filetype plugin indent on
+  " Encoding & Format {{{
+    set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
+    set encoding=utf-8
+    set termencoding=utf-8
+    set fileformats=unix,dos,mac
+  " }}}
+  " Completion {{{
+    set complete=.,w,b,u,k,i
+    set completeopt=menu,preview,longest,menuone
+    set wildmenu
+    set wildmode=longest:full,list:longest
+  " }}}
+  " Swap & Backup {{{
+    set nobackup
+    set swapfile
+    set directory=~/.vim/swp
+  " }}}
+  " UI {{{
+    set langmenu=none " メニューをローカライズしない
+    set laststatus=2
+    set number
+    set ruler
+    set showmatch
+    set whichwrap=b,s,h,l,<,>,[,]
+    set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
+    set splitbelow
+    set modeline
+    set showcmd
+    set showmode
+    set shortmess+=I
+    set cursorline
+    "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+  " }}}
+  " Charachters {{{
+    set ambiwidth=double
+    set backspace=indent,eol,start
+    set list
+    set listchars=tab:>.,precedes:<,extends:>,eol:¬
+    set ignorecase
+    set smartcase
+  " }}}
+  " Search {{{
+    set hlsearch
+    set incsearch
+    set wrapscan
+  " }}}
+  " Persistent Undo {{{
+    if has('persistent_undo')
+      set undodir=~/.vim/undo
+      set undofile
+    endif
+  " }}}
+  " Share clipboard namespace {{{
+    if has('clipboard')
+      set clipboard=unnamed,autoselect
+    endif
+  " }}}
 " }}}
-
-" # Key mappings {{{
+" Key mappings {{{
   let mapleader   = ';'
   let g:mapleader = ';'
 
@@ -84,29 +93,23 @@ endif
 
   inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
-
-" # autocmd {{{
-  autocmd ColorScheme *    hi! link CoffeeSpecialVar Constant
+" autocmd {{{
   " screenに編集中のファイル名を出す {{{
-    autocmd BufEnter *       if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
   " }}}
-
-  " ## sh {{{
-    autocmd FileType sh      inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+  " sh {{{
+    autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
   " }}}
-
-  " ## io {{{
+  " io {{{
     autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
   " }}}
-
-  " ## javascript {{{
+  " javascript {{{
     autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
     autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
     autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
     autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
   " }}}
-
-  " ## ruby {{{
+  " ruby {{{
     autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
     autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
     "autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
@@ -114,20 +117,18 @@ endif
     autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
     "autocmd FileType ruby    setlocal foldmethod=syntax
   " }}}
-
-  " ## coffee {{{
-    autocmd FileType coffee  inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-    autocmd FileType coffee  inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+  " coffee {{{
+    autocmd FileType    coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+    autocmd FileType    coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+    autocmd ColorScheme *      hi! link CoffeeSpecialVar Constant
   " }}}
-
-  " ## haskell {{{
+  " haskell {{{
     autocmd FileType haskell setlocal et
     autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
     autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
     autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
   " }}}
-
-  " ## perl {{{
+  " perl {{{
     autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
     autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
     autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
@@ -135,37 +136,36 @@ endif
     autocmd BufEnter *.tt    set ft=tt2
     autocmd BufEnter */t/*.t set ft=perl.tap
   " }}}
-
-  " ## vim {{{
+  " vim {{{
     autocmd FileType vim inoremap <buffer> = =
   " }}}
-
-  " ## markdown {{{
+  " markdown {{{
     autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
   " }}}
-
   " haml {{{
     autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
   " }}}
-
-  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
-  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     set ft=tt2.html
-  autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
-
-  autocmd BufEnter */nginx/*.conf set ft=nginx
-  autocmd BufEnter */*.nginx.conf set ft=nginx
+  " nginx {{{
+    autocmd BufEnter */nginx/*.conf set ft=nginx
+    autocmd BufEnter */*.nginx.conf set ft=nginx
+  " }}}
+  " Hatena projects {{{
+    autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
+    autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */Hatena/*.html     set ft=tt2.html
+    autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
+  " }}}
 " }}}
-
-" # Command-line Window {{{
-" http://vim-users.jp/2010/07/hack161/
-  nnoremap   <sid>(command-line-enter) q:
-  xnoremap   <sid>(command-line-enter) q:
-  nnoremap   <sid>(command-line-norange) q:<C-u>
-  nmap     : <sid>(command-line-enter)
-  xmap     : <sid>(command-line-enter)
+" Command-line Window http://vim-users.jp/2010/07/hack161/ {{{
+  " Key mappings {{{
+    nnoremap   <sid>(command-line-enter) q:
+    xnoremap   <sid>(command-line-enter) q:
+    nnoremap   <sid>(command-line-norange) q:<C-u>
+    nmap     : <sid>(command-line-enter)
+    xmap     : <sid>(command-line-enter)
+  " }}}
 
   autocmd CmdwinEnter * call s:init_cmdwin()
 
@@ -182,24 +182,22 @@ endif
     startinsert!
   endfunction " }}}
 " }}}
-
-" # Adjust splitted-window width {{{
-  " http://vim-users.jp/2009/07/hack42/
-  nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
-  nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
-  nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
-  nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
-
+" Adjust splitted-window width http://vim-users.jp/2009/07/hack42/ {{{
+  " Key mappings {{{
+    nnoremap <C-w>h <C-w>h:call <SID>good_width()<CR>
+    nnoremap <C-w>j <C-w>j:call <SID>good_width()<CR>
+    nnoremap <C-w>k <C-w>k:call <SID>good_width()<CR>
+    nnoremap <C-w>l <C-w>l:call <SID>good_width()<CR>
+  " }}}
   function! s:good_width() "{{{
     if winwidth(0) < 80
       vertical resize 80
     endif
   endfunction " }}}
 " }}}
-
-" # Plugins {{{
-  " ## Completion {{{
-    "NeoBundle 'teramako/jscomplete-vim'
+" Plugins {{{
+  " Completion {{{
+    NeoBundle 'teramako/jscomplete-vim'
     NeoBundle 'Shougo/neocomplcache-snippets-complete'
     NeoBundle 'ujihisa/neco-ghc'
     NeoBundle 'Shougo/neocomplcache' " {{{
@@ -210,35 +208,39 @@ endif
       let g:neocomplcache_enable_underbar_completion = 1
       let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
 
-      inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
-      inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-      inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-      inoremap <expr><C-y>  neocomplcache#close_popup()
-      inoremap <expr><C-e>  neocomplcache#cancel_popup()
-      imap     <C-k> <Plug>(neocomplcache_snippets_expand)
-      smap     <C-k> <Plug>(neocomplcache_snippets_expand)
-      imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
+      " Key mappings {{{
+        inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
+        inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y>  neocomplcache#close_popup()
+        inoremap <expr><C-e>  neocomplcache#cancel_popup()
+        imap     <C-k> <Plug>(neocomplcache_snippets_expand)
+        smap     <C-k> <Plug>(neocomplcache_snippets_expand)
+        imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
+      " }}}
     " }}}
   " }}}
-  " ## Syntax check {{{
+  " Syntax check {{{
     NeoBundle 'errormarker.vim'
     NeoBundle 'scrooloose/syntastic'
   " }}}
-  " ## Git {{{
+  " Git {{{
     NeoBundle 'int3/vim-extradite'
     NeoBundle 'tpope/vim-fugitive' " {{{
-      nnoremap <Leader>gs :<C-u>Gstatus<CR>
-      nnoremap <Leader>gc :<C-u>Gcommit<CR>
-      nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
-      nnoremap <Leader>gb :<C-u>Gblame<CR>
-      nnoremap <Leader>ga :<C-u>Gwrite<CR>
-      nnoremap <Leader>gd :<C-u>Gdiff<CR>
-      nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+      " Key mappings {{{
+        nnoremap <Leader>gs :<C-u>Gstatus<CR>
+        nnoremap <Leader>gc :<C-u>Gcommit<CR>
+        nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
+        nnoremap <Leader>gb :<C-u>Gblame<CR>
+        nnoremap <Leader>ga :<C-u>Gwrite<CR>
+        nnoremap <Leader>gd :<C-u>Gdiff<CR>
+        nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+      " }}}
 
       autocmd BufReadPost fugitive://* set bufhidden=delete
     " }}}
   " }}}
-  " ## Text objects {{{
+  " Text objects {{{
     NeoBundle 'h1mesuke/textobj-wiw'
     NeoBundle 'kana/vim-textobj-indent'
     NeoBundle 'kana/vim-textobj-line'
@@ -260,7 +262,7 @@ endif
             \ }
     " }}}
   " }}}
-  " ## Editing {{{
+  " Editing {{{
     NeoBundle 'h1mesuke/vim-alignta'
     NeoBundle 'kana/vim-smartchr'
     NeoBundle 'kana/vim-smartinput'
@@ -272,7 +274,7 @@ endif
             \ }
     " }}}
   " }}}
-  " ## Operators {{{
+  " Operators {{{
     " NeoBundle 'emonkak/vim-operator-comment'
     " NeoBundle 'tyru/operator-html-escape.vim'
     " NeoBundle 'tyru/operator-reverse.vim'
@@ -287,7 +289,7 @@ endif
       map \c <Plug>(operator-camelize-toggle)
     " }}}
   " }}}
-  " ## Document {{{
+  " Document {{{
     NeoBundle 'vim-jp/vimdoc-ja'
     NeoBundle 'thinca/vim-ref' " {{{
       let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
@@ -297,7 +299,7 @@ endif
     NeoBundle 'mojako/ref-sources.vim'
     NeoBundle 'ujihisa/ref-hoogle'
   " }}}
-  " ## Unite {{{
+  " Unite {{{
     NeoBundle 'Shougo/unite.vim' " {{{
       let g:unite_data_directory = '~/.vim/.unite'
 
@@ -366,7 +368,7 @@ endif
     " }}}
     NeoBundle 'ujihisa/unite-font'
   " }}}
-  " ## Language support {{{
+  " Language support {{{
     NeoBundle 'bbommarito/vim-slim'
     NeoBundle 'depuracao/vim-rdoc'
     NeoBundle 'groenewege/vim-less'
@@ -383,7 +385,7 @@ endif
     NeoBundle 'tpope/vim-haml'
     NeoBundle 'vim-ruby/vim-ruby'
   " }}}
-  " ## UI {{{
+  " UI {{{
     NeoBundle 'Lokaltog/vim-powerline', 'develop' " {{{
       let g:Powerline_symbols = 'fancy'
     " }}}
@@ -394,12 +396,12 @@ endif
       let g:indent_guides_guide_size            = &sw
     " }}}
   " }}}
-  " ## Colors {{{
+  " Colors {{{
     NeoBundle 'altercation/vim-colors-solarized'
     NeoBundle 'git@github.com:aereal/vim-magica-colors.git'
     NeoBundle 'nanotech/jellybeans.vim'
   " }}}
-  " ## Misc. {{{
+  " Misc. {{{
     NeoBundle 'Shougo/echodoc'
     NeoBundle 'Shougo/vimproc'
     NeoBundle 'Shougo/neobundle.vim'
@@ -432,11 +434,12 @@ endif
       "call altr#define('models/%.rb', 'spec/models/%_spec.rb', 'spec/fabricators/%s_fabricator.rb')
       "call altr#define('app/controllers/%.rb', 'spec/app/controllers/%_controller_spec.rb')
 
-      " Rails rules
-      call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
-      call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
-      call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
-      call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+      " Rails rules {{{
+        call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
+        call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
+        call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
+        call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+      " }}}
     " }}}
     NeoBundle 'thinca/vim-quickrun' " {{{
       let g:quickrun_config = {}
@@ -455,16 +458,14 @@ endif
     " }}}
   " }}}
 " }}}
-
-" # Background color detection {{{
+" Background color detection {{{
   if $TERMINAL_BACKGROUND != ''
     set bg=$TERMINAL_BACKGROUND
   else
     set bg=dark
   endif
 " }}}
-
-" # Color scheme {{{
+" Color scheme {{{
   if &bg == 'dark'
     if &term =~ '256color'
       colorscheme jellybeans
@@ -475,7 +476,6 @@ endif
     colorscheme peachpuff
   endif
 " }}}
-
 " unite-git-conflict {{{
 let s:unite_git_conflicts = {
       \ 'name': 'git/conflicts',
@@ -493,5 +493,3 @@ function! s:unite_git_conflicts.gather_candidates(args, context)
 endfunction
 call unite#define_source(s:unite_git_conflicts)
 " }}}
-
-" vim:set et foldmethod=marker:
