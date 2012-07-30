@@ -51,7 +51,7 @@
 	editor = vim -u NONE -i NONE -N -c 'syntax on'
 	quotepath = false
 	whitespace = cr-at-eol
-	pager = less --RAW-CONTROL-CHARS
+	pager = $PAGER
 [push]
 	default = tracking
 [branch]
