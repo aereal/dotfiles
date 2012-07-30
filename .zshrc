@@ -219,7 +219,6 @@ in-screen() { # {{{
 in-terminal-multiplexor() { # {{{
   in-tmux || in-screen
 } # }}}
-} # }}}
 # zaw.zsh{{{
 if [[ -d "${ZSH_HOME}/plugins/zaw" ]] && [[ -r "${ZSH_HOME}/plugins/zaw/zaw.zsh" ]]; then
   source ${ZSH_HOME}/plugins/zaw/zaw.zsh
