@@ -178,17 +178,15 @@ $next_line"
 add-zsh-hook precmd init_prompt
 # }}}
 # key-bindings{{{
-# Vi風キーバインド
-bindkey -v
+bindkey -e
 
 bindkey "\\" expand-to-home-or-complete
 bindkey "\r" magic-abbrev-expand-and-accept
 bindkey " "  magic-space
 bindkey "."  magic-abbrev-expand-and-insert
-bindkey "^F" push-input
 bindkey "^I" magic-abbrev-expand-and-normal-complete
 bindkey "^J" accept-line
-bindkey "^O" complete-word
+bindkey "^K" kill-whole-line
 bindkey "^N" history-beginning-search-forward-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^R" history-incremental-pattern-search-backward
