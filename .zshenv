@@ -12,7 +12,7 @@ export MYSQL_PS1="$(echo -e "<\\\U> [\\\d]\\\n(L:\\\c) \e[33mX | _ | X\e[m < ")"
 typeset -U fpath
 fpath=(
   ${ZSH_HOME}/functions(N-/)
-  ${ZSH_HOME}/completions(N-/)
+  ${ZSH_HOME}/completions/src(N-/)
   $fpath
 )
 
