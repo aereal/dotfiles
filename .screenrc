@@ -11,9 +11,8 @@ log on
 deflog on
 altscreen on
 defbce on
-termcapinfo xterm*|screen* ti@:te@
-term xterm-256color
-termcapinfo xterm* 'is=^[r^[mJ^[H^[?7h^[?1;4;6l'
+termcapinfo xterm-256color|xterm-color|screen-256color ti@:te@
+term screen-256color
 vbell off
 bell_msg "Bell in window %^G"
 
