@@ -222,7 +222,9 @@ endif
   " }}}
   " Syntax check {{{
     NeoBundle 'errormarker.vim'
-    NeoBundle 'scrooloose/syntastic'
+    NeoBundle 'scrooloose/syntastic' " {{{
+      let g:syntastic_auto_loc_list  = 2
+    " }}}
   " }}}
   " Git {{{
     NeoBundle 'int3/vim-extradite'
