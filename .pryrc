@@ -1,4 +1,4 @@
-# vim:set ft=ruby
+# vim:set ft=ruby:
 
 def pbcopy(str)
   IO.popen('pbcopy', 'r+') {|io| io.puts str }
