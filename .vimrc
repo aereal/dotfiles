@@ -318,7 +318,7 @@ endif
 
       nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
       nnoremap <silent> [unite].        :<C-u>Unite source<CR>
-      nnoremap <silent> /               :<C-u>Unite line -start-insert -keep-focus -no-quit<CR>
+      nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
       nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
       nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
