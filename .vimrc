@@ -357,7 +357,7 @@ endif
       nnoremap <silent> [unite]g :<C-u>Unite vcs_grep -start-insert<CR>
     " }}}
     NeoBundle 'sgur/unite-qf' " {{{
-      nnoremap <silent> [unite]q :<C-u>Unite qf -auto-preview -no-quit<CR>
+      nnoremap <silent> [unite]q :<C-u>Unite qf -no-quit<CR>
     " }}}
     NeoBundle 'thinca/vim-unite-history' " {{{
       nnoremap <silent> [unite]: :<C-u>Unite history/command -start-insert<CR>
