@@ -390,6 +390,8 @@ endif
   " UI {{{
     NeoBundle 'Lokaltog/vim-powerline', 'develop' " {{{
       let g:Powerline_symbols = 'fancy'
+      let g:Powerline_theme = 'skwp'
+      let g:Powerline_mode_n = ' N '
     " }}}
     NeoBundle 'nathanaelkane/vim-indent-guides' " {{{
       let g:indent_guides_auto_colors           = 1
