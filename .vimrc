@@ -305,24 +305,24 @@ endif
     NeoBundle 'Shougo/unite.vim' " {{{
       let g:unite_data_directory = '~/.vim/.unite'
 
-      nnoremap [unite] <Nop>
-      nmap <Space> [unite]
-      nnoremap <silent> [unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
+      nnoremap <SID>[unite] <Nop>
+      nmap <Space> <SID>[unite]
+      nnoremap <silent> <SID>[unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
 
       if has('gui_running')
-        nnoremap <silent> [unite]b        :<C-u>Unite buffer_tab -immediately<CR>
-        nnoremap <silent> [unite]B        :<C-u>Unite buffer -immediately<CR>
+        nnoremap <silent> <SID>[unite]b        :<C-u>Unite buffer_tab -immediately<CR>
+        nnoremap <silent> <SID>[unite]B        :<C-u>Unite buffer -immediately<CR>
       else
-        nnoremap <silent> [unite]b        :<C-u>Unite buffer -immediately<CR>
+        nnoremap <silent> <SID>[unite]b        :<C-u>Unite buffer -immediately<CR>
       endif
 
-      nnoremap <silent> [unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
-      nnoremap <silent> [unite].        :<C-u>Unite source<CR>
+      nnoremap <silent> <SID>[unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
+      nnoremap <silent> <SID>[unite].        :<C-u>Unite source<CR>
       nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
-      nnoremap <silent> [unite]s        :<C-u>Unite session<CR>
-      nnoremap <silent> [unite]w        :<C-u>Unite -immediately window:no-current<CR>
+      nnoremap <silent> <SID>[unite]s        :<C-u>Unite session<CR>
+      nnoremap <silent> <SID>[unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
-      nnoremap <silent> [unite]gc       :<C-u>UniteWithCurrentDir git/conflicts -buffer-name=files<CR>
+      nnoremap <silent> <SID>[unite]gc       :<C-u>UniteWithCurrentDir git/conflicts -buffer-name=files<CR>
 
       autocmd FileType unite call s:unite_local_settings()
       function! s:unite_local_settings() "{{{
@@ -343,30 +343,30 @@ endif
       endfunction " }}}
     " }}}
     NeoBundle 'basyura/unite-rails' " {{{
-      nnoremap <silent> [unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
-      nnoremap <silent> [unite]rc       :<C-u>Unite rails/controller<CR>
-      nnoremap <silent> [unite]rv       :<C-u>Unite rails/view<CR>
-      nnoremap <silent> [unite]rm       :<C-u>Unite rails/model<CR>
-      nnoremap <silent> [unite]rh       :<C-u>Unite rails/helper<CR>
+      nnoremap <silent> <SID>[unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
+      nnoremap <silent> <SID>[unite]rc       :<C-u>Unite rails/controller<CR>
+      nnoremap <silent> <SID>[unite]rv       :<C-u>Unite rails/view<CR>
+      nnoremap <silent> <SID>[unite]rm       :<C-u>Unite rails/model<CR>
+      nnoremap <silent> <SID>[unite]rh       :<C-u>Unite rails/helper<CR>
     " }}}
     NeoBundle 'h1mesuke/unite-outline' " {{{
-      nnoremap <silent> [unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
-      nnoremap <silent> [unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
+      nnoremap <silent> <SID>[unite]<SID>[ :<C-u>Unite outline -vertical -winwidth=40<CR>
+      nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
     " }}}
     NeoBundle 'sgur/unite-git_grep' " {{{
-      nnoremap <silent> [unite]g :<C-u>Unite vcs_grep -start-insert<CR>
+      nnoremap <silent> <SID>[unite]g :<C-u>Unite vcs_grep -start-insert<CR>
     " }}}
     NeoBundle 'sgur/unite-qf' " {{{
-      nnoremap <silent> [unite]q :<C-u>Unite qf -no-quit<CR>
+      nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
     " }}}
     NeoBundle 'thinca/vim-unite-history' " {{{
-      nnoremap <silent> [unite]: :<C-u>Unite history/command -start-insert<CR>
+      nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
     " }}}
     NeoBundle 'tsukkee/unite-help' " {{{
-      nnoremap <silent> [unite]h :<C-u>Unite help -start-insert<CR>
+      nnoremap <silent> <SID>[unite]h :<C-u>Unite help -start-insert<CR>
     " }}}
     NeoBundle 'ujihisa/unite-colorscheme' " {{{
-      nnoremap <silent> [unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
+      nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
     " }}}
     NeoBundle 'ujihisa/unite-font'
   " }}}
