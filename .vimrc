@@ -88,7 +88,7 @@ endif
   let mapleader   = ';'
   let g:mapleader = ';'
 
-  nnoremap <Space><Space> :update<CR>
+  nnoremap <Leader><Space> :update<CR>
   nnoremap <ESC><ESC>      :nohlsearch<CR>
 
   inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
