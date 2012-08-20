@@ -350,7 +350,7 @@ endif
       nnoremap <silent> <SID>[unite]rh       :<C-u>Unite rails/helper<CR>
     " }}}
     NeoBundle 'h1mesuke/unite-outline' " {{{
-      nnoremap <silent> <SID>[unite]<SID>[ :<C-u>Unite outline -vertical -winwidth=40<CR>
+      nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
       nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
     " }}}
     NeoBundle 'sgur/unite-git_grep' " {{{
