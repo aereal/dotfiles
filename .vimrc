@@ -197,7 +197,6 @@ endif
 " }}}
 " Plugins {{{
   " Completion {{{
-    NeoBundle 'teramako/jscomplete-vim'
     NeoBundle 'Shougo/neocomplcache-snippets-complete'
     NeoBundle 'ujihisa/neco-ghc'
     NeoBundle 'Shougo/neocomplcache' " {{{
@@ -221,7 +220,6 @@ endif
     " }}}
   " }}}
   " Syntax check {{{
-    NeoBundle 'errormarker.vim'
     NeoBundle 'scrooloose/syntastic' " {{{
       let g:syntastic_auto_loc_list  = 2
     " }}}
@@ -277,9 +275,6 @@ endif
     " }}}
   " }}}
   " Operators {{{
-    " NeoBundle 'emonkak/vim-operator-comment'
-    " NeoBundle 'tyru/operator-html-escape.vim'
-    " NeoBundle 'tyru/operator-reverse.vim'
     NeoBundle 'kana/vim-operator-user'
     NeoBundle 'emonkak/vim-operator-sort' " {{{
       map \s <Plug>(operator-sort)
@@ -368,7 +363,6 @@ endif
     NeoBundle 'ujihisa/unite-colorscheme' " {{{
       nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
     " }}}
-    NeoBundle 'ujihisa/unite-font'
   " }}}
   " Language support {{{
     NeoBundle 'bbommarito/vim-slim'
@@ -378,8 +372,6 @@ endif
     NeoBundle 'hallison/vim-markdown'
     NeoBundle 'kchmck/vim-coffee-script'
     NeoBundle 'motemen/hatena-vim'
-    NeoBundle 'nginx.vim'
-    NeoBundle 'nono/jquery.vim'
     NeoBundle 'othree/html5.vim'
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'petdance/vim-perl'
@@ -406,7 +398,6 @@ endif
     NeoBundle 'nanotech/jellybeans.vim'
   " }}}
   " Misc. {{{
-    NeoBundle 'Shougo/echodoc'
     NeoBundle 'Shougo/vimproc'
     NeoBundle 'Shougo/neobundle.vim'
     NeoBundle 'Shougo/vimfiler'
@@ -414,7 +405,7 @@ endif
     NeoBundle 'mattn/webapi-vim'
     NeoBundle 'sudo.vim'
     NeoBundle 'tyru/current-func-info.vim'
-    NeoBundle 'kien/ctrlp.vim' " {{{
+    " NeoBundle 'kien/ctrlp.vim' " {{{
       let g:ctrlp_regpex = 1
       let g:ctrlp_tabpage_position = 'al'
       let g:ctrlp_clear_cache_on_exit = 0
