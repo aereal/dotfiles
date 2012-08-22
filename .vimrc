@@ -462,11 +462,7 @@ endif
 " }}}
 " Color scheme {{{
   if &bg == 'dark'
-    if &term =~ '256color'
-      colorscheme jellybeans
-    else
-      colorscheme desert
-    endif
+    colorscheme desert
   else
     colorscheme peachpuff
   endif
