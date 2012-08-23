@@ -222,6 +222,7 @@ endif
   " Syntax check {{{
     NeoBundle 'scrooloose/syntastic' " {{{
       let g:syntastic_auto_loc_list  = 2
+      let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
     " }}}
   " }}}
   " Git {{{
