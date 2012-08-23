@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl -w
 
 # vimparse.pl - Reformats the error messages of the Perl interpreter for use
 # with the quickfix mode of Vim
