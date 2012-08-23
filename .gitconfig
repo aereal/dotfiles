@@ -55,6 +55,7 @@
 	quotepath = false
 	whitespace = cr-at-eol
 	pager = $PAGER
+	precomposeunicode = true
 [push]
 	default = tracking
 [branch]
