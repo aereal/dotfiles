@@ -89,7 +89,7 @@ my $handle = (defined $opt_f ? \*FILE : \*STDOUT);
 (my $file = shift) or &usage; # display usage if no filename is supplied
 my $args = (@ARGV ? ' ' . join ' ', @ARGV : '');
 
-my $incdirs = join ' ', map { "-I$_" } Project::Libs::find_icn(file($file)->dir->stringify, [qw(lib)]);
+my $incdirs = join ' ', map { "-I$_" } Project::Libs::find_inc(file($file)->dir->stringify, [qw(lib)]);
 chdir getcwd;
 my @lines = `perl @{[defined $opt_c ? '-c' : '']} -w $incdirs "$file$args" 2>&1`;
 
