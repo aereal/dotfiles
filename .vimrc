@@ -453,6 +453,9 @@ endif
       set foldcolumn=4
       " set fillchars=vert:\|
     " }}}
+    NeoBundle 'Lokaltog/vim-easymotion'
+    NeoBundle 'myusuf3/numbers.vim'
+    NeoBundle 'davidoc/taskpaper.vim'
   " }}}
 " }}}
 " Background color detection {{{
