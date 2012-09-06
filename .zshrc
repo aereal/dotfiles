@@ -254,7 +254,7 @@ case $MULTIPLEXOR in
     if [[ $MULTIPLEXOR == "tscreen" ]]; then
       alias screen=tscreen
     fi
-    [ $STY ] || screen -rx || screen -D -RR -U
+    [ $STY ] || screen -rx "$HOST" || screen -D -RR -U -S "$HOST"
     ;;
   *)
     ;;
