@@ -63,7 +63,7 @@ endif
     set ambiwidth=double
     set backspace=indent,eol,start
     set list
-    set listchars=tab:>.,precedes:<,extends:>,eol:¬
+    set listchars=tab:>.,precedes:<,extends:>,eol:$
     set ignorecase
     set smartcase
   " }}}
