@@ -154,8 +154,8 @@ endif
     autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
     autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
     autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */Hatena/*.html     set ft=tt2.html
-    autocmd BufEnter */Hatena/*.tt       set ft=tt2.html
+    autocmd BufEnter */Hatena/*.html     set ft=tt2html
+    autocmd BufEnter */Hatena/*.tt       set ft=tt2html
   " }}}
 " }}}
 " Command-line Window http://vim-users.jp/2010/07/hack161/ {{{
