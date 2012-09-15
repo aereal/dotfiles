@@ -364,6 +364,8 @@ endif
     NeoBundle 'ujihisa/unite-colorscheme' " {{{
       nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
     " }}}
+    NeoBundle 'osyo-manga/unite-filetype'
+    NeoBundle 'osyo-manga/unite-quickrun_config'
   " }}}
   " Language support {{{
     NeoBundle 'bbommarito/vim-slim'
@@ -456,6 +458,9 @@ endif
     NeoBundle 'Lokaltog/vim-easymotion'
     NeoBundle 'myusuf3/numbers.vim'
     NeoBundle 'davidoc/taskpaper.vim'
+    NeoBundle 'AndrewRadev/switch.vim' " {{{
+      nnoremap - :<C-u>Switch<CR>
+    " }}}
   " }}}
 " }}}
 " Background color detection {{{
