@@ -1,0 +1,9 @@
+# vim:set ft=screen:
+
+source "$HOME/.screenrc"
+
+escape ^jj
+
+hardstatus alwayslastline "%{.wk}[%02c] %-w %{.rd}%{!}%n %f%t%{.wk} %+w %=  %0`"
+
+backtick 0 0 0 ${HOME}/.screen/backtick.rb

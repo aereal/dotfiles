@@ -1,4 +1,4 @@
-escape ^jj
+escape ^tt
 defscrollback 10000
 defutf8 on
 defkanji utf-8
@@ -31,6 +31,4 @@ bind -c operate +  eval 'resize +1'    'command -c operate'
 bind -c operate -  eval 'resize -1'    'command -c operate'
 
 caption splitonly "%3n %f %t"
-hardstatus alwayslastline "%{.wk}[%02c] %-w %{.rd}%{!}%n %f%t%{.wk} %+w %=  %0`"
-
-backtick 0 0 0 ${HOME}/.screen/backtick.rb
+hardstatus alwayslastline "%{.wk}[%S] %-w %{.rd}%{!}%n %f%t%{.wk} %+w"
