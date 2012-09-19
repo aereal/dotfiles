@@ -56,7 +56,6 @@ endif
     set showcmd
     set showmode
     set shortmess+=I
-    set cursorline
     "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
   " }}}
   " Charachters {{{
