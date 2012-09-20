@@ -8,9 +8,6 @@ endif
 " }}}
 " Configurations {{{
   " Basic {{{
-    syntax on
-    filetype plugin indent on
-
     set nocompatible
     set hidden
     set history=100
@@ -493,3 +490,5 @@ function! s:unite_git_conflicts.gather_candidates(args, context)
 endfunction
 call unite#define_source(s:unite_git_conflicts)
 " }}}
+syntax on
+filetype plugin indent on
