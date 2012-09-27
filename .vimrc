@@ -31,7 +31,7 @@ endif
   " }}}
   " Completion {{{
     set complete=.,w,b,u,k,i
-    set completeopt=menu,preview,longest,menuone
+    set completeopt=menu,preview,menuone
     set wildmenu
     set wildmode=longest:full,list:longest
   " }}}
