@@ -146,12 +146,12 @@ endif
     autocmd BufEnter */*.nginx.conf set ft=nginx
   " }}}
   " Hatena projects {{{
-    autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
-    autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */Hatena/*.html     set ft=tt2html
-    autocmd BufEnter */Hatena/*.tt       set ft=tt2html
+    autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
+    autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html     set ft=tt2html
+    autocmd BufEnter */@hatena/*.tt       set ft=tt2html
   " }}}
 " }}}
 " Command-line Window http://vim-users.jp/2010/07/hack161/ {{{
