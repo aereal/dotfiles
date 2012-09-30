@@ -377,6 +377,7 @@ endif
     NeoBundle 'rosstimson/scala-vim-support'
     NeoBundle 'tpope/vim-haml'
     NeoBundle 'vim-ruby/vim-ruby'
+    NeoBundle 'juvenn/mustache.vim'
   " }}}
   " UI {{{
     NeoBundle 'Lokaltog/vim-powerline', 'develop' " {{{
