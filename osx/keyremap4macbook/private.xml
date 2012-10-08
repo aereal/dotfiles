@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+  <appdef>
+    <appname>TERMINAL</appname>
+    <equal>com.googlecode.iterm2</equal>
+  </appdef>
+
+  <item>
+   <name>tmux integration</name>
+    <item>
+      <name>Double-tap Command_R to tmux prefix key on Terminal application</name>
+      <identifier>org.aereal.double-tap-cmd-r-to-tmux-prefix-key</identifier>
+      <only>TERMINAL</only>
+      <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
+    </item>
+  </item>
+</root>
