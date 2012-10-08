@@ -194,7 +194,6 @@ endif
 " Plugins {{{
   " Completion {{{
     NeoBundle 'Shougo/neocomplcache-snippets-complete'
-    NeoBundle 'ujihisa/neco-ghc'
     NeoBundle 'Shougo/neocomplcache' " {{{
       let g:neocomplcache_enable_at_startup = 1
       let g:neocomplcache_enable_smart_case = 1
@@ -222,7 +221,6 @@ endif
     " }}}
   " }}}
   " Git {{{
-    NeoBundle 'int3/vim-extradite'
     NeoBundle 'tpope/vim-fugitive' " {{{
       " Key mappings {{{
         nnoremap <Leader>gs :<C-u>Gstatus<CR>
@@ -271,18 +269,6 @@ endif
             \ }
     " }}}
   " }}}
-  " Operators {{{
-    NeoBundle 'kana/vim-operator-user'
-    NeoBundle 'emonkak/vim-operator-sort' " {{{
-      map \s <Plug>(operator-sort)
-    " }}}
-    NeoBundle 'kana/vim-operator-replace' " {{{
-      map \r <Plug>(operator-replace)
-    " }}}
-    NeoBundle 'tyru/operator-camelize.vim' " {{{
-      map \c <Plug>(operator-camelize-toggle)
-    " }}}
-  " }}}
   " Document {{{
     NeoBundle 'vim-jp/vimdoc-ja'
     NeoBundle 'thinca/vim-ref' " {{{
@@ -290,8 +276,6 @@ endif
       let g:ref_jquery_use_cache = 1
       let g:ref_cache_dir = $HOME . '/.vim/.ref'
     " }}}
-    NeoBundle 'mojako/ref-sources.vim'
-    NeoBundle 'ujihisa/ref-hoogle'
   " }}}
   " Unite {{{
     NeoBundle 'Shougo/unite.vim' " {{{
@@ -334,13 +318,6 @@ endif
         execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
       endfunction " }}}
     " }}}
-    NeoBundle 'basyura/unite-rails' " {{{
-      nnoremap <silent> <SID>[unite]r<Space> :<C-u>Unite source -start-insert -input=rails/<CR>
-      nnoremap <silent> <SID>[unite]rc       :<C-u>Unite rails/controller<CR>
-      nnoremap <silent> <SID>[unite]rv       :<C-u>Unite rails/view<CR>
-      nnoremap <silent> <SID>[unite]rm       :<C-u>Unite rails/model<CR>
-      nnoremap <silent> <SID>[unite]rh       :<C-u>Unite rails/helper<CR>
-    " }}}
     NeoBundle 'h1mesuke/unite-outline' " {{{
       nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
       nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
@@ -354,9 +331,6 @@ endif
     NeoBundle 'thinca/vim-unite-history' " {{{
       nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
     " }}}
-    NeoBundle 'tsukkee/unite-help' " {{{
-      nnoremap <silent> <SID>[unite]h :<C-u>Unite help -start-insert<CR>
-    " }}}
     NeoBundle 'ujihisa/unite-colorscheme' " {{{
       nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
     " }}}
@@ -365,7 +339,6 @@ endif
   " }}}
   " Language support {{{
     NeoBundle 'bbommarito/vim-slim'
-    NeoBundle 'depuracao/vim-rdoc'
     NeoBundle 'groenewege/vim-less'
     NeoBundle 'hail2u/vim-css3-syntax'
     NeoBundle 'hallison/vim-markdown'
@@ -374,8 +347,6 @@ endif
     NeoBundle 'othree/html5.vim'
     NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'petdance/vim-perl'
-    NeoBundle 'rosstimson/scala-vim-support'
-    NeoBundle 'tpope/vim-haml'
     NeoBundle 'vim-ruby/vim-ruby'
     NeoBundle 'juvenn/mustache.vim'
   " }}}
@@ -391,7 +362,6 @@ endif
       let g:indent_guides_color_change_percent  = 10
       let g:indent_guides_guide_size            = &sw
     " }}}
-    NeoBundle 'spolu/dwm.vim'
   " }}}
   " Colors {{{
     NeoBundle 'altercation/vim-colors-solarized'
@@ -405,24 +375,6 @@ endif
     NeoBundle 'mattn/gist-vim'
     NeoBundle 'mattn/webapi-vim'
     NeoBundle 'sudo.vim'
-    NeoBundle 'tyru/current-func-info.vim'
-    " NeoBundle 'kien/ctrlp.vim' " {{{
-      let g:ctrlp_regpex = 1
-      let g:ctrlp_tabpage_position = 'al'
-      let g:ctrlp_clear_cache_on_exit = 0
-      let g:ctrlp_open_new_file = 't'
-      let g:ctrlp_open_multiple_files = 'tj'
-      let g:ctrlp_lazy_update = 1
-    " }}}
-    NeoBundle 'kana/vim-narrow'
-    NeoBundle 'Shougo/vimshell' " {{{
-      nnoremap <silent> <Leader>; :VimShell<CR>
-      let g:vimshell_prompt = " X | _ | X < "
-      let g:vimshell_right_prompt = 'getcwd()'
-      let g:vimshell_escape_colors = ['#1a1c1a', '#d64073', '#90b1aa', '#f9d59d', '#5b7397', '#b15e6e', '#88afc0', '#f5f5f5', '#6a6767', '#8f2b43', '#4d625e', '#b7a670', '#333c57', '#a97984', '#495c69', '#ebebeb']
-
-      hi vimshellPrompt ctermfg=yellow
-    " }}}
     NeoBundle 'kana/vim-altr' " {{{
       nmap <Leader><C-[> <Plug>(altr-forward)
       nmap <Leader><C-]> <Plug>(altr-back)
@@ -441,19 +393,11 @@ endif
       let g:quickrun_config = {}
       let g:quickrun_config['perl.tap'] = {'command': 'prove'}
     " }}}
-    " NeoBundle 't9md/vim-textmanip' " {{{
-      vmap <Down> <Plug>(Textmanip.move_selection_down)
-      vmap <Up> <Plug>(Textmanip.move_selection_up)
-      vmap <Left> <Plug>(Textmanip.move_selection_left)
-      vmap <Right> <Plug>(Textmanip.move_selection_right)
-    " }}}
     NeoBundle 'LeafCage/foldCC' " {{{
       set foldtext=FoldCCtext()
       set foldcolumn=4
       " set fillchars=vert:\|
     " }}}
-    NeoBundle 'Lokaltog/vim-easymotion'
-    NeoBundle 'myusuf3/numbers.vim'
     NeoBundle 'davidoc/taskpaper.vim'
     NeoBundle 'AndrewRadev/switch.vim' " {{{
       nnoremap - :<C-u>Switch<CR>
