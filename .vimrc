@@ -389,10 +389,7 @@ endif
         call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
       " }}}
     " }}}
-    NeoBundle 'thinca/vim-quickrun' " {{{
-      let g:quickrun_config = {}
-      let g:quickrun_config['perl.tap'] = {'command': 'prove'}
-    " }}}
+    NeoBundle 'thinca/vim-quickrun'
     NeoBundle 'LeafCage/foldCC' " {{{
       set foldtext=FoldCCtext()
       set foldcolumn=4
