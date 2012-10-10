@@ -234,7 +234,7 @@ uname=`uname`
 [[ -f "${ZSH_HOME}/hosts/$HOST.zshrc" ]] && . "${ZSH_HOME}/hosts/$HOST.zshrc"
 # }}}
 # show-window-title{{{
-if [ in-terminal-multiplexor ]; then
+if [ in-screen ]; then
   add-zsh-hook preexec show-window-title
 fi
 # }}}
