@@ -234,6 +234,7 @@ endif
 
       autocmd BufReadPost fugitive://* set bufhidden=delete
     " }}}
+    NeoBundle 'int3/vim-extradite'
   " }}}
   " Text objects {{{
     NeoBundle 'h1mesuke/textobj-wiw'
