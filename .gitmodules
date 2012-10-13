@@ -16,3 +16,9 @@
 [submodule "colors/solarized-terminal-app"]
 	path = colors/solarized-terminal-app
 	url = git://github.com/tomislav/osx-lion-terminal.app-colors-solarized.git
+[submodule ".rbenv"]
+	path = .rbenv
+	url = git://github.com/sstephenson/rbenv.git
+[submodule "ruby-build"]
+	path = ruby-build
+	url = git://github.com/sstephenson/ruby-build.git
