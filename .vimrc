@@ -181,6 +181,9 @@ set tabline=%!MakeTabLine()
     autocmd BufEnter */nginx/*.conf set ft=nginx
     autocmd BufEnter */*.nginx.conf set ft=nginx
   " }}}
+  " html {{{
+    autocmd FileType html inoremap <buffer> = =
+  " }}}
   " Hatena projects {{{
     autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
     autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
