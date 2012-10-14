@@ -80,6 +80,42 @@ endif
     endif
   " }}}
 " }}}
+" Tabpage {{{
+function! s:tabpage_label(n) " {{{
+  let title = gettabvar(a:n, 'title')
+  if title !=# ''
+    return title
+  endif
+
+  let bufnrs = tabpagebuflist(a:n)
+  let hi = a:n is tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
+
+  let no = len(bufnrs)
+  if no is 1
+    let no = ''
+  endif
+
+  let mod = len(filter(copy(bufnrs), 'getbufvar(v:val, "&modified")')) ? '+' : ''
+  let sp = (no . mod) ==# '' ? '' : ' '
+  let curbufnr = bufnrs[tabpagewinnr(a:n) - 1]
+  let fname = pathshorten(bufname(curbufnr))
+  let label = no . mod . sp . fname
+
+  return '%' . a:n . 'T' . hi . label . '%T%#TabLineFill#'
+endfunction " }}}
+function! MakeTabLine() " {{{
+  let titles = map(range(1, tabpagenr('$')), 's:tabpage_label(v:val)')
+  let separator = ' | '
+  let tabpages = join(titles, separator) . separator . '%#TabLineFill#%T'
+  let info = ''
+  let info .= cfi#format('%s()' . separator, '')
+  return tabpages . '%=' . info
+endfunction " }}}
+
+set showtabline=2
+set guioptions-=e
+set tabline=%!MakeTabLine()
+" }}}
 " Key mappings {{{
   let mapleader   = ';'
   let g:mapleader = ';'
