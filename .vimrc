@@ -400,6 +400,12 @@ endif
     NeoBundle 'AndrewRadev/switch.vim' " {{{
       nnoremap - :<C-u>Switch<CR>
     " }}}
+    NeoBundle 'kana/vim-gf-user'
+    NeoBundle 'kana/vim-gf-diff'
+    NeoBundle 'kana/vim-tabpagecd'
+    NeoBundle 'osyo-manga/shabadou.vim'
+    NeoBundle 'osyo-manga/watchdogs.vim'
+    NeoBundle 'tyru/current-func-info.vim'
   " }}}
 " }}}
 " Background color detection {{{
