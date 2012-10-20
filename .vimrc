@@ -125,74 +125,6 @@ set tabline=%!MakeTabLine()
 
   inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
-" autocmd {{{
-  " screenに編集中のファイル名を出す {{{
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
-  " }}}
-  " sh {{{
-    autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
-  " }}}
-  " io {{{
-    autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
-  " }}}
-  " javascript {{{
-    autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-    autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
-    autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-    autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
-  " }}}
-  " ruby {{{
-    autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-    autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-    "autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
-    "autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
-    autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-    "autocmd FileType ruby    setlocal foldmethod=syntax
-  " }}}
-  " coffee {{{
-    autocmd FileType    coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-    autocmd FileType    coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-    autocmd ColorScheme *      hi! link CoffeeSpecialVar Constant
-  " }}}
-  " haskell {{{
-    autocmd FileType haskell setlocal et
-    autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-    autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-    autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-  " }}}
-  " perl {{{
-    autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-    autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-    autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
-    autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-    autocmd BufEnter *.tt    set ft=tt2
-    autocmd BufEnter */t/*.t set ft=perl.tap
-  " }}}
-  " vim {{{
-    autocmd FileType vim inoremap <buffer> = =
-  " }}}
-  " markdown {{{
-    autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
-  " }}}
-  " haml {{{
-    autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-  " }}}
-  " nginx {{{
-    autocmd BufEnter */nginx/*.conf set ft=nginx
-    autocmd BufEnter */*.nginx.conf set ft=nginx
-  " }}}
-  " html {{{
-    autocmd FileType html inoremap <buffer> = =
-  " }}}
-  " Hatena projects {{{
-    autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
-    autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-    autocmd BufEnter */@hatena/*.html     set ft=tt2html
-    autocmd BufEnter */@hatena/*.tt       set ft=tt2html
-  " }}}
-" }}}
 " Command-line Window http://vim-users.jp/2010/07/hack161/ {{{
   " Key mappings {{{
     nnoremap   <sid>(command-line-enter) q:
@@ -445,6 +377,74 @@ set tabline=%!MakeTabLine()
     NeoBundle 'osyo-manga/shabadou.vim'
     NeoBundle 'osyo-manga/watchdogs.vim'
     NeoBundle 'tyru/current-func-info.vim'
+  " }}}
+" }}}
+" autocmd {{{
+  " screenに編集中のファイル名を出す {{{
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+  " }}}
+  " sh {{{
+    autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+  " }}}
+  " io {{{
+    autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
+  " }}}
+  " javascript {{{
+    autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+    autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+    autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+    autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
+  " }}}
+  " ruby {{{
+    autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+    autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+    "autocmd FileType ruby    inoremap <buffer><expr> < smartchr#loop(' < ', ' <= ', '<')
+    "autocmd FileType ruby    inoremap <buffer><expr> > smartchr#loop(' > ', ' >= ', '>')
+    autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+    "autocmd FileType ruby    setlocal foldmethod=syntax
+  " }}}
+  " coffee {{{
+    autocmd FileType    coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+    autocmd FileType    coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+    autocmd ColorScheme *      hi! link CoffeeSpecialVar Constant
+  " }}}
+  " haskell {{{
+    autocmd FileType haskell setlocal et
+    autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+    autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+    autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  " }}}
+  " perl {{{
+    autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+    autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+    autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+    autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+    autocmd BufEnter *.tt    set ft=tt2
+    autocmd BufEnter */t/*.t set ft=perl.tap
+  " }}}
+  " vim {{{
+    autocmd FileType vim inoremap <buffer> = =
+  " }}}
+  " markdown {{{
+    autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
+  " }}}
+  " haml {{{
+    autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+  " }}}
+  " nginx {{{
+    autocmd BufEnter */nginx/*.conf set ft=nginx
+    autocmd BufEnter */*.nginx.conf set ft=nginx
+  " }}}
+  " html {{{
+    autocmd FileType html inoremap <buffer> = =
+  " }}}
+  " Hatena projects {{{
+    autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
+    autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+    autocmd BufEnter */@hatena/*.html     set ft=tt2html
+    autocmd BufEnter */@hatena/*.tt       set ft=tt2html
   " }}}
 " }}}
 " Background color detection {{{
