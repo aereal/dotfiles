@@ -164,7 +164,6 @@ set tabline=%!MakeTabLine()
 " }}}
 " Plugins {{{
   " Completion {{{
-    NeoBundle 'Shougo/neocomplcache-snippets-complete'
     NeoBundle 'Shougo/neocomplcache' " {{{
       let g:neocomplcache_enable_at_startup = 1
       let g:neocomplcache_enable_smart_case = 1
@@ -179,11 +178,11 @@ set tabline=%!MakeTabLine()
         inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
         inoremap <expr><C-y>  neocomplcache#close_popup()
         inoremap <expr><C-e>  neocomplcache#cancel_popup()
-        imap     <C-k> <Plug>(neocomplcache_snippets_expand)
-        smap     <C-k> <Plug>(neocomplcache_snippets_expand)
-        imap     <C-s> <Plug>(neocomplcache_start_unite_snippet)
       " }}}
     " }}}
+  " }}}
+  " Snippet {{{
+    NeoBundle 'Shougo/neosnippet'
   " }}}
   " Syntax check {{{
     NeoBundle 'scrooloose/syntastic' " {{{
@@ -308,6 +307,7 @@ set tabline=%!MakeTabLine()
     " }}}
     NeoBundle 'osyo-manga/unite-filetype'
     NeoBundle 'osyo-manga/unite-quickrun_config'
+    NeoBundle 'tsukkee/unite-tag'
   " }}}
   " Language support {{{
     NeoBundle 'bbommarito/vim-slim'
@@ -374,8 +374,6 @@ set tabline=%!MakeTabLine()
     NeoBundle 'kana/vim-gf-user'
     NeoBundle 'kana/vim-gf-diff'
     NeoBundle 'kana/vim-tabpagecd'
-    NeoBundle 'osyo-manga/shabadou.vim'
-    NeoBundle 'osyo-manga/watchdogs.vim'
     NeoBundle 'tyru/current-func-info.vim'
   " }}}
 " }}}
