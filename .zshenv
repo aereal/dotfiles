@@ -6,7 +6,6 @@ export PAGER='lv -c'
 export LESS='-i'
 export EDITOR=vim
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export XDG_DATA_HOME=/usr/local/share
 export MYSQL_PS1="$(echo -e "<\\\U> [\\\d]\\\n(L:\\\c) \e[33mX | _ | X\e[m < ")"
 
 typeset -U fpath
