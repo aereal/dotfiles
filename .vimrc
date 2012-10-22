@@ -166,10 +166,8 @@ set tabline=%!MakeTabLine()
   " Completion {{{
     NeoBundle 'Shougo/neocomplcache' " {{{
       let g:neocomplcache_enable_at_startup = 1
-      let g:neocomplcache_enable_smart_case = 1
-      let g:neocomplcache_min_syntax_length = 3
-      let g:neocomplcache_enable_camel_case_completion = 1
-      let g:neocomplcache_enable_underbar_completion = 1
+      let g:neocomplcache_enable_wildcard = 1
+      let g:neocomplcache_enable_fuzzy_completion = 1
       let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
 
       " Key mappings {{{
@@ -183,6 +181,9 @@ set tabline=%!MakeTabLine()
   " }}}
   " Snippet {{{
     NeoBundle 'Shougo/neosnippet'
+
+    let g:neosnippet#disable_select_mode_mappings = 0
+    let g:neosnippet#snippets_directory = '~/.vim/snippets'
   " }}}
   " Syntax check {{{
     NeoBundle 'scrooloose/syntastic' " {{{
