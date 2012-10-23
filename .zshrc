@@ -60,7 +60,8 @@ zstyle ':completion:*' format '%B%d%b'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' verbose yes
-zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*:default' completer _oldlist _complete _match _ignored _approximate _prefix
 zstyle ':completion:*:sudo' command-path $PATH
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 # }}}
