@@ -37,6 +37,8 @@ setopt inc_append_history # すぐにヒストリを追記
 setopt list_types # 補完候補にファイル種別を表示
 setopt magic_equal_subst # --prefix= とかも補完する
 setopt no_beep # うるさい
+setopt no_flow_control
+setopt numeric_glob_sort
 setopt print_eight_bit # 8-bitを通す
 setopt prompt_subst # いいプロンプト
 setopt pushd_ignore_dups # 同じディレクトリはpushdしない
