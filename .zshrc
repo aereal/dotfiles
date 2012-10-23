@@ -3,7 +3,7 @@
 # Zsh Environment {{{
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
-SAVEHIST=1000000
+SAVEHIST=$HISTSIZE
 REPORTTIME=3
 # }}}
 # Autoload{{{
