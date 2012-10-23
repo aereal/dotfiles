@@ -54,6 +54,12 @@ endif
     set showmode
     set shortmess+=I
     "set statusline=%<\ %f%=%m%r%h%w%{fugitive#statusline()}%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']['.&ft.']'}[%3l/%3L,%3c]
+
+    " Conceal {{{
+    if has('conceal')
+      set conceallevel=2 concealcursor=i
+    endif
+    " }}}
   " }}}
   " Charachters {{{
     set ambiwidth=double
