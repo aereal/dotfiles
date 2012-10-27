@@ -1,4 +1,0 @@
-# vim:set ft=zsh:
-
-HISTSIZE=9999
-SAVEHIST=9999

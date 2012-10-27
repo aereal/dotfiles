@@ -1,9 +1,0 @@
-# vim:set ft=zsh:
-
-function my-expand-abbrev() {
-	local left prefix
-	left=$(echo -nE "$LBUFFER" | sed -e "s/[_a-zA-Z0-9]*$//")
-	prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_a-zA-Z0-9]\([_a-zA-Z0-9]*\)$/\1/")
-	LBUFFER=$left${myabbrev[$prefix]:-$prefix}" "
-}
-
