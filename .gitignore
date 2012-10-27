@@ -1,13 +1,7 @@
-.vimperator/info/
 .vim/cookies/
-.atig/oauth
 .vim/netrwhist
 .vim/.netrwhist
-.screen/backtick.log*
-.irssi/config
-.irssi/default.theme
 .vim/swp/*
-!.vim/bundle/neobundle.vim
 .vim/.neocon/*
 .vim/.ref/*
 .vim/.unite/*
