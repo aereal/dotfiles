@@ -1,0 +1,88 @@
+# vim:set ft=zsh:
+
+git_info() { # {{{
+  # http://d.hatena.ne.jp/uasi/20091025/1256458798
+  if [[ "$PWD" =~ '\.git(/.*)?$' || ! -d "${PWD}/.git" ]]; then
+    return
+  fi
+
+  local st color annotation stashes
+
+  local name=$(git symbolic-ref --short HEAD 2> /dev/null)
+  name=${name:="(detached)"}
+
+  local git_dir=$(git rev-parse --git-dir 2> /dev/null)
+  local action=$(VCS_INFO_git_getaction "$git_dir")
+  action=${action:+"$($action)"}
+
+  # Remote and Local changes {{{
+  local \
+    threshold \
+    current_remote \
+    merge_name \
+    remote_ref \
+    remote_local_revs \
+    revs_count \
+    behind \
+    ahead \
+    behind_and_ahead
+
+  current_remote=$(git config branch.${name}.remote 2> /dev/null)
+  merge_name=$(git config branch.${name}.merge 2> /dev/null)
+
+  if [[ "." = "$current_remote" ]] || [[ "x" = "x$current_remote" ]]; then
+    # Clone from local
+    remote_ref=$merge_name
+    remote_local_revs=$(git rev-list --left-right ${merge_name}...HEAD)
+  else
+    remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
+    remote_local_revs=$(git rev-list --left-right ${remote_ref}...HEAD)
+  fi
+
+  # TODO echo 使わなければ sed 使わなくていい気がする
+  revs_count=$(echo "${remote_local_revs}" | sed -e '/^$/d' | wc -l)
+  ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
+  behind=$((${revs_count} - ${ahead}))
+
+  ahead="%{${fg[blue]}%}+${ahead}%f%b"
+  behind="%{${fg[red]}%}-${behind}%f%b"
+  behind_and_ahead=" ${ahead} ${behind}"
+  # }}}
+
+  # stashes count {{{
+  stashes=$(git --no-pager stash list 2> /dev/null | wc -l)
+  [[ "$stashes" != "" ]] && stashes=" %{${fg[yellow]}%}*$stashes"
+  # }}}
+
+  st=`git status --short --porcelain -b 2> /dev/null`
+
+  # Staged changes {{{
+  if [[ -n `echo "$st" | grep "^[UMADRC]"` ]]; then
+    # Staged
+    annotation="$annotation*"
+    color=%F{yellow}
+  fi
+  # }}}
+
+  # Untracked changes {{{
+  if [[ -n `echo "$st" | grep "??"` ]]; then
+    # Untracked
+    annotation="$annotation?"
+    color=%F{yellow}
+  fi
+  # }}}
+
+  # Changed, but not staged {{{
+  if [[ -n `echo "$st" | grep "^[ ][MD]"` ]]; then
+    # Changed, but not staged
+    annotation="$annotation!"
+    color=%F{red}
+  fi
+  # }}}
+
+  if [[ -z "$color" ]]; then
+    color=%F{green}
+  fi
+
+  echo "${color}${name}${action}${annotation}${behind_and_ahead}${stashes}%f%b"
+} # }}}
