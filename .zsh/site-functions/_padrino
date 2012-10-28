@@ -1,0 +1,133 @@
+#compdef padrino
+
+_runtime_options=(
+  --help'[Show help usage]' \
+  {-e,--environment}'[Padrino Environment]:ENVIRONMENT:(test development production)' \
+  {-c,--chdir}'[Change to dir before starting]:CHDIR:_files -/'
+)
+
+_padrino() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    ':command:->command' \
+    '*::options:->options'
+
+  case $state in
+    command)
+      _values "padrino subcommands" \
+        {g,gen,generate}'[Executes the Padrino generator with given options]' \
+        {c,console}'[Boots up the Padrino application irb console]' \
+        {s,start}'[Starts the Padrino application]' \
+        help'[Describe available tasks or one specific task]' \
+        rake'[Execute rake tasks]' \
+        stop'[Stops the Padrino application]' \
+        version'[Show current Padrino Version]'
+      ;;
+    options)
+      case $line[1] in
+        start|s)
+          _arguments $_runtime_options \
+            {-a,--server}'[Rack Handler (default: autodetect)]:SERVER' \
+            {-p,--port}'[Use PORT (default: 3000)]:N' \
+            {-h,--host}'[Bind to HOST address (default: 0.0.0.0)]:HOST' \
+            {-d,--daemonize}'[Run daemonized in the buckground]' \
+            {--debug}'[Set debugging flags]' \
+            {-e,--environment}'[Padrino Environment]:ENVIRONMENT:(test development production)' \
+          ret=0
+          ;;
+        stop)
+          _arguments $_runtime_options \
+            {-p,--pid}'[File to store pid (default: tmp/pids/server.pid)]:PID'
+          ret=0
+          ;;
+        generate|gen|g)
+          __padrino_generate
+          ;;
+      esac
+     ;;
+  esac
+}
+
+__padrino_generate() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _generators_options=(
+    --help'[Show help usage]' \
+    {-r,--root}'[The root destination (default: .)]:ROOT:_files -/' \
+    {-d,--destroy}
+  )
+
+  _arguments -C \
+    ':command:->command' \
+    '*::options:->options'
+
+  case $state in
+    command)
+      _arguments -C $_generators_options
+      _values 'padrino generators' \
+        'project' \
+        'app' \
+        'mailer' \
+        'controller' \
+        'model' \
+        'migration' \
+        'plugin[sets up a plugin within a Padrino application]'
+      ;;
+    options)
+      case $line[1] in
+        app)
+          _arguments $_generators_options \
+            {-i--tiny}'[Generate tiny app skeleton]'
+          ret=0
+          ;;
+        controller)
+          _arguments $_generators_options \
+            {-a,--app}'[The application destination path]:APP:_files -/'
+          ret=0
+          ;;
+        mailer)
+          _arguments $_generators_options \
+            {-a,--app}'[The application destination path]:APP:_files -/'
+          ret=0
+          ;;
+        migration)
+          _arguments $_generators_options
+          ret=0
+          ;;
+        model)
+          _arguments $_generators_options \
+            {-a,--app}'[The application destination path]:APP:_files -/' \
+            {-s,--skip-migration}
+          ret=0
+          ;;
+        plugin)
+          _arguments $_generators_options \
+            {-l,--list}'[list available plugins]'
+          ret=0
+          ;;
+        project)
+          _arguments $_generators_options \
+            '*:APP' \
+            {-n,--app}'[The application name]:APP' \
+            {-b,--bundle}'[Run bundle install]' \
+            --dev'[Use padrino from a git checkout]' \
+            {-i,--tiny}'[Generate tiny app skeleton]' \
+            {-a,--adapter}'[SQL adapter for ORM (default: sqlite)]:ADAPTER:(sqlite mysql mysql2 postgres)' \
+            {-p,--template}'[Generate project from template]:TEMPLATE:_files' \
+            {-d,--orm}'[The database engine component (default: none)]:ORM:(activerecord mini_record datamapper mongomapper mongoid sequel couchrest ohm mongomatic ripple none)' \
+            {-t,--test}'[The testing framework component (default: none)]:TEST:(rspec shoulda cucumber bacon testspec riot minitest)' \
+            {-m,--mock}'[The mocking library component (default: none)]:MOCK:(mocha rr none)' \
+            {-s,--script}'[The javascript library component (default: none)]:SCRIPT:(jquery prototype rightjs mootools extcore dojo none)' \
+            {-e,--renderer}'[The template engine component (default: haml)]:RENDERER:(haml erb liquid slim none)' \
+            {-c,--stylesheet}'[The stylesheet component (default: none)]:STYLESHEET:(less sass compass scss none)'
+      esac
+      ;;
+  esac
+}
+
+_padrino "$@"
+
+# vim:set ft=zsh

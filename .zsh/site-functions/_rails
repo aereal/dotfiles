@@ -1,0 +1,216 @@
+#compdef rails
+
+_runtime_options=(
+  '(-f --force -s --skip)'{-f,--force}'[Overwrite files that already exist]'
+  {-p,--pretend}'[Run but do not make any changes]'
+  {-q,--quiet}'[Supress status output]'
+  '(-s --skip -f --force)'{-s,--skip}'[Skip files that already exist]'
+)
+
+_rails() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    ':command:->command' \
+    '*::options:->options'
+
+  case $state in
+    command)
+      _values "rails subcommands" \
+        {g,generate}'[Generate new code]' \
+        {c,console}'[Start the Rails console]' \
+        {s,server}'[Start the Rails server]' \
+        {db,dbconsole}'[Start a console for the database specified in config/database.yml]' \
+        {d,destroy}'[Undo code generated with "generate"]' \
+        {r,runner}'[Run a piece of code in the application environment]' \
+        benchmarker'[See how fast a piece of code runs]' \
+        new'[Create a new Rails application]' \
+        application'[Generate the Rails application code]' \
+        profiler'[Get profile information from a piece of code]' \
+        plugin'[Install a plugin]'
+      ;;
+    options)
+      case $line[1] in
+        console|c)
+          _arguments \
+            {-h,--help}'[Show help message]' \
+            --sandbox'[Rollback database modifications on exit]' \
+            --debugger'[Enable ruby-debugging for the console]'
+          ret=0
+          ;;
+        server|s)
+          _arguments \
+            {-h,--help}'[Show help message]' \
+            {-p,--port}'[Runs Rails on the specified port]:port' \
+            {-b,--binding}'[Binds Rails to the specified ip]:ip' \
+            {-c,--config}'[Use custom rackup configuration file]:file:_files' \
+            {-d,--daemon}'[Make server run as a Daemon]' \
+            {-u,--debugger}'[Enable ruby-debugging for the server]' \
+            {-e,--environment}'[Specifies the environment to run this server under (test/development/production)]:name:(test development production)' \
+            {-p,--pid}'[Specifies the PID file]:pid'
+          ret=0
+          ;;
+        dbconsole|db)
+          _arguments \
+            {-h,--help}'[Show help message]' \
+            {-p,--include-password}'[Automatically provide the password from database.yml]' \
+            --mode'[Automatically put the sqlite3 database in the specified mode]:MODE:(html list line column)' \
+            --header
+          ret=0
+          ;;
+        application|new)
+          _arguments \
+            '*:APP_PATH:_files -/' \
+            {-h,--help}'[Show help message]' \
+            $_runtime_options \
+            {-r,--ruby}'[Path to the Ruby binary of your choice]:PATH' \
+            {-b,--builder}'[Path to a application builder (can be a filesystem path or URL)]:BUILDER:_files' \
+            {-m,--template}'[Path to an application template (can be a filesystem path or URL)]:TEMPLATE:_files' \
+            --skip-gemfile"[Don't create a Gemfile]" \
+            "(--skip-gemfile --skip-bundle)--skip-bundle[Don't run bundle install]" \
+            {-G,--skip-git}'[Skip Git ignores and keeps]' \
+            {-O,--skip-active-record}'[Skip Active Record files]' \
+            {-S,--skip-sprockets}'[Skip Sprockets files]' \
+            {-d,--database}'[Preconfigure for selected database]:DATABASE:(mysql oracle postgresql sqlite3 frontbase ibm_db sqlserver jdbcmysql jdbcsqlite3 jdbcpostgresql jdbc)' \
+            '(-J --skip-javascript -j --javascript)'{-j,--javascript}'[Preconfigure for selected JavaScript library]:JAVASCRIPT' \
+            '(-J --skip-javascript -j --javascript)'{-J,--skip-javascript}'[Skip JavaScript files]' \
+            '(--dev --edge)--dev[Setup the application with Gemfile pointing to your Rails checkout]' \
+            '(--edge --dev)--edge[Setup the application with Gemfile pointing to Rails repository]' \
+            {-T,--skip-test-unit}'[Skip Test::Unit files]' \
+            --old-style-hash"[Force using old style hash (:foo => 'bar') on Ruby >= 1.9]"
+          ;;
+        generate|g)
+          __rails_generate
+          ;;
+      esac
+     ;;
+  esac
+}
+
+__rails_generate() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _generators_optins=(
+    --skip-namespace'[Skip namespace (affects only isolated applications)]' \
+    --old-style-hash"[Force using old style hash (:foo => 'bar') on Ruby >= 1.9]" \
+  )
+
+  _arguments -C \
+    ':command:->command' \
+    '*::options:->options'
+
+  case $state in
+    command)
+      _arguments -C $_runtime_options
+      _values 'rails generators' \
+        'assets[Stubs out new asset placeholders.]' \
+        'controller[Stubs out a new controller and its views.]' \
+        'generator[Stubs out a new generator at lib/generators.]' \
+        'helper[Stubs out a new helper.]' \
+        'integration_test[Create rails files for integration_test generator]' \
+        'mailer[Stubs out a new maiiler and its views.]' \
+        'migration[Create rails files for migration generator.]' \
+        'model[Create rails files for model generator.]' \
+        'observer[Create rails files for observer generator.]' \
+        'performance_test[Create rails files for performance_test generator.]' \
+        'resource[Create rails files for resource generator.]' \
+        'scaffold[Scaffolds an entire resource, from model and migration to controller and views, along with a full test suite]' \
+        'scaffold_controller[Stubs out a scaffolded controller and its views.]' \
+        'session_migration[Create rails files for session_migration generator.]' \
+        'task[Stubs out a new Rake task.]'
+      ;;
+    options)
+      case $line[1] in
+        assets)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-j,--javascripts}'[Generate JavaScripts]:boolean:(true false)' \
+            {-y,--stylesheets}'[Generate Stylesheets]:boolean:(true false)' \
+            {-je,--javascript-engine}'[Engine for JavaScripts]:JAVASCRIPT_ENGINE' \
+            {-se,--stylesheet-engine}'[Engine for Stylesheets]:STYLESHEET_ENGINE'
+          ;;
+        controller)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-e,--template-engine}'[Template engine to be invoked]:NAME' \
+            {-t,--test-framework}'[Test framework to be invoked]:NAME' \
+            --helper'[Indicates when to generate helper]:boolean:(true false)' \
+            --assets'[Indicates where to generate assets]:boolean:(true false)'
+          ;;
+        generatorer)
+          _arguments -C $_runtime_options $_generators_optins \
+            --namespace'[Namespace generator under lib/generators/name]:boolean:(true false)'
+          ;;
+        helper)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-t,--test-framework}'[Test framework to be invoked]:NAME'
+          ;;
+        integration_test)
+          _arguments -C $_runtime_options $_generators_optins \
+            --integration-tool'[Integration tool to be invoked]:NAME'
+          ;;
+        mailer)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-e,--template-engine}'[Template engine to be invoked]:NAME' \
+            {-t,--test-framework}'[Test framework to be invoked]:NAME'
+          ;;
+        migration)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME'
+          ;;
+        model)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME'
+          ;;
+        observer)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME'
+          ;;
+        performance_test)
+          _arguments -C $_runtime_options $_generators_optins \
+            --performance-tool'[Performance tool to be invoked]:NAME'
+          ;;
+        resource)
+          _arguments -C $_runtime_options $_generators_optins \
+            --force-plural'[Forces the use of a plural ModelName]' \
+            {-o,--orm}'[ORM to be invoked]:NAME' \
+            {-c,--resource-controller}'[Resource controller to be invoked]:NAME' \
+            {-a,--actions}'[Resource controller to be invoked]:ACTION' \
+            {-e,--template-engine}'[Template engine to be invoked]:NAME' \
+            --helper'[Indicates when to generate helper]:boolean:(true false)' \
+            --assets'[Indicates where to generate assets]:boolean:(true false)'
+          ;;
+        scaffold)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME' \
+            {-c,--scaffold-controller}'[Scaffold controller to be invoked]:NAME' \
+            {-e,--template-engine}'[Template engine to be invoked]:NAME' \
+            {-y,--stylesheets}'[Generate Stylesheets]:boolean:(true false)' \
+            {-se,--stylesheet-engine}'[Engine for Stylesheets]:STYLESHEET_ENGINE' \
+            --force-plural'[Forces the use of a plural ModelName]' \
+            --assets'[Indicates where to generate assets]:boolean:(true false)' \
+            --helper'[Indicates when to generate helper]:boolean:(true false)'
+          ;;
+        scaffold_controller)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME' \
+            {-e,--template-engine}'[Template engine to be invoked]:NAME' \
+            {-t,--test-framework}'[Test framework to be invoked]:NAME' \
+            --force-plural'[Forces the use of a plural ModelName]' \
+            --helper'[Indicates when to generate helper]:boolean:(true false)'
+          ;;
+        session_migration)
+          _arguments -C $_runtime_options $_generators_optins \
+            {-o,--orm}'[ORM to be invoked]:NAME'
+          ;;
+        task)
+          _arguments -C $_runtime_options $_generators_optins
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_rails "$@"
+
+# vim:set ft=zsh
