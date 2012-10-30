@@ -6,6 +6,20 @@
   </appdef>
 
   <item>
+    <name>Japanese IME</name>
+    <item>
+      <name>Option_L to EISUU</name>
+      <identifier>org.aereal.remap-option-l-to-kana-eisuu</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::JIS_EISUU</autogen>
+    </item>
+    <item>
+      <name>Option_R to KANA</name>
+      <identifier>org.aereal.remap-option-r-to-kana-eisuu</identifier>
+      <autogen>--KeyOverlaidModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::JIS_KANA</autogen>
+    </item>
+  </item>
+
+  <item>
    <name>tmux integration</name>
     <item>
       <name>Double-tap Option_R to tmux prefix key on Terminal application</name>
