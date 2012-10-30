@@ -5,6 +5,20 @@
     <equal>com.googlecode.iterm2</equal>
   </appdef>
 
+  <appdef>
+   <appname>SEQUELPRO</appname>
+   <equal>com.google.code.sequel-pro</equal>
+  </appdef>
+
+  <item>
+   <name>Sequal Pro</name>
+   <item>
+     <name>Remap C-h to DELETE</name>
+     <identifier>org.aereal.sequel-pro.remap-c-h-to-delete</identifier>
+     <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
+   </item>
+  </item>
+
   <item>
     <name>Japanese IME</name>
     <item>
