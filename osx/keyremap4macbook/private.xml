@@ -22,10 +22,10 @@
   <item>
    <name>tmux integration</name>
     <item>
-      <name>Double-tap Option_R to tmux prefix key on Terminal application</name>
-      <identifier>org.aereal.double-tap-option-r-to-tmux-prefix-key</identifier>
+      <name>Double-tap Command_R to tmux prefix key on Terminal application</name>
+      <identifier>org.aereal.double-tap-command-r-to-tmux-prefix-key</identifier>
       <only>TERMINAL</only>
-      <autogen>--DoublePressModifier-- KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Cmd-T to [prefix]-c</name>
