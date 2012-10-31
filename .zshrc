@@ -60,14 +60,14 @@ update_prompt() { # {{{
 
   # Ruby version {{{
   # if [[ -n $(type rbenv) ]]; then
-    _ruby_version_string="<ruby-$(rbenv version-name)>"
+    _ruby_version_string="Ruby: $(rbenv version-name)"
     ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
   # fi
   # }}}
 
   # Perl version {{{
   if [[ -n "$PERLBREW_PERL" ]]; then
-    _perl_version_string="<$PERLBREW_PERL>"
+    _perl_version_string="Perl: ${PERLBREW_PERL#perl-}"
     perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
   fi
   # }}}
@@ -79,20 +79,19 @@ update_prompt() { # {{{
   current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
   login_info="${current_user} @ ${current_host}"
 
-  current_working_directory="%(5~,%-2~/.../%2~,%~)"
+  current_working_directory="%~"
   current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
 
   additional_info="${ruby_version} ${perl_version}"
 
-  # TODO $git_info が空のときには括弧を出力しないようにする
-  top_line="${user_info} ${current_working_directory} ${git_info:+"(${git_info})"} ${additional_info}"
+  top_line="${login_info} (${additional_info})${git_info:+" (${git_info})"}"
 
   ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
   ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
   command_line="%(?,$ok_prompt,$ng_prompt)"
 
   PROMPT="$(echo -n "${top_line}\n${command_line}")"
-  RPROMPT="[${current_ts} | ${login_info}]"
+  RPROMPT="[${current_working_directory}]"
 } # }}}
 
 add-zsh-hook precmd update_prompt
