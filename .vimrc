@@ -1,10 +1,109 @@
 " vim:set et foldmethod=marker:
 " Setup neobundle.vim {{{
+set nocompatible
 filetype off
+
 if has('vim_starting')
-  set rtp+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle'))
+  execute 'set runtimepath+=' . expand('~/.vim/bundle/neobundle.vim')
+  syntax enable
 endif
+
+call neobundle#rc(expand('~/.vim/bundle'))
+" }}}
+
+" Plugins {{{
+" Text object {{{
+NeoBundle 'kana/vim-textobj-user'
+
+NeoBundle 'h1mesuke/textobj-wiw'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'thinca/vim-textobj-comment'
+" }}}
+
+" Help {{{
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'thinca/vim-ref'
+" }}}
+
+" Unite {{{
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'osyo-manga/unite-filetype'
+NeoBundle 'osyo-manga/unite-quickrun_config'
+NeoBundle 'tsukkee/unite-tag'
+" }}}
+
+" Input {{{
+NeoBundle 'tpope/vim-surround'
+NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'sickill/vim-pasta'
+NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'kana/vim-smartchr'
+" }}}
+
+" Language {{{
+NeoBundle 'bbommarito/vim-slim'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'hallison/vim-markdown'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'petdance/vim-perl'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'davidoc/taskpaper.vim'
+" }}}
+
+" UI {{{
+NeoBundle 'Lokaltog/vim-powerline', 'develop'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" }}}
+
+" Colors {{{
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
+      \ { 'base' : '~/works/vim_plugins' }
+NeoBundle 'nanotech/jellybeans.vim'
+" }}}
+
+" Misc. {{{
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \   'mac' : 'make -f make_mac.mak',
+      \   'unix' : 'make -f make_unix.mak',
+      \   },
+      \ }
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'int3/vim-extradite'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'mattn/gist-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'sudo.vim'
+NeoBundle 'kana/vim-altr'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'LeafCage/foldCC'
+NeoBundle 'kana/vim-gf-user'
+NeoBundle 'kana/vim-gf-diff'
+NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'tyru/current-func-info.vim'
+" }}}
+
+filetype plugin indent on
 " }}}
 
 " Configurations {{{
@@ -27,7 +126,7 @@ set fileformats=unix,dos,mac
 set langmenu=none " メニューをローカライズしない
 lang en_US.UTF-8
 set wildmenu
-set wildmode=list:longest
+set wildmode=list:longest,full
 set nobackup
 set swapfile
 set directory=~/.vim/swp
@@ -229,20 +328,31 @@ autocmd BufEnter */@hatena/*.tt       set ft=tt2html
 " }}}
 " }}}
 
-" Plugins {{{
-NeoBundle 'Shougo/neocomplcache' " {{{
+" Plugin Configurations {{{
+" neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_wildcard = 1
-let g:neocomplcache_enable_fuzzy_completion = 1
 let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
+let g:neocomplcache_enable_fuzzy_completion = 1
+let g:neocomplcache_auto_completion_start_length = 3
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_min_keyword_length = 3
+let g:neocomplcache_omni_functions = {
+      \ 'ruby' : 'rubycomplete#Complete',
+      \ }
+let g:neocomplcache_vim_completefuncs = {
+      \ 'Ref' : 'ref#complete',
+      \ 'Unite' : 'unite#complete_source',
+      \}
 
 inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-g> neocomplcache#undo_completion()
+inoremap <expr><C-x><C-f>  neocomplcache#manual_filename_complete()
 " }}}
-NeoBundle 'Shougo/neosnippet' " {{{
+" neosnippet {{{
 let g:neosnippet#disable_select_mode_mappings = 0
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
 
@@ -257,11 +367,11 @@ smap <expr><TAB> neosnippet#expandable() ?
     \ "\<Plug>(neosnippet_expand_or_jump)"
     \ : "\<TAB>"
 " }}}
-NeoBundle 'scrooloose/syntastic' " {{{
+" syntastic {{{
 let g:syntastic_auto_loc_list  = 2
 let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
 " }}}
-NeoBundle 'tpope/vim-fugitive' " {{{
+" fugitive {{{
 nnoremap <Leader>gs :<C-u>Gstatus<CR>
 nnoremap <Leader>gc :<C-u>Gcommit<CR>
 nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
@@ -272,17 +382,14 @@ nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " }}}
-NeoBundle 'int3/vim-extradite'
-NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'thinca/vim-textobj-comment'
-NeoBundle 'tpope/vim-surround' " {{{
+" surround_custom_mapping {{{
 let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.ruby  = {
   \ '#': "#{\r}",
+  \ '3': "#{\r}",
+  \ '5': "%(\r)",
+  \ '%': "%(\r)",
+  \ 'w': "%w(\r)",
   \ }
 let g:surround_custom_mapping.eruby = {
   \ '-': "<% \r %>",
@@ -293,23 +400,18 @@ let g:surround_custom_mapping.tt2 = {
       \ '%': "[% \r %]",
       \ }
 " }}}
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'sickill/vim-pasta'
-NeoBundle 'mattn/zencoding-vim' " {{{
+" zencoding-vim {{{
 let g:user_zen_leader_key = '<C-e>'
 let g:user_zen_settings = {
       \ 'indentation': ' ',
       \ }
 " }}}
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'thinca/vim-ref' " {{{
+" ref-vim {{{
 let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
 let g:ref_jquery_use_cache = 1
 let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
-NeoBundle 'Shougo/unite.vim' " {{{
+" unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
 
 nnoremap <SID>[unite] <Nop>
@@ -325,14 +427,26 @@ endif
 
 nnoremap <silent> <SID>[unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
 nnoremap <silent> <SID>[unite].        :<C-u>Unite source<CR>
-nnoremap <silent> /               :<C-u>Unite line -start-insert -no-quit<CR>
 nnoremap <silent> <SID>[unite]s        :<C-u>Unite session<CR>
 nnoremap <silent> <SID>[unite]w        :<C-u>Unite -immediately window:no-current<CR>
 
-nnoremap <silent> <SID>[unite]gc       :<C-u>UniteWithCurrentDir git/conflicts -buffer-name=files<CR>
+nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
+nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
+nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
+
+nnoremap <silent> <SID>[unite]t :<C-u>Unite tab<CR>
 
 autocmd FileType unite call s:unite_local_settings()
+
 function! s:unite_local_settings() "{{{
+  imap <buffer> <BS> <Plug>(unite_delete_backward_path)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+
+  let current = unite#get_current_unite()
+  if current.buffer_name =~# '^search'
+    nnoremap <silent><buffer><expr> r unite#do_action('replace')
+  endif
+
   nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
   inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
   nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
@@ -342,70 +456,39 @@ function! s:unite_local_settings() "{{{
   nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
   inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
 endfunction " }}}
+
 function! s:unite_project(...) " {{{
   let opts = (a:0 ? join(a:000, ' ') : '')
   let dir = unite#util#path2project_directory(expand('%'))
   execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
 endfunction " }}}
-" }}}
-NeoBundle 'h1mesuke/unite-outline' " {{{
+
+" unite-outline {{{
 nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
 nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
 " }}}
-NeoBundle 'sgur/unite-git_grep' " {{{
-nnoremap <silent> <SID>[unite]g :<C-u>Unite vcs_grep -start-insert<CR>
-" }}}
-NeoBundle 'sgur/unite-qf' " {{{
-nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
-" }}}
-NeoBundle 'thinca/vim-unite-history' " {{{
+" unite-history {{{
 nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
 " }}}
-NeoBundle 'ujihisa/unite-colorscheme' " {{{
+" unite-qf {{{
+nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+" }}}
+" unite-colorscheme {{{
 nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
 " }}}
-NeoBundle 'osyo-manga/unite-filetype'
-NeoBundle 'osyo-manga/unite-quickrun_config'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'bbommarito/vim-slim'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'petdance/vim-perl'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'Lokaltog/vim-powerline', {
-      \ 'rev' : 'develop',
-      \ }
+" }}}
+" vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_theme = 'skwp'
 let g:Powerline_mode_n = ' N '
-NeoBundle 'nathanaelkane/vim-indent-guides' " {{{
+" }}}
+" vim-indent-guides {{{
 let g:indent_guides_auto_colors           = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_color_change_percent  = 10
 let g:indent_guides_guide_size            = &sw
 " }}}
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'git@github.com:aereal/vim-magica-colors.git', {
-      \ 'base' : '~/works/vim_plugins',
-      \ }
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \   'mac' : 'make -f make_mac.mak',
-      \   }
-      \ }
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'kana/vim-altr' " {{{
+" vim-altr {{{
 nmap <Leader><C-[> <Plug>(altr-forward)
 nmap <Leader><C-]> <Plug>(altr-back)
 
@@ -415,24 +498,16 @@ call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
 call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
 call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
 " }}}
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'LeafCage/foldCC' " {{{
+" foldCC {{{
 set foldtext=FoldCCtext()
 set foldcolumn=4
 " }}}
-NeoBundle 'davidoc/taskpaper.vim'
-NeoBundle 'AndrewRadev/switch.vim' " {{{
+" switch.vim {{{
 nnoremap - :<C-u>Switch<CR>
 " }}}
-NeoBundle 'kana/vim-gf-user'
-NeoBundle 'kana/vim-gf-diff'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'tyru/current-func-info.vim'
 " }}}
 
-filetype on
-filetype plugin on
-filetype indent on
-syntax enable
-
-colorscheme desert
+" Colorscheme {{{
+set bg=light
+colorscheme solarized
+" }}}
