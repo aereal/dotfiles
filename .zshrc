@@ -158,17 +158,17 @@ alias :q='exit'
   ### $abbreviations {{{
   typeset -A abbreviations
   abbreviations=(
-    "L" "| \$PAGER"
-    "G" "| grep"
-    "S" "| sort"
-    "H" "| head"
-    "T" "| tail"
-    "C" "| pbcopy"
+    " L" " | \$PAGER"
+    " G" " | grep"
+    " S" " | sort"
+    " H" " | head"
+    " T" " | tail"
+    " C" " | pbcopy"
   )
   # }}}
   magic-abbrev-expand () { #{{{
     local MATCH
-    LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
+    LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9]#}
     LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
   } #}}}
   magic-space () { #{{{
