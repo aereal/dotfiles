@@ -84,7 +84,7 @@ update_prompt() { # {{{
 
   additional_info="${ruby_version} ${perl_version}"
 
-  top_line="${login_info} (${additional_info})${git_info:+" (${git_info})"}"
+  top_line="${current_working_directory}${git_info:+" (${git_info})"}${additional_info:+" (${additional_info})"}"
 
   ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
   ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
