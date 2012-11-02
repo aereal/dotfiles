@@ -35,10 +35,13 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'osyo-manga/unite-filetype'
 NeoBundle 'osyo-manga/unite-quickrun_config'
+NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 " }}}
 
 " Input {{{
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'kana/vim-smartinput'
@@ -46,6 +49,8 @@ NeoBundle 'sickill/vim-pasta'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'kana/vim-smartchr'
+NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'tpope/vim-commentary'
 " }}}
 
 " Language {{{
@@ -75,6 +80,18 @@ NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
 NeoBundle 'nanotech/jellybeans.vim'
 " }}}
 
+" Utils {{{
+" }}}
+
+" Files {{{
+NeoBundle 'kana/vim-altr'
+NeoBundle 'kana/vim-gf-user'
+NeoBundle 'kana/vim-gf-diff'
+NeoBundle 'thinca/vim-partedit'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'sudo.vim'
+" }}}
+
 " Misc. {{{
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -83,24 +100,24 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
 
 NeoBundle 'scrooloose/syntastic'
+
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'int3/vim-extradite'
-NeoBundle 'h1mesuke/vim-alignta'
+
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'kana/vim-altr'
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'LeafCage/foldCC'
-NeoBundle 'kana/vim-gf-user'
-NeoBundle 'kana/vim-gf-diff'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tyru/current-func-info.vim'
+NeoBundle 'sjl/gundo.vim'
+" }}}
+
+" Move {{{
+NeoBundle 'Lokaltog/vim-easymotion'
 " }}}
 
 filetype plugin indent on
@@ -273,6 +290,7 @@ autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -sta
 autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
 autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+autocmd FileType ruby    nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
 " }}}
 
 " coffee {{{
@@ -293,6 +311,7 @@ autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.
 autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
 autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
 autocmd BufEnter *.tt    set ft=tt2
 autocmd BufEnter */t/*.t set ft=perl.tap
 " }}}
@@ -343,6 +362,11 @@ let g:neocomplcache_vim_completefuncs = {
       \ 'Ref' : 'ref#complete',
       \ 'Unite' : 'unite#complete_source',
       \}
+
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
@@ -439,8 +463,7 @@ nnoremap <silent> <SID>[unite]t :<C-u>Unite tab<CR>
 autocmd FileType unite call s:unite_local_settings()
 
 function! s:unite_local_settings() "{{{
-  imap <buffer> <BS> <Plug>(unite_delete_backward_path)
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  imap <buffer> .. <Plug>(unite_delete_backward_path)
 
   let current = unite#get_current_unite()
   if current.buffer_name =~# '^search'
@@ -471,10 +494,13 @@ nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth
 nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
 " }}}
 " unite-qf {{{
-nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit<CR>
+nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-start-insert -auto-preview<CR>
 " }}}
 " unite-colorscheme {{{
 nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
+" }}}
+" unite-fold {{{
+nnoremap <silent> <SID>[unite]d :<C-u>Unite fold<CR>
 " }}}
 " }}}
 " vim-powerline {{{

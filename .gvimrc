@@ -1,12 +1,6 @@
-set number
-set encoding=utf-8
-
-if has("gui_gtk2")
-  set guifont=Anonymous\ 12
-endif
-
 if has("gui_macvim")
   set guifont=Monaco\ for\ Powerline:h14
+
   set guioptions-=T
   set guioptions-=m
   set guioptions-=r
@@ -15,6 +9,9 @@ if has("gui_macvim")
   set guioptions-=L
   set guioptions-=b
 
+endif
+
+if has('transparency')
   set transparency=10
 endif
 
