@@ -519,7 +519,7 @@ nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth
 nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
 " }}}
 " unite-qf {{{
-nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-start-insert -auto-preview<CR>
+nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-empty -no-start-insert -auto-preview<CR>
 " }}}
 " unite-colorscheme {{{
 nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
