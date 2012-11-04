@@ -167,6 +167,8 @@ set smartcase
 set hlsearch
 set incsearch
 set wrapscan
+set formatoptions-=ro
+set ttyfast
 
 if has('conceal')
   set conceallevel=2 concealcursor=i
