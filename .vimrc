@@ -512,7 +512,7 @@ function! s:unite_project(...) " {{{
 endfunction " }}}
 
 " unite-outline {{{
-nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40<CR>
+nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -buffer-name=outline -vertical -winwidth=40<CR>
 nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
 " }}}
 " unite-history {{{
