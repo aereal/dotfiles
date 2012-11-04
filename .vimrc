@@ -495,14 +495,14 @@ function! s:unite_local_settings() "{{{
     nnoremap <silent><buffer><expr> r unite#do_action('replace')
   endif
 
-  nnoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-  inoremap <silent><buffer><expr> <C-w>h unite#do_action('left')
-  nnoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-  inoremap <silent><buffer><expr> <C-w>l unite#do_action('right')
-  nnoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-  inoremap <silent><buffer><expr> <C-w>k unite#do_action('above')
-  nnoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
-  inoremap <silent><buffer><expr> <C-w>j unite#do_action('below')
+  nnoremap <silent><buffer><expr> wh unite#smart_map('wh', unite#do_action('left'))
+  inoremap <silent><buffer><expr> wh unite#smart_map('wh', unite#do_action('left'))
+  nnoremap <silent><buffer><expr> wl unite#smart_map('wl', unite#do_action('right'))
+  inoremap <silent><buffer><expr> wl unite#smart_map('wl', unite#do_action('right'))
+  nnoremap <silent><buffer><expr> wk unite#smart_map('wk', unite#do_action('above'))
+  inoremap <silent><buffer><expr> wk unite#smart_map('wk', unite#do_action('above'))
+  nnoremap <silent><buffer><expr> wj unite#smart_map('wj', unite#do_action('below'))
+  inoremap <silent><buffer><expr> wj unite#smart_map('wj', unite#do_action('below'))
 endfunction " }}}
 
 function! s:unite_project(...) " {{{
