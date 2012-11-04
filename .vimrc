@@ -420,13 +420,16 @@ let g:syntastic_auto_loc_list  = 2
 let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
 " }}}
 " fugitive {{{
-nnoremap <Leader>gs :<C-u>Gstatus<CR>
-nnoremap <Leader>gc :<C-u>Gcommit<CR>
-nnoremap <Leader>gC :<C-u>Gcommit --amend<CR>
-nnoremap <Leader>gb :<C-u>Gblame<CR>
-nnoremap <Leader>ga :<C-u>Gwrite<CR>
-nnoremap <Leader>gd :<C-u>Gdiff<CR>
-nnoremap <Leader>gD :<C-u>Gdiff --staged<CR>
+nnoremap [fugitive] <Nop>
+nmap git [fugitive]
+
+nnoremap [fugitive]s :<C-u>Gstatus<CR>
+nnoremap [fugitive]c :<C-u>Gcommit<CR>
+nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>
+nnoremap [fugitive]b :<C-u>Gblame<CR>
+nnoremap [fugitive]a :<C-u>Gwrite<CR>
+nnoremap [fugitive]d :<C-u>Gdiff<CR>
+nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " }}}
