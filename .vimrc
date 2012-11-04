@@ -488,6 +488,7 @@ autocmd FileType unite call s:unite_local_settings()
 
 function! s:unite_local_settings() "{{{
   imap <buffer> .. <Plug>(unite_delete_backward_path)
+  nmap <buffer><BS> <Plug>(unite_delete_backward_path)
 
   let current = unite#get_current_unite()
   if current.buffer_name =~# '^search'
