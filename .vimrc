@@ -54,18 +54,18 @@ NeoBundle 'tpope/vim-commentary'
 " }}}
 
 " Language {{{
-NeoBundle 'bbommarito/vim-slim'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
+NeoBundleLazy 'bbommarito/vim-slim'
+NeoBundleLazy 'groenewege/vim-less'
+NeoBundleLazy 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'hallison/vim-markdown'
+NeoBundleLazy 'kchmck/vim-coffee-script'
 NeoBundle 'motemen/hatena-vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'petdance/vim-perl'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'davidoc/taskpaper.vim'
+NeoBundleLazy 'othree/html5.vim'
+NeoBundleLazy 'pangloss/vim-javascript'
+NeoBundleLazy 'petdance/vim-perl'
+NeoBundleLazy 'vim-ruby/vim-ruby'
+NeoBundleLazy 'juvenn/mustache.vim'
+NeoBundleLazy 'davidoc/taskpaper.vim'
 " }}}
 
 " UI {{{
@@ -88,7 +88,7 @@ NeoBundle 'kana/vim-altr'
 NeoBundle 'kana/vim-gf-user'
 NeoBundle 'kana/vim-gf-diff'
 NeoBundle 'thinca/vim-partedit'
-NeoBundle 'Shougo/vimfiler'
+NeoBundleLazy 'Shougo/vimfiler'
 NeoBundle 'sudo.vim'
 " }}}
 
@@ -104,10 +104,10 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'int3/vim-extradite'
+NeoBundleLazy 'int3/vim-extradite'
 
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
+NeoBundleLazy 'mattn/gist-vim'
+NeoBundleLazy 'mattn/webapi-vim'
 
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'LeafCage/foldCC'
@@ -352,6 +352,21 @@ augroup AutoCursorLine
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
   autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
 augroup END
+
+augroup NeoBundleLazyLood " {{{
+  autocmd!
+  autocmd FileType less NeoBundleSource 'vim-less'
+  autocmd FileType javascript NeoBundleSource 'vim-javascript'
+  autocmd FileType ruby NeoBundleSource 'vim-ruby'
+  autocmd FileType perl NeoBundleSource 'vim-perl'
+  autocmd FileType slim NeoBundleSource 'vim-slim'
+  autocmd FileType css NeoBundleSource 'vim-css3-syntax'
+  autocmd FileType markdown NeoBundleSource 'vim-markdown'
+  autocmd FileType coffeescript NeoBundleSource 'vim-coffeescript'
+  autocmd FileType html NeoBundleSource 'html5.vim'
+  autocmd FileType mustache NeoBundleSource 'mustache.vim'
+  autocmd FileType taskpaper NeoBundleSource 'taskpaper.vim'
+augroup END " }}}
 " }}}
 
 " Plugin Configurations {{{
