@@ -345,6 +345,13 @@ autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
 autocmd BufEnter */@hatena/*.html     set ft=tt2html
 autocmd BufEnter */@hatena/*.tt       set ft=tt2html
 " }}}
+
+" http://d.hatena.ne.jp/thinca/20090530/1243615055
+augroup AutoCursorLine
+  autocmd!
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+  autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
+augroup END
 " }}}
 
 " Plugin Configurations {{{
