@@ -518,7 +518,6 @@ nnoremap <silent> <SID>[unite]d :<C-u>Unite fold<CR>
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'skwp'
 let g:Powerline_mode_n = ' N '
 " }}}
 " vim-indent-guides {{{
