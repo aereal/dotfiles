@@ -76,7 +76,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " Colors {{{
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
-      \ { 'base' : '~/works/vim_plugins' }
+      \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
 " }}}
 
