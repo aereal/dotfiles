@@ -28,7 +28,7 @@ NeoBundle 'thinca/vim-ref'
 
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
