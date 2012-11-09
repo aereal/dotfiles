@@ -13,7 +13,7 @@ git_info() { # {{{
 
   local git_dir=$(git rev-parse --git-dir 2> /dev/null)
   local action=$(VCS_INFO_git_getaction "$git_dir")
-  action=${action:+"$($action)"}
+  action=${action:+"($action)"}
 
   # Remote and Local changes {{{
   local \
