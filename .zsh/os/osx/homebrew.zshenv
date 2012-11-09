@@ -30,3 +30,13 @@ if [[ -n $(which brew) && -n $(brew list | grep hub) ]]; then
     hub "$@"
   }
 fi
+
+# Python
+if [[ -n $(which brew) && -n $(brew list | grep python) ]]; then
+  export HOMEBREW_PYTHON=1
+
+  path=(
+    ${HOMEBREW_HOME}/share/python(N-/)
+    ${path}
+  )
+fi
