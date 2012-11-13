@@ -13,30 +13,47 @@ fpath=(
   ${fpath}
 )
 
-if [[ -n $(which brew) && -n $(brew list | grep coreutils) ]]; then
-  export GNU_COREUTILS=1
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+typeset -a homebrew_callbacks
 
-  path=(
-    $(brew --prefix coreutils)/libexec/gnubin(N-/)
-    $path
-  )
-fi
+function setup_coreutils() {
+  if [[ -n $(brew list | grep coreutils) ]]; then
+    export GNU_COREUTILS=1
+    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
-if [[ -n $(which brew) && -n $(brew list | grep hub) ]]; then
-  export OVERRIDE_GIT_WITH_HUB=1
+    path=(
+      $(brew --prefix coreutils)/libexec/gnubin(N-/)
+      $path
+    )
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_coreutils)
 
-  git() {
-    hub "$@"
-  }
-fi
+function setup_hub() {
+  if [[ -n $(brew list | grep hub) ]]; then
+    export OVERRIDE_GIT_WITH_HUB=1
 
-# Python
-if [[ -n $(which brew) && -n $(brew list | grep python) ]]; then
-  export HOMEBREW_PYTHON=1
+    git() {
+      hub "$@"
+    }
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_hub)
 
-  path=(
-    ${HOMEBREW_HOME}/share/python(N-/)
-    ${path}
-  )
+function setup_python() {
+  if [[ -n $(brew list | grep python) ]]; then
+    export HOMEBREW_PYTHON=1
+
+    path=(
+      ${HOMEBREW_HOME}/share/python(N-/)
+      ${path}
+    )
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_python)
+
+if [[ -n $(which brew 2>/dev/null) ]]; then
+  local callback
+  for callback in $homebrew_callbacks; do
+    $callback
+  done
 fi
