@@ -51,6 +51,18 @@ function setup_python() {
 }
 homebrew_callbacks=($homebrew_callbacks setup_python)
 
+function setup_npm() {
+  if [[ -n $(brew list | grep node) && -n $(which npm) ]]; then
+    export USE_BREWED_NPM=1
+
+    path=(
+      ${HOMEBREW_HOME}/share/npm/bin(N-/)
+      ${path}
+    )
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_npm)
+
 if [[ -n $(which brew 2>/dev/null) ]]; then
   local callback
   for callback in $homebrew_callbacks; do
