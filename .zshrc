@@ -137,6 +137,7 @@ setopt numeric_glob_sort # 数字としてソート
 
 # Aliases {{{
 alias :q='exit'
+alias iso8601='date +%Y-%m-%dT%H:%M:%S%z'
 # }}}
 
 # Functions {{{
