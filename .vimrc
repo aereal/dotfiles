@@ -271,7 +271,7 @@ endfunction " }}}
 
 " autocmd {{{
 " screenに編集中のファイル名を出す
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%\\"' | endif
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
 
 " sh {{{
 autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
