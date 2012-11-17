@@ -28,6 +28,12 @@ VIMPROC_SO_FILE      = File.join(VIM_BUNDLE_DIR, 'vimproc', 'autoload', 'vimproc
 
 HOMEBREW_DIR = ENV['HOMEBREW_HOME'] || '/usr/local'
 
+FORMULAE = %w(
+  coreutils git git-flow haskell-platform hub
+  imagemagick io libpng lv mongodb mysql node
+  openssl readline redis refe tig zsh
+)
+
 def home(basename)
   File.join(HOME, basename)
 end
@@ -72,11 +78,7 @@ namespace :homebrew do
   desc 'Setup Homebrew'
   task :setup => :install
 
-  %w(
-    coreutils git git-flow haskell-platform hub
-    imagemagick io libpng lv mongodb mysql node
-    openssl readline redis refe tig zsh
-  ).each do |formula|
+  FORMULAE.each do |formula|
     formula_task(formula)
   end
 end
