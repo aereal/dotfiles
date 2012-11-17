@@ -100,7 +100,7 @@ end
 
 namespace :vim do
   file NEOBUNDLE_DIR do
-    sh 'git', 'clone', NEOBUNDLE_REPOSITORY
+    sh 'git', 'clone', NEOBUNDLE_REPOSITORY, NEOBUNDLE_DIR
   end
 
   file VIMPROC_SO_FILE do
