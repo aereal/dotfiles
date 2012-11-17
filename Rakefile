@@ -1,102 +1,118 @@
-require 'net/https'
-require 'pathname'
-require 'tmpdir'
-require 'uri'
+HOME = ENV['HOME'] || File.expand_path('~')
 
-class Pathname
-  def self.make_temporary_dir
-    Pathname.new(Dir.mktmpdir)
+DOTFILES_REPOSITORY = 'git://github.com/aereal/dotfiles.git'
+DOTFILES_DIR        = File.expand_path('~/repos/@aereal/dotfiles')
+DOTFILES = %w(
+  .caprc
+  .gemrc
+  .gitconfig
+  .gvimrc
+  .powenv
+  .proverc
+  .pryrc
+  .rbenv
+  .tmux.conf
+  .uim
+  .vim
+  .vimrc
+  .zsh
+  .zshenv
+  .zshrc
+)
+
+VIM_DIR              = File.join(DOTFILES_DIR, '.vim')
+VIM_BUNDLE_DIR       = File.join(VIM_DIR, 'bundle')
+NEOBUNDLE_DIR        = File.join(VIM_BUNDLE_DIR, 'neobundle.vim')
+NEOBUNDLE_REPOSITORY = 'git://github.com/Shougo/neobundle.vim'
+VIMPROC_SO_FILE      = File.join(VIM_BUNDLE_DIR, 'vimproc', 'autoload', 'vimproc_mac.so')
+
+HOMEBREW_DIR = ENV['HOMEBREW_HOME'] || '/usr/local'
+
+def home(basename)
+  File.join(HOME, basename)
+end
+
+def cellar(formula)
+  File.join(HOMEBREW_DIR, 'opt', formula)
+end
+
+def brew_install(*args)
+  sh 'brew', 'install', *args
+end
+
+def identifierize(string)
+  string.strip.gsub(/\W/, '_')
+end
+
+def formula_task(formula_name, *args)
+  namespace identifierize(formula_name).intern do
+    file cellar(formula_name) do
+      brew_install(formula_name, *args)
+    end
+
+    desc "Instal #{formula_name} with Homebrew"
+    task :install => [:'homebrew:setup', cellar(formula_name)]
   end
 end
 
-class Net::HTTP
-  def self.start_session(options = {}, &block)
-    session = Net::HTTP.new(*options.values_at(:address, :port, :proxy_addr, :proxy_port, :proxy_user, :proxy_pass))
-    session.use_ssl = options[:use_ssl]
-    session.start(&block)
+namespace :homebrew do
+  file File.join(HOMEBREW_DIR, 'bin', 'brew') do
+    sh 'ruby' '-e' '$(curl -fsSkL raw.github.com/mxcl/homebrew/go)'
+  end
+
+  desc 'Install Homebrew'
+  task :install => File.join(HOMEBREW_DIR, 'bin', 'brew')
+
+  desc 'Setup Homebrew'
+  task :setup => :install
+
+  %w(
+    coreutils git git-flow haskell-platform hub
+    imagemagick io libpng lv mongodb mysql node
+    openssl readline redis refe tig zsh
+  ).each do |formula|
+    formula_task(formula)
   end
 end
 
-module URI
-  class HTTP
-    def http?;  true  end
-    def https?; false end
-  end
-
-  class HTTPS
-    def http?;  false end
-    def https?; true  end
-  end
-end
-
-module DownloadHelper
-  module_function
-
-  def fetch(uri, dest, options = {})
-    Net::HTTP.start_session(:host => uri.host, :port => uri.port, :use_ssl => uri.https?) do |session|
-      session.request_get(uri.request_uri) do |response|
-        case response
-        when Net::HTTPSuccess
-          open(dest, 'w') do |f|
-            response.read_body do |data|
-              f << data
-            end
-          end
-        when Net::HTTPRedirection
-          fetch(URI(response['location'], dest, options))
-        else
-          response.value
-        end
-      end
-    end
-  end
-end
-
-def distribution_task(name, files)
-  namespace name do
-    task :env do
-      @home = Pathname.new('~').expand_path
-      @pwd = Pathname.pwd.expand_path
-      @files = FileList.new.include(files)
-      @exists_files, @missing_files = @files.partition {|f| (@home + f).exist? }
-    end
-
-    desc "Export #{name.to_s.capitalize} files to $HOME"
-    task :export => :env do
-      @missing_files.each do |f|
-        ln_s @pwd + f, @home + f
-      end
-    end
-
-    desc "Unlink #{name.to_s.capitalize} files from #HOME"
-    task :unlink => :env do
-      @exists_files.map { |f| @home + f }.select(&:symlink?).each do |path|
-        remove path
-      end
-    end
+DOTFILES.each do |dotfile|
+  file File.join(HOME, dotfile) do
+    safe_ln File.join(DOTFILES_DIR, dotfile), home(dotfile)
   end
 end
 
 namespace :dotfiles do
-  distribution_task :vim,        %w(.vimrc .gvimrc .vim)
-  distribution_task :zsh,        %w(.zshrc .zshenv .zsh.d)
-  distribution_task :screen,     %w(.screenrc .screen)
-  distribution_task :vimperator, %w(.vimperatorrc .vimperatorrc.css .vimperator)
-  distribution_task :tmux,       %w(.tmux.conf)
-  distribution_task :git,        %w(.gitconfig)
-  distribution_task :rubygems,   %w(.gemrc)
-  distribution_task :rvm,        %w(.rvmrc)
-  distribution_task :pry,        %w(.pryrc)
-  distribution_task :irb,        %w(.irbrc)
-  distribution_task :perl,       %w(.proverc .re.pl)
-  distribution_task :irssi,      %w(.irssi)
-
-  namespace :perlbrew do
-    desc 'Install perlbrew'
-    task :install do
-      include DownloadHelper
-
-      tmpdir = Pathname.make_temporary_dir
-    end
+  file DOTFILES_DIR do
+    sh 'git', 'clone', '--recursive', DOTFILES_REPOSITORY
   end
+
+  desc 'Install dotfiles'
+  task :install => [DOTFILES_DIR]
+end
+
+namespace :vim do
+  file NEOBUNDLE_DIR do
+    sh 'git', 'clone', NEOBUNDLE_REPOSITORY
+  end
+
+  file VIMPROC_SO_FILE do
+    sh 'make', '-f', File.join(VIM_BUNDLE_DIR, 'vimproc', 'make_mac.mak')
+  end
+
+  task :neobundle_install => [NEOBUNDLE_DIR] do
+    sh 'vim', '+NeoBundleInstall', '+quit'
+  end
+
+  desc 'Setup Vim environment'
+  task :setup => [home('.vimrc'), home('.gvimrc'), home('.vim'), :neobundle_install, VIMPROC_SO_FILE]
+end
+
+namespace :tmux do
+  desc 'Setup tmux environment'
+  task :setup => [home('.tmux.conf')]
+end
+
+namespace :zsh do
+  desc 'Setup zsh environment'
+  task :setup => [home('.zsh'), home('.zshenv'), home('.zshrc')]
 end
