@@ -60,8 +60,14 @@ namespace :homebrew do
     sh 'ruby' '-e' '$(curl -fsSkL raw.github.com/mxcl/homebrew/go)'
   end
 
+  file File.join(HOMEBREW_DIR, 'Library', 'Taps', 'aereal-aereal') do
+    sh 'brew', 'tap', 'aereal/aereal'
+  end
+
   desc 'Install Homebrew'
   task :install => File.join(HOMEBREW_DIR, 'bin', 'brew')
+
+  task :create_tap => [:install, File.join(HOMEBREW_DIR, 'Library', 'Taps', 'aereal-aereal')]
 
   desc 'Setup Homebrew'
   task :setup => :install
