@@ -293,6 +293,8 @@ autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', 
 autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
 autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
 autocmd FileType ruby    nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
+
+autocmd BufEnter */.gemrc set ft=yaml
 " }}}
 
 " coffee {{{
