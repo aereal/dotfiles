@@ -1,5 +1,4 @@
-# source :rubygems
-source 'http://production.cf.rubygems.org'
+source :rubygems
 
 gem 'json'
 gem 'rake'
