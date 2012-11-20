@@ -41,3 +41,6 @@ snippet ddd
 	use Data::Dumper qw(Dumper);
 	sub p ($) { print Dumper(shift) }
 	${1}
+
+snippet my_
+	my (${1:$args}) = @_;${2}
