@@ -26,6 +26,9 @@ snippet tpm
 snippet use
 	use ${1:Package};
 
+snippet uselib
+	use lib 'lib', glob "${1:Package}";
+
 snippet given
 	given (${1:subject}) {
 		when (${2:condition}) {${3}}
