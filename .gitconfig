@@ -49,7 +49,7 @@
 	frag = white reverse
 	func = yellow
 	old = red
-	new = blue
+	new = green
 	whitespace = red reverse
 [color "grep"]
 	context = white
