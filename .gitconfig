@@ -92,3 +92,10 @@
 	funcname = =
 [diff "perl"]
 	funcname = =
+[log]
+	date = iso
+[merge]
+	stat = true
+[status]
+	showUntrackedFiles = all
+	submodulesummary = true
