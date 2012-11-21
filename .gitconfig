@@ -29,25 +29,41 @@
 	continue-rebase = rebase --continue
 	abort-rebase = rebase --abort
 [color]
-	diff = auto
-	branch = auto
-	status = auto
-	interactive = auto
-	grep = auto
+	branch = true
+	status = true
+	diff = true
+	interactive = true
+	grep = true
+	pager = true
 [color "branch"]
 	current = green reverse
 	local = green
 	remote = yellow
 [color "status"]
-	added = yellow
+	updated = yellow
 	changed = green
 	untracked = cyan
 [color "diff"]
-	commit = black white bold
-	meta = blue
-	frag = black
+	commit = black white
+	meta = black
+	frag = white reverse
+	func = yellow
 	old = red
-	new = green
+	new = blue
+	whitespace = red reverse
+[color "grep"]
+	context = white
+	filename = green
+	function = yellow
+	linenumber = magenta
+	match = yellow reverse
+	# selected
+	# separator = magenta
+[color "interactive"]
+	# prompt
+	# header
+	# help
+	# error
 [i18n]
 	commitencoding= utf-8
 [core]
