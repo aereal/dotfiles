@@ -13,17 +13,27 @@ call neobundle#rc(expand('~/.vim/bundle'))
 
 " Plugins {{{
 " Text object {{{
-NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-user', {
+      \ 'name' : 'textobj-user',
+      \ }
 
 NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'thinca/vim-textobj-comment'
+NeoBundle 'kana/vim-textobj-indent', {
+      \ 'name' : 'textobj-indent',
+      \ }
+NeoBundle 'kana/vim-textobj-line', {
+      \ 'name' : 'textobj-line',
+      \ }
+NeoBundle 'thinca/vim-textobj-comment', {
+      \ 'name' : 'textobj-comment',
+      \ }
 " }}}
 
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-ref', {
+      \ 'name' : 'ref',
+      \ }
 " }}}
 
 " Unite {{{
@@ -31,7 +41,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'sgur/unite-qf'
-NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'thinca/vim-unite-history', {
+      \ 'name' : 'unite-history',
+      \ }
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'osyo-manga/unite-filetype'
 NeoBundle 'osyo-manga/unite-quickrun_config'
@@ -42,54 +54,117 @@ NeoBundle 'tsukkee/unite-tag'
 " Input {{{
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'sickill/vim-pasta'
-NeoBundle 'mattn/zencoding-vim'
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-surround', {
+      \ 'name' : 'surround',
+      \ }
+NeoBundle 't9md/vim-surround_custom_mapping', {
+      \ 'name' : 'surround_custom_mapping',
+      \ }
+NeoBundle 'kana/vim-smartinput', {
+      \ 'name' : 'smartinput',
+      \ }
+NeoBundle 'sickill/vim-pasta', {
+      \ 'name' : 'pasta',
+      \ }
+NeoBundle 'mattn/zencoding-vim', {
+      \ 'name' : 'zencoding',
+      \ }
+NeoBundle 'AndrewRadev/switch.vim', {
+      \ 'name' : 'switch',
+      \ }
+NeoBundle 'kana/vim-smartchr', {
+      \ 'name' : 'smartchr',
+      \ }
+NeoBundle 'h1mesuke/vim-alignta', {
+      \ 'name' : 'alignta',
+      \ }
+NeoBundle 'tpope/vim-commentary', {
+      \ 'name' : 'commentary',
+      \ }
 " }}}
 
 " Language {{{
-NeoBundle 'bbommarito/vim-slim'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'vim-perl/vim-perl'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'davidoc/taskpaper.vim'
+NeoBundle 'bbommarito/vim-slim', {
+      \ 'name' : 'slim',
+      \ }
+NeoBundle 'groenewege/vim-less', {
+      \ 'name' : 'less',
+      \ }
+NeoBundle 'hail2u/vim-css3-syntax', {
+      \ 'name' : 'css3-syntax',
+      \ }
+NeoBundle 'hallison/vim-markdown', {
+      \ 'name' : 'markdown',
+      \ }
+NeoBundle 'kchmck/vim-coffee-script', {
+      \ 'name' : 'coffee-script',
+      \ }
+NeoBundle 'motemen/hatena-vim', {
+      \ 'name' : 'hatena',
+      \ }
+NeoBundle 'othree/html5.vim', {
+      \ 'name' : 'html5',
+      \ }
+NeoBundle 'pangloss/vim-javascript', {
+      \ 'name' : 'javascript',
+      \ }
+NeoBundle 'vim-perl/vim-perl', {
+      \ 'name' : 'perl',
+      \ }
+NeoBundle 'vim-ruby/vim-ruby', {
+      \ 'name' : 'ruby',
+      \ }
+NeoBundle 'juvenn/mustache.vim', {
+      \ 'name' : 'mustache',
+      \ }
+NeoBundle 'davidoc/taskpaper.vim', {
+      \ 'name' : 'taskpaper',
+      \ }
 " }}}
 
 " UI {{{
-NeoBundle 'Lokaltog/vim-powerline', 'develop'
-NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'Lokaltog/vim-powerline', {
+      \ 'name' : 'powerline',
+      \ 'rev' : 'develop',
+      \ }
+NeoBundle 'nathanaelkane/vim-indent-guides', {
+      \ 'name' : 'indent-guides',
+      \ }
 " }}}
 
 " Colors {{{
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
-      \ { 'base' : '~/repos/@aereal' }
-NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized', {
+      \ 'name' : 'colors-solarized',
+      \ }
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git', {
+      \ 'name' : 'magica-colors',
+      \ 'base' : '~/repos/@aereal',
+      \ }
+NeoBundle 'nanotech/jellybeans.vim', {
+      \ 'name' : 'jellybeans',
+      \ }
 " }}}
 
 " Utils {{{
 " }}}
 
 " Files {{{
-NeoBundle 'kana/vim-altr'
-NeoBundle 'kana/vim-gf-user'
-NeoBundle 'kana/vim-gf-diff'
-NeoBundle 'thinca/vim-partedit'
+NeoBundle 'kana/vim-altr', {
+      \ 'name' : 'altr',
+      \ }
+NeoBundle 'kana/vim-gf-user', {
+      \ 'name' : 'gf-user',
+      \ }
+NeoBundle 'kana/vim-gf-diff', {
+      \ 'name' : 'gf-diff',
+      \ }
+NeoBundle 'thinca/vim-partedit', {
+      \ 'name' : 'partedit',
+      \ }
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'sudo.vim'
+NeoBundle 'sudo.vim', {
+      \ 'name' : 'sudo',
+      \ }
 " }}}
 
 " Misc. {{{
@@ -103,21 +178,39 @@ NeoBundle 'Shougo/neobundle.vim'
 
 NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'int3/vim-extradite'
+NeoBundle 'tpope/vim-fugitive', {
+      \ 'name' : 'fugitive',
+      \ }
+NeoBundle 'int3/vim-extradite', {
+      \ 'name' : 'extradite',
+      \ }
 
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/gist-vim', {
+      \ 'name' : 'gist',
+      \ }
+NeoBundle 'mattn/webapi-vim', {
+      \ 'name' : 'webapi',
+      \ }
 
-NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-quickrun', {
+      \ 'name' : 'quickrun',
+      \ }
 NeoBundle 'LeafCage/foldCC'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'tyru/current-func-info.vim'
-NeoBundle 'sjl/gundo.vim'
+NeoBundle 'kana/vim-tabpagecd', {
+      \ 'name' : 'tabpagecd',
+      \ }
+NeoBundle 'tyru/current-func-info.vim', {
+      \ 'name' : 'current-func-info',
+      \ }
+NeoBundle 'sjl/gundo.vim', {
+      \ 'name' : 'gundo',
+      \ }
 " }}}
 
 " Move {{{
-NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-easymotion', {
+      \ 'name' : 'easymotion',
+      \ }
 " }}}
 
 filetype plugin indent on
