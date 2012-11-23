@@ -113,6 +113,7 @@ NeoBundle 'LeafCage/foldCC'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'Shougo/echodoc'
 " }}}
 
 " Completions (neco) {{{
