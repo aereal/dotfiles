@@ -99,8 +99,6 @@ NeoBundle 'Shougo/vimproc', {
       \   'unix' : 'make -f make_unix.mak',
       \   },
       \ }
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'ujihisa/neco-look'
 
 NeoBundle 'scrooloose/syntastic'
 
@@ -115,6 +113,11 @@ NeoBundle 'LeafCage/foldCC'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'sjl/gundo.vim'
+" }}}
+
+" Completions (neco) {{{
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'ujihisa/neco-look'
 " }}}
 
 " Move {{{
