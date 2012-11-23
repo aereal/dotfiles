@@ -122,6 +122,7 @@ NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'rhysd/neco-ruby-keyword-args'
+NeoBundle 'mattn/vim-textobj-url'
 " }}}
 
 " Move {{{
