@@ -295,6 +295,16 @@ autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-i
 autocmd FileType ruby    nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
 
 autocmd BufEnter */.gemrc set ft=yaml
+autocmd BufEnter *.rb set ft=ruby
+autocmd BufEnter Rakefile,*.rake set ft=ruby.rake
+autocmd BufEnter Capfile,deploy.rb,*/deploy/*.rb set ft=ruby.cap
+autocmd BufEnter [tT]horfile,*.thor set ft=ruby.thor
+autocmd BufEnter *.ru set ft=ruby.rack
+autocmd BufEnter .pryrc set ft=ruby.pry
+autocmd BufEnter .irbrc,irbrc set ft=ruby.irb
+autocmd BufEnter *.gemspec set ft=ruby.gemspec
+
+autocmd BufEnter *.erb set ft=eruby
 " }}}
 
 " coffee {{{
