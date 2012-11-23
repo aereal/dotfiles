@@ -7,9 +7,6 @@
 [submodule ".rbenv"]
 	path = .rbenv
 	url = git://github.com/sstephenson/rbenv.git
-[submodule "ruby-build"]
-	path = ruby-build
-	url = git://github.com/sstephenson/ruby-build.git
 [submodule ".zsh/plugins/cdd"]
 	path = .zsh/plugins/cdd
 	url = git://github.com/m4i/cdd.git
