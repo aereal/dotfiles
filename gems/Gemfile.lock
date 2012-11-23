@@ -11,6 +11,7 @@ GEM
     capistrano_colors (0.5.5)
     coderay (1.0.8)
     excon (0.16.10)
+    gem-src (0.4.1)
     heroku (2.33.1)
       heroku-api (~> 0.3.6)
       launchy (>= 0.3.2)
@@ -57,6 +58,7 @@ DEPENDENCIES
   bundler
   capistrano
   capistrano_colors
+  gem-src
   heroku
   json
   powder

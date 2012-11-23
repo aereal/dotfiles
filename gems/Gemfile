@@ -14,3 +14,6 @@ gem 'pry-doc'
 gem 'heroku'
 
 gem 'powder'
+
+# Rubygems support
+gem 'gem-src'
