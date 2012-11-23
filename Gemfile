@@ -10,3 +10,7 @@ gem 'capistrano_colors'
 
 gem 'pry'
 gem 'pry-doc'
+
+gem 'heroku'
+
+gem 'powder'
