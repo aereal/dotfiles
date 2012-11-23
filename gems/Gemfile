@@ -17,3 +17,4 @@ gem 'powder'
 
 # Rubygems support
 gem 'gem-src'
+gem 'rubygems-auto-rehash'
