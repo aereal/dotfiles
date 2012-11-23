@@ -34,6 +34,7 @@ FORMULAE = %w(
   imagemagick io libpng lv mongodb mysql node
   openssl readline redis refe tig zsh
   curl scala haskell-platform python io
+  lua gauche
 )
 
 RBENV_HOME = ENV['RBENV_HOME'] || File.join(HOME, '.rbenv')
@@ -97,7 +98,7 @@ namespace :homebrew do
 
     namespace :lang do
       desc 'Install preferred language runtimes w/Homebrew'
-      task :install => Cellar('haskell-platform', 'io', 'scala', 'python')
+      task :install => Cellar('haskell-platform', 'io', 'scala', 'python', 'gauche', 'lua')
     end
 
     namespace :utils do
