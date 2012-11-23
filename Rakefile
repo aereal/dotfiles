@@ -28,10 +28,12 @@ VIMPROC_SO_FILE      = File.join(VIM_BUNDLE_DIR, 'vimproc', 'autoload', 'vimproc
 
 HOMEBREW_DIR = ENV['HOMEBREW_HOME'] || '/usr/local'
 
+# すべての formula のインストール・タスクを作るオプションがあってもいいかも
 FORMULAE = %w(
   coreutils git git-flow haskell-platform hub
   imagemagick io libpng lv mongodb mysql node
   openssl readline redis refe tig zsh
+  curl scala haskell-platform python io
 )
 
 def home(basename)
@@ -40,6 +42,10 @@ end
 
 def cellar(formula)
   File.join(HOMEBREW_DIR, 'opt', formula)
+end
+
+def Cellar(*formulae)
+  formulae.map {|_| cellar(_) }
 end
 
 def brew_install(*args)
@@ -79,6 +85,23 @@ namespace :homebrew do
 
   FORMULAE.each do |formula|
     formula_task(formula)
+  end
+
+  namespace :group do
+    namespace :dev do
+      desc 'Install development requirements w/Homebrew'
+      task :install => Cellar('git', 'hub', 'refe', 'tig', 'tmux', 'wget', 'zsh', 'coreutils')
+    end
+
+    namespace :lang do
+      desc 'Install preferred language runtimes w/Homebrew'
+      task :install => Cellar('haskell-platform', 'io', 'scala', 'python')
+    end
+
+    namespace :utils do
+      desc 'Install some utilities w/Homebrew'
+      task :install => Cellar('jq', 'keychain', 'proctools')
+    end
   end
 end
 
