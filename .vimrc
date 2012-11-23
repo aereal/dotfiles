@@ -20,6 +20,7 @@ NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'thinca/vim-textobj-comment'
 NeoBundle 'coderifous/textobj-word-column.vim'
+NeoBundle 'rhysd/vim-textobj-continuous-line'
 " }}}
 
 " Help {{{
