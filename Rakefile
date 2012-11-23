@@ -56,7 +56,6 @@ def formula_task(formula_name, *args)
       brew_install(formula_name, *args)
     end
 
-    desc "Instal #{formula_name} with Homebrew"
     task :install => [:'homebrew:setup', cellar(formula_name)]
   end
 end
