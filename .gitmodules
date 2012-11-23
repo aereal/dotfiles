@@ -4,9 +4,6 @@
 [submodule "colors/solarized-terminal-app"]
 	path = colors/solarized-terminal-app
 	url = git://github.com/tomislav/osx-lion-terminal.app-colors-solarized.git
-[submodule ".rbenv"]
-	path = .rbenv
-	url = git://github.com/sstephenson/rbenv.git
 [submodule ".zsh/plugins/cdd"]
 	path = .zsh/plugins/cdd
 	url = git://github.com/m4i/cdd.git
