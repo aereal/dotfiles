@@ -19,6 +19,7 @@ NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'thinca/vim-textobj-comment'
+NeoBundle 'coderifous/textobj-word-column.vim'
 " }}}
 
 " Help {{{
