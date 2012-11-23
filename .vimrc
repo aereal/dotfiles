@@ -100,6 +100,7 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'ujihisa/neco-look'
 
 NeoBundle 'scrooloose/syntastic'
 
