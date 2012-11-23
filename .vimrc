@@ -121,6 +121,7 @@ NeoBundle 'Shougo/echodoc'
 " Completions (neco) {{{
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'ujihisa/neco-look'
+NeoBundle 'rhysd/neco-ruby-keyword-args'
 " }}}
 
 " Move {{{
