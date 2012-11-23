@@ -23,6 +23,14 @@ NeoBundle 'coderifous/textobj-word-column.vim'
 NeoBundle 'rhysd/vim-textobj-continuous-line'
 " }}}
 
+" Operator {{{
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'emonkak/vim-operator-sort'
+NeoBundle 'kana/vim-operator-replace'
+NeoBundle 'tyru/operator-camelize.vim'
+NeoBundle 'tyru/operator-html-escape.vim'
+" }}}
+
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
