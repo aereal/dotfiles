@@ -63,7 +63,7 @@ NeoBundle 'motemen/hatena-vim'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundleLazy 'vim-perl/vim-perl'
-NeoBundle 'vim-ruby/vim-ruby'
+NeoBundleLazy 'vim-ruby/vim-ruby'
 NeoBundle 'juvenn/mustache.vim'
 NeoBundle 'davidoc/taskpaper.vim'
 " }}}
