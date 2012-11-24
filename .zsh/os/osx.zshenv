@@ -14,3 +14,10 @@ if [[ -z "$abbreviations" ]]; then
     $abbreviations
   )
 fi
+
+if [[ -d '/usr/local/share/zsh-completions' ]]; then
+  fpath=(
+    $fpath
+    /usr/local/share/zsh-completions
+  )
+fi
