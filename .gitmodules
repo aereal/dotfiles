@@ -7,6 +7,3 @@
 [submodule ".zsh/plugins/cdd"]
 	path = .zsh/plugins/cdd
 	url = git://github.com/m4i/cdd.git
-[submodule ".zsh/plugins/zsh-completions"]
-	path = .zsh/plugins/zsh-completions
-	url = git://github.com/zsh-users/zsh-completions.git
