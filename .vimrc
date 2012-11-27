@@ -499,7 +499,7 @@ nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
 nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
 nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
 
-nnoremap <silent> <SID>[unite]t :<C-u>Unite tab<CR>
+nnoremap <silent> <SID>[unite]T :<C-u>Unite tab<CR>
 
 autocmd FileType unite call s:unite_local_settings()
 
@@ -543,6 +543,9 @@ nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
 " }}}
 " unite-fold {{{
 nnoremap <silent> <SID>[unite]d :<C-u>Unite fold<CR>
+" }}}
+" unite-tag {{{
+nnoremap <silent> <SID>[unite]t :<C-u>Unite tag -buffer-name=tag -start-insert<CR>
 " }}}
 " }}}
 " vim-powerline {{{
