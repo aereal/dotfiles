@@ -445,6 +445,8 @@ nnoremap [fugitive]a :<C-u>Gwrite<CR>
 nnoremap [fugitive]d :<C-u>Gdiff<CR>
 nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
 
+vmap ,go :Gbrowse<CR>
+
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " }}}
 " surround_custom_mapping {{{
