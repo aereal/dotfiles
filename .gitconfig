@@ -6,26 +6,27 @@
 [github]
 	user = aereal
 [alias]
-	st = status -sb
+	st = status --short --branch
 	df = diff
+	ci = commit
 	co = checkout
-	fixup = commit --amend -C HEAD
+	fixup = commit --amend --reuse-message HEAD
 	svn-push = !git stash && git svn dcommit && git stash pop
 	svn-pull = !git stash && git svn rebase && git stash pop
 	onelog = log --oneline
 	squashed-merge = merge --squash
-	track = checkout -t
+	track = checkout --track
 	unstage = reset HEAD --
-	fdf = diff -W
-	diff-funcon = diff -W
-	diff-funcon-staged = diff --cached -W
+	fdf = diff --function-context
+	diff-funcon = diff --function-context
+	diff-funcon-staged = diff --cached --function-context
 	ds = diff --staged
 	network = log --graph --all --decorate --oneline
 	summary = status --short --branch
-	vizlog = log --graph --date-order -C -M --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
+	vizlog = log --graph --date-order --find-copies --find-renames --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
 	branch-name = name-rev --name-only
 	gr = grep --heading --break
-	interactive-rebase = rebase -i
+	interactive-rebase = rebase --interactive
 	continue-rebase = rebase --continue
 	abort-rebase = rebase --abort
 [color]
