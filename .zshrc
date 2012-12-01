@@ -128,6 +128,9 @@ zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
 ## cd
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 
+## Ignore current directory
+zstyle ':completion:*' ignore-parents parent pwd
+
 setopt complete_in_word # カーソル位置で補完
 setopt glob_complete # glob を展開しない
 setopt hist_expand # ヒストリを展開
