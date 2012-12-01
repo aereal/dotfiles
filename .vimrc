@@ -240,7 +240,13 @@ function! MakeTabLine() " {{{
   let separator = ' | '
   let tabpages = join(titles, separator) . separator . '%#TabLineFill#%T'
   let info = ''
-  let info .= cfi#format('%s()' . separator, '')
+
+  try
+    let info .= cfi#format('%s()' . separator, '')
+  catch /E117/
+    " current-func-info is not available
+  endtry
+
   return tabpages . '%=' . info
 endfunction " }}}
 
