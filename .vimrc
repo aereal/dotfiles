@@ -332,6 +332,7 @@ autocmd BufEnter *.gemspec set ft=ruby.gemspec
 
 autocmd BufEnter *.erb set ft=eruby
 
+autocmd FileType ruby* NeoBundleSource vim-ruby
 autocmd FileType ruby* NeoBundleSource vim-textobj-ruby
 autocmd FileType ruby* NeoBundleSource unite-ruby-require.vim
 " }}}
