@@ -8,7 +8,10 @@ if has('vim_starting')
   syntax enable
 endif
 
-call neobundle#rc(expand('~/.vim/bundle'))
+try
+  call neobundle#rc(expand('~/.vim/bundle'))
+catch /E117/
+endtry
 " }}}
 
 " Plugins {{{
