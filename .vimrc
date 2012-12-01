@@ -25,6 +25,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'thinca/vim-textobj-comment'
   NeoBundle 'coderifous/textobj-word-column.vim'
   NeoBundle 'rhysd/vim-textobj-continuous-line'
+  NeoBundleLazy 'rhysd/vim-textobj-ruby'
   " }}}
 
   " Operator {{{
@@ -52,6 +53,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'osyo-manga/unite-fold'
   NeoBundle 'tsukkee/unite-tag'
   NeoBundle 'taka84u9/unite-git'
+  NeoBundleLazy 'rhysd/unite-ruby-require.vim'
   " }}}
 
   " Input {{{
@@ -329,6 +331,9 @@ autocmd BufEnter .irbrc,irbrc set ft=ruby.irb
 autocmd BufEnter *.gemspec set ft=ruby.gemspec
 
 autocmd BufEnter *.erb set ft=eruby
+
+autocmd FileType ruby* NeoBundleSource vim-textobj-ruby
+autocmd FileType ruby* NeoBundleSource unite-ruby-require.vim
 " }}}
 
 " coffee {{{
