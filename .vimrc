@@ -575,14 +575,21 @@ let g:indent_guides_color_change_percent  = 10
 autocmd BufEnter * let g:indent_guides_guide_size = &sw
 " }}}
 " vim-altr {{{
-nmap <Leader><C-[> <Plug>(altr-forward)
-nmap <Leader><C-]> <Plug>(altr-back)
+function! s:ConfigureAltr() " {{{
+  nmap <Leader><C-[> <Plug>(altr-forward)
+  nmap <Leader><C-]> <Plug>(altr-back)
 
-" Rails rules
-call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
-call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
-call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
-call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+  " Rails rules
+  call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
+  call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
+  call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
+  call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
+endfunction " }}}
+
+try
+  call s:ConfigureAltr()
+catch /E117/
+endtry
 " }}}
 " foldCC {{{
 set foldtext=FoldCCtext()
