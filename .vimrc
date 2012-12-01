@@ -51,6 +51,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'osyo-manga/unite-quickrun_config'
   NeoBundle 'osyo-manga/unite-fold'
   NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'taka84u9/unite-git'
   " }}}
 
   " Input {{{
