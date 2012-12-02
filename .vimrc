@@ -272,7 +272,10 @@ nnoremap   <sid>(command-line-norange) q:<C-u>
 nmap     : <sid>(command-line-enter)
 xmap     : <sid>(command-line-enter)
 
-autocmd CmdwinEnter * call s:init_cmdwin()
+augroup InitializeCommandLineWindow " {{{
+  autocmd!
+  autocmd CmdwinEnter * call s:init_cmdwin()
+augroup END " }}}
 
 function! s:init_cmdwin() "{{{
   nnoremap <buffer>       q     :<C-u>quit<CR>
@@ -302,106 +305,129 @@ endfunction " }}}
 " }}}
 
 " autocmd {{{
-" screenに編集中のファイル名を出す
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
+augroup ShowFilenameScreenWindow " screenに編集中のファイル名を出す {{{
+  autocmd!
+  if ! has('gui_running')
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
+  endif
+augroup END " }}}
 
-" sh {{{
-autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
-" }}}
+augroup ShellConfig " {{{
+  autocmd!
+  autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
+augroup END " }}}
 
-" io {{{
-autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
-" }}}
+augroup IoConfig " {{{
+  autocmd!
+  autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
+augroup END " }}}
 
-" javascript {{{
-autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
-autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
-" }}}
+augroup JavaScriptConfig " {{{
+  autocmd!
+  autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+  autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+  autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+  autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
+augroup END " }}}
 
-" ruby {{{
-autocmd FileType ruby    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-autocmd FileType ruby    inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-autocmd FileType ruby    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-autocmd FileType ruby    nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
+augroup RubyConfig " {{{
+  autocmd!
+  autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+  autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+  autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+  autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
 
-autocmd BufEnter */.gemrc set ft=yaml
-autocmd BufEnter *.rb set ft=ruby
-autocmd BufEnter Rakefile,*.rake set ft=ruby.rake
-autocmd BufEnter Capfile,deploy.rb,*/deploy/*.rb set ft=ruby.cap
-autocmd BufEnter [tT]horfile,*.thor set ft=ruby.thor
-autocmd BufEnter *.ru set ft=ruby.rack
-autocmd BufEnter .pryrc set ft=ruby.pry
-autocmd BufEnter .irbrc,irbrc set ft=ruby.irb
-autocmd BufEnter *.gemspec set ft=ruby.gemspec
+  autocmd FileType ruby* NeoBundleSource vim-ruby
+  autocmd FileType ruby* NeoBundleSource vim-textobj-ruby
+  autocmd FileType ruby* NeoBundleSource unite-ruby-require.vim
+augroup END " }}}
 
-autocmd BufEnter *.erb set ft=eruby
+augroup RubyDetection " {{{
+  autocmd!
+  autocmd BufEnter */.gemrc set ft=yaml
+  autocmd BufEnter *.rb set ft=ruby
+  autocmd BufEnter Rakefile,*.rake set ft=ruby.rake
+  autocmd BufEnter Capfile,deploy.rb,*/deploy/*.rb set ft=ruby.cap
+  autocmd BufEnter [tT]horfile,*.thor set ft=ruby.thor
+  autocmd BufEnter *.ru set ft=ruby.rack
+  autocmd BufEnter .pryrc set ft=ruby.pry
+  autocmd BufEnter .irbrc,irbrc set ft=ruby.irb
+  autocmd BufEnter *.gemspec set ft=ruby.gemspec
+  autocmd BufEnter *.erb set ft=eruby
+augroup END " }}}
 
-autocmd FileType ruby* NeoBundleSource vim-ruby
-autocmd FileType ruby* NeoBundleSource vim-textobj-ruby
-autocmd FileType ruby* NeoBundleSource unite-ruby-require.vim
-" }}}
+augroup CoffeeScriptConfig " {{{
+  autocmd!
+  autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+  autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 
-" coffee {{{
-autocmd FileType    coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-autocmd FileType    coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-autocmd ColorScheme *      hi! link CoffeeSpecialVar Constant
-" }}}
+  autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
+augroup END " }}}
 
-" haskell {{{
-autocmd FileType haskell setlocal et
-autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-" }}}
+augroup HaskellConfig " {{{
+  autocmd!
+  autocmd FileType haskell setlocal et
+  autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+  autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+  autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+augroup END " }}}
 
-" perl {{{
-autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
-autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
-autocmd BufEnter *.tt    set ft=tt2
-autocmd BufEnter */t/*.t set ft=perl.tap
-" }}}
+augroup PerlConfig " {{{
+  autocmd!
+  autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+  autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+  autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+  autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+  autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
+augroup END " }}}
 
-" vim {{{
-autocmd FileType vim inoremap <buffer> = =
-" }}}
+augroup PerlDetection " {{{
+  autocmd!
+  autocmd BufEnter *.tt    set ft=tt2
+  autocmd BufEnter */t/*.t set ft=perl.tap
+augroup END " }}}
 
-" markdown {{{
-autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
-" }}}
+augroup VinConfig " {{{
+  autocmd!
+  autocmd FileType vim inoreabbrev <buffer> = =
+augroup END " }}}
 
-" haml {{{
-autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-" }}}
+augroup MarkdownConfig " {{{
+  autocmd!
+  autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
+augroup END " }}}
 
-" nginx {{{
-autocmd BufEnter */nginx/*.conf set ft=nginx
-autocmd BufEnter */*.nginx.conf set ft=nginx
-" }}}
+augroup HamlConfig " {{{
+  autocmd!
+  autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+augroup END " }}}
 
-" html {{{
+augroup NginxDetection " {{{
+  autocmd!
+  autocmd BufEnter */nginx/*.conf set ft=nginx
+  autocmd BufEnter */*.nginx.conf set ft=nginx
+augroup END " }}}
+
+augroup HTMLConfig " {{{
+  autocmd!
   autocmd FileType html inoremap <buffer> = =
-" }}}
+augroup END " }}}
 
-" Hatena projects {{{
-autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
-autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
-autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-autocmd BufEnter */@hatena/*.html     set ft=tt2html
-autocmd BufEnter */@hatena/*.tt       set ft=tt2html
-" }}}
+augroup Hatena " {{{
+  autocmd!
+  autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
+  autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */@hatena/*.html     set ft=tt2html
+  autocmd BufEnter */@hatena/*.tt       set ft=tt2html
+augroup END " }}}
 
-" http://d.hatena.ne.jp/thinca/20090530/1243615055
-augroup AutoCursorLine
+augroup AutoCursorLine " http://d.hatena.ne.jp/thinca/20090530/1243615055 {{{
   autocmd!
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
   autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
-augroup END
+augroup END " }}}
 " }}}
 
 " Plugin Configurations {{{
