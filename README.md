@@ -21,9 +21,7 @@ You can clone or fork them freely, but I don't guarantee that they fit you.
 
 These tools are included as submodule.
 
- * [rbenv](https://github.com/sstephenson/rbenv) - The lightweight Ruby versions manager
  * [cdd](https://github.com/m4i/cdd) - The utility to change working directory over the terminal multiplexor's window
- * [zsh-completions](https://github.com/zsh-users/zsh-completions) - The additional zsh complement functions
 
 ## Policies
 
