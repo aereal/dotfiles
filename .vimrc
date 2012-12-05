@@ -67,21 +67,21 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'AndrewRadev/switch.vim'
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'tpope/vim-commentary'
+  NeoBundleLazy 'tpope/vim-commentary'
   " }}}
 
   " Language {{{
-  NeoBundle 'bbommarito/vim-slim'
-  NeoBundle 'groenewege/vim-less'
+  NeoBundleLazy 'bbommarito/vim-slim', { 'stay_same' : 1 }
+  NeoBundleLazy 'groenewege/vim-less', { 'stay_same' : 1 }
   NeoBundle 'hail2u/vim-css3-syntax'
-  NeoBundle 'hallison/vim-markdown'
+  NeoBundle 'hallison/vim-markdown', { 'stay_same' : 1 }
   NeoBundle 'kchmck/vim-coffee-script'
-  NeoBundle 'motemen/hatena-vim'
+  NeoBundle 'motemen/hatena-vim', { 'stay_same' : 1 }
   NeoBundle 'othree/html5.vim'
   NeoBundle 'pangloss/vim-javascript'
   NeoBundleLazy 'vim-perl/vim-perl'
   NeoBundleLazy 'vim-ruby/vim-ruby'
-  NeoBundle 'juvenn/mustache.vim'
+  NeoBundleLazy 'juvenn/mustache.vim'
   NeoBundle 'davidoc/taskpaper.vim'
   " }}}
 
@@ -94,16 +94,16 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
         \ { 'base' : '~/repos/@aereal' }
-  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
   " }}}
 
   " Files {{{
   NeoBundle 'kana/vim-altr'
   NeoBundle 'kana/vim-gf-user'
   NeoBundle 'kana/vim-gf-diff'
-  NeoBundle 'thinca/vim-partedit'
-  NeoBundle 'Shougo/vimfiler'
-  NeoBundle 'sudo.vim'
+  NeoBundleLazy 'thinca/vim-partedit'
+  NeoBundleLazy 'Shougo/vimfiler'
+  NeoBundle 'sudo.vim', { 'stay_same' : 1 }
   " }}}
 
   " Misc. {{{
@@ -117,17 +117,17 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'scrooloose/syntastic'
 
   NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'int3/vim-extradite'
+  NeoBundleLazy 'int3/vim-extradite'
 
-  NeoBundle 'mattn/gist-vim'
-  NeoBundle 'mattn/webapi-vim'
+  NeoBundleLazy 'mattn/gist-vim'
+  NeoBundleLazy 'mattn/webapi-vim'
 
   NeoBundle 'thinca/vim-quickrun'
   NeoBundle 'LeafCage/foldCC'
   NeoBundle 'kana/vim-tabpagecd'
   NeoBundle 'tyru/current-func-info.vim'
-  NeoBundle 'sjl/gundo.vim'
-  NeoBundle 'Shougo/echodoc'
+  NeoBundleLazy 'sjl/gundo.vim'
+  NeoBundleLazy 'Shougo/echodoc'
   " }}}
 
   " Completions (neco) {{{
