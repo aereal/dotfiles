@@ -26,6 +26,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'coderifous/textobj-word-column.vim'
   NeoBundle 'rhysd/vim-textobj-continuous-line'
   NeoBundleLazy 'rhysd/vim-textobj-ruby'
+  NeoBundle 'mattn/vim-textobj-url'
   " }}}
 
   " Operator {{{
@@ -134,7 +135,6 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'ujihisa/neco-look'
   NeoBundle 'rhysd/neco-ruby-keyword-args'
-  NeoBundle 'mattn/vim-textobj-url'
   " }}}
 
   " Move {{{
