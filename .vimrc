@@ -419,8 +419,8 @@ augroup Hatena " {{{
   autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
   autocmd BufEnter */@hatena/*.html     setlocal ts=2 sts=2 sw=2
   autocmd BufEnter */@hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */@hatena/*.html     set ft=tt2html
-  autocmd BufEnter */@hatena/*.tt       set ft=tt2html
+  autocmd BufEnter */@hatena/*.html     set ft=tt2.html
+  autocmd BufEnter */@hatena/*.tt       set ft=tt2.html
 augroup END " }}}
 
 augroup AutoCursorLine " http://d.hatena.ne.jp/thinca/20090530/1243615055 {{{
