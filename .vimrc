@@ -84,6 +84,7 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'vim-ruby/vim-ruby'
   NeoBundleLazy 'juvenn/mustache.vim'
   NeoBundle 'davidoc/taskpaper.vim'
+  NeoBundle 'zaiste/tmux.vim'
   " }}}
 
   " UI {{{
