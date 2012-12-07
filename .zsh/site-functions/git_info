@@ -6,12 +6,13 @@ git_info() { # {{{
     return
   fi
 
+  local git==git
   local st color annotation stashes
 
-  local name=$(git symbolic-ref --short HEAD 2> /dev/null)
+  local name=$($git symbolic-ref --short HEAD 2> /dev/null)
   name=${name:="(detached)"}
 
-  local git_dir=$(git rev-parse --git-dir 2> /dev/null)
+  local git_dir=$($git rev-parse --git-dir 2> /dev/null)
   local action=$(VCS_INFO_git_getaction "$git_dir")
   action=${action:+"($action)"}
 
@@ -27,16 +28,16 @@ git_info() { # {{{
     ahead \
     behind_and_ahead
 
-  current_remote=$(git config branch.${name}.remote 2> /dev/null)
-  merge_name=$(git config branch.${name}.merge 2> /dev/null)
+  current_remote=$($git config branch.${name}.remote 2> /dev/null)
+  merge_name=$($git config branch.${name}.merge 2> /dev/null)
 
   if [[ "." = "$current_remote" ]] || [[ "x" = "x$current_remote" ]]; then
     # Clone from local
     remote_ref=$merge_name
-    remote_local_revs=$(git rev-list --left-right ${merge_name}...HEAD)
+    remote_local_revs=$($git rev-list --left-right ${merge_name}...HEAD)
   else
     remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
-    remote_local_revs=$(git rev-list --left-right ${remote_ref}...HEAD)
+    remote_local_revs=$($git rev-list --left-right ${remote_ref}...HEAD)
   fi
 
   # TODO echo 使わなければ sed 使わなくていい気がする
@@ -50,11 +51,11 @@ git_info() { # {{{
   # }}}
 
   # stashes count {{{
-  stashes=$(git --no-pager stash list 2> /dev/null | wc -l)
+  stashes=$($git --no-pager stash list 2> /dev/null | wc -l)
   [[ "$stashes" != "" ]] && stashes=" %{${fg[yellow]}%}*$stashes"
   # }}}
 
-  st=`git status --short --porcelain -b 2> /dev/null`
+  st=$($git status --short --porcelain -b 2> /dev/null)
 
   # Staged changes {{{
   if [[ -n `echo "$st" | grep "^[UMADRC]"` ]]; then
