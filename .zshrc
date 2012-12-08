@@ -6,10 +6,7 @@ setopt extended_glob
 autoload -U -z is-at-least
 autoload -U -z add-zsh-hooks
 autoload colors; colors
-autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-autoload -U -z VCS_INFO_git_getaction; VCS_INFO_git_getaction 2>/dev/null
 autoload -U -z zmv
-autoload -U -z git_info
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 # }}}
@@ -34,6 +31,14 @@ bindkey "^N" history-beginning-search-forward-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
+# }}}
+
+# VCS Info {{{
+autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+autoload -U -z VCS_INFO_git_getaction; VCS_INFO_git_getaction 2>/dev/null
+autoload -U -z git_info
+
+zstyle ':vcs_info:git:*:-all-' command =git
 # }}}
 
 # Prompt {{{
