@@ -156,14 +156,6 @@ set nocompatible
 set hidden
 set history=100
 set autoread
-set autoindent
-set nosmartindent
-set nocindent
-set smarttab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set expandtab
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
 set encoding=utf-8
 set termencoding=utf-8
@@ -197,6 +189,17 @@ set incsearch
 set wrapscan
 set formatoptions-=ro
 set ttyfast
+
+" Indentation {{{
+set autoindent
+set nosmartindent
+set nocindent
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set expandtab
+" }}}
 
 if has('conceal')
   set conceallevel=2 concealcursor=i
