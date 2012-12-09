@@ -286,6 +286,10 @@ set tabline=%!MakeTabLine()
 let mapleader   = ';'
 let g:mapleader = ';'
 
+nnoremap j gj
+nnoremap k gk
+nnoremap Y y$
+
 nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
 
