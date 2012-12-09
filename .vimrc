@@ -179,11 +179,6 @@ set ambiwidth=double
 set backspace=indent,eol,start
 set list
 set listchars=tab:>.,precedes:<,extends:>,eol:↵
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set wrapscan
 set formatoptions-=ro
 set ttyfast
 
@@ -202,6 +197,14 @@ set expandtab
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
 set encoding=utf-8
 set termencoding=utf-8
+" }}}
+
+" Search {{{
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set wrapscan
 " }}}
 
 if has('conceal')
