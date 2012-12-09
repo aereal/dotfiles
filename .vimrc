@@ -156,9 +156,6 @@ set nocompatible
 set hidden
 set history=100
 set autoread
-set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
-set encoding=utf-8
-set termencoding=utf-8
 set fileformats=unix,dos,mac
 set langmenu=none " メニューをローカライズしない
 lang en_US.UTF-8
@@ -199,6 +196,12 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set expandtab
+" }}}
+
+" Encoding {{{
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
+set encoding=utf-8
+set termencoding=utf-8
 " }}}
 
 if has('conceal')
