@@ -215,6 +215,12 @@ set showmode
 set shortmess+=I
 " }}}
 
+" IME {{{
+set noimdisable
+set iminsert=0 imsearch=0
+set noimcmdline
+" }}}
+
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
