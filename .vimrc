@@ -476,6 +476,16 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+" Delimiter {{{
+if !exists('g:neocomplcache_delimiter_patterns')
+    let g:neocomplcache_delimiter_patterns = {}
+endif
+
+let g:neocomplcache_delimiter_patterns.vim = ['#']
+let g:neocomplcache_delimiter_patterns.ruby = ['::']
+let g:neocomplcache_delimiter_patterns.perl = ['::']
+" }}}
+
 inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
