@@ -159,8 +159,6 @@ set autoread
 set fileformats=unix,dos,mac
 set langmenu=none " メニューをローカライズしない
 lang en_US.UTF-8
-set wildmenu
-set wildmode=list:longest,full
 set nobackup
 set swapfile
 set directory=~/.vim/swp
