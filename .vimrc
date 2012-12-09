@@ -550,30 +550,6 @@ let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
 
-nnoremap <SID>[unite] <Nop>
-nmap <Space> <SID>[unite]
-nnoremap <silent> <SID>[unite]o        :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
-
-if has('gui_running')
-  nnoremap <silent> <SID>[unite]b        :<C-u>Unite buffer_tab -immediately<CR>
-  nnoremap <silent> <SID>[unite]B        :<C-u>Unite buffer -immediately<CR>
-else
-  nnoremap <silent> <SID>[unite]b        :<C-u>Unite buffer -immediately<CR>
-endif
-
-nnoremap <silent> <SID>[unite]O        :<C-u>UniteWithCurrentDir buffer file_mru file file/new<CR>
-nnoremap <silent> <SID>[unite].        :<C-u>Unite source<CR>
-nnoremap <silent> <SID>[unite]s        :<C-u>Unite session<CR>
-nnoremap <silent> <SID>[unite]w        :<C-u>Unite -immediately window:no-current<CR>
-
-nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
-nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
-nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
-
-nnoremap <silent> <SID>[unite]T :<C-u>Unite tab<CR>
-
-autocmd FileType unite call s:unite_local_settings()
-
 function! s:unite_local_settings() "{{{
   imap <buffer> .. <Plug>(unite_delete_backward_path)
   nmap <buffer><BS> <Plug>(unite_delete_backward_path)
@@ -593,11 +569,28 @@ function! s:unite_local_settings() "{{{
   inoremap <silent><buffer><expr> wj unite#smart_map('wj', unite#do_action('below'))
 endfunction " }}}
 
+autocmd FileType unite call s:unite_local_settings()
+
 function! s:unite_project(...) " {{{
   let opts = (a:0 ? join(a:000, ' ') : '')
   let dir = unite#util#path2project_directory(expand('%'))
   execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
 endfunction " }}}
+
+nnoremap <SID>[unite] <Nop>
+nmap <Space> <SID>[unite]
+
+nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
+nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
+nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
+
+nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
+nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
+nnoremap <silent> <SID>[unite]B :<C-u>Unite buffer -immediately<CR>
+nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
+nnoremap <silent> <SID>[unite]s :<C-u>Unite session<CR>
+nnoremap <silent> <SID>[unite]w :<C-u>Unite -immediately window:no-current<CR>
+nnoremap <silent> <SID>[unite]T :<C-u>Unite tab<CR>
 
 " unite-outline {{{
 nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -buffer-name=outline -vertical -winwidth=40<CR>
