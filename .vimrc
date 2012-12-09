@@ -157,22 +157,12 @@ set hidden
 set history=100
 set autoread
 set fileformats=unix,dos,mac
-set langmenu=none " メニューをローカライズしない
-lang en_US.UTF-8
 set nobackup
 set swapfile
 set directory=~/.vim/swp
-set laststatus=2
-set number
-set ruler
-set showmatch
 set whichwrap=b,s,h,l,<,>,[,]
 set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
 set splitbelow
-set modeline
-set showcmd
-set showmode
-set shortmess+=I
 set backspace=indent,eol,start
 set formatoptions-=ro
 set ttyfast
@@ -207,6 +197,19 @@ set ambiwidth=double
 set list
 set listchars=tab:>.,precedes:<,extends:>,eol:↵
 set showmatch
+" }}}
+
+" UI {{{
+lang en_US.UTF-8
+
+set langmenu=none " メニューをローカライズしない
+set laststatus=2
+set number
+set ruler
+set modeline
+set showcmd
+set showmode
+set shortmess+=I
 " }}}
 
 if has('conceal')
