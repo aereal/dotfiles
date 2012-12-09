@@ -465,13 +465,7 @@ augroup END " }}}
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
-let g:neocomplcache_enable_fuzzy_completion = 1
-let g:neocomplcache_auto_completion_start_length = 3
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_min_keyword_length = 3
-let g:neocomplcache_omni_functions = {
-      \ 'ruby' : 'rubycomplete#Complete',
-      \ }
 let g:neocomplcache_vim_completefuncs = {
       \ 'Ref' : 'ref#complete',
       \ 'Unite' : 'unite#complete_source',
@@ -485,10 +479,7 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
 inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-x><C-f>  neocomplcache#manual_filename_complete()
 " }}}
 " neosnippet {{{
 let g:neosnippet#disable_select_mode_mappings = 0
