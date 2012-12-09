@@ -173,10 +173,7 @@ set modeline
 set showcmd
 set showmode
 set shortmess+=I
-set ambiwidth=double
 set backspace=indent,eol,start
-set list
-set listchars=tab:>.,precedes:<,extends:>,eol:↵
 set formatoptions-=ro
 set ttyfast
 
@@ -203,6 +200,13 @@ set smartcase
 set hlsearch
 set incsearch
 set wrapscan
+" }}}
+
+" Visualization {{{
+set ambiwidth=double
+set list
+set listchars=tab:>.,precedes:<,extends:>,eol:↵
+set showmatch
 " }}}
 
 if has('conceal')
