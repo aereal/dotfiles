@@ -26,6 +26,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'coderifous/textobj-word-column.vim'
   NeoBundle 'rhysd/vim-textobj-continuous-line'
   NeoBundleLazy 'rhysd/vim-textobj-ruby'
+  NeoBundle 'thinca/vim-textobj-between'
   NeoBundle 'mattn/vim-textobj-url'
   " }}}
 
