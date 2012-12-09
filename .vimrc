@@ -163,6 +163,8 @@ set splitbelow
 set backspace=indent,eol,start
 set formatoptions-=ro
 set ttyfast
+set lazyredraw
+set completeopt=menuone,menu
 
 " Backup & Swap {{{
 set nobackup
