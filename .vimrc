@@ -577,6 +577,20 @@ function! s:unite_project(...) " {{{
   execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
 endfunction " }}}
 
+function! s:unite_keymap(mode, key, definition) " {{{
+  execute a:mode . 'noremap <silent> <SID>[unite]' . a:key . ' :<C-u>' . a:definition . '<CR>'
+endfunction " }}}
+
+function! s:unite_normal_keymap(...) " {{{
+  call s:unite_keymap('n', a:1, a:2)
+endfunction " }}}
+
+function! s:unite_normal_keymaps(mappings) " {{{
+  for [key, definition] in items(a:mappings)
+    call s:unite_normal_keymap(key, definition)
+  endfor
+endfunction " }}}
+
 nnoremap <SID>[unite] <Nop>
 nmap <Space> <SID>[unite]
 
@@ -584,33 +598,24 @@ nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
 nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
 nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
 
-nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir buffer file_mru file file/new<CR>
-nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
-nnoremap <silent> <SID>[unite]B :<C-u>Unite buffer -immediately<CR>
-nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
-nnoremap <silent> <SID>[unite]s :<C-u>Unite session<CR>
-nnoremap <silent> <SID>[unite]w :<C-u>Unite -immediately window:no-current<CR>
-nnoremap <silent> <SID>[unite]T :<C-u>Unite tab<CR>
-
-" unite-outline {{{
-nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -buffer-name=outline -vertical -winwidth=40<CR>
-nnoremap <silent> <SID>[unite]{ :<C-u>Unite outline -no-quit -vertical -winwidth=40 -buffer-name=outline<CR>
-" }}}
-" unite-history {{{
-nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
-" }}}
-" unite-qf {{{
-nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-empty -no-start-insert -auto-preview<CR>
-" }}}
-" unite-colorscheme {{{
-nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
-" }}}
-" unite-fold {{{
-nnoremap <silent> <SID>[unite]d :<C-u>Unite fold<CR>
-" }}}
-" unite-tag {{{
-nnoremap <silent> <SID>[unite]t :<C-u>Unite tag -buffer-name=tag -start-insert<CR>
-" }}}
+call s:unite_normal_keymaps({
+      \ 'm' : 'UniteWithBufferDir file_mru -buffer-name=files',
+      \ 'f' : 'UniteWithBufferDir file file/new -buffer-name=files',
+      \ 'b' : 'Unite buffer_tab -immediately',
+      \ 'B' : 'Unite buffer -immediately',
+      \ 'T' : 'Unite tab -immediately -no-empty',
+      \ 'w' : 'Unite window:no-current -immediately',
+      \ '[' : 'Unite outline -vertical -winwidth=40 -buffer-name=outline',
+      \ '{' : 'Unite outline fold -vertical -winwidth=40 -buffer-name=outline',
+      \ '>' : 'Unite output',
+      \ 'n' : 'Unite register history/yank -buffer-name=register -no-split',
+      \ ':' : 'Unite history/command -start-insert',
+      \ 'q' : 'Unite qf -no-empty -no-start-insert -auto-preview',
+      \ 't' : 'Unite tag -start-insert -no-empty -no-split -buffer-name=tag',
+      \ 'c' : 'Unite colorscheme -auto-preview',
+      \ '.' : 'Unite source -vertical -winwidth=40',
+      \ })
+" nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir file_mru file file/new -buffer-name=files -no-split<CR>
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
