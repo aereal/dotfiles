@@ -157,15 +157,18 @@ set hidden
 set history=100
 set autoread
 set fileformats=unix,dos,mac
-set nobackup
-set swapfile
-set directory=~/.vim/swp
 set whichwrap=b,s,h,l,<,>,[,]
 set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
 set splitbelow
 set backspace=indent,eol,start
 set formatoptions-=ro
 set ttyfast
+
+" Backup & Swap {{{
+set nobackup
+set swapfile
+set directory=~/.vim/swp
+" }}}
 
 " Indentation {{{
 set autoindent
