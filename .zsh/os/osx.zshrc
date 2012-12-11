@@ -23,5 +23,6 @@ if [[ -f "$MACVIM" ]]; then
 fi
 
 if [[ -n "$GNU_COREUTILS" ]]; then
-  alias ls='ls --color -AF'
+  alias ls='ls --color --classify --almost-all'
+  alias ll='ls --color --classify --almost-all --human-readable -l'
 fi
