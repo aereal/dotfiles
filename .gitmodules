@@ -7,3 +7,6 @@
 [submodule ".zsh/plugins/cdd"]
 	path = .zsh/plugins/cdd
 	url = git://github.com/m4i/cdd.git
+[submodule "colors/dircolors-solarized"]
+	path = colors/dircolors-solarized
+	url = git://github.com/seebi/dircolors-solarized.git
