@@ -598,7 +598,7 @@ nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
 
 call s:unite_normal_keymaps({
       \ 'm' : 'UniteWithBufferDir file_mru -buffer-name=files',
-      \ 'f' : 'UniteWithBufferDir file file/new -buffer-name=files',
+      \ 'f' : 'UniteWithBufferDir file_mru file file/new -no-split -buffer-name=files',
       \ 'b' : 'Unite buffer_tab -immediately',
       \ 'B' : 'Unite buffer -immediately',
       \ 'T' : 'Unite tab -immediately -no-empty',
