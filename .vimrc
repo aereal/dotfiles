@@ -66,7 +66,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'kana/vim-smartinput'
   NeoBundle 'sickill/vim-pasta'
   NeoBundle 'mattn/zencoding-vim'
-  NeoBundle 'AndrewRadev/switch.vim'
+  NeoBundleLazy 'AndrewRadev/switch.vim'
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'h1mesuke/vim-alignta'
   NeoBundleLazy 'tpope/vim-commentary'
@@ -75,7 +75,7 @@ function! s:LoadPlugins() " {{{
   " Language {{{
   NeoBundleLazy 'bbommarito/vim-slim', { 'stay_same' : 1 }
   NeoBundleLazy 'groenewege/vim-less', { 'stay_same' : 1 }
-  NeoBundle 'hail2u/vim-css3-syntax'
+  NeoBundleLazy 'hail2u/vim-css3-syntax'
   NeoBundle 'hallison/vim-markdown', { 'stay_same' : 1 }
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'motemen/hatena-vim', { 'stay_same' : 1 }
@@ -140,7 +140,7 @@ function! s:LoadPlugins() " {{{
   " }}}
 
   " Move {{{
-  NeoBundle 'Lokaltog/vim-easymotion'
+  NeoBundleLazy 'Lokaltog/vim-easymotion'
   " }}}
 endfunction " }}}
 
