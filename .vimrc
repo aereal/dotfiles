@@ -157,9 +157,7 @@ set hidden
 set history=100
 set autoread
 set fileformats=unix,dos,mac
-set whichwrap=b,s,h,l,<,>,[,]
 set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
-set splitbelow
 set backspace=indent,eol,start
 set formatoptions-=ro
 set ttyfast
@@ -202,7 +200,6 @@ set wrapscan
 set ambiwidth=double
 set list
 set listchars=tab:>.,precedes:<,extends:>,eol:↵
-set showmatch
 " }}}
 
 " UI {{{
@@ -213,8 +210,8 @@ set laststatus=2
 set number
 set ruler
 set modeline
-set showcmd
-set showmode
+set noshowcmd
+set noshowmode
 set shortmess+=I
 " }}}
 
