@@ -42,11 +42,36 @@ snippet ddd
 	sub p ($) { print Dumper(shift) }
 	${1}
 
-snippet my_
-	my (${1:$args}) = @_;${2}
-
 snippet map
 	map { ${1:$_} } ${2:@list}
 
 snippet grep
 	grep { ${1:$_} } ${2:@list}
+
+snippet     sub_self
+options     head
+	sub ${1:method} {
+		my ($self${2:#:rest args}) = @_;
+		${3:# body}
+	}
+
+snippet     sub_class
+options     head
+	sub ${1:method} {
+		my ($class${2:#:rest args}) = @_;
+		${3:#:# body}
+	}
+
+snippet     package
+options     head
+	package ${1:`substitute(substitute(expand('%:p:r'), '.*/lib/', '', 'g'), '/', '::', 'g')`};
+
+snippet     package_block
+options     head
+	package ${1:`substitute(substitute(expand('%:p:r'), '.*/lib/', '', 'g'), '/', '::', 'g')`} {
+		${2:#:body}
+	};
+
+snippet     t
+options     head
+	package ${1:`substitute(substitute(expand('%:p:r'), '.*/t/', 't-', 'g'), '-', '::', 'g')`};
