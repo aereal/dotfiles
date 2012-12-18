@@ -66,6 +66,13 @@ snippet     package
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/lib/', '', 'g'), '/', '::', 'g')`};
 
+	use strict;
+	use warnings;
+
+	${2:#:body}
+
+	1;
+
 snippet     package_block
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/lib/', '', 'g'), '/', '::', 'g')`} {
