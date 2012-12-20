@@ -154,7 +154,7 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'mattn/webapi-vim'
 
   NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'LeafCage/foldCC'
+  NeoBundle 'LeafCage/foldCC', '57c75f63ea706616f61a3aa1ed14aa1d21b6a56b'
   NeoBundle 'kana/vim-tabpagecd'
   NeoBundle 'tyru/current-func-info.vim'
   NeoBundleLazy 'sjl/gundo.vim'
