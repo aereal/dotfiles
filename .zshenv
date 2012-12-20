@@ -67,6 +67,12 @@ if [[ -f "$HOME/.dir_colors" ]]; then
 fi
 # }}}
 
+# Private Environment Variables {{{
+if [[ -f "$HOME/.local.env" ]]; then
+  source "$HOME/.local.env"
+fi
+# }}}
+
 # Applications {{{
 app_envs=(${ZSH_HOME}/apps/*.zshenv(N-.))
 
