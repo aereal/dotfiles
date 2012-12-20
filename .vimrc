@@ -159,6 +159,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'tyru/current-func-info.vim'
   NeoBundleLazy 'sjl/gundo.vim'
   NeoBundleLazy 'Shougo/echodoc'
+  NeoBundle 'kien/ctrlp.vim'
   " }}}
 
   " Completions (neco) {{{
