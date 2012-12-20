@@ -1,0 +1,19 @@
+# vim:set ft=zsh:
+
+function gyapbox() {
+  local base_dir=~/Dropbox/Public/g
+
+  if [[ -n "$DROPBOX_USER_ID" ]]; then
+    exit 1
+  fi
+
+  if [[ ! -d $base_dir ]]; then
+    exit 1
+  fi
+
+  local timestamp_hash="$(date +%s | md5)"
+  local image_filename="${timestamp_hash}.png"
+  screencapture -i "$base_dir/$image_filename"
+
+  echo -n "http://dl.dropbox.com/u/$DROPBOX_USER_ID/g/$image_filename" | pbcopy
+}
