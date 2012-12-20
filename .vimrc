@@ -143,6 +143,8 @@ function! s:LoadPlugins() " {{{
         \   },
         \ }
 
+  NeoBundle 'Shougo/vimshell'
+
   NeoBundle 'scrooloose/syntastic'
 
   NeoBundle 'tpope/vim-fugitive'
