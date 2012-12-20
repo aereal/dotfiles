@@ -15,6 +15,32 @@ endtry
 " }}}
 
 " Plugins {{{
+if ! exists('g:bundles_loaded_expected_event')
+  let g:bundles_loaded_expected_event = {}
+endif
+
+function! s:RegisterLazyBundle(event_name, event_args, bundle_name) " {{{
+  let event_key = a:event_name . ' ' . a:event_args
+
+  if ! has_key(g:bundles_loaded_expected_event, event_key)
+    let g:bundles_loaded_expected_event[event_key] = []
+  endif
+
+  call add(g:bundles_loaded_expected_event[event_key], a:bundle_name)
+endfunction " }}}
+
+function! s:RegisterFileTypeBundle(file_type, bundle_name) " {{{
+  call s:RegisterLazyBundle('FileType', a:file_type, a:bundle_name)
+endfunction " }}}
+
+function! s:IsRegisteredFileTypeBundles(file_type) " {{{
+  call has_key(g:bundles_loaded_expected_event, 'FileType ' . a:file_type)
+endfunction " }}}
+
+function! s:LoadFileTypeBundles(file_type) " {{{
+  call g:bundles_loaded_expected_event['FileType ' . a:file_type]
+endfunction " }}}
+
 function! s:LoadPlugins() " {{{
   " Text object {{{
   NeoBundle 'kana/vim-textobj-user'
@@ -147,6 +173,15 @@ endfunction " }}}
 if exists('g:loaded_neobundle') && g:loaded_neobundle
   call s:LoadPlugins()
 endif
+
+" Register filetype-spcific bundles {{{
+call s:RegisterFileTypeBundle('ruby', 'vim-textobj-ruby')
+call s:RegisterFileTypeBundle('ruby', 'unite-ruby-require.vim')
+call s:RegisterFileTypeBundle('css', 'vim-css3-syntax')
+call s:RegisterFileTypeBundle('perl', 'vim-perl')
+call s:RegisterFileTypeBundle('ruby', 'vim-ruby')
+call s:RegisterFileTypeBundle('ruby', 'neco-ruby-keyword-args')
+" }}}
 
 filetype plugin indent on
 " }}}
@@ -343,16 +378,31 @@ augroup END " }}}
 
 augroup ShellConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('sh')
+    autocmd FileType sh call s:LoadFileTypeBundles('sh')
+  endif
+
   autocmd FileType sh inoremap <buffer><expr> = smartchr#loop('=', ' != ')
 augroup END " }}}
 
 augroup IoConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('io')
+    autocmd FileType io call s:LoadFileTypeBundles('io')
+  endif
+
   autocmd FileType io inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' ::= ')
 augroup END " }}}
 
 augroup JavaScriptConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('javascript')
+    autocmd FileType javascript call s:LoadFileTypeBundles('javascript')
+  endif
+
   autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
   autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
@@ -361,6 +411,11 @@ augroup END " }}}
 
 augroup RubyConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('ruby')
+    autocmd FileType ruby call s:LoadFileTypeBundles('ruby')
+  endif
+
   autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
   autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
   autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
@@ -387,6 +442,11 @@ augroup END " }}}
 
 augroup CoffeeScriptConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('coffee')
+    autocmd FileType coffee call s:LoadFileTypeBundles('coffee')
+  endif
+
   autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
   autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 
@@ -395,6 +455,11 @@ augroup END " }}}
 
 augroup HaskellConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('haskell')
+    autocmd FileType haskell call s:LoadFileTypeBundles('haskell')
+  endif
+
   autocmd FileType haskell setlocal et
   autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
   autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
@@ -403,6 +468,11 @@ augroup END " }}}
 
 augroup PerlConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('perl')
+    autocmd FileType perl call s:LoadFileTypeBundles('perl')
+  endif
+
   autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
   autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
   autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
@@ -418,16 +488,31 @@ augroup END " }}}
 
 augroup VinConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('vim')
+    autocmd FileType vim call s:LoadFileTypeBundles('vim')
+  endif
+
   autocmd FileType vim inoreabbrev <buffer> = =
 augroup END " }}}
 
 augroup MarkdownConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('markdown')
+    autocmd FileType markdown call s:LoadFileTypeBundles('markdown')
+  endif
+
   autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
 augroup END " }}}
 
 augroup HamlConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('haml')
+    autocmd FileType haml call s:LoadFileTypeBundles('haml')
+  endif
+
   autocmd FileType haml inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
 augroup END " }}}
 
@@ -439,6 +524,11 @@ augroup END " }}}
 
 augroup HTMLConfig " {{{
   autocmd!
+
+  if s:IsRegisteredFileTypeBundles('ruby')
+    autocmd FileType ruby call s:LoadFileTypeBundles('ruby')
+  endif
+
   autocmd FileType html inoremap <buffer> = =
 augroup END " }}}
 
