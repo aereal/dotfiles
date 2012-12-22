@@ -73,11 +73,11 @@ if [[ -f "$HOME/.local.env" ]]; then
 fi
 # }}}
 
-# Applications {{{
-app_envs=(${ZSH_HOME}/apps/*.zshenv(N-.))
+# Initializer {{{
+initializers=(${ZSH_HOME}/init/*.zshenv(N-.))
 
-for app_env in ${app_envs}; do
-  source "${app_env}"
+for initializer in ${initializers}; do
+  source "${initializer}"
 done
 # }}}
 
