@@ -4,6 +4,12 @@
 export ZSH_HOME=${HOME}/.zsh.d
 # }}}
 
+# Locale {{{
+if [[ -n "$LANG" ]]; then
+  eval "$(locale)"
+fi
+# }}}
+
 # fpath {{{
 typeset -U fpath
 fpath=(
