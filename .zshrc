@@ -143,6 +143,18 @@ setopt no_beep # うるさい
 setopt numeric_glob_sort # 数字としてソート
 # }}}
 
+# Recent Directory {{{
+if is-at-least 4.3.11; then
+  autoload -U chpwd_recent_dirs cdr
+
+  add-zsh-hook chpwd chpwd_recent_dirs
+
+  zstyle ":chpwd:*" recent-dirs-max 500
+  zstyle ":chpwd:*" recent-dirs-default true
+  zstyle ":completion:*" recent-dirs-insert always
+fi
+# }}}
+
 # Aliases {{{
 alias :q='exit'
 alias iso8601='date +%Y-%m-%dT%H:%M:%S%z'
