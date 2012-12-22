@@ -244,6 +244,14 @@ for app_rc in ${app_rcs}; do
 done
 # }}}
 
+# Initializers {{{
+initializers=(${ZSH_HOME}/init/*.zshrc(N-.))
+
+for initializer in ${initializers}; do
+  source "${initializer}"
+done
+# }}}
+
 # OS {{{
 case ${OSTYPE} in
   darwin*)
