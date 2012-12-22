@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.3.2)
     capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
@@ -10,22 +9,10 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano_colors (0.5.5)
     coderay (1.0.8)
-    excon (0.16.10)
     gem-src (0.4.1)
-    heroku (2.33.2)
-      heroku-api (~> 0.3.7)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.7)
-      excon (~> 0.16.10)
     highline (1.6.15)
     json (1.7.5)
-    launchy (2.1.2)
-      addressable (~> 2.3)
     method_source (0.8.1)
-    mime-types (1.19)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -33,7 +20,6 @@ GEM
     net-ssh (2.6.2)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    netrc (0.7.7)
     powder (0.1.8)
       thor (>= 0.11.5)
     pry (0.9.10)
@@ -44,10 +30,7 @@ GEM
       pry (>= 0.9.9.6)
       yard (~> 0.8.1)
     rake (10.0.2)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rubygems-auto-rehash (0.0.3)
-    rubyzip (0.9.9)
     slop (3.3.3)
     thor (0.16.0)
     yard (0.8.3)
@@ -60,7 +43,6 @@ DEPENDENCIES
   capistrano
   capistrano_colors
   gem-src
-  heroku
   json
   powder
   pry
