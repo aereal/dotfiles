@@ -10,3 +10,6 @@
 [submodule ".zsh.d/plugins/cdd"]
 	path = .zsh.d/plugins/cdd
 	url = git://github.com/m4i/cdd.git
+[submodule ".zsh.d/plugins/zaw"]
+	path = .zsh.d/plugins/zaw
+	url = git://github.com/zsh-users/zaw.git
