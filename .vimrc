@@ -112,6 +112,7 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'juvenn/mustache.vim'
   NeoBundle 'davidoc/taskpaper.vim'
   NeoBundle 'zaiste/tmux.vim'
+  NeoBundle 'elixir-lang/vim-elixir'
   " }}}
 
   " UI {{{
