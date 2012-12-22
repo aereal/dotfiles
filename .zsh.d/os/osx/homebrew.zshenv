@@ -1,6 +1,6 @@
 # vim:set ft=zsh:
 
-export HOMEBREW_HOME="/usr/local"
+export HOMEBREW_HOME="${HOME}/Homebrew"
 
 path=(
   ${HOMEBREW_HOME}/bin(N-/)
