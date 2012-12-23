@@ -34,7 +34,7 @@ FORMULAE = %w(
   imagemagick io libpng lv mongodb mysql node
   openssl readline redis refe tig zsh
   curl scala haskell-platform python io
-  lua gauche
+  lua gauche wget tmux
 )
 
 RBENV_HOME = ENV['RBENV_HOME'] || File.join(HOME, '.rbenv')
