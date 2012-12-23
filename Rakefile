@@ -159,11 +159,11 @@ end
 namespace :ruby do
   namespace :v193p327 do
     file ruby_version_dir('1.9.3-p327') do
-      url = 'http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p327.tar.gz#96118e856b502b5d7b3a4398e6c6e98c'
+      url = 'http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p327.tar.gz'
       mkdir 'src'
       cd 'src' do
         # Retrieving sources
-        sh 'curl', '-sSLf', url
+        sh 'curl', '-sSLfO', url
         sh 'tar', 'xzf', 'ruby-1.9.3-p327.tar.gz' # TODO basename from URL
 
         cd 'ruby-1.9.3-p327' do
