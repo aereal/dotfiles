@@ -143,6 +143,13 @@ zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 ## Ignore current directory
 zstyle ':completion:*' ignore-parents parent pwd
 
+## Process
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*' insert-ids single
+
 setopt complete_in_word # カーソル位置で補完
 setopt glob_complete # glob を展開しない
 setopt hist_expand # ヒストリを展開
