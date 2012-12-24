@@ -130,6 +130,7 @@ zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate
 
 ## Cache
 zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 
 ## Verbose
 zstyle ':completion:*' verbose yes
