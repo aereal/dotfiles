@@ -107,8 +107,15 @@ autoload -U compinit
 compinit
 
 ## Grouping
-zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*' format '%F{magenta}-- %d --%f'
 zstyle ':completion:*' group-name ''
+zstyle ':completion:*:options' description yes
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:corrections' format ' %F{yellow}-- %d (errors: %e) --%f'
+zstyle ':completion:*:descriptions' format ' %F{magenta}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{blue}-- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
 ## Menu
 zstyle ':completion:*:default' menu select=2
