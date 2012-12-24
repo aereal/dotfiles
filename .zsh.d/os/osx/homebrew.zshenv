@@ -62,6 +62,13 @@ function setup_npm() {
 }
 homebrew_callbacks=($homebrew_callbacks setup_npm)
 
+function setup_macvim() {
+  if [[ -d "${HOMEBREW_HOME}/opt/macvim" ]] && [[ -d "${HOMEBREW_HOME}/opt/macvim/MacVim.app" ]]; then
+    export MACVIM_APP="${HOMEBREW_HOME}/opt/macvim/MacVim.app"
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_macvim)
+
 if [[ -n $(which brew 2>/dev/null) ]]; then
   local callback
   for callback in $homebrew_callbacks; do
