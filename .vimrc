@@ -82,6 +82,8 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'tsukkee/unite-tag'
   NeoBundle 'taka84u9/unite-git'
   NeoBundleLazy 'rhysd/unite-ruby-require.vim'
+  NeoBundle 'rhysd/unite-mac-apps'
+  NeoBundle 'basyura/unite-rails'
   " }}}
 
   " Input {{{
@@ -125,6 +127,9 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
         \ { 'base' : '~/repos/@aereal' }
   NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
+  NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
+  NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
+  NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
   " }}}
 
   " Files {{{
