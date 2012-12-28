@@ -706,6 +706,9 @@ call s:unite_normal_keymap('t', 'Unite tag -start-insert -no-empty -no-split -bu
 call s:unite_normal_keymap('c', 'Unite colorscheme -auto-preview')
 call s:unite_normal_keymap('.', 'Unite source')
 call s:unite_normal_keymap('<Space>', ':<C-u>call <SID>unite_project("-start-insert")<CR>')
+call s:unite_normal_keymap('Rm', 'Unite rails/model -vertical -winwidth=40')
+call s:unite_normal_keymap('Rc', 'Unite rails/controller -vertical -winwidth=40')
+call s:unite_normal_keymap('Rv', 'Unite rails/view -vertical -winwidth=40')
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
