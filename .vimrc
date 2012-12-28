@@ -706,8 +706,6 @@ call s:unite_normal_keymap('t', 'Unite tag -start-insert -no-empty -no-split -bu
 call s:unite_normal_keymap('c', 'Unite colorscheme -auto-preview')
 call s:unite_normal_keymap('.', 'Unite source')
 call s:unite_normal_keymap('<Space>', ':<C-u>call <SID>unite_project("-start-insert")<CR>')
-
-" nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir file_mru file file/new -buffer-name=files -no-split<CR>
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
