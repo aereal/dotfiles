@@ -704,7 +704,7 @@ call s:unite_normal_keymap(':', 'Unite history/command -start-insert')
 call s:unite_normal_keymap('q', 'Unite qf -no-empty -no-start-insert -auto-preview')
 call s:unite_normal_keymap('t', 'Unite tag -start-insert -no-empty -no-split -buffer-name=tag')
 call s:unite_normal_keymap('c', 'Unite colorscheme -auto-preview')
-call s:unite_normal_keymap('.', 'Unite source -vertical -winwidth=40')
+call s:unite_normal_keymap('.', 'Unite source')
 call s:unite_normal_keymap('<Space>', ':<C-u>call <SID>unite_project("-start-insert")<CR>')
 
 " nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir file_mru file file/new -buffer-name=files -no-split<CR>
