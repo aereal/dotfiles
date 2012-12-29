@@ -42,7 +42,6 @@ function! s:LoadFileTypeBundles(file_type) " {{{
 endfunction " }}}
 
 function! s:LoadPlugins() " {{{
-  " Text object {{{
   NeoBundle 'kana/vim-textobj-user'
 
   NeoBundle 'h1mesuke/textobj-wiw'
@@ -54,22 +53,16 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'rhysd/vim-textobj-ruby'
   NeoBundle 'thinca/vim-textobj-between'
   NeoBundle 'mattn/vim-textobj-url'
-  " }}}
 
-  " Operator {{{
   NeoBundle 'kana/vim-operator-user'
   NeoBundle 'emonkak/vim-operator-sort'
   NeoBundle 'kana/vim-operator-replace'
   NeoBundle 'tyru/operator-camelize.vim'
   NeoBundle 'tyru/operator-html-escape.vim'
-  " }}}
 
-  " Help {{{
   NeoBundle 'vim-jp/vimdoc-ja'
   NeoBundle 'thinca/vim-ref'
-  " }}}
 
-  " Unite {{{
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/unite-outline'
   NeoBundle 'sgur/unite-git_grep'
@@ -84,9 +77,7 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'rhysd/unite-ruby-require.vim'
   NeoBundle 'rhysd/unite-mac-apps'
   NeoBundle 'basyura/unite-rails'
-  " }}}
 
-  " Input {{{
   NeoBundle 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'tpope/vim-surround'
@@ -98,9 +89,7 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'kana/vim-smartchr'
   NeoBundle 'h1mesuke/vim-alignta'
   NeoBundleLazy 'tpope/vim-commentary'
-  " }}}
 
-  " Language {{{
   NeoBundle 'bbommarito/vim-slim', { 'stay_same' : 1 }
   NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
   NeoBundle 'hail2u/vim-css3-syntax'
@@ -115,14 +104,10 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'davidoc/taskpaper.vim'
   NeoBundle 'zaiste/tmux.vim'
   NeoBundle 'elixir-lang/vim-elixir'
-  " }}}
 
-  " UI {{{
   NeoBundle 'Lokaltog/vim-powerline', 'develop'
   NeoBundle 'nathanaelkane/vim-indent-guides'
-  " }}}
 
-  " Colors {{{
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
         \ { 'base' : '~/repos/@aereal' }
@@ -130,18 +115,14 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
   NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
   NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
-  " }}}
 
-  " Files {{{
   NeoBundle 'kana/vim-altr'
   NeoBundle 'kana/vim-gf-user'
   NeoBundle 'kana/vim-gf-diff'
   NeoBundleLazy 'thinca/vim-partedit'
   NeoBundleLazy 'Shougo/vimfiler'
   NeoBundle 'sudo.vim', { 'stay_same' : 1 }
-  " }}}
 
-  " Misc. {{{
   NeoBundle 'Shougo/vimproc', {
         \ 'build' : {
         \   'mac' : 'make -f make_mac.mak',
@@ -169,17 +150,12 @@ function! s:LoadPlugins() " {{{
   NeoBundle 'kien/ctrlp.vim'
   NeoBundle 'vimtaku/hl_matchit.vim'
   NeoBundle 'spolu/dwm.vim'
-  " }}}
 
-  " Completions (neco) {{{
   NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'ujihisa/neco-look'
   NeoBundleLazy 'rhysd/neco-ruby-keyword-args'
-  " }}}
 
-  " Move {{{
   NeoBundleLazy 'Lokaltog/vim-easymotion'
-  " }}}
 endfunction " }}}
 
 if exists('g:loaded_neobundle') && g:loaded_neobundle
