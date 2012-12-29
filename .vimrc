@@ -167,6 +167,8 @@ function! s:LoadPlugins() " {{{
   NeoBundleLazy 'Shougo/echodoc'
 
   NeoBundle 'kien/ctrlp.vim'
+  NeoBundle 'vimtaku/hl_matchit.vim'
+  NeoBundle 'spolu/dwm.vim'
   " }}}
 
   " Completions (neco) {{{
