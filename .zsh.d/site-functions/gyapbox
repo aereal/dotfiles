@@ -4,10 +4,12 @@ function gyapbox() {
   local base_dir=~/Dropbox/Public/g
 
   if [[ -z "$DROPBOX_USER_ID" ]]; then
+    echo "\$DROPBOX_USER_ID must be specified"
     return 1
   fi
 
   if [[ ! -d $base_dir ]]; then
+    echo "\$base_dir is not found"
     return 1
   fi
 
