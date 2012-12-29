@@ -3,7 +3,7 @@
 function gyapbox() {
   local base_dir=~/Dropbox/Public/g
 
-  if [[ -n "$DROPBOX_USER_ID" ]]; then
+  if [[ -z "$DROPBOX_USER_ID" ]]; then
     exit 1
   fi
 
