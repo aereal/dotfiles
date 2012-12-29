@@ -36,7 +36,6 @@ function setup_hub() {
     }
   fi
 }
-homebrew_callbacks=($homebrew_callbacks setup_hub)
 
 function setup_python() {
   if [[ -n $(brew list | grep python) ]]; then
