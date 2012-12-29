@@ -101,17 +101,17 @@ function! s:LoadPlugins() " {{{
   " }}}
 
   " Language {{{
-  NeoBundleLazy 'bbommarito/vim-slim', { 'stay_same' : 1 }
-  NeoBundleLazy 'groenewege/vim-less', { 'stay_same' : 1 }
-  NeoBundleLazy 'hail2u/vim-css3-syntax'
+  NeoBundle 'bbommarito/vim-slim', { 'stay_same' : 1 }
+  NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
+  NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'hallison/vim-markdown', { 'stay_same' : 1 }
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'motemen/hatena-vim', { 'stay_same' : 1 }
   NeoBundle 'othree/html5.vim'
   NeoBundle 'pangloss/vim-javascript'
-  NeoBundleLazy 'vim-perl/vim-perl'
-  NeoBundleLazy 'vim-ruby/vim-ruby'
-  NeoBundleLazy 'juvenn/mustache.vim'
+  NeoBundle 'vim-perl/vim-perl'
+  NeoBundle 'vim-ruby/vim-ruby'
+  NeoBundle 'juvenn/mustache.vim'
   NeoBundle 'davidoc/taskpaper.vim'
   NeoBundle 'zaiste/tmux.vim'
   NeoBundle 'elixir-lang/vim-elixir'
