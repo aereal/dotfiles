@@ -54,13 +54,13 @@ else
   export PAGER="less"
 fi
 
-  # LV {{{
-  export LV="-c -l"
-  # }}}
+# LV {{{
+export LV="-c -l"
+# }}}
 
-  # LESS {{{
-  export LESS="-R"
-  # }}}
+# LESS {{{
+export LESS="-R"
+# }}}
 # }}}
 
 # EDITOR {{{
