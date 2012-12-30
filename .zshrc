@@ -89,14 +89,14 @@ update_prompt() { # {{{
 
   additional_info="${ruby_version} ${perl_version}"
 
-  top_line="${current_working_directory}${git_info:+" (${git_info})"}${additional_info:+" (${additional_info})"}"
+  top_line="${current_working_directory}${additional_info:+" (${additional_info})"}"
 
   ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
   ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
   command_line="%(?,$ok_prompt,$ng_prompt)"
 
   PROMPT="$(echo -n "${top_line}\n${command_line}")"
-  RPROMPT="[${current_working_directory}]"
+  RPROMPT="${git_info:+"[${git_info}]"}"
 } # }}}
 
 add-zsh-hook precmd update_prompt
