@@ -64,10 +64,10 @@ update_prompt() { # {{{
     command_line
 
   # Ruby version {{{
-  # if [[ -n $(type rbenv) ]]; then
-    _ruby_version_string="Ruby: $(rbenv version-name)"
+  if [[ -e "$HOME/.ruby-version" ]]; then
+    _ruby_version_string="Ruby: $(cat $HOME/.ruby-version)"
     ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
-  # fi
+  fi
   # }}}
 
   # Perl version {{{
