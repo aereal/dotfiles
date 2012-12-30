@@ -687,6 +687,7 @@ call s:unite_normal_keymap('<Space>', ':<C-u>call <SID>unite_project("-start-ins
 call s:unite_normal_keymap('Rm', 'Unite rails/model -vertical -winwidth=40')
 call s:unite_normal_keymap('Rc', 'Unite rails/controller -vertical -winwidth=40')
 call s:unite_normal_keymap('Rv', 'Unite rails/view -vertical -winwidth=40')
+call s:unite_normal_keymap('\c', 'Unite colorscheme -auto-preview -vertical -winwidth=30')
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
