@@ -46,7 +46,7 @@ module RubyInstall
 		end
 
 		def create_install_task
-			file ruby_version_dir => opt_dirs do
+			file ruby_version_dir => [src_dir, opt_dirs] do
 				cd src_dir do
 					sh './configure', *configure_options
 					sh 'make'
