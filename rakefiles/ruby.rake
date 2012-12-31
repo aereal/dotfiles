@@ -24,7 +24,7 @@ module RubyInstall
 			@ruby_versions_root = args[:ruby_versions_root] || File.expand_path('~/.rbenv/versions')
 			@opt_dirs           = args[:opt_dirs] || []
 			@extension          = args[:extension] || 'tar.bz2'
-			@src_root           = args[:src_root] || 'src'
+			@src_root           = File.expand_path(args[:src_root] || 'src')
 
 			@src_dir      = File.join(src_root, "ruby-#{version}")
 			@archive_file = File.join(src_root, "ruby-#{version}.#{extension}")
