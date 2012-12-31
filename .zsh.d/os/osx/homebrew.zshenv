@@ -7,12 +7,6 @@ path=(
   $path
 )
 
-fpath=(
-  ${HOMEBREW_HOME}/share/zsh/site-functions(N-/)
-  ${HOMEBREW_HOME}/share/zsh/functions(N-/)
-  ${fpath}
-)
-
 typeset -a homebrew_callbacks
 
 function setup_coreutils() {
@@ -67,6 +61,17 @@ function setup_macvim() {
   fi
 }
 homebrew_callbacks=($homebrew_callbacks setup_macvim)
+
+function setup_zsh() {
+  if [[ -d "$HOMEBREW_HOME/opt/zsh" ]]; then
+    fpath=(
+      ${HOMEBREW_HOME}/share/zsh/site-functions(N-/)
+      ${HOMEBREW_HOME}/share/zsh/functions(N-/)
+      ${fpath}
+    )
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_zsh)
 
 function setup_zsh_completions() {
   if [[ -d "${HOMEBREW_HOME}/share/zsh-completions" ]]; then
