@@ -39,7 +39,9 @@ module RubyInstall
 			end
 
 			file src_dir => [archive_file] do
-				sh 'tar', 'jxf', archive_file
+				cd src_root do
+					sh 'tar', 'jxf', archive_file
+				end
 			end
 		end
 
