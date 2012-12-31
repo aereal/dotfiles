@@ -35,7 +35,7 @@ module RubyInstall
 			directory src_root
 
 			file archive_file => [src_root] do
-				sh 'curl', '-sSLfO', "#{url}"
+				sh 'curl', '-sSLfo', archive_file, "#{url}"
 			end
 
 			file src_dir => [archive_file] do
