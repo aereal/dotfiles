@@ -68,6 +68,16 @@ function setup_macvim() {
 }
 homebrew_callbacks=($homebrew_callbacks setup_macvim)
 
+function setup_zsh_completions() {
+  if [[ -d "${HOMEBREW_HOME}/share/zsh-completions" ]]; then
+    fpath=(
+      ${HOMEBREW_HOME}/share/zsh-completions
+      $fpath
+    )
+  fi
+}
+homebrew_callbacks=($homebrew_callbacks setup_zsh_completions)
+
 if [[ -n $(which brew 2>/dev/null) ]]; then
   local callback
   for callback in $homebrew_callbacks; do
