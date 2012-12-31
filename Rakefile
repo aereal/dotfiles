@@ -34,7 +34,7 @@ FORMULAE = %w(
   imagemagick io libpng lv mongodb mysql node
   openssl readline redis refe tig zsh
   curl scala haskell-platform python io
-  lua gauche wget tmux
+  lua gauche wget tmux reattach-to-user-namespace
 )
 
 RBENV_HOME = ENV['RBENV_HOME'] || File.join(HOME, '.rbenv')
@@ -93,7 +93,7 @@ namespace :homebrew do
   namespace :group do
     namespace :dev do
       desc 'Install development requirements w/Homebrew'
-      task :install => Cellar('git', 'refe', 'tig', 'tmux', 'wget', 'zsh', 'coreutils')
+      task :install => Cellar('git', 'refe', 'tig', 'tmux', 'wget', 'zsh', 'coreutils', 'reattach-to-user-namespace')
     end
 
     namespace :lang do
