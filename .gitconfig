@@ -44,14 +44,6 @@
 	updated = yellow
 	changed = green
 	untracked = cyan
-[color "diff"]
-	commit = black white
-	meta = black
-	frag = white reverse
-	func = yellow
-	old = red
-	new = green
-	whitespace = red reverse
 [color "grep"]
 	context = white
 	filename = green
