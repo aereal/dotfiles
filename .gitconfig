@@ -29,6 +29,8 @@
 	interactive-rebase = rebase --interactive
 	continue-rebase = rebase --continue
 	abort-rebase = rebase --abort
+	fix = commit --amend
+	cp = cherry-pick
 [color]
 	branch = true
 	status = true
