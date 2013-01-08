@@ -1,5 +1,6 @@
 # vim:set ft=zsh foldmethod=marker:
 
+bindkey -e
 setopt extended_glob
 
 # Load Modules {{{
