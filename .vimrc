@@ -661,7 +661,7 @@ nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
 nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
 nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
 
-call s:unite_normal_keymap('m', 'UniteWithBufferDir file_mru -buffer-name=files')
+call s:unite_normal_keymap('R', 'UniteWithBufferDir file_mru -buffer-name=files')
 call s:unite_normal_keymap('f', 'UniteWithBufferDir file_mru file file/new -no-split -buffer-name=files')
 call s:unite_normal_keymap('b', 'Unite buffer_tab -immediately')
 call s:unite_normal_keymap('B', 'Unite buffer -immediately')
@@ -670,11 +670,10 @@ call s:unite_normal_keymap('w', 'Unite window:no-current -immediately')
 call s:unite_normal_keymap('[', 'Unite outline -vertical -winwidth=40 -buffer-name=outline')
 call s:unite_normal_keymap('{', 'Unite outline fold -vertical -winwidth=40 -buffer-name=outline')
 call s:unite_normal_keymap('>', 'Unite output')
-call s:unite_normal_keymap('n', 'Unite register history/yank -buffer-name=register -no-split')
+call s:unite_normal_keymap('y', 'Unite register history/yank -buffer-name=register -no-split')
 call s:unite_normal_keymap(':', 'Unite history/command -start-insert')
 call s:unite_normal_keymap('q', 'Unite qf -no-empty -no-start-insert -auto-preview')
 call s:unite_normal_keymap('t', 'Unite tag -start-insert -no-empty -no-split -buffer-name=tag')
-call s:unite_normal_keymap('c', 'Unite colorscheme -auto-preview')
 call s:unite_normal_keymap('.', 'Unite source')
 call s:unite_normal_keymap('Rm', 'Unite rails/model -vertical -winwidth=40')
 call s:unite_normal_keymap('Rc', 'Unite rails/controller -vertical -winwidth=40')
