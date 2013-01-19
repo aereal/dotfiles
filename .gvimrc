@@ -1,5 +1,5 @@
 if has("gui_macvim")
-  set guifont=Monaco\ for\ Powerline:h14
+  set guifont=Inconsolata-dz\ for\ Powerline:h14
 
   set guioptions-=T
   set guioptions-=m
