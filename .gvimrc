@@ -9,6 +9,10 @@ if has("gui_macvim")
   set guioptions-=L
   set guioptions-=b
 
+  augroup GuiMac
+    autocmd!
+    autocmd GUIEnter * set fullscreen
+  augroup END
 endif
 
 if has('transparency')
