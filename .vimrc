@@ -610,6 +610,7 @@ let g:surround_custom_mapping.eruby = {
 let g:surround_custom_mapping.tt2 = {
       \ '%': "[% \r %]",
       \ }
+let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
 " }}}
 " zencoding-vim {{{
 let g:user_zen_leader_key = '<C-e>'
