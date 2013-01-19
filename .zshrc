@@ -1,15 +1,13 @@
-# vim:set ft=zsh foldmethod=marker:
-
-bindkey -e
 setopt extended_glob
+autoload -Uz zmv
+autoload -Uz gyapbox
 
-# Load Modules {{{
-autoload -U -z is-at-least
-autoload -U -z add-zsh-hooks
-autoload colors; colors
-autoload -U -z zmv
-autoload -U url-quote-magic
-zle -N self-insert url-quote-magic
+# Colors {{{
+autoload -Uz colors; colors
+
+if [[ -f "$HOME/.dircolors" ]]; then
+  source "$HOME/.dircolors"
+fi
 # }}}
 
 # History {{{
@@ -17,12 +15,13 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 
-setopt extended_history # 実行時間と時刻も保存する
-setopt hist_ignore_dups # 重複したコマンドは保存しない
-setopt hist_ignore_space # 空白から始まるコマンドは保存しない
-setopt inc_append_history # すぐに追記
-setopt share_history # プロセス間でヒストリを共有
-setopt no_flow_control # C-s を殺すな
+setopt \
+  extended_history \
+  hist_ignore_dups \
+  hist_ignore_space \
+  inc_append_history \
+  share_history \
+  no_flow_control
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -34,7 +33,7 @@ bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
 # }}}
 
-# VCS Info {{{
+# VCS {{{
 autoload -U -z VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 autoload -U -z VCS_INFO_git_getaction; VCS_INFO_git_getaction 2>/dev/null
 autoload -U -z git_info
@@ -42,70 +41,8 @@ autoload -U -z git_info
 zstyle ':vcs_info:git:*:-all-' command =git
 # }}}
 
-# Prompt {{{
-autoload -U promptinit
-promptinit
-
-setopt prompt_subst # プロンプトの中で変数展開
-setopt prompt_percent # '%' シーケンス
-setopt transient_rprompt # 実行後は右プロンプトを消す
-
-update_prompt() { # {{{
-  local \
-    ruby_version \
-    perl_version \
-    current_ts \
-    login_info \
-    additional_info \
-    current_user \
-    current_host \
-    current_working_directory \
-    git_info \
-    top_line \
-    command_line
-
-  # Ruby version {{{
-  if [[ -e "$HOME/.ruby-version" ]]; then
-    _ruby_version_string="Ruby: $(cat $HOME/.ruby-version)"
-    ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
-  fi
-  # }}}
-
-  # Perl version {{{
-  if [[ -n "$PERLBREW_PERL" ]]; then
-    _perl_version_string="Perl: ${PERLBREW_PERL#perl-}"
-    perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
-  fi
-  # }}}
-
-  git_info=$(git_info)
-  current_ts="%D{%Y-%m-%d} %*"
-
-  current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
-  current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
-  login_info="${current_user} @ ${current_host}"
-
-  current_working_directory="%~"
-  current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
-
-  additional_info="${ruby_version} ${perl_version}"
-
-  top_line="${current_working_directory}${additional_info:+" (${additional_info})"}"
-
-  ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
-  ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
-  command_line="%(?,$ok_prompt,$ng_prompt)"
-
-  PROMPT="$(echo -n "${top_line}\n${command_line}")"
-  RPROMPT="${git_info:+"[${git_info}]"}"
-} # }}}
-
-add-zsh-hook precmd update_prompt
-# }}}
-
 # Completion {{{
-autoload -U compinit
-compinit
+autoload -U compinit; compinit
 
 ## Grouping
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
@@ -161,151 +98,301 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-host' ignored-patterns '*(.|:)*' l
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-domain' ignored-patterns '<->.<->.<->.<->' '^[-[:alnum:]]##(.[-[:alnum:]]##)##' '*@*'
 zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<->.<->.<->|(|::)([[:xdigit:].]##:(#c,2))##(|%*))' '127.0.0.<->' '255.255.255.255' '::1' 'fe80::*'
 
-setopt complete_in_word # カーソル位置で補完
-setopt glob_complete # glob を展開しない
-setopt hist_expand # ヒストリを展開
-setopt no_beep # うるさい
-setopt numeric_glob_sort # 数字としてソート
+setopt \
+  complete_in_word \
+  glob_complete  \
+  hist_expand \
+  no_beep \
+  numeric_glob_sort
 # }}}
 
-# Recent Directory {{{
-if is-at-least 4.3.11; then
-  autoload -U chpwd_recent_dirs cdr
+# Expand childa to $HOME {{{
+expand-to-home-or-complete() { # {{{
+  if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
+    LBUFFER+="~/"
+  else
+    zle self-insert
+  fi
+} # }}}
 
-  add-zsh-hook chpwd chpwd_recent_dirs
+zle -N expand-to-home-or-complete
+bindkey "\\" expand-to-home-or-complete
+# }}}
 
-  zstyle ":chpwd:*" recent-dirs-max 500
-  zstyle ":chpwd:*" recent-dirs-default true
-  zstyle ":completion:*" recent-dirs-insert always
+# Magic abbreviations {{{
+# http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
+### $abbreviations {{{
+typeset -A abbreviations
+abbreviations=(
+  " L" " | \$PAGER"
+  " G" " | grep"
+  " S" " | sort"
+  " H" " | head"
+  " T" " | tail"
+  " C" " | pbcopy"
+)
+# }}}
+
+function magic-abbrev-expand () { #{{{
+  local MATCH
+  LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9]#}
+  LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+} #}}}
+
+function magic-space () { #{{{
+  magic-abbrev-expand
+  zle self-insert
+} #}}}
+
+function magic-abbrev-expand-and-insert () { #{{{
+  magic-abbrev-expand
+  zle self-insert
+} #}}}
+
+function magic-abbrev-expand-and-insert-complete () { #{{{
+  magic-abbrev-expand
+  zle self-insert
+  zle expand-or-complete
+} #}}}
+
+function magic-abbrev-expand-and-accept () { #{{{
+  magic-abbrev-expand
+  zle accept-line
+} #}}}
+
+function magic-abbrev-expand-and-normal-complete () { #{{{
+  magic-abbrev-expand
+  zle expand-or-complete
+} #}}}
+
+function no-magic-abbrev-expand () { #{{{
+  LBUFFER+=' '
+} #}}}
+
+### zle {{{
+zle -N magic-abbrev-expand
+zle -N magic-abbrev-expand-and-magic-space
+zle -N magic-abbrev-expand-and-insert
+zle -N magic-abbrev-expand-and-insert-complete
+zle -N magic-abbrev-expand-and-normal-complete
+zle -N magic-abbrev-expand-and-accept
+zle -N no-magic-abbrev-expand
+zle -N magic-space
+# }}}
+
+### Key bindings {{{
+bindkey "\r" magic-abbrev-expand-and-accept
+bindkey " "  magic-space
+bindkey "."  magic-abbrev-expand-and-insert
+bindkey "^I" magic-abbrev-expand-and-normal-complete
+bindkey "^J" accept-line
+# }}}
+# }}}
+
+# url-quote-magic {{{
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
+# }}}
+
+# Prompt {{{
+autoload -U promptinit; promptinit
+
+setopt \
+  prompt_subst \
+  prompt_percent \
+  transient_rprompt
+
+function update_prompt() { # {{{
+  local \
+    ruby_version \
+    perl_version \
+    current_ts \
+    login_info \
+    additional_info \
+    current_user \
+    current_host \
+    current_working_directory \
+    git_info \
+    top_line \
+    command_line
+
+  # Ruby version {{{
+  if [[ -e "$HOME/.ruby-version" ]]; then
+    _ruby_version_string="Ruby: $(cat $HOME/.ruby-version)"
+    ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
+  fi
+  # }}}
+
+  # Perl version {{{
+  if [[ -n "$PERLBREW_PERL" ]]; then
+    _perl_version_string="Perl: ${PERLBREW_PERL#perl-}"
+    perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
+  fi
+  # }}}
+
+  git_info=$(git_info)
+  current_ts="%D{%Y-%m-%d} %*"
+
+  current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
+  current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
+  login_info="${current_user} @ ${current_host}"
+
+  current_working_directory="%~"
+  current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
+
+  additional_info="${ruby_version} ${perl_version}"
+
+  top_line="${current_working_directory}${additional_info:+" (${additional_info})"}"
+
+  ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
+  ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
+  command_line="%(?,$ok_prompt,$ng_prompt)"
+
+  PROMPT="$(echo -n "${top_line}\n${command_line}")"
+  RPROMPT="${git_info:+"[${git_info}]"}"
+} # }}}
+
+autoload -Uz add-zsh-hooks
+add-zsh-hook precmd update_prompt
+# }}}
+
+# rbenv {{{
+if /usr/bin/which -s rbenv; then
+  eval "$(rbenv init -)"
+fi
+# }}}
+
+# perlbrew {{{
+if [[ -e "$PERLBREW_ROOT/etc/bashrc" ]]; then
+  source "$PERLBREW_ROOT/etc/bashrc"
+fi
+# }}}
+
+# zaw {{{
+if [[ -e "$ZSH_HOME/plugins/zaw/zaw.zsh" ]]; then
+  source "$ZSH_HOME/plugins/zaw/zaw.zsh"
+
+  bindkey "^[." zaw-cdr
+  bindkey "^[h" zaw-history
+fi
+# }}}
+
+# cdd {{{
+if [[ -f "$ZSH_HOME/plugins/cdd/cdd" ]]; then
+  source "$ZSH_HOME/plugins/cdd/cdd"
+  add-zsh-hook chpwd _cdd_chpwd
+fi
+# }}}
+
+# Abbreviated ls {{{
+# https://gist.github.com/3935922
+function abbreviated_ls() { # {{{
+    local cmd_ls='ls'
+    local -a opt_ls
+    opt_ls=('-ACF' '--color=always')
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            if type gls > /dev/null 2>&1; then
+                cmd_ls='gls'
+            else
+                # -G : Enable colorized output.
+                opt_ls=('-aCFG')
+            fi
+            ;;
+    esac
+
+    local ls_result
+    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')
+
+    local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
+
+    if [ $ls_lines -gt 10 ]; then
+        echo "$ls_result" | head -n 5
+        echo '...'
+        echo "$ls_result" | tail -n 5
+        echo "$(command ls -1 -A | wc -l | tr -d ' ') files exist"
+    else
+        echo "$ls_result"
+    fi
+} # }}}
+
+autoload -U -z add-zsh-hooks
+add-zsh-hook chpwd abbreviated_ls
+# }}}
+
+# Update window title {{{
+function update_window_title() { # {{{
+  emulate -L zsh
+  local -a cmd
+  cmd=(${(z)2})
+
+  case $cmd[1] in
+    fg)
+      if (( $#cmd == 1 )); then
+        cmd=(builtin jobs -l %+)
+      else
+        cmd=(builtin jobs -l $cmd[2])
+      fi
+      ;;
+    %*)
+      cmd=(builtin jobs -l $cmd[1])
+      ;;
+    *=*)
+      echo -n "k$cmd[2]:t\\"
+      return
+      ;;
+    ls|clear|pwd)
+      echo -n "k$ZSH_NAME\\"
+      return
+      ;;
+    sudo|cd)
+      echo -n "k$cmd[1] $cmd[2]:t\\"
+      return
+      ;;
+    *)
+      echo -n "k$cmd[1]:t\\"
+      return
+      ;;
+  esac
+
+  local -A jt
+  jt=(${(kv)jobtexts})
+  $cmd >>(read num rest cmd=(${(z)${(e):-\$jt$num}}) echo -n "k$cmd[1]:t\\") 2>/dev/null
+} # }}}
+
+if [ "$TMUX" ]; then
+  add-zsh-hook preexec update_window_title
 fi
 # }}}
 
 # Aliases {{{
-alias :q='exit'
-alias iso8601='date +%Y-%m-%dT%H:%M:%S%z'
+alias :q=exit
+alias ql='qlmanage -p "$@" >& /dev/null'
+
+if [[ -d "$HOMEBREW_HOME/opt/coreutils" ]]; then
+  alias  l='gls --color=auto -AF'
+  alias ls='gls --color=auto -AF'
+  alias ll='gls --color=auto -AFl'
+else
+  alias  l='ls -GAF'
+  alias ls='ls -GAF'
+  alias ll='ls -GAFl'
+fi
+
+if [[ -d "$HOMEBREW_HOME/opt/macvim" ]]; then
+  alias vim="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
+  alias  vi="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
+fi
 # }}}
 
-# Functions {{{
-  ## Easy childa {{{
-  expand-to-home-or-complete() { # {{{
-    if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
-      LBUFFER+="~/"
-    else
-      zle self-insert
-    fi
-  } # }}}
-
-  zle -N expand-to-home-or-complete
-  bindkey "\\" expand-to-home-or-complete
-  #}}}
-
-  ## Magic abbreviations {{{
-  # http://subtech.g.hatena.ne.jp/cho45/20100814/1281726377
-  ### $abbreviations {{{
-  typeset -A abbreviations
-  abbreviations=(
-    " L" " | \$PAGER"
-    " G" " | grep"
-    " S" " | sort"
-    " H" " | head"
-    " T" " | tail"
-    " C" " | pbcopy"
-  )
-  # }}}
-  magic-abbrev-expand () { #{{{
-    local MATCH
-    LBUFFER=${LBUFFER%%(#m) [-_a-zA-Z0-9]#}
-    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
-  } #}}}
-  magic-space () { #{{{
-    magic-abbrev-expand
-    zle self-insert
-  } #}}}
-  magic-abbrev-expand-and-insert () { #{{{
-    magic-abbrev-expand
-    zle self-insert
-  } #}}}
-  magic-abbrev-expand-and-insert-complete () { #{{{
-    magic-abbrev-expand
-    zle self-insert
-    zle expand-or-complete
-  } #}}}
-  magic-abbrev-expand-and-accept () { #{{{
-    magic-abbrev-expand
-    zle accept-line
-  } #}}}
-  magic-abbrev-expand-and-normal-complete () { #{{{
-    magic-abbrev-expand
-    zle expand-or-complete
-  } #}}}
-  no-magic-abbrev-expand () { #{{{
-    LBUFFER+=' '
-  } #}}}
-  ### zle {{{
-  zle -N magic-abbrev-expand
-  zle -N magic-abbrev-expand-and-magic-space
-  zle -N magic-abbrev-expand-and-insert
-  zle -N magic-abbrev-expand-and-insert-complete
-  zle -N magic-abbrev-expand-and-normal-complete
-  zle -N magic-abbrev-expand-and-accept
-  zle -N no-magic-abbrev-expand
-  zle -N magic-space
-  # }}}
-  ### Key bindings {{{
-  bindkey "\r" magic-abbrev-expand-and-accept
-  bindkey " "  magic-space
-  bindkey "."  magic-abbrev-expand-and-insert
-  bindkey "^I" magic-abbrev-expand-and-normal-complete
-  bindkey "^J" accept-line
-  # }}}
-  # }}}
-# }}}
-
-# Applications {{{
-app_rcs=(${ZSH_HOME}/apps/*.zshrc(N-.))
-
-for app_rc in ${app_rcs}; do
-  source "${app_rc}"
-done
-# }}}
-
-# Initializers {{{
-initializers=(${ZSH_HOME}/init/*.zshrc(N-.))
-
-for initializer in ${initializers}; do
-  source "${initializer}"
-done
-# }}}
-
-# OS {{{
-case ${OSTYPE} in
-  darwin*)
-    os_rcs=(${ZSH_HOME}/os/osx{.zshrc,/*.zshrc}(N-.))
-
-    for os_rc in ${os_rcs}; do
-      source "$os_rc"
-    done
-    ;;
-  *)
-    ;;
-esac
-# }}}
-
-# Host {{{
-shorten_host="${HOST%%.*}"
-host_rcs=(${ZSH_HOME}/hosts/${shorten_host}{.zshrc,/*.zshrc}(N-.))
-
-for host_rc in ${host_rcs}; do
-  source "$host_rc"
-done
-# }}}
-
-# Auto session resume {{{
-if [ -z "$TMUX" ]; then
-  if $(tmux has-session); then
+# Launch tmux {{{
+if /usr/bin/which -s tmux && [ -z "$TMUX" ]; then
+  if $(tmux has-session 2>/dev/null); then
     tmux attach-session -t "${HOST%%.*}"
   else
     tmux new-session -s "${HOST%%.*}"
   fi
 fi
 # }}}
+
+# vim:set ft=zsh:
