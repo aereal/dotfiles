@@ -646,12 +646,6 @@ endfunction " }}}
 
 autocmd FileType unite call s:unite_local_settings()
 
-function! s:unite_project(...) " {{{
-  let opts = (a:0 ? join(a:000, ' ') : '')
-  let dir = unite#util#path2project_directory(expand('%'))
-  execute 'UniteWithBufferDir' opts 'buffer file_rec:' . dir
-endfunction " }}}
-
 function! s:unite_keymap(mode, key, definition) " {{{
   execute a:mode . 'noremap <silent> <SID>[unite]' . a:key . ' :<C-u>' . a:definition . '<CR>'
 endfunction " }}}
@@ -682,7 +676,6 @@ call s:unite_normal_keymap('q', 'Unite qf -no-empty -no-start-insert -auto-previ
 call s:unite_normal_keymap('t', 'Unite tag -start-insert -no-empty -no-split -buffer-name=tag')
 call s:unite_normal_keymap('c', 'Unite colorscheme -auto-preview')
 call s:unite_normal_keymap('.', 'Unite source')
-call s:unite_normal_keymap('<Space>', ':<C-u>call <SID>unite_project("-start-insert")<CR>')
 call s:unite_normal_keymap('Rm', 'Unite rails/model -vertical -winwidth=40')
 call s:unite_normal_keymap('Rc', 'Unite rails/controller -vertical -winwidth=40')
 call s:unite_normal_keymap('Rv', 'Unite rails/view -vertical -winwidth=40')
