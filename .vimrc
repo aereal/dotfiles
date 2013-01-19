@@ -579,7 +579,7 @@ let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
 " }}}
 " fugitive {{{
 nnoremap [fugitive] <Nop>
-nmap git [fugitive]
+nmap ,g [fugitive]
 
 nnoremap [fugitive]s :<C-u>Gstatus<CR>
 nnoremap [fugitive]c :<C-u>Gcommit<CR>
