@@ -471,7 +471,6 @@ augroup END " }}}
 augroup PerlDetection " {{{
   autocmd!
   autocmd BufEnter *.tt    set ft=tt2
-  autocmd BufEnter */t/*.t set ft=perl.tap
 augroup END " }}}
 
 augroup VinConfig " {{{
