@@ -15,6 +15,7 @@
    <item>
      <name>Remap C-h to DELETE</name>
      <identifier>org.aereal.sequel-pro.remap-c-h-to-delete</identifier>
+     <only>SEQUELPRO</only>
      <autogen>--KeyToKey-- KeyCode::H, VK_CONTROL, KeyCode::DELETE</autogen>
    </item>
   </item>
