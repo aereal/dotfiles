@@ -705,7 +705,7 @@ function! s:ConfigureAltr() " {{{
   nmap <Leader><C-]> <Plug>(altr-back)
 
   " Rails rules
-  call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%s.rb')
+  call altr#define('app/models/%.rb', 'spec/models/%_spec.rb', 'spec/factories/%_factory.rb')
   call altr#define('app/controllers/%.rb', 'spec/controllers/%_spec.rb')
   call altr#define('app/helpers/%.rb', 'spec/helpers/%_spec.rb')
   call altr#define('spec/routing/%_spec.rb', 'config/routes.rb')
