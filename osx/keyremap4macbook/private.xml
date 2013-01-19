@@ -10,6 +10,39 @@
    <equal>com.google.code.sequel-pro</equal>
   </appdef>
 
+  <appdef>
+   <appname>LIMECHAT</appname>
+   <equal>net.limechat.LimeChat</equal>
+  </appdef>
+
+  <item>
+    <name>LimeChat</name>
+    <item>
+      <name>Move up active channel</name>
+      <identifier>org.aereal.limechat.move-up-channel</identifier>
+      <only>LIMECHAT</only>
+      <autogen>--KeyToKey-- KeyCode::K, VK_COMMAND, KeyCode::CURSOR_UP, VK_COMMAND</autogen>
+    </item>
+    <item>
+      <name>Move down active channel</name>
+      <identifier>org.aereal.limechat.move-down-channel</identifier>
+      <only>LIMECHAT</only>
+      <autogen>--KeyToKey-- KeyCode::J, VK_COMMAND, KeyCode::CURSOR_DOWN, VK_COMMAND</autogen>
+    </item>
+    <item>
+      <name>Move to previous unread channel</name>
+      <identifier>org.aereal.limechat.move-to-previous-unread-channel</identifier>
+      <only>LIMECHAT</only>
+      <autogen>--KeyToKey-- KeyCode::J, VK_COMMAND | VK_SHIFT, KeyCode::CURSOR_UP, VK_CONTROL | VK_SHIFT</autogen>
+    </item>
+    <item>
+      <name>Move to next unread channel</name>
+      <identifier>org.aereal.limechat.move-to-next-unread-channel</identifier>
+      <only>LIMECHAT</only>
+      <autogen>--KeyToKey-- KeyCode::K, VK_COMMAND | VK_SHIFT, KeyCode::CURSOR_DOWN, VK_CONTROL | VK_SHIFT</autogen>
+    </item>
+  </item>
+
   <item>
    <name>Sequal Pro</name>
    <item>
