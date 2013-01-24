@@ -73,33 +73,33 @@
       <name>Double-tap Command_R to tmux prefix key on Terminal application</name>
       <identifier>org.aereal.double-tap-command-r-to-tmux-prefix-key</identifier>
       <only>TERMINAL</only>
-      <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::Q, ModifierFlag::CONTROL_L</autogen>
+      <autogen>--DoublePressModifier-- KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::K, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Cmd-T to [prefix]-c</name>
       <appendix>Create a new window</appendix>
       <only>TERMINAL</only>
       <identifier>org.aereal.command-t-to-prefix-c</identifier>
-      <autogen>--KeyToKey-- KeyCode::T, VK_COMMAND, KeyCode::Q, VK_CONTROL, KeyCode::C</autogen>
+      <autogen>--KeyToKey-- KeyCode::T, VK_COMMAND, KeyCode::K, VK_CONTROL, KeyCode::C</autogen>
     </item>
     <item>
       <name>Cmd-W to [prefix]-k</name>
       <appendix>Kill the window</appendix>
       <only>TERMINAL</only>
       <identifier>org.aereal.tmux.command-w-to-prefix-k</identifier>
-      <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::Q, VK_CONTROL, KeyCode::K</autogen>
+      <autogen>--KeyToKey-- KeyCode::W, VK_COMMAND, KeyCode::K, VK_CONTROL, KeyCode::K</autogen>
     </item>
     <item>
       <name>Move the window (Next)</name>
       <only>TERMINAL</only>
       <identifier>org.aereal.tmux.move-the-window-next</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_COMMAND | VK_SHIFT, KeyCode::Q, VK_CONTROL, KeyCode::N</autogen>
+      <autogen>--KeyToKey-- KeyCode::BRACKET_RIGHT, VK_COMMAND | VK_SHIFT, KeyCode::K, VK_CONTROL, KeyCode::N</autogen>
     </item>
     <item>
       <name>Move the window (Previous)</name>
       <only>TERMINAL</only>
       <identifier>org.aereal.tmux.move-the-window-previous</identifier>
-      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_COMMAND | VK_SHIFT, KeyCode::Q, VK_CONTROL, KeyCode::P</autogen>
+      <autogen>--KeyToKey-- KeyCode::BRACKET_LEFT, VK_COMMAND | VK_SHIFT, KeyCode::K, VK_CONTROL, KeyCode::P</autogen>
     </item>
   </item>
 </root>
