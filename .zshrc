@@ -383,6 +383,18 @@ if [[ -d "$HOMEBREW_HOME/opt/macvim" ]]; then
   alias vim="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
   alias  vi="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
 fi
+
+if /usr/bin/which -s reattach-to-user-namespace; then
+  function v() {
+    reattach-to-user-namespace -l "$EDITOR" "$@"
+  }
+  function vim() {
+    reattach-to-user-namespace -l "$EDITOR" "$@"
+  }
+else
+  alias vim="$EDITOR"
+  alias  vi="$EDITOR"
+fi
 # }}}
 
 # Launch tmux {{{
