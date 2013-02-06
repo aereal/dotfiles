@@ -7,7 +7,7 @@
 
   <appdef>
    <appname>SEQUELPRO</appname>
-   <equal>com.google.code.sequel-pro</equal>
+   <equal>com.sequelpro.SequelPro</equal>
   </appdef>
 
   <appdef>
