@@ -82,4 +82,16 @@ if [[ -e "$HOME/.local.env" ]]; then
   source "$HOME/.local.env"
 fi
 
+# rbenv {{{
+if /usr/bin/which -s rbenv; then
+  eval "$(rbenv init -)"
+fi
+# }}}
+
+# perlbrew {{{
+if [[ -e "$PERLBREW_ROOT/etc/bashrc" ]]; then
+  source "$PERLBREW_ROOT/etc/bashrc"
+fi
+# }}}
+
 # vim:set ft=zsh:

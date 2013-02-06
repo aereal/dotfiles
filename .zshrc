@@ -256,18 +256,6 @@ autoload -Uz add-zsh-hooks
 add-zsh-hook precmd update_prompt
 # }}}
 
-# rbenv {{{
-if /usr/bin/which -s rbenv; then
-  eval "$(rbenv init -)"
-fi
-# }}}
-
-# perlbrew {{{
-if [[ -e "$PERLBREW_ROOT/etc/bashrc" ]]; then
-  source "$PERLBREW_ROOT/etc/bashrc"
-fi
-# }}}
-
 # zaw {{{
 if [[ -e "$ZSH_HOME/plugins/zaw/zaw.zsh" ]]; then
   source "$ZSH_HOME/plugins/zaw/zaw.zsh"
