@@ -217,8 +217,8 @@ function update_prompt() { # {{{
     command_line
 
   # Ruby version {{{
-  if [[ -e "$HOME/.ruby-version" ]]; then
-    _ruby_version_string="Ruby: $(cat $HOME/.ruby-version)"
+  if /usr/bin/which -s rbenv; then
+    _ruby_version_string="Ruby: $(rbenv version-name)"
     ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
   fi
   # }}}
