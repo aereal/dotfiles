@@ -2,6 +2,8 @@ setopt extended_glob
 autoload -Uz zmv
 autoload -Uz gyapbox
 
+bindkey -e
+
 # Colors {{{
 autoload -Uz colors; colors
 
