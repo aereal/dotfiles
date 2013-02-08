@@ -3,7 +3,9 @@ export HOMEBREW_HOME=$HOME/Homebrew
 export RBENV_HOME=$HOME/.rbenv
 export PERLBREW_ROOT=$HOME/.perlbrew
 
-if [[ -e "/Applications/MacVim.app" ]]; then
+if [[ -e "$HOMEBREW_HOME/opt/macvim/MacVim.app" ]]; then
+  export EDITOR="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
+elif [[ -e "/Applications/MacVim.app" ]]; then
   export EDITOR="/Applications/MacVim.app/Contents/MacOS/Vim"
 else
   export EDITOR=vim
