@@ -274,6 +274,17 @@ if [[ -f "$ZSH_HOME/plugins/cdd/cdd" ]]; then
 fi
 # }}}
 
+# ghq {{{
+if [[ -e "$ZSH_HOME/plugins/ghq/zsh" ]]; then
+  fpath=(
+    $ZSH_HOME/plugins/ghq/zsh
+    $fpath
+  )
+  autoload -U ghq
+  autoload -U compinit; compinit
+fi
+# }}}
+
 # Abbreviated ls {{{
 # https://gist.github.com/3935922
 function abbreviated_ls() { # {{{
