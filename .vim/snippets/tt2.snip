@@ -1,0 +1,24 @@
+snippet if
+	[% IF ${1:condition} %]
+		${2:then}
+	[% END # IF $1 %]
+
+snippet ife
+	[% IF ${1:condition} %]
+		${2:then}
+	[% ELSE %]
+		${3:else}
+	[% END # IF $1 %]
+
+snippet unless
+	[% UNLESS ${1:condition} %]
+		${2:then}
+	[% END # UNLESS $1 %]
+
+snippet foreach
+	[% FOREACH ${1:element} IN ${2:collection} %]
+		${3:loop}
+	[% END # FOREACH $1 IN $2 %]
+
+snippet include
+	[% INCLUDE "${1:path}" %]
