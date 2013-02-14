@@ -13,9 +13,15 @@ function gyapbox() {
     return 1
   fi
 
+  local preview
+
+  if [[ $1 = '-P' ]]; then
+    preview="-P"
+  fi
+
   local timestamp_hash="$(date +%s | md5)"
   local image_filename="${timestamp_hash}.png"
-  screencapture -i "$base_dir/$image_filename"
+  screencapture $preview -i "$base_dir/$image_filename"
 
   echo -n "http://dl.dropbox.com/u/$DROPBOX_USER_ID/g/$image_filename" | pbcopy
 }
