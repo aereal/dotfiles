@@ -241,7 +241,38 @@ set showtabline=2
 set guioptions-=e
 set tabline=%!MakeTabLine()
 " }}}
+" Weekly Report {{{
+let g:weekly_report_dir = '~/Dropbox/memo/weekly'
 
+function! s:WeeklyReport() "{{{
+  if ! exists('g:weekly_report_dir')
+    echo 'Set default value to g:weekly_report_dir'
+    let g:weekly_report_dir = expand('~/weekly_report')
+  endif
+
+  if ! isdirectory(expand(g:weekly_report_dir))
+    echoerr "g:weekly_report_dir is not directory"
+    return 1
+  endif
+
+  let expanded_dir = expand(g:weekly_report_dir)
+  let filename = expanded_dir . '/' . s:WeeklyReportFilename()
+
+  execute 'edit ' . filename
+endfunction "}}}
+
+function! s:WeeklyReportFilename() "{{{
+  if ! exists('g:weekly_report_format')
+    let g:weekly_report_format = 'hatena'
+  endif
+
+  let basename = strftime('%Y%m%d') . '.' . g:weekly_report_format
+
+  return basename
+endfunction "}}}
+
+command! WeeklyReport call s:WeeklyReport()
+"}}}
 " Key mappings {{{
 let mapleader   = ';'
 let g:mapleader = ';'
