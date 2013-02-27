@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+local matched=$(
+  git for-each-ref \
+    --sort=committerdate \
+    --format='%(refname)' \
+    refs/heads | \
+    grep "$1"
+)
+
+if [[ -z $matched ]]; then
+  echo "Issue tracking branch is not found" > /dev/stderr
+  exit 1
+fi
+
+git checkout ${matched#refs/heads/}
