@@ -10,24 +10,23 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
-
 " Plugins {{{
 NeoBundle 'kana/vim-textobj-user'
 
 NeoBundle 'h1mesuke/textobj-wiw'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
-" NeoBundleLazy 'thinca/vim-textobj-comment'
-" NeoBundleLazy 'coderifous/textobj-word-column.vim'
-" NeoBundleLazy 'rhysd/vim-textobj-continuous-line'
-" NeoBundleLazy 'rhysd/vim-textobj-ruby'
-" NeoBundleLazy 'thinca/vim-textobj-between'
-" NeoBundleLazy 'mattn/vim-textobj-url'
+NeoBundleLazy 'thinca/vim-textobj-comment'
+NeoBundleLazy 'coderifous/textobj-word-column.vim'
+NeoBundleLazy 'rhysd/vim-textobj-continuous-line'
+NeoBundleLazy 'rhysd/vim-textobj-ruby'
+NeoBundleLazy 'thinca/vim-textobj-between'
+NeoBundleLazy 'mattn/vim-textobj-url'
 
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'emonkak/vim-operator-sort'
 NeoBundle 'kana/vim-operator-replace'
-" NeoBundle 'tyru/operator-camelize.vim'
+NeoBundle 'tyru/operator-camelize.vim'
 NeoBundle 'tyru/operator-html-escape.vim'
 
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -60,24 +59,24 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'vim-ruby/vim-ruby'
-" NeoBundle 'juvenn/mustache.vim'
-" NeoBundle 'davidoc/taskpaper.vim'
-" NeoBundle 'zaiste/tmux.vim'
-" NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'juvenn/mustache.vim'
+NeoBundle 'davidoc/taskpaper.vim'
+NeoBundle 'zaiste/tmux.vim'
+NeoBundle 'elixir-lang/vim-elixir'
 
 NeoBundle 'Lokaltog/vim-powerline', 'develop'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'altercation/vim-colors-solarized'
-" NeoBundleLazy 'git@github.com:aereal/vim-magica-colors.git',
-"       \ { 'base' : '~/repos/@aereal' }
+NeoBundleLazy 'git@github.com:aereal/vim-magica-colors.git',
+      \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
-" NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
-" NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
-" NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
+NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
+NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
+NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
 
-" NeoBundle 'kana/vim-altr'
-" NeoBundleLazy 'thinca/vim-partedit'
+NeoBundle 'kana/vim-altr'
+NeoBundleLazy 'thinca/vim-partedit'
 NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
 
 NeoBundle 'Shougo/vimproc', {
@@ -99,7 +98,7 @@ NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'kien/ctrlp.vim'
 
 NeoBundle 'Shougo/neobundle.vim'
-" NeoBundle 'ujihisa/neco-look'
+NeoBundle 'ujihisa/neco-look'
 
 NeoBundle 'Lokaltog/vim-easymotion'
 
@@ -113,7 +112,6 @@ NeoBundle 'errormarker.vim'
 
 filetype plugin indent on
 " }}}
-
 " Configurations {{{
 set hidden
 set history=100
@@ -197,7 +195,6 @@ if has('clipboard')
 endif
 
 " }}}
-
 " Tabpage {{{
 function! s:tabpage_label(n) " {{{
   let title = gettabvar(a:n, 'title')
@@ -286,7 +283,6 @@ nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
-
 " autocmd {{{
 augroup MyInit
   autocmd!
@@ -374,7 +370,6 @@ augroup MyInit
   " }}}
 augroup END
 " }}}
-
 " Plugin Configurations {{{
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
@@ -541,7 +536,6 @@ nmap <C-e> <Plug>(operator-html-escape)
 " nmap <C-S-e> <Plug>(operator-html-unescape)
 " }}}
 " }}}
-
 " Colorscheme {{{
 if $DARK
   set bg=dark
