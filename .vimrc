@@ -455,7 +455,7 @@ nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file_mru file file/new
 nnoremap <silent> <SID>[unite]F :<C-u>UniteWithCurrentDir file_mru file file/new -no-split -buffer-name=files<CR>
 nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
 nnoremap <silent> <SID>[unite]B :<C-u>Unite buffer -immediately<CR>
-nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current -immediately<CR>
+nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current<CR>
 nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline<CR>
 nnoremap <silent> <SID>[unite]> :<C-u>Unite output<CR>
 nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
