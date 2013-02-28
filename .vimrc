@@ -377,7 +377,6 @@ let g:neocomplcache_delimiter_patterns.ruby = ['::']
 let g:neocomplcache_delimiter_patterns.perl = ['::']
 " }}}
 
-inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-g> neocomplcache#undo_completion()
@@ -503,6 +502,13 @@ let g:indent_guides_enable_on_vim_startup = 1
 " operator-html-escape {{{
 nmap <C-e> <Plug>(operator-html-escape)
 " nmap <C-S-e> <Plug>(operator-html-unescape)
+" }}}
+" smartinput {{{
+call smartinput#define_rule({
+      \ 'at' : '\s\+\%#',
+      \ 'char' : '<CR>',
+      \ 'input' : "<C-o>:<C-u>call setline('.', getline('.', '\\s\\+$', '', ''))<CR><CR>",
+      \ })
 " }}}
 " }}}
 " Colorscheme {{{
