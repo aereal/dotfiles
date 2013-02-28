@@ -129,7 +129,6 @@ set nobackup
 set swapfile
 set directory=~/.vim/swp
 " }}}
-
 " Indentation {{{
 set autoindent
 set nosmartindent
@@ -141,13 +140,11 @@ set softtabstop=2
 set expandtab
 set shiftround
 " }}}
-
 " Encoding {{{
 set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932,ucs-bom,default,latin1
 set encoding=utf-8
 set termencoding=utf-8
 " }}}
-
 " Search {{{
 set ignorecase
 set smartcase
@@ -155,13 +152,11 @@ set hlsearch
 set incsearch
 set wrapscan
 " }}}
-
 " Visualization {{{
 set ambiwidth=double
 set list
 set listchars=tab:>.,precedes:<,extends:>,eol:↵
 " }}}
-
 " UI {{{
 lang en_US.UTF-8
 
@@ -174,26 +169,27 @@ set noshowcmd
 set noshowmode
 set shortmess+=I
 " }}}
-
 " IME {{{
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 " }}}
-
+" Conceal {{{
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
+" }}}
+" Persistent Undo {{{
 if has('persistent_undo')
   set undodir=~/.vim/undo
   set undofile
 endif
-
+" }}}
+" Clipboard Integration {{{
 if has('clipboard')
   set clipboard=unnamed,autoselect
 endif
-
+" }}}
 " }}}
 " Tabpage {{{
 function! s:tabpage_label(n) " {{{
@@ -286,40 +282,34 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " autocmd {{{
 augroup MyInit
   autocmd!
-
   " screen title {{{
   if ! has('gui_running')
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
   endif " }}}
-
   " JavaScript {{{
   autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
   autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
   " }}}
-
   " Ruby {{{
   autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
   autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
   autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
   autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
   " }}}
-
   " CoffeeScript {{{
   autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
   autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 
   autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
   " }}}
-
   " Haskell {{{
   autocmd FileType haskell setlocal et
   autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
   autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
   autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
   " }}}
-
   " Perl {{{
   autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
   autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
@@ -329,24 +319,19 @@ augroup MyInit
 
   autocmd BufEnter *.tt    set ft=tt2
   " }}}
-
   " Vim {{{
   autocmd FileType vim inoreabbrev <buffer> = =
   " }}}
-
   " Markdown {{{
   autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
   " }}}
-
   " Nginx {{{
   autocmd BufEnter */nginx/*.conf set ft=nginx
   autocmd BufEnter */*.nginx.conf set ft=nginx
   " }}}
-
   " HTML {{{
   autocmd FileType html inoremap <buffer> = =
   " }}}
-
   " Hatena {{{
   autocmd BufEnter */@hatena/*          setlocal et ts=4 sts=4 sw=4
   autocmd BufEnter */@hatena/*.html.erb setlocal ts=2 sts=2 sw=2
@@ -355,16 +340,13 @@ augroup MyInit
   autocmd BufEnter */@hatena/*.html     set ft=tt2html
   autocmd BufEnter */@hatena/*.tt       set ft=tt2html
   " }}}
-
   " Source zencoding.vim {{{
   autocmd FileType html,tt2html,eruby,css,sass,scss,slim,haml NeoBundleSource zencoding-vim
   " }}}
-
   " AutoCursorLine {{{
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
   autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
   " }}}
-
   " Indent guides width {{{
   autocmd BufEnter * let g:indent_guides_guide_size = &sw
   " }}}
@@ -400,7 +382,6 @@ inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-g> neocomplcache#undo_completion()
 " }}}
-
 " neosnippet {{{
 let g:neosnippet#disable_select_mode_mappings = 0
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
@@ -408,12 +389,10 @@ let g:neosnippet#snippets_directory = '~/.vim/snippets'
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 " }}}
-
 " syntastic {{{
 let g:syntastic_auto_loc_list  = 2
 " let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
 " }}}
-
 " fugitive {{{
 nnoremap [fugitive] <Nop>
 nmap ,g [fugitive]
@@ -430,7 +409,6 @@ vmap ,go :Gbrowse<CR>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " }}}
-
 " surround_custom_mapping {{{
 let g:surround_custom_mapping = {}
 let g:surround_custom_mapping.ruby  = {
@@ -450,20 +428,17 @@ let g:surround_custom_mapping.tt2 = {
       \ }
 let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
 " }}}
-
 " zencoding-vim {{{
 let g:user_zen_leader_key = '<C-e>'
 let g:user_zen_settings = {
       \ 'indentation': ' ',
       \ }
 " }}}
-
 " ref-vim {{{
 " let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
 " let g:ref_jquery_use_cache = 1
 let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
-
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
 
@@ -488,21 +463,17 @@ nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
 nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
 nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -resume -buffer-name=quickfix<CR>
 " }}}
-
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_mode_n = ' N '
 " }}}
-
 " foldCC {{{
 set foldtext=FoldCCtext()
 set foldcolumn=4
 " }}}
-
 " hier {{{
 let g:hier_enabled = 1
 " }}}
-
 " watchdogs -- 構文検証 {{{
 let g:watchdogs_check_BufWritePost_enable = 1
 let g:quickrun_config = {
@@ -526,11 +497,9 @@ let g:quickrun_config = {
 
 call watchdogs#setup(g:quickrun_config)
 " }}}
-
 " indent-guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
 " }}}
-
 " operator-html-escape {{{
 nmap <C-e> <Plug>(operator-html-escape)
 " nmap <C-S-e> <Plug>(operator-html-unescape)
