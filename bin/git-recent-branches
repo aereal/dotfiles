@@ -4,7 +4,7 @@ function __git-recent-branches() {
   local count=${1:-10}
   git for-each-ref \
     --sort=-committerdate \
-    --format='%(committerdate:relative) %(refname) %(contents:subject)' \
+    --format="%(objectname:short)	%(committerdate:relative)	%(refname)" \
     refs/heads \
     | head -n $count \
     | sed -e 's/refs\/heads\///'
