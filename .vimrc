@@ -350,6 +350,9 @@ augroup MyInit
   " Indent guides width {{{
   autocmd BufEnter * let g:indent_guides_guide_size = &sw
   " }}}
+  " Close window with `q` key {{{
+  autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
+  " }}}
 augroup END
 " }}}
 " Plugin Configurations {{{
