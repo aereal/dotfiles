@@ -461,7 +461,7 @@ nnoremap <silent> <SID>[unite]> :<C-u>Unite output<CR>
 nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
 nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
 nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
-nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -resume -buffer-name=quickfix<CR>
+nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
 " }}}
 " vim-powerline {{{
 let g:Powerline_symbols = 'fancy'
