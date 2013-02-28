@@ -127,7 +127,7 @@ bindkey "\\" expand-to-home-or-complete
 typeset -A abbreviations
 abbreviations=(
   " L" " | \$PAGER"
-  " G" " | grep"
+  " G" " | \$GREPPRG"
   " S" " | sort"
   " H" " | head"
   " T" " | tail"

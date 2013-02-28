@@ -80,6 +80,16 @@ export PAGER
 export LV="-c -l"
 export LESS="-R"
 
+# Grep {{{
+GREPPRG=grep
+
+if /usr/bin/which -s ack; then
+  GREPPRG=ack
+fi
+
+export GREPPRG
+# }}}
+
 if [[ -e "$HOME/.local.env" ]]; then
   source "$HOME/.local.env"
 fi
