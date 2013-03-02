@@ -11,6 +11,12 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
 " Plugins {{{
+" Quickrun {{{
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'osyo-manga/shabadou.vim'
+" }}}
+" Text Object {{{
 NeoBundle 'kana/vim-textobj-user'
 
 NeoBundle 'h1mesuke/textobj-wiw'
@@ -22,33 +28,32 @@ NeoBundleLazy 'rhysd/vim-textobj-continuous-line'
 NeoBundleLazy 'rhysd/vim-textobj-ruby'
 NeoBundleLazy 'thinca/vim-textobj-between'
 NeoBundleLazy 'mattn/vim-textobj-url'
-
+" }}}
+" Operator {{{
 NeoBundle 'kana/vim-operator-user'
 NeoBundle 'emonkak/vim-operator-sort'
 NeoBundle 'kana/vim-operator-replace'
 NeoBundle 'tyru/operator-camelize.vim'
 NeoBundle 'tyru/operator-html-escape.vim'
-
+" }}}
+" Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
-
+" }}}
+" Unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'basyura/unite-rails'
-
+" }}}
+" Completion {{{
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-surround_custom_mapping'
-NeoBundle 'kana/vim-smartinput'
-NeoBundle 'sickill/vim-pasta'
-NeoBundleLazy 'mattn/zencoding-vim'
-NeoBundle 'kana/vim-smartchr'
-NeoBundle 'h1mesuke/vim-alignta'
-
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'teramako/jscomplete-vim'
+" }}}
+" Language, Format {{{
 NeoBundle 'bbommarito/vim-slim', { 'stay_same' : 1 }
 NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -63,10 +68,8 @@ NeoBundle 'juvenn/mustache.vim'
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'zaiste/tmux.vim'
 NeoBundle 'elixir-lang/vim-elixir'
-
-NeoBundle 'Lokaltog/vim-powerline', 'develop'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-
+" }}}
+" Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundleLazy 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
@@ -74,41 +77,45 @@ NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
 NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
 NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
 NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
-
-NeoBundle 'kana/vim-altr'
+" }}}
+" Visualize {{{
+NeoBundle 'Lokaltog/vim-powerline', 'develop'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundleLazy 'scrooloose/syntastic'
+NeoBundle 'jceb/vim-hier'
+NeoBundle 'dannyob/quickfixstatus'
+NeoBundle 'errormarker.vim'
+NeoBundle 'LeafCage/foldCC'
+NeoBundle 'tyru/current-func-info.vim'
+" }}}
+" Input & Edit {{{
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 'kana/vim-smartinput'
+NeoBundleLazy 'mattn/zencoding-vim'
+NeoBundle 'kana/vim-smartchr'
+NeoBundle 'sickill/vim-pasta'
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundleLazy 'thinca/vim-partedit'
-NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
-
+NeoBundle 'Lokaltog/vim-easymotion'
+" }}}
+" Organize {{{
+NeoBundle 'kana/vim-altr'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'Shougo/neobundle.vim'
+" }}}
+" Utility {{{
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \   'mac' : 'make -f make_mac.mak',
       \   'unix' : 'make -f make_unix.mak',
       \   },
       \ }
-
-NeoBundleLazy 'scrooloose/syntastic'
-
-NeoBundle 'tpope/vim-fugitive'
-
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'LeafCage/foldCC'
+NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
 NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'tyru/current-func-info.vim'
-
-NeoBundle 'kien/ctrlp.vim'
-
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'ujihisa/neco-look'
-
-NeoBundle 'Lokaltog/vim-easymotion'
-
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'osyo-manga/shabadou.vim'
-NeoBundle 'jceb/vim-hier'
-NeoBundle 'dannyob/quickfixstatus'
-
-NeoBundle 'teramako/jscomplete-vim'
-NeoBundle 'errormarker.vim'
+NeoBundle 'tpope/vim-fugitive'
+" }}}
 
 filetype plugin indent on
 " }}}
