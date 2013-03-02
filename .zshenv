@@ -85,6 +85,8 @@ GREPPRG=grep
 
 if /usr/bin/which -s ack; then
   GREPPRG=ack
+elif /usr/bin/which -s ag; then
+  GREPPRG=ag
 fi
 
 export GREPPRG
