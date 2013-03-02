@@ -77,6 +77,7 @@ NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
 NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
 NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
 NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
+NeoBundle 'w0ng/vim-hybrid'
 " }}}
 " Visualize {{{
 NeoBundle 'Lokaltog/vim-powerline', 'develop'
