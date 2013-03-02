@@ -340,6 +340,8 @@ augroup MyInit
   autocmd FileType html inoremap <buffer> = =
   " }}}
   " Hatena {{{
+  autocmd BufNewFile,BufRead *.hatena set filetype=hatena
+
   autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
   autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
   autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
