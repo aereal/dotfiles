@@ -51,16 +51,31 @@ NeoBundle 'basyura/unite-rails'
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle 'teramako/jscomplete-vim'
+NeoBundleLazy 'teramako/jscomplete-vim'
+call neobundle#config('jscomplete-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['javascript'],
+      \ },
+      \ })
 " }}}
 " Language, Format {{{
 NeoBundle 'bbommarito/vim-slim', { 'stay_same' : 1 }
 NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
-NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'hail2u/vim-css3-syntax'
+call neobundle#config('vim-css3-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['css', 'scss', 'sass', 'less'],
+      \ },
+      \ })
 NeoBundle 'hallison/vim-markdown', { 'stay_same' : 1 }
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim', { 'stay_same' : 1 }
-NeoBundle 'othree/html5.vim'
+NeoBundle 'motemen/hatena-vim'
+NeoBundleLazy 'othree/html5.vim'
+call neobundle#config('html5.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['html'],
+      \ }
+      \ })
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'vim-ruby/vim-ruby'
@@ -95,6 +110,16 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping'
 NeoBundle 'kana/vim-smartinput'
 NeoBundleLazy 'mattn/zencoding-vim'
+call neobundle#config('zencoding-vim', {
+      \ 'autoload' : {
+      \   'filetypes' : [
+      \     'html',
+      \     'haml',
+      \     'slim',
+      \     'css',
+      \   ],
+      \ },
+      \ })
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'sickill/vim-pasta'
 NeoBundle 'h1mesuke/vim-alignta'
