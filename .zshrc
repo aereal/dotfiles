@@ -321,6 +321,15 @@ autoload -U -z add-zsh-hooks
 add-zsh-hook chpwd abbreviated_ls
 # }}}
 
+# Switch local Perl {{{
+function switch-perl-version() { # {{{
+  if [[ -e ".perl-version" ]]; then
+    perlbrew use $(cat .perl-version)
+  fi
+} # }}}
+add-zsh-hook chpwd switch-perl-version
+# }}}
+
 # Update window title {{{
 function update_window_title() { # {{{
   emulate -L zsh
