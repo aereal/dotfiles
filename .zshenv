@@ -43,6 +43,7 @@ homebrew_path=(
   $HOMEBREW_HOME/bin(N-/)
 )
 system_path=(
+  /usr/local/mysql/bin(N-/)
   /usr/local/bin(N-/)
   /usr/bin(N-/)
   /bin(N-/)
