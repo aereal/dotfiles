@@ -560,24 +560,28 @@ unlet hier
 let watchdogs = neobundle#get('vim-watchdogs')
 function! watchdogs.hooks.on_source(bundle) " {{{
   let g:watchdogs_check_BufWritePost_enable = 1
-  let g:quickrun_config = {
-        \ 'watchdogs_checker/_' : {
+
+  if !exists('g:quickrun_config')
+    let g:quickrun_config = {}
+  endif
+
+  let g:quickrun_config['watchdogs_checker/_'] = {
         \   'hook/close_quickfix/enable_exit' : 1,
         \   'hook/hier_update/enable_exit' : 1,
         \   'runner/vimproc/updatetime' : 40,
         \   'hook/unite_quickfix/enable_failure' : 1,
         \   'hook/unite_quickfix/enable_success' : 1,
         \   'hook/unite_quickfix/unite_options' : '-no-quit -no-empty -auto-resize -resume -buffer-name=quickfix',
-        \ },
-        \ 'watchdogs_checker/perl-projectlibs' : {
+        \ }
+  let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
         \   'command' : 'perl',
         \   'exec' : '%c %o -cw -MProject::Libs %s:p',
         \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
-        \ },
-        \ 'perl/watchdogs_checker' : {
+        \ }
+  let g:quickrun_config['perl/watchdogs_checker'] = {
         \   'type' : 'watchdogs_checker/perl-projectlibs',
         \ }
-        \ }
+
   call watchdogs#setup(g:quickrun_config)
 endfunction " }}}
 unlet watchdogs
