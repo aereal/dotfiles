@@ -59,7 +59,7 @@ call neobundle#config('jscomplete-vim', {
       \ })
 " }}}
 " Language, Format {{{
-NeoBundle 'bbommarito/vim-slim', { 'stay_same' : 1 }
+NeoBundle 'slim-template/vim-slim'
 NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
 NeoBundleLazy 'hail2u/vim-css3-syntax'
 call neobundle#config('vim-css3-syntax', {
