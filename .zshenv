@@ -109,4 +109,11 @@ if [[ -e "$PERLBREW_ROOT/etc/bashrc" ]]; then
 fi
 # }}}
 
+# shared-mime-info {{{
+if /usr/bin/which -s update-mime-database; then
+  export XDG_DATA_HOME=$(brew --prefix shared-mime-info)/share
+  export XDG_DATA_DIRS=$(brew --prefix shared-mime-info)/share
+fi
+# }}}
+
 # vim:set ft=zsh:
