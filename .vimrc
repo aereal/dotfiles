@@ -530,6 +530,14 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
   nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
   nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
+  nnoremap <silent> <SID>[unite]g :<C-u>Unite grep -buffer-name=search<CR>
+
+  if executable('ag')
+    let g:unite_source_grep_command        = 'ag'
+    let g:unite_source_grep_default_opts   = '--nocolor --nogroup'
+    let g:unite_source_grep_recursive_opt  = ''
+    let g:unite_source_grep_max_candidates = 200
+  endif
 endfunction " }}}
 unlet unite
 " }}}
