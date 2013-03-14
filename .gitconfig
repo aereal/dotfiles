@@ -97,3 +97,5 @@
 	submodulesummary = true
 [interactive]
 	singlekey = true
+[ghq]
+	root = /Users/aereal/repos
