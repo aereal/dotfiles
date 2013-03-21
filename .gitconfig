@@ -68,6 +68,7 @@
 	whitespace = cr-at-eol
 	pager = $PAGER
 	precomposeunicode = true
+	excludesfile = ~/.global.gitignore
 [push]
 	default = tracking
 [branch]
