@@ -610,15 +610,6 @@ endfunction " }}}
 unlet operator_html_escape
 " }}}
 " smartinput {{{
-let smartinput = neobundle#get('vim-smartinput')
-function! smartinput.hooks.on_source(bundle) " {{{
-  call smartinput#define_rule({
-        \ 'at' : '\s\+\%#',
-        \ 'char' : '<CR>',
-        \ 'input' : "<C-o>:<C-u>call setline('.', getline('.', '\\s\\+$', '', ''))<CR><CR>",
-        \ })
-endfunction " }}}
-unlet smartinput
 " }}}
 " }}}
 " Colorscheme {{{
