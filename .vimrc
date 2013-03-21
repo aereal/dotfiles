@@ -191,7 +191,6 @@ set list
 set listchars=tab:>.,precedes:<,extends:>,eol:↵
 " }}}
 " UI {{{
-lang en_US.UTF-8
 
 set langmenu=none " メニューをローカライズしない
 set laststatus=2
