@@ -1,0 +1,7 @@
+# vim:set ft=snippet noet:
+snippet plugin_config
+	let ${2:symbol} = neobundle#get('${1:plugin_name}')
+	function! $2.hooks.on_source(bundle) " {{{
+		${3:TARGET}
+	endfunction " }}}
+	unlet $2
