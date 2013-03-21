@@ -99,3 +99,5 @@
 	singlekey = true
 [ghq]
 	root = /Users/aereal/repos
+[diff "gzip"]
+	textconv = gzcat
