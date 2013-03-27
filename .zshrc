@@ -196,6 +196,22 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 # }}}
 
+# Functions {{{
+alias processes='ps aux | grep -v "grep" | grep -v "ps aux"'
+
+function ps-cpu() { # {{{
+  local count=${1:-10}
+  processes | head -n 1 # Heading
+  processes | sort --reverse --numeric-sort --key 3 | head -n $count
+} # }}}
+
+function ps-mem() { # {{{
+  local count=${1:-10}
+  processes | head -n 1 # Heading
+  processes | sort --reverse --numeric-sort --key 4 | head -n $count
+} # }}}
+# }}}
+
 # Prompt {{{
 autoload -U promptinit; promptinit
 
