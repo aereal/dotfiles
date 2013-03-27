@@ -614,7 +614,7 @@ unlet operator_html_escape
 " Colorscheme {{{
 if $DARK
   set bg=dark
-  colorscheme desert256mod
+  colorscheme railscasts
 else
   set bg=light
   colorscheme solarized
