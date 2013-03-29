@@ -396,6 +396,13 @@ alias :q=exit
 alias ql='qlmanage -p "$@" >& /dev/null'
 
 if [[ -d "$HOMEBREW_HOME/opt/coreutils" ]]; then
+  for coreutil in $HOMEBREW_HOME/opt/coreutils/bin/*(*); do
+    coreutil_basename=${coreutil:t:s/g//}
+    if (( ! ${+builtins[$coreutil_basename]} )); then
+      eval "alias ${coreutil_basename}=${coreutil}"
+    fi
+  done
+
   alias  l='gls --color=auto -AF'
   alias ls='gls --color=auto -AF'
   alias ll='gls --color=auto -AFl'
