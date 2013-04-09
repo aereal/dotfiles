@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+
+open_command=''
+open_args=''
+
+if /usr/bin/which -s open; then
+  open_command='open'
+  open_args=''
+fi
+
+if [[ ! -x =$open_command ]]; then
+  echo "open-able command is not found." > /dev/stderr
+  exit 1
+fi
+
+$open_command $open_args "http://metacpan.org/module/$1"
