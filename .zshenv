@@ -99,7 +99,7 @@ fi
 
 # rbenv {{{
 if /usr/bin/which -s rbenv; then
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - --no-rehash)"
 fi
 # }}}
 
