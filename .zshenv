@@ -1,5 +1,5 @@
 export ZSH_HOME=$HOME/.zsh.d
-export HOMEBREW_HOME=$HOME/Homebrew
+export HOMEBREW_HOME=$HOME/opt/homebrew
 export RBENV_HOME=$HOME/.rbenv
 export PERLBREW_ROOT=$HOME/.perlbrew
 
