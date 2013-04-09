@@ -242,8 +242,8 @@ function update_prompt() { # {{{
   # }}}
 
   # Perl version {{{
-  if [[ -n "$PERLBREW_PERL" ]]; then
-    _perl_version_string="Perl: ${PERLBREW_PERL#perl-}"
+  if [[ -e "$HOME/.plenv/version" ]]; then
+    _perl_version_string="Perl: $(cat $HOME/.plenv/version)"
     perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
   fi
   # }}}
@@ -338,12 +338,6 @@ add-zsh-hook chpwd abbreviated_ls
 # }}}
 
 # Switch local Perl {{{
-function switch-perl-version() { # {{{
-  if [[ -e ".perl-version" ]]; then
-    perlbrew use $(cat .perl-version)
-  fi
-} # }}}
-add-zsh-hook chpwd switch-perl-version
 # }}}
 
 # Update window title {{{

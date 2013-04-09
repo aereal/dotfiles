@@ -1,7 +1,7 @@
 export ZSH_HOME=$HOME/.zsh.d
 export HOMEBREW_HOME=$HOME/opt/homebrew
 export RBENV_HOME=$HOME/.rbenv
-export PERLBREW_ROOT=$HOME/.perlbrew
+export PLENV_HOME=$HOME/.plenv
 
 if [[ -e "$HOMEBREW_HOME/opt/macvim/MacVim.app" ]]; then
   export EDITOR="$HOMEBREW_HOME/opt/macvim/MacVim.app/Contents/MacOS/Vim"
@@ -24,17 +24,17 @@ typeset -Ua \
   user_path \
   homebrew_path \
   rbenv_path \
+  plenv_path \
   sudo_path \
   system_path
 user_path=(
   $HOME/bin(N-/)
 )
 rbenv_path=(
-  $RBENV_HOME/bin(N-/)
   $RBENV_HOME/shims(N-/)
 )
-perlbrew_path=(
-  $PERLBREW_ROOT/bin(N-/)
+plenv_path=(
+  $PLENV_HOME/shims(N-/)
 )
 homebrew_path=(
   $HOMEBREW_HOME/share/npm/bin(N-/)
@@ -57,6 +57,7 @@ typeset -U path
 path=(
   $user_path
   $rbenv_path
+  $plenv_path
   $homebrew_path
   $system_path
   $sudo_path
@@ -102,11 +103,6 @@ if /usr/bin/which -s rbenv; then
 fi
 # }}}
 
-# perlbrew {{{
-if [[ -e "$PERLBREW_ROOT/etc/bashrc" ]]; then
-  source "$PERLBREW_ROOT/etc/bashrc"
-fi
-# }}}
 
 # shared-mime-info {{{
 if /usr/bin/which -s update-mime-database; then
