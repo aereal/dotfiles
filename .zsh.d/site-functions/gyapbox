@@ -2,6 +2,11 @@
 
 function gyapbox() {
   local base_dir=~/Dropbox/Public/g
+  local enable_notify=0
+
+  if /usr/bin/which -s terminal-notifier; then
+    enable_notify=1
+  fi
 
   if [[ -z "$DROPBOX_USER_ID" ]]; then
     echo "\$DROPBOX_USER_ID must be specified"
@@ -21,7 +26,20 @@ function gyapbox() {
 
   local timestamp_hash="$(date +%s | md5)"
   local image_filename="${timestamp_hash}.png"
+  local image_path="$base_dir/$image_filename"
+
+  if [ $enable_notify ]; then
+    terminal-notifier -message "Take a screen capture" -title "Gyapbox"
+  fi
   screencapture $preview -i "$base_dir/$image_filename"
 
-  echo -n "http://dl.dropbox.com/u/$DROPBOX_USER_ID/g/$image_filename" | pbcopy
+  if [[ -e "$image_path" ]]; then
+    local url="http://dl.dropbox.com/u/$DROPBOX_USER_ID/g/$image_filename"
+
+    if [ $enable_notify ] && [[ -n "$url" ]]; then
+      terminal-notifier -message "Captured" -title "Gyapbox" -open "$url"
+    fi
+
+    echo -n $url | pbcopy
+  fi
 }
