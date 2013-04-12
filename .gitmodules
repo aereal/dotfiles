@@ -1,6 +1,3 @@
-[submodule "colors/magica"]
-	path = colors/magica
-	url = git@github.com:aereal/magica-colors.git
 [submodule "colors/solarized-terminal-app"]
 	path = colors/solarized-terminal-app
 	url = git://github.com/tomislav/osx-lion-terminal.app-colors-solarized.git
