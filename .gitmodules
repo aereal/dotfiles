@@ -1,6 +1,3 @@
-[submodule "colors/solarized-terminal-app"]
-	path = colors/solarized-terminal-app
-	url = git://github.com/tomislav/osx-lion-terminal.app-colors-solarized.git
 [submodule "colors/dircolors-solarized"]
 	path = colors/dircolors-solarized
 	url = git://github.com/seebi/dircolors-solarized.git
