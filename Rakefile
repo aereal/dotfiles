@@ -2,6 +2,7 @@
 
 HOME = ENV['HOME']
 SRC_DIR = File.dirname(File.expand_path(__FILE__))
+REPOSITORY = SRC_DIR
 DST_DIR = HOME
 DOTFILES = %w(
   .caprc
@@ -33,5 +34,23 @@ desc "Show all dotfiles"
 task :list do
   DOTFILES.each do |dotfile|
     puts dotfile
+  end
+end
+
+if dircolors = %w( gdircolors dircolors ).find {|cmd| system "which #{cmd} >/dev/null" }
+  namespace :dircolors_solarized do
+    Dir["#{REPOSITORY}/colors/dircolors-solarized/dircolors.*"].each do |dircolor_file|
+      name = File.basename(dircolor_file).gsub(/dircolors\./, '').gsub(/\W/, '_')
+
+      namespace name do
+        desc "Install #{name}"
+        task :install do
+          ret = `#{dircolors} #{dircolor_file} 2>/dev/null`.strip
+          open("#{HOME}/.dircolors", "w") do |f|
+            f << ret
+          end
+        end
+      end
+    end
   end
 end
