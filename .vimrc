@@ -95,7 +95,7 @@ NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
 NeoBundle 'w0ng/vim-hybrid'
 " }}}
 " Visualize {{{
-NeoBundle 'Lokaltog/vim-powerline', 'develop'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
@@ -539,14 +539,6 @@ function! unite.hooks.on_source(bundle) " {{{
   endif
 endfunction " }}}
 unlet unite
-" }}}
-" vim-powerline {{{
-let powerline = neobundle#get('vim-powerline')
-function! powerline.hooks.on_source(bundle) " {{{
-  let g:Powerline_symbols = 'fancy'
-  let g:Powerline_mode_n = ' N '
-endfunction " }}}
-unlet powerline
 " }}}
 " foldCC {{{
 let foldCC = neobundle#get('foldCC')
