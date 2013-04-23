@@ -243,7 +243,7 @@ function update_prompt() { # {{{
 
   # Perl version {{{
   if [[ -e "$HOME/.plenv/version" ]]; then
-    _perl_version_string="Perl: $(cat $HOME/.plenv/version)"
+    _perl_version_string="Perl: $(plenv version | sed -e 's/ (.*)//g')"
     perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
   fi
   # }}}
