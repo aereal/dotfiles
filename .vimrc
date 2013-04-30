@@ -83,6 +83,7 @@ NeoBundle 'juvenn/mustache.vim'
 NeoBundle 'davidoc/taskpaper.vim'
 NeoBundle 'zaiste/tmux.vim'
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'moznion/vim-cpanfile'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
@@ -349,6 +350,9 @@ augroup MyInit
   autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
   autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
 
+  autocmd BufNewFile,BufRead cpanfile set filetype=cpanfile
+  autocmd BufNewFile,BufRead cpanfile set syntax=perl.cpanfile
+
   autocmd BufEnter *.tt    set ft=tt2
   " }}}
   " Vim {{{
@@ -392,6 +396,9 @@ augroup END
 " Plugin Configurations {{{
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
+if !exists('g:neocomplcache_dictionary_filetype_lists')
+  let g:neocomplcache_dictionary_filetype_lists = {}
+endif
 
 let neocomplcache = neobundle#get('neocomplcache')
 function! neocomplcache.hooks.on_source(bundle) " {{{
@@ -601,6 +608,17 @@ endfunction " }}}
 unlet operator_html_escape
 " }}}
 " smartinput {{{
+" }}}
+" vim-cpanfile {{{
+let cpanfile = neobundle#get('vim-cpanfile')
+function! cpanfile.hooks.on_source(bundle) " {{{
+  if !exists('g:neocomplcache_dictionary_filetype_lists')
+    let g:neocomplcache_dictionary_filetype_lists = {}
+  endif
+
+  let g:neocomplcache_dictionary_filetype_lists['cpanfile'] = a:bundle.path . '/dict/cpanfile.dict'
+endfunction " }}}
+unlet cpanfile
 " }}}
 " }}}
 " Colorscheme {{{
