@@ -44,9 +44,11 @@ git_info() { # {{{
   revs_count=$(echo "${remote_local_revs}" | sed -e '/^$/d' | wc -l)
   ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
   behind=$((${revs_count} - ${ahead}))
+  local ahead_commits_color="${fg[green]}"
+  local behind_commits_color="${fg[red]}"
 
-  ahead="%{${fg[blue]}%}+${ahead}%f%b"
-  behind="%{${fg[red]}%}-${behind}%f%b"
+  ahead="%{$ahead_commits_color%}+${ahead}%f%b"
+  behind="%{$behind_commits_color%}-${behind}%f%b"
   behind_and_ahead=" ${ahead} ${behind}"
   # }}}
 
