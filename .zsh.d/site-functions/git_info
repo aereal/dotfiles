@@ -2,7 +2,7 @@
 
 git_info() { # {{{
   # http://d.hatena.ne.jp/uasi/20091025/1256458798
-  if [[ "$PWD" =~ '\.git(/.*)?$' || ! -d "${PWD}/.git" ]]; then
+  if [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) != "true" ]]; then
     return
   fi
 
