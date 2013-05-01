@@ -22,7 +22,6 @@ git_info() { # {{{
     current_remote \
     merge_name \
     remote_ref \
-    remote_local_revs \
     revs_count \
     behind \
     ahead \
@@ -31,21 +30,26 @@ git_info() { # {{{
   current_remote=$($git config branch.${name}.remote 2> /dev/null)
   merge_name=$($git config branch.${name}.merge 2> /dev/null)
 
+  local -a remote_local_revs
   if [[ "." = "$current_remote" ]] || [[ "x" = "x$current_remote" ]]; then
     # Clone from local
     remote_ref=$merge_name
-    remote_local_revs=$($git rev-list --left-right ${merge_name}...HEAD)
+    remote_local_revs=($($git rev-list --left-right ${merge_name}...HEAD))
   else
     remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
-    remote_local_revs=$($git rev-list --left-right ${remote_ref}...HEAD)
+    remote_local_revs=($($git rev-list --left-right ${remote_ref}...HEAD))
   fi
 
-  # TODO echo 使わなければ sed 使わなくていい気がする
-  revs_count=$(echo "${remote_local_revs}" | sed -e '/^$/d' | wc -l)
-  ahead=$(echo "${remote_local_revs}" | grep '^>' | wc -l)
-  behind=$((${revs_count} - ${ahead}))
   local ahead_commits_color="${fg[green]}"
   local behind_commits_color="${fg[red]}"
+
+  revs_count=$#remote_local_revs
+
+  local -a behind_commits ahead_commits
+  behind_commits=(${(M)remote_local_revs:#<*})
+  ahead_commits=(${(M)remote_local_revs:#>*})
+  ahead=$#ahead_commits
+  behind=$#behind_commits
 
   ahead="%{$ahead_commits_color%}+${ahead}%f%b"
   behind="%{$behind_commits_color%}-${behind}%f%b"
