@@ -23,8 +23,8 @@ git_info() { # {{{
     merge_name \
     remote_ref \
     revs_count \
-    behind \
-    ahead \
+    behind_count \
+    ahead_count \
     behind_and_ahead
 
   current_remote=$($git config branch.${name}.remote 2> /dev/null)
@@ -42,18 +42,23 @@ git_info() { # {{{
 
   local ahead_commits_color="${fg[green]}"
   local behind_commits_color="${fg[red]}"
+  local ahead_annotation="+"
+  local behind_annotation="-"
 
   revs_count=$#remote_local_revs
 
   local -a behind_commits ahead_commits
   behind_commits=(${(M)remote_local_revs:#<*})
   ahead_commits=(${(M)remote_local_revs:#>*})
-  ahead=$#ahead_commits
-  behind=$#behind_commits
+  ahead_count=$#ahead_commits
+  behind_count=$#behind_commits
 
-  ahead="%{$ahead_commits_color%}+${ahead}%f%b"
-  behind="%{$behind_commits_color%}-${behind}%f%b"
-  behind_and_ahead=" ${ahead} ${behind}"
+  if [[ $ahead_count -gt 0 ]]; then
+    behind_and_ahead="${behind_and_ahead} %{$ahead_commits_color%}${ahead_annotation}${ahead_count}%f%b"
+  fi
+  if [[ $behind_count -gt 0 ]]; then
+    behind_and_ahead="${behind_and_ahead} %{$behind_commits_color%}${behind_annotation}${behind_count}%f%b"
+  fi
   # }}}
 
   # stashes count {{{
