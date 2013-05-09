@@ -6,7 +6,7 @@
 [github]
 	user = aereal
 [alias]
-	st = status --short --branch
+	st = status --short --ignore-submodules --untracked-files
 	df = diff
 	ci = commit
 	co = checkout
