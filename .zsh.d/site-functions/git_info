@@ -30,14 +30,17 @@ git_info() { # {{{
   current_remote=$($git config branch.${name}.remote 2> /dev/null)
   merge_name=$($git config branch.${name}.merge 2> /dev/null)
 
+  local is_tracked
   local -a remote_local_revs
   if [[ "." = "$current_remote" ]] || [[ "x" = "x$current_remote" ]]; then
     # Clone from local
     remote_ref=$merge_name
     remote_local_revs=($($git rev-list --left-right ${merge_name}...HEAD))
+    is_tracked=""
   else
     remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
     remote_local_revs=($($git rev-list --left-right ${remote_ref}...HEAD))
+    is_tracked=" (tracked)"
   fi
 
   local ahead_commits_color="${fg[green]}"
@@ -96,5 +99,5 @@ git_info() { # {{{
     color=%F{green}
   fi
 
-  echo "${color}${name}${action}${annotation}${behind_and_ahead}${stashes}%f%b"
+  echo "${color}${name}${action}${annotation}${behind_and_ahead}${stashes}%f%b${is_tracked}"
 } # }}}
