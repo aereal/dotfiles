@@ -319,14 +319,6 @@ augroup MyInit
   if ! has('gui_running')
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
   endif " }}}
-  " JavaScript {{{
-  autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-  autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
-  " }}}
-  " Ruby {{{
-  autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-  autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
-  " }}}
   " CoffeeScript {{{
   autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
   " }}}
@@ -334,9 +326,6 @@ augroup MyInit
   autocmd FileType haskell setlocal et
   " }}}
   " Perl {{{
-  autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-  autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
-
   autocmd BufNewFile,BufRead cpanfile set filetype=cpanfile
   autocmd BufNewFile,BufRead cpanfile set syntax=perl.cpanfile
 
@@ -510,6 +499,21 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
   nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
   nnoremap <silent> <SID>[unite]g :<C-u>Unite grep -buffer-name=search<CR>
+
+  " JavaScript {{{
+  autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+  autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
+  " }}}
+
+  " Ruby {{{
+  autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+  autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
+  " }}}
+
+  " Perl {{{
+  autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+  autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
+  " }}}
 endfunction " }}}
 unlet unite
 " }}}
