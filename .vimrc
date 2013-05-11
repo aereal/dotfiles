@@ -399,31 +399,29 @@ let g:neocomplcache_enable_at_startup = 1
 if !exists('g:neocomplcache_dictionary_filetype_lists')
   let g:neocomplcache_dictionary_filetype_lists = {}
 endif
+let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_vim_completefuncs = {
+      \ 'Ref' : 'ref#complete',
+      \ 'Unite' : 'unite#complete_source',
+      \}
+
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" Delimiter {{{
+if !exists('g:neocomplcache_delimiter_patterns')
+    let g:neocomplcache_delimiter_patterns = {}
+endif
+
+let g:neocomplcache_delimiter_patterns.vim = ['#']
+let g:neocomplcache_delimiter_patterns.ruby = ['::']
+let g:neocomplcache_delimiter_patterns.perl = ['::']
+" }}}
 
 let neocomplcache = neobundle#get('neocomplcache')
 function! neocomplcache.hooks.on_source(bundle) " {{{
-  let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
-  let g:neocomplcache_min_syntax_length = 3
-  let g:neocomplcache_vim_completefuncs = {
-        \ 'Ref' : 'ref#complete',
-        \ 'Unite' : 'unite#complete_source',
-        \}
-
-  if !exists('g:neocomplcache_keyword_patterns')
-      let g:neocomplcache_keyword_patterns = {}
-  endif
-  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-  " Delimiter {{{
-  if !exists('g:neocomplcache_delimiter_patterns')
-      let g:neocomplcache_delimiter_patterns = {}
-  endif
-
-  let g:neocomplcache_delimiter_patterns.vim = ['#']
-  let g:neocomplcache_delimiter_patterns.ruby = ['::']
-  let g:neocomplcache_delimiter_patterns.perl = ['::']
-  " }}}
-
   inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
   inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
   inoremap <expr><C-g> neocomplcache#undo_completion()
@@ -431,23 +429,18 @@ endfunction " }}}
 unlet neocomplcache
 " }}}
 " neosnippet {{{
+let g:neosnippet#disable_select_mode_mappings = 0
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
+
 let neosnippet = neobundle#get('neosnippet')
 function! neosnippet.hooks.on_source(bundle) " {{{
-  let g:neosnippet#disable_select_mode_mappings = 0
-  let g:neosnippet#snippets_directory = '~/.vim/snippets'
-
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
   smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 endfunction " }}}
 unlet neosnippet
 " }}}
 " syntastic {{{
-let syntastic = neobundle#get('syntastic')
-function! syntastic.hooks.on_source(bundle) " {{{
-  let g:syntastic_auto_loc_list  = 2
-  " let g:syntastic_perl_efm_program = $HOME . '/.vim/bin/efm_perl.pl'
-endfunction " }}}
-unlet syntastic
+let g:syntastic_auto_loc_list = 2
 " }}}
 " fugitive {{{
 let fugitive = neobundle#get('vim-fugitive')
@@ -470,49 +463,42 @@ endfunction " }}}
 unlet fugitive
 " }}}
 " surround_custom_mapping {{{
-let surround = neobundle#get('vim-surround')
-function! surround.hooks.on_source(bundle) " {{{
-  let g:surround_custom_mapping = {}
-  let g:surround_custom_mapping.ruby  = {
-    \ '#': "#{\r}",
-    \ '3': "#{\r}",
-    \ '5': "%(\r)",
-    \ '%': "%(\r)",
-    \ 'w': "%w(\r)",
-    \ }
-  let g:surround_custom_mapping.eruby = {
-    \ '-': "<% \r %>",
-    \ '=': "<%= \r %>",
-    \ '#': "#{\r}",
-    \ }
-  let g:surround_custom_mapping.tt2 = {
-        \ '%': "[% \r %]",
-        \ }
-  let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
-endfunction " }}}
-unlet surround
+let g:surround_custom_mapping = {}
+let g:surround_custom_mapping.ruby  = {
+  \ '#': "#{\r}",
+  \ '3': "#{\r}",
+  \ '5': "%(\r)",
+  \ '%': "%(\r)",
+  \ 'w': "%w(\r)",
+  \ }
+let g:surround_custom_mapping.eruby = {
+  \ '-': "<% \r %>",
+  \ '=': "<%= \r %>",
+  \ '#': "#{\r}",
+  \ }
+let g:surround_custom_mapping.tt2 = {
+      \ '%': "[% \r %]",
+      \ }
+let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
 " }}}
 " zencoding-vim {{{
-let zencoding = neobundle#get('zencoding-vim')
-function! zencoding.hooks.on_source(bundle) " {{{
-  let g:user_zen_leader_key = '<C-e>'
-  let g:user_zen_settings = {
-        \ 'indentation': ' ',
-        \ }
-endfunction " }}}
-unlet zencoding
+let g:user_zen_leader_key = '<C-e>'
+let g:user_zen_settings = {
+      \ 'indentation': ' ',
+      \ }
 " }}}
 " ref-vim {{{
-let ref_vim = neobundle#get('vim-ref')
-function! ref_vim.hooks.on_source(bundle) " {{{
-  " let g:ref_jquery_doc_path = $HOME . '/Downloads/jqapi-latest'
-  " let g:ref_jquery_use_cache = 1
-  let g:ref_cache_dir = $HOME . '/.vim/.ref'
-endfunction " }}}
-unlet ref_vim
+let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
+
+if executable('ag')
+  let g:unite_source_grep_command        = 'ag'
+  let g:unite_source_grep_default_opts   = '--nocolor --nogroup'
+  let g:unite_source_grep_recursive_opt  = ''
+  let g:unite_source_grep_max_candidates = 200
+endif
 
 let unite = neobundle#get('unite.vim')
 function! unite.hooks.on_source(bundle) " {{{
@@ -540,13 +526,6 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
   nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
   nnoremap <silent> <SID>[unite]g :<C-u>Unite grep -buffer-name=search<CR>
-
-  if executable('ag')
-    let g:unite_source_grep_command        = 'ag'
-    let g:unite_source_grep_default_opts   = '--nocolor --nogroup'
-    let g:unite_source_grep_recursive_opt  = ''
-    let g:unite_source_grep_max_candidates = 200
-  endif
 endfunction " }}}
 unlet unite
 " }}}
@@ -559,48 +538,40 @@ endfunction " }}}
 unlet foldCC
 " }}}
 " hier {{{
-let hier = neobundle#get('vim-hier')
-function! hier.hooks.on_source(bundle) " {{{
-  let g:hier_enabled = 1
-endfunction " }}}
-unlet hier
+let g:hier_enabled = 1
 " }}}
 " watchdogs -- 構文検証 {{{
+let g:watchdogs_check_BufWritePost_enable = 1
+
+if !exists('g:quickrun_config')
+  let g:quickrun_config = {}
+endif
+
+let g:quickrun_config['watchdogs_checker/_'] = {
+      \   'hook/close_quickfix/enable_exit' : 1,
+      \   'hook/hier_update/enable_exit' : 1,
+      \   'runner/vimproc/updatetime' : 40,
+      \   'hook/unite_quickfix/enable_failure' : 1,
+      \   'hook/unite_quickfix/enable_success' : 1,
+      \   'hook/unite_quickfix/unite_options' : '-no-quit -no-empty -auto-resize -resume -buffer-name=quickfix',
+      \ }
+let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
+      \   'command' : 'perl',
+      \   'exec' : '%c %o -cw -MProject::Libs %s:p',
+      \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+      \ }
+let g:quickrun_config['perl/watchdogs_checker'] = {
+      \   'type' : 'watchdogs_checker/perl-projectlibs',
+      \ }
+
 let watchdogs = neobundle#get('vim-watchdogs')
 function! watchdogs.hooks.on_source(bundle) " {{{
-  let g:watchdogs_check_BufWritePost_enable = 1
-
-  if !exists('g:quickrun_config')
-    let g:quickrun_config = {}
-  endif
-
-  let g:quickrun_config['watchdogs_checker/_'] = {
-        \   'hook/close_quickfix/enable_exit' : 1,
-        \   'hook/hier_update/enable_exit' : 1,
-        \   'runner/vimproc/updatetime' : 40,
-        \   'hook/unite_quickfix/enable_failure' : 1,
-        \   'hook/unite_quickfix/enable_success' : 1,
-        \   'hook/unite_quickfix/unite_options' : '-no-quit -no-empty -auto-resize -resume -buffer-name=quickfix',
-        \ }
-  let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
-        \   'command' : 'perl',
-        \   'exec' : '%c %o -cw -MProject::Libs %s:p',
-        \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
-        \ }
-  let g:quickrun_config['perl/watchdogs_checker'] = {
-        \   'type' : 'watchdogs_checker/perl-projectlibs',
-        \ }
-
   call watchdogs#setup(g:quickrun_config)
 endfunction " }}}
 unlet watchdogs
 " }}}
 " indent-guides {{{
-let indent_guides = neobundle#get('vim-indent-guides')
-function! indent_guides.hooks.on_source(bundle) " {{{
-  let g:indent_guides_enable_on_vim_startup = 1
-endfunction " }}}
-unlet indent_guides
+let g:indent_guides_enable_on_vim_startup = 1
 " }}}
 " operator-html-escape {{{
 let operator_html_escape = neobundle#get('operator-html-escape.vim')
@@ -613,15 +584,9 @@ unlet operator_html_escape
 " smartinput {{{
 " }}}
 " vim-cpanfile {{{
-let cpanfile = neobundle#get('vim-cpanfile')
-function! cpanfile.hooks.on_source(bundle) " {{{
-  if !exists('g:neocomplcache_dictionary_filetype_lists')
-    let g:neocomplcache_dictionary_filetype_lists = {}
-  endif
-
-  let g:neocomplcache_dictionary_filetype_lists['cpanfile'] = a:bundle.path . '/dict/cpanfile.dict'
-endfunction " }}}
-unlet cpanfile
+if !exists('g:neocomplcache_dictionary_filetype_lists')
+  let g:neocomplcache_dictionary_filetype_lists = {}
+endif
 " }}}
 " }}}
 " Colorscheme {{{
