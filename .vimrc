@@ -365,9 +365,6 @@ augroup MyInit
   autocmd BufEnter */Hatena/*.html     set ft=tt2html
   autocmd BufEnter */Hatena/*.tt       set ft=tt2html
   " }}}
-  " Source zencoding.vim {{{
-  autocmd FileType html,tt2html,eruby,css,sass,scss,slim,haml NeoBundleSource zencoding-vim
-  " }}}
   " AutoCursorLine {{{
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
   autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
