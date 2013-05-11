@@ -320,33 +320,20 @@ augroup MyInit
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
   endif " }}}
   " JavaScript {{{
-  autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-  autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
   " }}}
   " Ruby {{{
-  autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-  autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
   autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
   autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
   " }}}
   " CoffeeScript {{{
-  autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-  autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-
   autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
   " }}}
   " Haskell {{{
   autocmd FileType haskell setlocal et
-  autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-  autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-  autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
   " }}}
   " Perl {{{
-  autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-  autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-  autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
   autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
   autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
 
@@ -587,6 +574,24 @@ unlet operator_html_escape
 if !exists('g:neocomplcache_dictionary_filetype_lists')
   let g:neocomplcache_dictionary_filetype_lists = {}
 endif
+" }}}
+" vim-smartchr {{{
+let smartchr = neobundle#get('vim-smartchr')
+function! smartchr.hooks.on_source(bundle)
+  autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+  autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+  autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+  autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+  autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+  autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+  autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+  autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+  autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+  autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+  autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+endfunction
+unlet smartchr
 " }}}
 " }}}
 " Colorscheme {{{
