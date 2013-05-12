@@ -126,6 +126,7 @@ NeoBundle 'sickill/vim-pasta'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundleLazy 'thinca/vim-partedit'
 NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
 NeoBundle 'kana/vim-altr'
@@ -593,6 +594,17 @@ function! smartchr.hooks.on_source(bundle)
   autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 endfunction
 unlet smartchr
+" }}}
+" eskk.vim {{{
+let eskk = neobundle#get('eskk.vim')
+function! eskk.hooks.on_source(bundle) " {{{
+  let g:eskk#directory = expand('~/.vim/.eskk')
+  let g:eskk#dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
+  let g:eskk#large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+
+  imap <C-o> <Plug>(eskk:toggle)
+endfunction " }}}
+unlet eskk
 " }}}
 " }}}
 " Colorscheme {{{
