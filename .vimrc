@@ -190,7 +190,7 @@ set wrapscan
 " Visualization {{{
 set ambiwidth=double
 set list
-set listchars=tab:>.,precedes:<,extends:>,eol:↵
+set listchars=tab:>.,precedes:<,extends:>,eol:$,trail:_
 " }}}
 " UI {{{
 
