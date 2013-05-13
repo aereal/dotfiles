@@ -599,8 +599,17 @@ unlet smartchr
 let eskk = neobundle#get('eskk.vim')
 function! eskk.hooks.on_source(bundle) " {{{
   let g:eskk#directory = expand('~/.vim/.eskk')
-  let g:eskk#dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
-  let g:eskk#large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+
+  let user_dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
+  let large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+
+  if filereadable(user_dictionary)
+    let g:eskk#dictionary = user_dictionary
+  endif
+
+  if filereadable(large_dictionary)
+    let g:eskk#large_dictionary = large_dictionary
+  endif
 
   imap <C-o> <Plug>(eskk:toggle)
 endfunction " }}}
