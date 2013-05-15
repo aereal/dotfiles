@@ -70,7 +70,7 @@
 	precomposeunicode = true
 	excludesfile = ~/.global.gitignore
 [push]
-	default = tracking
+	default = simple
 [branch]
 	autosetuprebase = always
 [gitflow "branch"]
