@@ -190,10 +190,9 @@ set wrapscan
 " Visualization {{{
 set ambiwidth=double
 set list
-set listchars=tab:>.,precedes:<,extends:>,eol:$,trail:_
+set listchars=tab:>.,precedes:<,extends:>,trail:_
 " }}}
 " UI {{{
-
 set langmenu=none " メニューをローカライズしない
 set laststatus=2
 set number
