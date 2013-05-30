@@ -396,8 +396,8 @@ let g:neocomplcache_delimiter_patterns.perl = ['::']
 
 let neocomplcache = neobundle#get('neocomplcache')
 function! neocomplcache.hooks.on_source(bundle) " {{{
-  inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+  inoremap <expr><C-h> neocomplcache#smart_close_popup() . eval(smartinput#sid() . '_trigger_or_fallback("\<BS>", "\<C-h>")')
+  inoremap <expr><BS>  neocomplcache#smart_close_popup() . eval(smartinput#sid() . '_trigger_or_fallback("\<BS>", "\<BS>")')
   inoremap <expr><C-g> neocomplcache#undo_completion()
 endfunction " }}}
 unlet neocomplcache
