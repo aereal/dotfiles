@@ -30,11 +30,11 @@ NeoBundleLazy 'thinca/vim-textobj-between'
 NeoBundleLazy 'mattn/vim-textobj-url'
 " }}}
 " Operator {{{
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'emonkak/vim-operator-sort'
-NeoBundle 'kana/vim-operator-replace'
-NeoBundle 'tyru/operator-camelize.vim'
-NeoBundle 'tyru/operator-html-escape.vim'
+NeoBundleLazy 'kana/vim-operator-user'
+NeoBundleLazy 'emonkak/vim-operator-sort'
+NeoBundleLazy 'kana/vim-operator-replace'
+NeoBundleLazy 'tyru/operator-camelize.vim'
+NeoBundleLazy 'tyru/operator-html-escape.vim'
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -46,7 +46,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'basyura/unite-rails'
+NeoBundleLazy 'basyura/unite-rails'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
@@ -79,10 +79,10 @@ call neobundle#config('html5.vim', {
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'juvenn/mustache.vim'
-NeoBundle 'davidoc/taskpaper.vim'
-NeoBundle 'zaiste/tmux.vim'
-NeoBundle 'elixir-lang/vim-elixir'
+NeoBundleLazy 'juvenn/mustache.vim'
+NeoBundleLazy 'davidoc/taskpaper.vim'
+NeoBundleLazy 'zaiste/tmux.vim'
+NeoBundleLazy 'elixir-lang/vim-elixir'
 NeoBundle 'moznion/vim-cpanfile'
 " }}}
 " Color {{{
@@ -90,9 +90,9 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundleLazy 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
-NeoBundle 'tomasr/molokai', { 'stay_same' : 1 }
+NeoBundleLazy 'tomasr/molokai', { 'stay_same' : 1 }
 NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
-NeoBundle 'sickill/vim-monokai', { 'stay_same' : 1 }
+NeoBundleLazy 'sickill/vim-monokai', { 'stay_same' : 1 }
 NeoBundle 'w0ng/vim-hybrid'
 " }}}
 " Visualize {{{
@@ -129,8 +129,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
-NeoBundle 'kana/vim-altr'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundleLazy 'kana/vim-altr'
+NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundle 'Shougo/neobundle.vim'
 " }}}
 " Utility {{{
