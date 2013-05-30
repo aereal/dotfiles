@@ -615,6 +615,16 @@ function! eskk.hooks.on_source(bundle) " {{{
 endfunction " }}}
 unlet eskk
 " }}}
+" vim-easymotion {{{
+let g:EasyMotion_keys = 'jfkdls:ahgJFKDLS;AHG'
+let g:EasyMotion_do_mapping = 0
+
+let g:EasyMotion_mapping_w = 'w'
+let g:EasyMotion_mapping_b = 'b'
+let g:EasyMotion_mapping_e = 'e'
+let g:EasyMotion_mapping_j = 'j'
+let g:EasyMotion_mapping_k = 'k'
+" }}}
 " vim-localrc {{{
 let localrc = neobundle#get('vim-localrc')
 function! localrc.hooks.on_source(bundle) " {{{
