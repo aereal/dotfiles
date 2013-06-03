@@ -3,6 +3,8 @@ autoload -Uz zmv
 autoload -Uz gyapbox
 autoload -Uz add-zsh-hooks
 
+export REPORTTIME=1
+
 bindkey -e
 
 # Colors {{{
