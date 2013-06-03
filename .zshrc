@@ -213,6 +213,15 @@ function ps-mem() { # {{{
   processes | head -n 1 # Heading
   processes | sort --reverse --numeric-sort --key 4 | head -n $count
 } # }}}
+
+function gg() { # cd to Git repository's root
+  if ! (git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
+    echo "Use inside of Git repository"
+    return 1
+  fi
+
+  cd ./$(git rev-parse --show-cdup)
+}
 # }}}
 
 # Prompt {{{
