@@ -143,7 +143,6 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'thinca/vim-localrc'
 " }}}
 
 filetype plugin indent on
@@ -625,15 +624,15 @@ let g:EasyMotion_mapping_e = 'e'
 let g:EasyMotion_mapping_j = 'j'
 let g:EasyMotion_mapping_k = 'k'
 " }}}
-" vim-localrc {{{
-let localrc = neobundle#get('vim-localrc')
-function! localrc.hooks.on_source(bundle) " {{{
-  call localrc#load('.local.vimrc')
-endfunction " }}}
-unlet localrc
-" }}}
 " }}}
 " Colorscheme {{{
 set bg=dark
 colorscheme hybrid
+" }}}
+" Local {{{
+let local_vimrc_path = expand('~/.local.vimrc')
+if filereadable(local_vimrc_path)
+  source local_vimrc_path
+endif
+unlet local_vimrc_path
 " }}}
