@@ -1,0 +1,65 @@
+# vim:set ft=zsh:
+
+function prompt_aereal_setup() {
+  if ! (which add-zsh-hook > /dev/null); then
+    autoload -Uz add-zsh-hooks
+  fi
+  add-zsh-hook precmd aereal_update_prompt
+}
+
+function detect_ruby_version() {
+  which rbenv > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    return
+  fi
+  echo "ruby-$(rbenv version-name)"
+}
+
+function detect_perl_version() {
+  which plenv > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    return
+  fi
+  echo "perl-$(plenv version-name)"
+}
+
+function aereal_update_prompt() { # {{{
+  local \
+    ruby_version \
+    perl_version \
+    current_ts \
+    login_info \
+    additional_info \
+    current_user \
+    current_host \
+    current_working_directory \
+    git_info \
+    top_line \
+    command_line
+
+  ruby_version="%{${fg[red]}%}$(detect_ruby_version)%{${reset_color}%}"
+  perl_version="%{${fg[blue]}%}$(detect_perl_version)%{${reset_color}%}"
+
+  git_info=$(git_info)
+  current_ts="%D{%Y-%m-%d} %*"
+
+  current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
+  current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
+  login_info="${current_user} @ ${current_host}"
+
+  current_working_directory="%~"
+  current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
+
+  additional_info="${ruby_version} ${perl_version}"
+
+  top_line="${current_working_directory:+$current_working_directory }${additional_info:+"(${additional_info})"}"
+
+  ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
+  ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
+  command_line="%(?,$ok_prompt,$ng_prompt)"
+
+  PROMPT="$(echo -n "${top_line}\n${command_line}")"
+  RPROMPT="${git_info:+"[$git_info]"}"
+}
+
+prompt_aereal_setup "$@"

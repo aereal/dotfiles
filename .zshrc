@@ -1,6 +1,7 @@
 setopt extended_glob
 autoload -Uz zmv
 autoload -Uz gyapbox
+autoload -Uz add-zsh-hooks
 
 bindkey -e
 
@@ -213,65 +214,14 @@ function ps-mem() { # {{{
 # }}}
 
 # Prompt {{{
-autoload -U promptinit; promptinit
+autoload -U promptinit && promptinit
 
 setopt \
   prompt_subst \
   prompt_percent \
   transient_rprompt
 
-function update_prompt() { # {{{
-  local \
-    ruby_version \
-    perl_version \
-    current_ts \
-    login_info \
-    additional_info \
-    current_user \
-    current_host \
-    current_working_directory \
-    git_info \
-    top_line \
-    command_line
-
-  # Ruby version {{{
-  if /usr/bin/which -s rbenv; then
-    _ruby_version_string="Ruby: $(rbenv version-name)"
-    ruby_version="%{${fg[red]}%}$_ruby_version_string%{${reset_color}%}"
-  fi
-  # }}}
-
-  # Perl version {{{
-  if [[ -e "$HOME/.plenv/version" ]]; then
-    _perl_version_string="Perl: $(plenv version | sed -e 's/ (.*)//g')"
-    perl_version="%{${fg[blue]}%}$_perl_version_string%{${reset_color}%}"
-  fi
-  # }}}
-
-  git_info=$(git_info)
-  current_ts="%D{%Y-%m-%d} %*"
-
-  current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
-  current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
-  login_info="${current_user} @ ${current_host}"
-
-  current_working_directory="%~"
-  current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
-
-  additional_info="${ruby_version} ${perl_version}"
-
-  top_line="${current_working_directory:+$current_working_directory }${additional_info:+"(${additional_info})"}"
-
-  ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
-  ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
-  command_line="%(?,$ok_prompt,$ng_prompt)"
-
-  PROMPT="$(echo -n "${top_line}\n${command_line}")"
-  RPROMPT="${git_info:+"[$git_info]"}"
-} # }}}
-
-autoload -Uz add-zsh-hooks
-add-zsh-hook precmd update_prompt
+prompt "${ZSH_THEME:-"aereal"}"
 # }}}
 
 # zaw {{{
