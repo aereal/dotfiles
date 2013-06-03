@@ -47,7 +47,7 @@ zstyle ':vcs_info:git:*:-all-' command =git
 # }}}
 
 # Completion {{{
-autoload -U compinit; compinit
+autoload -U compinit && compinit -C
 
 ## Grouping
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
