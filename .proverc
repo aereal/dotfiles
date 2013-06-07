@@ -1,4 +1,6 @@
 --color
--Ilib
--It/lib
+--lib
 --failure
+--recurse
+--timer
+--trap
