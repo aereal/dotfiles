@@ -72,7 +72,7 @@ else
 fi
 export PAGER
 export LV="-c -l"
-export LESS="-R"
+export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
 
 # Grep {{{
 GREPPRG=grep
