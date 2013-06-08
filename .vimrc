@@ -94,6 +94,7 @@ NeoBundleLazy 'tomasr/molokai', { 'stay_same' : 1 }
 NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
 NeoBundleLazy 'sickill/vim-monokai', { 'stay_same' : 1 }
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'noahfrederick/vim-noctu'
 " }}}
 " Visualize {{{
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
@@ -628,7 +629,7 @@ let g:EasyMotion_mapping_k = 'k'
 " }}}
 " Colorscheme {{{
 set bg=dark
-colorscheme hybrid
+colorscheme noctu
 " }}}
 " Local {{{
 let local_vimrc_path = expand('~/.local.vimrc')
