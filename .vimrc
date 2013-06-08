@@ -528,12 +528,13 @@ unlet foldCC
 " hier {{{
 let g:hier_enabled = 1
 " }}}
-" watchdogs -- 構文検証 {{{
-let g:watchdogs_check_BufWritePost_enable = 1
-
+" quickrun {{{
 if !exists('g:quickrun_config')
   let g:quickrun_config = {}
 endif
+" }}}
+" watchdogs -- 構文検証 {{{
+let g:watchdogs_check_BufWritePost_enable = 1
 
 let g:quickrun_config['watchdogs_checker/_'] = {
       \   'hook/close_quickfix/enable_exit' : 1,
