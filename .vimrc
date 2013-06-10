@@ -627,14 +627,16 @@ let g:EasyMotion_mapping_j = 'j'
 let g:EasyMotion_mapping_k = 'k'
 " }}}
 " }}}
+
 " Colorscheme {{{
 set bg=dark
 colorscheme noctu
 " }}}
+
 " Local {{{
 let local_vimrc_path = expand('~/.local.vimrc')
 if filereadable(local_vimrc_path)
-  source local_vimrc_path
+  exec 'source ' . local_vimrc_path
 endif
 unlet local_vimrc_path
 " }}}
