@@ -2,3 +2,4 @@ MYMETA.json
 MYMETA.yml
 /vendor/bundle
 /.bundle/
+.DS_Store
