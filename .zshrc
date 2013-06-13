@@ -214,14 +214,15 @@ function ps-mem() { # {{{
   processes | sort --reverse --numeric-sort --key 4 | head -n $count
 } # }}}
 
-function gg() { # cd to Git repository's root
+# cd to Git repository's root
+function gg() { # {{{
   if ! (git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
     echo "Use inside of Git repository"
     return 1
   fi
 
   cd ./$(git rev-parse --show-cdup)
-}
+} # }}}
 # }}}
 
 # Prompt {{{
@@ -351,4 +352,4 @@ if /usr/bin/which -s tmux && [ -z "$TMUX" ]; then
 fi
 # }}}
 
-# vim:set ft=zsh:
+# vim:set ft=zsh foldmethod=marker:
