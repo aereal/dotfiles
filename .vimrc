@@ -10,6 +10,7 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
+
 " Plugins {{{
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun'
@@ -142,12 +143,13 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
-NeoBundle 'kana/vim-tabpagecd'
+NeoBundleLazy 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
 " }}}
 
 filetype plugin indent on
 " }}}
+
 " Configurations {{{
 set hidden
 set history=100
@@ -225,81 +227,7 @@ if has('clipboard')
 endif
 " }}}
 " }}}
-" Tabpage {{{
-function! s:tabpage_label(n) " {{{
-  let title = gettabvar(a:n, 'title')
-  if title !=# ''
-    return title
-  endif
 
-  let bufnrs = tabpagebuflist(a:n)
-  let hi = a:n is tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
-
-  let no = len(bufnrs)
-  if no is 1
-    let no = ''
-  endif
-
-  let mod = len(filter(copy(bufnrs), 'getbufvar(v:val, "&modified")')) ? '+' : ''
-  let sp = (no . mod) ==# '' ? '' : ' '
-  let curbufnr = bufnrs[tabpagewinnr(a:n) - 1]
-  let fname = pathshorten(bufname(curbufnr))
-  let label = no . mod . sp . fname
-
-  return '%' . a:n . 'T' . hi . label . '%T%#TabLineFill#'
-endfunction " }}}
-
-function! MakeTabLine() " {{{
-  let titles = map(range(1, tabpagenr('$')), 's:tabpage_label(v:val)')
-  let separator = ' | '
-  let tabpages = join(titles, separator) . separator . '%#TabLineFill#%T'
-  let info = ''
-
-  try
-    let info .= cfi#format('%s()' . separator, '')
-  catch /E117/
-    " current-func-info is not available
-  endtry
-
-  return tabpages . '%=' . info
-endfunction " }}}
-
-set showtabline=2
-set guioptions-=e
-set tabline=%!MakeTabLine()
-" }}}
-" Weekly Report {{{
-let g:weekly_report_dir = '~/Dropbox/memo/weekly'
-
-function! s:WeeklyReport() "{{{
-  if ! exists('g:weekly_report_dir')
-    echo 'Set default value to g:weekly_report_dir'
-    let g:weekly_report_dir = expand('~/weekly_report')
-  endif
-
-  if ! isdirectory(expand(g:weekly_report_dir))
-    echoerr "g:weekly_report_dir is not directory"
-    return 1
-  endif
-
-  let expanded_dir = expand(g:weekly_report_dir)
-  let filename = expanded_dir . '/' . s:WeeklyReportFilename()
-
-  execute 'edit ' . filename
-endfunction "}}}
-
-function! s:WeeklyReportFilename() "{{{
-  if ! exists('g:weekly_report_format')
-    let g:weekly_report_format = 'hatena'
-  endif
-
-  let basename = strftime('%Y%m%d') . '.' . g:weekly_report_format
-
-  return basename
-endfunction "}}}
-
-command! WeeklyReport call s:WeeklyReport()
-"}}}
 " Key mappings {{{
 let mapleader   = ';'
 let g:mapleader = ';'
@@ -313,6 +241,7 @@ nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
+
 " autocmd {{{
 augroup MyInit
   autocmd!
@@ -367,6 +296,7 @@ augroup MyInit
   " }}}
 augroup END
 " }}}
+
 " Plugin Configurations {{{
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
