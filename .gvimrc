@@ -27,3 +27,8 @@ if has("gui_running")
   hi vimshellPrompt guifg=#f9d59d
 endif
 
+let local_gvimrc_path = expand('~/.local.gvimrc')
+if filereadable(local_gvimrc_path)
+  exec 'source ' . local_gvimrc_path
+endif
+unlet local_gvimrc_path
