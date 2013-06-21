@@ -326,9 +326,9 @@ let g:neocomplcache_delimiter_patterns.perl = ['::']
 
 let neocomplcache = neobundle#get('neocomplcache')
 function! neocomplcache.hooks.on_source(bundle) " {{{
-  inoremap <expr><C-h> neocomplcache#smart_close_popup() . eval(smartinput#sid() . '_trigger_or_fallback("\<BS>", "\<C-h>")')
-  inoremap <expr><BS>  neocomplcache#smart_close_popup() . eval(smartinput#sid() . '_trigger_or_fallback("\<BS>", "\<BS>")')
-  inoremap <expr><C-g> neocomplcache#undo_completion()
+  imap <expr> <C-h> neocomplcache#smart_close_popup() . '\<Plug>(smartinput_C-h)'
+  imap <expr> <BS>  neocomplcache#smart_close_popup() . '\<Plug>(smartinput_BS))'
+  imap <expr> <C-g> neocomplcache#undo_completion()
 endfunction " }}}
 unlet neocomplcache
 " }}}
@@ -502,6 +502,9 @@ endfunction " }}}
 unlet operator_html_escape
 " }}}
 " smartinput {{{
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
 " }}}
 " vim-cpanfile {{{
 if !exists('g:neocomplcache_dictionary_filetype_lists')
