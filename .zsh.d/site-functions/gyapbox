@@ -34,7 +34,7 @@ function gyapbox() {
   screencapture $preview -i "$base_dir/$image_filename"
 
   if [[ -e "$image_path" ]]; then
-    local url="http://dl.dropbox.com/u/$DROPBOX_USER_ID/g/$image_filename"
+    local url="http://dl.dropboxusercontents.com/u/$DROPBOX_USER_ID/g/$image_filename"
 
     if [ $enable_notify ] && [[ -n "$url" ]]; then
       terminal-notifier -message "Captured" -title "Gyapbox" -open "$url"
