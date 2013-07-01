@@ -223,6 +223,16 @@ function gg() { # {{{
 
   cd ./$(git rev-parse --show-cdup)
 } # }}}
+
+function man() { # {{{
+  case "$1" in
+    git)
+      command man "${(j:-:)@}"
+      ;;
+    *)
+      command man "$@"
+  esac
+} # }}}
 # }}}
 
 # Prompt {{{
