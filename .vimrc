@@ -326,9 +326,9 @@ let g:neocomplcache_delimiter_patterns.perl = ['::']
 
 let neocomplcache = neobundle#get('neocomplcache')
 function! neocomplcache.hooks.on_source(bundle) " {{{
-  imap <expr> <C-h> neocomplcache#smart_close_popup() . '\<Plug>(smartinput_C-h)'
-  imap <expr> <BS>  neocomplcache#smart_close_popup() . '\<Plug>(smartinput_BS))'
-  imap <expr> <C-g> neocomplcache#undo_completion()
+  imap <expr> <C-h> neocomplcache#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+  imap <expr> <BS>  neocomplcache#smart_close_popup() . "\<Plug>(smartinput_BS)"
+  inoremap <expr> <C-g> neocomplcache#undo_completion()
 endfunction " }}}
 unlet neocomplcache
 " }}}
