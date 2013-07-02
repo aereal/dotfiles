@@ -32,10 +32,10 @@ autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-bindkey "^N" history-beginning-search-forward-end
-bindkey "^P" history-beginning-search-backward-end
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^S" history-incremental-pattern-search-forward
+bindkey -v "^N" history-beginning-search-forward-end
+bindkey -v "^P" history-beginning-search-backward-end
+bindkey -v "^R" history-incremental-pattern-search-backward
+bindkey -v "^S" history-incremental-pattern-search-forward
 # }}}
 
 # VCS {{{
@@ -121,7 +121,7 @@ expand-to-home-or-complete() { # {{{
 } # }}}
 
 zle -N expand-to-home-or-complete
-bindkey "\\" expand-to-home-or-complete
+bindkey -v "\\" expand-to-home-or-complete
 # }}}
 
 # Magic abbreviations {{{
@@ -186,11 +186,11 @@ zle -N magic-space
 # }}}
 
 ### Key bindings {{{
-bindkey "\r" magic-abbrev-expand-and-accept
-bindkey " "  magic-space
-bindkey "."  magic-abbrev-expand-and-insert
-bindkey "^I" magic-abbrev-expand-and-normal-complete
-bindkey "^J" accept-line
+bindkey -v "\r" magic-abbrev-expand-and-accept
+bindkey -v " "  magic-space
+bindkey -v "."  magic-abbrev-expand-and-insert
+bindkey -v "^I" magic-abbrev-expand-and-normal-complete
+bindkey -v "^J" accept-line
 # }}}
 # }}}
 
