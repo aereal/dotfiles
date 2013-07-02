@@ -48,6 +48,7 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'basyura/unite-rails'
+NeoBundle 'sgur/unite-git_grep'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
