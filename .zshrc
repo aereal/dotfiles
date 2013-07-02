@@ -199,6 +199,13 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 # }}}
 
+# run-help {{{
+alias run-help 2>/dev/null && unalias run-help
+autoload -Uz run-help
+autoload -Uz run-help-git
+bindkey -a "H" run-help
+# }}}
+
 # Functions {{{
 alias processes='ps aux | grep -v "grep" | grep -v "ps aux"'
 
