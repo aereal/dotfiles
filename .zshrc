@@ -5,7 +5,7 @@ autoload -Uz add-zsh-hooks
 
 export REPORTTIME=1
 
-bindkey -e
+bindkey -v
 
 # Colors {{{
 autoload -Uz colors; colors
