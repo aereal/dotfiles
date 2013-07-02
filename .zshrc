@@ -252,6 +252,7 @@ if [[ -e "$ZSH_HOME/plugins/zaw/zaw.zsh" ]]; then
 
   bindkey "^[." zaw-cdr
   bindkey "^[h" zaw-history
+  bindkey "^[gb" zaw-git-recent-branches
 fi
 # }}}
 
