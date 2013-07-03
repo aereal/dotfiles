@@ -49,6 +49,8 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'basyura/unite-rails'
 NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'soh335/unite-perl-module'
+NeoBundle 'rhysd/unite-ruby-require.vim'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
