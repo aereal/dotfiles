@@ -135,7 +135,7 @@ NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
 NeoBundleLazy 'kana/vim-altr'
-NeoBundleLazy 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Shougo/neobundle.vim'
 " }}}
 " Utility {{{
@@ -145,7 +145,7 @@ NeoBundle 'Shougo/vimproc', {
       \   'unix' : 'make -f make_unix.mak',
       \   },
       \ }
-NeoBundleLazy 'sudo.vim', { 'stay_same' : 1 }
+NeoBundle 'sudo.vim', { 'stay_same' : 1 }
 NeoBundleLazy 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
 " }}}
