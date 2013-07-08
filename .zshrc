@@ -257,9 +257,10 @@ prompt "${ZSH_THEME:-"aereal"}"
 if [[ -e "$ZSH_HOME/plugins/zaw/zaw.zsh" ]]; then
   source "$ZSH_HOME/plugins/zaw/zaw.zsh"
 
-  bindkey "^[." zaw-cdr
-  bindkey "^[h" zaw-history
-  bindkey "^[gb" zaw-git-recent-branches
+  bindkey -a "." zaw-cdr
+  bindkey -a "^H" zaw-history
+  bindkey -a "gr" zaw-git-recent-branches
+  bindkey -a "gb" zaw-git-branches
 fi
 # }}}
 
