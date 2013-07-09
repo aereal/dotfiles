@@ -364,11 +364,6 @@ else
   alias  vi="$EDITOR"
 fi
 
-if which hub >/dev/null; then
-  function git() {
-    hub "$@"
-  }
-fi
 # }}}
 
 # Launch tmux {{{
