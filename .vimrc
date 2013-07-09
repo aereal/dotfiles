@@ -433,6 +433,7 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]. :<C-u>Unite source<CR>
   nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
   nnoremap <silent> <SID>[unite]g :<C-u>Unite grep -buffer-name=search<CR>
+  nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
 
   " JavaScript {{{
   autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
