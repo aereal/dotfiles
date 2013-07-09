@@ -199,6 +199,10 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 # }}}
 
+# push-line {{{
+bindkey -a "O" push-line
+# }}}
+
 # run-help {{{
 alias run-help >/dev/null && unalias run-help
 autoload -Uz run-help
