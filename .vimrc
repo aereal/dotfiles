@@ -48,9 +48,24 @@ NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'basyura/unite-rails'
+call neobundle#config('unite-rails', {
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby'],
+      \ }
+      \ })
 NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'soh335/unite-perl-module'
-NeoBundle 'rhysd/unite-ruby-require.vim'
+NeoBundleLazy 'soh335/unite-perl-module'
+call neobundle#config('unite-perl-module', {
+      \ 'autoload' : {
+      \   'filetypes' : ['perl'],
+      \ }
+      \ })
+NeoBundleLazy 'rhysd/unite-ruby-require.vim'
+call neobundle#config('unite-ruby-require.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['ruby'],
+      \ }
+      \ })
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
