@@ -79,14 +79,14 @@ call neobundle#config('jscomplete-vim', {
 " }}}
 " Language, Format {{{
 NeoBundle 'slim-template/vim-slim'
-NeoBundle 'groenewege/vim-less', { 'stay_same' : 1 }
+NeoBundle 'groenewege/vim-less'
 NeoBundleLazy 'hail2u/vim-css3-syntax'
 call neobundle#config('vim-css3-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['css', 'scss', 'sass', 'less'],
       \ },
       \ })
-NeoBundle 'hallison/vim-markdown', { 'stay_same' : 1 }
+NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'motemen/hatena-vim'
 NeoBundleLazy 'othree/html5.vim'
@@ -106,14 +106,18 @@ NeoBundle 'moznion/vim-cpanfile'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundleLazy 'git@github.com:aereal/vim-magica-colors.git',
+NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
-NeoBundle 'nanotech/jellybeans.vim', { 'stay_same' : 1 }
-NeoBundleLazy 'tomasr/molokai', { 'stay_same' : 1 }
-NeoBundleLazy 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors', 'stay_same' : 1 }
-NeoBundleLazy 'sickill/vim-monokai', { 'stay_same' : 1 }
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
+NeoBundle 'sickill/vim-monokai'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
+NeoBundle 'uu59/vim-herokudoc-theme'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'trapd00r/neverland-vim-theme'
+NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
@@ -123,7 +127,7 @@ NeoBundle 'jceb/vim-hier'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
-NeoBundle 'tyru/current-func-info.vim'
+NeoBundleLazy 'tyru/current-func-info.vim'
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
@@ -145,7 +149,7 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'sickill/vim-pasta'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundleLazy 'thinca/vim-partedit'
-NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundleLazy 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
@@ -160,7 +164,7 @@ NeoBundle 'Shougo/vimproc', {
       \   'unix' : 'make -f make_unix.mak',
       \   },
       \ }
-NeoBundle 'sudo.vim', { 'stay_same' : 1 }
+NeoBundle 'sudo.vim'
 NeoBundleLazy 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
 " }}}
