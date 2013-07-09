@@ -82,3 +82,25 @@ options     head
 snippet     t
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/t/', 't-', 'g'), '-', '::', 'g')`};
+
+snippet     @
+abbr        expand
+	@{[ ${1:expr} ]}
+
+snippet     h
+abbr        hashref
+	+{ ${1:expr} }
+
+snippet     kv
+abbr        key-value
+	${1:key} => ${2:value},${3:#:}
+
+snippet     subtest
+	subtest ${1:test_name} => sub {
+		${2:#:body}
+	};
+
+snippet     tests
+	sub ${1:test_name} : Tests {
+		${2:#:body}
+	}
