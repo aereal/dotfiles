@@ -16,18 +16,10 @@ fpath=(
 typeset -Ua \
   user_path \
   homebrew_path \
-  rbenv_path \
-  plenv_path \
   sudo_path \
   system_path
 user_path=(
   $HOME/bin(N-/)
-)
-rbenv_path=(
-  $RBENV_HOME/shims(N-/)
-)
-plenv_path=(
-  $PLENV_HOME/shims(N-/)
 )
 homebrew_path=(
   $HOMEBREW_HOME/share/npm/bin(N-/)
@@ -49,8 +41,6 @@ sudo_path=(
 typeset -U path
 path=(
   $user_path
-  $rbenv_path
-  $plenv_path
   $homebrew_path
   $system_path
   $sudo_path
@@ -96,6 +86,11 @@ if /usr/bin/which -s rbenv; then
 fi
 # }}}
 
+# plenv {{{
+if which plenv >/dev/null; then
+  eval "$(plenv init - --no-rehash)"
+fi
+# }}}
 
 # shared-mime-info {{{
 if /usr/bin/which -s update-mime-database; then
