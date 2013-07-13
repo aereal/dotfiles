@@ -56,7 +56,7 @@ manpath=(
   /usr/share/man(N-/)
 )
 
-if $(/usr/bin/which lv 2>/dev/null); then
+if which lv >/dev/null; then
   PAGER=lv
 else
   PAGER=less
@@ -68,9 +68,9 @@ export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
 # Grep {{{
 GREPPRG=grep
 
-if /usr/bin/which -s ack; then
+if which ack >/dev/null; then
   GREPPRG=ack
-elif /usr/bin/which -s ag; then
+elif which ag >/dev/null; then
   GREPPRG=ag
 fi
 
@@ -82,7 +82,7 @@ if [[ -e "$HOME/.local.env" ]]; then
 fi
 
 # rbenv {{{
-if /usr/bin/which -s rbenv; then
+if which rbenv >/dev/null; then
   eval "$(rbenv init - --no-rehash)"
 fi
 # }}}
@@ -94,7 +94,7 @@ fi
 # }}}
 
 # shared-mime-info {{{
-if /usr/bin/which -s update-mime-database; then
+if which update-mime-database >/dev/null; then
   export XDG_DATA_HOME=$(brew --prefix shared-mime-info)/share
   export XDG_DATA_DIRS=$(brew --prefix shared-mime-info)/share
 fi
