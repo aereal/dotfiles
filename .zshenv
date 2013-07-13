@@ -22,6 +22,7 @@ user_path=(
   $HOME/bin(N-/)
 )
 homebrew_path=(
+  $HOMEBREW_HOME/opt/coreutils/libexec/gnubin(N-/)
   $HOMEBREW_HOME/share/npm/bin(N-/)
   $HOMEBREW_HOME/share/python(N-/)
   $HOMEBREW_HOME/bin(N-/)
