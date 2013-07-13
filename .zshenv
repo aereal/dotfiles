@@ -99,4 +99,8 @@ if /usr/bin/which -s update-mime-database; then
 fi
 # }}}
 
+if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
+  export SSL_CERT_FILE="$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt"
+fi
+
 # vim:set ft=zsh:
