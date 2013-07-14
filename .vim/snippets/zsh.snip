@@ -1,1 +1,40 @@
 include sh.snip
+
+snippet     length
+  ${#${1:variable}}
+
+snippet     capitalize
+  ${(C)${1:variable}}
+
+snippet     downcase
+  ${(L)${1:variable}}
+
+snippet     upcase
+  ${(U)${1:variable}}
+
+snippet     keys
+  ${(k)${1:variable}}
+
+snippet     split
+  ${(s:${1:pattern}:)${2:variable}}
+
+snippet     join
+  ${(j:${1:needle}:)${2:variable}}
+
+snippet     split_by_newline
+abbr        splitlf
+  ${(f)${1:variable}}
+
+snippet     join_by_newline
+abbr        joinlf
+  ${(F)${1:variable}}
+
+snippet     sort_asc
+  ${(o)${1:variable}}
+
+snippet     sort_desc
+  ${(O)${1:variable}}
+
+snippet     sort_numeric
+abbr        sort_num
+  ${(n)${1:variable}}
