@@ -65,8 +65,9 @@ git_info() { # {{{
   # }}}
 
   # stashes count {{{
-  stashes=$($git --no-pager stash list 2> /dev/null | wc -l)
-  [[ "$stashes" != "" ]] && stashes=" %{${fg[yellow]}%}*$stashes"
+  declare -a stashes_count
+  stashes_count=($($git stash list --format='format:%h' 2> /dev/null))
+  stashes=" %{${fg[yellow]}%}*$#stashes_count"
   # }}}
 
   st=$($git status --short --porcelain -b 2> /dev/null)
