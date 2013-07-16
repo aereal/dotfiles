@@ -1,9 +1,12 @@
+# Environment variables {{{
 export ZSH_HOME=$HOME/.zsh.d
 export HOMEBREW_HOME=$HOME/opt/homebrew
 export RBENV_HOME=$HOME/.rbenv
 export PLENV_HOME=$HOME/.plenv
 export EDITOR=vim
+# }}}
 
+# fpath {{{
 typeset -Ua fpath
 fpath=(
   $ZSH_HOME/site-functions(N-/)
@@ -12,7 +15,9 @@ fpath=(
   $HOMEBREW_HOME/share/zsh/functions(N-/)
   $fpath
 )
+# }}}
 
+# paths {{{
 typeset -Ua \
   user_path \
   homebrew_path \
@@ -46,7 +51,9 @@ path=(
   $system_path
   $sudo_path
 )
+# }}}
 
+# manpath {{{
 typeset -U manpath
 manpath=(
   $HOME/local/share/man(N-/)
@@ -55,7 +62,9 @@ manpath=(
   /usr/local/share/man(N-/)
   /usr/share/man(N-/)
 )
+# }}}
 
+# pager {{{
 if which lv >/dev/null; then
   PAGER=lv
 else
@@ -64,6 +73,7 @@ fi
 export PAGER
 export LV="-c -l"
 export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
+# }}}
 
 # Grep {{{
 GREPPRG=grep
@@ -100,8 +110,10 @@ if which update-mime-database >/dev/null; then
 fi
 # }}}
 
+# SSL certificates {{{
 if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
   export SSL_CERT_FILE="$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt"
 fi
+# }}}
 
-# vim:set ft=zsh:
+# vim:set ft=zsh foldmethod=marker:
