@@ -372,6 +372,12 @@ fi
 
 # }}}
 
+# zsh-syntax-highlight {{{
+if [[ -d "$ZSH_SYNTAX_HIGHLIGHT_ROOT" ]]; then
+  source "$ZSH_SYNTAX_HIGHLIGHT_ROOT/zsh-syntax-highlighting.zsh"
+fi
+# # }}}
+
 # Launch tmux {{{
 if /usr/bin/which -s tmux && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then

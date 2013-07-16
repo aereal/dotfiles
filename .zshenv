@@ -116,4 +116,9 @@ if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
 fi
 # }}}
 
+# zsh-syntax-highlight {{{
+export ZSH_SYNTAX_HIGHLIGHT_ROOT="$HOMEBREW_HOME/share/zsh-syntax-highlighting"
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="$ZSH_SYNTAX_HIGHLIGHT_ROOT/highlighters"
+# }}}
+
 # vim:set ft=zsh foldmethod=marker:
