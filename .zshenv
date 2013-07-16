@@ -105,8 +105,8 @@ fi
 
 # shared-mime-info {{{
 if which update-mime-database >/dev/null; then
-  export XDG_DATA_HOME=$(brew --prefix shared-mime-info)/share
-  export XDG_DATA_DIRS=$(brew --prefix shared-mime-info)/share
+  export XDG_DATA_HOME=$HOMEBREW_HOME/opt/shared-mime-info/share
+  export XDG_DATA_DIRS=$HOMEBREW_HOME/opt/shared-mime-info/share
 fi
 # }}}
 
