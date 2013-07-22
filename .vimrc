@@ -107,6 +107,7 @@ NeoBundleLazy 'davidoc/taskpaper.vim'
 NeoBundleLazy 'zaiste/tmux.vim'
 NeoBundleLazy 'elixir-lang/vim-elixir'
 NeoBundle 'moznion/vim-cpanfile'
+NeoBundle 'evanmiller/nginx-vim-syntax'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
