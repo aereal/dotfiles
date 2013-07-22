@@ -521,6 +521,13 @@ unlet watchdogs
 " }}}
 " indent-guides {{{
 let g:indent_guides_enable_on_vim_startup = 1
+
+if ! has('gui_running')
+  let g:indent_guides_auto_colors=0
+
+  autocmd VimEnter,Colorscheme * :hi! IndentGuidesOdd  ctermbg=235
+  autocmd VimEnter,Colorscheme * :hi! IndentGuidesEven ctermbg=240
+endif
 " }}}
 " operator-html-escape {{{
 let operator_html_escape = neobundle#get('operator-html-escape.vim')
