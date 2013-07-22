@@ -268,6 +268,19 @@ function man() { # {{{
       command man "$@"
   esac
 } # }}}
+
+function 256colors() { # {{{
+  declare code
+  declare columns
+  columns=16
+
+  for code in {000..255}; do
+    print -nP -- "%F{$code}${code} %f"
+    if [ $(( ${code} % ${columns} )) -eq $(( ${columns} - 1 )) ]; then
+      echo
+    fi
+  done
+} # }}}
 # }}}
 
 # Prompt {{{
