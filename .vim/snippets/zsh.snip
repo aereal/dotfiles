@@ -38,3 +38,10 @@ snippet     sort_desc
 snippet     sort_numeric
 abbr        sort_num
   ${(n)${1:variable}}
+
+snippet     function
+abbr        func
+options     head
+  function ${1:func}() { # {{{
+    ${2:#:body}
+  } # }}}
