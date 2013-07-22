@@ -231,6 +231,24 @@ function ps-mem() { # {{{
   processes | sort --reverse --numeric-sort --key 4 | head -n $count
 } # }}}
 
+function macvim_client() { # {{{
+declare editor="/Applications/MacVim.app/Contents/MacOS/mvim"
+declare wrapper
+
+if which reattach-to-user-namespace >/dev/null; then
+  wrapper=reattach-to-user-namespace
+fi
+
+declare -a args
+args=($*)
+
+if [[ $#args > 0 ]]; then
+  args=("--remote-silent" $args)
+fi
+
+$wrapper $editor "$args"
+} # }}}
+
 # cd to Git repository's root
 function gg() { # {{{
   if ! (git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
