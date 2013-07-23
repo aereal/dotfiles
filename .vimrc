@@ -126,13 +126,14 @@ NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
-NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundleLazy 'nathanaelkane/vim-indent-guides'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
 NeoBundleLazy 'tyru/current-func-info.vim'
+NeoBundle 'Yggdroot/indentLine'
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
@@ -594,6 +595,9 @@ let g:EasyMotion_mapping_b = 'b'
 let g:EasyMotion_mapping_e = 'e'
 let g:EasyMotion_mapping_j = 'j'
 let g:EasyMotion_mapping_k = 'k'
+" }}}
+" indentLine {{{
+let g:indentLine_showFirstIndentLevel = 1
 " }}}
 " }}}
 
