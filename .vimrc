@@ -160,7 +160,7 @@ NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
 NeoBundleLazy 'kana/vim-altr'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundle 'Shougo/neobundle.vim'
 " }}}
 " Utility {{{
