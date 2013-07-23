@@ -20,25 +20,25 @@ NeoBundle 'osyo-manga/shabadou.vim'
 " Text Object {{{
 NeoBundle 'kana/vim-textobj-user'
 
-NeoBundle 'h1mesuke/textobj-wiw'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'thinca/vim-textobj-function-perl'
-NeoBundle 'thinca/vim-textobj-function-javascript'
-NeoBundleLazy 'thinca/vim-textobj-comment'
-NeoBundleLazy 'coderifous/textobj-word-column.vim'
-NeoBundleLazy 'rhysd/vim-textobj-continuous-line'
-NeoBundleLazy 'rhysd/vim-textobj-ruby'
-NeoBundleLazy 'thinca/vim-textobj-between'
-NeoBundleLazy 'mattn/vim-textobj-url'
+NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'kana/vim-textobj-function'              , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'thinca/vim-textobj-function-perl'       , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'thinca/vim-textobj-function-javascript' , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'thinca/vim-textobj-comment'         , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'coderifous/textobj-word-column.vim' , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'rhysd/vim-textobj-continuous-line'  , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'rhysd/vim-textobj-ruby'             , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'thinca/vim-textobj-between'         , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'mattn/vim-textobj-url'              , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
 NeoBundleLazy 'kana/vim-operator-user'
-NeoBundleLazy 'emonkak/vim-operator-sort'
-NeoBundleLazy 'kana/vim-operator-replace'
-NeoBundleLazy 'tyru/operator-camelize.vim'
-NeoBundleLazy 'tyru/operator-html-escape.vim'
+NeoBundleLazy 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleLazy 'kana/vim-operator-replace'     , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleLazy 'tyru/operator-camelize.vim'    , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleLazy 'tyru/operator-html-escape.vim' , { 'depends' : 'kana/vim-operator-user' }
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -137,7 +137,7 @@ NeoBundleLazy 'tyru/current-func-info.vim'
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-surround_custom_mapping'
+NeoBundle 't9md/vim-surround_custom_mapping', { 'depends' : 'tpope/vim-surround' }
 NeoBundle 'kana/vim-smartinput'
 NeoBundleLazy 'mattn/zencoding-vim'
 call neobundle#config('zencoding-vim', {
