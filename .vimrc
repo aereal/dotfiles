@@ -70,6 +70,12 @@ call neobundle#config('unite-ruby-require.vim', {
       \ }
       \ })
 NeoBundle 'Shougo/unite-help'
+NeoBundleLazy 'osyo-manga/unite-fold'
+call neobundle#config('unite-fold', {
+      \ 'autoload' : {
+      \   'unite_sources' : ['fold'],
+      \ },
+      \ })
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
