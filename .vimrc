@@ -622,6 +622,15 @@ let g:EasyMotion_mapping_k = 'k'
 " indentLine {{{
 let g:indentLine_showFirstIndentLevel = 1
 " }}}
+" Align {{{
+let alignta = neobundle#get('vim-alignta')
+function! alignta.hooks.on_source(bundle)
+  vmap ,a :Alignta
+  vmap ,= :Alignta =<CR>
+  vmap ,> :Alignta =><CR>
+endfunction
+unlet alignta
+" }}}
 " }}}
 
 " Colorscheme {{{
