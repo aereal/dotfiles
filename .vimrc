@@ -47,26 +47,43 @@ NeoBundle 'thinca/vim-ref'
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'sgur/unite-qf'
+NeoBundleLazy 'sgur/unite-qf'
+call neobundle#config('unite-qf', {
+      \ 'autoload' : {
+      \   'unite_sources' : ['qf'],
+      \ },
+      \ })
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'ujihisa/unite-colorscheme'
+call neobundle#config('unite-colorscheme', {
+      \ 'autoload' : {
+      \   'unite_sources' : ['colorscheme'],
+      \ },
+      \ })
 NeoBundleLazy 'basyura/unite-rails'
 call neobundle#config('unite-rails', {
       \ 'autoload' : {
       \   'filetypes' : ['ruby'],
       \ }
       \ })
-NeoBundle 'sgur/unite-git_grep'
+NeoBundleLazy 'sgur/unite-git_grep'
+call neobundle#config('unite-git_grep', {
+      \ 'autoload' : {
+      \   'unite_sources' : ['vcs_grep', 'vcs_grep/git', 'vcs_grep/hg'],
+      \ },
+      \ })
 NeoBundleLazy 'soh335/unite-perl-module'
 call neobundle#config('unite-perl-module', {
       \ 'autoload' : {
       \   'filetypes' : ['perl'],
+      \   'unite_sources' : ['perl-module/carton', 'perl-module/cpan'],
       \ }
       \ })
 NeoBundleLazy 'rhysd/unite-ruby-require.vim'
 call neobundle#config('unite-ruby-require.vim', {
       \ 'autoload' : {
       \   'filetypes' : ['ruby'],
+      \   'unite_sources' : ['ruby/require'],
       \ }
       \ })
 NeoBundle 'Shougo/unite-help'
