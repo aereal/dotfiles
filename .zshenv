@@ -1,6 +1,6 @@
 # Environment variables {{{
 export ZSH_HOME=$HOME/.zsh.d
-export HOMEBREW_HOME=$HOME/opt/homebrew
+export HOMEBREW_HOME=/usr/local
 export RBENV_HOME=$HOME/.rbenv
 export PLENV_HOME=$HOME/.plenv
 export EDITOR=vim
