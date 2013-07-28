@@ -638,6 +638,22 @@ set bg=dark
 colorscheme noctu
 " }}}
 
+command! Sketch call s:sketch() " {{{
+function! s:sketch() " {{{
+  if !exists('g:sketch_dir')
+    let g:sketch_dir = expand('~/sketches')
+  endif
+
+  if !isdirectory(g:sketch_dir)
+    call mkdir(g:sketch_dir, 'p')
+  endif
+
+  let basename = strftime('%Y%m%d%H%M%S')
+  let filename = g:sketch_dir . '/' . basename
+  execute ':edit ' . filename
+endfunction " }}}
+" }}}
+
 " Local {{{
 let local_vimrc_path = expand('~/.local.vimrc')
 if filereadable(local_vimrc_path)
