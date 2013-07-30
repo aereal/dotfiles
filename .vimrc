@@ -148,7 +148,7 @@ NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
+NeoBundleLazy 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
 NeoBundleLazy 'nathanaelkane/vim-indent-guides'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
@@ -157,6 +157,7 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'bling/vim-airline'
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
@@ -691,6 +692,10 @@ function! alignta.hooks.on_source(bundle)
   vmap ,> :Alignta =><CR>
 endfunction
 unlet alignta
+" }}}
+" airline {{{
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
 " }}}
 " }}}
 
