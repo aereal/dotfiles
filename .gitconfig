@@ -55,13 +55,10 @@
 	updated   = yellow
 
 [color "grep"]
-	context    = white
-	filename   = green
+	filename   = cyan
 	function   = yellow
-	linenumber = magenta
+	linenumber = yellow
 	match      = yellow reverse
-	# selected
-	# separator = magenta
 
 [color "interactive"]
 	# prompt
