@@ -1,67 +1,77 @@
-[gui]
-	encoding = utf-8
 [user]
 	email = aereal@aereal.org
 	name = aereal
+
+[gui]
+	encoding = utf-8
+
 [github]
 	user = aereal
+
 [alias]
-	st = status --short --ignore-submodules --untracked-files
-	df = diff
-	ci = commit
-	co = checkout
-	fixup = commit --amend --reuse-message HEAD
-	svn-push = !git stash && git svn dcommit && git stash pop
-	svn-pull = !git stash && git svn rebase && git stash pop
-	onelog = log --oneline
-	squashed-merge = merge --squash
-	track = checkout --track
-	unstage = reset HEAD --
-	fdf = diff --function-context
-	diff-funcon = diff --function-context
+	abort-rebase       = rebase --abort
+	branch-name        = name-rev --name-only
+	ci                 = commit
+	co                 = checkout
+	continue-rebase    = rebase --continue
+	cp                 = cherry-pick
+	df                 = diff
+	diff-funcon        = diff --function-context
 	diff-funcon-staged = diff --cached --function-context
-	ds = diff --staged
-	network = log --graph --all --decorate --oneline
-	summary = status --short --branch
-	vizlog = log --graph --date-order --find-copies --find-renames --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
-	branch-name = name-rev --name-only
-	gr = grep --heading --break
+	ds                 = diff --staged
+	fdf                = diff --function-context
+	fetch-pulls        = fetch origin +refs/pull/*:refs/remotes/pull/*
+	fix                = commit --amend
+	fixup              = commit --amend --reuse-message HEAD
+	gr                 = grep --heading --break
 	interactive-rebase = rebase --interactive
-	continue-rebase = rebase --continue
-	abort-rebase = rebase --abort
-	fix = commit --amend
-	cp = cherry-pick
-	fetch-pulls = fetch origin +refs/pull/*:refs/remotes/pull/*
+	network            = log --graph --all --decorate --oneline
+	onelog             = log --oneline
+	squashed-merge     = merge --squash
+	st                 = status --short --ignore-submodules --untracked-files
+	summary            = status --short --branch
+	svn-pull           = !git stash && git svn rebase && git stash pop
+	svn-push           = !git stash && git svn dcommit && git stash pop
+	track              = checkout --track
+	unstage            = reset HEAD --
+	vizlog             = log --graph --date-order --find-copies --find-renames --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
+
 [color]
-	branch = true
-	status = true
-	diff = true
+	branch      = true
+	diff        = true
+	grep        = true
 	interactive = true
-	grep = true
-	pager = true
+	pager       = true
+	status      = true
+
 [color "branch"]
 	current = green reverse
-	local = green
-	remote = yellow
+	local   = green
+	remote  = yellow
+
 [color "status"]
-	updated = yellow
-	changed = green
+	changed   = green
 	untracked = cyan
+	updated   = yellow
+
 [color "grep"]
-	context = white
-	filename = green
-	function = yellow
+	context    = white
+	filename   = green
+	function   = yellow
 	linenumber = magenta
-	match = yellow reverse
+	match      = yellow reverse
 	# selected
 	# separator = magenta
+
 [color "interactive"]
 	# prompt
 	# header
 	# help
 	# error
+
 [i18n]
 	commitencoding= utf-8
+
 [core]
 	editor = vim -u NONE -i NONE -N -c 'syntax on'
 	quotepath = false
@@ -69,36 +79,51 @@
 	pager = $PAGER
 	precomposeunicode = true
 	excludesfile = ~/.global.gitignore
+
 [push]
 	default = simple
+
 [branch]
 	autosetuprebase = always
-[gitflow "branch"]
-	develop = devel
+
 [grep]
 	lineNumber = true
+
 [tig]
 	commit-order = topo
 	tab-size = 2
+
 [tig "bind"]
 	generic = g move-first-line
 	generic = G move-last-line
+
 [rebase]
 	stat = true
+
 [diff "ruby"]
 	funcname = =
+
 [diff "perl"]
 	funcname = =
+
+[diff "gzip"]
+	textconv = gzcat
+
 [log]
 	date = iso
+
 [merge]
 	stat = true
+
 [status]
 	showUntrackedFiles = all
 	submodulesummary = true
+
 [interactive]
 	singlekey = true
+
 [ghq]
 	root = /Users/aereal/repos
-[diff "gzip"]
-	textconv = gzcat
+
+[gitflow "branch"]
+	develop = devel
