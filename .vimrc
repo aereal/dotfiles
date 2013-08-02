@@ -379,6 +379,7 @@ augroup MyInit
   autocmd BufNewFile,BufRead cpanfile set syntax=perl.cpanfile
 
   autocmd BufEnter *.tt    set ft=tt2
+  autocmd BufEnter *.t setlocal ft=perl
   " }}}
   " Vim {{{
   autocmd FileType vim inoreabbrev <buffer> = =
