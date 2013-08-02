@@ -590,7 +590,7 @@ endif
 let g:watchdogs_check_BufWritePost_enable = 1
 
 let g:quickrun_config['watchdogs_checker/_'] = {
-      \   'hook/close_quickfix/enable_exit' : 1,
+      \   'outputter/quickfix/open_cmd' : '',
       \   'hook/hier_update/enable_exit' : 1,
       \   'runner/vimproc/updatetime' : 40,
       \   'hook/unite_quickfix/enable_failure' : 1,
