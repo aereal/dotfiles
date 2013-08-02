@@ -131,6 +131,12 @@ NeoBundleLazy 'zaiste/tmux.vim'
 NeoBundleLazy 'elixir-lang/vim-elixir'
 NeoBundle 'moznion/vim-cpanfile'
 NeoBundle 'evanmiller/nginx-vim-syntax'
+NeoBundleLazy 'y-uuki/perl-local-lib-path.vim'
+call neobundle#config('perl-local-lib-path.vim', {
+      \ 'autoload' : {
+      \   'filetypes' : ['perl'],
+      \ },
+      \ })
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
@@ -696,6 +702,14 @@ unlet alignta
 " airline {{{
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+" }}}
+" perl-local-lib-path.vim {{{
+let g:perl_local_lib_path = "t/lib"
+let perl_local_lib = neobundle#get('perl-local-lib-path.vim')
+function! perl_local_lib.hooks.on_source(bundle)
+  autocmd FileType perl :PerlLocalLibPath<CR>
+endfunction
+unlet perl_local_lib
 " }}}
 " }}}
 
