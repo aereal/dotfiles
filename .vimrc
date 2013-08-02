@@ -708,7 +708,7 @@ let g:airline_theme = 'solarized'
 let g:perl_local_lib_path = "t/lib"
 let perl_local_lib = neobundle#get('perl-local-lib-path.vim')
 function! perl_local_lib.hooks.on_source(bundle)
-  autocmd FileType perl :PerlLocalLibPath<CR>
+  autocmd FileType perl PerlLocalLibPath
 endfunction
 unlet perl_local_lib
 " }}}
