@@ -11,30 +11,21 @@
 [alias]
 	abort-rebase       = rebase --abort
 	branch-name        = name-rev --name-only
-	ci                 = commit
+	ci                 = commit -v
 	co                 = checkout
 	continue-rebase    = rebase --continue
 	cp                 = cherry-pick
 	df                 = diff
-	diff-funcon        = diff --function-context
-	diff-funcon-staged = diff --cached --function-context
 	ds                 = diff --staged
 	fdf                = diff --function-context
 	fetch-pulls        = fetch origin +refs/pull/*:refs/remotes/pull/*
 	fix                = commit --amend
-	fixup              = commit --amend --reuse-message HEAD
 	gr                 = grep --heading --break
 	interactive-rebase = rebase --interactive
 	network            = log --graph --all --decorate --oneline
 	onelog             = log --oneline
 	squashed-merge     = merge --squash
 	st                 = status --short --ignore-submodules --untracked-files
-	summary            = status --short --branch
-	svn-pull           = !git stash && git svn rebase && git stash pop
-	svn-push           = !git stash && git svn dcommit && git stash pop
-	track              = checkout --track
-	unstage            = reset HEAD --
-	vizlog             = log --graph --date-order --find-copies --find-renames --all --pretty=format:\"<%h> %ad [%cn] %Cgreen%d%Creset %s\"
 
 [color]
 	branch      = true
