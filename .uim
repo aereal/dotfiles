@@ -1,2 +1,4 @@
+;; vim:set ft=scheme:
+
 (define default-im-name 'skk)
 (define skk-dic-file-name (string-append(getenv "HOME") "/Library/Application\ Support/AquaSKK/SKK-JISYO.L"))
