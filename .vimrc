@@ -137,6 +137,10 @@ call neobundle#config('perl-local-lib-path.vim', {
       \   'filetypes' : ['perl'],
       \ },
       \ })
+NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
+      \ 'autoload' : {
+      \   'filetypes' : ['markdown'],
+      \ }}
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
