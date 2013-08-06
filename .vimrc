@@ -191,6 +191,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundleLazy 'thinca/vim-partedit'
 NeoBundleLazy 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
+NeoBundle 'terryma/vim-expand-region'
 " }}}
 " Organize {{{
 NeoBundleLazy 'kana/vim-altr'
@@ -207,6 +208,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'sudo.vim'
 NeoBundleLazy 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'spolu/dwm.vim'
 " }}}
 
 filetype plugin indent on
