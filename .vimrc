@@ -158,8 +158,6 @@ NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
-NeoBundleLazy 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim' }
-NeoBundleLazy 'nathanaelkane/vim-indent-guides'
 NeoBundleLazy 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'dannyob/quickfixstatus'
