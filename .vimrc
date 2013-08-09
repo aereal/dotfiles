@@ -603,8 +603,16 @@ let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
       \   'exec' : '%c %o -cw -MProject::Libs %s:p',
       \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
       \ }
+let g:quickrun_config['watchdogs_checker/cpanfile'] = {
+      \   'command' : 'perl',
+      \   'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+      \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+      \ }
 let g:quickrun_config['perl/watchdogs_checker'] = {
       \   'type' : 'watchdogs_checker/perl-projectlibs',
+      \ }
+let g:quickrun_config['cpanfile/watchdogs_checker'] = {
+      \   'type' : 'watchdogs_checker/cpanfile',
       \ }
 
 let watchdogs = neobundle#get('vim-watchdogs')
