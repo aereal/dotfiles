@@ -1,0 +1,15 @@
+dotfiles:
+  - .caprc
+  - .gemrc
+  - .gitconfig
+  - .global.gitignore
+  - .gvimrc
+  - .powenv
+  - .proverc
+  - .pryrc
+  - .tmux.conf
+  - .vim
+  - .vimrc
+  - .zsh.d
+  - .zshenv
+  - .zshrc

@@ -1,34 +1,30 @@
 # vim:set ft=ruby:
 
+require 'rake/testtask'
+require 'yaml'
+
 HOME = ENV['HOME']
 SRC_DIR = File.dirname(File.expand_path(__FILE__))
 REPOSITORY = SRC_DIR
-DST_DIR = HOME
-DOTFILES = %w(
-  .caprc
-  .gemrc
-  .gitconfig
-  .global.gitignore
-  .gvimrc
-  .powenv
-  .proverc
-  .pryrc
-  .tmux.conf
-  .vim
-  .vimrc
-  .zsh.d
-  .zshenv
-  .zshrc
-).map {|f| "#{SRC_DIR}/#{f}" }
+DST_DIR = ENV.fetch('DOTFILES_INSTALL_DIR', HOME)
+CONFIG = YAML.load_file(File.join(REPOSITORY, '.dotfiles.yml'))
+DOTFILES = CONFIG['dotfiles']
+DOTFILES_MAP = DOTFILES.map {|f|
+  { basename: f, source: File.join(SRC_DIR, f), installed: File.join(DST_DIR, f) }
+}
 
-DOTFILES.each do |dotfile|
-  file "#{DST_DIR}/#{dotfile}" do
-    ln_sf "#{SRC_DIR}/#{dotfile}", "#{DST_DIR}/#{dotfile}"
+DOTFILES_MAP.each do |dotfile|
+  file dotfile[:installed] do
+    ln_sf dotfile[:source], dotfile[:installed]
   end
 end
 
+Rake::TestTask.new(:test) do |t|
+  t.pattern = 'test/**/*_test.rb'
+end
+
 desc "Install dotfiles to $HOME"
-task :install => DOTFILES
+task :install => DOTFILES_MAP.map {|dotfile| dotfile[:installed] }
 
 desc "Show all dotfiles"
 task :list do
