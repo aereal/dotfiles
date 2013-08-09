@@ -1,5 +1,7 @@
 # dotfiles
 
+![Build Status](https://travis-ci.org/aereal/dotfiles.png?branch=master)
+
 This repository includes a lot of configuration file is used and optimized for me.
 
 You can clone or fork them freely, but I don't guarantee that they fit you.
