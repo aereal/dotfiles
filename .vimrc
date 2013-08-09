@@ -174,8 +174,8 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping', { 'depends' : 'tpope/vim-surround' }
 NeoBundle 'kana/vim-smartinput'
-NeoBundleLazy 'mattn/zencoding-vim'
-call neobundle#config('zencoding-vim', {
+NeoBundleLazy 'mattn/emmet-vim'
+call neobundle#config('emmet-vim', {
       \ 'autoload' : {
       \   'filetypes' : [
       \     'html',
@@ -511,11 +511,8 @@ let g:surround_custom_mapping.tt2 = {
       \ }
 let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
 " }}}
-" zencoding-vim {{{
-let g:user_zen_leader_key = '<C-e>'
-let g:user_zen_settings = {
-      \ 'indentation': ' ',
-      \ }
+" emmet-vim {{{
+let g:user_emmet_leader_key = '<C-e>'
 " }}}
 " ref-vim {{{
 let g:ref_cache_dir = $HOME . '/.vim/.ref'
