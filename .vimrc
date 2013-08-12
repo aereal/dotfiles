@@ -418,6 +418,9 @@ augroup MyInit
   " Close window with `q` key {{{
   autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
   " }}}
+  " Git config {{{
+  autocmd FileType gitconfig setlocal noexpandtab
+  " }}}
 augroup END
 " }}}
 
