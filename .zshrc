@@ -370,7 +370,9 @@ fi
 
 # Aliases {{{
 alias :q=exit
-alias ql='qlmanage -p "$@" >& /dev/null'
+if whence qlmanage >/dev/null; then
+  alias ql='qlmanage -p "$@" >& /dev/null'
+fi
 
 if [[ -d "$HOMEBREW_HOME/opt/coreutils" ]]; then
   for coreutil in $HOMEBREW_HOME/opt/coreutils/bin/*(*); do
