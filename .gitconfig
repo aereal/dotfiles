@@ -25,7 +25,7 @@
 	network            = log --graph --all --decorate --oneline
 	onelog             = log --oneline
 	squashed-merge     = merge --squash
-	st                 = status --short --ignore-submodules --untracked-files
+	st                 = status --short --untracked-files=all
 
 [color]
 	branch      = true
