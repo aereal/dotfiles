@@ -757,6 +757,9 @@ function! perl_local_lib.hooks.on_source(bundle)
 endfunction
 unlet perl_local_lib
 " }}}
+" dwm.vim {{{
+let g:dwm_map_keys = 0
+" }}}
 " }}}
 
 " Colorscheme {{{
