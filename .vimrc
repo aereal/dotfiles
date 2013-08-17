@@ -214,7 +214,7 @@ filetype plugin indent on
 
 " Configurations {{{
 set hidden
-set history=100
+set history=1000
 set autoread
 set fileformats=unix,dos,mac
 set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
