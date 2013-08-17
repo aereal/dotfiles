@@ -212,6 +212,65 @@ NeoBundle 'spolu/dwm.vim'
 filetype plugin indent on
 " }}}
 
+" autocmd {{{
+augroup MyInit
+  autocmd!
+  " screen title {{{
+  if ! has('gui_running')
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
+  endif " }}}
+  " CoffeeScript {{{
+  autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
+  " }}}
+  " Haskell {{{
+  autocmd FileType haskell setlocal et
+  " }}}
+  " Perl {{{
+  autocmd BufNewFile,BufRead cpanfile setlocal filetype=cpanfile
+  autocmd BufNewFile,BufRead cpanfile setlocal syntax=perl.cpanfile
+
+  autocmd BufEnter *.tt setlocal ft=tt2
+  autocmd BufEnter *.t  setlocal ft=perl
+  " }}}
+  " Vim {{{
+  autocmd FileType vim inoreabbrev <buffer> = =
+  " }}}
+  " Markdown {{{
+  autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
+  " }}}
+  " Nginx {{{
+  autocmd BufEnter */nginx/*.conf setlocal ft=nginx
+  autocmd BufEnter */*.nginx.conf setlocal ft=nginx
+  " }}}
+  " HTML {{{
+  autocmd FileType html inoremap <buffer> = =
+  " }}}
+  " Hatena {{{
+  autocmd BufNewFile,BufRead *.hatena setlocal filetype=hatena
+
+  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
+  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+  autocmd BufEnter */Hatena/*.html     setlocal ft=tt2html
+  autocmd BufEnter */Hatena/*.tt       setlocal ft=tt2html
+  " }}}
+  " AutoCursorLine {{{
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+  autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
+  " }}}
+  " Indent guides width {{{
+  autocmd BufEnter * let g:indent_guides_guide_size = &sw
+  " }}}
+  " Close window with `q` key {{{
+  autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
+  " }}}
+  " Git config {{{
+  autocmd FileType gitconfig setlocal noexpandtab
+  " }}}
+augroup END
+" }}}
+
 " Configurations {{{
 set hidden
 set history=1000
@@ -337,7 +396,7 @@ nnoremap <SID>(command-line-norange) q:<C-u>
 nmap : <SID>(command-line-enter)
 xmap : <SID>(command-line-enter)
 
-autocmd CmdwinEnter * call s:init_cmdwin()
+autocmd MyInit CmdwinEnter * call s:init_cmdwin()
 
 function! s:init_cmdwin() " {{{
   nnoremap <silent><buffer> q :<C-u>quit<CR>
@@ -363,65 +422,6 @@ nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
-" }}}
-
-" autocmd {{{
-augroup MyInit
-  autocmd!
-  " screen title {{{
-  if ! has('gui_running')
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
-  endif " }}}
-  " CoffeeScript {{{
-  autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
-  " }}}
-  " Haskell {{{
-  autocmd FileType haskell setlocal et
-  " }}}
-  " Perl {{{
-  autocmd BufNewFile,BufRead cpanfile set filetype=cpanfile
-  autocmd BufNewFile,BufRead cpanfile set syntax=perl.cpanfile
-
-  autocmd BufEnter *.tt    set ft=tt2
-  autocmd BufEnter *.t setlocal ft=perl
-  " }}}
-  " Vim {{{
-  autocmd FileType vim inoreabbrev <buffer> = =
-  " }}}
-  " Markdown {{{
-  autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
-  " }}}
-  " Nginx {{{
-  autocmd BufEnter */nginx/*.conf set ft=nginx
-  autocmd BufEnter */*.nginx.conf set ft=nginx
-  " }}}
-  " HTML {{{
-  autocmd FileType html inoremap <buffer> = =
-  " }}}
-  " Hatena {{{
-  autocmd BufNewFile,BufRead *.hatena set filetype=hatena
-
-  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
-  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     set ft=tt2html
-  autocmd BufEnter */Hatena/*.tt       set ft=tt2html
-  " }}}
-  " AutoCursorLine {{{
-  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
-  autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
-  " }}}
-  " Indent guides width {{{
-  autocmd BufEnter * let g:indent_guides_guide_size = &sw
-  " }}}
-  " Close window with `q` key {{{
-  autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
-  " }}}
-  " Git config {{{
-  autocmd FileType gitconfig setlocal noexpandtab
-  " }}}
-augroup END
 " }}}
 
 " Plugin Configurations {{{
@@ -489,7 +489,7 @@ function! fugitive.hooks.on_source(bundle) " {{{
 
   vmap ,go :Gbrowse<CR>
 
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd MyInit BufReadPost fugitive://* set bufhidden=delete
 endfunction " }}}
 unlet fugitive
 " }}}
@@ -530,7 +530,7 @@ endif
 
 let unite = neobundle#get('unite.vim')
 function! unite.hooks.on_source(bundle) " {{{
-  autocmd FileType unite nmap <buffer><BS> <Plug>(unite_delete_backward_path)
+  autocmd MyInit FileType unite nmap <buffer><BS> <Plug>(unite_delete_backward_path)
 
   nnoremap <SID>[unite] <Nop>
   nmap <Space> <SID>[unite]
@@ -558,18 +558,18 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]h :<C-u>Unite help -auto-preview<CR>
 
   " JavaScript {{{
-  autocmd FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-  autocmd FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
+  autocmd MyInit FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
+  autocmd MyInit FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
   " }}}
 
   " Ruby {{{
-  autocmd FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-  autocmd FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
+  autocmd MyInit FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
+  autocmd MyInit FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
   " }}}
 
   " Perl {{{
-  autocmd FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-  autocmd FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
+  autocmd MyInit FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
+  autocmd MyInit FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
   " }}}
 endfunction " }}}
 unlet unite
@@ -630,8 +630,8 @@ let g:indent_guides_enable_on_vim_startup = 1
 if ! has('gui_running')
   let g:indent_guides_auto_colors=0
 
-  autocmd VimEnter,Colorscheme * :hi! IndentGuidesOdd  ctermbg=235
-  autocmd VimEnter,Colorscheme * :hi! IndentGuidesEven ctermbg=240
+  autocmd MyInit VimEnter,Colorscheme * :hi! IndentGuidesOdd  ctermbg=235
+  autocmd MyInit VimEnter,Colorscheme * :hi! IndentGuidesEven ctermbg=240
 endif
 " }}}
 " operator-html-escape {{{
@@ -655,18 +655,18 @@ endif
 " vim-smartchr {{{
 let smartchr = neobundle#get('vim-smartchr')
 function! smartchr.hooks.on_source(bundle)
-  autocmd FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-  autocmd FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
-  autocmd FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-  autocmd FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-  autocmd FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-  autocmd FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-  autocmd FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-  autocmd FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-  autocmd FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-  autocmd FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-  autocmd FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-  autocmd FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+  autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+  autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+  autocmd MyInit FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+  autocmd MyInit FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+  autocmd MyInit FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+  autocmd MyInit FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+  autocmd MyInit FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+  autocmd MyInit FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+  autocmd MyInit FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  autocmd MyInit FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+  autocmd MyInit FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+  autocmd MyInit FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
 endfunction
 unlet smartchr
 " }}}
@@ -720,7 +720,7 @@ let g:airline_theme = 'solarized'
 let g:perl_local_lib_path = "t/lib"
 let perl_local_lib = neobundle#get('perl-local-lib-path.vim')
 function! perl_local_lib.hooks.on_source(bundle)
-  autocmd FileType perl PerlLocalLibPath
+  autocmd MyInit FileType perl PerlLocalLibPath
 endfunction
 unlet perl_local_lib
 " }}}
