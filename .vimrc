@@ -140,14 +140,29 @@ call neobundle#config('html5.vim', {
       \   'filetypes' : ['html'],
       \ }
       \ })
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'vim-perl/vim-perl'
+NeoBundleLazy 'pangloss/vim-javascript'
+call neobundle#config('vim-javascript', {
+      \   'autoload' : {
+      \     'filetypes' : ['javascript'],
+      \   },
+      \ })
+NeoBundleLazy 'vim-perl/vim-perl'
+call neobundle#config('vim-perl', {
+      \   'autoload' : {
+      \     'filetypes' : ['perl'],
+      \   },
+      \ })
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundleLazy 'juvenn/mustache.vim'
 NeoBundleLazy 'davidoc/taskpaper.vim'
 NeoBundleLazy 'zaiste/tmux.vim'
 NeoBundleLazy 'elixir-lang/vim-elixir'
-NeoBundle 'moznion/vim-cpanfile'
+NeoBundleLazy 'moznion/vim-cpanfile'
+call neobundle#config('vim-cpanfile', {
+      \   'autoload' : {
+      \     'filetypes' : ['cpanfile'],
+      \   },
+      \ })
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundleLazy 'y-uuki/perl-local-lib-path.vim'
 call neobundle#config('perl-local-lib-path.vim', {
@@ -207,7 +222,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundleLazy 'thinca/vim-partedit'
 NeoBundleLazy 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
-NeoBundle 'terryma/vim-expand-region'
+NeoBundleLazy 'terryma/vim-expand-region'
 " }}}
 " Organize {{{
 NeoBundleLazy 'kana/vim-altr'
