@@ -194,7 +194,7 @@ NeoBundle 'terryma/vim-expand-region'
 " Organize {{{
 NeoBundleLazy 'kana/vim-altr'
 NeoBundleLazy 'kien/ctrlp.vim'
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
