@@ -228,6 +228,13 @@ NeoBundleLazy 'terryma/vim-expand-region'
 NeoBundleLazy 'kana/vim-altr'
 NeoBundleLazy 'kien/ctrlp.vim'
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleLazy 'Shougo/vimfiler'
+call neobundle#config('vimfiler', {
+      \   'depends' : ['Shougo/unite.vim'],
+      \   'autoload' : {
+      \     'commands' : ['VimFilerTab', 'VimFiler', 'VimFilerExplorer', 'VimFilerBufferDir'],
+      \   },
+      \ })
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
