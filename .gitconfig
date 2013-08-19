@@ -26,6 +26,7 @@
 	onelog             = log --oneline
 	squashed-merge     = merge --squash
 	st                 = status --short --untracked-files=all
+	ls                 = ls-files
 
 [color]
 	branch      = true
