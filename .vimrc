@@ -111,6 +111,7 @@ call neobundle#config('unite-fold', {
       \   'unite_sources' : ['fold'],
       \ },
       \ })
+NeoBundle 'tsukkee/unite-tag'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
