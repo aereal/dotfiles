@@ -299,9 +299,6 @@ augroup MyInit
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
   autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
   " }}}
-  " Indent guides width {{{
-  autocmd BufEnter * let g:indent_guides_guide_size = &sw
-  " }}}
   " Close window with `q` key {{{
   autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
   " }}}
@@ -663,16 +660,6 @@ function! watchdogs.hooks.on_source(bundle) " {{{
   call watchdogs#setup(g:quickrun_config)
 endfunction " }}}
 unlet watchdogs
-" }}}
-" indent-guides {{{
-let g:indent_guides_enable_on_vim_startup = 1
-
-if ! has('gui_running')
-  let g:indent_guides_auto_colors=0
-
-  autocmd MyInit VimEnter,Colorscheme * :hi! IndentGuidesOdd  ctermbg=235
-  autocmd MyInit VimEnter,Colorscheme * :hi! IndentGuidesEven ctermbg=240
-endif
 " }}}
 " operator-html-escape {{{
 let operator_html_escape = neobundle#get('operator-html-escape.vim')
