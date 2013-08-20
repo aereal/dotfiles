@@ -3,3 +3,4 @@ MYMETA.yml
 /vendor/bundle
 /.bundle/
 .DS_Store
+tags
