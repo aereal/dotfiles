@@ -295,10 +295,6 @@ augroup MyInit
   autocmd BufEnter */Hatena/*.html     setlocal ft=tt2html
   autocmd BufEnter */Hatena/*.tt       setlocal ft=tt2html
   " }}}
-  " AutoCursorLine {{{
-  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
-  autocmd CursorHold,CursorHoldI,WinEnter * setlocal cursorline
-  " }}}
   " Close window with `q` key {{{
   autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
   " }}}
