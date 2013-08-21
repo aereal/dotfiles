@@ -670,6 +670,11 @@ unlet operator_html_escape
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
+call smartinput#define_rule({
+      \   'at'    : '\s\+\%#',
+      \   'char'  : '<CR>',
+      \   'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>",
+      \ })
 " }}}
 " vim-cpanfile {{{
 if !exists('g:neocomplcache_dictionary_filetype_lists')
