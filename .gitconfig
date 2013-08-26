@@ -62,7 +62,6 @@
 	commitencoding= utf-8
 
 [core]
-	editor = vim -u NONE -i NONE -N -c 'syntax on'
 	quotepath = false
 	whitespace = cr-at-eol
 	pager = $PAGER
