@@ -199,7 +199,8 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'bling/vim-airline'
+NeoBundleFetch 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
@@ -755,6 +756,21 @@ unlet perl_local_lib
 " }}}
 " dwm.vim {{{
 let g:dwm_map_keys = 0
+" }}}
+" lightline.vim {{{
+let g:lightline              = {}
+let g:lightline.component    = {}
+let g:lightline.active       = {}
+let g:lightline.separator    = {}
+let g:lightline.subseparator = {}
+
+let g:lightline.active.left        = [['mode', 'paste'], ['fugitive', 'filename']]
+let g:lightline.colorscheme        = 'jellybeans'
+let g:lightline.component.fugitive = '%{exists("*fugitive#head")?fugitive#head():""}'
+let g:lightline.separator.left     = ''
+let g:lightline.separator.right    = ''
+let g:lightline.subseparator.left  = ''
+let g:lightline.subseparator.right = ''
 " }}}
 " }}}
 
