@@ -581,7 +581,7 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
   nnoremap <silent> <SID>[unite]B :<C-u>Unite buffer -immediately<CR>
   nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current<CR>
-  nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -winwidth=40 -buffer-name=outline<CR>
+  nnoremap <silent> <SID>[unite][ :<C-u>Unite outline fold -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
   nnoremap <silent> <SID>[unite]> :<C-u>Unite output<CR>
   nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
   nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
