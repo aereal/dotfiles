@@ -1,27 +1,27 @@
-# vim:set ft=zsh:
+# vim:set ft=zsh foldmethod=marker:
 
-function prompt_aereal_setup() {
+function prompt_aereal_setup() { # {{{
   if ! (which add-zsh-hook > /dev/null); then
     autoload -Uz add-zsh-hooks
   fi
   add-zsh-hook precmd aereal_update_prompt
-}
+} # }}}
 
-function detect_ruby_version() {
+function detect_ruby_version() { # {{{
   which rbenv > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     return
   fi
   echo "ruby-$(rbenv version-name)"
-}
+} # }}}
 
-function detect_perl_version() {
+function detect_perl_version() { # {{{
   which plenv > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     return
   fi
   echo "perl-$(plenv version-name)"
-}
+} # }}}
 
 function git_repository_relative_dir() { # {{{
   if ! git rev-parse --is-inside-work-tree 1>/dev/null 2>&1; then
