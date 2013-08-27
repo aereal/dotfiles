@@ -23,6 +23,18 @@ function detect_perl_version() {
   echo "perl-$(plenv version-name)"
 }
 
+function git_repository_relative_dir() { # {{{
+  if ! git rev-parse --is-inside-work-tree 1>/dev/null 2>&1; then
+    return
+  fi
+
+  local project repository_dir prefix
+  repository_dir=${${$(git rev-parse --show-cdup 2>/dev/null):-"."}:a}
+  project=${repository_dir:t}
+  prefix=$(git rev-parse --show-prefix 2>/dev/null)
+  echo "${project}${prefix:+":$prefix"}"
+} # }}}
+
 function aereal_update_prompt() { # {{{
   local \
     ruby_version \
@@ -42,24 +54,28 @@ function aereal_update_prompt() { # {{{
 
   git_info=$(git_info)
   current_ts="%D{%Y-%m-%d} %*"
+  git_info=${git_info:+"[$git_info] "}
 
   current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
   current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
   login_info="${current_user} @ ${current_host}"
 
-  current_working_directory="%~"
-  current_working_directory="%{${fg[magenta]}%}${current_working_directory}%{${reset_color}%}"
+  if git rev-parse --is-inside-work-tree 1>/dev/null 2>&1; then
+    current_working_directory="%{${fg[yellow]}%}$(git_repository_relative_dir)%{${reset_color}%}"
+  else
+    current_working_directory="%{${fg[magenta]}%}%~%{${reset_color}%}"
+  fi
 
   additional_info="${ruby_version} ${perl_version}"
 
-  top_line="${current_working_directory:+$current_working_directory }${additional_info:+"(${additional_info})"}"
+  top_line="${git_info}${additional_info:+"(${additional_info})"}"
 
   ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
   ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
   command_line="%(?,$ok_prompt,$ng_prompt)"
 
   PROMPT="$(echo -n "${top_line}\n${command_line}")"
-  RPROMPT="${git_info:+"[$git_info]"}"
+  RPROMPT=${current_working_directory:+"[$current_working_directory]"}
 }
 
 prompt_aereal_setup "$@"
