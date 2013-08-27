@@ -65,57 +65,40 @@ NeoBundle 'thinca/vim-ref'
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
-NeoBundleLazy 'sgur/unite-qf'
-call neobundle#config('unite-qf', {
-      \ 'autoload' : {
-      \   'unite_sources' : ['qf'],
-      \ },
-      \ })
+NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
-NeoBundleLazy 'ujihisa/unite-colorscheme'
-call neobundle#config('unite-colorscheme', {
-      \ 'autoload' : {
-      \   'unite_sources' : ['colorscheme'],
-      \ },
-      \ })
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundleLazy 'basyura/unite-rails'
 call neobundle#config('unite-rails', {
       \ 'autoload' : {
       \   'filetypes' : ['ruby'],
       \ }
       \ })
-NeoBundleLazy 'sgur/unite-git_grep'
-call neobundle#config('unite-git_grep', {
-      \ 'autoload' : {
-      \   'unite_sources' : ['vcs_grep', 'vcs_grep/git', 'vcs_grep/hg'],
-      \ },
-      \ })
+NeoBundle 'sgur/unite-git_grep'
 NeoBundleLazy 'soh335/unite-perl-module'
 call neobundle#config('unite-perl-module', {
-      \ 'autoload' : {
-      \   'filetypes' : ['perl'],
-      \   'unite_sources' : ['perl-module/carton', 'perl-module/cpan'],
-      \ }
+      \   'autoload' : {
+      \     'filetypes' : ['perl'],
+      \   },
       \ })
 NeoBundleLazy 'rhysd/unite-ruby-require.vim'
 call neobundle#config('unite-ruby-require.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['ruby'],
-      \   'unite_sources' : ['ruby/require'],
-      \ }
+      \   'autoload' : {
+      \     'filetypes' : ['ruby'],
+      \   },
       \ })
 NeoBundle 'Shougo/unite-help'
-NeoBundleLazy 'osyo-manga/unite-fold'
-call neobundle#config('unite-fold', {
-      \ 'autoload' : {
-      \   'unite_sources' : ['fold'],
-      \ },
-      \ })
+NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'ujihisa/neco-look'
+NeoBundleLazy 'ujihisa/neco-look'
+call neobundle#config('neco-look', {
+      \   'autoload' : {
+      \     'filetypes' : ['markdown', 'hatena'],
+      \   },
+      \ })
 NeoBundleLazy 'teramako/jscomplete-vim'
 call neobundle#config('jscomplete-vim', {
       \ 'autoload' : {
