@@ -39,11 +39,7 @@ function aereal_update_prompt() { # {{{
   local \
     ruby_version \
     perl_version \
-    current_ts \
-    login_info \
     additional_info \
-    current_user \
-    current_host \
     current_working_directory \
     git_info \
     top_line \
@@ -53,12 +49,7 @@ function aereal_update_prompt() { # {{{
   perl_version="%{${fg[blue]}%}$(detect_perl_version)%{${reset_color}%}"
 
   git_info=$(git_info)
-  current_ts="%D{%Y-%m-%d} %*"
   git_info=${git_info:+"[$git_info] "}
-
-  current_user="%{${fg[magenta]}%}%n%{${reset_color}%}"
-  current_host="%{${fg[cyan]}%}%M%{${reset_color}%}"
-  login_info="${current_user} @ ${current_host}"
 
   if git rev-parse --is-inside-work-tree 1>/dev/null 2>&1; then
     current_working_directory="%{${fg[yellow]}%}$(git_repository_relative_dir)%{${reset_color}%}"
