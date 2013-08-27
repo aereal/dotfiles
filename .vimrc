@@ -38,9 +38,9 @@ call neobundle#config('vim-textobj-function-javascript', {
       \     'filetypes' : ['javascript'],
       \   }
       \ })
-NeoBundleLazy 'thinca/vim-textobj-comment'         , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'coderifous/textobj-word-column.vim' , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'rhysd/vim-textobj-continuous-line'  , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleFetch 'thinca/vim-textobj-comment'         , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleFetch 'coderifous/textobj-word-column.vim' , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleFetch 'rhysd/vim-textobj-continuous-line'  , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleLazy 'rhysd/vim-textobj-ruby'
 call neobundle#config('vim-textobj-ruby', {
       \   'depends' : 'kana/vim-textobj-user',
@@ -48,15 +48,15 @@ call neobundle#config('vim-textobj-ruby', {
       \     'filetypes' : ['ruby'],
       \   },
       \ })
-NeoBundleLazy 'thinca/vim-textobj-between'         , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'mattn/vim-textobj-url'              , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleFetch 'thinca/vim-textobj-between'         , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleFetch 'mattn/vim-textobj-url'              , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
-NeoBundleLazy 'kana/vim-operator-user'
-NeoBundleLazy 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleLazy 'kana/vim-operator-replace'     , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleLazy 'tyru/operator-camelize.vim'    , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleLazy 'tyru/operator-html-escape.vim' , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleFetch 'kana/vim-operator-user'
+NeoBundleFetch 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleFetch 'kana/vim-operator-replace'     , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleFetch 'tyru/operator-camelize.vim'    , { 'depends' : 'kana/vim-operator-user' }
+NeoBundleFetch 'tyru/operator-html-escape.vim' , { 'depends' : 'kana/vim-operator-user' }
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -181,21 +181,21 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'tomasr/molokai'
+NeoBundleFetch 'tomasr/molokai'
 NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
-NeoBundle 'sickill/vim-monokai'
+NeoBundleFetch 'sickill/vim-monokai'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
-NeoBundle 'uu59/vim-herokudoc-theme'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundleFetch 'uu59/vim-herokudoc-theme'
+NeoBundleFetch 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'trapd00r/neverland-vim-theme'
-NeoBundle 'bluntpeak/bluntpeak-vim-colors'
+NeoBundleFetch 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
-NeoBundleLazy 'scrooloose/syntastic'
+NeoBundleFetch 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'dannyob/quickfixstatus'
-NeoBundle 'errormarker.vim'
+NeoBundleFetch 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
@@ -219,16 +219,21 @@ call neobundle#config('emmet-vim', {
       \ },
       \ })
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'sickill/vim-pasta'
-NeoBundle 'h1mesuke/vim-alignta'
-NeoBundleLazy 'thinca/vim-partedit'
-NeoBundleLazy 'Lokaltog/vim-easymotion'
+NeoBundleFetch 'sickill/vim-pasta'
+NeoBundleLazy 'h1mesuke/vim-alignta'
+call neobundle#config('vim-alignta', {
+      \   'autoload' : {
+      \     'commands' : ['Align', 'Alignta'],
+      \   },
+      \ })
+NeoBundleFetch 'thinca/vim-partedit'
+NeoBundleFetch 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
-NeoBundleLazy 'terryma/vim-expand-region'
+NeoBundleFetch 'terryma/vim-expand-region'
 " }}}
 " Organize {{{
-NeoBundleLazy 'kana/vim-altr'
-NeoBundleLazy 'kien/ctrlp.vim'
+NeoBundleFetch 'kana/vim-altr'
+NeoBundleFetch 'kien/ctrlp.vim'
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleLazy 'Shougo/vimfiler'
 call neobundle#config('vimfiler', {
@@ -246,7 +251,7 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'sudo.vim'
-NeoBundleLazy 'kana/vim-tabpagecd'
+NeoBundleFetch 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'spolu/dwm.vim'
 " }}}
