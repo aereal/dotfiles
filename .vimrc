@@ -543,6 +543,7 @@ let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
+let g:unite_force_overwrite_statusline = 0
 
 if executable('ag')
   let g:unite_source_grep_command        = 'ag'
