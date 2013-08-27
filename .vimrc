@@ -303,7 +303,7 @@ set scrolloff=100000 " 常にカーソルのある行を中心に (したい)
 set backspace=indent,eol,start
 set formatoptions-=ro
 set ttyfast
-set lazyredraw
+" set lazyredraw
 set completeopt=menuone,menu
 
 " Backup & Swap {{{
