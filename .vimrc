@@ -350,7 +350,7 @@ set noshowmode
 set shortmess+=I
 
 if v:version >= 704
-  set relativenumber " 7.4 以降だと絶対行数も表示される
+  " set relativenumber " 7.4 以降だと絶対行数も表示される
 endif
 " }}}
 " IME {{{
