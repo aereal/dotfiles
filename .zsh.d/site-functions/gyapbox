@@ -4,7 +4,7 @@ function gyapbox() {
   local base_dir=~/Dropbox/Public/g
   local enable_notify=0
 
-  if /usr/bin/which -s terminal-notifier; then
+  if whence terminal-notifier >/dev/null; then
     enable_notify=1
   fi
 

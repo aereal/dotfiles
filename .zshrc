@@ -391,7 +391,7 @@ else
   alias ll='ls -GAFl'
 fi
 
-if /usr/bin/which -s reattach-to-user-namespace; then
+if whence reattach-to-user-namespace >/dev/null; then
   function v() {
     reattach-to-user-namespace -l "$EDITOR" "$@"
   }
@@ -412,7 +412,7 @@ fi
 # # }}}
 
 # Launch tmux {{{
-if /usr/bin/which -s tmux && [ -z "$TMUX" ]; then
+if whence tmux >/dev/null && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then
     tmux attach-session -t "${HOST%%.*}"
   else
