@@ -53,7 +53,7 @@ path=(
 )
 # }}}
 
-if [[ -e "$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim" ]]; then
+if whence brew >/dev/null && [[ -e "$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim" ]]; then
   export EDITOR="$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim"
 fi
 
