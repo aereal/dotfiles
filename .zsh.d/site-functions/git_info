@@ -40,7 +40,7 @@ git_info() { # {{{
   else
     remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
     remote_local_revs=($($git rev-list --left-right ${remote_ref}...HEAD))
-    is_tracked=" (tracked)"
+    is_tracked=" %{${fg[green]}%}♨%{${reset_color}%}"
   fi
 
   local ahead_commits_color="${fg[green]}"
@@ -66,8 +66,11 @@ git_info() { # {{{
 
   # stashes count {{{
   declare -a stashes_count
+  local stash_annotation="⟐"
   stashes_count=($($git stash list --format='format:%h' 2> /dev/null))
-  stashes=" %{${fg[yellow]}%}*$#stashes_count"
+  if [[ $#stashes_count > 0 ]]; then
+    stashes=" %{${fg[yellow]}%}${stash_annotation}$#stashes_count"
+  fi
   # }}}
 
   st=$($git status --short --porcelain -b 2> /dev/null)
@@ -75,24 +78,24 @@ git_info() { # {{{
   # Staged changes {{{
   if [[ -n `echo "$st" | grep "^[UMADRC]"` ]]; then
     # Staged
-    annotation="$annotation*"
     color=%F{yellow}
+    annotation="${annotation}${color}*"
   fi
   # }}}
 
   # Untracked changes {{{
   if [[ -n `echo "$st" | grep "??"` ]]; then
     # Untracked
-    annotation="$annotation?"
     color=%F{yellow}
+    annotation="${annotation}${color}?%f"
   fi
   # }}}
 
   # Changed, but not staged {{{
   if [[ -n `echo "$st" | grep "^[ ][MD]"` ]]; then
     # Changed, but not staged
-    annotation="$annotation!"
     color=%F{red}
+    annotation="${annotation}${color}!%f"
   fi
   # }}}
 
