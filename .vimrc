@@ -555,6 +555,21 @@ endif
 let unite = neobundle#get('unite.vim')
 function! unite.hooks.on_source(bundle) " {{{
   autocmd MyInit FileType unite nmap <buffer><BS> <Plug>(unite_delete_backward_path)
+  autocmd MyInit FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings()
+    let unite = unite#get_current_unite()
+
+    nmap <buffer> <BS> <Plug>(unite_delete_backward_path)
+
+    nnoremap <buffer><silent><expr> <C-w>h unite#do_action('left')
+    nnoremap <buffer><silent><expr> <C-w>l unite#do_action('right')
+    nnoremap <buffer><silent><expr> <C-w>j unite#do_action('below')
+    nnoremap <buffer><silent><expr> <C-w>k unite#do_action('above')
+
+    if unite.buffer_name == 'files'
+      nnoremap <buffer><silent><expr> r unite#do_action('rename')
+    endif
+  endfunction
 
   nnoremap <SID>[unite] <Nop>
   nmap <Space> <SID>[unite]
