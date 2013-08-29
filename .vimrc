@@ -11,6 +11,11 @@ endif
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
 
+function! s:meet_neocomplete_requirements() " {{{
+  " http://rhysd.hatenablog.com/entry/2013/08/24/223438
+  return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction " }}}
+
 " Plugins {{{
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun'
@@ -92,7 +97,13 @@ NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 " }}}
 " Completion {{{
-NeoBundle 'Shougo/neocomplcache'
+if s:meet_neocomplete_requirements()
+  NeoBundle 'Shougo/neocomplete.vim'
+  NeoBundleFetch 'Shougo/neocomplcache'
+else
+  NeoBundleFetch 'Shougo/neocomplete.vim'
+  NeoBundle 'Shougo/neocomplcache'
+endif
 NeoBundleLazy 'ujihisa/neco-look'
 call neobundle#config('neco-look', {
       \   'autoload' : {
@@ -448,39 +459,70 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
 
 " Plugin Configurations {{{
-" neocomplcache {{{
-let g:neocomplcache_enable_at_startup = 1
-if !exists('g:neocomplcache_dictionary_filetype_lists')
-  let g:neocomplcache_dictionary_filetype_lists = {}
-endif
-let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_vim_completefuncs = {
-      \ 'Ref' : 'ref#complete',
-      \ 'Unite' : 'unite#complete_source',
-      \}
+" neocomplete.vim {{{
+let g:neocomplete#enable_at_startup = 1
 
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-" Delimiter {{{
-if !exists('g:neocomplcache_delimiter_patterns')
-    let g:neocomplcache_delimiter_patterns = {}
-endif
+if neobundle#is_installed('neocomplete.vim')
+  let s:bundle = neobundle#get('neocomplete.vim')
 
-let g:neocomplcache_delimiter_patterns.vim = ['#']
-let g:neocomplcache_delimiter_patterns.ruby = ['::']
-let g:neocomplcache_delimiter_patterns.perl = ['::']
+  function! s:bundle.hooks.on_source(bundle)
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+    let g:neocomplete#keyword_patterns                  = {}
+    let g:neocomplete#keyword_patterns.default          = '\h\w*'
+
+    let g:neocomplete#delimiter_patterns                = {}
+    let g:neocomplete#delimiter_patterns.vim            = ['#']
+    let g:neocomplete#delimiter_patterns.perl           = ['::']
+    let g:neocomplete#delimiter_patterns.ruby           = ['::']
+
+    imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+    imap <expr> <BS>  neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+    inoremap <expr> <C-g> neocomplete#undo_completion()
+
+    autocmd MyInit CmdwinEnter * let b:neocomplete_sources = ['vim']
+  endfunction
+
+  unlet s:bundle
+endif
 " }}}
+" neocomplcache {{{
+if neobundle#is_installed('neocomplcache')
+  let s:bundle = neobundle#get('neocomplcache')
 
-let neocomplcache = neobundle#get('neocomplcache')
-function! neocomplcache.hooks.on_source(bundle) " {{{
-  imap <expr> <C-h> neocomplcache#smart_close_popup() . "\<Plug>(smartinput_C-h)"
-  imap <expr> <BS>  neocomplcache#smart_close_popup() . "\<Plug>(smartinput_BS)"
-  inoremap <expr> <C-g> neocomplcache#undo_completion()
-endfunction " }}}
-unlet neocomplcache
+  let g:neocomplcache_enable_at_startup = 1
+  if !exists('g:neocomplcache_dictionary_filetype_lists')
+    let g:neocomplcache_dictionary_filetype_lists = {}
+  endif
+  let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
+  let g:neocomplcache_min_syntax_length = 3
+  let g:neocomplcache_vim_completefuncs = {
+        \ 'Ref' : 'ref#complete',
+        \ 'Unite' : 'unite#complete_source',
+        \}
+
+  if !exists('g:neocomplcache_keyword_patterns')
+      let g:neocomplcache_keyword_patterns = {}
+  endif
+  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+  " Delimiter {{{
+  if !exists('g:neocomplcache_delimiter_patterns')
+      let g:neocomplcache_delimiter_patterns = {}
+  endif
+
+  let g:neocomplcache_delimiter_patterns.vim = ['#']
+  let g:neocomplcache_delimiter_patterns.ruby = ['::']
+  let g:neocomplcache_delimiter_patterns.perl = ['::']
+  " }}}
+
+  function! s:bundle.hooks.on_source(bundle) " {{{
+    imap <expr> <C-h> neocomplcache#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+    imap <expr> <BS>  neocomplcache#smart_close_popup() . "\<Plug>(smartinput_BS)"
+    inoremap <expr> <C-g> neocomplcache#undo_completion()
+  endfunction " }}}
+
+  unlet s:bundle
+endif
 " }}}
 " neosnippet {{{
 let g:neosnippet#disable_select_mode_mappings = 0
