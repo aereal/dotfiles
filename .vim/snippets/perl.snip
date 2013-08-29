@@ -39,7 +39,7 @@ snippet when
 
 snippet ddd
 	require Data::Dumper;
-	sub p ($) { print Data::Dumper->(\@_)->Useqq(1)->Terse(1)->Dump(); }
+	sub p ($) { warn Data::Dumper->new(\@_)->Useqq(1)->Terse(1)->Dump(); }
 	${1}
 
 snippet map
