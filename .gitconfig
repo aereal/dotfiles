@@ -115,3 +115,5 @@
 
 [gitflow "branch"]
 	develop = devel
+[diff]
+	algorithm = histogram
