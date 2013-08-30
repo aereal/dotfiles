@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+LEFT_CHARS       = %w( a s d f g w e r v 3 4 5 )
+LEFT_CANDIDATES  = LEFT_CHARS.flat_map {|c| [c, c.upcase] }
+RIGHT_CHARS      = %w( h j k l i o p n 8 9 0 )
+RIGHT_CANDIDATES = RIGHT_CHARS.flat_map {|c| [c, c.upcase] }
+CANDIDATES       = LEFT_CANDIDATES.shuffle.zip(RIGHT_CANDIDATES.shuffle).flatten
+MAX_RETRY_COUNT  = 3
+
+def generate_typable_words(candidates, length)
+  candidates.take(length)
+end
+
+def generate_strong_typable_words(candidates, length, retry_count = 0)
+  chars = generate_typable_words(candidates, length)
+  if (retry_count <= MAX_RETRY_COUNT) && !(chars.grep(/[0-9]/).any? && chars.grep(/[a-z]/).any? && chars.grep(/[A-Z]/).any?)
+    generate_strong_typable_words(candidates, length, retry_count + 1)
+  else
+    chars
+  end
+end
+
+length        = ARGV.grep(/[0-9]+/).first || 8
+should_strong = ARGV.include?('--strong')
+strategy      = should_strong ? :generate_strong_typable_words : :generate_typable_words
+word          = self.__send__(strategy, CANDIDATES, length.to_i)
+
+print word.join('')
