@@ -622,7 +622,7 @@ function! unite.hooks.on_source(bundle) " {{{
 
   nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir  file file/new file_mru -no-split -hide-source-names -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]O :<C-u>UniteWithCurrentDir file_mru file -no-split -buffer-name=files<CR>
-  nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -no-split -buffer-name=files<CR>
+  nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -no-split -hide-source-names -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]F :<C-u>UniteWithCurrentDir file file/new -no-split -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]r :<C-u>UniteWithBufferDir  file_mru -no-split -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
