@@ -23,6 +23,7 @@ typeset -Ua \
   sudo_path \
   system_path
 user_path=(
+  $HOME/local/bin(N-/)
   $HOME/bin(N-/)
 )
 homebrew_path=(
