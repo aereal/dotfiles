@@ -323,6 +323,15 @@ if [[ -e "$ZSH_HOME/plugins/ghq/zsh" ]]; then
 fi
 # }}}
 
+# zsh-completions {{{
+if [[ -e "$ZSH_HOME/plugins/zsh-completions/src" ]]; then
+  fpath=(
+    $ZSH_HOME/plugins/zsh-completions/src
+    $fpath
+  )
+fi
+# }}}
+
 # Update window title {{{
 function update_window_title() { # {{{
   emulate -L zsh
