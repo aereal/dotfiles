@@ -27,6 +27,7 @@
 	squashed-merge     = merge --squash
 	st                 = status --short --untracked-files=all
 	ls                 = ls-files
+	delete-branch      = branch -d
 
 [color]
 	branch      = true
