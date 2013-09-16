@@ -214,7 +214,7 @@ call neobundle#config('emmet-vim', {
       \ },
       \ })
 NeoBundle 'kana/vim-smartchr'
-NeoBundleFetch 'sickill/vim-pasta'
+NeoBundle 'sickill/vim-pasta'
 NeoBundleLazy 'h1mesuke/vim-alignta'
 call neobundle#config('vim-alignta', {
       \   'autoload' : {
