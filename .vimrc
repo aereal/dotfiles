@@ -169,6 +169,7 @@ NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['markdown'],
       \ }}
+NeoBundle 'jnwhiteh/vim-golang'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
