@@ -1,0 +1,49 @@
+#compdef prove
+
+typeset -A options
+local context state line
+
+_arguments -s -C \
+  {-a,--archive}'[Store the resulting TAP in an archive file.]':OUTPUT:_files \
+  {-b,--blib}"[Add 'blib/lib' and 'blib/arch' to the path for your tests]" \
+  {-c,--color}'[Colored test output (default).]' \
+  {-o,--comments}'[Show comments.]' \
+  --count'[Show the X/Y test count when not verbose (default)]' \
+  --directives'[Only show results with TODO or SKIP directives.]' \
+  {-D,--dry}'[Dry run. Show test that would have run.]' \
+  {-e,--exec}"[Interpreter to run the tests ('' for compiled tests.)]":EXECUTOR \
+  --ext"[Set the extension for tests (default '.t')]":EXTENSION \
+  {-f,--failures}'[Show failed tests.]' \
+  --formatter'[Result formatter to use. See FORMATTERS.]':FORMATTER \
+  --harness'[Define test harness to use.  See TAP::Harness.]':HARNESS \
+  {-?,-h,--help}'[Display this help]' \
+  -I'[Library paths to include.]':DIR:_dirs \
+  --ignore-exit'[Ignore exit status from test scripts.]' \
+  {-j,--jobs}'[Run N test jobs in parallel (try 9.)]':N \
+  {-l,--lib}"[Add 'lib' to the path for your tests (-Ilib).]" \
+  -M'[Load a module.]':MODULE:_perl_modules \
+  {-H,--man}'[Longer manpage for prove]' \
+  {-m,--merge}"[Merge test scripts' STDERR with their STDOUT.]" \
+  --nocolor'[Do not color test output.]' \
+  --nocount'[Disable the X/Y test count.]' \
+  --norc"[Don't process default .proverc]" \
+  --normalize'[Normalize TAP output in verbose output]' \
+  -P'[Load plugin (searches App::Prove::Plugin::*.)]':PLUGIN \
+  {-p,--parse}'[Show full list of TAP parse errors, if any.]' \
+  {-q,--quiet}'[Suppress some test output while running tests.]' \
+  {-Q,--QUIET}'[Only print summary results.]' \
+  --rc'[Process options from rcfile]':RCFILE:_files \
+  {-r,--recurse}'[Recursively descend into directories.]' \
+  --reverse'[Run the tests in reverse order.]' \
+  {-s,--shuffle}'[Run the tests in random order.]' \
+  --source'[Load and/or configure a SourceHandler. See SOURCE HANDLERS.]':HANDLER \
+  --state"[Control prove's persistent state.]":OPTION:'(last failed passed all hot todo slow fast new old fresh save)' \
+  -T'[Enable tainting checks.]' \
+  -t'[Enable tainting warnings.]' \
+  --timer'[Print elapsed time after each test.]' \
+  --trap'[Trap Ctrl-C and print summary on interrupt.]' \
+  {-v,--verbose}'[Print all test lines.]' \
+  -W'[Enable fatal warnings.]' \
+  -w'[Enable warnings.]'
+
+# vim:set ft=zsh:
