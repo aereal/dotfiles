@@ -1,0 +1,46 @@
+#compdef carton
+
+function _carton () {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    ':command:->command' \
+    '*::options:->options'
+
+  case $state in
+    command)
+      _values 'carton commands' \
+        install'[Install the dependencies]' \
+        bundle'[Bundle cached tarballs in vendor/cache]' \
+        'exec[execute your script in a carton local environment]'
+      ;;
+    options)
+      case $line[1] in
+        bundle)
+          _arguments \
+            {-h,--help}'[Show help message]' \
+            --no-fatpack'[Skip generating fatpacked "carton" in "vendor/bin"]'
+          ret=0
+          ;;
+        install)
+          _arguments \
+            {-h,--help}'[Show help message]' \
+            --deployment'[Force the deployment mode. See "DEPLOYMENT MODE" above]' \
+            --cached'[Locate distribution tarballs in "vendor/cache" rather than fetching them from CPAN mirrors]' \
+            --cpanfile'[Specify the alternate path for cpanfile]:cpanfile:_files' \
+            --path'[Specify the path to install modules to]:path:_dirs' \
+            --without'[You can specify phases or features to exclude, in the comma separated list]:phases_or_features'
+          ret=0
+          ;;
+        exec)
+          _normal
+          ret=0
+          ;;
+      esac
+  esac
+}
+
+_carton "$@"
+
+# vim:set ft=zsh:
