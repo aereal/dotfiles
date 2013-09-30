@@ -47,6 +47,7 @@ zstyle ':vcs_info:git:*:-all-' command =git
 # }}}
 
 # Completion {{{
+zmodload -i zsh/complist
 autoload -U compinit && compinit -C
 
 ## Grouping
@@ -115,6 +116,11 @@ setopt \
   hist_expand \
   no_beep \
   numeric_glob_sort
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
 # }}}
 
 # Expand childa to $HOME {{{
