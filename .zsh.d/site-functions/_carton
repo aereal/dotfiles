@@ -11,12 +11,36 @@ function _carton () {
   case $state in
     command)
       _values 'carton commands' \
+        version'[Display version]' \
+        update'[Update the dependencies]' \
+        tree'[Show the tree of dependency graph]' \
+        show'[Show the module information]' \
+        list'[List dependencies tracked in the cpanfile.snapshot file]' \
+        check'[Check if your cpanfile and local environment are in sync]' \
         install'[Install the dependencies]' \
         bundle'[Bundle cached tarballs in vendor/cache]' \
         'exec[execute your script in a carton local environment]'
       ;;
     options)
       case $line[1] in
+        update)
+          _arguments \
+            '*:MODULE:_perl_modules'
+          ret=0
+          ;;
+        show)
+          _arguments \
+            '*:MODULE:_perl_modules'
+          ret=0
+          ;;
+        list)
+          _arguments \
+            --distfile'[Displays the list of distributions in a distfile format]'
+          ret=0
+          ;;
+        check|tree|version)
+          ret=0
+          ;;
         bundle)
           _arguments \
             {-h,--help}'[Show help message]' \
