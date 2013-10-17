@@ -1,3 +1,5 @@
+bind r:ctrl;cmd;shift relaunch
+
 # vim-like window placement
 bind l:ctrl;cmd push right bar-resize:screenSizeX/2
 bind h:ctrl;cmd push left  bar-resize:screenSizeX/2
