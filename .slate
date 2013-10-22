@@ -6,4 +6,9 @@ bind h:ctrl;cmd push left  bar-resize:screenSizeX/2
 bind j:ctrl;cmd push down  bar-resize:screenSizeY/2
 bind k:ctrl;cmd push up    bar-resize:screenSizeY/2
 
+bind i:ctrl;cmd move 0;0 screenSizeX/2;screenSizeY/2
+bind o:ctrl;cmd move screenSizeX/2;0 screenSizeX/2;screenSizeY/2
+bind m:ctrl;cmd move screenSizeX/2;screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind n:ctrl;cmd move 0;screenSizeY/2 screenSizeX/2;screenSizeY/2
+
 bind return:ctrl;cmd move 0;0 screenSizeX;screenSizeX
