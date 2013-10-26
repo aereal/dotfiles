@@ -45,26 +45,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-qf'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundleLazy 'basyura/unite-rails'
-call neobundle#config('unite-rails', {
-      \ 'autoload' : {
-      \   'filetypes' : ['ruby'],
-      \ }
-      \ })
 NeoBundle 'sgur/unite-git_grep'
-NeoBundleLazy 'soh335/unite-perl-module'
-call neobundle#config('unite-perl-module', {
-      \   'autoload' : {
-      \     'filetypes' : ['perl'],
-      \   },
-      \ })
-NeoBundleLazy 'rhysd/unite-ruby-require.vim'
-call neobundle#config('unite-ruby-require.vim', {
-      \   'autoload' : {
-      \     'filetypes' : ['ruby'],
-      \   },
-      \ })
-NeoBundle 'Shougo/unite-help'
 NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 " }}}
