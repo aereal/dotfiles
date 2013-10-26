@@ -118,3 +118,5 @@
 	develop = devel
 [diff]
 	algorithm = histogram
+[include]
+	path = ~/.secret.gitconfig
