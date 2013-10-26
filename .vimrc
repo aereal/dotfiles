@@ -23,38 +23,10 @@ NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'osyo-manga/shabadou.vim'
 " }}}
 " Text Object {{{
-NeoBundle 'kana/vim-textobj-user'
-
 NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-function'              , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'thinca/vim-textobj-function-perl'
-call neobundle#config('vim-textobj-function-perl', {
-      \   'depends' : 'kana/vim-textobj-user',
-      \   'autoload' : {
-      \     'filetypes' : ['perl'],
-      \   }
-      \ })
-NeoBundleLazy 'thinca/vim-textobj-function-javascript'
-call neobundle#config('vim-textobj-function-javascript', {
-      \   'depends' : 'kana/vim-textobj-user',
-      \   'autoload' : {
-      \     'filetypes' : ['javascript'],
-      \   }
-      \ })
-NeoBundleFetch 'thinca/vim-textobj-comment'         , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleFetch 'coderifous/textobj-word-column.vim' , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundleFetch 'rhysd/vim-textobj-continuous-line'  , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'rhysd/vim-textobj-ruby'
-call neobundle#config('vim-textobj-ruby', {
-      \   'depends' : 'kana/vim-textobj-user',
-      \   'autoload' : {
-      \     'filetypes' : ['ruby'],
-      \   },
-      \ })
-NeoBundleFetch 'thinca/vim-textobj-between'         , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleFetch 'mattn/vim-textobj-url'              , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
 NeoBundleFetch 'kana/vim-operator-user'
