@@ -63,7 +63,7 @@ call neobundle#config('neco-look', {
       \     'filetypes' : ['markdown', 'hatena'],
       \   },
       \ })
-NeoBundleLazy 'teramako/jscomplete-vim'
+NeoBundleLazy 'git@github.com:aereal/jscomplete-vim.git', { 'name': 'jscomplete-vim' }
 call neobundle#config('jscomplete-vim', {
       \ 'autoload' : {
       \   'filetypes' : ['javascript'],
@@ -101,27 +101,19 @@ call neobundle#config('vim-perl', {
       \   },
       \ })
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundleLazy 'juvenn/mustache.vim'
 NeoBundleLazy 'davidoc/taskpaper.vim'
-NeoBundleLazy 'zaiste/tmux.vim'
-NeoBundleLazy 'elixir-lang/vim-elixir'
 NeoBundleLazy 'moznion/vim-cpanfile'
 call neobundle#config('vim-cpanfile', {
       \   'autoload' : {
       \     'filetypes' : ['cpanfile'],
       \   },
       \ })
-NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundleLazy 'y-uuki/perl-local-lib-path.vim'
 call neobundle#config('perl-local-lib-path.vim', {
       \ 'autoload' : {
       \   'filetypes' : ['perl'],
       \ },
       \ })
-NeoBundleLazy 'joker1007/vim-markdown-quote-syntax', {
-      \ 'autoload' : {
-      \   'filetypes' : ['markdown'],
-      \ }}
 NeoBundle 'jnwhiteh/vim-golang'
 " }}}
 " Color {{{
@@ -129,25 +121,21 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundleFetch 'tomasr/molokai'
 NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
-NeoBundleFetch 'sickill/vim-monokai'
+NeoBundle 'sickill/vim-monokai'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
-NeoBundleFetch 'uu59/vim-herokudoc-theme'
-NeoBundleFetch 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'uu59/vim-herokudoc-theme'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'trapd00r/neverland-vim-theme'
-NeoBundleFetch 'bluntpeak/bluntpeak-vim-colors'
+NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 " }}}
 " Visualize {{{
-NeoBundleFetch 'scrooloose/syntastic'
 NeoBundle 'jceb/vim-hier'
 NeoBundle 'dannyob/quickfixstatus'
-NeoBundleFetch 'errormarker.vim'
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
-NeoBundleFetch 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim'
 " }}}
 " Input & Edit {{{
@@ -174,22 +162,10 @@ call neobundle#config('vim-alignta', {
       \     'commands' : ['Align', 'Alignta'],
       \   },
       \ })
-NeoBundleFetch 'thinca/vim-partedit'
-NeoBundleFetch 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/eskk.vim'
-NeoBundleFetch 'terryma/vim-expand-region'
 " }}}
 " Organize {{{
-NeoBundleFetch 'kana/vim-altr'
-NeoBundleFetch 'kien/ctrlp.vim'
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundleLazy 'Shougo/vimfiler'
-call neobundle#config('vimfiler', {
-      \   'depends' : ['Shougo/unite.vim'],
-      \   'autoload' : {
-      \     'commands' : ['VimFilerTab', 'VimFiler', 'VimFilerExplorer', 'VimFilerBufferDir'],
-      \   },
-      \ })
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
@@ -199,9 +175,7 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'sudo.vim'
-NeoBundleFetch 'kana/vim-tabpagecd'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'spolu/dwm.vim'
 " }}}
 
 filetype plugin indent on
