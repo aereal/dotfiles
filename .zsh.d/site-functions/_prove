@@ -4,6 +4,7 @@ typeset -A options
 local context state line
 
 _arguments -s -C \
+  '*:TEST:_files' \
   {-a,--archive}'[Store the resulting TAP in an archive file.]':OUTPUT:_files \
   {-b,--blib}"[Add 'blib/lib' and 'blib/arch' to the path for your tests]" \
   {-c,--color}'[Colored test output (default).]' \
