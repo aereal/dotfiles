@@ -63,12 +63,6 @@ call neobundle#config('neco-look', {
       \     'filetypes' : ['markdown', 'hatena'],
       \   },
       \ })
-NeoBundleLazy 'git@github.com:aereal/jscomplete-vim.git', { 'name': 'jscomplete-vim' }
-call neobundle#config('jscomplete-vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['javascript'],
-      \ },
-      \ })
 " }}}
 " Language, Format {{{
 NeoBundle 'slim-template/vim-slim'
