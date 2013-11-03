@@ -237,24 +237,6 @@ function ps-mem() { # {{{
   processes | sort --reverse --numeric-sort --key 4 | head -n $count
 } # }}}
 
-function macvim_client() { # {{{
-declare editor="/Applications/MacVim.app/Contents/MacOS/mvim"
-declare wrapper
-
-if which reattach-to-user-namespace >/dev/null; then
-  wrapper=reattach-to-user-namespace
-fi
-
-declare -a args
-args=($*)
-
-if [[ $#args > 0 ]]; then
-  args=("--remote-silent" $args)
-fi
-
-$wrapper $editor "$args"
-} # }}}
-
 # cd to Git repository's root
 function gg() { # {{{
   if ! (git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
@@ -385,26 +367,9 @@ fi
 
 # Aliases {{{
 alias :q=exit
-if whence qlmanage >/dev/null; then
-  alias ql='qlmanage -p "$@" >& /dev/null'
-fi
-
-if [[ -d "$HOMEBREW_HOME/opt/coreutils" ]]; then
-  for coreutil in $HOMEBREW_HOME/opt/coreutils/bin/*(*); do
-    coreutil_basename=${coreutil:t:s/g//}
-    if (( ! ${+builtins[$coreutil_basename]} )); then
-      eval "alias ${coreutil_basename}=${coreutil}"
-    fi
-  done
-
-  alias  l='gls --color=auto -AF'
-  alias ls='gls --color=auto -AF'
-  alias ll='gls --color=auto -AFl'
-else
-  alias  l='ls -GAF'
-  alias ls='ls -GAF'
-  alias ll='ls -GAFl'
-fi
+alias  l='ls --color=auto -AF'
+alias ls='ls --color=auto -AF'
+alias ll='ls --color=auto -AFl'
 
 if whence reattach-to-user-namespace >/dev/null; then
   function v() {
@@ -425,6 +390,8 @@ if [[ -d "$ZSH_SYNTAX_HIGHLIGHT_ROOT" ]]; then
   source "$ZSH_SYNTAX_HIGHLIGHT_ROOT/zsh-syntax-highlighting.zsh"
 fi
 # # }}}
+
+[[ -f "$ZSH_HOME/$(uname).zshrc" ]] && source "$ZSH_HOME/$(uname).zshrc"
 
 # Launch tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
