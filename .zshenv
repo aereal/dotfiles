@@ -107,6 +107,12 @@ if which plenv >/dev/null; then
 fi
 # }}}
 
+# pyenv {{{
+if which pyenv >/dev/null; then
+  eval "$(pyenv init - --no-rehash)"
+fi
+# }}}
+
 # shared-mime-info {{{
 if which update-mime-database >/dev/null; then
   export XDG_DATA_HOME=$HOMEBREW_HOME/opt/shared-mime-info/share

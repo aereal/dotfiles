@@ -23,6 +23,14 @@ function detect_perl_version() { # {{{
   echo "perl-$(plenv version-name)"
 } # }}}
 
+function detect_python_version() { # {{{
+  which pyenv > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    return
+  fi
+  echo "python-$(pyenv version-name)"
+} # }}}
+
 function git_repository_relative_dir() { # {{{
   if ! git rev-parse --is-inside-work-tree 1>/dev/null 2>&1; then
     return
@@ -47,6 +55,7 @@ function aereal_update_prompt() { # {{{
 
   ruby_version="%{${fg[red]}%}$(detect_ruby_version)%{${reset_color}%}"
   perl_version="%{${fg[blue]}%}$(detect_perl_version)%{${reset_color}%}"
+  python_version="%{${fg[green]}%}$(detect_python_version)%{${reset_color}%}"
 
   git_info=$(git_info)
   git_info=${git_info:+" [$git_info]"}
@@ -57,7 +66,7 @@ function aereal_update_prompt() { # {{{
     current_working_directory="%{${fg[magenta]}%}%~%{${reset_color}%}"
   fi
 
-  additional_info="${ruby_version} ${perl_version}"
+  additional_info="${ruby_version} ${perl_version} ${python_version}"
 
   top_line="${current_working_directory:+"(${current_working_directory})"}${git_info}"
 
