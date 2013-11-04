@@ -53,7 +53,13 @@ viLikeWindowPlacements = {
     y: 'screenSizeY/2',
     width: 'screenSizeX/2',
     height: 'screenSizeY/2'
-  })
+  }),
+  'return': S.op('move', {
+    x: 0,
+    y: 0,
+    width: 'screenSizeX',
+    height: 'screenSizeY',
+  }),
 };
 
 for (key in viLikeWindowPlacements) {
