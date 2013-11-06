@@ -105,10 +105,6 @@
 [merge]
 	stat = true
 
-[status]
-	showUntrackedFiles = all
-	submodulesummary = true
-
 [interactive]
 	singlekey = true
 
