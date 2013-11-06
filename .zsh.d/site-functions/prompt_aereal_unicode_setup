@@ -1,10 +1,10 @@
 # vim:set ft=zsh foldmethod=marker:
 
-function prompt_aereal_setup() { # {{{
+function prompt_aereal_unicode_setup() { # {{{
   if ! (which add-zsh-hook > /dev/null); then
     autoload -Uz add-zsh-hooks
   fi
-  add-zsh-hook precmd aereal_update_prompt
+  add-zsh-hook precmd aereal_unicode_update_prompt
 } # }}}
 
 function detect_ruby_version() { # {{{
@@ -43,7 +43,7 @@ function git_repository_relative_dir() { # {{{
   echo "${project}${prefix:+":$prefix"}"
 } # }}}
 
-function aereal_update_prompt() { # {{{
+function aereal_unicode_update_prompt() { # {{{
   local \
     ruby_version \
     perl_version \
@@ -70,12 +70,12 @@ function aereal_update_prompt() { # {{{
 
   top_line="${current_working_directory:+"(${current_working_directory})"}${git_info}"
 
-  ok_prompt=" %{${fg[yellow]}%}X | _ | X%{${reset_color}%} < "
-  ng_prompt=" %{${fg[red]}%}X > _ < X%{${reset_color}%} < "
+  ok_prompt=" %{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} < "
+  ng_prompt=" %{${fg[red]}%}✘>_<✘%{${reset_color}%} < "
   command_line="%(?,$ok_prompt,$ng_prompt)"
 
   PROMPT="$(echo -n "${top_line}\n${command_line}")"
   RPROMPT=${additional_info:+"($additional_info)"}
 }
 
-prompt_aereal_setup "$@"
+prompt_aereal_unicode_setup "$@"
