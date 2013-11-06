@@ -120,3 +120,5 @@
 	algorithm = histogram
 [include]
 	path = ~/.secret.gitconfig
+[advice]
+	statusHints = false
