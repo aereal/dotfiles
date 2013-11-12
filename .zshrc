@@ -1,3 +1,43 @@
+# fpath {{{
+typeset -Ua fpath
+fpath=(
+  $ZSH_HOME/site-functions(N-/)
+  $HOMEBREW_HOME/share/zsh/site-functions(N-/)
+  $HOMEBREW_HOME/share/zsh/functions(N-/)
+  $fpath
+)
+# }}}
+
+# Grep {{{
+GREPPRG=grep
+
+if which ack >/dev/null; then
+  GREPPRG=ack
+elif which ag >/dev/null; then
+  GREPPRG=ag
+fi
+
+export GREPPRG
+# }}}
+
+# shared-mime-info {{{
+if which update-mime-database >/dev/null; then
+  export XDG_DATA_HOME=$HOMEBREW_HOME/opt/shared-mime-info/share
+  export XDG_DATA_DIRS=$HOMEBREW_HOME/opt/shared-mime-info/share
+fi
+# }}}
+
+# SSL certificates {{{
+if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
+  export SSL_CERT_FILE="$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt"
+fi
+# }}}
+
+# zsh-syntax-highlight {{{
+export ZSH_SYNTAX_HIGHLIGHT_ROOT="$ZSH_HOME/plugins/zsh-syntax-highlighting"
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="$ZSH_SYNTAX_HIGHLIGHT_ROOT/highlighters"
+# }}}
+
 setopt extended_glob
 autoload -Uz zmv
 autoload -Uz gyapbox

@@ -26,4 +26,8 @@ function macvim_client() { # {{{
   $wrapper $editor "$args"
 } # }}}
 
+if whence brew >/dev/null && [[ -e "$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim" ]]; then
+  export EDITOR="$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim"
+fi
+
 # vim:set ft=zsh foldmethod=marker:

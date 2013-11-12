@@ -6,16 +6,6 @@ export PLENV_HOME=$HOME/.plenv
 export EDITOR=vim
 # }}}
 
-# fpath {{{
-typeset -Ua fpath
-fpath=(
-  $ZSH_HOME/site-functions(N-/)
-  $HOMEBREW_HOME/share/zsh/site-functions(N-/)
-  $HOMEBREW_HOME/share/zsh/functions(N-/)
-  $fpath
-)
-# }}}
-
 # paths {{{
 typeset -Ua \
   user_path \
@@ -53,10 +43,6 @@ path=(
 )
 # }}}
 
-if whence brew >/dev/null && [[ -e "$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim" ]]; then
-  export EDITOR="$(brew --prefix macvim)/MacVim.app/Contents/MacOS/Vim"
-fi
-
 # manpath {{{
 typeset -U manpath
 manpath=(
@@ -79,18 +65,6 @@ export LV="-c -l"
 export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
 # }}}
 
-# Grep {{{
-GREPPRG=grep
-
-if which ack >/dev/null; then
-  GREPPRG=ack
-elif which ag >/dev/null; then
-  GREPPRG=ag
-fi
-
-export GREPPRG
-# }}}
-
 if [[ -e "$HOME/.local.env" ]]; then
   source "$HOME/.local.env"
 fi
@@ -111,24 +85,6 @@ fi
 if which pyenv >/dev/null; then
   eval "$(pyenv init - --no-rehash)"
 fi
-# }}}
-
-# shared-mime-info {{{
-if which update-mime-database >/dev/null; then
-  export XDG_DATA_HOME=$HOMEBREW_HOME/opt/shared-mime-info/share
-  export XDG_DATA_DIRS=$HOMEBREW_HOME/opt/shared-mime-info/share
-fi
-# }}}
-
-# SSL certificates {{{
-if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
-  export SSL_CERT_FILE="$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt"
-fi
-# }}}
-
-# zsh-syntax-highlight {{{
-export ZSH_SYNTAX_HIGHLIGHT_ROOT="$ZSH_HOME/plugins/zsh-syntax-highlighting"
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="$ZSH_SYNTAX_HIGHLIGHT_ROOT/highlighters"
 # }}}
 
 # vim:set ft=zsh foldmethod=marker:
