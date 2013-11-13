@@ -74,5 +74,8 @@ S.bindAll({
   }),
   "':cmd": S.op('shell', {
     command: "~/.slate.d/google_chrome.sh"
-  })
+  }),
+  "[:cmd" : S.op('shell', {
+    command: '/usr/bin/open -a MacVim'
+  }),
 });
