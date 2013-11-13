@@ -1,0 +1,5 @@
+set commit-order = topo
+set tab-size = 2
+
+bind generic g move-first-line
+bind generic G move-last-line
