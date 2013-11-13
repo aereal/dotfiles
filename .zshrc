@@ -1,7 +1,7 @@
 # fpath {{{
 typeset -Ua fpath
 fpath=(
-  $ZSH_HOME/site-functions(N-/)
+  $ZSH_HOME/functions(N-/)
   $HOMEBREW_HOME/share/zsh/site-functions(N-/)
   $HOMEBREW_HOME/share/zsh/functions(N-/)
   $fpath
