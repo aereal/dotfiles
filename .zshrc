@@ -299,6 +299,16 @@ function 256colors() { # {{{
     fi
   done
 } # }}}
+
+function run-multi-command() {
+  tmux new-window "$1"
+  shift
+  for cmd in $*; do
+    tmux split-window "$cmd"
+  done
+  tmux select-layout tiled >/dev/null
+  tmux set-window-option synchronize-panes on >/dev/null
+}
 # }}}
 
 # Prompt {{{
