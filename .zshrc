@@ -246,6 +246,22 @@ bindkey -v "^J" accept-line
 # }}}
 # }}}
 
+
+# tmux split window zle {{{
+function execute-in-new-horizontal-tmux-pane() { # {{{
+  LBUFFER="tmux split-window -p 50 -h '$LBUFFER'"
+  zle accept-line
+} # }}}
+function execute-in-new-vertical-tmux-pane() { # {{{
+  LBUFFER="tmux split-window -p 50 -v '$LBUFFER'"
+  zle accept-line
+} # }}}
+zle -N execute-in-new-horizontal-tmux-pane
+zle -N execute-in-new-vertical-tmux-pane
+bindkey -v "^Wv" execute-in-new-horizontal-tmux-pane
+bindkey -v "^Ws" execute-in-new-vertical-tmux-pane
+# }}}
+
 # url-quote-magic {{{
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
