@@ -160,6 +160,7 @@ NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'glidenote/memolist.vim'
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
@@ -739,6 +740,13 @@ let g:lightline.separator.left     = ''
 let g:lightline.separator.right    = ''
 let g:lightline.subseparator.left  = ''
 let g:lightline.subseparator.right = ''
+" }}}
+" memolist.vim {{{
+let g:memolist_path = expand('~/memo')
+let g:memolist_memo_suffix = 'hatena'
+let g:memolist_unite = 1
+let g:memolist_memo_date = '%Y-%m-%dT%H:%M:%S'
+let g:memolist_template_dir_path = expand('~/.vim/plugin/memolist-templates')
 " }}}
 " }}}
 
