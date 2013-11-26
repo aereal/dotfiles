@@ -111,3 +111,7 @@
 	path = ~/.secret.gitconfig
 [advice]
 	statusHints = false
+[pager]
+	log = diff-highlight | $PAGER
+	show = diff-highlight | $PAGER
+	diff = diff-highlight | $PAGER
