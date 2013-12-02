@@ -293,6 +293,18 @@ function ps-mem() { # {{{
   processes | sort --reverse --numeric-sort --key 4 | head -n $count
 } # }}}
 
+export GITHUB_REPOS_PATH=${GITHUB_REPOS_PATH:-$HOME/repos}
+function github-clone() {
+  local repo="$1"
+  local destination_dir="${GITHUB_REPOS_PATH}/@${repo}"
+  if [[ -d "$destination_dir" ]]; then
+    echo "$destination_dir already exists" >> /dev/stderr
+    exit 1
+  fi
+  echo "Repository: https://github.com/${repo}"
+  git clone git://github.com/${repo}.git ${destination_dir}
+}
+
 # cd to Git repository's root
 function gg() { # {{{
   if ! (git rev-parse --is-inside-work-tree > /dev/null 2>&1); then
