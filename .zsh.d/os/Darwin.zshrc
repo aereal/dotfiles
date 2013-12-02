@@ -2,7 +2,7 @@ if whence qlmanage >/dev/null; then
   alias ql='qlmanage -p "$@" >& /dev/null'
 fi
 
-if [[ ! -d "$HOMEBREW_HOME/opt/coreutils" ]]; then
+if [[ ! -d "$HOMEBREW_PATH/opt/coreutils" ]]; then
   alias  l='ls -GAF'
   alias ls='ls -GAF'
   alias ll='ls -GAFl'

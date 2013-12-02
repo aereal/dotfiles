@@ -447,7 +447,7 @@ if [[ -d "$ZSH_SYNTAX_HIGHLIGHT_ROOT" ]]; then
 fi
 # # }}}
 
-[[ -f "$ZSH_HOME/$(uname).zshrc" ]] && source "$ZSH_HOME/$(uname).zshrc"
+[[ -f "$ZSH_HOME/os/$(uname).zshrc" ]] && source "$ZSH_HOME/os/$(uname).zshrc"
 
 # Launch tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
