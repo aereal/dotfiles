@@ -1,6 +1,5 @@
 # Environment variables {{{
 export ZSH_HOME=$HOME/.zsh.d
-export HOMEBREW_HOME=/usr/local
 export RBENV_HOME=$HOME/.rbenv
 export PLENV_HOME=$HOME/.plenv
 export EDITOR=vim
@@ -8,19 +7,28 @@ export EDITOR=vim
 
 # paths {{{
 typeset -Ua \
+  rbenv_path \
+  plenv_path \
+  pyenv_path \
   user_path \
   homebrew_path \
   sudo_path \
   system_path
+rbenv_path=(
+  $HOME/.rbenv/bin(N-/)
+  $HOME/.rbenv/shims(N-/)
+)
+plenv_path=(
+  $HOME/.plenv/bin(N-/)
+  $HOME/.plenv/shims(N-/)
+)
+pyenv_path=(
+  $HOME/.pyenv/bin(N-/)
+  $HOME/.pyenv/shims(N-/)
+)
 user_path=(
   $HOME/local/bin(N-/)
   $HOME/bin(N-/)
-)
-homebrew_path=(
-  $HOMEBREW_HOME/opt/coreutils/libexec/gnubin(N-/)
-  $HOMEBREW_HOME/share/npm/bin(N-/)
-  $HOMEBREW_HOME/share/python(N-/)
-  $HOMEBREW_HOME/bin(N-/)
 )
 system_path=(
   /usr/local/mysql/bin(N-/)
@@ -36,8 +44,10 @@ sudo_path=(
 
 typeset -U path
 path=(
+  $rbenv_path
+  $plenv_path
+  $pyenv_path
   $user_path
-  $homebrew_path
   $system_path
   $sudo_path
 )
@@ -47,8 +57,6 @@ path=(
 typeset -U manpath
 manpath=(
   $HOME/local/share/man(N-/)
-  $HOMEBREW_HOME/opt/coreutils/libexec/gnuman(N-/)
-  $HOMEBREW_HOME/share/man(N-/)
   /usr/local/share/man(N-/)
   /usr/share/man(N-/)
 )
@@ -86,5 +94,8 @@ if which pyenv >/dev/null; then
   eval "$(pyenv init - --no-rehash)"
 fi
 # }}}
+
+os_zshenv="$ZSH_HOME/os/$(uname).zshenv"
+[[ -f "$os_zshenv" ]] && source $os_zshenv
 
 # vim:set ft=zsh foldmethod=marker:
