@@ -1,0 +1,111 @@
+#compdef pkgutil
+
+function _pkgutil() {
+  local curcontext=$curcontext state line ret=1
+  declare -A opt_args
+
+  _arguments -C \
+    '(-): :->command' \
+    '(-)*:: :->option-or-argument'
+
+  case $state in
+    command)
+      __pkgutil_commands && return 0
+      ;;
+    option-or-argument)
+      if (( $+functions[__pkgutil_$words[1]] )); then
+        _call_function ret __pkgutil_$words[1]
+      else
+        : # TODO
+      fi
+      ;;
+  esac
+
+  return $ret
+}
+
+function __pkgutil_commands() {
+  local curcontext=$curcontext state line ret=1
+  declare -A opt_args
+
+  local -a __pkgutil_receipt_database_commands
+  __pkgutil_receipt_database_commands=(
+    {--packages,--pkgs}:'List all installed package IDs on the specified --volume'
+    --pkgs-plist:'List all installed package IDs on the specified --volume in Mac OS X plist(5) format'
+    --files:'List all of the files installed under the package-id'
+    --export-plist:'Print all receipt information about the specified package-id in the standard Mac OS X plist(5) format'
+    --verify:'Run repair_packages(8) to verify the specified package-id'
+    --repair:'Run repair_packages(8) to repair the specified package-id'
+    --pkg-info:'Print extended information about the specified package-id'
+    --pkg-info-plist:'Print extended information about the specified package-id in Mac OS X plist(5) format'
+    --forget:'Discard all receipt data about package-id, but do not touch the installed files'
+    --learn:'Update the ACLs of the given path in the receipt identified by --edit-pkg'
+    --pkg-groups:'List all of the package groups this package-id is a member of'
+    --groups:'List all of the package groups on the specified --volume'
+    --groups-plist:'List all of the package groups on the specified --volume in Mac OS X plist(5) format.'
+    --group-pkgs:'List all of the packages that are members of this group-id.'
+    --file-info:'Show the metadata known about path.'
+    --file-info-plist:'Show the metadata known about path in Mac OS X plist(5) format.'
+  )
+
+  local -a __pkgutil_options
+  __pkgutil_options=(
+  {-h,--help}':A brief summary of commands and usage'
+  {-f,--force}":Don't ask for confirmation before performing a potentially destructive or ambiguous operation"
+  {-v,--verbose}':Output in a "human-readable" format with extra headers, footers, indentation, and other contextual information'
+  --volume":Perform all operations on the specified volume or home directory. The root volume '/' will be used if unspecified" \
+  --edit-pkg':Specifies an existing receipt to be modified in-place by --learn'
+  --only-files':List only files (not directories) in --files listing'
+  --only-dirs':List only directories (not files) in --files listing'
+  --regexp":Try to match package-id arguments as a regular expression if an exact match isn't found. See egrep(1) and re_format(7) for syntax"
+  )
+
+  local -a __pkgutil_file_commands
+  __pkgutil_file_commands=(
+    --expand:'Expand the flat package at pkg-path into a new directory specified by dir-path'
+    --flatten:'Flatten the dir-path into a new flat package created at pkg-path'
+    --bom:'Extract any BOM files from the flat pkg at path into /tmp and return the filename(s).'
+    --payload-files:'List the files archived within the payload of the uninstalled flat package(s) contained at path'
+    --check-signature:'Check the validity and trust of the signature on the package at pkg-path.'
+  )
+
+  _describe -t pkgutil-options "Options" __pkgutil_options && ret=0
+  _describe -t pkgutil-receipt-database-commands "Receipt Database Commands" __pkgutil_receipt_database_commands && ret=0
+  _describe -t pkgutil-file-commands "File Commands" __pkgutil_file_commands && ret=0
+
+  return $ret
+}
+
+function __pkgutil_package_ids() {
+  local -a package_ids
+  package_ids=($(pkgutil --pkgs 2>/dev/null))
+  _values 'package-id' $package_ids
+}
+
+function __pkgutil_group_ids() {
+  local -a group_ids
+  group_ids=($(pkgutil --groups 2>/dev/null))
+  _values 'group-id' $group_ids
+}
+
+function __pkgutil_--volume()          { _arguments -C '*:path:_dirs'                       && return 0 }
+function __pkgutil_--edit-pkg()        { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--verify()          { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--repair()          { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--pkg-info()        { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--pkg-info-plist()  { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--forget()          { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--learn()           { _arguments -C '*:path:_files'                      && return 0 }
+function __pkgutil_--pkg-groups()      { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--group-pkgs()      { _arguments -C '*:group-id:__pkgutil_group_ids'     && return 0 }
+function __pkgutil_--file-info()       { _arguments -C '*:path:_files'                      && return 0 }
+function __pkgutil_--file-info-plist() { _arguments -C '*:path:_files'                      && return 0 }
+function __pkgutil_--files()           { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--export-plist()    { _arguments -C '*:package-id:__pkgutil_package_ids' && return 0 }
+function __pkgutil_--bom()             { _arguments -C '*:path:_files'                      && return 0 }
+function __pkgutil_--payload-files()   { _arguments -C '*:path:_files'                      && return 0 }
+function __pkgutil_--check-signature() { _arguments -C '*:pkg-path:_files'                  && return 0 }
+# TODO function __pkgutil_--expand
+# TODO function __pkgutil_--flatten
+
+# vim:set ft=zsh:
