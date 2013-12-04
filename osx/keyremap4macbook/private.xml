@@ -13,6 +13,7 @@
   <appdef>
    <appname>LIMECHAT</appname>
    <equal>net.limechat.LimeChat</equal>
+   <equal>net.limechat.LimeChat-AppStore</equal>
   </appdef>
 
   <item>
