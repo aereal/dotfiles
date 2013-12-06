@@ -459,6 +459,12 @@ if [[ -d "$ZSH_SYNTAX_HIGHLIGHT_ROOT" ]]; then
 fi
 # # }}}
 
+# zsh-bundle-exec {{{
+if [[ -f $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh ]]; then
+  source $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh
+fi
+# }}}
+
 [[ -f "$ZSH_HOME/os/$(uname).zshrc" ]] && source "$ZSH_HOME/os/$(uname).zshrc"
 
 # Launch tmux {{{
