@@ -1,15 +1,20 @@
 dotfiles:
+  - .bundle
   - .caprc
   - .gemrc
   - .gitconfig
   - .global.gitignore
-  - .gvimrc
+  - .my.cnf
   - .powenv
   - .proverc
   - .pryrc
+  - .screenrc
+  - .slate.d
+  - .slate.js
+  - .tigrc
   - .tmux.conf
+  - .uim
   - .vim
-  - .vimrc
   - .zsh.d
   - .zshenv
   - .zshrc
