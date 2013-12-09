@@ -62,19 +62,19 @@ call neobundle#config('unite-haskellimport', {
       \ }) " }}}
 " }}}
 " Completion {{{
-if s:meet_neocomplete_requirements()
+if s:meet_neocomplete_requirements() " {{{
   NeoBundle 'Shougo/neocomplete.vim'
   NeoBundleFetch 'Shougo/neocomplcache'
 else
   NeoBundleFetch 'Shougo/neocomplete.vim'
   NeoBundle 'Shougo/neocomplcache'
-endif
-NeoBundleLazy 'ujihisa/neco-look'
+endif " }}}
+NeoBundleLazy 'ujihisa/neco-look' " {{{
 call neobundle#config('neco-look', {
       \   'autoload' : {
       \     'filetypes' : ['markdown', 'hatena'],
       \   },
-      \ })
+      \ }) " }}}
 NeoBundleLazy 'eagletmt/neco-ghc' " {{{
 call neobundle#config('neco-ghc', {
       \   'autoload' : {
@@ -85,47 +85,47 @@ call neobundle#config('neco-ghc', {
 " Language, Format {{{
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'groenewege/vim-less'
-NeoBundleLazy 'hail2u/vim-css3-syntax'
+NeoBundleLazy 'hail2u/vim-css3-syntax' " {{{
 call neobundle#config('vim-css3-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['css', 'scss', 'sass', 'less'],
       \ },
-      \ })
+      \ }) " }}}
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'motemen/hatena-vim'
-NeoBundleLazy 'othree/html5.vim'
+NeoBundleLazy 'othree/html5.vim' " {{{
 call neobundle#config('html5.vim', {
       \ 'autoload' : {
       \   'filetypes' : ['html'],
       \ }
-      \ })
-NeoBundleLazy 'pangloss/vim-javascript'
+      \ }) " }}}
+NeoBundleLazy 'pangloss/vim-javascript' " {{{
 call neobundle#config('vim-javascript', {
       \   'autoload' : {
       \     'filetypes' : ['javascript'],
       \   },
-      \ })
-NeoBundleLazy 'vim-perl/vim-perl'
+      \ }) " }}}
+NeoBundleLazy 'vim-perl/vim-perl' " {{{
 call neobundle#config('vim-perl', {
       \   'autoload' : {
       \     'filetypes' : ['perl'],
       \   },
-      \ })
+      \ }) " }}}
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundleLazy 'davidoc/taskpaper.vim'
-NeoBundleLazy 'moznion/vim-cpanfile'
+NeoBundleLazy 'moznion/vim-cpanfile' " {{{
 call neobundle#config('vim-cpanfile', {
       \   'autoload' : {
       \     'filetypes' : ['cpanfile'],
       \   },
-      \ })
-NeoBundleLazy 'y-uuki/perl-local-lib-path.vim'
+      \ }) " }}}
+NeoBundleLazy 'y-uuki/perl-local-lib-path.vim' " {{{
 call neobundle#config('perl-local-lib-path.vim', {
       \ 'autoload' : {
       \   'filetypes' : ['perl'],
       \ },
-      \ })
+      \ }) " }}}
 NeoBundle 'jnwhiteh/vim-golang'
 NeoBundleLazy 'kana/vim-filetype-haskell' " {{{
 call neobundle#config('vim-filetype-haskell', {
@@ -167,7 +167,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 't9md/vim-surround_custom_mapping', { 'depends' : 'tpope/vim-surround' }
 NeoBundle 'kana/vim-smartinput'
-NeoBundleLazy 'mattn/emmet-vim'
+NeoBundleLazy 'mattn/emmet-vim' " {{{
 call neobundle#config('emmet-vim', {
       \ 'autoload' : {
       \   'filetypes' : [
@@ -177,15 +177,10 @@ call neobundle#config('emmet-vim', {
       \     'css',
       \   ],
       \ },
-      \ })
+      \ }) " }}}
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'sickill/vim-pasta'
-NeoBundleLazy 'h1mesuke/vim-alignta'
-call neobundle#config('vim-alignta', {
-      \   'autoload' : {
-      \     'commands' : ['Align', 'Alignta'],
-      \   },
-      \ })
+NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tyru/eskk.vim'
 " }}}
 " Organize {{{
