@@ -38,6 +38,12 @@ NeoBundleFetch 'tyru/operator-html-escape.vim' , { 'depends' : 'kana/vim-operato
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
+NeoBundleLazy 'ujihisa/ref-hoogle' " {{{
+call neobundle#config('ref-hoogle', {
+      \   'autoload' : {
+      \     'filetypes' : ['haskell'],
+      \   }
+      \ }) " }}}
 " }}}
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
@@ -48,6 +54,12 @@ NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
+NeoBundleLazy 'ujihisa/unite-haskellimport' " {{{
+call neobundle#config('unite-haskellimport', {
+      \   'autoload' : {
+      \     'filetypes' : ['haskell'],
+      \   }
+      \ }) " }}}
 " }}}
 " Completion {{{
 if s:meet_neocomplete_requirements()
@@ -63,6 +75,12 @@ call neobundle#config('neco-look', {
       \     'filetypes' : ['markdown', 'hatena'],
       \   },
       \ })
+NeoBundleLazy 'eagletmt/neco-ghc' " {{{
+call neobundle#config('neco-ghc', {
+      \   'autoload' : {
+      \     'filetypes' : ['haskell'],
+      \   }
+      \ }) " }}}
 " }}}
 " Language, Format {{{
 NeoBundle 'slim-template/vim-slim'
@@ -109,6 +127,18 @@ call neobundle#config('perl-local-lib-path.vim', {
       \ },
       \ })
 NeoBundle 'jnwhiteh/vim-golang'
+NeoBundleLazy 'kana/vim-filetype-haskell' " {{{
+call neobundle#config('vim-filetype-haskell', {
+      \   'autoload' : {
+      \     'filetypes' : ['haskell'],
+      \   }
+      \ }) " }}}
+NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
+call neobundle#config('ghcmod-vim', {
+      \   'autoload' : {
+      \     'filetypes' : ['haskell'],
+      \   }
+      \ }) " }}}
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
