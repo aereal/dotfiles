@@ -7,7 +7,11 @@ homebrew_paths=(
   $HOMEBREW_PATH/share/python(N-/)
   $HOMEBREW_PATH/bin(N-/)
 )
-path=($homebrew_paths $path)
+path=(
+  $HOME/Library/Haskell/bin(N-/)
+  $homebrew_paths
+  $path
+)
 
 manpath=(
   $HOMEBREW_PATH/share/man(N-/)
