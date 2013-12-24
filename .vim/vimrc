@@ -792,6 +792,40 @@ endfunction
 call unite#define_source(s:unite_git_files_conflict)
 " }}}
 
+" unite-git-files-modified {{{
+let s:unite_git_files_modified = {
+      \   'name' : 'git/files/modified',
+      \ }
+function! s:unite_git_files_modified.gather_candidates(args, context)
+  let output = unite#util#system('git ls-files --modified')
+  let candidates = map(split(output, "\n"), '{
+        \ "word" : fnamemodify(v:val, ":p"),
+        \ "source" : "git/files/modified",
+        \ "kind" : "file",
+        \ "action__path" : fnamemodify(v:val, ":p"),
+        \ }')
+  return candidates
+endfunction
+call unite#define_source(s:unite_git_files_modified)
+" }}}
+
+" unite-git-files-others {{{
+let s:unite_git_files_others = {
+      \   'name' : 'git/files/others',
+      \ }
+function! s:unite_git_files_others.gather_candidates(args, context)
+  let output = unite#util#system('git ls-files --others --exclude-standard')
+  let candidates = map(split(output, "\n"), '{
+        \ "word" : fnamemodify(v:val, ":p"),
+        \ "source" : "git/files/others",
+        \ "kind" : "file",
+        \ "action__path" : fnamemodify(v:val, ":p"),
+        \ }')
+  return candidates
+endfunction
+call unite#define_source(s:unite_git_files_others)
+" }}}
+
 " Colorscheme {{{
 set bg=dark
 colorscheme noctu
