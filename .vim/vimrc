@@ -775,6 +775,23 @@ let g:memolist_template_dir_path = expand('~/.vim/plugin/memolist-templates')
 " }}}
 " }}}
 
+" unite-git-files-conflict {{{
+let s:unite_git_files_conflict = {
+      \   'name' : 'git/files/conflict',
+      \ }
+function! s:unite_git_files_conflict.gather_candidates(args, context)
+  let output = unite#util#system('git diff-files --name-only --diff-filter=U')
+  let candidates = map(split(output, "\n"), '{
+        \ "word" : fnamemodify(v:val, ":p"),
+        \ "source" : "git/files/conflict",
+        \ "kind" : "file",
+        \ "action__path" : fnamemodify(v:val, ":p"),
+        \ }')
+  return candidates
+endfunction
+call unite#define_source(s:unite_git_files_conflict)
+" }}}
+
 " Colorscheme {{{
 set bg=dark
 colorscheme noctu
