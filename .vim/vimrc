@@ -139,6 +139,12 @@ call neobundle#config('ghcmod-vim', {
       \     'filetypes' : ['haskell'],
       \   }
       \ }) " }}}
+NeoBundle 'Rip-Rip/clang_complete', {
+      \   'build' : {
+      \     'mac'  : 'make',
+      \     'unix' : 'make',
+      \   },
+      \ }
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
@@ -407,6 +413,13 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 " }}}
 
 " Plugin Configurations {{{
+" clang_complete {{{
+let g:clang_use_library = 1
+let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+let g:clang_complete_auto = 1
+let g:clang_auto_select = 0
+let g:clang_auto_user_options = 'path, .clang_complete'
+" }}}
 " neocomplete.vim {{{
 let g:neocomplete#enable_at_startup = 1
 
@@ -414,6 +427,15 @@ if neobundle#is_installed('neocomplete.vim')
   let s:bundle = neobundle#get('neocomplete.vim')
 
   function! s:bundle.hooks.on_source(bundle)
+    if ! exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    let g:neocomplete#force_overwrite_completefunc = 1
+    let g:neocomplete#force_omni_input_patterns.c      = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#force_omni_input_patterns.objc   = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#force_omni_input_patterns.cpp    = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
     let g:neocomplete#sources#syntax#min_keyword_length = 3
 
     let g:neocomplete#keyword_patterns                  = {}
