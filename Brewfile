@@ -41,4 +41,30 @@ install openssl
 install readline
 install libyaml
 # }}}
+# cask {{{
+tap phinze/cask || true
+install brew-cask
+
+cask install alfred
+cask install android-studio
+cask install appcleaner
+cask install bartender
+cask install controlplane
+cask install dash
+cask install dropbox
+cask install firefox
+cask install google-chrome
+cask install iterm2
+cask install keyremap4macbook
+cask install kobito
+cask install lastfm
+cask install limechat
+cask install opera
+cask install slate
+cask install skype
+cask install smcfancontrol
+cask install testflight
+cask install vagrant
+cask install virtualbox
+# }}}
 # vim:set foldmethod=marker:
