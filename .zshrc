@@ -439,18 +439,8 @@ alias  l='ls --color=auto -AF'
 alias ls='ls --color=auto -AF'
 alias ll='ls --color=auto -AFl'
 
-if whence reattach-to-user-namespace >/dev/null; then
-  function v() {
-    reattach-to-user-namespace -l "$EDITOR" "$@"
-  }
-  function vim() {
-    reattach-to-user-namespace -l "$EDITOR" "$@"
-  }
-else
-  alias vim="$EDITOR"
-  alias  vi="$EDITOR"
-fi
-
+alias vim="$EDITOR"
+alias  vi="$EDITOR"
 # }}}
 
 # zsh-syntax-highlight {{{

@@ -18,4 +18,12 @@ manpath=(
   $HOMEBREW_PATH/opt/coreutils/libexec/gnuman(N-/)
 )
 
+export MACVIM_APP=${MACVIM_APP:-/Applications/MacVim.app}
+EDITOR="${MACVIM_APP}/Contents/MacOS/Vim"
+
+if whence reattach-to-user-namespace >/dev/null; then
+  EDITOR="reattach-to-user-namespace -l ${EDITOR}"
+fi
+export EDITOR
+
 # vim:set ft=zsh:
