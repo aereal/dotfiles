@@ -1,4 +1,4 @@
-# vim:set ft=zsh:
+# vim:set ft=zsh foldmethod=marker:
 
 git_info() { # {{{
   # http://d.hatena.ne.jp/uasi/20091025/1256458798
@@ -40,7 +40,7 @@ git_info() { # {{{
   else
     remote_ref="refs/remotes/${current_remote}/${merge_name#refs/heads/}"
     remote_local_revs=($($git rev-list --left-right ${remote_ref}...HEAD))
-    is_tracked=" %{${fg[green]}%}♨%{${reset_color}%}"
+    is_tracked=" %{${fg[green]}%}♺%{${reset_color}%}"
   fi
 
   local ahead_commits_color="${fg[green]}"
