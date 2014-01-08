@@ -299,7 +299,7 @@ function github-clone() {
   local destination_dir="${GITHUB_REPOS_PATH}/@${repo}"
   if [[ -d "$destination_dir" ]]; then
     echo "$destination_dir already exists" >> /dev/stderr
-    exit 1
+    return 1
   fi
   echo "Repository: https://github.com/${repo}"
   git clone git://github.com/${repo}.git ${destination_dir}
