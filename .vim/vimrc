@@ -256,6 +256,10 @@ augroup MyInit
   " Git config {{{
   autocmd FileType gitconfig setlocal noexpandtab
   " }}}
+  " Ruby {{{
+  autocmd BufEnter *.podspec set ft=ruby
+  autocmd BufEnter Podfile set ft=ruby
+  " }}}
 augroup END
 " }}}
 
