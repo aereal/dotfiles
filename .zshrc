@@ -88,7 +88,7 @@ zstyle ':vcs_info:git:*:-all-' command =git
 
 # Completion {{{
 zmodload -i zsh/complist
-autoload -U compinit && compinit -C
+autoload -U compinit && compinit -C -d ${ZSH_HOME:-$HOME}/.zcompdump
 
 ## Grouping
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
@@ -114,7 +114,7 @@ zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate
 
 ## Cache
 zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
+zstyle ':completion:*' cache-path "${ZSH_HOME:-$HOME}/.zcompcache"
 
 ## Verbose
 zstyle ':completion:*' verbose yes

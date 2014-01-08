@@ -8,3 +8,5 @@
 .vim/undo/*
 .vim/bundle/*
 src
+.zcompcache/
+.zcompdump
