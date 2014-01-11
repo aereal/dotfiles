@@ -88,7 +88,7 @@ zstyle ':vcs_info:git:*:-all-' command =git
 
 # Completion {{{
 zmodload -i zsh/complist
-autoload -U compinit && compinit -C -d ${ZSH_HOME:-$HOME}/.zcompdump
+autoload -U compinit && compinit -C
 
 ## Grouping
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
