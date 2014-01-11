@@ -26,4 +26,10 @@ if whence reattach-to-user-namespace >/dev/null; then
 fi
 export EDITOR
 
+# SSL certificates {{{
+if [[ -f "$HOMEBREW_PATH/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
+  export SSL_CERT_FILE="$HOMEBREW_PATH/opt/curl-ca-bundle/share/ca-bundle.crt"
+fi
+# }}}
+
 # vim:set ft=zsh:

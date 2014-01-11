@@ -27,12 +27,6 @@ if which update-mime-database >/dev/null; then
 fi
 # }}}
 
-# SSL certificates {{{
-if [[ -f "$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
-  export SSL_CERT_FILE="$HOMEBREW_HOME/opt/curl-ca-bundle/share/ca-bundle.crt"
-fi
-# }}}
-
 # zsh-syntax-highlight {{{
 export ZSH_SYNTAX_HIGHLIGHT_ROOT="$ZSH_HOME/plugins/zsh-syntax-highlighting"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="$ZSH_SYNTAX_HIGHLIGHT_ROOT/highlighters"
