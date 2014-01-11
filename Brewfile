@@ -23,6 +23,7 @@ install appledoc
 install autossh
 install coreutils
 install ctags
+install curl-ca-bundle
 install heroku-toolbelt
 install htop-osx
 install hub
