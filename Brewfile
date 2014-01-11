@@ -55,7 +55,6 @@ cask install controlplane
 cask install dash
 cask install dropbox
 cask install firefox
-cask install google-chrome
 cask install iterm2-beta
 cask install keyremap4macbook
 cask install kobito
