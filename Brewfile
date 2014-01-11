@@ -59,7 +59,6 @@ cask install aquaskk
 cask install appcleaner
 cask install bartender
 cask install controlplane
-cask install dash
 cask install dropbox
 cask install iterm2-beta
 cask install keyremap4macbook
