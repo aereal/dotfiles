@@ -4,7 +4,7 @@ tap caskroom/versions || true
 # }}}
 # essential tools {{{
 install git --with-pcre --with-brewed-openssl
-install reattach-to-user-namespace
+install reattach-to-user-namespace --HEAD --wrap-launchctl --wrap-pbcopy-and-pbpaste
 install the_silver_searcher
 install tig
 install tmux
