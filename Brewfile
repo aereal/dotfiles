@@ -50,7 +50,6 @@ install libyaml
 install brew-cask
 
 cask install alfred
-cask install android-studio
 cask install appcleaner
 cask install bartender
 cask install controlplane
