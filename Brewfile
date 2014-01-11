@@ -1,3 +1,7 @@
+# Taps {{{
+tap phinze/cask || true
+tap caskroom/versions || true
+# }}}
 # essential tools {{{
 install git --with-pcre --with-brewed-openssl
 install reattach-to-user-namespace
@@ -43,8 +47,6 @@ install readline
 install libyaml
 # }}}
 # cask {{{
-tap phinze/cask || true
-tap caskroom/versions || true
 install brew-cask
 
 cask install alfred
