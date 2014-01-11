@@ -67,5 +67,7 @@ cask install smcfancontrol
 cask install testflight
 cask install vagrant
 cask install virtualbox
+
+cask alfred link # Enable Alfred to find applications managed by cask
 # }}}
 # vim:set foldmethod=marker:
