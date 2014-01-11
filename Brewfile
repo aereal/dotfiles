@@ -44,6 +44,7 @@ install libyaml
 # }}}
 # cask {{{
 tap phinze/cask || true
+tap caskroom/versions || true
 install brew-cask
 
 cask install alfred
@@ -55,7 +56,7 @@ cask install dash
 cask install dropbox
 cask install firefox
 cask install google-chrome
-cask install iterm2
+cask install iterm2-beta
 cask install keyremap4macbook
 cask install kobito
 cask install lastfm
