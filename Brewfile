@@ -1,6 +1,7 @@
 # Taps {{{
 tap phinze/cask || true
 tap caskroom/versions || true
+tap aereal/homebrew-aereal_casks || true
 # }}}
 # essential tools {{{
 install git --with-pcre --with-brewed-openssl
@@ -50,6 +51,7 @@ install libyaml
 install brew-cask
 
 cask install alfred
+cask install aquaskk
 cask install appcleaner
 cask install bartender
 cask install controlplane
