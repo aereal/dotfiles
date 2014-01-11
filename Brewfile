@@ -56,19 +56,25 @@ cask install bartender
 cask install controlplane
 cask install dash
 cask install dropbox
-cask install firefox
 cask install iterm2-beta
 cask install keyremap4macbook
 cask install kobito
 cask install lastfm
 cask install limechat
-cask install opera
 cask install slate
 cask install skype
 cask install smcfancontrol
 cask install testflight
 cask install vagrant
 cask install virtualbox
+
+# Browsers {{{
+cask install google-chrome-canary
+cask install firefox
+cask install firefox-aurora
+cask install opera
+cask install opera-next
+# }}}
 
 cask alfred link # Enable Alfred to find applications managed by cask
 # }}}
