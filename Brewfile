@@ -14,6 +14,7 @@ install ruby-build
 # }}}
 # development tools {{{
 install appledoc
+install autossh
 install coreutils
 install ctags
 install heroku-toolbelt
