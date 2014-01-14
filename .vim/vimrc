@@ -188,6 +188,7 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'sickill/vim-pasta'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'tyru/eskk.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
 " Organize {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
