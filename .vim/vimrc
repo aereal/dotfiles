@@ -145,6 +145,7 @@ NeoBundle 'Rip-Rip/clang_complete', {
       \     'unix' : 'make',
       \   },
       \ }
+NeoBundle 'mustache/vim-mustache-handlebars'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
