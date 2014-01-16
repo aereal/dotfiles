@@ -1,8 +1,9 @@
-# vim:set ft=ruby:
+# vim:set ft=ruby foldmethod=marker:
 
 require 'rake/testtask'
 require 'yaml'
 
+# Constants {{{
 HOME = ENV['HOME']
 SRC_DIR = File.dirname(File.expand_path(__FILE__))
 REPOSITORY = SRC_DIR
@@ -12,6 +13,7 @@ DOTFILES = CONFIG['dotfiles']
 DOTFILES_MAP = DOTFILES.map {|f|
   { basename: f, source: File.join(SRC_DIR, f), installed: File.join(DST_DIR, f) }
 }
+# }}}
 
 DOTFILES_MAP.each do |dotfile|
   file dotfile[:installed] do
@@ -19,6 +21,7 @@ DOTFILES_MAP.each do |dotfile|
   end
 end
 
+# Tasks {{{
 Rake::TestTask.new(:test) do |t|
   t.pattern = 'test/**/*_test.rb'
 end
@@ -50,3 +53,4 @@ if dircolors = %w( gdircolors dircolors ).find {|cmd| system "which #{cmd} >/dev
     end
   end
 end
+# }}}
