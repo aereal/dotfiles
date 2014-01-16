@@ -3,6 +3,11 @@
 require 'rake/testtask'
 require 'yaml'
 
+lib = File.expand_path("../lib", __FILE__)
+$: << lib
+
+require 'bootstrap/sync_file_task'
+
 # Constants {{{
 HOME = ENV['HOME']
 SRC_DIR = File.dirname(File.expand_path(__FILE__))
@@ -15,11 +20,43 @@ DOTFILES_MAP = DOTFILES.map {|f|
 }
 # }}}
 
+# File tasks {{{
+SyncFileTask.new("setup:osx:aqua_skk") do |t|
+  t.source_file      = File.expand_path("~/Dropbox/skk/skk-jisyo.utf8")
+  t.destination_file = File.expand_path("~/Library/Application Support/AquaSKK/skk-jisyo.utf8")
+  t.install_method   = :copy
+end
+
+SyncFileTask.new("setup:osx:kobito") do |t|
+  t.source_file      = File.expand_path("~/Dropbox/Kobito.db")
+  t.destination_file = File.expand_path("~/Library/Application Support/Kobito/Kobito.db")
+  t.install_method   = :symlink
+end
+
+SyncFileTask.new("setup:osx:keyremap4macbook") do |t|
+  t.source_file      = File.expand_path("~/repos/@aereal/dotfiles/osx/keyremap4macbook/private.xml")
+  t.destination_file = File.expand_path("~/Library/Application Support/KeyRemap4MacBook/private.xml")
+  t.install_method   = :symlink
+end
+
+SyncFileTask.new("setup:sketches") do |t|
+  t.source_file      = File.expand_path("~/Dropbox/sketches")
+  t.destination_file = File.expand_path("~/sketches")
+  t.install_method   = :symlink
+end
+
+SyncFileTask.new("setup:memo") do |t|
+  t.source_file      = File.expand_path("~/Dropbox/memo")
+  t.destination_file = File.expand_path("~/memo")
+  t.install_method   = :symlink
+end
+
 DOTFILES_MAP.each do |dotfile|
   file dotfile[:installed] do
     ln_sf dotfile[:source], dotfile[:installed]
   end
 end
+# }}}
 
 # Tasks {{{
 Rake::TestTask.new(:test) do |t|
