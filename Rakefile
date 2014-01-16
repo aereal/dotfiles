@@ -18,6 +18,7 @@ DOTFILES = CONFIG['dotfiles']
 DOTFILES_MAP = DOTFILES.map {|f|
   { basename: f, source: File.join(SRC_DIR, f), installed: File.join(DST_DIR, f) }
 }
+DEFAULTS_SCRIPTS = FileList['osx/defaults/**/*.bash']
 # }}}
 
 # File tasks {{{
@@ -86,6 +87,17 @@ if dircolors = %w( gdircolors dircolors ).find {|cmd| system "which #{cmd} >/dev
             f << ret
           end
         end
+      end
+    end
+  end
+end
+
+namespace :setup do
+  namespace :osx do
+    desc "Setup OS X preferences"
+    task :defaults => DEFAULTS_SCRIPTS do |t|
+      t.prerequisites.each do |prereq|
+        system 'bash', prereq
       end
     end
   end
