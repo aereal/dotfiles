@@ -240,7 +240,6 @@ bindkey -v "^J" accept-line
 # }}}
 # }}}
 
-
 # tmux split window zle {{{
 function execute-in-new-horizontal-tmux-pane() { # {{{
   LBUFFER="tmux split-window -p 50 -h '$LBUFFER'"
@@ -344,15 +343,36 @@ setopt \
 prompt "${ZSH_THEME:-"aereal"}"
 # }}}
 
-# zaw {{{
-if [[ -e "$ZSH_HOME/plugins/zaw/zaw.zsh" ]]; then
-  source "$ZSH_HOME/plugins/zaw/zaw.zsh"
+# percol {{{
+function percol-git-recent-branches() {
+  local selected_branch=$( \
+    git for-each-ref --sort=committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/heads \
+    | sed -E 's/refs\/heads\///' \
+    | cut -f3 \
+    | percol --query "$LBUFFER")
+  if [[ -n "$selected_branch" ]]; then
+    BUFFER="git checkout ${selected_branch}"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N percol-git-recent-branches
+bindkey -a "gr" percol-git-recent-branches
 
-  bindkey -a "." zaw-cdr
-  bindkey -a "^H" zaw-history
-  bindkey -a "gr" zaw-git-recent-branches
-  bindkey -a "gb" zaw-git-branches
-fi
+function percol-git-remote-branches() {
+  local selected_branch=$( \
+    git for-each-ref --sort=committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/remotes \
+    | sed -e 's/refs\/remotes\///' \
+    | cut -f3 \
+    | percol --query "$LBUFFER")
+  if [[ -n "$selected_branch" ]]; then
+    BUFFER="git checkout -t ${selected_branch}"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N percol-git-remote-branches
+bindkey -a "ga" percol-git-remote-branches
 # }}}
 
 # cdd {{{
