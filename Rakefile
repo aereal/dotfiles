@@ -12,12 +12,9 @@ require 'bootstrap/sync_file_task'
 HOME = ENV['HOME']
 SRC_DIR = File.dirname(File.expand_path(__FILE__))
 REPOSITORY = SRC_DIR
-DST_DIR = ENV.fetch('DOTFILES_INSTALL_DIR', HOME)
-CONFIG = YAML.load_file(File.join(REPOSITORY, '.dotfiles.yml'))
-DOTFILES = CONFIG['dotfiles']
-DOTFILES_MAP = DOTFILES.map {|f|
-  { basename: f, source: File.join(SRC_DIR, f), installed: File.join(DST_DIR, f) }
-}
+DEST_DIR = ENV.fetch('DOTFILES_INSTALL_DIR', HOME)
+IGNORED_DOTFILES = FileList.new(*File.read('.dotfiles.ignore').split("\n"))
+DOTFILES_SRCS = FileList['.[^.]*'].exclude(*IGNORED_DOTFILES)
 DEFAULTS_SCRIPTS = FileList['osx/defaults/**/*.bash']
 # }}}
 
@@ -51,12 +48,6 @@ SyncFileTask.new("setup:memo") do |t|
   t.destination_file = File.expand_path("~/memo")
   t.install_method   = :symlink
 end
-
-DOTFILES_MAP.each do |dotfile|
-  file dotfile[:installed] do
-    ln_sf dotfile[:source], dotfile[:installed]
-  end
-end
 # }}}
 
 # Tasks {{{
@@ -64,13 +55,28 @@ Rake::TestTask.new(:test) do |t|
   t.pattern = 'test/**/*_test.rb'
 end
 
-desc "Install dotfiles to $HOME"
-task :install => DOTFILES_MAP.map {|dotfile| dotfile[:installed] }
+namespace :dotfiles do
+  desc "Install dotfiles"
+  task :install => [:check_link, :_install]
 
-desc "Show all dotfiles"
-task :list do
-  DOTFILES.each do |dotfile|
-    puts dotfile
+  task :check_link => DOTFILES_SRCS do |t|
+    destination_files = t.prerequisites.
+      map {|prereq| File.join(DEST_DIR, prereq) }.
+      select {|dest| File.exist?(dest) }
+    destination_files.each do |dest|
+      link_dir = File.dirname(File.readlink(dest))
+      unless FileTest.symlink?(dest) && link_dir == SRC_DIR
+        abort "Unknown (not managed yet) file: #{dest}"
+      end
+    end
+  end
+
+  task :_install => DOTFILES_SRCS do |t|
+    t.prerequisites.each do |prereq|
+      src = File.join(SRC_DIR, prereq)
+      dest = File.join(DEST_DIR, prereq)
+      ln_sf src, dest
+    end
   end
 end
 
