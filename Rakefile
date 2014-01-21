@@ -108,4 +108,10 @@ namespace :setup do
     end
   end
 end
+
+namespace :homebrew do
+  task :bundle => 'Brewfile' do |t|
+    sh 'brew', 'bundle'
+  end
+end
 # }}}
