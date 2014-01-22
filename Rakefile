@@ -7,6 +7,7 @@ lib = File.expand_path("../lib", __FILE__)
 $: << lib
 
 require 'bootstrap/sync_file_task'
+require 'dotfiles'
 
 # Constants {{{
 HOME = ENV['HOME']
@@ -51,27 +52,18 @@ end
 # }}}
 
 # Tasks {{{
-Rake::TestTask.new(:test) do |t|
-  t.pattern = 'test/**/*_test.rb'
-end
-
 namespace :dotfiles do
-  desc "Install dotfiles"
-  task :install => [:check_link, :_install]
-
-  task :check_link => DOTFILES_SRCS do |t|
-    destination_files = t.prerequisites.
-      map {|prereq| File.join(DEST_DIR, prereq) }.
-      select {|dest| File.exist?(dest) }
-    destination_files.each do |dest|
-      link_dir = File.dirname(File.readlink(dest))
-      unless FileTest.symlink?(dest) && link_dir == SRC_DIR
-        abort "Unknown (not managed yet) file: #{dest}"
-      end
-    end
+  desc "Test dotfiles installations"
+  task :test => DOTFILES_SRCS do |t|
+    source_and_destinations = t.prerequisites.
+      map {|prereq| [File.join(SRC_DIR, prereq), File.join(DEST_DIR, prereq)] }
+    results = source_and_destinations.
+      map {|(src, dest)| Dotfiles.assert_linked_dotfile(src, dest) }
+    exit results.all?
   end
 
-  task :_install => DOTFILES_SRCS do |t|
+  desc "Install dotfiles"
+  task :install => DOTFILES_SRCS do |t|
     t.prerequisites.each do |prereq|
       src = File.join(SRC_DIR, prereq)
       dest = File.join(DEST_DIR, prereq)
