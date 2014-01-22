@@ -1,15 +1,10 @@
 ---
 language: ruby
 rvm:
-  - 1.9.3
   - 2.0.0
-gemfile: test/Gemfile
-env:
-  - DOTFILES_INSTALL_DIR=test/tmp
-before_install:
-  - gem install bundler --pre
+install:
+  - echo "Install"
 before_script:
-  - mkdir -p $DOTFILES_INSTALL_DIR
-  - bundle exec rake install
+  - bundle exec rake dotfiles:install
 script:
-  - bundle exec rake test
+  - bundle exec rake dotfiles:test
