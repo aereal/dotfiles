@@ -5,6 +5,6 @@ rvm:
 install:
   - echo "Install"
 before_script:
-  - bundle exec rake dotfiles:install
+  - rake dotfiles:install
 script:
-  - bundle exec rake dotfiles:test
+  - rake dotfiles:test
