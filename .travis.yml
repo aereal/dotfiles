@@ -5,6 +5,9 @@ rvm:
 install:
   - echo "Install"
 before_script:
+  - mkdir -p $DOTFILES_INSTALL_DIR
   - rake dotfiles:install
 script:
   - rake dotfiles:test
+env:
+  - DOTFILES_INSTALL_DIR=tmp/home
