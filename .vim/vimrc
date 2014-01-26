@@ -404,8 +404,6 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -hide-source-names -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]F :<C-u>UniteWithCurrentDir file file/new -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]r :<C-u>UniteWithBufferDir  file_mru -no-split -buffer-name=files<CR>
-  nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
-  nnoremap <silent> <SID>[unite]B :<C-u>Unite buffer -immediately<CR>
   nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current<CR>
   nnoremap <silent> <SID>[unite][ :<C-u>Unite outline fold -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
   nnoremap <silent> <SID>[unite]> :<C-u>Unite output<CR>
@@ -416,6 +414,12 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite]g :<C-u>Unite grep -buffer-name=search<CR>
   nnoremap <silent> <SID>[unite]\c :<C-u>Unite colorscheme -auto-preview<CR>
   nnoremap <silent> <SID>[unite]h :<C-u>Unite help -auto-preview<CR>
+
+  if has('gui_running')
+    nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
+  else
+    nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
+  endif
 
   " JavaScript {{{
   autocmd MyInit FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
