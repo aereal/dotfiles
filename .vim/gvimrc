@@ -21,7 +21,6 @@ if has('transparency')
 endif
 
 if has("gui_running")
-  set fuoptions=maxvert,maxhorz
   set bg=light
   colorscheme solarized
 
