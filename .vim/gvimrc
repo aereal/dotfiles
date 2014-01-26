@@ -23,8 +23,6 @@ endif
 if has("gui_running")
   set bg=light
   colorscheme solarized
-
-  hi vimshellPrompt guifg=#f9d59d
 endif
 
 let local_gvimrc_path = expand('~/.local.gvimrc')
