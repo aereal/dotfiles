@@ -145,6 +145,8 @@ NeoBundle 'Rip-Rip/clang_complete', {
 NeoBundle 'mustache/vim-mustache-handlebars'
 " }}}
 " Color {{{
+NeoBundleLazy 'cocopon/colorswatch.vim'
+
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
