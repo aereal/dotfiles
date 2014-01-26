@@ -209,6 +209,10 @@ nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
 
 inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
+
+nnoremap Q <Nop>
+nnoremap ZQ <Nop>
+nnoremap ZZ <Nop>
 " }}}
 
 " Plugin Configurations {{{
