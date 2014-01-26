@@ -213,6 +213,12 @@ inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
 nnoremap Q <Nop>
 nnoremap ZQ <Nop>
 nnoremap ZZ <Nop>
+
+nnoremap ) %
+nnoremap ( %
+
+nnoremap <Space>h ^
+nnoremap <Space>l $
 " }}}
 
 " Plugin Configurations {{{
