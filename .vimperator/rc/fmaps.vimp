@@ -1,0 +1,2 @@
+fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z B,b < > q w e,g
+" vim:set ft=vim:

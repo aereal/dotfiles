@@ -1,0 +1,55 @@
+" let {{{
+let g:plugin_loader_roots = "~/repos/@vimpr/vimperator-plugins"
+let g:plugin_loader_plugins = "_libly,asdfghjkl,feedSomeKeys_3"
+
+let g:asdfghjkl_default = "true"
+let g:asdfghjkl_mode_change_key = "<Space>"
+" }}}
+" set {{{
+set scrollbars
+set notabnumbers
+set history=10000
+" }}}
+" Prefs (firefox) {{{
+set! ui.key.generalAccessKey=0
+set! ui.key.contentAccessKey=0
+
+set! browser.tabs.autoHide=false
+
+set! browser.sessionstore.interval=120000
+
+set! javascript.options.jit.chrome=true
+set! javascript.options.jit.content=true
+
+set! browser.tabs.closeWindowWithLastTab=false
+
+set! browser.startup.page=3
+
+set! network.http.pipelining=true
+" }}}
+" Mapping {{{
+nnoremap j 5<C-e>
+nnoremap k 5<C-y>
+
+" page info
+nnoremap <C-g> g<C-g>
+
+nnoremap <C-q> <Nop>
+nnoremap q <Nop>
+
+nnoremap y :<C-u>js<Space>util.copyToClipboard(buffer.URL)<CR>
+
+cnoremap <C-n> <Tab>
+cnoremap <C-p> <S-Tab>
+cnoremap <C-g> <ESC>
+" }}}
+" Command {{{
+command! -nargs=+ sitesearch :exe ":tabopen <args> site:" + content.document.domain
+" }}}
+" Quickmarks {{{
+silent qmark r http://reader.livedoor.com/reader/
+silent qmark m https://mail.google.com/mail/#mbox
+" }}}
+autocmd VimperatorEnter .* source ~/.vimperator/rc/fmaps.vimp
+
+" vim:set ft=vim foldmethod=marker:
