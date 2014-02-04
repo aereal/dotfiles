@@ -143,6 +143,7 @@ NeoBundle 'Rip-Rip/clang_complete', {
       \   },
       \ }
 NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'dag/vim-fish'
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
