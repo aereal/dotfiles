@@ -58,8 +58,8 @@ viLikeWindowPlacements = {
     x: 0,
     y: 0,
     width: 'screenSizeX',
-    height: 'screenSizeY',
-  }),
+    height: 'screenSizeY'
+  })
 };
 
 for (key in viLikeWindowPlacements) {
@@ -77,5 +77,5 @@ S.bindAll({
   }),
   "[:cmd" : S.op('shell', {
     command: '/usr/bin/open -a MacVim'
-  }),
+  })
 });
