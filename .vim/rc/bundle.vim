@@ -160,6 +160,7 @@ NeoBundle 'uu59/vim-herokudoc-theme'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'bluntpeak/bluntpeak-vim-colors'
+NeoBundle 'svjunic/RadicalGoodSpped.vim'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier'
