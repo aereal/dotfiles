@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if test -x brew; then
+  git_prefix=`brew --prefix git`
+else
+  git_prefix='/usr/local'
+fi
+diff_highlight_command=$git_prefix/share/git-core/contrib/diff-highlight/diff-highlight
+
+if test -x $diff_highlight_command; then
+  $diff_highlight_command | less
+else
+  less
+fi

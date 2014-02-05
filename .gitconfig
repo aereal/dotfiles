@@ -112,6 +112,6 @@
 [advice]
 	statusHints = false
 [pager]
-	log = diff-highlight | $PAGER
-	show = diff-highlight | $PAGER
-	diff = diff-highlight | $PAGER
+	log = diff-highlight-wrapper
+	show = diff-highlight-wrapper
+	diff = diff-highlight-wrapper
