@@ -302,9 +302,6 @@ function! neosnippet.hooks.on_source(bundle) " {{{
 endfunction " }}}
 unlet neosnippet
 " }}}
-" syntastic {{{
-let g:syntastic_auto_loc_list = 2
-" }}}
 " fugitive {{{
 let fugitive = neobundle#get('vim-fugitive')
 function! fugitive.hooks.on_source(bundle) " {{{
@@ -476,14 +473,6 @@ function! watchdogs.hooks.on_source(bundle) " {{{
 endfunction " }}}
 unlet watchdogs
 " }}}
-" operator-html-escape {{{
-let operator_html_escape = neobundle#get('operator-html-escape.vim')
-function! operator_html_escape.hooks.on_source(bundle) " {{{
-  nmap <C-e> <Plug>(operator-html-escape)
-  " nmap <C-S-e> <Plug>(operator-html-unescape)
-endfunction " }}}
-unlet operator_html_escape
-" }}}
 " smartinput {{{
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
@@ -537,16 +526,6 @@ function! eskk.hooks.on_source(bundle) " {{{
 endfunction " }}}
 unlet eskk
 " }}}
-" vim-easymotion {{{
-let g:EasyMotion_keys = 'jfkdls:ahgJFKDLS;AHG'
-let g:EasyMotion_do_mapping = 0
-
-let g:EasyMotion_mapping_w = 'w'
-let g:EasyMotion_mapping_b = 'b'
-let g:EasyMotion_mapping_e = 'e'
-let g:EasyMotion_mapping_j = 'j'
-let g:EasyMotion_mapping_k = 'k'
-" }}}
 " indentLine {{{
 let g:indentLine_showFirstIndentLevel = 1
 " }}}
@@ -559,10 +538,6 @@ function! alignta.hooks.on_source(bundle)
 endfunction
 unlet alignta
 " }}}
-" airline {{{
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
-" }}}
 " perl-local-lib-path.vim {{{
 let g:perl_local_lib_path = "t/lib"
 let perl_local_lib = neobundle#get('perl-local-lib-path.vim')
@@ -570,24 +545,6 @@ function! perl_local_lib.hooks.on_source(bundle)
   autocmd MyInit FileType perl PerlLocalLibPath
 endfunction
 unlet perl_local_lib
-" }}}
-" dwm.vim {{{
-let g:dwm_map_keys = 0
-" }}}
-" lightline.vim {{{
-let g:lightline              = {}
-let g:lightline.component    = {}
-let g:lightline.active       = {}
-let g:lightline.separator    = {}
-let g:lightline.subseparator = {}
-
-let g:lightline.active.left        = [['mode', 'paste'], ['fugitive', 'filename']]
-let g:lightline.colorscheme        = 'jellybeans'
-let g:lightline.component.fugitive = '%{exists("*fugitive#head")?fugitive#head():""}'
-let g:lightline.separator.left     = ''
-let g:lightline.separator.right    = ''
-let g:lightline.subseparator.left  = ''
-let g:lightline.subseparator.right = ''
 " }}}
 " memolist.vim {{{
 let g:memolist_path = expand('~/memo')
