@@ -66,7 +66,7 @@ namespace :dotfiles do
   task :install => DOTFILES_SRCS do |t|
     t.prerequisites.each do |prereq|
       src = File.join(SRC_DIR, prereq)
-      dest = File.join(DEST_DIR, prereq)
+      dest = File.directory?(src) ? DEST_DIR : File.join(DEST_DIR, prereq)
       ln_sf src, dest
     end
   end
