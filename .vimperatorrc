@@ -42,6 +42,9 @@ nnoremap y :<C-u>js<Space>util.copyToClipboard(buffer.URL)<CR>
 cnoremap <C-n> <Tab>
 cnoremap <C-p> <S-Tab>
 cnoremap <C-g> <ESC>
+
+" for AquaSKK
+cnoremap <C-j> <Nop>
 " }}}
 " Command {{{
 command! -nargs=+ sitesearch :exe ":tabopen <args> site:" + content.document.domain
