@@ -196,8 +196,6 @@ nnoremap Y y$
 nnoremap <Leader><Space> :update<CR>
 nnoremap <ESC><ESC>      :nohlsearch<CR>
 
-inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', '=')
-
 nnoremap Q <Nop>
 nnoremap ZQ <Nop>
 nnoremap ZZ <Nop>
@@ -491,6 +489,8 @@ endif
 " vim-smartchr {{{
 let smartchr = neobundle#get('vim-smartchr')
 function! smartchr.hooks.on_source(bundle)
+  inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
+
   autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
   autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
   autocmd MyInit FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
