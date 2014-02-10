@@ -346,7 +346,7 @@ prompt "${ZSH_THEME:-"aereal"}"
 # percol {{{
 function percol-git-recent-branches() {
   local selected_branch=$( \
-    git for-each-ref --sort=committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/heads \
+    git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/heads \
     | sed -E 's/refs\/heads\///' \
     | cut -f3 \
     | percol --query "$LBUFFER")
