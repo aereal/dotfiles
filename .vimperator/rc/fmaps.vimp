@@ -1,2 +1,7 @@
 fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z B,b < > q w e,g
+fmaps -u='^https://mail\.google\.com/mail' -frame=4 -events=vkeydown,keypress,vkeyup j k
+fmaps -u='^https://mail\.google\.com/mail' -frame=4 c n p o u x s r a ? gi gs gt gd ga gc gl I
+fmaps -u='^https://mail\.google\.com/mail' -frame=4 -p=<Leader> d,# s,! e
+fmaps -u='^https://mail\.google\.com/mail/.*/[0-9a-f]+$' -frame=4 c j,n k,p n,j p,k o u x s r a ? gi gs gt gd ga gc
+fmaps -u='^https://mail\.google\.com/mail/.*/[0-9a-f]+$' -frame=4 -p=<Leader> d,# s,! e
 " vim:set ft=vim:
