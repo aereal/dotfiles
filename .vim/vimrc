@@ -101,7 +101,7 @@ set wrapscan
 " Visualization {{{
 set ambiwidth=double
 set list
-set listchars=tab:>.,precedes:<,extends:>,trail:_,eol:$
+set listchars=tab:»\ ,precedes:<,extends:>,trail:_,eol:↲
 " }}}
 " UI {{{
 set langmenu=none " メニューをローカライズしない
