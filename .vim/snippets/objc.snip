@@ -1,0 +1,50 @@
+" vim:set noexpandtab:
+
+snippet import
+	#import "${1:Header}.h"
+
+snippet if
+	if (${1:condition}) {
+		${2}
+	}
+
+snippet else
+	else {
+		${1}
+	}
+
+snippet elif
+abbr else_if
+	else if (${1:condition}) {
+		${2}
+	}
+
+snippet method
+abbr instance_method
+	- (${1:ReturnType})${2:MethodName}
+	{
+		${3}
+	}
+
+snippet cmethod
+abbr class_method
+	+ (${1:ReturnType})${2:MethodName}
+	{
+		${3}
+	}
+
+snippet for_in
+	for (${1:value} in ${2:FastEnumeration}) {
+		${3}
+	}
+
+snippet block
+	^(${1:args}) {
+		${2}
+	}
+
+snippet extern
+	extern ${1:type} const ${2:Constant};
+
+snippet const
+	${1:type} const ${2:NAME} = ${3:value};
