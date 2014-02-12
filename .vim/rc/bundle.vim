@@ -23,14 +23,10 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleFetch 'rhysd/vim-textobj-continuous-line'  , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
 NeoBundleFetch 'kana/vim-operator-user'
 NeoBundleFetch 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleFetch 'kana/vim-operator-replace'     , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleFetch 'tyru/operator-camelize.vim'    , { 'depends' : 'kana/vim-operator-user' }
-NeoBundleFetch 'tyru/operator-html-escape.vim' , { 'depends' : 'kana/vim-operator-user' }
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -124,12 +120,6 @@ call neobundle#config('perl-local-lib-path.vim', {
       \ },
       \ }) " }}}
 NeoBundle 'jnwhiteh/vim-golang'
-NeoBundleLazy 'kana/vim-filetype-haskell' " {{{
-call neobundle#config('vim-filetype-haskell', {
-      \   'autoload' : {
-      \     'filetypes' : ['haskell'],
-      \   }
-      \ }) " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
 call neobundle#config('ghcmod-vim', {
       \   'autoload' : {
