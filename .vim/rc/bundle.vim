@@ -199,3 +199,4 @@ NeoBundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 " }}}
+" vim: set foldmethod=marker:
