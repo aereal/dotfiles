@@ -73,7 +73,7 @@ S.bindAll({
     command: '/usr/bin/open -a iTerm'
   }),
   "':cmd": S.op('shell', {
-    command: "~/.slate.d/google_chrome.sh"
+    command: "/usr/bin/open -a Firefox"
   }),
   "[:cmd" : S.op('shell', {
     command: '/usr/bin/open -a MacVim'
