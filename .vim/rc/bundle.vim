@@ -126,12 +126,15 @@ call neobundle#config('ghcmod-vim', {
       \     'filetypes' : ['haskell'],
       \   }
       \ }) " }}}
-NeoBundle 'Rip-Rip/clang_complete', {
-      \   'build' : {
-      \     'mac'  : 'make',
-      \     'unix' : 'make',
+NeoBundleLazy 'Rip-Rip/clang_complete' " {{{
+call neobundle#config('clang_complete', {
+      \   'autoload' : {
+      \     'filetypes' : ['objc'],
       \   },
-      \ }
+      \   'build' : {
+      \     'mac' : 'make',
+      \   },
+      \ }) " }}}
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundle 'dag/vim-fish'
 " }}}
