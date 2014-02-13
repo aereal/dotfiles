@@ -203,8 +203,8 @@ nnoremap ZZ <Nop>
 nnoremap ) %
 nnoremap ( %
 
-nnoremap <Space>h ^
-nnoremap <Space>l $
+nnoremap H ^
+nnoremap L $
 " }}}
 
 " Plugin Configurations {{{
