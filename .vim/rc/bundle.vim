@@ -42,7 +42,7 @@ call neobundle#config('ref-hoogle', {
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'sgur/unite-qf'
+NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'sgur/unite-git_grep'

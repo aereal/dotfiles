@@ -385,7 +385,7 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <silent> <SID>[unite][ :<C-u>Unite outline fold -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
   nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
   nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
-  nnoremap <silent> <SID>[unite]q :<C-u>Unite qf -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
+  nnoremap <silent> <SID>[unite]q :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
 
   if has('gui_running')
     nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
