@@ -378,10 +378,6 @@ function! unite.hooks.on_source(bundle) " {{{
   nnoremap <SID>[unite] <Nop>
   nmap <Space> <SID>[unite]
 
-  nnoremap <silent> / :<C-u>Unite line -buffer-name=search -start-insert<CR>
-  nnoremap <silent> * :<C-u>UniteWithCursorWord line -buffer-name=search<CR>
-  nnoremap <silent> n :<C-u>UniteResume search -no-start-insert<CR>
-
   nnoremap <silent> <SID>[unite]o :<C-u>UniteWithBufferDir  file file/new file_mru -hide-source-names -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]O :<C-u>UniteWithCurrentDir file_mru file -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -hide-source-names -buffer-name=files<CR>
