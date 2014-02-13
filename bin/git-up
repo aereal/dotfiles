@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+# $1: remote name (default: origin)
+# $2: branch name (default: HEAD)
+
+set -e
+
+git push --set-upstream "${1:-origin}" $(git symbolic-ref --short ${2:-HEAD})
