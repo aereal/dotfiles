@@ -27,6 +27,7 @@ NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-tex
 " Operator {{{
 NeoBundleFetch 'kana/vim-operator-user'
 NeoBundleFetch 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
+NeoBundle 'rhysd/vim-operator-surround'
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
