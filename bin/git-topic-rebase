@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# $1: merge base
+
+set -e
+
+git rebase --interactive $(git merge-base ${1:-master} HEAD)
