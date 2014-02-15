@@ -373,6 +373,22 @@ function percol-git-remote-branches() {
 }
 zle -N percol-git-remote-branches
 bindkey -a "ga" percol-git-remote-branches
+
+function percol-cd() {
+  local -aU directory_candidates
+  directory_candidates=(
+    $(cat $HOME/.cdd | cut -d: -f2)
+    $(cdr -l | tr -s ' ' | cut -d' ' -f2)
+  )
+  local selected_directory=$(echo ${(F)directory_candidates} | percol)
+  if [[ -n "$selected_directory" ]]; then
+    BUFFER="cd ${selected_directory}"
+    zle accept-line
+  fi
+  zle -R -c
+}
+zle -N percol-cd
+bindkey -a '.' percol-cd
 # }}}
 
 # cdd {{{
@@ -466,6 +482,27 @@ fi
 # zsh-bundle-exec {{{
 if [[ -f $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh ]]; then
   source $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh
+fi
+# }}}
+
+# cdr {{{
+set autopushd
+
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+  local recent_dirs_cache_file="${XDG_CACHE_HOME:-$HOME/.cache}/shell/chpwd-recent-dirs"
+
+  if [[ ! -d ${recent_dirs_cache_file:h} ]]; then
+    mkdir -p ${recent_dirs_cache_file:h}
+  fi
+
+  autoload -Uz chpwd_recent_dirs cdr
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':completion:*:*:cdr:*:*' menu selection
+  zstyle ':completion:*' recent-dirs-insert both
+  zstyle ':chpwd:*' recent-dirs-max 500
+  zstyle ':chpwd:*' recent-dirs-default true
+  zstyle ':chpwd:*' recent-dirs-file "$recent_dirs_cache_file"
+  zstyle ':chpwd:*' recent-dirs-pushd true
 fi
 # }}}
 
