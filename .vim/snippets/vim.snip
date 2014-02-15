@@ -1,7 +1,14 @@
-# vim:set ft=snippet noet:
+# vim:set ft=neosnippet noet:
 snippet plugin_config
 	let ${2:symbol} = neobundle#get('${1:plugin_name}')
 	function! $2.hooks.on_source(bundle) " {{{
 		${3:TARGET}
 	endfunction " }}}
 	unlet $2
+
+snippet     lazybundle
+options     head
+	NeoBundleLazy '${1:owner}/${2:name}' " {{{
+	call neobundle#config('$2', {
+				${3:config}
+	}) " }}}
