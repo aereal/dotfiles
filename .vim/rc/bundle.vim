@@ -9,10 +9,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
-function! s:meet_neocomplete_requirements() " {{{
-  " http://rhysd.hatenablog.com/entry/2013/08/24/223438
-  return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
-endfunction " }}}
 " Plugins {{{
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun'
@@ -25,9 +21,13 @@ NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-tex
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
-NeoBundleFetch 'kana/vim-operator-user'
-NeoBundleFetch 'emonkak/vim-operator-sort'     , { 'depends' : 'kana/vim-operator-user' }
-NeoBundle 'rhysd/vim-operator-surround'
+NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
+call neobundle#config('vim-operator-surround', {
+      \ 'depends' : 'kana/vim-operator-user',
+      \ 'autoload' : {
+      \     'mappings' : '<Plug>(operator-surround-',
+      \   },
+      \ }) " }}}
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -56,13 +56,14 @@ call neobundle#config('unite-haskellimport', {
       \ }) " }}}
 " }}}
 " Completion {{{
-if s:meet_neocomplete_requirements() " {{{
-  NeoBundle 'Shougo/neocomplete.vim'
-  NeoBundleFetch 'Shougo/neocomplcache'
-else
-  NeoBundleFetch 'Shougo/neocomplete.vim'
-  NeoBundle 'Shougo/neocomplcache'
-endif " }}}
+NeoBundle 'Shougo/neocomplete.vim', {
+      \   'vim_version' : '7.3.885',
+      \   'disabled' : !has('lua'),
+      \ }
+NeoBundle 'Shougo/neocomplcache.vim' " {{{
+call neobundle#config('neocomplcache.vim', {
+      \   'disabled' : neobundle#is_sourced('neocomplete.vim'),
+      \ }) " }}}
 NeoBundleLazy 'ujihisa/neco-look' " {{{
 call neobundle#config('neco-look', {
       \   'autoload' : {
@@ -176,8 +177,18 @@ call neobundle#config('clang_complete', {
       \     'mac' : 'make',
       \   },
       \ }) " }}}
-NeoBundle 'mustache/vim-mustache-handlebars'
-NeoBundle 'dag/vim-fish'
+NeoBundleLazy 'mustache/vim-mustache-handlebars' " {{{
+call neobundle#config('vim-mustache-handlebars', {
+      \   'autoload' : {
+      \     'filetypes' : ['mustache', 'handlebars'],
+      \   },
+      \ }) " }}}
+NeoBundleLazy 'dag/vim-fish' " {{{
+call neobundle#config('vim-fish', {
+      \   'autoload' : {
+      \     'filetypes' : ['fish'],
+      \   },
+      \ }) " }}}
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
@@ -238,7 +249,16 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'sudo.vim'
-NeoBundle 'tpope/vim-fugitive'
+NeoBundleLazy 'tpope/vim-fugitive' " {{{
+call neobundle#config('vim-fugitive', {
+      \   'augroup' : 'fugitive',
+      \   'autoload' : {
+      \     'commands' : ['Git', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit',
+      \     'Ggrep', 'Glgrep', 'Glog', 'Gllog', 'Gedit', 'Gsplit', 'Gvsplit',
+      \     'Gtabedit', 'Gpedit', 'Gread', 'Gwrite', 'Gwq', 'Gdiff',
+      \     'Gsdiff', 'Gvdiff', 'Gmove', 'Gremove', 'Gblame', 'Gbrowse'],
+      \   },
+      \ }) " }}}
 " }}}
 
 filetype plugin indent on
