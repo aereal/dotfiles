@@ -77,17 +77,42 @@ call neobundle#config('neco-ghc', {
       \ }) " }}}
 " }}}
 " Language, Format {{{
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'groenewege/vim-less'
+NeoBundleLazy 'slim-template/vim-slim' " {{{
+call neobundle#config('vim-slim', {
+      \   'autoload' : {
+      \     'filetypes' : ['slim'],
+      \   },
+      \ }) " }}}
+NeoBundleLazy 'groenewege/vim-less' " {{{
+call neobundle#config('vim-less', {
+      \   'autoload' : {
+      \     'filetypes' : ['less'],
+      \   },
+      \ }) " }}}
 NeoBundleLazy 'hail2u/vim-css3-syntax' " {{{
 call neobundle#config('vim-css3-syntax', {
       \ 'autoload' : {
       \   'filetypes' : ['css', 'scss', 'sass', 'less'],
       \ },
       \ }) " }}}
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'motemen/hatena-vim'
+NeoBundleLazy 'hallison/vim-markdown' " {{{
+call neobundle#config('vim-markdown', {
+      \   'autoload' : {
+      \     'filetypes' : ['markdown'],
+      \   },
+      \ }) " }}}
+NeoBundleLazy 'kchmck/vim-coffee-script' " {{{
+call neobundle#config('vim-coffee-script', {
+      \   'autoload' : {
+      \     'filetypes' : ['coffee'],
+      \   },
+      \ }) " }}}
+NeoBundleLazy 'motemen/hatena-vim' " {{{
+call neobundle#config('hatena-vim', {
+      \   'autoload' : {
+      \     'filetypes' : ['hatena'],
+      \   },
+      \ }) " }}}
 NeoBundleLazy 'othree/html5.vim' " {{{
 call neobundle#config('html5.vim', {
       \ 'autoload' : {
@@ -106,8 +131,18 @@ call neobundle#config('vim-perl', {
       \     'filetypes' : ['perl'],
       \   },
       \ }) " }}}
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundleLazy 'davidoc/taskpaper.vim'
+NeoBundleLazy 'vim-ruby/vim-ruby' " {{{
+call neobundle#config('vim-ruby', {
+      \   'autoload' : {
+      \     'filetypes' : ['ruby'],
+      \   },
+      \ }) " }}}
+NeoBundleLazy 'davidoc/taskpaper.vim' " {{{
+call neobundle#config('taskpaper.vim', {
+      \   'autoload' : {
+      \     'filetypes' : ['taskpaper'],
+      \   },
+      \ }) " }}}
 NeoBundleLazy 'moznion/vim-cpanfile' " {{{
 call neobundle#config('vim-cpanfile', {
       \   'autoload' : {
@@ -120,7 +155,12 @@ call neobundle#config('perl-local-lib-path.vim', {
       \   'filetypes' : ['perl'],
       \ },
       \ }) " }}}
-NeoBundle 'jnwhiteh/vim-golang'
+NeoBundleLazy 'jnwhiteh/vim-golang' " {{{
+call neobundle#config('vim-golang', {
+      \   'autoload' : {
+      \     'filetypes' : ['go'],
+      \   },
+      \ }) " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
 call neobundle#config('ghcmod-vim', {
       \   'autoload' : {
