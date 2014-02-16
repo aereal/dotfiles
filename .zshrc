@@ -181,6 +181,7 @@ abbreviations=(
   " H" " | head"
   " T" " | tail"
   " C" " | pbcopy"
+  " W" " | wc"
 )
 # }}}
 
