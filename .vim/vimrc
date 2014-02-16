@@ -544,13 +544,9 @@ let g:memolist_memo_date = '%Y-%m-%dT%H:%M:%S'
 let g:memolist_template_dir_path = expand('~/.vim/plugin/memolist-templates')
 " }}}
 " operator-surround {{{
-let bundle = neobundle#get('vim-operator-surround')
-function! bundle.hooks.on_source(bundle)
-  map <silent> sa <Plug>(operator-surround-append)
-  map <silent> sd <Plug>(operator-surround-delete)
-  map <silent> sr <Plug>(operator-surround-replace)
-endfunction
-unlet bundle
+map <silent> sa <Plug>(operator-surround-append)
+map <silent> sd <Plug>(operator-surround-delete)
+map <silent> sr <Plug>(operator-surround-replace)
 " }}}
 " }}}
 
