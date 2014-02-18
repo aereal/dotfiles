@@ -548,6 +548,18 @@ map <silent> sa <Plug>(operator-surround-append)
 map <silent> sd <Plug>(operator-surround-delete)
 map <silent> sr <Plug>(operator-surround-replace)
 " }}}
+" neomru.vim {{{
+let bundle = neobundle#get('neomru.vim')
+function! bundle.hooks.on_source(bundle)
+  if neobundle#is_sourced('unite.vim')
+    call unite#custom#source(
+          \ 'file_mru', 'matchers',
+          \ ['matcher_project_files', 'matcher_fuzzy'],
+          \ )
+  endif
+endfunction
+unlet bundle
+" }}}
 " }}}
 
 " unite-git-files-conflict {{{

@@ -240,6 +240,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 " Organize {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'Shougo/neomru.vim'
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
