@@ -2,7 +2,6 @@
 tap phinze/cask || true
 tap caskroom/versions || true
 tap aereal/homebrew-aereal_casks || true
-tap jingweno/gh || true
 # }}}
 # essential tools {{{
 install git --with-pcre --with-brewed-openssl
@@ -43,9 +42,6 @@ install lua
 install luajit
 install node
 install phantomjs
-# }}}
-# gh {{{
-install gh
 # }}}
 # Ruby dependencies {{{
 install openssl
