@@ -205,6 +205,9 @@ nnoremap ( %
 
 nnoremap H ^
 nnoremap L $
+
+nnoremap ]q :<C-u>cnext<CR>
+nnoremap [q :<C-u>cprev<CR>
 " }}}
 
 " Plugin Configurations {{{
