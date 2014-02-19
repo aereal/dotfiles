@@ -1,30 +1,18 @@
 # Environment variables {{{
 export ZSH_HOME=$HOME/.zsh.d
-export RBENV_HOME=$HOME/.rbenv
-export PLENV_HOME=$HOME/.plenv
 export EDITOR=vim
+export ANYENV_ROOT=$HOME/.anyenv
 # }}}
 
 # paths {{{
 typeset -Ua \
-  rbenv_path \
-  plenv_path \
-  pyenv_path \
+  anyenv_path \
   user_path \
   homebrew_path \
   sudo_path \
   system_path
-rbenv_path=(
-  $HOME/.rbenv/bin(N-/)
-  $HOME/.rbenv/shims(N-/)
-)
-plenv_path=(
-  $HOME/.plenv/bin(N-/)
-  $HOME/.plenv/shims(N-/)
-)
-pyenv_path=(
-  $HOME/.pyenv/bin(N-/)
-  $HOME/.pyenv/shims(N-/)
+anyenv_path=(
+  $ANYENV_ROOT/bin(N-/)
 )
 user_path=(
   $HOME/local/bin(N-/)
@@ -44,9 +32,7 @@ sudo_path=(
 
 typeset -U path
 path=(
-  $rbenv_path
-  $plenv_path
-  $pyenv_path
+  $anyenv_path
   $user_path
   $system_path
   $sudo_path
@@ -73,27 +59,13 @@ export LV="-c -l"
 export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
 # }}}
 
+# anyenv {{{
+eval "$(anyenv init -)"
+# }}}
+
 if [[ -e "$HOME/.local.env" ]]; then
   source "$HOME/.local.env"
 fi
-
-# rbenv {{{
-if which rbenv >/dev/null; then
-  eval "$(rbenv init - --no-rehash)"
-fi
-# }}}
-
-# plenv {{{
-if which plenv >/dev/null; then
-  eval "$(plenv init - --no-rehash)"
-fi
-# }}}
-
-# pyenv {{{
-if which pyenv >/dev/null; then
-  eval "$(pyenv init - --no-rehash)"
-fi
-# }}}
 
 os_zshenv="$ZSH_HOME/os/$(uname).zshenv"
 [[ -f "$os_zshenv" ]] && source $os_zshenv

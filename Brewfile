@@ -11,12 +11,6 @@ install tig
 install tmux
 install zsh --disable-etcdir
 # }}}
-# *env {{{
-install perl-build
-install plenv
-install rbenv
-install ruby-build
-# }}}
 # development tools {{{
 install appledoc
 install autossh
