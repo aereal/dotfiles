@@ -437,9 +437,6 @@ let g:quickrun_config['watchdogs_checker/_'] = {
       \   'outputter/quickfix/open_cmd' : '',
       \   'hook/hier_update/enable_exit' : 1,
       \   'runner/vimproc/updatetime' : 40,
-      \   'hook/unite_quickfix/enable_failure' : 1,
-      \   'hook/unite_quickfix/enable_success' : 1,
-      \   'hook/unite_quickfix/unite_options' : '-no-quit -no-empty -auto-resize -resume -buffer-name=quickfix',
       \ }
 let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
       \   'command' : 'perl',
