@@ -379,7 +379,8 @@ function! unite.hooks.on_source(bundle) " {{{
   endfunction
 
   nnoremap <SID>[unite] <Nop>
-  nmap <Space> <SID>[unite]
+  nmap <C-u> <SID>[unite]
+  nnoremap <SID>[unite]<C-g> <Nop>
 
   nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -hide-source-names -buffer-name=files<CR>
   nnoremap <silent> <SID>[unite]F :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
