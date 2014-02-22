@@ -122,11 +122,6 @@ set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 " }}}
-" Conceal {{{
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-" }}}
 " Persistent Undo {{{
 if has('persistent_undo')
   set undodir=~/.vim/undo
