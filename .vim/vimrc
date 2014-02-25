@@ -513,6 +513,7 @@ endfunction " }}}
 unlet eskk
 " }}}
 " indentLine {{{
+let g:indentLine_char = '|'
 " }}}
 " Align {{{
 let alignta = neobundle#get('vim-alignta')
