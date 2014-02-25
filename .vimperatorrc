@@ -53,6 +53,8 @@ command! -nargs=+ sitesearch :exe ":tabopen <args> site:" + content.document.dom
 silent qmark r http://reader.livedoor.com/reader/
 silent qmark m https://mail.google.com/mail/#mbox
 " }}}
+
+autocmd VimperatorEnter .* source ~/.vimperatorrc.js
 autocmd VimperatorEnter .* source ~/.vimperator/rc/fmaps.vimp
 
 " vim:set ft=vim foldmethod=marker:
