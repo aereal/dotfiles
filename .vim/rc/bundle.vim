@@ -206,6 +206,7 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'trapd00r/neverland-vim-theme'
 NeoBundle 'bluntpeak/bluntpeak-vim-colors'
 NeoBundle 'svjunic/RadicalGoodSpeed.vim'
+NeoBundle 'reedes/vim-colors-pencil'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier'
