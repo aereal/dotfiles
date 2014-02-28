@@ -3,6 +3,9 @@ tap phinze/cask || true
 tap caskroom/versions || true
 tap aereal/homebrew-aereal_casks || true
 # }}}
+
+update
+
 # essential tools {{{
 install git --with-pcre --with-brewed-openssl
 install reattach-to-user-namespace --HEAD --wrap-launchctl --wrap-pbcopy-and-pbpaste
