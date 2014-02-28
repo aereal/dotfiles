@@ -1,0 +1,59 @@
+hi clear
+
+hi StatusLine <<CSS
+  background-color: #fdf6e3;
+  color: #586e75;
+  font-size: 16px;
+  padding: 0.2em 0;
+  outline: none;
+CSS
+
+hi CmdLine <<CSS
+  background-color: #fdf6e3;
+  color: #586e75;
+  font-size: 16px;
+  border-top: solid 1px #93a1a1;
+CSS
+
+hi CompItem <<CSS
+  background-color: #fdf6e3;
+  color: #586e75;
+  font-size: 16px;
+CSS
+
+hi CompItem[selected] <<CSS
+  background-color: #268bd2;
+  color: #fdf6e3;
+CSS
+
+hi CompTitle <<CSS
+  background-color: #eee8d5;
+  color: #657b83;
+CSS
+
+hi ErrorMsg <<CSS
+  background-color: #dc322f;
+  color: #fdf6e3;
+  font-size: 16px;
+CSS
+
+hi Filter <<CSS
+  color: #b58900;
+CSS
+
+hi Hint <<CSS
+  z-index: 999;
+  padding: 0.1em 0.3em;
+  font-size: 16px;
+  background-color: rgba(0, 43, 54, 0.8);
+  color: #fdf6e3;
+  font-family: monospace;
+CSS
+
+hi HintElem <<CSS
+  background-color: rgba(253, 246, 227, 0.7);
+CSS
+
+hi HintActive <<CSS
+  background-color: rgba(220, 50, 47, 0.6);
+CSS
