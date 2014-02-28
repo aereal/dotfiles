@@ -2,6 +2,7 @@
 tap phinze/cask || true
 tap caskroom/versions || true
 tap aereal/homebrew-aereal_casks || true
+tap caskroom/homebrew-fonts || true
 # }}}
 
 update
@@ -77,5 +78,16 @@ cask install opera-next
 # }}}
 
 cask alfred link # Enable Alfred to find applications managed by cask
+# }}}
+# fonts {{{
+cask install font-anonymous-pro
+cask install font-fantasque-sans-mono
+cask install font-fira-sans
+cask install font-inconsolata-dz
+cask install font-meslo-lg
+cask install font-oxygen-mono
+cask install font-share-tech-mono
+cask install font-source-code-pro
+cask install font-ubuntu
 # }}}
 # vim:set foldmethod=marker:
