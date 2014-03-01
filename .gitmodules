@@ -10,6 +10,3 @@
 [submodule ".zsh.d/plugins/zsh-syntax-highlighting"]
 	path = .zsh.d/plugins/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule ".zsh.d/plugins/zsh-bundle-exec"]
-	path = .zsh.d/plugins/zsh-bundle-exec
-	url = git://github.com/rhysd/zsh-bundle-exec.git
