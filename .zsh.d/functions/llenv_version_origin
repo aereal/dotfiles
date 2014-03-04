@@ -1,0 +1,19 @@
+llenv_version_origin() {
+  local llenv="$1"
+  local llenv_root="${ANYENV_ROOT:-$HOME/.anyenv}/envs/${llenv}"
+  local global_version_file="${llenv_root}/version"
+  local version_origin="$($llenv version-origin)"
+
+  local version_source
+  if [[ $version_origin = $global_version_file ]]; then
+    version_source='global'
+  elif [[ -f $version_origin ]]; then
+    version_source='local'
+  else
+    version_source='shell'
+  fi
+
+  echo $version_source
+}
+
+# vim:set ft=zsh:
