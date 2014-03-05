@@ -22,6 +22,7 @@ install boot2docker
 install coreutils
 install ctags
 install curl-ca-bundle
+install direnv
 install docker
 install heroku-toolbelt
 install htop-osx
