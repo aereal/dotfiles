@@ -1,6 +1,6 @@
 llenv_version_origin() {
   local llenv="$1"
-  local llenv_root="${ANYENV_ROOT:-$HOME/.anyenv}/envs/${llenv}"
+  local llenv_root="$($llenv root)"
   local global_version_file="${llenv_root}/version"
   local version_origin="$($llenv version-origin)"
 
