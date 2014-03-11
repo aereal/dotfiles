@@ -18,14 +18,6 @@ manpath=(
   $HOMEBREW_PATH/opt/coreutils/libexec/gnuman(N-/)
 )
 
-export MACVIM_APP=${MACVIM_APP:-/Applications/MacVim.app}
-EDITOR="${MACVIM_APP}/Contents/MacOS/Vim"
-
-if whence reattach-to-user-namespace >/dev/null; then
-  EDITOR="reattach-to-user-namespace -l ${EDITOR}"
-fi
-export EDITOR
-
 # SSL certificates {{{
 if [[ -f "$HOMEBREW_PATH/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
   export SSL_CERT_FILE="$HOMEBREW_PATH/opt/curl-ca-bundle/share/ca-bundle.crt"
