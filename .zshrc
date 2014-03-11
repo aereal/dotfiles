@@ -509,6 +509,10 @@ fi
 
 [[ -f "$ZSH_HOME/os/$(uname).zshrc" ]] && source "$ZSH_HOME/os/$(uname).zshrc"
 
+if whence direnv >/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # Launch tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then
