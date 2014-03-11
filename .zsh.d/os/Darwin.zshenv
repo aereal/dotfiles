@@ -32,4 +32,10 @@ if [[ -f "$HOMEBREW_PATH/opt/curl-ca-bundle/share/ca-bundle.crt" ]]; then
 fi
 # }}}
 
+if [[ -d "${HOMEBREW_PATH}/opt/shared-mime-info/share" ]]; then
+  export \
+    XDG_DATA_HOME="${HOMEBREW_PATH}/opt/shared-mime-info/share" \
+    XDG_DATA_DIRS="${HOMEBREW_PATH}/opt/shared-mime-info/share"
+fi
+
 # vim:set ft=zsh:
