@@ -215,6 +215,7 @@ NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'osyo-manga/vim-anzu'
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
