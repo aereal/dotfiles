@@ -427,35 +427,36 @@ if !exists('g:quickrun_config')
 endif
 " }}}
 " watchdogs -- 構文検証 {{{
-let g:watchdogs_check_BufWritePost_enable = 1
+if neobundle#is_installed('vim-watchdogs')
+  let bundle = neobundle#get('vim-watchdogs')
+  function! bundle.hooks.on_source(bundle) " {{{
+    let g:watchdogs_check_BufWritePost_enable = 1
 
-let g:quickrun_config['watchdogs_checker/_'] = {
-      \   'outputter/quickfix/open_cmd' : '',
-      \   'hook/hier_update/enable_exit' : 1,
-      \   'runner/vimproc/updatetime' : 40,
-      \ }
-let g:quickrun_config['watchdogs_checker/perl-projectlibs'] = {
-      \   'command' : 'perl',
-      \   'exec' : '%c %o -cw -MProject::Libs %s:p',
-      \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
-      \ }
-let g:quickrun_config['watchdogs_checker/cpanfile'] = {
-      \   'command' : 'perl',
-      \   'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
-      \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
-      \ }
-let g:quickrun_config['perl/watchdogs_checker'] = {
-      \   'type' : 'watchdogs_checker/perl-projectlibs',
-      \ }
-let g:quickrun_config['cpanfile/watchdogs_checker'] = {
-      \   'type' : 'watchdogs_checker/cpanfile',
-      \ }
-
-let watchdogs = neobundle#get('vim-watchdogs')
-function! watchdogs.hooks.on_source(bundle) " {{{
-  call watchdogs#setup(g:quickrun_config)
-endfunction " }}}
-unlet watchdogs
+    let g:quickrun_config['watchdogs_checker/_'] = {
+          \   'outputter/quickfix/open_cmd' : '',
+          \   'hook/hier_update/enable_exit' : 1,
+          \   'runner/vimproc/updatetime' : 40,
+          \ }
+    let g:quickrun_config['watchdogs_checker/efm_perl'] = {
+          \   'command' : expand('~/.vim/tools/efm_perl.pl'),
+          \   'exec' : '%c %o %s:p',
+          \   'quickfix/errorformat' : '%f:%l:%m',
+          \ }
+    let g:quickrun_config['watchdogs_checker/cpanfile'] = {
+          \   'command' : 'perl',
+          \   'exec' : '%c %o -w -MModule::CPANfile -e "Module::CPANfile->load(q|%S:p|)"',
+          \   'quickfix/errorformat' : '%m\ at\ %f\ line\ %l%.%#',
+          \ }
+    let g:quickrun_config['perl/watchdogs_checker'] = {
+          \   'type' : 'watchdogs_checker/efm_perl',
+          \ }
+    let g:quickrun_config['cpanfile/watchdogs_checker'] = {
+          \   'type' : 'watchdogs_checker/cpanfile',
+          \ }
+    call watchdogs#setup(g:quickrun_config)
+  endfunction " }}}
+  unlet bundle
+endif
 " }}}
 " smartinput {{{
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
