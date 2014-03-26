@@ -1,5 +1,7 @@
 #!/usr/bin/env perl
 
+# stolen from https://github.com/hakobe/dotfiles/blob/master/.vim/tools/efm_perl.pl
+
 use strict;
 use warnings;
 
