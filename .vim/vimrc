@@ -232,11 +232,14 @@ if neobundle#tap('vim-perl')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'vim-ruby/vim-ruby' " {{{
-call neobundle#config('vim-ruby', {
-      \   'autoload' : {
-      \     'filetypes' : ['ruby'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-ruby')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['ruby'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'davidoc/taskpaper.vim' " {{{
 call neobundle#config('taskpaper.vim', {
       \   'autoload' : {
