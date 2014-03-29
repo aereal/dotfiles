@@ -453,16 +453,22 @@ if neobundle#tap('vim-smartinput')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'mattn/emmet-vim' " {{{
-call neobundle#config('emmet-vim', {
-      \ 'autoload' : {
-      \   'filetypes' : [
-      \     'html',
-      \     'haml',
-      \     'slim',
-      \     'css',
-      \   ],
-      \ },
-      \ }) " }}}
+if neobundle#tap('emmet-vim')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:user_emmet_leader_key = '<C-e>'
+  endfunction
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : [
+        \     'html',
+        \     'haml',
+        \     'slim',
+        \     'css',
+        \   ],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'kana/vim-smartchr' " {{{
 if neobundle#tap('vim-smartchr')
   function! neobundle#tapped.hooks.on_source(bundle)
@@ -871,9 +877,6 @@ let g:surround_custom_mapping.tt2 = {
       \ '%': "[% \r %]",
       \ }
 let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
-" }}}
-" emmet-vim {{{
-let g:user_emmet_leader_key = '<C-e>'
 " }}}
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
