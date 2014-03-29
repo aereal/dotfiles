@@ -259,11 +259,18 @@ if neobundle#tap('vim-cpanfile')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'y-uuki/perl-local-lib-path.vim' " {{{
-call neobundle#config('perl-local-lib-path.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['perl'],
-      \ },
-      \ }) " }}}
+if neobundle#tap('perl-local-lib-path.vim')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['perl'],
+        \ },
+        \ })
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:perl_local_lib_path = "t/lib"
+    autocmd MyInit FileType perl PerlLocalLibPath
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'jnwhiteh/vim-golang' " {{{
 call neobundle#config('vim-golang', {
       \   'autoload' : {
@@ -918,14 +925,6 @@ function! unite.hooks.on_source(bundle) " {{{
   " }}}
 endfunction " }}}
 unlet unite
-" }}}
-" perl-local-lib-path.vim {{{
-let g:perl_local_lib_path = "t/lib"
-let perl_local_lib = neobundle#get('perl-local-lib-path.vim')
-function! perl_local_lib.hooks.on_source(bundle)
-  autocmd MyInit FileType perl PerlLocalLibPath
-endfunction
-unlet perl_local_lib
 " }}}
 " }}}
 
