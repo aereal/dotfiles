@@ -138,6 +138,7 @@ call neobundle#config('neco-look', {
 NeoBundleLazy 'eagletmt/neco-ghc' " {{{
 if neobundle#tap('neco-ghc')
   call neobundle#config({
+        \ 'external_commands' : ['ghc-mod'],
         \ 'autoload' : {
         \   'filetypes' : ['haskell'],
         \ },
