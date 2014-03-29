@@ -121,10 +121,41 @@ if neobundle#tap('unite-haskellimport')
 endif " }}}
 " }}}
 " Completion {{{
-NeoBundle 'Shougo/neocomplete.vim', {
-      \   'vim_version' : '7.3.885',
-      \   'disabled' : !has('lua'),
-      \ }
+NeoBundle 'Shougo/neocomplete.vim' " {{{
+if neobundle#tap('neocomplete.vim')
+  call neobundle#config({
+        \ 'vim_version' : '7.3.885',
+        \ 'disabled'    : !has('lua'),
+        \ })
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:neocomplete#enable_at_startup = 1
+    if ! exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    let g:neocomplete#force_overwrite_completefunc = 1
+    let g:neocomplete#force_omni_input_patterns.c      = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#force_omni_input_patterns.objc   = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#force_omni_input_patterns.cpp    = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+    let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+    let g:neocomplete#keyword_patterns                  = {}
+    let g:neocomplete#keyword_patterns.default          = '\h\w*'
+
+    let g:neocomplete#delimiter_patterns                = {}
+    let g:neocomplete#delimiter_patterns.vim            = ['#']
+    let g:neocomplete#delimiter_patterns.perl           = ['::']
+    let g:neocomplete#delimiter_patterns.ruby           = ['::']
+
+    imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
+    imap <expr> <BS>  neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
+    inoremap <expr> <C-g> neocomplete#undo_completion()
+
+    autocmd MyInit CmdwinEnter * let b:neocomplete_sources = ['vim']
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'Shougo/neocomplcache.vim' " {{{
 call neobundle#config('neocomplcache.vim', {
       \   'disabled' : neobundle#is_sourced('neocomplete.vim'),
@@ -808,42 +839,6 @@ nnoremap [q :<C-u>cprev<CR>
 " }}}
 
 " Plugin Configurations {{{
-" neocomplete.vim {{{
-let g:neocomplete#enable_at_startup = 1
-
-if neobundle#is_installed('neocomplete.vim')
-  let s:bundle = neobundle#get('neocomplete.vim')
-
-  function! s:bundle.hooks.on_source(bundle)
-    if ! exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_overwrite_completefunc = 1
-    let g:neocomplete#force_omni_input_patterns.c      = '[^.[:digit:] *\t]\%(\.\|->\)'
-    let g:neocomplete#force_omni_input_patterns.objc   = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-    let g:neocomplete#force_omni_input_patterns.cpp    = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-    let g:neocomplete#force_omni_input_patterns.objcpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-    let g:neocomplete#keyword_patterns                  = {}
-    let g:neocomplete#keyword_patterns.default          = '\h\w*'
-
-    let g:neocomplete#delimiter_patterns                = {}
-    let g:neocomplete#delimiter_patterns.vim            = ['#']
-    let g:neocomplete#delimiter_patterns.perl           = ['::']
-    let g:neocomplete#delimiter_patterns.ruby           = ['::']
-
-    imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
-    imap <expr> <BS>  neocomplete#smart_close_popup() . "\<Plug>(smartinput_BS)"
-    inoremap <expr> <C-g> neocomplete#undo_completion()
-
-    autocmd MyInit CmdwinEnter * let b:neocomplete_sources = ['vim']
-  endfunction
-
-  unlet s:bundle
-endif
-" }}}
 " neocomplcache {{{
 if neobundle#is_installed('neocomplcache')
   let s:bundle = neobundle#get('neocomplcache')
