@@ -427,7 +427,27 @@ if neobundle#tap('vim-alignta')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'tyru/eskk.vim'
+NeoBundle 'tyru/eskk.vim' " {{{
+if neobundle#tap('eskk.vim')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:eskk#directory = expand('~/.vim/.eskk')
+
+    let user_dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
+    let large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+
+    if filereadable(user_dictionary)
+      let g:eskk#dictionary = user_dictionary
+    endif
+
+    if filereadable(large_dictionary)
+      let g:eskk#large_dictionary = large_dictionary
+    endif
+
+    imap <C-o> <Plug>(eskk:toggle)
+  endfunction
+
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
 " Organize {{{
@@ -847,26 +867,6 @@ unlet unite
 if !exists('g:neocomplcache_dictionary_filetype_lists')
   let g:neocomplcache_dictionary_filetype_lists = {}
 endif
-" }}}
-" eskk.vim {{{
-let eskk = neobundle#get('eskk.vim')
-function! eskk.hooks.on_source(bundle) " {{{
-  let g:eskk#directory = expand('~/.vim/.eskk')
-
-  let user_dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
-  let large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
-
-  if filereadable(user_dictionary)
-    let g:eskk#dictionary = user_dictionary
-  endif
-
-  if filereadable(large_dictionary)
-    let g:eskk#large_dictionary = large_dictionary
-  endif
-
-  imap <C-o> <Plug>(eskk:toggle)
-endfunction " }}}
-unlet eskk
 " }}}
 " perl-local-lib-path.vim {{{
 let g:perl_local_lib_path = "t/lib"
