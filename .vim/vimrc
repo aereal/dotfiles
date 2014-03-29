@@ -82,11 +82,14 @@ endif " }}}
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'ujihisa/ref-hoogle' " {{{
-call neobundle#config('ref-hoogle', {
-      \   'autoload' : {
-      \     'filetypes' : ['haskell'],
-      \   }
-      \ }) " }}}
+if neobundle#tap('ref-hoogle')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['haskell'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Unite {{{
 NeoBundle 'Shougo/unite.vim'
