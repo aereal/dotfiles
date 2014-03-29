@@ -80,7 +80,13 @@ endif " }}}
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-ref' " {{{
+if neobundle#tap('vim-ref')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:ref_cache_dir = $HOME . '/.vim/.ref'
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'ujihisa/ref-hoogle' " {{{
 if neobundle#tap('ref-hoogle')
   call neobundle#config({
@@ -651,9 +657,6 @@ let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
 " }}}
 " emmet-vim {{{
 let g:user_emmet_leader_key = '<C-e>'
-" }}}
-" ref-vim {{{
-let g:ref_cache_dir = $HOME . '/.vim/.ref'
 " }}}
 " unite-vim {{{
 let g:unite_data_directory = '~/.vim/.unite'
