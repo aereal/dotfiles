@@ -438,8 +438,8 @@ if neobundle#tap('neosnippet')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-surround_custom_mapping' " {{{
+NeoBundleLazy 'tpope/vim-surround'
+NeoBundleLazy 't9md/vim-surround_custom_mapping' " {{{
 if neobundle#tap('vim-surround_custom_mapping')
   call neobundle#config({
         \ 'depends' : ['tpope/vim-surround'],
