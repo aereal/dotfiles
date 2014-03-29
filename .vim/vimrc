@@ -11,7 +11,6 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
-
 " Plugins {{{
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun' " {{{
@@ -783,7 +782,6 @@ endif " }}}
 
 filetype plugin indent on
 " }}}
-
 " autocmd {{{
 augroup MyInit
   autocmd!
@@ -839,7 +837,6 @@ augroup MyInit
   " }}}
 augroup END
 " }}}
-
 " Configurations {{{
 set hidden
 set history=1000
@@ -925,7 +922,6 @@ if $SHELL =~# 'fish$'
 endif
 " }}}
 " }}}
-
 " Tabpage {{{
 set showtabline=2
 set guioptions-=e
@@ -961,7 +957,6 @@ function! MakeTabLine() " {{{
 endfunction " }}}
 set tabline=%!MakeTabLine()
 " }}}
-
 " Key mappings {{{
 let mapleader   = ';'
 let g:mapleader = ';'
@@ -986,12 +981,10 @@ nnoremap L $
 nnoremap ]q :<C-u>cnext<CR>
 nnoremap [q :<C-u>cprev<CR>
 " }}}
-
 " Colorscheme {{{
 set bg=dark
 colorscheme noctu
 " }}}
-
 command! Sketch call s:sketch() " {{{
 function! s:sketch() " {{{
   if !exists('g:sketch_dir')
@@ -1007,7 +1000,6 @@ function! s:sketch() " {{{
   execute ':edit ' . filename
 endfunction " }}}
 " }}}
-
 " Local {{{
 let local_vimrc_path = expand('~/.local.vimrc')
 if filereadable(local_vimrc_path)
