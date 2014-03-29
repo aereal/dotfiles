@@ -319,11 +319,14 @@ if neobundle#tap('vim-mustache-handlebars')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'dag/vim-fish' " {{{
-call neobundle#config('vim-fish', {
-      \   'autoload' : {
-      \     'filetypes' : ['fish'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-fish')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['fish'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
