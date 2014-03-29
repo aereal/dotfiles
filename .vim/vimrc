@@ -302,7 +302,14 @@ if neobundle#tap('quickfixstatus')
         \ })
   call neobundle#untap()
 endif " }}}
-NeoBundle 'LeafCage/foldCC'
+NeoBundle 'LeafCage/foldCC' " {{{
+if neobundle#tap('foldCC')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    set foldtext=FoldCCtext()
+    set foldcolumn=4
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine' " {{{
 if neobundle#tap('indentLine')
@@ -759,14 +766,6 @@ function! unite.hooks.on_source(bundle) " {{{
   " }}}
 endfunction " }}}
 unlet unite
-" }}}
-" foldCC {{{
-let foldCC = neobundle#get('foldCC')
-function! foldCC.hooks.on_source(bundle) " {{{
-  set foldtext=FoldCCtext()
-  set foldcolumn=4
-endfunction " }}}
-unlet foldCC
 " }}}
 " smartinput {{{
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
