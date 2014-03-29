@@ -84,6 +84,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'ujihisa/ref-hoogle' " {{{
 if neobundle#tap('ref-hoogle')
   call neobundle#config({
+        \ 'external_commands' : ['ghc-mod'],
         \ 'autoload' : {
         \   'filetypes' : ['haskell'],
         \ },
