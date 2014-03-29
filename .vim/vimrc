@@ -136,11 +136,14 @@ call neobundle#config('neco-look', {
       \   },
       \ }) " }}}
 NeoBundleLazy 'eagletmt/neco-ghc' " {{{
-call neobundle#config('neco-ghc', {
-      \   'autoload' : {
-      \     'filetypes' : ['haskell'],
-      \   }
-      \ }) " }}}
+if neobundle#tap('neco-ghc')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['haskell'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Language, Format {{{
 NeoBundleLazy 'slim-template/vim-slim' " {{{
