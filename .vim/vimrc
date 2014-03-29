@@ -281,7 +281,13 @@ NeoBundle 'svjunic/RadicalGoodSpeed.vim'
 NeoBundle 'reedes/vim-colors-pencil'
 " }}}
 " Visualize {{{
-NeoBundle 'jceb/vim-hier'
+NeoBundle 'jceb/vim-hier' " {{{
+if neobundle#tap('vim-hier')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:hier_enabled = 1
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'dannyob/quickfixstatus'
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
@@ -742,9 +748,6 @@ function! foldCC.hooks.on_source(bundle) " {{{
   set foldcolumn=4
 endfunction " }}}
 unlet foldCC
-" }}}
-" hier {{{
-let g:hier_enabled = 1
 " }}}
 " smartinput {{{
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
