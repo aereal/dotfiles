@@ -293,7 +293,15 @@ if neobundle#tap('vim-hier')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'dannyob/quickfixstatus'
+NeoBundleLazy 'dannyob/quickfixstatus' " {{{
+if neobundle#tap('quickfixstatus')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'on_source' : ['vim-watchdogs'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'Yggdroot/indentLine'
