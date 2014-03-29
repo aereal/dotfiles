@@ -272,11 +272,14 @@ if neobundle#tap('perl-local-lib-path.vim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'jnwhiteh/vim-golang' " {{{
-call neobundle#config('vim-golang', {
-      \   'autoload' : {
-      \     'filetypes' : ['go'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-golang')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['go'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
 call neobundle#config('ghcmod-vim', {
       \   'autoload' : {
