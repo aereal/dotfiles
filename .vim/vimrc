@@ -418,7 +418,15 @@ if neobundle#tap('vim-smartchr')
   call neobundle#untap()
 endif " }}}
 NeoBundle 'sickill/vim-pasta'
-NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'h1mesuke/vim-alignta' " {{{
+if neobundle#tap('vim-alignta')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    vmap ,a :Alignta
+    vmap ,= :Alignta =<CR>
+    vmap ,> :Alignta =><CR>
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 " }}}
@@ -859,15 +867,6 @@ function! eskk.hooks.on_source(bundle) " {{{
   imap <C-o> <Plug>(eskk:toggle)
 endfunction " }}}
 unlet eskk
-" }}}
-" Align {{{
-let alignta = neobundle#get('vim-alignta')
-function! alignta.hooks.on_source(bundle)
-  vmap ,a :Alignta
-  vmap ,= :Alignta =<CR>
-  vmap ,> :Alignta =><CR>
-endfunction
-unlet alignta
 " }}}
 " perl-local-lib-path.vim {{{
 let g:perl_local_lib_path = "t/lib"
