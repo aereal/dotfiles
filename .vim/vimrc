@@ -250,11 +250,14 @@ if neobundle#tap('taskpaper.vim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'moznion/vim-cpanfile' " {{{
-call neobundle#config('vim-cpanfile', {
-      \   'autoload' : {
-      \     'filetypes' : ['cpanfile'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-cpanfile')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['cpanfile'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'y-uuki/perl-local-lib-path.vim' " {{{
 call neobundle#config('perl-local-lib-path.vim', {
       \ 'autoload' : {
@@ -915,11 +918,6 @@ function! unite.hooks.on_source(bundle) " {{{
   " }}}
 endfunction " }}}
 unlet unite
-" }}}
-" vim-cpanfile {{{
-if !exists('g:neocomplcache_dictionary_filetype_lists')
-  let g:neocomplcache_dictionary_filetype_lists = {}
-endif
 " }}}
 " perl-local-lib-path.vim {{{
 let g:perl_local_lib_path = "t/lib"
