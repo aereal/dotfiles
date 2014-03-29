@@ -283,6 +283,7 @@ endif " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
 if neobundle#tap('ghcmod-vim')
   call neobundle#config({
+        \ 'external_commands' : ['ghc-mod'],
         \ 'autoload' : {
         \   'filetypes' : ['haskell'],
         \ }
