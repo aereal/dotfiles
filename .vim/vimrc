@@ -84,6 +84,9 @@ NeoBundle 'thinca/vim-ref' " {{{
 if neobundle#tap('vim-ref')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:ref_cache_dir = $HOME . '/.vim/.ref'
+    if !isdirectory(g:ref_cache_dir)
+      call mkdir(g:ref_cache_dir, '-p')
+    endif
   endfunction
   call neobundle#untap()
 endif " }}}
