@@ -304,7 +304,13 @@ if neobundle#tap('quickfixstatus')
 endif " }}}
 NeoBundle 'LeafCage/foldCC'
 NeoBundle 'tyru/current-func-info.vim'
-NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'Yggdroot/indentLine' " {{{
+if neobundle#tap('indentLine')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:indentLine_char = '|'
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 " }}}
@@ -816,9 +822,6 @@ function! eskk.hooks.on_source(bundle) " {{{
   imap <C-o> <Plug>(eskk:toggle)
 endfunction " }}}
 unlet eskk
-" }}}
-" indentLine {{{
-let g:indentLine_char = '|'
 " }}}
 " Align {{{
 let alignta = neobundle#get('vim-alignta')
