@@ -484,7 +484,26 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'sudo.vim'
-NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive' " {{{
+if neobundle#tap('vim-fugitive')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    nnoremap [fugitive] <Nop>
+    nmap ,g [fugitive]
+
+    nnoremap [fugitive]s :<C-u>Gstatus<CR>
+    nnoremap [fugitive]c :<C-u>Gcommit<CR>
+    nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>
+    nnoremap [fugitive]b :<C-u>Gblame<CR>
+    nnoremap [fugitive]a :<C-u>Gwrite<CR>
+    nnoremap [fugitive]d :<C-u>Gdiff<CR>
+    nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
+
+    vmap ,go :Gbrowse<CR>
+
+    autocmd MyInit BufReadPost fugitive://* set bufhidden=delete
+  endfunction
+  call neobundle#untap()
+endif " }}}
 " }}}
 
 filetype plugin indent on
@@ -774,26 +793,6 @@ if neobundle#is_installed('neocomplcache')
 
   unlet s:bundle
 endif
-" }}}
-" fugitive {{{
-let fugitive = neobundle#get('vim-fugitive')
-function! fugitive.hooks.on_source(bundle) " {{{
-  nnoremap [fugitive] <Nop>
-  nmap ,g [fugitive]
-
-  nnoremap [fugitive]s :<C-u>Gstatus<CR>
-  nnoremap [fugitive]c :<C-u>Gcommit<CR>
-  nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>
-  nnoremap [fugitive]b :<C-u>Gblame<CR>
-  nnoremap [fugitive]a :<C-u>Gwrite<CR>
-  nnoremap [fugitive]d :<C-u>Gdiff<CR>
-  nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
-
-  vmap ,go :Gbrowse<CR>
-
-  autocmd MyInit BufReadPost fugitive://* set bufhidden=delete
-endfunction " }}}
-unlet fugitive
 " }}}
 " surround_custom_mapping {{{
 let g:surround_custom_mapping = {}
