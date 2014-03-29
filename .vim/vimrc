@@ -463,7 +463,18 @@ if neobundle#tap('memolist.vim')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/neomru.vim' " {{{
+if neobundle#tap('neomru.vim')
+  function! neobundle#tapped.hooks.on_source(bundle)
+    if neobundle#is_sourced('unite.vim')
+      call unite#custom#source(
+            \ 'file_mru', 'matchers',
+            \ ['matcher_project_files', 'matcher_fuzzy'],
+            \ )
+    endif
+  endfunction
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Utility {{{
 NeoBundle 'Shougo/vimproc', {
@@ -885,18 +896,6 @@ function! perl_local_lib.hooks.on_source(bundle)
   autocmd MyInit FileType perl PerlLocalLibPath
 endfunction
 unlet perl_local_lib
-" }}}
-" neomru.vim {{{
-let bundle = neobundle#get('neomru.vim')
-function! bundle.hooks.on_source(bundle)
-  if neobundle#is_sourced('unite.vim')
-    call unite#custom#source(
-          \ 'file_mru', 'matchers',
-          \ ['matcher_project_files', 'matcher_fuzzy'],
-          \ )
-  endif
-endfunction
-unlet bundle
 " }}}
 " }}}
 
