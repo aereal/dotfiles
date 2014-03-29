@@ -102,11 +102,14 @@ NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundleLazy 'ujihisa/unite-haskellimport' " {{{
-call neobundle#config('unite-haskellimport', {
-      \   'autoload' : {
-      \     'filetypes' : ['haskell'],
-      \   }
-      \ }) " }}}
+if neobundle#tap('unite-haskellimport')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['haskell'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplete.vim', {
