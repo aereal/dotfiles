@@ -160,11 +160,14 @@ if neobundle#tap('vim-slim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'groenewege/vim-less' " {{{
-call neobundle#config('vim-less', {
-      \   'autoload' : {
-      \     'filetypes' : ['less'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-less')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['less'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'hail2u/vim-css3-syntax' " {{{
 call neobundle#config('vim-css3-syntax', {
       \ 'autoload' : {
