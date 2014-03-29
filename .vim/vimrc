@@ -130,11 +130,14 @@ call neobundle#config('neocomplcache.vim', {
       \   'disabled' : neobundle#is_sourced('neocomplete.vim'),
       \ }) " }}}
 NeoBundleLazy 'ujihisa/neco-look' " {{{
-call neobundle#config('neco-look', {
-      \   'autoload' : {
-      \     'filetypes' : ['markdown', 'hatena'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('neco-look')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['markdown', 'hatena'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'eagletmt/neco-ghc' " {{{
 if neobundle#tap('neco-ghc')
   call neobundle#config({
