@@ -205,11 +205,14 @@ if neobundle#tap('hatena-vim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'othree/html5.vim' " {{{
-call neobundle#config('html5.vim', {
-      \ 'autoload' : {
-      \   'filetypes' : ['html'],
-      \ }
-      \ }) " }}}
+if neobundle#tap('html5.vim')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['html'],
+        \ }
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'pangloss/vim-javascript' " {{{
 call neobundle#config('vim-javascript', {
       \   'autoload' : {
