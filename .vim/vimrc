@@ -65,12 +65,18 @@ NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-tex
 " }}}
 " Operator {{{
 NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
-call neobundle#config('vim-operator-surround', {
-      \ 'depends' : 'kana/vim-operator-user',
-      \ 'autoload' : {
-      \     'mappings' : '<Plug>(operator-surround-',
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-operator-surround')
+  call neobundle#config({
+        \ 'depends' : 'kana/vim-operator-user',
+        \ 'autoload' : {
+        \     'mappings' : '<Plug>(operator-surround-',
+        \   },
+        \ })
+  map <silent> sa <Plug>(operator-surround-append)
+  map <silent> sd <Plug>(operator-surround-delete)
+  map <silent> sr <Plug>(operator-surround-replace)
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Help {{{
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -801,11 +807,6 @@ let g:memolist_memo_suffix = 'hatena'
 let g:memolist_unite = 1
 let g:memolist_memo_date = '%Y-%m-%dT%H:%M:%S'
 let g:memolist_template_dir_path = expand('~/.vim/plugin/memolist-templates')
-" }}}
-" operator-surround {{{
-map <silent> sa <Plug>(operator-surround-append)
-map <silent> sd <Plug>(operator-surround-delete)
-map <silent> sr <Plug>(operator-surround-replace)
 " }}}
 " neomru.vim {{{
 let bundle = neobundle#get('neomru.vim')
