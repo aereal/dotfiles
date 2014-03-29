@@ -178,11 +178,14 @@ if neobundle#tap('vim-css3-syntax')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'hallison/vim-markdown' " {{{
-call neobundle#config('vim-markdown', {
-      \   'autoload' : {
-      \     'filetypes' : ['markdown'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-markdown')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['markdown'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'kchmck/vim-coffee-script' " {{{
 call neobundle#config('vim-coffee-script', {
       \   'autoload' : {
