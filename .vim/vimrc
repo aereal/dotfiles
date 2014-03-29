@@ -310,11 +310,14 @@ if neobundle#tap('clang_complete')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'mustache/vim-mustache-handlebars' " {{{
-call neobundle#config('vim-mustache-handlebars', {
-      \   'autoload' : {
-      \     'filetypes' : ['mustache', 'handlebars'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-mustache-handlebars')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['mustache', 'handlebars'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'dag/vim-fish' " {{{
 call neobundle#config('vim-fish', {
       \   'autoload' : {
