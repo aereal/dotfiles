@@ -291,14 +291,24 @@ if neobundle#tap('ghcmod-vim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'Rip-Rip/clang_complete' " {{{
-call neobundle#config('clang_complete', {
-      \   'autoload' : {
-      \     'filetypes' : ['objc'],
-      \   },
-      \   'build' : {
-      \     'mac' : 'make',
-      \   },
-      \ }) " }}}
+if neobundle#tap('clang_complete')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['objc'],
+        \ },
+        \ 'build' : {
+        \   'mac' : 'make',
+        \ },
+        \ })
+  function! neobundle#tapped.hooks.on_source(bundle)
+    let g:clang_use_library = 1
+    let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+    let g:clang_complete_auto = 1
+    let g:clang_auto_select = 0
+    let g:clang_auto_user_options = 'path, .clang_complete'
+  endfunction
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'mustache/vim-mustache-handlebars' " {{{
 call neobundle#config('vim-mustache-handlebars', {
       \   'autoload' : {
@@ -763,13 +773,6 @@ nnoremap [q :<C-u>cprev<CR>
 " }}}
 
 " Plugin Configurations {{{
-" clang_complete {{{
-let g:clang_use_library = 1
-let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-let g:clang_complete_auto = 1
-let g:clang_auto_select = 0
-let g:clang_auto_user_options = 'path, .clang_complete'
-" }}}
 " neocomplete.vim {{{
 let g:neocomplete#enable_at_startup = 1
 
