@@ -11,6 +11,11 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle'))
 " }}}
+" Initialize my augroup {{{
+augroup MyInit
+  autocmd!
+augroup END
+" }}}
 " Plugins {{{
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun' " {{{
@@ -783,59 +788,55 @@ endif " }}}
 filetype plugin indent on
 " }}}
 " autocmd {{{
-augroup MyInit
-  autocmd!
-  " screen title {{{
-  if ! has('gui_running')
-    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
-  endif " }}}
-  " CoffeeScript {{{
-  autocmd ColorScheme * hi! link CoffeeSpecialVar Constant
-  " }}}
-  " Haskell {{{
-  autocmd FileType haskell setlocal et
-  " }}}
-  " Perl {{{
-  autocmd BufNewFile,BufRead cpanfile setlocal filetype=cpanfile
-  autocmd BufNewFile,BufRead cpanfile setlocal syntax=perl.cpanfile
+" screen title {{{
+if ! has('gui_running')
+  autocmd MyInit BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
+endif " }}}
+" CoffeeScript {{{
+autocmd MyInit ColorScheme * hi! link CoffeeSpecialVar Constant
+" }}}
+" Haskell {{{
+autocmd MyInit FileType haskell setlocal et
+" }}}
+" Perl {{{
+autocmd MyInit BufEnter cpanfile setlocal filetype=cpanfile
+autocmd MyInit BufEnter cpanfile setlocal syntax=perl.cpanfile
+autocmd MyInit BufEnter *.tt setlocal ft=tt2
+autocmd MyInit BufEnter *.t  setlocal ft=perl
+" }}}
+" Vim {{{
+autocmd MyInit FileType vim inoreabbrev <buffer> = =
+" }}}
+" Markdown {{{
+autocmd MyInit FileType markdown setlocal et ts=4 sts=4 sw=4
+" }}}
+" Nginx {{{
+autocmd MyInit BufEnter */nginx/*.conf setlocal ft=nginx
+autocmd MyInit BufEnter */*.nginx.conf setlocal ft=nginx
+" }}}
+" HTML {{{
+autocmd MyInit FileType html inoremap <buffer> = =
+" }}}
+" Hatena {{{
+autocmd MyInit BufNewFile,BufRead *.hatena setlocal filetype=hatena
 
-  autocmd BufEnter *.tt setlocal ft=tt2
-  autocmd BufEnter *.t  setlocal ft=perl
-  " }}}
-  " Vim {{{
-  autocmd FileType vim inoreabbrev <buffer> = =
-  " }}}
-  " Markdown {{{
-  autocmd FileType markdown setlocal et ts=4 sts=4 sw=4
-  " }}}
-  " Nginx {{{
-  autocmd BufEnter */nginx/*.conf setlocal ft=nginx
-  autocmd BufEnter */*.nginx.conf setlocal ft=nginx
-  " }}}
-  " HTML {{{
-  autocmd FileType html inoremap <buffer> = =
-  " }}}
-  " Hatena {{{
-  autocmd BufNewFile,BufRead *.hatena setlocal filetype=hatena
-
-  autocmd BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
-  autocmd BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
-  autocmd BufEnter */Hatena/*.html     setlocal ft=tt2html
-  autocmd BufEnter */Hatena/*.tt       setlocal ft=tt2html
-  " }}}
-  " Close window with `q` key {{{
-  autocmd FileType help,ref-* nnoremap <buffer> q :q<CR>
-  " }}}
-  " Git config {{{
-  autocmd FileType gitconfig setlocal noexpandtab
-  " }}}
-  " Ruby {{{
-  autocmd BufEnter *.podspec set ft=ruby
-  autocmd BufEnter Podfile set ft=ruby
-  " }}}
-augroup END
+autocmd MyInit BufEnter */Hatena/*          setlocal et ts=4 sts=4 sw=4
+autocmd MyInit BufEnter */Hatena/*.html.erb setlocal ts=2 sts=2 sw=2
+autocmd MyInit BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
+autocmd MyInit BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
+autocmd MyInit BufEnter */Hatena/*.html     setlocal ft=tt2html
+autocmd MyInit BufEnter */Hatena/*.tt       setlocal ft=tt2html
+" }}}
+" Close window with `q` key {{{
+autocmd MyInit FileType help,ref-* nnoremap <buffer> q :q<CR>
+" }}}
+" Git config {{{
+autocmd MyInit FileType gitconfig setlocal noexpandtab
+" }}}
+" Ruby {{{
+autocmd MyInit BufEnter *.podspec set ft=ruby
+autocmd MyInit BufEnter Podfile set ft=ruby
+" }}}
 " }}}
 " Configurations {{{
 set hidden
