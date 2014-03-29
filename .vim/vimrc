@@ -244,8 +244,8 @@ if neobundle#tap('neocomplete.vim')
         \ 'vim_version' : '7.3.885',
         \ 'disabled'    : !has('lua'),
         \ })
+  let g:neocomplete#enable_at_startup = 1
   function! neobundle#tapped.hooks.on_source(bundle)
-    let g:neocomplete#enable_at_startup = 1
     if ! exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
     endif
@@ -279,8 +279,6 @@ if neobundle#tap('neocomplcache.vim')
         \   'disabled' : neobundle#is_sourced('neocomplete.vim'),
         \ })
   function! neobundle#tapped.hooks.on_source(bundle)
-    let g:neocomplcache_enable_at_startup = 1
-
     if !exists('g:neocomplcache_dictionary_filetype_lists')
       let g:neocomplcache_dictionary_filetype_lists = {}
     endif
