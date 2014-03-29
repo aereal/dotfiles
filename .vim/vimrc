@@ -281,8 +281,13 @@ NeoBundle 'svjunic/RadicalGoodSpeed.vim'
 NeoBundle 'reedes/vim-colors-pencil'
 " }}}
 " Visualize {{{
-NeoBundle 'jceb/vim-hier' " {{{
+NeoBundleLazy 'jceb/vim-hier' " {{{
 if neobundle#tap('vim-hier')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'on_source' : ['vim-watchdogs'],
+        \ },
+        \ })
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:hier_enabled = 1
   endfunction
