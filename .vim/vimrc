@@ -377,6 +377,9 @@ if neobundle#tap('vim-coffee-script')
         \   'filetypes' : ['coffee'],
         \ },
         \ })
+  function! neobundle#tapped.hooks.on_post_source(bundle)
+    autocmd MyInit ColorScheme * hi! link CoffeeSpecialVar Constant
+  endfunction
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'motemen/hatena-vim' " {{{
@@ -792,9 +795,6 @@ filetype plugin indent on
 if ! has('gui_running')
   autocmd MyInit BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
 endif " }}}
-" CoffeeScript {{{
-autocmd MyInit ColorScheme * hi! link CoffeeSpecialVar Constant
-" }}}
 " Haskell {{{
 autocmd MyInit FileType haskell setlocal et
 " }}}
