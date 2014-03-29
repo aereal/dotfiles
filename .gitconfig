@@ -115,3 +115,4 @@
 	log = diff-highlight-wrapper
 	show = diff-highlight-wrapper
 	diff = diff-highlight-wrapper
+	grep = false
