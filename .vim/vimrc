@@ -187,11 +187,14 @@ if neobundle#tap('vim-markdown')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'kchmck/vim-coffee-script' " {{{
-call neobundle#config('vim-coffee-script', {
-      \   'autoload' : {
-      \     'filetypes' : ['coffee'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-coffee-script')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['coffee'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'motemen/hatena-vim' " {{{
 call neobundle#config('hatena-vim', {
       \   'autoload' : {
