@@ -214,11 +214,14 @@ if neobundle#tap('html5.vim')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'pangloss/vim-javascript' " {{{
-call neobundle#config('vim-javascript', {
-      \   'autoload' : {
-      \     'filetypes' : ['javascript'],
-      \   },
-      \ }) " }}}
+if neobundle#tap('vim-javascript')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['javascript'],
+        \ },
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'vim-perl/vim-perl' " {{{
 call neobundle#config('vim-perl', {
       \   'autoload' : {
