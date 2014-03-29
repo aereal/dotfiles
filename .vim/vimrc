@@ -346,7 +346,15 @@ if neobundle#tap('lightline.vim')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'osyo-manga/vim-anzu' " {{{
+if neobundle#tap('vim-anzu')
+  nmap n <Plug>(anzu-n-with-echo)
+  nmap N <Plug>(anzu-N-with-echo)
+  nmap * <Plug>(anzu-star-with-echo)
+  nmap # <Plug>(anzu-sharp-with-echo)
+  nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+  call neobundle#untap()
+endif " }}}
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet'
@@ -884,13 +892,6 @@ function! bundle.hooks.on_source(bundle)
   endif
 endfunction
 unlet bundle
-" }}}
-" anzu {{{
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 " }}}
 " }}}
 
