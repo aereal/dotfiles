@@ -281,11 +281,14 @@ if neobundle#tap('vim-golang')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
-call neobundle#config('ghcmod-vim', {
-      \   'autoload' : {
-      \     'filetypes' : ['haskell'],
-      \   }
-      \ }) " }}}
+if neobundle#tap('ghcmod-vim')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'filetypes' : ['haskell'],
+        \ }
+        \ })
+  call neobundle#untap()
+endif " }}}
 NeoBundleLazy 'Rip-Rip/clang_complete' " {{{
 call neobundle#config('clang_complete', {
       \   'autoload' : {
