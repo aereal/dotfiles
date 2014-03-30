@@ -685,24 +685,30 @@ if neobundle#tap('emmet-vim')
         \ })
   call neobundle#untap()
 endif " }}}
-NeoBundle 'kana/vim-smartchr' " {{{
+NeoBundleLazy 'kana/vim-smartchr' " {{{
 if neobundle#tap('vim-smartchr')
-  function! neobundle#tapped.hooks.on_source(bundle)
-    inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'function_prefix' : 'smartchr',
+        \ },
+        \ })
 
-    autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-    autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
-    autocmd MyInit FileType ruby* inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-    autocmd MyInit FileType ruby* inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
-    autocmd MyInit FileType coffee inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-    autocmd MyInit FileType coffee inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-    autocmd MyInit FileType haskell inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-    autocmd MyInit FileType haskell inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-    autocmd MyInit FileType haskell inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
-    autocmd MyInit FileType perl    inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-    autocmd MyInit FileType perl    inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-    autocmd MyInit FileType perl    inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
-  endfunction
+  inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
+  autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+  autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of('function ', '\')
+  autocmd MyInit FileType ruby*      inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+  autocmd MyInit FileType ruby*      inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+  autocmd MyInit FileType coffee     inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+  autocmd MyInit FileType coffee     inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+  autocmd MyInit FileType haskell    inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+  autocmd MyInit FileType haskell    inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
+  autocmd MyInit FileType haskell    inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  autocmd MyInit FileType perl       inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+  autocmd MyInit FileType perl       inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+  autocmd MyInit FileType perl       inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+  autocmd MyInit FileType vim        inoremap <buffer> = =
+  autocmd MyInit FileType html       inoremap <buffer> = =
+
   call neobundle#untap()
 endif " }}}
 NeoBundle 'sickill/vim-pasta'
@@ -808,18 +814,12 @@ autocmd MyInit FileType haskell setlocal et
 autocmd MyInit BufEnter cpanfile setlocal filetype=cpanfile
 autocmd MyInit BufEnter cpanfile setlocal syntax=perl.cpanfile
 " }}}
-" Vim {{{
-autocmd MyInit FileType vim inoreabbrev <buffer> = =
-" }}}
 " Markdown {{{
 autocmd MyInit FileType markdown setlocal et ts=4 sts=4 sw=4
 " }}}
 " Nginx {{{
 autocmd MyInit BufEnter */nginx/*.conf setlocal ft=nginx
 autocmd MyInit BufEnter */*.nginx.conf setlocal ft=nginx
-" }}}
-" HTML {{{
-autocmd MyInit FileType html inoremap <buffer> = =
 " }}}
 " Hatena {{{
 autocmd MyInit BufNewFile,BufRead *.hatena setlocal filetype=hatena
