@@ -256,6 +256,15 @@ bindkey -v "^Wv" execute-in-new-horizontal-tmux-pane
 bindkey -v "^Ws" execute-in-new-vertical-tmux-pane
 # }}}
 
+# exec with tsocks {{{
+execute-with-tsocks() {
+  LBUFFER="tsocks $LBUFFER"
+  zle accept-line
+}
+zle -N execute-with-tsocks
+bindkey -v "^T" execute-with-tsocks
+# }}}
+
 # url-quote-magic {{{
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
