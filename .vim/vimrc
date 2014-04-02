@@ -24,6 +24,13 @@ if neobundle#tap('vim-quickrun')
     if !exists('g:quickrun_config')
       let g:quickrun_config = {}
     endif
+    let g:quickrun_config['prove/carton'] = {
+          \ 'exec'    : 'carton exec -- %c %o %s',
+          \ 'command' : 'prove',
+          \ }
+    let g:quickrun_config['prove/carton/contextual'] = extend(g:quickrun_config['prove/carton'], {
+          \ 'exec' : 'TEST_METHOD=%a ' . g:quickrun_config['prove/carton'].exec,
+          \ })
   endfunction
   call neobundle#untap()
 endif " }}}
@@ -988,6 +995,7 @@ nnoremap [q :<C-u>cprev<CR>
 set bg=dark
 colorscheme noctu
 " }}}
+" Commands {{{
 command! Sketch call s:sketch() " {{{
 function! s:sketch() " {{{
   if !exists('g:sketch_dir')
@@ -1001,6 +1009,16 @@ function! s:sketch() " {{{
   let basename = strftime('%Y%m%d%H%M%S')
   let filename = g:sketch_dir . '/' . basename
   execute ':edit ' . filename
+endfunction " }}}
+" }}}
+command! ProveThis call s:prove_this() " {{{
+function! s:prove_this()
+  let func_name = cfi#format('%s', '')
+  if func_name == ''
+    QuickRun prove/carton
+  else
+    execute 'QuickRun prove/carton/contextual -args ' . func_name
+  endif
 endfunction " }}}
 " }}}
 " Local {{{
