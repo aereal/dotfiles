@@ -371,7 +371,7 @@ bindkey -a "gr" percol-git-recent-branches
 
 function percol-git-remote-branches() {
   local selected_branch=$( \
-    git for-each-ref --sort=committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/remotes \
+    git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/remotes \
     | sed -e 's/refs\/remotes\///' \
     | cut -f3 \
     | percol --query "$LBUFFER")
