@@ -628,6 +628,18 @@ if neobundle#tap('vim-anzu')
   nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
   call neobundle#untap()
 endif " }}}
+NeoBundleLazy 't9md/vim-quickhl' " {{{
+if neobundle#tap('vim-quickhl')
+  call neobundle#config({
+        \ 'autoload' : {
+        \   'mappings' : '<Plug>(quickhl-',
+        \ },
+        \ })
+  nmap \m <Plug>(quickhl-manual-this)
+  nmap \M <Plug>(quickhl-manual-reset)
+  call neobundle#untap()
+endif
+" }}}
 " }}}
 " Input & Edit {{{
 NeoBundle 'Shougo/neosnippet' " {{{
