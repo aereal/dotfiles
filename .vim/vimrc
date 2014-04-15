@@ -527,6 +527,7 @@ if neobundle#tap('vim-fish')
         \ })
   call neobundle#untap()
 endif " }}}
+NeoBundle 'ekalinin/Dockerfile.vim'
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
