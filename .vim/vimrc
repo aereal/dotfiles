@@ -807,6 +807,7 @@ if neobundle#tap('eskk.vim')
   call neobundle#untap()
 endif " }}}
 NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'mbbill/undotree'
 " }}}
 " Organize {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
