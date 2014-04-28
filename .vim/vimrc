@@ -73,6 +73,49 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundleLazy 'kana/vim-textobj-function' " {{{
+if neobundle#tap('vim-textobj-function')
+  call neobundle#config({
+        \ 'depends' : 'kana/vim-textobj-user',
+        \ 'autoload' : {
+        \   'mappings' : '<Plug><textobj-function-',
+        \ },
+        \ })
+  omap <silent> af <Plug>(textobj-function-a)
+  vmap <silent> af <Plug>(textobj-function-a)
+  omap <silent> if <Plug>(textobj-function-i)
+  vmap <silent> if <Plug>(textobj-function-i)
+
+  function! neobundle#tapped.hooks.on_post_source(bundle) " {{{
+    for lang in ['javascript', 'perl']
+      let func_textobj_plugin = 'vim-textobj-function-' . lang
+      if neobundle#is_installed(func_textobj_plugin)
+        execute 'NeoBundleSource ' . func_textobj_plugin
+      endif
+    endfor
+  endfunction " }}}
+
+  call neobundle#untap()
+endif
+" }}}
+NeoBundleLazy 'thinca/vim-textobj-function-javascript' " {{{
+if neobundle#tap('vim-textobj-function-javascript')
+  call neobundle#config({
+        \ 'depends' : 'kana/vim-textobj-function',
+        \ })
+
+  call neobundle#untap()
+endif
+" }}}
+NeoBundleLazy 'thinca/vim-textobj-function-perl' " {{{
+if neobundle#tap('vim-textobj-function-perl')
+  call neobundle#config({
+        \ 'depends' : 'kana/vim-textobj-function',
+        \ })
+
+  call neobundle#untap()
+endif
+" }}}
 " }}}
 " Operator {{{
 NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
