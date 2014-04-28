@@ -28,6 +28,9 @@
 	st                 = status --branch --short --untracked-files=all
 	ls                 = ls-files
 	delete-branch      = branch -d
+	current-branch = symbolic-ref --short HEAD
+	curret-remote-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
+	hard-revert-merge-commit = reset --hard ORIG_HEAD
 
 [color]
 	branch      = true
