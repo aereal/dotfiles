@@ -39,7 +39,6 @@ install io
 install leiningen
 install lua
 install luajit
-install node
 install phantomjs
 # }}}
 # Ruby dependencies {{{
