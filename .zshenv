@@ -2,6 +2,7 @@
 export ZSH_HOME=$HOME/.zsh.d
 export EDITOR=vim
 export ANYENV_ROOT=$HOME/.anyenv
+export GOPATH=$HOME/.go
 # }}}
 
 # paths {{{
@@ -29,11 +30,15 @@ sudo_path=(
   /usr/sbin(N-/)
   /sbin(N-/)
 )
+go_path=(
+  $GOROOT/bin
+)
 
 typeset -U path
 path=(
   $anyenv_path
   $user_path
+  $go_path
   $system_path
   $sudo_path
 )
