@@ -1071,8 +1071,8 @@ function! s:sketch() " {{{
   execute ':edit ' . filename
 endfunction " }}}
 " }}}
-command! ProveThis call s:prove_this() " {{{
-function! s:prove_this()
+command! Prove call s:prove() " {{{
+function! s:prove()
   let func_name = cfi#format('%s', '')
   if func_name == ''
     QuickRun prove/carton
