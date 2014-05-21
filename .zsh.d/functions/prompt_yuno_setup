@@ -1,0 +1,79 @@
+function prompt_yuno_setup() { # {{{
+  if ! (whence add-zsh-hook >/dev/null); then
+    autoload -Uz add-zsh-hooks
+  fi
+  add-zsh-hook precmd __prompt_yuno_update
+
+  # vcs_info configuration {{{
+  autoload -Uz vcs_info
+  zstyle ':vcs_info:*' max-exports 3
+  zstyle ':vcs_info:*' enable git
+  zstyle ':vcs_info:git:*' formats '[%b]' '%c%u %m'
+  zstyle ':vcs_info:git:*' actionformats '[%b]' '%c%u %m' '<!%a>'
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr '+'
+  zstyle ':vcs_info:git:*' unstagedstr '-'
+  # }}}
+
+  autoload -Uz llenv_version_origin
+} # }}}
+
+function __prompt_yuno_update() { # {{{
+  # components {{{
+  local ok_yuno="%F{yellow}✘╹◡╹✘%f"
+  local bad_yuno="%F{red}✘>﹏<✘%f"
+  local command_line="%(?.${ok_yuno}.${bad_yuno}) < "
+  local working_directory="%F{cyan}%~%f"
+  local accessory_info="${working_directory}"
+  local git_msg
+
+  # Git info {{{
+  LANG=C vcs_info
+  local -a git_msgs
+  [[ -n "$vcs_info_msg_0_" ]] && git_msgs+=("%F{green}${vcs_info_msg_0_}%f")
+  [[ -n "$vcs_info_msg_1_" ]] && git_msgs+=("%F{yellow}${vcs_info_msg_1_}%f")
+  [[ -n "$vcs_info_msg_2_" ]] && git_msgs+=("%F{red}${vcs_info_msg_2_}%f")
+  git_msg="${(j: :)git_msgs}"
+  # }}}
+  # Perl version {{{
+  local perl_version_source=$(llenv_version_origin plenv)
+  case "$perl_version_source" in
+    "local"|shell)
+      accessory_info="%F{blue}Perl-$(plenv version-name)%f ${accessory_info}"
+      ;;
+    *)
+      ;;
+  esac
+  # }}}
+  # Ruby version {{{
+  local ruby_version_source=$(llenv_version_origin rbenv)
+  case "$ruby_version_source" in
+    "local"|shell)
+      accessory_info="%F{red}Ruby-$(rbenv version-name)%f ${accessory_info}"
+      ;;
+    *)
+      ;;
+  esac
+  # }}}
+  # }}}
+
+  # join by newline
+  local -a left_prompt_lines
+  left_prompt_lines=(
+    ${accessory_info}
+    ${command_line}
+  )
+
+  # join by whitespace
+  local -a right_prompt_components
+  right_prompt_components=(
+    ${git_msg}
+  )
+
+  PROMPT="${(F)left_prompt_lines}"
+  RPROMPT="${(j: :)right_prompt_components}"
+} # }}}
+
+prompt_yuno_setup "$@"
+
+# vim:set ft=zsh foldmethod=marker:
