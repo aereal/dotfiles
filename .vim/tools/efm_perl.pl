@@ -46,7 +46,7 @@ push @checks, "-$taint" if defined $taint;
 
 my $checks = join(' ', @checks);
 my $incs = join(' ', @incs);
-my $command = (-f "$cwd/cpanfile") ?
+my $command = (-f "$cwd/cpanfile") || (-f "$cwd/Makefile.PL") ?
     "carton exec @incs -- perl @incs @checks -c $file 2>&1" : # cartonのバージョン違いの吸収のために@incsが二回展開されてる
     "perl @incs @checks -c $file 2>&1";
 
