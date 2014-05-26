@@ -23,7 +23,7 @@ my @skip = (
 
 );
 
-my $skip = join '|', @skip;
+my $skip = join '|', map { quotemeta $_ } @skip;
 my @checks;
 
 push @checks, '-M-circular::require' if `perldoc -l circular::require 2> /dev/null`;
