@@ -25,7 +25,7 @@
 	network            = log --graph --all --decorate --oneline
 	onelog             = log --oneline
 	squashed-merge     = merge --squash
-	st                 = status --branch --short --untracked-files=all
+	st                 = status --branch --short --untracked-files=normal --ignore-submodules=dirty
 	ls                 = ls-files
 	delete-branch      = branch -d
 	current-branch = symbolic-ref --short HEAD
