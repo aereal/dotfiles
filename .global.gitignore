@@ -4,3 +4,4 @@ MYMETA.yml
 /.bundle/
 .DS_Store
 tags
+.envrc
