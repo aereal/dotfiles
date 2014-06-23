@@ -31,7 +31,7 @@ sudo_path=(
   /sbin(N-/)
 )
 go_path=(
-  $GOROOT/bin
+  $GOPATH/bin
 )
 
 typeset -U path
