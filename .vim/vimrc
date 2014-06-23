@@ -592,25 +592,15 @@ NeoBundle 'svjunic/RadicalGoodSpeed.vim'
 NeoBundle 'reedes/vim-colors-pencil'
 " }}}
 " Visualize {{{
-NeoBundleLazy 'jceb/vim-hier' " {{{
+NeoBundle 'jceb/vim-hier' " {{{
 if neobundle#tap('vim-hier')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'on_source' : ['vim-watchdogs'],
-        \ },
-        \ })
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:hier_enabled = 1
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'dannyob/quickfixstatus' " {{{
+NeoBundle 'dannyob/quickfixstatus' " {{{
 if neobundle#tap('quickfixstatus')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'on_source' : ['vim-watchdogs'],
-        \ },
-        \ })
   call neobundle#untap()
 endif " }}}
 NeoBundle 'LeafCage/foldCC' " {{{
