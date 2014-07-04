@@ -855,6 +855,7 @@ if neobundle#tap('vim-fugitive')
   endfunction
   call neobundle#untap()
 endif " }}}
+NeoBundle 'editorconfig/editorconfig-vim'
 " }}}
 
 filetype plugin indent on
