@@ -734,6 +734,7 @@ if neobundle#tap('emmet-vim')
         \     'haml',
         \     'slim',
         \     'css',
+        \     'tt2html',
         \   ],
         \ },
         \ })
