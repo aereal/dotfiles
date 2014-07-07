@@ -5,3 +5,4 @@ MYMETA.yml
 .DS_Store
 tags
 .envrc
+.local.vimrc
