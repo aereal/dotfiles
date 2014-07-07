@@ -398,6 +398,18 @@ function percol-cd() {
 }
 zle -N percol-cd
 bindkey -a '.' percol-cd
+
+__cd_repo() { # {{{
+  echo __cd_repo
+  local selected_repo=$( ghq list | peco )
+  if [[ -n "$selected_repo" ]]; then
+    BUFFER="ghq look ${selected_repo}"
+    zle accept-line
+  fi
+  zle -R -c
+} # }}}
+zle -N __cd_repo
+bindkey -v "^]^G" __cd_repo
 # }}}
 
 # cdd {{{
