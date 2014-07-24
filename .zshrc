@@ -400,7 +400,6 @@ zle -N percol-cd
 bindkey -a '.' percol-cd
 
 __cd_repo() { # {{{
-  echo __cd_repo
   local selected_repo=$( ghq list | peco )
   if [[ -n "$selected_repo" ]]; then
     BUFFER="ghq look ${selected_repo}"
