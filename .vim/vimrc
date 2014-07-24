@@ -726,6 +726,10 @@ NeoBundle 'Shougo/vimproc', {
       \   },
       \ }
 NeoBundle 'sudo.vim'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'thinca/vim-localrc'
+" }}}
+" VCS {{{
 NeoBundle 'tpope/vim-fugitive' " {{{
 if neobundle#tap('vim-fugitive')
   function! neobundle#tapped.hooks.on_source(bundle)
@@ -746,8 +750,7 @@ if neobundle#tap('vim-fugitive')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'thinca/vim-localrc'
+NeoBundleLazy 'rhysd/conflict-marker.vim'
 " }}}
 
 filetype plugin indent on
