@@ -409,6 +409,19 @@ __cd_repo() { # {{{
 } # }}}
 zle -N __cd_repo
 bindkey -v "^]^G" __cd_repo
+
+# cd my repos {{{
+__widget_cd_my_repo() { # {{{
+  local selected=$( ghq list | peco --query 'aereal/' )
+  if [[ -n "$selected" ]]; then
+    BUFFER="ghq look ${selected}"
+    zle accept-line
+  fi
+  zle -R -c
+} # }}}
+zle -N __widget_cd_my_repo
+bindkey -v "^]^A" __widget_cd_my_repo
+# }}}
 # }}}
 
 # cdd {{{
