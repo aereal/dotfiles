@@ -352,23 +352,23 @@ setopt \
 prompt "${ZSH_THEME:-"aereal"}"
 # }}}
 
-# percol {{{
-function percol-git-recent-branches() {
+# peco {{{
+function __git-recent-branches() {
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/heads \
     | sed -E 's/refs\/heads\///' \
     | cut -f3 \
-    | percol --query "$LBUFFER")
+    | peco --query "$LBUFFER")
   if [[ -n "$selected_branch" ]]; then
     BUFFER="git checkout ${selected_branch}"
     zle accept-line
   fi
   zle -R -c
 }
-zle -N percol-git-recent-branches
-bindkey -a "gr" percol-git-recent-branches
+zle -N __git-recent-branches
+bindkey -a "gr" __git-recent-branches
 
-function percol-git-remote-branches() {
+function __git-remote-branches() {
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/remotes \
     | sed -e 's/refs\/remotes\///' \
@@ -380,10 +380,10 @@ function percol-git-remote-branches() {
   fi
   zle -R -c
 }
-zle -N percol-git-remote-branches
-bindkey -a "ga" percol-git-remote-branches
+zle -N __git-remote-branches
+bindkey -a "ga" __git-remote-branches
 
-function percol-cd() {
+function __cd() {
   local -aU directory_candidates
   directory_candidates=(
     $(cat $HOME/.cdd | cut -d: -f2)
@@ -396,8 +396,8 @@ function percol-cd() {
   fi
   zle -R -c
 }
-zle -N percol-cd
-bindkey -a '.' percol-cd
+zle -N __cd
+bindkey -a '.' __cd
 
 __cd_repo() { # {{{
   local selected_repo=$( ghq list | peco )
