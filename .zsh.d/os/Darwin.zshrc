@@ -26,4 +26,19 @@ function macvim_client() { # {{{
   $wrapper $editor "$args"
 } # }}}
 
+# Widgets {{{
+# Cellar {{{
+__widget_cd_cellar() { # {{{
+  local selected=$(brew list | peco)
+  if [[ -n "$selected" ]]; then
+    BUFFER="cd $(brew --prefix $selected)"
+    zle accept-line
+  fi
+  zle -R -c
+} # }}}
+zle -N __widget_cd_cellar
+bindkey -v "^]^B" __widget_cd_cellar
+# }}}
+# }}}
+
 # vim:set ft=zsh foldmethod=marker:
