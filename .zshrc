@@ -352,8 +352,9 @@ setopt \
 prompt "${ZSH_THEME:-"aereal"}"
 # }}}
 
-# peco {{{
-function __git-recent-branches() {
+# Widgets {{{
+# git recent branches {{{
+__widget_git_recent_branches() { # {{{
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/heads \
     | sed -E 's/refs\/heads\///' \
@@ -364,11 +365,12 @@ function __git-recent-branches() {
     zle accept-line
   fi
   zle -R -c
-}
-zle -N __git-recent-branches
-bindkey -a "gr" __git-recent-branches
-
-function __git-remote-branches() {
+} # }}}
+zle -N __widget_git_recent_branches
+bindkey -a "gr" __widget_git_recent_branches
+# }}}
+# git remote branches {{{
+__widget_git_remote_branches() { # {{{
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(objectname:short)	%(committerdate:relative)	%(refname)" -- refs/remotes \
     | sed -e 's/refs\/remotes\///' \
@@ -379,11 +381,12 @@ function __git-remote-branches() {
     zle accept-line
   fi
   zle -R -c
-}
-zle -N __git-remote-branches
-bindkey -a "ga" __git-remote-branches
-
-function __cd() {
+} # }}}
+zle -N __widget_git_remote_branches
+bindkey -a "ga" __widget_git_remote_branches
+# }}}
+# change working directory {{{
+__widget_cd() { # {{{
   local -aU directory_candidates
   directory_candidates=(
     $(cat $HOME/.cdd | cut -d: -f2)
@@ -395,11 +398,12 @@ function __cd() {
     zle accept-line
   fi
   zle -R -c
-}
+} # }}}
 zle -N __cd
 bindkey -a '.' __cd
-
-__cd_repo() { # {{{
+# }}}
+# ghq look {{{
+__widget_cd_repo() { # {{{
   local selected_repo=$( ghq list | peco )
   if [[ -n "$selected_repo" ]]; then
     BUFFER="ghq look ${selected_repo}"
@@ -407,9 +411,9 @@ __cd_repo() { # {{{
   fi
   zle -R -c
 } # }}}
-zle -N __cd_repo
-bindkey -v "^]^G" __cd_repo
-
+zle -N __widget_cd_repo
+bindkey -v "^]^G" __widget_cd_repo
+# }}}
 # cd my repos {{{
 __widget_cd_my_repo() { # {{{
   local selected=$( ghq list | peco --query 'aereal/' )
