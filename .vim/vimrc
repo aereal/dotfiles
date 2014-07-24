@@ -73,49 +73,6 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundleLazy 'kana/vim-textobj-function' " {{{
-if neobundle#tap('vim-textobj-function')
-  call neobundle#config({
-        \ 'depends' : 'kana/vim-textobj-user',
-        \ 'autoload' : {
-        \   'mappings' : '<Plug><textobj-function-',
-        \ },
-        \ })
-  omap <silent> af <Plug>(textobj-function-a)
-  vmap <silent> af <Plug>(textobj-function-a)
-  omap <silent> if <Plug>(textobj-function-i)
-  vmap <silent> if <Plug>(textobj-function-i)
-
-  function! neobundle#tapped.hooks.on_post_source(bundle) " {{{
-    for lang in ['javascript', 'perl']
-      let func_textobj_plugin = 'vim-textobj-function-' . lang
-      if neobundle#is_installed(func_textobj_plugin)
-        execute 'NeoBundleSource ' . func_textobj_plugin
-      endif
-    endfor
-  endfunction " }}}
-
-  call neobundle#untap()
-endif
-" }}}
-NeoBundleLazy 'thinca/vim-textobj-function-javascript' " {{{
-if neobundle#tap('vim-textobj-function-javascript')
-  call neobundle#config({
-        \ 'depends' : 'kana/vim-textobj-function',
-        \ })
-
-  call neobundle#untap()
-endif
-" }}}
-NeoBundleLazy 'thinca/vim-textobj-function-perl' " {{{
-if neobundle#tap('vim-textobj-function-perl')
-  call neobundle#config({
-        \ 'depends' : 'kana/vim-textobj-function',
-        \ })
-
-  call neobundle#untap()
-endif
-" }}}
 " }}}
 " Operator {{{
 NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
@@ -324,42 +281,6 @@ if neobundle#tap('neocomplete.vim')
     inoremap <expr> <C-g> neocomplete#undo_completion()
 
     autocmd MyInit CmdwinEnter * let b:neocomplete_sources = ['vim']
-  endfunction
-  call neobundle#untap()
-endif " }}}
-NeoBundle 'Shougo/neocomplcache.vim' " {{{
-if neobundle#tap('neocomplcache.vim')
-  call neobundle#config({
-        \   'disabled' : neobundle#is_sourced('neocomplete.vim'),
-        \ })
-  function! neobundle#tapped.hooks.on_source(bundle)
-    if !exists('g:neocomplcache_dictionary_filetype_lists')
-      let g:neocomplcache_dictionary_filetype_lists = {}
-    endif
-    let g:neocomplcache_temporary_dir = '~/.vim/.neocon'
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_vim_completefuncs = {
-          \ 'Ref' : 'ref#complete',
-          \ 'Unite' : 'unite#complete_source',
-          \}
-
-    if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-    " Delimiter {{{
-    if !exists('g:neocomplcache_delimiter_patterns')
-        let g:neocomplcache_delimiter_patterns = {}
-    endif
-
-    let g:neocomplcache_delimiter_patterns.vim = ['#']
-    let g:neocomplcache_delimiter_patterns.ruby = ['::']
-    let g:neocomplcache_delimiter_patterns.perl = ['::']
-    " }}}
-
-    imap <expr> <C-h> neocomplcache#smart_close_popup() . "\<Plug>(smartinput_C-h)"
-    imap <expr> <BS>  neocomplcache#smart_close_popup() . "\<Plug>(smartinput_BS)"
-    inoremap <expr> <C-g> neocomplcache#undo_completion()
   endfunction
   call neobundle#untap()
 endif " }}}
@@ -581,15 +502,9 @@ NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
-NeoBundle 'sickill/vim-monokai'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
-NeoBundle 'uu59/vim-herokudoc-theme'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'trapd00r/neverland-vim-theme'
-NeoBundle 'bluntpeak/bluntpeak-vim-colors'
-NeoBundle 'svjunic/RadicalGoodSpeed.vim'
-NeoBundle 'reedes/vim-colors-pencil'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
@@ -683,31 +598,6 @@ if neobundle#tap('neosnippet')
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
     smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
   endfunction
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'tpope/vim-surround'
-NeoBundleLazy 't9md/vim-surround_custom_mapping' " {{{
-if neobundle#tap('vim-surround_custom_mapping')
-  call neobundle#config({
-        \ 'depends' : ['tpope/vim-surround'],
-        \ })
-  let g:surround_custom_mapping = {}
-  let g:surround_custom_mapping.ruby  = {
-    \ '#': "#{\r}",
-    \ '3': "#{\r}",
-    \ '5': "%(\r)",
-    \ '%': "%(\r)",
-    \ 'w': "%w(\r)",
-    \ }
-  let g:surround_custom_mapping.eruby = {
-    \ '-': "<% \r %>",
-    \ '=': "<%= \r %>",
-    \ '#': "#{\r}",
-    \ }
-  let g:surround_custom_mapping.tt2 = {
-        \ '%': "[% \r %]",
-        \ }
-  let g:surround_custom_mapping.tt2html = g:surround_custom_mapping.tt2
   call neobundle#untap()
 endif " }}}
 NeoBundle 'kana/vim-smartinput' " {{{
