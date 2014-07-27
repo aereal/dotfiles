@@ -749,6 +749,8 @@ if neobundle#tap('vim-fugitive')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'rhysd/conflict-marker.vim'
+NeoBundleLazy 'mhinz/vim-signify'
+NeoBundleLazy 'rhysd/committia.vim'
 " }}}
 
 filetype plugin indent on
