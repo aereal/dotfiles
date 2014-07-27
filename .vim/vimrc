@@ -146,10 +146,10 @@ if neobundle#tap('unite.vim')
     nmap <C-u> <SID>[unite]
     nnoremap <SID>[unite]<C-g> <Nop>
 
-    nnoremap <silent> <SID>[unite]f :<C-u>UniteWithBufferDir  file file/new -hide-source-names -buffer-name=files<CR>
-    nnoremap <silent> <SID>[unite]F :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
-    nnoremap <silent> <SID>[unite]r :<C-u>UniteWithBufferDir  file_mru -no-split -buffer-name=files<CR>
-    nnoremap <silent> <SID>[unite]R :<C-u>UniteWithCurrentDir file_mru -no-split -buffer-name=files<CR>
+    nnoremap <silent> <SID>[unite]<C-u> :<C-u>Unite file_rec/git -hide-source-names -buffer-name=files<CR>
+
+    nnoremap <silent> <SID>[unite]f :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
+    nnoremap <silent> <SID>[unite]r :<C-u>UniteWithCurrentDir  file_mru -no-split -buffer-name=files<CR>
     nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current -no-empty<CR>
     nnoremap <silent> <SID>[unite][ :<C-u>Unite outline fold -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
     nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
