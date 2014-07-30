@@ -1,0 +1,16 @@
+{
+  "Prompt": "X | _ | X < ",
+  "Keymap": {
+    "M-x": "peco.ToggleSelectionAndSelectNext",
+    "C-g": "peco.Cancel"
+  },
+  "Style": {
+    "Selected": [
+      "on_black",
+      "white"
+    ],
+    "Matched": [
+      "magenta"
+    ]
+  }
+}
