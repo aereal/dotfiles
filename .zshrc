@@ -243,7 +243,7 @@ bindkey -v "^J" accept-line
 
 # tmux split window zle {{{
 function execute-in-new-horizontal-tmux-pane() { # {{{
-  BUFFER="tmux split-window -p 50 -h 'LBUFFER'"
+  BUFFER="tmux split-window -p 50 -h '$BUFFER'"
   zle accept-line
 } # }}}
 function execute-in-new-vertical-tmux-pane() { # {{{
