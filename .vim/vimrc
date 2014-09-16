@@ -967,10 +967,3 @@ function! s:prove()
   endif
 endfunction " }}}
 " }}}
-" Local {{{
-let local_vimrc_path = expand('~/.local.vimrc')
-if filereadable(local_vimrc_path)
-  exec 'source ' . local_vimrc_path
-endif
-unlet local_vimrc_path
-" }}}
