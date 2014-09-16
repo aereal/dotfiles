@@ -387,10 +387,6 @@ if neobundle#tap('vim-perl')
         \   'filetypes' : ['perl'],
         \ },
         \ })
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    autocmd MyInit BufEnter *.tt            setlocal ft=tt2html
-    autocmd MyInit BufEnter *.t             setlocal ft=perl
-  endfunction
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'vim-ruby/vim-ruby' " {{{
@@ -766,6 +762,8 @@ autocmd MyInit FileType haskell setlocal et
 " Perl {{{
 autocmd MyInit BufEnter cpanfile setlocal filetype=cpanfile
 autocmd MyInit BufEnter cpanfile setlocal syntax=perl.cpanfile
+autocmd MyInit BufEnter *.tt            setlocal ft=tt2html
+autocmd MyInit BufEnter *.t             setlocal ft=perl
 " }}}
 " Markdown {{{
 autocmd MyInit FileType markdown setlocal et ts=4 sts=4 sw=4
