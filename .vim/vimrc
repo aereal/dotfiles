@@ -70,7 +70,7 @@ endif " }}}
 NeoBundle 'osyo-manga/shabadou.vim'
 " }}}
 " Text Object {{{
-NeoBundle 'h1mesuke/textobj-wiw'                   , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'machakann/vim-textobj-delimited'        , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
 " }}}
