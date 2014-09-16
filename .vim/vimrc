@@ -155,6 +155,7 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
     nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
     nnoremap <silent> <SID>[unite]q :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
+    nnoremap <silent> <SID>[unite]t :<C-u>Unite tab:no-current -no-empty<CR>
 
     if has('gui_running')
       nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
