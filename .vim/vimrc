@@ -9,7 +9,7 @@ if has('vim_starting')
   syntax enable
 endif
 
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 " }}}
 " Initialize my augroup {{{
 augroup MyInit
@@ -749,6 +749,8 @@ NeoBundleLazy 'rhysd/conflict-marker.vim'
 NeoBundleLazy 'mhinz/vim-signify'
 NeoBundleLazy 'rhysd/committia.vim'
 " }}}
+
+call neobundle#end()
 
 filetype plugin indent on
 " }}}
