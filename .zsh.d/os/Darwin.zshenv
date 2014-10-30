@@ -30,4 +30,9 @@ if [[ -d "${HOMEBREW_PATH}/opt/shared-mime-info/share" ]]; then
     XDG_DATA_DIRS="${HOMEBREW_PATH}/opt/shared-mime-info/share"
 fi
 
+if [[ -e "${HOMEBREW_PATH}/opt/macvim" ]]; then
+  export HOMEBREW_MACVIM_APP="${HOMEBREW_PATH}/opt/macvim/MacVim.app"
+  export MACVIM_APP=$HOMEBREW_MACVIM_APP
+fi
+
 # vim:set ft=zsh:
