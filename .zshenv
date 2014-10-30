@@ -1,20 +1,22 @@
 # Environment variables {{{
 export ZSH_HOME=$HOME/.zsh.d
 export EDITOR=vim
-export ANYENV_ROOT=$HOME/.anyenv
 export GOPATH=$HOME/.go
 # }}}
 
+typeset -A some_envs
+some_envs=(
+  rbenv $HOME/.rbenv
+  plenv $HOME/.plenv
+  ndenv $HOME/.ndenv
+)
+
 # paths {{{
 typeset -Ua \
-  anyenv_path \
   user_path \
   homebrew_path \
   sudo_path \
   system_path
-anyenv_path=(
-  $ANYENV_ROOT/bin(N-/)
-)
 user_path=(
   $HOME/local/bin(N-/)
   $HOME/bin(N-/)
@@ -36,12 +38,18 @@ go_path=(
 
 typeset -U path
 path=(
-  $anyenv_path
-  $user_path
   $go_path
   $system_path
   $sudo_path
 )
+for e in ${(k)some_envs}; do
+  path=(
+    $some_envs[$e]/shims(N-/)
+    $some_envs[$e]/bin(N-/)
+    $path
+  )
+done
+path=($user_path $path)
 # }}}
 
 # manpath {{{
@@ -62,10 +70,6 @@ fi
 export PAGER
 export LV="-c -l"
 export LESS="--LONG-PROMPT --RAW-CONTROL-CHARS"
-# }}}
-
-# anyenv {{{
-eval "$(anyenv init -)"
 # }}}
 
 if [[ -e "$HOME/.local.env" ]]; then
