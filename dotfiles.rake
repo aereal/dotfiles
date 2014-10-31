@@ -9,7 +9,7 @@ def ensure_pathname(maybe_pathname)
   maybe_pathname === Pathname ? maybe_pathname : Pathname.new(maybe_pathname)
 end
 
-class InstallRecipe
+class Recipe
   attr_reader :name, :source, :destination
 
   def initialize(name: , source: , destination: )
@@ -37,7 +37,7 @@ DOTFILES             = SOURCE_DIRECTORY.each_child.select {|e| e.basename.to_s.s
 INSTALLABLE_DOTFILES = DOTFILES - IGNORED_DOTFILES
 INSTALL_NAMES        = INSTALLABLE_DOTFILES.map {|f| f.relative_path_from(SOURCE_DIRECTORY) }
 INSTALL_RECIPES      = INSTALL_NAMES.map {|name|
-  InstallRecipe.new(name: name, source: SOURCE_DIRECTORY.join(name), destination: INSTALL_DIRECTORY.join(name))
+  Recipe.new(name: name, source: SOURCE_DIRECTORY.join(name), destination: INSTALL_DIRECTORY.join(name))
 }
 
 desc "Install dotfiles into #{INSTALL_DIRECTORY}"
