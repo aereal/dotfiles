@@ -10,6 +10,8 @@ def ensure_pathname(maybe_pathname)
 end
 
 class Recipe
+  include FileUtils::Verbose
+
   attr_reader :name, :source, :destination
 
   def initialize(name: , source: , destination: )
@@ -23,7 +25,7 @@ class Recipe
       puts "Skip #{self.name}"
       return
     end
-    FileUtils.ln_s self.source.to_s, self.destination.to_s, verbose: true
+    ln_s self.source.to_s, self.destination.to_s
   end
 end
 
