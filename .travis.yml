@@ -1,13 +1,12 @@
 ---
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.1.1
 install:
   - echo "Install"
 before_script:
-  - mkdir -p $DOTFILES_INSTALL_DIR
-  - rake dotfiles:install
+  - mkdir -p $INSTALL_DIRECTORY
 script:
-  - rake dotfiles:test
+  - rake
 env:
-  - DOTFILES_INSTALL_DIR=tmp/home
+  - INSTALL_DIRECTORY=tmp/home
