@@ -50,6 +50,8 @@ INSTALL_RECIPES      = INSTALL_NAMES.map {|name|
   Recipe.new(name: name, source: SOURCE_DIRECTORY.join(name), destination: INSTALL_DIRECTORY.join(name))
 }
 
+task :default => :install
+
 desc "Install dotfiles into #{INSTALL_DIRECTORY}"
 task :install do
   INSTALL_RECIPES.each do |recipe|
