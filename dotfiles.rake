@@ -27,6 +27,14 @@ class Recipe
     end
     ln_s self.source.to_s, self.destination.to_s
   end
+
+  def clean
+    unless self.destination.exist? && self.destination.symlink?
+      puts "Skip #{self.destination}; the destination seems not to be installed with the Rake task"
+      return
+    end
+    rm self.destination.to_s
+  end
 end
 
 # constants
@@ -46,5 +54,12 @@ desc "Install dotfiles into #{INSTALL_DIRECTORY}"
 task :install do
   INSTALL_RECIPES.each do |recipe|
     recipe.install
+  end
+end
+
+desc "Cleanup dotfiles that installed into #{INSTALL_DIRECTORY}"
+task :clean do
+  INSTALL_RECIPES.each do |recipe|
+    recipe.clean
   end
 end
