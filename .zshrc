@@ -506,8 +506,6 @@ alias  l='ls --color=auto -AF'
 alias ls='ls --color=auto -AF'
 alias ll='ls --color=auto -AFl'
 
-alias vim="$EDITOR"
-alias  vi="$EDITOR"
 # }}}
 
 # zsh-syntax-highlight {{{
