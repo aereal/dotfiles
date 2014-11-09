@@ -598,14 +598,16 @@ if neobundle#tap('neosnippet')
 endif " }}}
 NeoBundle 'kana/vim-smartinput' " {{{
 if neobundle#tap('vim-smartinput')
-  call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
-  call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
-  call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
-  call smartinput#define_rule({
-        \   'at'    : '\s\+\%#',
-        \   'char'  : '<CR>',
-        \   'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>",
-        \ })
+  function! neobundle#tapped.hooks.on_source(bundle)
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
+    call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
+    call smartinput#define_rule({
+          \   'at'    : '\s\+\%#',
+          \   'char'  : '<CR>',
+          \   'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>",
+          \ })
+  endfunction
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'mattn/emmet-vim' " {{{
