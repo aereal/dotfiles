@@ -399,8 +399,8 @@ __widget_cd() { # {{{
   fi
   zle -R -c
 } # }}}
-zle -N __cd
-bindkey -a '.' __cd
+zle -N __widget_cd
+bindkey -a '.' __widget_cd
 # }}}
 # ghq look {{{
 __widget_cd_repo() { # {{{
