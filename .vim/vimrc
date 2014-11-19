@@ -491,6 +491,7 @@ endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Keithbsmiley/swift.vim'
+NeoBundle 'timcharper/textile.vim'
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
