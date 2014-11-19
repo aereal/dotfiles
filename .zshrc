@@ -175,7 +175,7 @@ bindkey -v "\\" expand-to-home-or-complete
 ### $abbreviations {{{
 typeset -A abbreviations
 abbreviations=(
-  " L" " | \$PAGER"
+  " L" " | paginate"
   " G" " | \$GREPPRG"
   " S" " | sort"
   " H" " | head"
