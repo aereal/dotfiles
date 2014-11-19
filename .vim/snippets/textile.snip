@@ -1,0 +1,22 @@
+snippet     link
+  "${1:#:title}":${2:#:url}
+
+snippet     link_paste
+  "${1:#:title}":`getreg('+')`
+
+snippet     image
+  !${1:#:url}!
+
+snippet     image_paste
+  !`getreg('+')`!
+
+snippet     pre
+  <pre><code>${1:#:code}</code></pre>
+
+snippet     collapse
+options     head
+	{{collapse
+	${1}
+	}}
+
+# vim:set noexpandtab
