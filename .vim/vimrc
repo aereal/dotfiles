@@ -490,6 +490,7 @@ if neobundle#tap('vim-fish')
 endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Keithbsmiley/swift.vim'
 " }}}
 " Color {{{
 NeoBundleLazy 'cocopon/colorswatch.vim'
