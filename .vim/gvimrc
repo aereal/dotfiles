@@ -21,7 +21,9 @@ if has('transparency')
 endif
 
 if has("gui_running")
-  set bg=light
+  let g:solarized_menu=0
+  let g:solarized_contrast="high"
+  set bg=dark
   colorscheme solarized
 endif
 
