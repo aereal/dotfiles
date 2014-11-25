@@ -6,7 +6,7 @@ encoding utf-8 utf-8
 defencoding utf-8
 startup_message off
 autodetach on
-logfile "$HOME/.screen/log/screen-%Y%m%d-%n.log"
+logfile "/tmp/screen-log-%Y%m%d-%n.log"
 log on
 deflog on
 altscreen on
