@@ -276,7 +276,7 @@ if neobundle#tap('neocomplete.vim')
 
     let g:neocomplete#delimiter_patterns                = {}
     let g:neocomplete#delimiter_patterns.vim            = ['#']
-    let g:neocomplete#delimiter_patterns.perl           = ['::']
+    let g:neocomplete#delimiter_patterns.perl = []
     let g:neocomplete#delimiter_patterns.ruby           = ['::']
 
     imap <expr> <C-h> neocomplete#smart_close_popup() . "\<Plug>(smartinput_C-h)"
