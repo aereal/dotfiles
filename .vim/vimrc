@@ -36,9 +36,6 @@ if neobundle#tap('vim-quickrun')
 endif " }}}
 NeoBundle 'osyo-manga/vim-watchdogs' " {{{
 if neobundle#tap('vim-watchdogs')
-  call neobundle#config({
-        \ 'depends' : ['thinca/vim-quickrun', 'osyo-manga/shabadou.vim'],
-        \ })
   function! neobundle#tapped.hooks.on_source(bundle) " {{{
     let g:watchdogs_check_BufWritePost_enable = 1
 
