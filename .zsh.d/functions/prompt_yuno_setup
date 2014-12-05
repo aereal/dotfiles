@@ -4,16 +4,27 @@ function prompt_yuno_setup() { # {{{
   fi
   add-zsh-hook precmd __prompt_yuno_update
 
-  # vcs_info configuration {{{
-  autoload -Uz vcs_info
-  zstyle ':vcs_info:*' max-exports 3
-  zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:git:*' formats '[%b]' '%c%u %m'
-  zstyle ':vcs_info:git:*' actionformats '[%b]' '%c%u %m' '<!%a>'
-  zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr '+'
-  zstyle ':vcs_info:git:*' unstagedstr '-'
-  # }}}
+  # zsh-git-prompt
+  export ZSH_GIT_PROMPT_ROOT="$ZSH_HOME/plugins/zsh-git-prompt"
+  if [[ -f "$ZSH_GIT_PROMPT_ROOT/zshrc.sh" ]]; then
+    export ZSH_THEME_GIT_PROMPT_CACHE=1
+    source "$ZSH_GIT_PROMPT_ROOT/zshrc.sh"
+  fi
+  if [[ -f "$ZSH_GIT_PROMPT_ROOT/dist/build/gitstatus/gitstatus" ]]; then
+    export GIT_PROMPT_EXECUTABLE='haskell'
+  fi
+
+  export ZSH_THEME_GIT_PROMPT_PREFIX=""
+  export ZSH_THEME_GIT_PROMPT_SUFFIX=""
+  export ZSH_THEME_GIT_PROMPT_SEPARATOR="|"
+  export ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+  export ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[blue]%}%{.%G%}"
+  export ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{!%G%}"
+  export ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[yellow]%}%{!%G%}"
+  export ZSH_THEME_GIT_PROMPT_BEHIND="%{<%G%}"
+  export ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[green]%}%{>%G%}"
+  export ZSH_THEME_GIT_PROMPT_UNTRACKED="%{?%G%}"
+  export ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}%{*%G%}"
 
   autoload -Uz llenv_version_origin
 } # }}}
@@ -25,16 +36,7 @@ function __prompt_yuno_update() { # {{{
   local command_line="%(?.${ok_yuno}.${bad_yuno}) < "
   local working_directory="%F{cyan}%~%f"
   local accessory_info="${working_directory}"
-  local git_msg
 
-  # Git info {{{
-  LANG=C vcs_info
-  local -a git_msgs
-  [[ -n "$vcs_info_msg_0_" ]] && git_msgs+=("%F{green}${vcs_info_msg_0_}%f")
-  [[ -n "$vcs_info_msg_1_" ]] && git_msgs+=("%F{yellow}${vcs_info_msg_1_}%f")
-  [[ -n "$vcs_info_msg_2_" ]] && git_msgs+=("%F{red}${vcs_info_msg_2_}%f")
-  git_msg="${(j: :)git_msgs}"
-  # }}}
   # Perl version {{{
   local perl_version_source=$(llenv_version_origin plenv)
   case "$perl_version_source" in
@@ -67,7 +69,7 @@ function __prompt_yuno_update() { # {{{
   # join by whitespace
   local -a right_prompt_components
   right_prompt_components=(
-    ${git_msg}
+    $(git_super_status)
   )
 
   PROMPT="${(F)left_prompt_lines}"
