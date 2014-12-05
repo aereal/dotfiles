@@ -11,3 +11,4 @@ src
 .zcompcache/
 .zcompdump
 /.vimperator/info/default/
+/.vim/snippets/*/private/
