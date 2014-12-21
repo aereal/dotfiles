@@ -223,7 +223,6 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'osyo-manga/unite-fold'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundleLazy 'ujihisa/unite-haskellimport' " {{{
