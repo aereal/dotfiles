@@ -501,6 +501,7 @@ NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'muratas/vim-andon'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
