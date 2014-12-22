@@ -486,7 +486,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'git://gist.github.com/187578.git', { 'name' : 'h2u_colors' }
+NeoBundle 'hail2u/h2u_colorscheme'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'noahfrederick/vim-noctu'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
