@@ -1,0 +1,79 @@
+Please report this error to author.
+`:help eskk` to see author's e-mail address.
+
+Mon Oct 27 10:34:02 2014
+
+--- char ---
+char: ''(0)
+mode(): i
+--- char ---
+
+--- exception ---
+exception type: Vim internal error
+v:exception: Can't read '/usr/local/share/skk/SKK-JISYO.L'!
+v:throwpoint: function eskk#filter..<SNR>111_asym_filter..<SNR>111_do_henkan..<SNR>111_do_henkan_other..eskk#get_skk_dict..eskk#dictionary#new..<SNR>128_Dictionary_new..<SNR>128_PhysicalDict_new..<SNR>128_PhysicalDict_update_lines..<SNR>128_PhysicalDict_update_lines_main, line 2
+
+   function <SNR>128_PhysicalDict_update_lines_main() dict
+1      unlockvar 1 self._content_lines↲
+2      let self._content_lines  = readfile(self.path)↲
+3      lockvar 1 self._content_lines↲
+4      call self.parse_lines()↲
+5  ↲
+6      let self._ftime_at_set = getftime(self.path)↲
+   endfunction
+--- exception ---
+
+--- preedit ---
+(no preedit)
+--- preedit ---
+
+--- Vim's :version ---
+VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Oct 26 2014 02:54:26)
+MacOS X (unix) version
+Included patches: 1-258
+Compiled by Homebrew
+Huge version with MacVim GUI.  Features included (+) or not (-):
++acl             +clientserver    +cscope          +emacs_tags      +folding         +jumplist        -lua             -mouse_jsbterm   -mzscheme        +profile         +signs           +tag_old_static  +transparency    +wildignore      -xterm_clipboard 
++arabic          +clipboard       +cursorbind      +eval            -footer          +keymap          +menu            +mouse_netterm   +netbeans_intg   +python          +smartindent     -tag_any_white   +user_commands   +wildmenu        -xterm_save      
++autocmd         +cmdline_compl   +cursorshape     +ex_extra        +fork()          +langmap         +mksession       +mouse_sgr       +odbeditor       -python3         -sniff           -tcl             +vertsplit       +windows         -xpm             
++balloon_eval    +cmdline_hist    +dialog_con_gui  +extra_search    +fullscreen      +libcall         +modify_fname    -mouse_sysmouse  +path_extra      +quickfix        +startuptime     +terminfo        +virtualedit     +writebackup     
++browse          +cmdline_info    +diff            +farsi           -gettext         +linebreak       +mouse           +mouse_urxvt     +perl            +reltime         +statusline      +termresponse    +visual          -X11             
+++builtin_terms  +comments        +digraphs        +file_in_path    -hangul_input    +lispindent      +mouseshape      +mouse_xterm     +persistent_undo +rightleft       -sun_workshop    +textobjects     +visualextra     -xfontset        
++byte_offset     +conceal         +dnd             +find_in_path    +iconv           +listcmds        +mouse_dec       +multi_byte      +postscript      +ruby            +syntax          +title           +viminfo         +xim             
++cindent         +cryptv          -ebcdic          +float           +insert_expand   +localmap        -mouse_gpm       +multi_lang      +printer         +scrollbind      +tag_binary      +toolbar         +vreplace        -xsmp            
+   system vimrc file: "$VIM/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+  system gvimrc file: "$VIM/gvimrc"
+    user gvimrc file: "$HOME/.gvimrc"
+2nd user gvimrc file: "~/.vim/gvimrc"
+    system menu file: "$VIMRUNTIME/menu.vim"
+  fall-back for $VIM: "/Applications/MacVim.app/Contents/Resources/vim"
+Compilation: clang -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX  -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -I/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -fno-strict-aliasing -fno-common -dynamic -g -Os -pipe -fno-common -fno-strict-aliasing -fwrapv -DENABLE_DTRACE -DMACOSX -DNDEBUG -Wall -Wstrict-prototypes -Wshorten-64-to-32 -DNDEBUG -g -fwrapv -Os -Wall -Wstrict-prototypes -DENABLE_DTRACE -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -mmacosx-version-min=10.10 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: clang   -L. -L/usr/local/lib -L. -L/usr/local/lib -L/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config -framework CoreFoundation -lpython2.7 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk -mmacosx-version-min=10.10 -L/opt/homebrew/lib -o Vim -framework Cocoa -framework Carbon       -lm  -lncurses -liconv -framework Cocoa   -fstack-protector  -L/System/Library/Perl/5.18/darwin-thread-multi-2level/CORE -lperl -framework Python   -framework Ruby   
+--- Vim's :version ---
+
+
+--- Operating System ---
+"uname -a" = Darwin Hortensia.local 14.0.0 Darwin Kernel Version 14.0.0: Fri Sep 19 00:26:44 PDT 2014; root:xnu-2782.1.97~2/RELEASE_X86_64 x86_64 i386 MacBookPro10,2 Darwin
+--- Operating System ---
+
+--- feature-list ---
+gui_running = 1
+unix = 1
+mac = 1
+macunix = 1
+win16 = 0
+win32 = 0
+win64 = 0
+win32unix = 0
+win95 = 0
+amiga = 0
+beos = 0
+dos16 = 0
+dos32 = 0
+os2 = 1
+qnx = 0
+vms = 0
+--- feature-list ---

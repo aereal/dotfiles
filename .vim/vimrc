@@ -215,6 +215,7 @@ if neobundle#tap('unite.vim')
     endfunction
     call unite#define_source(s:unite_git_files_others)
     " }}}
+    call unite#custom#default_action('source/ghq/*', 'tabnew_lcd')
     " }}}
   endfunction
   call neobundle#untap()
