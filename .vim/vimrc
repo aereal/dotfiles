@@ -500,6 +500,7 @@ NeoBundle 'baskerville/bubblegum'
 NeoBundle 'ajh17/Spacegray.vim'
 NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'goatslacker/mango.vim'
+NeoBundle 'noahfrederick/vim-hemisu'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
