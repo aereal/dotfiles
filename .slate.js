@@ -1,4 +1,4 @@
-S.cfga({
+S.configAll({
   defaultToCurrentScreen: true,
   checkDefaultsOnLoad: true,
   modalEscapeKey: 'esc'
@@ -66,13 +66,14 @@ for (var key in viLikeWindowPlacements) {
 
 S.bindAll({
   'r:ctrl,cmd': S.op('relaunch'),
-  ']:cmd': S.op('shell', {
-    command: '/usr/bin/open -a LimeChat'
-  }),
-  ';:cmd,shift': S.op('shell', {
-    command: '/usr/bin/open -a iTerm'
-  }),
-  "[:cmd" : S.op('shell', {
-    command: '/usr/bin/open -a MacVim'
-  })
+  'f:ctrl,cmd,shift': S.op('hint'),
+  // ']:cmd': S.op('shell', {
+  //   command: '/usr/bin/open -a LimeChat'
+  // }),
+  // ';:cmd,shift': S.op('shell', {
+  //   command: '/usr/bin/open -a iTerm'
+  // }),
+  // "[:cmd" : S.op('shell', {
+  //   command: '/usr/bin/open -a MacVim'
+  // })
 });
