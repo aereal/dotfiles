@@ -1,0 +1,18 @@
+#!/bin/bash
+
+case "$(uname)" in
+  Darwin*)
+    sw_vers -productVersion
+    ;;
+  Linux*)
+    if which lsb_release >/dev/null 2>&1; then
+      lsb_release --release | cut -f2
+    fi
+    if [[ -f /etc/redhat-release ]]; then
+      cat /etc/redhat-release | cut -d' ' -f3
+    fi
+    ;;
+  *)
+    echo "Unknown OS" >/dev/stderr
+    exit 1
+esac
