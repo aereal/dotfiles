@@ -2,3 +2,5 @@
 
 (define default-im-name 'skk)
 (define skk-use-skkserv? #t)
+(define skk-serv-hostname "localhost")
+(define skk-serv-portnum 1178)
