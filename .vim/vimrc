@@ -70,6 +70,7 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'machakann/vim-textobj-delimited'        , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
+NeoBundle 'deris/vim-textobj-ipmac', { 'depends': 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
 NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
