@@ -103,7 +103,7 @@ endif " }}}
 " Unite {{{
 NeoBundle 'Shougo/unite.vim' " {{{
 if neobundle#tap('unite.vim')
-  function! neobundle#tapped.hooks.on_source(bundle)
+  function! neobundle#tapped.hooks.on_source(bundle) " {{{
     function! s:unite_my_settings() " {{{
       let unite = unite#get_current_unite()
 
@@ -132,7 +132,8 @@ if neobundle#tap('unite.vim')
     " mappings {{{
     nnoremap <SID>[unite] <Nop>
     nmap <C-u> <SID>[unite]
-    nnoremap <SID>[unite]<C-g> <Nop>
+
+    nnoremap <silent> <SID>[unite]<C-g> :<C-u>Unite buffer_tab file_mru file_rec/git file/new -hide-source-names -buffer-name=files<CR>
 
     nnoremap <silent> <SID>[unite]<C-u> :<C-u>Unite file_rec/git -hide-source-names -buffer-name=files<CR>
 
@@ -216,9 +217,15 @@ if neobundle#tap('unite.vim')
     endfunction
     call unite#define_source(s:unite_git_files_others)
     " }}}
-    call unite#custom#default_action('source/ghq/*', 'tabnew_lcd')
     " }}}
-  endfunction
+  endfunction " }}}
+  function! neobundle#tapped.hooks.on_post_source(bundle) " {{{
+    call unite#custom#default_action('source/ghq/*', 'tabnew_lcd')
+
+    " converter_relative_abbr: 候補を表示するときに相対パスに
+    " matcher_project_files: 候補はリポジトリのファイルからのみ
+    call unite#custom#source('file_mru', 'matchers', ['converter_relative_abbr', 'matcher_project_files', 'matcher_fuzzy'])
+  endfunction " }}}
   call neobundle#untap()
 endif " }}}
 NeoBundle 'Shougo/unite-outline'
