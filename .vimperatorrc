@@ -3,7 +3,7 @@ let g:plugin_loader_roots = "~/repos/@vimpr/vimperator-plugins"
 let g:plugin_loader_plugins = "_libly,asdfghjkl,feedSomeKeys_3"
 
 let g:asdfghjkl_default = "true"
-let g:asdfghjkl_mode_change_key = "<Space>"
+let g:asdfghjkl_hintchars = ":asdfghjkl"
 " }}}
 " set {{{
 set scrollbars
