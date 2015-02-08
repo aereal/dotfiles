@@ -20,13 +20,6 @@ fi
 export GREPPRG
 # }}}
 
-# shared-mime-info {{{
-if which update-mime-database >/dev/null; then
-  export XDG_DATA_HOME=$HOMEBREW_HOME/opt/shared-mime-info/share
-  export XDG_DATA_DIRS=$HOMEBREW_HOME/opt/shared-mime-info/share
-fi
-# }}}
-
 # zsh-syntax-highlight {{{
 export ZSH_SYNTAX_HIGHLIGHT_ROOT="$ZSH_HOME/plugins/zsh-syntax-highlighting"
 export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR="$ZSH_SYNTAX_HIGHLIGHT_ROOT/highlighters"

@@ -25,9 +25,8 @@ fi
 # }}}
 
 if [[ -d "${HOMEBREW_PATH}/opt/shared-mime-info/share" ]]; then
-  export \
-    XDG_DATA_HOME="${HOMEBREW_PATH}/opt/shared-mime-info/share" \
-    XDG_DATA_DIRS="${HOMEBREW_PATH}/opt/shared-mime-info/share"
+  export XDG_DATA_HOME="${HOMEBREW_PATH}/opt/shared-mime-info/share"
+  export XDG_DATA_DIRS="${HOMEBREW_PATH}/opt/shared-mime-info/share"
 fi
 
 if [[ -e "${HOMEBREW_PATH}/opt/macvim" ]]; then
