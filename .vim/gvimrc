@@ -1,6 +1,6 @@
 if has("gui_macvim")
-  set guifont=Monaco:h12
-  set guifontwide=Osaka-mono:h12
+  set guifontwide=Osaka-mono:h14
+  set guifont=Menlo:h14
 
   set guioptions-=T
   set guioptions-=m
