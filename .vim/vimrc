@@ -245,6 +245,7 @@ if neobundle#tap('unite-haskellimport')
 endif " }}}
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'sorah/unite-ghq'
+NeoBundle 'Shougo/vimfiler.vim', { 'depends': ['Shougo/unite.vim'] }
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplete.vim' " {{{
