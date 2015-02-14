@@ -254,7 +254,7 @@ execute-with-tsocks() {
   LBUFFER="tsocks $LBUFFER"
 }
 zle -N execute-with-tsocks
-bindkey -v "^T" execute-with-tsocks
+bindkey -v "^X^T" execute-with-tsocks
 # }}}
 
 # url-quote-magic {{{
