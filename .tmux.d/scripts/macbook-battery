@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ue
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
+
+pmset -g ps | tail -1 | awk '{ print $2 }' | sed -e 's/;//g'

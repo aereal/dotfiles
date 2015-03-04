@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ue
+export PATH=/usr/bin:/usr/sbin:/bin:/sbin
+
+date +'%H:%M'
