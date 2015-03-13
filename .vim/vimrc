@@ -736,7 +736,6 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'sudo.vim'
 NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'thinca/vim-localrc'
 NeoBundle 'haya14busa/incsearch.vim' " {{{
 if neobundle#tap('incsearch.vim')
   let g:incsearch#auto_nohlsearch = 1
@@ -776,8 +775,6 @@ if neobundle#tap('vim-fugitive')
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'rhysd/conflict-marker.vim'
-NeoBundleLazy 'mhinz/vim-signify'
-NeoBundleLazy 'rhysd/committia.vim'
 " }}}
 
 call neobundle#end()
