@@ -820,6 +820,13 @@ autocmd MyInit FileType gitconfig setlocal noexpandtab
 autocmd MyInit BufEnter *.podspec set ft=ruby
 autocmd MyInit BufEnter Podfile set ft=ruby
 " }}}
+" JavaScript, ES {{{
+autocmd MyInit BufEnter *.es6,*.es set ft=javascript
+" }}}
+" Mustache, Handlebars {{{
+autocmd MyInit BufEnter *.mustache set ft=html.mustache
+autocmd MyInit BufEnter *.handlebars set ft=html.handlebars
+" }}}
 " }}}
 " Configurations {{{
 set hidden
