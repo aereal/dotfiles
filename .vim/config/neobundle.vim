@@ -223,18 +223,6 @@ endif " }}}
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'osyo-manga/unite-fold'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundleLazy 'ujihisa/unite-haskellimport' " {{{
-if neobundle#tap('unite-haskellimport')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['haskell'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'sorah/unite-ghq'
 NeoBundle 'Shougo/vimfiler.vim', { 'depends': ['Shougo/unite.vim'] }
@@ -273,25 +261,6 @@ if neobundle#tap('neocomplete.vim')
 
     autocmd MyInit CmdwinEnter * let b:neocomplete_sources = ['vim']
   endfunction
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'ujihisa/neco-look' " {{{
-if neobundle#tap('neco-look')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['markdown', 'hatena'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'eagletmt/neco-ghc' " {{{
-if neobundle#tap('neco-ghc')
-  call neobundle#config({
-        \ 'external_commands' : ['ghc-mod'],
-        \ 'autoload' : {
-        \   'filetypes' : ['haskell'],
-        \ },
-        \ })
   call neobundle#untap()
 endif " }}}
 " }}}
@@ -398,15 +367,6 @@ if neobundle#tap('taskpaper.vim')
         \ })
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'moznion/vim-cpanfile' " {{{
-if neobundle#tap('vim-cpanfile')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['cpanfile'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
 NeoBundleLazy 'y-uuki/perl-local-lib-path.vim' " {{{
 if neobundle#tap('perl-local-lib-path.vim')
   call neobundle#config({
@@ -418,15 +378,6 @@ if neobundle#tap('perl-local-lib-path.vim')
     let g:perl_local_lib_path = "t/lib"
     autocmd MyInit FileType perl PerlLocalLibPath
   endfunction
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'jnwhiteh/vim-golang' " {{{
-if neobundle#tap('vim-golang')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['go'],
-        \ },
-        \ })
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
@@ -478,32 +429,20 @@ if neobundle#tap('vim-fish')
 endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'Keithbsmiley/swift.vim'
-NeoBundle 'timcharper/textile.vim'
 " }}}
 " Color {{{
-NeoBundleLazy 'cocopon/colorswatch.vim'
-
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
       \ { 'base' : '~/repos/@aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'hail2u/h2u_colorscheme'
 NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'noahfrederick/vim-noctu'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'muratas/vim-andon'
-NeoBundle 'alem0lars/vim-colorscheme-darcula'
-NeoBundle 'djjcast/mirodark'
-NeoBundle 'jeetsukumaran/vim-nefertiti'
-NeoBundle 'Valloric/vim-valloric-colorscheme'
-NeoBundle 'baskerville/bubblegum'
 NeoBundle 'ajh17/Spacegray.vim'
 NeoBundle 'junegunn/seoul256.vim'
-NeoBundle 'goatslacker/mango.vim'
 NeoBundle 'noahfrederick/vim-hemisu'
 NeoBundle 'tomasr/molokai'
-NeoBundle 'sickill/vim-monokai'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
@@ -691,21 +630,9 @@ if neobundle#tap('eskk.vim')
   call neobundle#untap()
 endif " }}}
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'mbbill/undotree'
 " }}}
 " Organize {{{
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'glidenote/memolist.vim' " {{{
-if neobundle#tap('memolist.vim')
-  function! neobundle#tapped.hooks.on_source(bundle)
-    let g:memolist_path = expand('~/memo')
-    let g:memolist_memo_suffix = 'hatena'
-    let g:memolist_unite = 1
-    let g:memolist_memo_date = '%Y-%m-%dT%H:%M:%S'
-    let g:memolist_template_dir_path = expand('~/.vim/plugin/memolist-templates')
-  endfunction
-  call neobundle#untap()
-endif " }}}
 NeoBundle 'Shougo/neomru.vim' " {{{
 if neobundle#tap('neomru.vim')
   function! neobundle#tapped.hooks.on_source(bundle)
