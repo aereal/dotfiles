@@ -137,7 +137,7 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> <SID>[unite]f :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
     nnoremap <silent> <SID>[unite]r :<C-u>UniteWithCurrentDir  file_mru -no-split -buffer-name=files<CR>
     nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current -no-empty<CR>
-    nnoremap <silent> <SID>[unite][ :<C-u>Unite outline fold -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
+    nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
     nnoremap <silent> <SID>[unite]p :<C-u>Unite register history/yank -buffer-name=register -no-split<CR>
     nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
     nnoremap <silent> <SID>[unite]q :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
