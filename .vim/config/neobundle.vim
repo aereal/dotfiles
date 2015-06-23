@@ -231,6 +231,7 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'sorah/unite-ghq'
 NeoBundle 'Shougo/vimfiler.vim', { 'depends': ['Shougo/unite.vim'] }
+NeoBundle 'ujihisa/unite-colorscheme'
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplete.vim' " {{{
