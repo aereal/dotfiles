@@ -475,6 +475,8 @@ NeoBundle 'Yggdroot/indentLine' " {{{
 if neobundle#tap('indentLine')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:indentLine_char = '|'
+
+    autocmd MyInit FileType * :IndentLinesReset
   endfunction
   call neobundle#untap()
 endif " }}}
