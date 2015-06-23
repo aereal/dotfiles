@@ -2,13 +2,13 @@
 
 let g:colorscheme_name = 'desert'
 
-runtime config/base.vim
-runtime config/autocmd.vim
-runtime config/neobundle.vim
-runtime config/plugins.vim
-runtime config/tab.vim
-runtime config/key.vim
-runtime config/command.vim
+runtime rc/base.vim
+runtime rc/autocmd.vim
+runtime rc/neobundle.vim
+runtime rc/plugins.vim
+runtime rc/tab.vim
+runtime rc/key.vim
+runtime rc/command.vim
 
 set bg=dark
 execute 'colorscheme ' . g:colorscheme_name
