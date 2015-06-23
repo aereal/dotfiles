@@ -21,6 +21,11 @@ if neobundle#tap('vim-quickrun')
     let g:quickrun_config['prove/carton/contextual'] = extend(g:quickrun_config['prove/carton'], {
           \ 'exec' : 'TEST_METHOD=%a ' . g:quickrun_config['prove/carton'].exec,
           \ })
+    " let g:quickrun_config.vim = {
+    "       \ 'outputter' : 'error',
+    "       \ 'outputter/error/success' : 'null',
+    "       \ 'outputter/error/error' : 'buffer',
+    "       \ }
   endfunction
   call neobundle#untap()
 endif " }}}
