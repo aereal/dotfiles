@@ -31,6 +31,7 @@
 	current-branch = symbolic-ref --short HEAD
 	curret-remote-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
 	hard-revert-merge-commit = reset --hard ORIG_HEAD
+	medetai = !git rev-list HEAD | grep -E '(.)\\1\\1\\1\\1\\1'
 
 [color]
 	branch      = true
