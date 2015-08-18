@@ -87,7 +87,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref' " {{{
 if neobundle#tap('vim-ref')
   function! neobundle#tapped.hooks.on_source(bundle)
-    let g:ref_cache_dir = $HOME . '/.vim/.ref'
+    let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref';
     if !isdirectory(g:ref_cache_dir)
       call mkdir(g:ref_cache_dir, '-p')
     endif
@@ -116,7 +116,7 @@ if neobundle#tap('unite.vim')
       endif
     endfunction " }}}
     " variables {{{
-    execute 'let g:unite_data_directory = "' . expand('~/.vim/.unite') . '"'
+    let g:unite_data_directory = $VIM_CACHE_DIR . '/unite'
     let g:unite_force_overwrite_statusline = 0
 
     if executable('ag')
@@ -241,6 +241,7 @@ if neobundle#tap('neocomplete.vim')
         \ 'disabled'    : !has('lua'),
         \ })
   let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#data_directory = $VIM_CACHE_DIR . '/neocomplete'
   function! neobundle#tapped.hooks.on_source(bundle)
     if ! exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
@@ -708,3 +709,5 @@ NeoBundleLazy 'rhysd/conflict-marker.vim'
 call neobundle#end()
 
 filetype plugin indent on
+
+" vim:set foldmethod=marker:

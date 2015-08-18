@@ -9,6 +9,24 @@ set ttyfast
 " set lazyredraw
 set completeopt=menuone,menu
 
+" Cache directory {{{
+if !exists('$VIM_CACHE_DIR')
+  if isdirectory(expand($TMPDIR))
+    let tmp_dir = expand($TMPDIR)
+  else
+    let tmp_dir = '/tmp'
+  endif
+  let path_separator = '/'
+  let path_cmps = split(simplify(tmp_dir), path_separator, 1)
+  let $VIM_CACHE_DIR = simplify(join(expand(path_cmps, ['vim']), path_separator))
+  unlet tmp_dir path_separator path_cmps
+endif
+
+if !isdirectory(expand($VIM_CACHE_DIR))
+  call mkdir($VIM_CACHE_DIR, 'p')
+endif
+" }}}
+
 " Backup & Swap {{{
 set nobackup
 set swapfile
