@@ -33,6 +33,9 @@ NeoBundle 'osyo-manga/vim-watchdogs' " {{{
 if neobundle#tap('vim-watchdogs')
   function! neobundle#tapped.hooks.on_source(bundle) " {{{
     let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_BufWritePost_enables = {
+          \ "typescript": 0,
+          \ }
 
     let g:quickrun_config['watchdogs_checker/_'] = {
           \   'outputter/quickfix/open_cmd' : '',
