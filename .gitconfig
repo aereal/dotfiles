@@ -116,7 +116,7 @@
 [advice]
 	statusHints = false
 [pager]
-	log = diff-highlight-wrapper
-	show = diff-highlight-wrapper
-	diff = diff-highlight-wrapper
+	log = git-diff-highlight | less
+	show = git-diff-highlight | less
+	diff = git-diff-highlight | less
 	grep = false
