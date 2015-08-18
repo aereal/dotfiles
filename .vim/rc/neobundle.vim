@@ -685,6 +685,7 @@ if neobundle#tap('incsearch.vim')
   call neobundle#untap()
 endif
 " }}}
+NeoBundle 'thinca/vim-localrc'
 " }}}
 " VCS {{{
 NeoBundle 'tpope/vim-fugitive' " {{{
