@@ -454,6 +454,7 @@ NeoBundle 'junegunn/seoul256.vim'
 NeoBundle 'noahfrederick/vim-hemisu'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'Lokaltog/vim-distinguished'
+NeoBundle 'rhysd/vim-color-splatoon'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
