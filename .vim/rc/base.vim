@@ -18,7 +18,7 @@ if !exists('$VIM_CACHE_DIR')
   endif
   let path_separator = '/'
   let path_cmps = split(simplify(tmp_dir), path_separator, 1)
-  let $VIM_CACHE_DIR = simplify(join(expand(path_cmps, ['vim']), path_separator))
+  let $VIM_CACHE_DIR = simplify(join(extend(path_cmps, ['vim']), path_separator))
   unlet tmp_dir path_separator path_cmps
 endif
 
