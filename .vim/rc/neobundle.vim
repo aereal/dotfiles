@@ -90,7 +90,7 @@ NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'thinca/vim-ref' " {{{
 if neobundle#tap('vim-ref')
   function! neobundle#tapped.hooks.on_source(bundle)
-    let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref';
+    let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
     if !isdirectory(g:ref_cache_dir)
       call mkdir(g:ref_cache_dir, '-p')
     endif
