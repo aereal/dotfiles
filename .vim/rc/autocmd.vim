@@ -14,6 +14,7 @@ autocmd MyInit BufEnter cpanfile setlocal filetype=cpanfile
 autocmd MyInit BufEnter cpanfile setlocal syntax=perl.cpanfile
 autocmd MyInit BufEnter *.tt            setlocal ft=tt2html
 autocmd MyInit BufEnter *.t             setlocal ft=perl
+autocmd MyInit FileType perl let b:tap_run_command = expand('~/.vim/bin/prove-wrapper')
 " }}}
 " Markdown {{{
 autocmd MyInit FileType markdown setlocal et ts=4 sts=4 sw=4
@@ -31,7 +32,7 @@ autocmd MyInit BufEnter */Hatena/*.html     setlocal ts=2 sts=2 sw=2
 autocmd MyInit BufEnter */Hatena/*.html.tt  setlocal ts=2 sts=2 sw=2
 " }}}
 " Close window with `q` key {{{
-autocmd MyInit FileType help,ref-* nnoremap <buffer> q :q<CR>
+autocmd MyInit FileType help,ref-*,tap-result nnoremap <buffer> q :q<CR>
 " }}}
 " Git config {{{
 autocmd MyInit FileType gitconfig setlocal noexpandtab

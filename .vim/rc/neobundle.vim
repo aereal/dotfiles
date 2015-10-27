@@ -439,6 +439,9 @@ if neobundle#tap('vim-fish')
 endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'motemen/tap-vim' " {{{
+let g:tap#use_vimproc = 1
+" }}}
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'

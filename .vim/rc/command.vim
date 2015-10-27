@@ -14,12 +14,12 @@ function! s:sketch() " {{{
 endfunction " }}}
 " }}}
 
-command! Prove call s:prove() " {{{
-function! s:prove()
-  let func_name = cfi#format('%s', '')
-  if func_name == ''
-    QuickRun prove/carton
-  else
-    execute 'QuickRun prove/carton/contextual -args ' . func_name
-  endif
-endfunction " }}}
+command! Prove call tap#prove()
+" function! s:prove()
+"   let func_name = cfi#format('%s', '')
+"   if func_name == ''
+"     QuickRun prove/carton
+"   else
+"     execute 'QuickRun prove/carton/contextual -args ' . func_name
+"   endif
+" endfunction " }}}
