@@ -235,6 +235,11 @@ NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'sorah/unite-ghq'
 NeoBundle 'Shougo/vimfiler.vim', { 'depends': ['Shougo/unite.vim'] }
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'eagletmt/unite-haddock', {
+      \ 'autoload': {
+      \   'unite_sources': ['haddock'],
+      \ }
+      \ }
 " }}}
 " Completion {{{
 NeoBundle 'Shougo/neocomplete.vim' " {{{
@@ -439,6 +444,21 @@ if neobundle#tap('vim-fish')
 endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundleLazy 'eagletmt/ghci-vim', {
+      \ 'external_commands': ['ghc'],
+      \ 'filetypes': ['haskell'],
+      \ }
+NeoBundleLazy 'eagletmt/ghcmod-vim', {
+      \ 'external_commands': ['ghc', 'ghc-mod'],
+      \ 'filetypes': ['haskell']
+      \ }
+NeoBundleLazy 'eagletmt/neco-ghc', {
+      \ 'external_commands': ['ghc', 'ghc-mod'],
+      \ 'filetypes': ['haskell'],
+      \ }
+NeoBundleLazy 'itchyny/vim-haskell-indent', {
+      \ 'filetypes': ['haskell']
+      \ }
 NeoBundle 'motemen/tap-vim' " {{{
 let g:tap#use_vimproc = 1
 " }}}
@@ -602,8 +622,8 @@ if neobundle#tap('vim-smartchr')
   autocmd MyInit FileType coffee     inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
   autocmd MyInit FileType coffee     inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
   autocmd MyInit FileType haskell    inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-  autocmd MyInit FileType haskell    inoremap <buffer><expr> . smartchr#one_of(' -> ', '.')
-  autocmd MyInit FileType haskell    inoremap <buffer><expr> , smartchr#one_of(' <- ', ',')
+  autocmd MyInit FileType haskell    inoremap <buffer><expr> . smartchr#one_of('.', ' -> ', ' => ', '.')
+  autocmd MyInit FileType haskell    inoremap <buffer><expr> , smartchr#one_of(', ', ' <- ', ',')
   autocmd MyInit FileType perl       inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
   autocmd MyInit FileType perl       inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
   autocmd MyInit FileType perl       inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
