@@ -68,7 +68,6 @@ NeoBundle 'osyo-manga/shabadou.vim'
 NeoBundle 'machakann/vim-textobj-delimited'        , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
 NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'deris/vim-textobj-ipmac', { 'depends': 'kana/vim-textobj-user' }
 " }}}
 " Operator {{{
 NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
@@ -314,18 +313,6 @@ if neobundle#tap('vim-markdown')
         \   'filetypes' : ['markdown'],
         \ },
         \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'kchmck/vim-coffee-script' " {{{
-if neobundle#tap('vim-coffee-script')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['coffee'],
-        \ },
-        \ })
-  function! neobundle#tapped.hooks.on_post_source(bundle)
-    autocmd MyInit ColorScheme * hi! link CoffeeSpecialVar Constant
-  endfunction
   call neobundle#untap()
 endif " }}}
 NeoBundleLazy 'motemen/hatena-vim' " {{{
