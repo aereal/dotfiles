@@ -227,13 +227,15 @@ if neobundle#tap('unite.vim')
   endfunction " }}}
   call neobundle#untap()
 endif " }}}
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'Shougo/unite-outline', { 'autoload': { 'unite_sources': ['outline'] } }
+NeoBundle 'thinca/vim-unite-history', { 'autoload': { 'unite_sources': ['history'] } }
 NeoBundle 'Shougo/tabpagebuffer.vim'
-NeoBundle 'sorah/unite-ghq'
-NeoBundle 'Shougo/vimfiler.vim', { 'depends': ['Shougo/unite.vim'] }
-NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundleLazy 'sorah/unite-ghq', { 'autoload': { 'unite_sources': ['ghq'] } }
+NeoBundleLazy 'ujihisa/unite-colorscheme', {
+      \ 'autoload': {
+      \   'unite_sources': ['colorscheme'],
+      \ }
+      \ }
 NeoBundleLazy 'eagletmt/unite-haddock', {
       \ 'autoload': {
       \   'unite_sources': ['haddock'],
