@@ -147,9 +147,9 @@ if neobundle#tap('unite.vim')
     nnoremap <silent> <SID>[unite]t :<C-u>Unite tab:no-current -no-empty<CR>
 
     if has('gui_running')
-      nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -immediately<CR>
+      nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab<CR>
     else
-      nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer -immediately<CR>
+      nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer<CR>
     endif
     " }}}
     " autocmd {{{
