@@ -2,9 +2,9 @@
 typeset -Ua fpath
 fpath=(
   $ZSH_HOME/functions(N-/)
-  $HOMEBREW_HOME/share/zsh-completions(N-/)
-  $HOMEBREW_HOME/share/zsh/site-functions(N-/)
-  $HOMEBREW_HOME/share/zsh/functions(N-/)
+  $HOMEBREW_PATH/share/zsh-completions(N-/)
+  $HOMEBREW_PATH/share/zsh/site-functions(N-/)
+  $HOMEBREW_PATH/share/zsh/functions(N-/)
   $fpath
 )
 # }}}
