@@ -455,7 +455,7 @@ let g:tap#use_vimproc = 1
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
-      \ { 'base' : '~/repos/@aereal' }
+      \ { 'base' : '~/repos/github.com/aereal' }
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'hail2u/h2u_colorscheme'
 NeoBundle 'w0ng/vim-hybrid'
