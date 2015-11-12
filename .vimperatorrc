@@ -58,4 +58,6 @@ ignorekeys add -except=:,d,t,gT mail\.google\.com
 
 autocmd VimperatorEnter .* source ~/.vimperatorrc.js
 
+colorscheme solarized_light
+
 " vim:set ft=vim foldmethod=marker:
