@@ -448,9 +448,15 @@ NeoBundleLazy 'eagletmt/neco-ghc', {
 NeoBundleLazy 'itchyny/vim-haskell-indent', {
       \ 'filetypes': ['haskell']
       \ }
+NeoBundle 'kazuho/p5-text-microtemplate', {
+      \ 'name': 'text-microtemplate',
+      \ 'rtp': 'contrib/vim',
+      \ }
+NeoBundle 'keith/swift.vim'
 NeoBundle 'motemen/tap-vim' " {{{
 let g:tap#use_vimproc = 1
 " }}}
+NeoBundle 'derekwyatt/vim-scala'
 " }}}
 " Color {{{
 NeoBundle 'altercation/vim-colors-solarized'
