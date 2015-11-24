@@ -379,23 +379,6 @@ __widget_git_remote_branches() { # {{{
 zle -N __widget_git_remote_branches
 bindkey -a "ga" __widget_git_remote_branches
 # }}}
-# change working directory {{{
-__widget_cd() { # {{{
-  local -aU directory_candidates
-  directory_candidates=(
-    $(cat $HOME/.cdd | cut -d: -f2)
-    $(cdr -l | tr -s ' ' | cut -d' ' -f2)
-  )
-  local selected_directory=$(echo ${(F)directory_candidates} | percol)
-  if [[ -n "$selected_directory" ]]; then
-    BUFFER="cd ${selected_directory}"
-    zle accept-line
-  fi
-  zle -R -c
-} # }}}
-zle -N __widget_cd
-bindkey -a '.' __widget_cd
-# }}}
 # ghq look {{{
 __widget_cd_repo() { # {{{
   local selected_repo=$( ghq list | peco )
@@ -422,13 +405,6 @@ bindkey -v "^]^A" __widget_cd_my_repo
 # }}}
 # }}}
 
-# cdd {{{
-if [[ -f "$ZSH_HOME/plugins/cdd/cdd" ]]; then
-  source "$ZSH_HOME/plugins/cdd/cdd"
-  add-zsh-hook chpwd _cdd_chpwd
-fi
-# }}}
-
 # ghq {{{
 if [[ -e "$ZSH_HOME/plugins/ghq/zsh" ]]; then
   fpath=(
@@ -440,14 +416,6 @@ if [[ -e "$ZSH_HOME/plugins/ghq/zsh" ]]; then
 fi
 # }}}
 
-# zsh-completions {{{
-if [[ -e "$ZSH_HOME/plugins/zsh-completions/src" ]]; then
-  fpath=(
-    $ZSH_HOME/plugins/zsh-completions/src
-    $fpath
-  )
-fi
-# }}}
 
 # Update window title {{{
 function update_window_title() { # {{{
@@ -507,12 +475,6 @@ if [[ -d "$ZSH_SYNTAX_HIGHLIGHT_ROOT" ]]; then
   source "$ZSH_SYNTAX_HIGHLIGHT_ROOT/zsh-syntax-highlighting.zsh"
 fi
 # # }}}
-
-# zsh-bundle-exec {{{
-if [[ -f $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh ]]; then
-  source $ZSH_HOME/plugins/zsh-bundle-exec/zsh-bundle-exec.zsh
-fi
-# }}}
 
 # cdr {{{
 set autopushd
