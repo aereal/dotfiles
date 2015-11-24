@@ -416,6 +416,11 @@ if [[ -e "$ZSH_HOME/plugins/ghq/zsh" ]]; then
 fi
 # }}}
 
+# hub {{{
+if whence hub >/dev/null 2>&1; then
+  alias git=hub
+fi
+# }}}
 
 # Update window title {{{
 function update_window_title() { # {{{
