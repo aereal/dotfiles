@@ -1,13 +1,1 @@
-#!/usr/bin/env zsh
-
-set -ue
-
-macvim_wrapper_cmd=${MACVIM_WRAPPER_CMD-"reattach-to-user-namespace"}
-macvim_wrapper_args=${MACVIM_WRAPPER_ARGS-"-l"}
-macvim_app="${MACVIM_APP-/Applications/MacVim.app}"
-
-if [[ ! -e $macvim_app ]]; then
-  exit 1
-fi
-
-$macvim_wrapper_cmd $macvim_wrapper_args $macvim_app/Contents/MacOS/Vim $@
+/Users/aereal/repos/github.com/aereal/dotfiles/bin/macvim
