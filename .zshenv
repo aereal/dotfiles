@@ -29,3 +29,15 @@ manpath=(
 
 export PAGER=less
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS'
+
+MACVIM_APP=
+local -a macvim_app_candidates=(
+  /opt/homebrew-cask/Caskroom/macvim-kaoriya/*/MacVim.app(N-/)
+  $HOMEBREW_PATH/opt/macvim/MacVim.app(N-/)
+  $HOME/Applications/MacVim.app(N-/)
+  /Applications/MacVim.app(N-/)
+)
+if (( $#macvim_app_candidates > 0 )); then
+  MACVIM_APP="$macvim_app_candidates[1]"
+fi
+export MACVIM_APP
