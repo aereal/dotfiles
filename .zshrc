@@ -43,6 +43,8 @@ setopt \
   hist_expand \
   no_beep \
   numeric_glob_sort
+
+# Format
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:options' description yes
@@ -52,18 +54,32 @@ zstyle ':completion:*:descriptions' format ' %F{magenta}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{blue}-- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
+
+# Fuzzy match
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
 # zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate _prefix
+
+# sudo
 zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+
+# Directory candidates order
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
+
+# Ignore current directory from directory candidates
 zstyle ':completion:*' ignore-parents parent pwd
+
+# Process candidates
 zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w'
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;36=0=01'
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:*:kill:*' force-list always
 zstyle ':completion:*:*:kill:*' insert-ids single
+
+# Show man candidates with section
 zstyle ':completion:*:manuals' separate-sections true
+
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
