@@ -58,8 +58,8 @@ zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 # Fuzzy match
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
-# zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate _prefix
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
+zstyle ':completion:*' completer _oldlist _complete _match _ignored _approximate _prefix
 
 # sudo
 zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
