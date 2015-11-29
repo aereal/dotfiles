@@ -55,6 +55,9 @@ zstyle ':completion:*:messages' format ' %F{blue}-- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
+# Show selected candidate
+zstyle ':completion:*:default' menu select=2
+
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 # Fuzzy match
