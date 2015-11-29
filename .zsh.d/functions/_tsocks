@@ -1,0 +1,16 @@
+#compdef tsocks
+
+local curcontext="$curcontext" state line ret=1
+
+_arguments -C \
+  '*:: :->app' && ret=0
+
+case "$state" in
+  app)
+    _normal && ret=0
+    ;;
+esac
+
+return ret
+
+# vim: set ft=sh:
