@@ -473,6 +473,9 @@ NeoBundle 'noahfrederick/vim-hemisu'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'Lokaltog/vim-distinguished'
 NeoBundle 'rhysd/vim-color-splatoon'
+NeoBundle 'jdkanani/vim-material-theme'
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'scheakur/vim-scheakur'
 " }}}
 " Visualize {{{
 NeoBundle 'jceb/vim-hier' " {{{
