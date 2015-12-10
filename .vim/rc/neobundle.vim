@@ -433,6 +433,9 @@ if neobundle#tap('vim-fish')
 endif " }}}
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundleLazy 'Quramy/tsuquyomi', {
+      \ 'filetypes': ['typescript'],
+      \ }
 NeoBundleLazy 'eagletmt/ghci-vim', {
       \ 'external_commands': ['ghc'],
       \ 'filetypes': ['haskell'],
