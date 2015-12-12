@@ -22,3 +22,13 @@ function! s:prove()
   endif
   call tap#prove()
 endfunction " }}}
+
+command! Memo call s:memo()
+function! s:memo()
+  let memo_root = expand('~/memo')
+  let dt = strftime('%Y%m%d-%H%M%S')
+  let suffix = '.md'
+  let filename = memo_root . '/' . dt . suffix
+
+  execute ":edit " . filename
+endfunction
