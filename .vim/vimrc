@@ -4,8 +4,7 @@ let g:colorscheme_name = 'desert'
 
 runtime rc/base.vim
 runtime rc/autocmd.vim
-runtime rc/neobundle.vim
-runtime rc/plugins.vim
+runtime rc/plugin.vim
 runtime rc/tab.vim
 runtime rc/key.vim
 runtime rc/command.vim
