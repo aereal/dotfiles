@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+root_dir=.
+
+if [[ ! -d "${root_dir}/.git" ]]; then
+  echo '---> Not Git repository'
+  echo '---> Try to git init ...'
+  git init
+  git commit --allow-empty --message ':sunrise:'
+fi
+
+if [[ ! -f "${root_dir}/package.json" ]]; then
+  echo '---> npm init ...'
+  npm init --yes
+fi
