@@ -1,0 +1,87 @@
+#!/usr/bin/env zsh
+
+set -ue
+
+usage() {
+  _script_name=$(basename $0)
+  cat <<DOC
+  ${_script_name} [--help]
+DOC
+}
+
+die() {
+  echo "! $@" >/dev/stderr
+  exit 1
+}
+
+info() {
+  echo "---> $@" >/dev/stderr
+}
+
+repos_root="$(ghq root)"
+repo_host="github.com"
+owner="$USER"
+name=''
+create=1
+peek=1
+
+while [[ $# > 0 ]]; do
+  case "$1" in
+    --help,-h)
+      usage
+      exit 0
+      ;;
+    --host)
+      shift
+      repo_host="$1"
+      ;;
+    --owner)
+      shift
+      owner="$1"
+      ;;
+    --design)
+      create=0
+      ;;
+    --no-peek)
+      peek=0
+      ;;
+    -*)
+      echo "Unknown args: $1"
+      exit 1
+      ;;
+    *)
+      name="$1"
+      ;;
+  esac
+  shift
+done
+
+owner_path="${repos_root}/${repo_host}/${owner}"
+repo_path="${owner_path}/${name}"
+
+if [[ -z "$name" ]]; then
+  die 'Repository name cannot be empty'
+fi
+
+
+if [[ $create -eq 1 ]]; then
+  if [[ -e $repo_path ]]; then
+    die "Already exists: $repo_path"
+  fi
+
+  info "Create $repo_path"
+  mkdir -p $repo_path
+fi
+
+cd $repo_path
+
+if [[ ! -d "${repo_path}/.git" ]]; then
+  info 'Try to git init ...'
+  git init
+  git commit --allow-empty --message ':sunrise:'
+fi
+
+if [[ $peek -eq 1 ]]; then
+  info "cd $repo_path ..."
+  exec $SHELL
+fi
