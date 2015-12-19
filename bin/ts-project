@@ -49,3 +49,8 @@ if [[ ! -f "${root_dir}/dtsm.json" ]]; then
   echo '---> Generate dtsm.json'
   $(npm bin)/dtsm --insight false init
 fi
+
+if ! git check-ignore --quiet 'typings'; then
+  echo '---> Ignore typings ...'
+  echo 'typings' >> .gitignore
+fi
