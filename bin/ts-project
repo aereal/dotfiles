@@ -15,3 +15,8 @@ if [[ ! -f "${root_dir}/package.json" ]]; then
   echo '---> npm init ...'
   npm init --yes
 fi
+
+if ! git check-ignore --quiet 'node_modules'; then
+  echo '---> Ignore node_modules ...'
+  echo 'node_modules' >> .gitignore
+fi
