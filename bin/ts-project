@@ -4,8 +4,12 @@ set -e
 
 root_dir=.
 
+json_satisfy() {
+  jq --exit-status "$2" < $1 >/dev/null
+}
+
 pkg_satisfy() {
-  jq --exit-status "$1" < ${root_dir}/package.json >/dev/null
+  json_satisfy ${root_dir}/package.json "$1"
 }
 
 if [[ ! -d "${root_dir}/.git" ]]; then
@@ -33,6 +37,16 @@ fi
 if [[ ! -f "${root_dir}/tsconfig.json" ]]; then
   echo '---> Create tsconfig.json ...'
   $(npm bin)/tsc --init
+fi
+
+if ! json_satisfy ${root_dir}/tsconfig.json '.compilerOptions.target == "es5"'; then
+  echo '---> Set target version to ES5 ...'
+  cat "${root_dir}/tsconfig.json" | jq --unbuffered 'map_values(if type == "object" and has("target") then .target = "es5" else . end)' | tee "${root_dir}/tsconfig.json"
+fi
+
+if ! json_satisfy ${root_dir}/tsconfig.json '.compilerOptions.noImplicitAny == true'; then
+  echo '---> Refuse implicit any ...'
+  cat "${root_dir}/tsconfig.json" | jq --unbuffered 'map_values(if type == "object" and has("noImplicitAny") then .noImplicitAny = true else . end)' | tee "${root_dir}/tsconfig.json"
 fi
 
 if ! pkg_satisfy '.scripts.build == "tsc"'; then
