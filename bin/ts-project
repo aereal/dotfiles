@@ -4,6 +4,10 @@ set -e
 
 root_dir=.
 
+pkg_satisfy() {
+  jq --exit-status "$1" < ${root_dir}/package.json >/dev/null
+}
+
 if [[ ! -d "${root_dir}/.git" ]]; then
   echo '---> Not Git repository'
   echo '---> Try to git init ...'
@@ -19,4 +23,9 @@ fi
 if ! git check-ignore --quiet 'node_modules'; then
   echo '---> Ignore node_modules ...'
   echo 'node_modules' >> .gitignore
+fi
+
+if ! pkg_satisfy '.devDependencies | has("typescript")'; then
+  echo '---> Install TypeScript ...'
+  npm install --save-dev typescript
 fi
