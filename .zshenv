@@ -1,10 +1,12 @@
 # environment
 export HOMEBREW_PATH=/usr/local
-export GOPATH=$HOME/.go
+export DEVEL_PATH=$HOME/devel
+export GOPATH=$DEVEL_PATH
 export EDITOR=vim
 
 path=(
   $HOME/bin(N-/)
+  $DEVEL_PATH/bin(N-/)
   $HOME/.rbenv/bin(N-/)
   $HOME/.rbenv/shims(N-/)
   $HOME/.plenv/bin(N-/)
