@@ -3,11 +3,16 @@
 set -e
 
 root_dir=.
+npm_test_command=''
 with_mocha=0
+with_espower_babel=0
 while [[ $# > 0 ]]; do
   case "$1" in
     --with-mocha)
       with_mocha=1
+      ;;
+    --with-espower-babel)
+      with_espower_babel=1
       ;;
   esac
   shift
@@ -52,9 +57,19 @@ if [[ $with_mocha -eq 1 ]]; then
     echo '---> Install mocha ...'
     npm install --save-dev mocha
   fi
-  if ! pkg_satisfy '.scripts.test == "mocha"'; then
+  npm_test_command='mocha'
+
+  if [[ $with_espower_babel -eq 1 ]]; then
+    if ! pkg_satisfy '.devDependencies | has("espower-babel")'; then
+      echo '---> Install espower-babel ...'
+      npm install --save-dev espower-babel
+    fi
+    npm_test_command='mocha --compilers js:espower-babel/guess'
+  fi
+
+  if ! pkg_satisfy ".scripts.test == \"${npm_test_command}\""; then
     echo '---> configure `npm test` ...'
-    update_json "${root_dir}/package.json" 'map_values(if type == "object" and has("test") then .test = "mocha" else . end)'
+    update_json "${root_dir}/package.json" "map_values(if type == \"object\" and has(\"test\") then .test = \"${npm_test_command}\" else . end)"
   fi
 fi
 
