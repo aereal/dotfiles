@@ -29,3 +29,8 @@ if ! pkg_satisfy '.devDependencies | has("typescript")'; then
   echo '---> Install TypeScript ...'
   npm install --save-dev typescript
 fi
+
+if [[ ! -f "${root_dir}/tsconfig.json" ]]; then
+  echo '---> Create tsconfig.json ...'
+  $(npm bin)/tsc --init
+fi
