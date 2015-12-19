@@ -3,6 +3,15 @@
 set -e
 
 root_dir=.
+with_mocha=0
+while [[ $# > 0 ]]; do
+  case "$1" in
+    --with-mocha)
+      with_mocha=1
+      ;;
+  esac
+  shift
+done
 
 json_satisfy() {
   jq --exit-status "$2" < $1 >/dev/null
@@ -36,6 +45,17 @@ fi
 if ! pkg_satisfy '.devDependencies | has("typescript")'; then
   echo '---> Install TypeScript ...'
   npm install --save-dev typescript
+fi
+
+if [[ $with_mocha -eq 1 ]]; then
+  if ! pkg_satisfy '.devDependencies | has("mocha")'; then
+    echo '---> Install mocha ...'
+    npm install --save-dev mocha
+  fi
+  if ! pkg_satisfy '.scripts.test == "mocha"'; then
+    echo '---> configure `npm test` ...'
+    update_json "${root_dir}/package.json" 'map_values(if type == "object" and has("test") then .test = "mocha" else . end)'
+  fi
 fi
 
 if [[ ! -f "${root_dir}/tsconfig.json" ]]; then
