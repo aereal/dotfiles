@@ -39,3 +39,13 @@ if ! pkg_satisfy '.scripts.build == "tsc"'; then
   echo '---> Configure npm run build'
   cat "${root_dir}/package.json" | jq 'map_values(if type == "object" and has("test") then .build = "tsc" else . end)' | tee ${root_dir}/package.json
 fi
+
+if ! pkg_satisfy '.devDependencies | has("dtsm")'; then
+  echo '---> Install dtsm ...'
+  npm install --save-dev dtsm
+fi
+
+if [[ ! -f "${root_dir}/dtsm.json" ]]; then
+  echo '---> Generate dtsm.json'
+  $(npm bin)/dtsm --insight false init
+fi
