@@ -12,6 +12,10 @@ pkg_satisfy() {
   json_satisfy ${root_dir}/package.json "$1"
 }
 
+update_json() {
+  cat "$1" | jq --unbuffered "$2" | tee "$1"
+}
+
 if [[ ! -d "${root_dir}/.git" ]]; then
   echo '---> Not Git repository'
   echo '---> Try to git init ...'
@@ -41,17 +45,17 @@ fi
 
 if ! json_satisfy ${root_dir}/tsconfig.json '.compilerOptions.target == "es5"'; then
   echo '---> Set target version to ES5 ...'
-  cat "${root_dir}/tsconfig.json" | jq --unbuffered 'map_values(if type == "object" and has("target") then .target = "es5" else . end)' | tee "${root_dir}/tsconfig.json"
+  update_json "${root_dir}/tsconfig.json" 'map_values(if type == "object" and has("target") then .target = "es5" else . end)'
 fi
 
 if ! json_satisfy ${root_dir}/tsconfig.json '.compilerOptions.noImplicitAny == true'; then
   echo '---> Refuse implicit any ...'
-  cat "${root_dir}/tsconfig.json" | jq --unbuffered 'map_values(if type == "object" and has("noImplicitAny") then .noImplicitAny = true else . end)' | tee "${root_dir}/tsconfig.json"
+  update_json "${root_dir}/tsconfig.json" 'map_values(if type == "object" and has("noImplicitAny") then .noImplicitAny = true else . end)'
 fi
 
 if ! pkg_satisfy '.scripts.build == "tsc"'; then
   echo '---> Configure npm run build'
-  cat "${root_dir}/package.json" | jq 'map_values(if type == "object" and has("test") then .build = "tsc" else . end)' | tee ${root_dir}/package.json
+  update_json "${root_dir}/package.json" 'map_values(if type == "object" and has("test") then .build = "tsc" else . end)'
 fi
 
 if ! pkg_satisfy '.devDependencies | has("dtsm")'; then
