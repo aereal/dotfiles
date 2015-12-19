@@ -2,12 +2,23 @@
 
 set -e
 
+usage() {
+  _script_name=$(basename $0)
+  cat <<DOC
+  ${_script_name} [--help|--with-mocha|--with-espower-babel]
+DOC
+}
+
 root_dir=.
 npm_test_command=''
 with_mocha=0
 with_espower_babel=0
 while [[ $# > 0 ]]; do
   case "$1" in
+    --help)
+      usage
+      exit 0
+      ;;
     --with-mocha)
       with_mocha=1
       ;;
