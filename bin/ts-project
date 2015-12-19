@@ -34,3 +34,8 @@ if [[ ! -f "${root_dir}/tsconfig.json" ]]; then
   echo '---> Create tsconfig.json ...'
   $(npm bin)/tsc --init
 fi
+
+if ! pkg_satisfy '.scripts.build == "tsc"'; then
+  echo '---> Configure npm run build'
+  cat "${root_dir}/package.json" | jq 'map_values(if type == "object" and has("test") then .build = "tsc" else . end)' | tee ${root_dir}/package.json
+fi
