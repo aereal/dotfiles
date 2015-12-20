@@ -2,10 +2,10 @@
 
 set -ue
 
+_script_name=$(basename $0)
 usage() {
-  _script_name=$(basename $0)
   cat <<DOC
-  ${_script_name} [--help]
+  ${_script_name} [--help] [--host REPO_HOST] [--owner OWNER_NAME] [--design] [--no-peek]
 DOC
 }
 
