@@ -1,0 +1,182 @@
+[[plugins]]
+repository = 'rhysd/vim-operator-surround'
+depends = ['kana/vim-operator-user']
+on_map = ['<Plug>(operator-surround-append)', '<Plug>(operator-surround-delete)', '<Plug>(operator-surround-replace)']
+
+[[plugins]]
+repository = 'Shougo/unite-outline'
+on_unite = ['outline']
+
+[[plugins]]
+repository = 'thinca/vim-unite-history'
+on_unite = ['history']
+
+[[plugins]]
+repository = 'Shougo/tabpagebuffer.vim'
+on_unite = ['buffer_tab']
+
+[[plugins]]
+repository = 'sorah/unite-ghq'
+on_unite = ['ghq']
+
+[[plugins]]
+repository = 'ujihisa/unite-colorscheme'
+on_unite = ['colorscheme']
+
+[[plugins]]
+repository = 'eagletmt/unite-haddock'
+on_unite = ['haddock']
+
+[[plugins]]
+repository = 'slim-template/vim-slim'
+on_ft = ['slim']
+
+[[plugins]]
+repository = 'groenewege/vim-less'
+on_ft = ['less']
+
+[[plugins]]
+repository = 'hail2u/vim-css3-syntax'
+on_ft = ['css']
+
+[[plugins]]
+repository = 'hallison/vim-markdown'
+on_ft = ['markdown']
+
+[[plugins]]
+repository = 'motemen/hatena-vim'
+on_ft = ['hatena']
+
+[[plugins]]
+repository = 'othree/html5.vim'
+on_ft = ['html']
+
+[[plugins]]
+repository = 'pangloss/vim-javascript'
+on_ft = ['typescript', 'javascript']
+
+[[plugins]]
+repository = 'vim-perl/vim-perl'
+on_ft = ['perl']
+
+[[plugins]]
+repository = 'vim-ruby/vim-ruby'
+on_ft = ['ruby']
+
+[[plugins]]
+repository = 'davidoc/taskpaper.vim'
+
+[[plugins]]
+repository = 'y-uuki/perl-local-lib-path.vim'
+on_ft = 'perl'
+
+[[plugins]]
+repository = 'eagletmt/ghcmod-vim'
+external_commands = 'ghc-mod'
+on_ft = ['haskell']
+
+[[plugins]]
+repository = 'eagletmt/ghci-vim'
+external_commands = ['ghc']
+on_ft = ['haskell']
+
+[[plugins]]
+repository = 'eagletmt/neco-ghc'
+on_ft = ['haskell']
+external_commands = ['ghc', 'ghc-mod']
+
+[[plugins]]
+repository = 'itchyny/vim-haskell-indent'
+on_ft = ['haskell']
+
+[[plugins]]
+repository = 'Rip-Rip/clang_complete'
+on_ft = ['objc']
+build = 'make'
+
+[[plugins]]
+repository = 'mustache/vim-mustache-handlebars'
+on_ft = ['mustache', 'handlebars']
+
+[[plugins]]
+repository = 'dag/vim-fish'
+on_ft = ['fish']
+
+[[plugins]]
+repository = 'ekalinin/Dockerfile.vim'
+on_ft = 'dockerfile'
+
+[[plugins]]
+repository = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repository = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repository = 'kazuho/p5-text-microtemplate'
+name = 'text-microtemplate'
+rtp = 'contrib/vim'
+
+[[plugins]]
+repository = 'keith/swift.vim'
+on_ft = ['swift']
+
+[[plugins]]
+repository = 'derekwyatt/vim-scala'
+on_ft = ['scala']
+
+[[plugins]]
+repository = 'mpollmeier/vim-scalaConceal'
+on_ft = ['scala']
+
+[[plugins]]
+repository = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repository = 'hail2u/h2u_colorscheme'
+
+[[plugins]]
+repository = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repository = 'chriskempson/vim-tomorrow-theme'
+
+[[plugins]]
+repository = 'muratas/vim-andon'
+
+[[plugins]]
+repository = 'ajh17/Spacegray.vim'
+
+[[plugins]]
+repository = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repository = 'noahfrederick/vim-hemisu'
+
+[[plugins]]
+repository = 'tomasr/molokai'
+
+[[plugins]]
+repository = 'Lokaltog/vim-distinguished'
+
+[[plugins]]
+repository = 'rhysd/vim-color-splatoon'
+
+[[plugins]]
+repository = 'jdkanani/vim-material-theme'
+
+[[plugins]]
+repository = 'morhetz/gruvbox'
+
+[[plugins]]
+repository = 'scheakur/vim-scheakur'
+
+[[plugins]]
+repository = 'mattn/emmet-vim'
+on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
+
+[[plugins]]
+repository = 'sudo.vim'
+on_cmd = ['SudoWrite', 'SudoRead']

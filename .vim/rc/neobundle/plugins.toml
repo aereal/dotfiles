@@ -1,0 +1,108 @@
+[[plugins]]
+repository = 'thinca/vim-quickrun'
+
+[[plugins]]
+repository = 'osyo-manga/vim-watchdogs'
+
+[[plugins]]
+repository = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repository = 'machakann/vim-textobj-delimited'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repository = 'kana/vim-textobj-indent'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repository = 'kana/vim-textobj-line'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repository = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repository = 'thinca/vim-ref'
+
+[[plugins]]
+repository = 'Shougo/unite.vim'
+
+[[plugins]]
+repository = 'Shougo/neocomplete.vim'
+vim_version = '7.3.885'
+disabled = '!has("lua")'
+
+[[plugins]]
+repository = 'motemen/tap-vim'
+
+[[plugins]]
+repository = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repository = 'aereal/vim-magica-colors'
+
+[[plugins]]
+repository = 'jceb/vim-hier'
+
+[[plugins]]
+repository = 'dannyob/quickfixstatus'
+
+[[plugins]]
+repository = 'LeafCage/foldCC'
+
+[[plugins]]
+repository = 'tyru/current-func-info.vim'
+
+[[plugins]]
+repository = 'Yggdroot/indentLine'
+
+[[plugins]]
+repository = 'itchyny/lightline.vim'
+
+[[plugins]]
+repository = 'osyo-manga/vim-anzu'
+
+[[plugins]]
+repository = 't9md/vim-quickhl'
+
+[[plugins]]
+repository = 'Shougo/neosnippet'
+
+[[plugins]]
+repository = 'kana/vim-smartinput'
+
+[[plugins]]
+repository = 'kana/vim-smartchr'
+
+[[plugins]]
+repository = 'sickill/vim-pasta'
+
+[[plugins]]
+repository = 'h1mesuke/vim-alignta'
+
+[[plugins]]
+repository = 'tyru/eskk.vim'
+
+[[plugins]]
+repository = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repository = 'Shougo/vimproc'
+build = 'make -f make_mac.mak'
+
+[[plugins]]
+repository = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repository = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repository = 'thinca/vim-localrc'
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+
+[[plugins]]
+repository = 'Shougo/neobundle.vim'
+fetch = 1
