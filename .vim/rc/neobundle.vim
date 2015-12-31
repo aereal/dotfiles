@@ -1,14 +1,232 @@
 filetype off
 
 if has('vim_starting')
-  execute 'set runtimepath+=' . expand('~/.vim/bundle/neobundle.vim')
+  set runtimepath& runtimepath+=~/.vim/bundle/neobundle.vim
   syntax enable
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
-" Quickrun {{{
-NeoBundle 'thinca/vim-quickrun' " {{{
+function! s:load_bundles() " {{{
+  NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'osyo-manga/vim-watchdogs'
+  NeoBundle 'osyo-manga/shabadou.vim'
+  NeoBundle 'machakann/vim-textobj-delimited'        , { 'depends' : 'kana/vim-textobj-user' }
+  NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
+  NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
+  NeoBundleLazy 'rhysd/vim-operator-surround', {
+        \ 'depends' : 'kana/vim-operator-user',
+        \ 'autoload' : {
+        \     'mappings' : '<Plug>(operator-surround-',
+        \   },
+        \ }
+  NeoBundle 'vim-jp/vimdoc-ja'
+  NeoBundle 'thinca/vim-ref'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite-outline', { 'autoload': { 'unite_sources': ['outline'] } }
+  NeoBundle 'thinca/vim-unite-history', { 'autoload': { 'unite_sources': ['history'] } }
+  NeoBundle 'Shougo/tabpagebuffer.vim'
+  NeoBundleLazy 'sorah/unite-ghq', { 'autoload': { 'unite_sources': ['ghq'] } }
+  NeoBundleLazy 'ujihisa/unite-colorscheme', {
+        \ 'autoload': {
+        \   'unite_sources': ['colorscheme'],
+        \ }
+        \ }
+  NeoBundleLazy 'eagletmt/unite-haddock', {
+        \ 'autoload': {
+        \   'unite_sources': ['haddock'],
+        \ }
+        \ }
+  NeoBundle 'Shougo/neocomplete.vim', {
+        \ 'vim_version' : '7.3.885',
+        \ 'disabled'    : !has('lua'),
+        \ }
+  NeoBundleLazy 'slim-template/vim-slim', {
+        \ 'autoload' : {
+        \   'filetypes' : ['slim'],
+        \ },
+        \ }
+  NeoBundleLazy 'groenewege/vim-less', {
+        \ 'autoload' : {
+        \   'filetypes' : ['less'],
+        \ },
+        \ }
+  NeoBundleLazy 'hail2u/vim-css3-syntax', {
+        \ 'autoload' : {
+        \   'filetypes' : ['css', 'scss', 'sass', 'less'],
+        \ },
+        \ }
+  NeoBundleLazy 'hallison/vim-markdown', {
+        \ 'autoload' : {
+        \   'filetypes' : ['markdown'],
+        \ },
+        \ }
+  NeoBundleLazy 'motemen/hatena-vim', {
+        \ 'autoload' : {
+        \   'filetypes' : ['hatena'],
+        \ },
+        \ }
+  NeoBundleLazy 'othree/html5.vim', {
+        \ 'autoload' : {
+        \   'filetypes' : ['html'],
+        \ }
+        \ }
+  NeoBundleLazy 'pangloss/vim-javascript', {
+        \ 'autoload' : {
+        \   'filetypes' : ['javascript'],
+        \ },
+        \ }
+  NeoBundleLazy 'vim-perl/vim-perl', {
+        \ 'autoload' : {
+        \   'filetypes' : ['perl'],
+        \ },
+        \ }
+  NeoBundleLazy 'vim-ruby/vim-ruby', {
+        \ 'autoload' : {
+        \   'filetypes' : ['ruby'],
+        \ },
+        \ }
+  NeoBundleLazy 'davidoc/taskpaper.vim', {
+        \ 'autoload' : {
+        \   'filetypes' : ['taskpaper'],
+        \ },
+        \ }
+  NeoBundleLazy 'y-uuki/perl-local-lib-path.vim', {
+        \ 'autoload' : {
+        \   'filetypes' : ['perl'],
+        \ },
+        \ }
+  NeoBundleLazy 'eagletmt/ghcmod-vim', {
+        \ 'external_commands' : ['ghc-mod'],
+        \ 'autoload' : {
+        \   'filetypes' : ['haskell'],
+        \ }
+        \ }
+  NeoBundleLazy 'Rip-Rip/clang_complete', {
+        \ 'autoload' : {
+        \   'filetypes' : ['objc'],
+        \ },
+        \ 'build' : {
+        \   'mac' : 'make',
+        \ },
+        \ }
+  NeoBundleLazy 'mustache/vim-mustache-handlebars', {
+        \ 'autoload' : {
+        \   'filetypes' : ['mustache', 'handlebars'],
+        \ },
+        \ }
+  NeoBundleLazy 'dag/vim-fish', {
+        \ 'autoload' : {
+        \   'filetypes' : ['fish'],
+        \ },
+        \ }
+  NeoBundle 'ekalinin/Dockerfile.vim'
+  NeoBundleLazy 'leafgarland/typescript-vim', { 'filetypes': ['typescript'] }
+  NeoBundleLazy 'Quramy/tsuquyomi', {
+        \ 'filetypes': ['typescript'],
+        \ }
+  NeoBundleLazy 'eagletmt/ghci-vim', {
+        \ 'external_commands': ['ghc'],
+        \ 'filetypes': ['haskell'],
+        \ }
+  NeoBundleLazy 'eagletmt/ghcmod-vim', {
+        \ 'external_commands': ['ghc', 'ghc-mod'],
+        \ 'filetypes': ['haskell']
+        \ }
+  NeoBundleLazy 'eagletmt/neco-ghc', {
+        \ 'external_commands': ['ghc', 'ghc-mod'],
+        \ 'filetypes': ['haskell'],
+        \ }
+  NeoBundleLazy 'itchyny/vim-haskell-indent', {
+        \ 'filetypes': ['haskell']
+        \ }
+  NeoBundle 'kazuho/p5-text-microtemplate', {
+        \ 'name': 'text-microtemplate',
+        \ 'rtp': 'contrib/vim',
+        \ }
+  NeoBundle 'keith/swift.vim'
+  NeoBundle 'motemen/tap-vim'
+  NeoBundle 'derekwyatt/vim-scala'
+  NeoBundleLazy 'mpollmeier/vim-scalaConceal', {
+        \ 'filetypes': ['scala'],
+        \ }
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
+        \ { 'base' : '~/repos/github.com/aereal' }
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'hail2u/h2u_colorscheme'
+  NeoBundle 'w0ng/vim-hybrid'
+  NeoBundle 'chriskempson/vim-tomorrow-theme'
+  NeoBundle 'muratas/vim-andon'
+  NeoBundle 'ajh17/Spacegray.vim'
+  NeoBundle 'junegunn/seoul256.vim'
+  NeoBundle 'noahfrederick/vim-hemisu'
+  NeoBundle 'tomasr/molokai'
+  NeoBundle 'Lokaltog/vim-distinguished'
+  NeoBundle 'rhysd/vim-color-splatoon'
+  NeoBundle 'jdkanani/vim-material-theme'
+  NeoBundle 'morhetz/gruvbox'
+  NeoBundle 'scheakur/vim-scheakur'
+  NeoBundle 'jceb/vim-hier'
+  NeoBundle 'dannyob/quickfixstatus'
+  NeoBundle 'LeafCage/foldCC'
+  NeoBundle 'tyru/current-func-info.vim'
+  NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'itchyny/lightline.vim'
+  NeoBundleLazy 'osyo-manga/vim-anzu', {
+      \ 'autoload' : {
+      \   'mappings' : '<Plug>(anzu-',
+      \ },
+      \ }
+  NeoBundleLazy 't9md/vim-quickhl', {
+      \ 'autoload' : {
+      \   'mappings' : '<Plug>(quickhl-',
+      \ },
+      \ }
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'kana/vim-smartinput'
+  NeoBundleLazy 'mattn/emmet-vim', {
+        \ 'autoload' : {
+        \   'filetypes' : [
+        \     'html',
+        \     'haml',
+        \     'slim',
+        \     'css',
+        \     'tt2html',
+        \   ],
+        \ },
+        \ }
+  NeoBundleLazy 'kana/vim-smartchr', {
+        \ 'autoload' : {
+        \   'function_prefix' : 'smartchr',
+        \ },
+        \ }
+  NeoBundle 'sickill/vim-pasta'
+  NeoBundle 'h1mesuke/vim-alignta'
+  NeoBundle 'tyru/eskk.vim'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'Shougo/neomru.vim'
+  NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+        \   'mac' : 'make -f make_mac.mak',
+        \   'unix' : 'make -f make_unix.mak',
+        \   },
+        \ }
+  NeoBundle 'sudo.vim'
+  NeoBundle 'editorconfig/editorconfig-vim'
+  NeoBundle 'haya14busa/incsearch.vim'
+  NeoBundle 'thinca/vim-localrc'
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundleLazy 'rhysd/conflict-marker.vim'
+endfunction " }}}
+
+if neobundle#load_cache(expand('<sfile>'))
+  call s:load_bundles()
+  NeoBundleSaveCache
+endif
+
+" vim-quickrun {{{
 if neobundle#tap('vim-quickrun')
   function! neobundle#tapped.hooks.on_source(bundle)
     if !exists('g:quickrun_config')
@@ -29,7 +247,7 @@ if neobundle#tap('vim-quickrun')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'osyo-manga/vim-watchdogs' " {{{
+" vim-watchdogs {{{
 if neobundle#tap('vim-watchdogs')
   function! neobundle#tapped.hooks.on_source(bundle) " {{{
     let g:watchdogs_check_BufWritePost_enable = 1
@@ -62,31 +280,14 @@ if neobundle#tap('vim-watchdogs')
   endfunction " }}}
   call neobundle#untap()
 endif " }}}
-NeoBundle 'osyo-manga/shabadou.vim'
-" }}}
-" Text Object {{{
-NeoBundle 'machakann/vim-textobj-delimited'        , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-indent'                , { 'depends' : 'kana/vim-textobj-user' }
-NeoBundle 'kana/vim-textobj-line'                  , { 'depends' : 'kana/vim-textobj-user' }
-" }}}
-" Operator {{{
-NeoBundleLazy 'rhysd/vim-operator-surround' " {{{
+" vim-operator-surround {{{
 if neobundle#tap('vim-operator-surround')
-  call neobundle#config({
-        \ 'depends' : 'kana/vim-operator-user',
-        \ 'autoload' : {
-        \     'mappings' : '<Plug>(operator-surround-',
-        \   },
-        \ })
   map <silent> sa <Plug>(operator-surround-append)
   map <silent> sd <Plug>(operator-surround-delete)
   map <silent> sr <Plug>(operator-surround-replace)
   call neobundle#untap()
 endif " }}}
-" }}}
-" Help {{{
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'thinca/vim-ref' " {{{
+" vim-ref {{{
 if neobundle#tap('vim-ref')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
@@ -96,9 +297,7 @@ if neobundle#tap('vim-ref')
   endfunction
   call neobundle#untap()
 endif " }}}
-" }}}
-" Unite {{{
-NeoBundle 'Shougo/unite.vim' " {{{
+" unite.vim {{{
 if neobundle#tap('unite.vim')
   function! neobundle#tapped.hooks.on_source(bundle) " {{{
     function! s:unite_my_settings() " {{{
@@ -227,28 +426,8 @@ if neobundle#tap('unite.vim')
   endfunction " }}}
   call neobundle#untap()
 endif " }}}
-NeoBundle 'Shougo/unite-outline', { 'autoload': { 'unite_sources': ['outline'] } }
-NeoBundle 'thinca/vim-unite-history', { 'autoload': { 'unite_sources': ['history'] } }
-NeoBundle 'Shougo/tabpagebuffer.vim'
-NeoBundleLazy 'sorah/unite-ghq', { 'autoload': { 'unite_sources': ['ghq'] } }
-NeoBundleLazy 'ujihisa/unite-colorscheme', {
-      \ 'autoload': {
-      \   'unite_sources': ['colorscheme'],
-      \ }
-      \ }
-NeoBundleLazy 'eagletmt/unite-haddock', {
-      \ 'autoload': {
-      \   'unite_sources': ['haddock'],
-      \ }
-      \ }
-" }}}
-" Completion {{{
-NeoBundle 'Shougo/neocomplete.vim' " {{{
+" neocomplete.vim {{{
 if neobundle#tap('neocomplete.vim')
-  call neobundle#config({
-        \ 'vim_version' : '7.3.885',
-        \ 'disabled'    : !has('lua'),
-        \ })
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#data_directory = $VIM_CACHE_DIR . '/neocomplete'
   function! neobundle#tapped.hooks.on_source(bundle)
@@ -279,131 +458,16 @@ if neobundle#tap('neocomplete.vim')
   endfunction
   call neobundle#untap()
 endif " }}}
-" }}}
-" Language, Format {{{
-NeoBundleLazy 'slim-template/vim-slim' " {{{
-if neobundle#tap('vim-slim')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['slim'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'groenewege/vim-less' " {{{
-if neobundle#tap('vim-less')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['less'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'hail2u/vim-css3-syntax' " {{{
-if neobundle#tap('vim-css3-syntax')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['css', 'scss', 'sass', 'less'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'hallison/vim-markdown' " {{{
-if neobundle#tap('vim-markdown')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['markdown'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'motemen/hatena-vim' " {{{
-if neobundle#tap('hatena-vim')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['hatena'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'othree/html5.vim' " {{{
-if neobundle#tap('html5.vim')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['html'],
-        \ }
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'pangloss/vim-javascript' " {{{
-if neobundle#tap('vim-javascript')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['javascript'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'vim-perl/vim-perl' " {{{
-if neobundle#tap('vim-perl')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['perl'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'vim-ruby/vim-ruby' " {{{
-if neobundle#tap('vim-ruby')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['ruby'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'davidoc/taskpaper.vim' " {{{
-if neobundle#tap('taskpaper.vim')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['taskpaper'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'y-uuki/perl-local-lib-path.vim' " {{{
+" perl-local-lib-path.vim {{{
 if neobundle#tap('perl-local-lib-path.vim')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['perl'],
-        \ },
-        \ })
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:perl_local_lib_path = "t/lib"
     autocmd MyInit FileType perl PerlLocalLibPath
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'eagletmt/ghcmod-vim' " {{{
-if neobundle#tap('ghcmod-vim')
-  call neobundle#config({
-        \ 'external_commands' : ['ghc-mod'],
-        \ 'autoload' : {
-        \   'filetypes' : ['haskell'],
-        \ }
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundleLazy 'Rip-Rip/clang_complete' " {{{
+" clang_complete {{{
 if neobundle#tap('clang_complete')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['objc'],
-        \ },
-        \ 'build' : {
-        \   'mac' : 'make',
-        \ },
-        \ })
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:clang_use_library = 1
     let g:clang_library_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
@@ -413,86 +477,19 @@ if neobundle#tap('clang_complete')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'mustache/vim-mustache-handlebars' " {{{
-if neobundle#tap('vim-mustache-handlebars')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['mustache', 'handlebars'],
-        \ },
-        \ })
+" tap-vim {{{
+if neobundle#tap('clang_complete')
+  let g:tap#use_vimproc = 1
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'dag/vim-fish' " {{{
-if neobundle#tap('vim-fish')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : ['fish'],
-        \ },
-        \ })
-  call neobundle#untap()
-endif " }}}
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundleLazy 'Quramy/tsuquyomi', {
-      \ 'filetypes': ['typescript'],
-      \ }
-NeoBundleLazy 'eagletmt/ghci-vim', {
-      \ 'external_commands': ['ghc'],
-      \ 'filetypes': ['haskell'],
-      \ }
-NeoBundleLazy 'eagletmt/ghcmod-vim', {
-      \ 'external_commands': ['ghc', 'ghc-mod'],
-      \ 'filetypes': ['haskell']
-      \ }
-NeoBundleLazy 'eagletmt/neco-ghc', {
-      \ 'external_commands': ['ghc', 'ghc-mod'],
-      \ 'filetypes': ['haskell'],
-      \ }
-NeoBundleLazy 'itchyny/vim-haskell-indent', {
-      \ 'filetypes': ['haskell']
-      \ }
-NeoBundle 'kazuho/p5-text-microtemplate', {
-      \ 'name': 'text-microtemplate',
-      \ 'rtp': 'contrib/vim',
-      \ }
-NeoBundle 'keith/swift.vim'
-NeoBundle 'motemen/tap-vim' " {{{
-let g:tap#use_vimproc = 1
-" }}}
-NeoBundle 'derekwyatt/vim-scala'
-" }}}
-" Color {{{
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'git@github.com:aereal/vim-magica-colors.git',
-      \ { 'base' : '~/repos/github.com/aereal' }
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'hail2u/h2u_colorscheme'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
-NeoBundle 'muratas/vim-andon'
-NeoBundle 'ajh17/Spacegray.vim'
-NeoBundle 'junegunn/seoul256.vim'
-NeoBundle 'noahfrederick/vim-hemisu'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'Lokaltog/vim-distinguished'
-NeoBundle 'rhysd/vim-color-splatoon'
-NeoBundle 'jdkanani/vim-material-theme'
-NeoBundle 'morhetz/gruvbox'
-NeoBundle 'scheakur/vim-scheakur'
-" }}}
-" Visualize {{{
-NeoBundle 'jceb/vim-hier' " {{{
+" vim-hier {{{
 if neobundle#tap('vim-hier')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:hier_enabled = 1
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'dannyob/quickfixstatus' " {{{
-if neobundle#tap('quickfixstatus')
-  call neobundle#untap()
-endif " }}}
-NeoBundle 'LeafCage/foldCC' " {{{
+" foldCC {{{
 if neobundle#tap('foldCC')
   function! neobundle#tapped.hooks.on_source(bundle)
     set foldtext=FoldCCtext()
@@ -500,8 +497,7 @@ if neobundle#tap('foldCC')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'tyru/current-func-info.vim'
-NeoBundle 'Yggdroot/indentLine' " {{{
+" indentLine {{{
 if neobundle#tap('indentLine')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:indentLine_char = '|'
@@ -510,7 +506,7 @@ if neobundle#tap('indentLine')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'itchyny/lightline.vim' " {{{
+" lightline.vim {{{
 if neobundle#tap('lightline.vim')
   function! neobundle#tapped.hooks.on_source(bundle)
     if ! exists('g:lightline')
@@ -538,13 +534,8 @@ if neobundle#tap('lightline.vim')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'osyo-manga/vim-anzu' " {{{
+" vim-anzu {{{
 if neobundle#tap('vim-anzu')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'mappings' : '<Plug>(anzu-',
-        \ },
-        \ })
   nmap n <Plug>(anzu-n-with-echo)
   nmap N <Plug>(anzu-N-with-echo)
   nmap * <Plug>(anzu-star-with-echo)
@@ -552,31 +543,23 @@ if neobundle#tap('vim-anzu')
   nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 't9md/vim-quickhl' " {{{
+" vim-quickhl {{{
 if neobundle#tap('vim-quickhl')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'mappings' : '<Plug>(quickhl-',
-        \ },
-        \ })
   nmap \m <Plug>(quickhl-manual-this)
   nmap \M <Plug>(quickhl-manual-reset)
   call neobundle#untap()
-endif
-" }}}
-" }}}
-" Input & Edit {{{
-NeoBundle 'Shougo/neosnippet' " {{{
+endif " }}}
+" neosnippet {{{
 if neobundle#tap('neosnippet')
+  let g:neosnippet#disable_select_mode_mappings = 0
+  let g:neosnippet#snippets_directory = '~/.vim/snippets'
   function! neobundle#tapped.hooks.on_source(bundle)
-    let g:neosnippet#disable_select_mode_mappings = 0
-    let g:neosnippet#snippets_directory = '~/.vim/snippets'
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
     smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'kana/vim-smartinput' " {{{
+" vim-smartinput {{{
 if neobundle#tap('vim-smartinput')
   function! neobundle#tapped.hooks.on_source(bundle)
     call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
@@ -590,32 +573,13 @@ if neobundle#tap('vim-smartinput')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'mattn/emmet-vim' " {{{
+" emmet-vim {{{
 if neobundle#tap('emmet-vim')
-  function! neobundle#tapped.hooks.on_source(bundle)
-    let g:user_emmet_leader_key = '<C-e>'
-  endfunction
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'filetypes' : [
-        \     'html',
-        \     'haml',
-        \     'slim',
-        \     'css',
-        \     'tt2html',
-        \   ],
-        \ },
-        \ })
+  let g:user_emmet_leader_key = '<C-e>'
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'kana/vim-smartchr' " {{{
+" vim-smartchr {{{
 if neobundle#tap('vim-smartchr')
-  call neobundle#config({
-        \ 'autoload' : {
-        \   'function_prefix' : 'smartchr',
-        \ },
-        \ })
-
   inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
   autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
   autocmd MyInit FileType ruby*      inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
@@ -638,8 +602,7 @@ if neobundle#tap('vim-smartchr')
 
   call neobundle#untap()
 endif " }}}
-NeoBundle 'sickill/vim-pasta'
-NeoBundle 'h1mesuke/vim-alignta' " {{{
+" vim-alignta {{{
 if neobundle#tap('vim-alignta')
   function! neobundle#tapped.hooks.on_source(bundle)
     vmap ,a :Alignta
@@ -648,7 +611,7 @@ if neobundle#tap('vim-alignta')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundle 'tyru/eskk.vim' " {{{
+" eskk.vim {{{
 if neobundle#tap('eskk.vim')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:eskk#directory = expand('~/.vim/.eskk')
@@ -669,11 +632,7 @@ if neobundle#tap('eskk.vim')
 
   call neobundle#untap()
 endif " }}}
-NeoBundle 'Shougo/neosnippet-snippets'
-" }}}
-" Organize {{{
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neomru.vim' " {{{
+" neomru.vim {{{
 if neobundle#tap('neomru.vim')
   function! neobundle#tapped.hooks.on_source(bundle)
     if neobundle#is_sourced('unite.vim')
@@ -685,17 +644,7 @@ if neobundle#tap('neomru.vim')
   endfunction
   call neobundle#untap()
 endif " }}}
-" }}}
-" Utility {{{
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \   'mac' : 'make -f make_mac.mak',
-      \   'unix' : 'make -f make_unix.mak',
-      \   },
-      \ }
-NeoBundle 'sudo.vim'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'haya14busa/incsearch.vim' " {{{
+" incsearch.vim {{{
 if neobundle#tap('incsearch.vim')
   let g:incsearch#auto_nohlsearch = 1
   function! neobundle#tapped.hooks.on_source(bundle) " {{{
@@ -709,12 +658,8 @@ if neobundle#tap('incsearch.vim')
     nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
   endfunction " }}}
   call neobundle#untap()
-endif
-" }}}
-NeoBundle 'thinca/vim-localrc'
-" }}}
-" VCS {{{
-NeoBundle 'tpope/vim-fugitive' " {{{
+endif " }}}
+" vim-fugitive {{{
 if neobundle#tap('vim-fugitive')
   function! neobundle#tapped.hooks.on_source(bundle)
     nnoremap [fugitive] <Nop>
@@ -734,11 +679,13 @@ if neobundle#tap('vim-fugitive')
   endfunction
   call neobundle#untap()
 endif " }}}
-NeoBundleLazy 'rhysd/conflict-marker.vim'
-" }}}
 
 call neobundle#end()
 
 filetype plugin indent on
+
+if !has('vim_starting')
+  call neobundle#call_hook('on_source')
+endif
 
 " vim:set foldmethod=marker:
