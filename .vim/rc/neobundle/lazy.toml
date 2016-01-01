@@ -71,6 +71,10 @@ repository = 'y-uuki/perl-local-lib-path.vim'
 on_ft = 'perl'
 
 [[plugins]]
+repository = 'motemen/tap-vim'
+on_ft = ['perl']
+
+[[plugins]]
 repository = 'eagletmt/ghcmod-vim'
 external_commands = 'ghc-mod'
 on_ft = ['haskell']
@@ -180,3 +184,24 @@ on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
 [[plugins]]
 repository = 'sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
+
+[[plugins]]
+repository = 'thinca/vim-ref'
+on_cmd = ['Ref']
+on_unite = ['ref/man', 'ref/perldoc']
+
+[[plugins]]
+repository = 'haya14busa/incsearch.vim'
+on_map = ['<Plug>']
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'
+on_cmd = ['Git', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Ggrep', 'Gread', 'Gwrite', 'Gdiff', 'Gblame', 'Gbrowse']
+
+[[plugins]]
+repository = 'tyru/eskk.vim'
+on_map = ['<Plug>(eskk']
+
+[[plugins]]
+repository = 'h1mesuke/vim-alignta'
+on_cmd = ['Alignta']

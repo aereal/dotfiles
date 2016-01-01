@@ -23,18 +23,12 @@ depends = ['kana/vim-textobj-user']
 repository = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
-repository = 'thinca/vim-ref'
-
-[[plugins]]
 repository = 'Shougo/unite.vim'
 
 [[plugins]]
 repository = 'Shougo/neocomplete.vim'
 vim_version = '7.3.885'
 disabled = '!has("lua")'
-
-[[plugins]]
-repository = 'motemen/tap-vim'
 
 [[plugins]]
 repository = 'altercation/vim-colors-solarized'
@@ -79,12 +73,6 @@ repository = 'kana/vim-smartchr'
 repository = 'sickill/vim-pasta'
 
 [[plugins]]
-repository = 'h1mesuke/vim-alignta'
-
-[[plugins]]
-repository = 'tyru/eskk.vim'
-
-[[plugins]]
 repository = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
@@ -95,13 +83,7 @@ build = 'make -f make_mac.mak'
 repository = 'editorconfig/editorconfig-vim'
 
 [[plugins]]
-repository = 'haya14busa/incsearch.vim'
-
-[[plugins]]
 repository = 'thinca/vim-localrc'
-
-[[plugins]]
-repository = 'tpope/vim-fugitive'
 
 [[plugins]]
 repository = 'Shougo/neobundle.vim'
