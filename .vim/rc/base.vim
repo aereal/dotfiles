@@ -99,3 +99,7 @@ if $SHELL =~# 'fish$'
   endif
 endif
 " }}}
+
+set guioptions& guioptions-=T,m,r,R,l,L,b,e
+
+" vim:set foldmethod=marker:

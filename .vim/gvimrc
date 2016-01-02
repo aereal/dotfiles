@@ -2,14 +2,6 @@ if has("gui_macvim")
   set guifontwide=Osaka-mono:h14
   set guifont=Menlo:h14
 
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set guioptions-=b
-
   augroup GuiMac
     autocmd!
     autocmd GUIEnter * set fullscreen

@@ -1,5 +1,4 @@
 set showtabline=2
-set guioptions-=e
 function! s:tabpage_label(n) " {{{
   let title = gettabvar(a:n, 'title')
   if title != ''
