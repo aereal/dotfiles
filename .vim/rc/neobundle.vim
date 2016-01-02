@@ -471,8 +471,4 @@ call neobundle#end()
 
 filetype plugin indent on
 
-if !has('vim_starting')
-  call neobundle#call_hook('on_source')
-endif
-
 " vim:set foldmethod=marker:

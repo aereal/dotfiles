@@ -48,3 +48,7 @@ autocmd MyInit BufEnter *.es6,*.es set ft=javascript
 autocmd MyInit BufEnter *.mustache set ft=html.mustache
 autocmd MyInit BufEnter *.handlebars set ft=html.handlebars
 " }}}
+
+autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim echomsg '---> Reload vimrc ...' | NeoBundleClearCache | source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
+
+" vim:set foldmethod=marker:

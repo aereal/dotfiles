@@ -11,3 +11,7 @@ runtime rc/command.vim
 
 set bg=dark
 execute 'colorscheme ' . g:colorscheme_name
+if !has('vim_starting')
+  echomsg '---> Reload bundles'
+  call neobundle#call_hook('on_source')
+endif
