@@ -2,7 +2,7 @@
 
 runtime rc/base.vim
 runtime rc/autocmd.vim
-runtime rc/plugin.vim
+runtime rc/neobundle.vim
 runtime rc/tab.vim
 runtime rc/key.vim
 runtime rc/command.vim
