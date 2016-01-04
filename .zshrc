@@ -148,6 +148,26 @@ zle -N __widget_git_recent_branches
 bindkey -e "^]gr" __widget_git_recent_branches
 # }}}
 
+# tmux: split window with vim-like key mappings {{{
+# vertical split {{{
+tmux_vsplit() {
+  BUFFER="tmux split-window -d -p 50 -h '$BUFFER'" # TODO: escape
+  zle accept-line
+}
+zle -N tmux_vsplit
+bindkey -e "^Wv" tmux_vsplit
+# }}}
+
+# horizontal split {{{
+tmux_split() {
+  BUFFER="tmux split-window -d -p 50 -v '$BUFFER'" # TODO: escape
+  zle accept-line
+}
+zle -N tmux_split
+bindkey -e "^Ws" tmux_split
+# }}}
+# }}}
+
 # alias {{{
 alias :q=exit
 if whence gls >/dev/null; then
