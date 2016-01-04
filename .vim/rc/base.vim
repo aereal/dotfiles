@@ -101,7 +101,17 @@ endif
 " }}}
 
 if has('gui_running')
-  set guioptions& guioptions-=T,m,r,R,l,L,b,e
+  set guioptions&
+  set guioptions-=T
+  set guioptions-=m
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=l
+  set guioptions-=L
+  set guioptions-=L
+  set guioptions-=b
+  set guioptions-=e
 endif
 
 " vim:set foldmethod=marker:
