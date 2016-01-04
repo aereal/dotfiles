@@ -88,3 +88,6 @@ repository = 'thinca/vim-localrc'
 [[plugins]]
 repository = 'Shougo/neobundle.vim'
 fetch = 1
+
+[[plugins]]
+repository = 'tpope/vim-fugitive'

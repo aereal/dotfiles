@@ -200,10 +200,6 @@ repository = 'haya14busa/incsearch.vim'
 on_map = ['<Plug>']
 
 [[plugins]]
-repository = 'tpope/vim-fugitive'
-on_cmd = ['Git', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Ggrep', 'Gread', 'Gwrite', 'Gdiff', 'Gblame', 'Gbrowse']
-
-[[plugins]]
 repository = 'tyru/eskk.vim'
 on_map = ['<Plug>(eskk']
 
