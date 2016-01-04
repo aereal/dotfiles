@@ -1,3 +1,4 @@
+# function load path {{{
 typeset -Ua fpath
 fpath=(
   $HOME/.zsh.d/functions(N-/)
@@ -6,12 +7,15 @@ fpath=(
   $HOMEBREW_PATH/share/zsh/functions(N-/)
   $fpath
 )
+# }}}
 
+# fundamental options {{{
 export REPORTTIME=1
 
 setopt extended_glob
+# }}}
 
-# history
+# history {{{
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
@@ -29,12 +33,14 @@ bindkey -e "^N" history-beginning-search-forward-end
 bindkey -e "^P" history-beginning-search-backward-end
 bindkey -e "^R" history-incremental-pattern-search-backward
 bindkey -e "^S" history-incremental-pattern-search-forward
+# }}}
 
-# color
+# color {{{
 autoload -Uz colors; colors
 [[ -f "$HOME/.dircolors" ]] && source "$HOME/.dircolors"
+# }}}
 
-# completion
+# completion {{{
 zmodload -i zsh/complist
 autoload -U compinit && compinit -C
 setopt \
@@ -44,7 +50,7 @@ setopt \
   no_beep \
   numeric_glob_sort
 
-# Format
+# Format {{{
 zstyle ':completion:*' format '%F{magenta}-- %d --%f'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:options' description yes
@@ -82,17 +88,23 @@ zstyle ':completion:*:*:kill:*' insert-ids single
 
 # Show man candidates with section
 zstyle ':completion:*:manuals' separate-sections true
+# }}}
 
+# key mapping {{{
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
+# }}}
 
-# url-quote-magic
+# }}}
+
+# url-quote-magic {{{
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
+# }}}
 
-# expand childa to $HOME
+# expand childa to $HOME {{{
 expand-to-home-or-complete() { # {{{
   if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
     LBUFFER+="~/"
@@ -103,8 +115,9 @@ expand-to-home-or-complete() { # {{{
 
 zle -N expand-to-home-or-complete
 bindkey -e "\\" expand-to-home-or-complete
+# }}}
 
-# ghq
+# ghq {{{
 __widget_cd_repo() {
   local selected_repo=$( ghq list | peco )
   if [[ -n "$selected_repo" ]]; then
@@ -115,8 +128,9 @@ __widget_cd_repo() {
 }
 zle -N __widget_cd_repo
 bindkey -e "^]^G" __widget_cd_repo
+# }}}
 
-# git
+# git {{{
 __widget_git_recent_branches() {
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(refname)	||| %(subject) %(committerdate:relative)" -- refs/heads \
@@ -132,8 +146,9 @@ __widget_git_recent_branches() {
 }
 zle -N __widget_git_recent_branches
 bindkey -e "^]gr" __widget_git_recent_branches
+# }}}
 
-# alias
+# alias {{{
 alias :q=exit
 if whence gls >/dev/null; then
   alias  l='gls --color=auto -AF'
@@ -145,8 +160,9 @@ else
   alias ll='ls -GAFl'
 fi
 whence hub >/dev/null 2>&1 && alias git=hub
+# }}}
 
-# prompt
+# prompt {{{
 setopt \
   prompt_subst \
   prompt_percent \
@@ -174,7 +190,9 @@ __configure_prompt() {
 }
 autoload -Uz add-zsh-hooks
 add-zsh-hook precmd __configure_prompt
+# }}}
 
+# Show anyenv version {{{
 notify_llenv_version() {
   for llenv in rbenv plenv ndenv; do
     llenv_root="${HOME}/.${llenv}" # XXX
@@ -184,12 +202,15 @@ notify_llenv_version() {
   done
 }
 add-zsh-hook chpwd notify_llenv_version
+# }}}
 
+# direnv {{{
 if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
 fi
+# }}}
 
-# tmux
+# tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then
     tmux attach-session -t "${HOST%%.*}"
@@ -197,3 +218,6 @@ if whence tmux >/dev/null && [ -z "$TMUX" ]; then
     tmux new-session -s "${HOST%%.*}"
   fi
 fi
+# }}}
+
+# vim:set foldmethod=marker:
