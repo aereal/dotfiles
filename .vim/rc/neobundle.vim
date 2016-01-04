@@ -74,6 +74,11 @@ if neobundle#tap('vim-operator-surround')
   map <silent> sr <Plug>(operator-surround-replace)
   call neobundle#untap()
 endif " }}}
+if neobundle#tap('vim-operator-flashy') " {{{
+  map y <Plug>(operator-flashy)
+  nmap Y <Plug>(operator-flashy)$
+  call neobundle#untap()
+endif " }}}
 " vim-ref {{{
 if neobundle#tap('vim-ref')
   function! neobundle#tapped.hooks.on_source(bundle)

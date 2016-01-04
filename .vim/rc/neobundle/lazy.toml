@@ -4,6 +4,11 @@ depends = ['kana/vim-operator-user']
 on_map = ['<Plug>(operator-surround-append)', '<Plug>(operator-surround-delete)', '<Plug>(operator-surround-replace)']
 
 [[plugins]]
+repository = 'haya14busa/vim-operator-flashy'
+depends = ['kana/vim-operator-user']
+on_map = ['<Plug>(operator-flashy']
+
+[[plugins]]
 repository = 'Shougo/unite-outline'
 on_unite = ['outline']
 
