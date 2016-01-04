@@ -1,7 +1,4 @@
 if has("gui_macvim")
-  set guifontwide=Osaka-mono:h14
-  set guifont=Menlo:h14
-
   augroup GuiMac
     autocmd!
     autocmd GUIEnter * set fullscreen
@@ -17,6 +14,8 @@ if has("gui_running")
   let g:solarized_contrast="high"
   set bg=dark
   colorscheme solarized
+  set guifontwide=Osaka-mono:h14
+  set guifont=Menlo:h14
 endif
 
 let local_gvimrc_path = expand('~/.local.gvimrc')
