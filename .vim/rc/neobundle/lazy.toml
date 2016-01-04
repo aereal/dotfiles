@@ -1,7 +1,7 @@
 [[plugins]]
 repository = 'rhysd/vim-operator-surround'
 depends = ['kana/vim-operator-user']
-on_map = ['<Plug>(operator-surround-append)', '<Plug>(operator-surround-delete)', '<Plug>(operator-surround-replace)']
+on_map = ['<Plug>(operator-surround-']
 
 [[plugins]]
 repository = 'haya14busa/vim-operator-flashy'
