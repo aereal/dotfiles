@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Catching up with upstream
+
+set -e
+
+command git fetch -q
+
+develop_branch='staging/master'
+upstream_ref=$develop_branch\@\{u\}
+
+if git rev-parse @{u} 2>/dev/null; then
+  command git merge --no-ff $upstream_ref
+else
+  git rebase $upstream_ref
+fi
