@@ -224,6 +224,41 @@ notify_llenv_version() {
 add-zsh-hook chpwd notify_llenv_version
 # }}}
 
+# Update current window name {{{
+update_window_title() { # {{{
+  emulate -L zsh
+  local -a cmd
+  cmd=(${(z)2})
+
+  case $cmd[1] in
+    *=*) # PLENV_VERSION=5.14.2 plenv exec perl -v => plenv
+      echo -n "k$cmd[2]:t\\"
+      return
+      ;;
+    ls|clear|pwd)
+      echo -n "k$ZSH_NAME\\"
+      return
+      ;;
+    sudo|cd)
+      echo -n "k$cmd[1] $cmd[2]:t\\"
+      return
+      ;;
+    *)
+      echo -n "k$cmd[1]:t\\"
+      return
+      ;;
+  esac
+
+  local -A jt
+  jt=(${(kv)jobtexts})
+  $cmd >>(read num rest cmd=(${(z)${(e):-\$jt$num}}) echo -n "k$cmd[1]:t\\") 2>/dev/null
+} # }}}
+
+if [ "$TMUX" ]; then
+  add-zsh-hook preexec update_window_title
+fi
+# }}}
+
 # direnv {{{
 if whence direnv >/dev/null; then
   eval "$(direnv hook zsh)"
