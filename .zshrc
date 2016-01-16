@@ -1,3 +1,5 @@
+bindkey -v
+
 # function load path {{{
 typeset -Ua fpath
 fpath=(
@@ -29,10 +31,10 @@ set \
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey -e "^N" history-beginning-search-forward-end
-bindkey -e "^P" history-beginning-search-backward-end
-bindkey -e "^R" history-incremental-pattern-search-backward
-bindkey -e "^S" history-incremental-pattern-search-forward
+bindkey -v "^N" history-beginning-search-forward-end
+bindkey -v "^P" history-beginning-search-backward-end
+bindkey -v "^R" history-incremental-pattern-search-backward
+bindkey -v "^S" history-incremental-pattern-search-forward
 # }}}
 
 # color {{{
@@ -114,7 +116,7 @@ expand-to-home-or-complete() { # {{{
 } # }}}
 
 zle -N expand-to-home-or-complete
-bindkey -e "\\" expand-to-home-or-complete
+bindkey -v "\\" expand-to-home-or-complete
 # }}}
 
 # ghq {{{
@@ -127,7 +129,7 @@ __widget_cd_repo() {
   zle -R -c
 }
 zle -N __widget_cd_repo
-bindkey -e "^]^G" __widget_cd_repo
+bindkey -v "^]^G" __widget_cd_repo
 # }}}
 
 # git {{{
@@ -145,7 +147,7 @@ __widget_git_recent_branches() {
   zle -R -c
 }
 zle -N __widget_git_recent_branches
-bindkey -e "^]gr" __widget_git_recent_branches
+bindkey -v "^]gr" __widget_git_recent_branches
 # }}}
 
 # tmux: split window with vim-like key mappings {{{
@@ -155,7 +157,7 @@ tmux_vsplit() {
   zle accept-line
 }
 zle -N tmux_vsplit
-bindkey -e "^Wv" tmux_vsplit
+bindkey -v "^Wv" tmux_vsplit
 # }}}
 
 # horizontal split {{{
@@ -164,7 +166,7 @@ tmux_split() {
   zle accept-line
 }
 zle -N tmux_split
-bindkey -e "^Ws" tmux_split
+bindkey -v "^Ws" tmux_split
 # }}}
 # }}}
 
