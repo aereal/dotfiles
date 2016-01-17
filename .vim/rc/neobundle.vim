@@ -10,6 +10,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 if neobundle#load_cache(expand('<sfile>'), '~/.vim/rc/neobundle/plugins.toml', '~/.vim/rc/neobundle/lazy.toml')
   call neobundle#load_toml('~/.vim/rc/neobundle/plugins.toml')
   call neobundle#load_toml('~/.vim/rc/neobundle/lazy.toml', { 'lazy': 1 })
+  call neobundle#load_toml('~/.vim/rc/neobundle/color.toml', { 'lazy': 1, 'on_unite': ['colorscheme'] })
   call neobundle#load_toml('~/.vim/rc/neobundle/operator.toml', { 'lazy': 1, 'depends': ['kana/vim-operator-user'] })
   NeoBundleSaveCache
 endif

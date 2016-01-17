@@ -31,12 +31,6 @@ vim_version = '7.3.885'
 disabled = '!has("lua")'
 
 [[plugins]]
-repository = 'altercation/vim-colors-solarized'
-
-[[plugins]]
-repository = 'aereal/vim-magica-colors'
-
-[[plugins]]
 repository = 'jceb/vim-hier'
 
 [[plugins]]

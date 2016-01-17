@@ -1,0 +1,32 @@
+[[plugins]]
+repository = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repository = 'aereal/vim-magica-colors'
+
+[[plugins]]
+repository = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repository = 'hail2u/h2u_colorscheme'
+
+[[plugins]]
+repository = 'muratas/vim-andon'
+
+[[plugins]]
+repository = 'ajh17/Spacegray.vim'
+
+[[plugins]]
+repository = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repository = 'rhysd/vim-color-splatoon'
+
+[[plugins]]
+repository = 'jdkanani/vim-material-theme'
+
+[[plugins]]
+repository = 'morhetz/gruvbox'
+
+[[plugins]]
+repository = 'scheakur/vim-scheakur'

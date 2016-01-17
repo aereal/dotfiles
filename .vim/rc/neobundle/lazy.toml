@@ -131,48 +131,6 @@ repository = 'mpollmeier/vim-scalaConceal'
 on_ft = ['scala']
 
 [[plugins]]
-repository = 'nanotech/jellybeans.vim'
-
-[[plugins]]
-repository = 'hail2u/h2u_colorscheme'
-
-[[plugins]]
-repository = 'w0ng/vim-hybrid'
-
-[[plugins]]
-repository = 'chriskempson/vim-tomorrow-theme'
-
-[[plugins]]
-repository = 'muratas/vim-andon'
-
-[[plugins]]
-repository = 'ajh17/Spacegray.vim'
-
-[[plugins]]
-repository = 'junegunn/seoul256.vim'
-
-[[plugins]]
-repository = 'noahfrederick/vim-hemisu'
-
-[[plugins]]
-repository = 'tomasr/molokai'
-
-[[plugins]]
-repository = 'Lokaltog/vim-distinguished'
-
-[[plugins]]
-repository = 'rhysd/vim-color-splatoon'
-
-[[plugins]]
-repository = 'jdkanani/vim-material-theme'
-
-[[plugins]]
-repository = 'morhetz/gruvbox'
-
-[[plugins]]
-repository = 'scheakur/vim-scheakur'
-
-[[plugins]]
 repository = 'mattn/emmet-vim'
 on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
 
