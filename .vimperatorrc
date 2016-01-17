@@ -1,5 +1,5 @@
 " let {{{
-let g:plugin_loader_roots = "~/repos/github.com/vimpr/vimperator-plugins"
+let g:plugin_loader_roots = "~/devel/src/github.com/vimpr/vimperator-plugins"
 let g:plugin_loader_plugins = "_libly,asdfghjkl,feedSomeKeys_3"
 
 let g:asdfghjkl_default = "true"
