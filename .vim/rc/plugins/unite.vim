@@ -29,20 +29,32 @@ endif
 nnoremap <SID>[unite] <Nop>
 nmap gj <SID>[unite]
 
-nnoremap <silent> <SID>[unite]p :<C-u>Unite file_rec/git -hide-source-names -buffer-name=files<CR>
-
-nnoremap <silent> <SID>[unite]f :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
-nnoremap <silent> <SID>[unite]w :<C-u>Unite window:no-current -no-empty<CR>
-nnoremap <silent> <SID>[unite][ :<C-u>Unite outline -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
-nnoremap <silent> <SID>[unite]: :<C-u>Unite history/command -start-insert<CR>
-nnoremap <silent> <SID>[unite]q :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
-nnoremap <silent> <SID>[unite]t :<C-u>Unite tab:no-current -no-empty<CR>
+nmap <SID>[unite]p <SID>(project-files)
+nmap <SID>[unite]f <SID>(files)
+nmap <SID>[unite]w <SID>(windows)
+nmap <SID>[unite][ <SID>(outline)
+nmap <SID>[unite]: <SID>(history)
+nmap <SID>[unite]q <SID>(quickfix)
+nmap <SID>[unite]t <SID>(tabs)
+nmap <SID>[unite]B <SID>(buffers)
 
 if has('gui_running')
-  nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer_tab -no-empty<CR>
+  nmap <SID>[unite]b <SID>(tab-buffers)
 else
-  nnoremap <silent> <SID>[unite]b :<C-u>Unite buffer<CR>
+  nmap <SID>[unite]b <SID>(buffers)
 endif
+
+" definitions {{{
+nnoremap <silent> <SID>(project-files) :<C-u>Unite file_rec/git -hide-source-names -buffer-name=files<CR>
+nnoremap <silent> <SID>(files) :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
+nnoremap <silent> <SID>(windows) :<C-u>Unite window:no-current -no-empty<CR>
+nnoremap <silent> <SID>(outline) :<C-u>Unite outline -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
+nnoremap <silent> <SID>(history) :<C-u>Unite history/command -start-insert<CR>
+nnoremap <silent> <SID>(quickfix) :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
+nnoremap <silent> <SID>(tabs) :<C-u>Unite tab:no-current -no-empty<CR>
+nnoremap <silent> <SID>(tab-buffers) :<C-u>Unite buffer_tab -no-empty<CR>
+nnoremap <silent> <SID>(buffers) :<C-u>Unite buffer -no-empty<CR>
+" }}}
 " }}}
 " autocmd {{{
 autocmd MyInit FileType unite nmap <buffer><BS> <Plug>(unite_delete_backward_path)
