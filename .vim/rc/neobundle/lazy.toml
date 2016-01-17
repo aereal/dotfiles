@@ -148,9 +148,5 @@ repository = 'haya14busa/incsearch.vim'
 on_map = ['<Plug>']
 
 [[plugins]]
-repository = 'tyru/eskk.vim'
-on_map = ['<Plug>(eskk']
-
-[[plugins]]
 repository = 'h1mesuke/vim-alignta'
 on_cmd = ['Alignta']

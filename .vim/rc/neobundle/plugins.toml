@@ -85,3 +85,6 @@ fetch = 1
 
 [[plugins]]
 repository = 'tpope/vim-fugitive'
+
+[[plugins]]
+repository = 'tyru/eskk.vim'
