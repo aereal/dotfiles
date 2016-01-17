@@ -150,3 +150,11 @@ on_map = ['<Plug>']
 [[plugins]]
 repository = 'h1mesuke/vim-alignta'
 on_cmd = ['Alignta']
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repository = 'motemen/xslate-vim'
+on_ft = ['xslate']
