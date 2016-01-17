@@ -37,12 +37,11 @@ if neobundle#tap('vim-operator-flashy') " {{{
 endif " }}}
 " vim-ref {{{
 if neobundle#tap('vim-ref')
-  function! neobundle#tapped.hooks.on_source(bundle)
-    let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
-    if !isdirectory(g:ref_cache_dir)
-      call mkdir(g:ref_cache_dir, '-p')
-    endif
-  endfunction
+  let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
+  if !isdirectory(g:ref_cache_dir)
+    call mkdir(g:ref_cache_dir, '-p')
+  endif
+
   call neobundle#untap()
 endif " }}}
 " unite.vim {{{
@@ -228,11 +227,10 @@ if neobundle#tap('vim-smartchr')
 endif " }}}
 " vim-alignta {{{
 if neobundle#tap('vim-alignta')
-  function! neobundle#tapped.hooks.on_source(bundle)
-    vmap ,a :Alignta
-    vmap ,= :Alignta =<CR>
-    vmap ,> :Alignta =><CR>
-  endfunction
+  vmap ,a :Alignta
+  vmap ,= :Alignta =<CR>
+  vmap ,> :Alignta =><CR>
+
   call neobundle#untap()
 endif " }}}
 " eskk.vim {{{
