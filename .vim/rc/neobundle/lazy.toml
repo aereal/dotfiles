@@ -1,14 +1,4 @@
 [[plugins]]
-repository = 'rhysd/vim-operator-surround'
-depends = ['kana/vim-operator-user']
-on_map = ['<Plug>(operator-surround-']
-
-[[plugins]]
-repository = 'haya14busa/vim-operator-flashy'
-depends = ['kana/vim-operator-user']
-on_map = ['<Plug>(operator-flashy']
-
-[[plugins]]
 repository = 'Shougo/unite-outline'
 on_unite = ['outline']
 
