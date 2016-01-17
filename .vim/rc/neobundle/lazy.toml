@@ -64,6 +64,7 @@ on_ft = ['ruby']
 
 [[plugins]]
 repository = 'davidoc/taskpaper.vim'
+on_ft = ['taskpaper']
 
 [[plugins]]
 repository = 'y-uuki/perl-local-lib-path.vim'
