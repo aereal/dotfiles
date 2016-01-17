@@ -19,6 +19,10 @@ repository = 'ujihisa/unite-colorscheme'
 on_unite = ['colorscheme']
 
 [[plugins]]
+repository = 'osyo-manga/unite-quickfix'
+on_unite = ['quickfix']
+
+[[plugins]]
 repository = 'eagletmt/unite-haddock'
 on_unite = ['haddock']
 
