@@ -20,3 +20,10 @@ let g:lightline.active = {
       \   ['readonly', 'filename', 'modified', 'unite'],
       \ ],
       \ }
+let g:lightline.tabline = {
+      \ 'left': [ ['tabs'] ],
+      \ }
+let g:lightline.tab = {
+      \ 'active'   : ['tabnum', 'readonly', 'filename', 'modified'],
+      \ 'inactive' : ['tabnum', 'readonly', 'filename', 'modified'],
+      \ }
