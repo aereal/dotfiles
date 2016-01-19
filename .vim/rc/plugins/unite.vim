@@ -52,7 +52,7 @@ nnoremap <silent> <SID>(project-files) :<C-u>Unite file_rec/git -hide-source-nam
 nnoremap <silent> <SID>(files) :<C-u>UniteWithCurrentDir file file/new -hide-source-names -buffer-name=files<CR>
 nnoremap <silent> <SID>(files-from-buffer) :<C-u>UniteWithBufferDir file file/new -hide-source-names -buffer-name=files<CR>
 nnoremap <silent> <SID>(windows) :<C-u>Unite window:no-current -no-empty<CR>
-nnoremap <silent> <SID>(outline) :<C-u>Unite outline -vertical -hide-source-names -winwidth=40 -buffer-name=outline<CR>
+nnoremap <silent> <SID>(outline) :<C-u>Unite outline -hide-source-names -winwidth=40 -buffer-name=outline<CR>
 nnoremap <silent> <SID>(history) :<C-u>Unite history/command -start-insert<CR>
 nnoremap <silent> <SID>(quickfix) :<C-u>Unite quickfix -no-quit -no-empty -auto-resize -buffer-name=quickfix<CR>
 nnoremap <silent> <SID>(tabs) :<C-u>Unite tab:no-current -no-empty<CR>
