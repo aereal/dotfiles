@@ -39,6 +39,7 @@ nmap <SID>[unite]q <SID>(quickfix)
 nmap <SID>[unite]t <SID>(tabs)
 nmap <SID>[unite]B <SID>(buffers)
 nmap <SID>[unite]mv <SID>(rename)
+nmap <SID>[unite]G <SID>(ghq-list)
 
 if has('gui_running')
   nmap <SID>[unite]b <SID>(tab-buffers)
@@ -58,6 +59,7 @@ nnoremap <silent> <SID>(tabs) :<C-u>Unite tab:no-current -no-empty<CR>
 nnoremap <silent> <SID>(tab-buffers) :<C-u>Unite buffer_tab -no-empty<CR>
 nnoremap <silent> <SID>(buffers) :<C-u>Unite buffer -no-empty<CR>
 nnoremap <silent><expr> <SID>(rename) ':<C-u>Unite file -input=' . expand('%:p') . ' -default-action=exrename -immediately<CR>'
+nnoremap <silent> <SID>(ghq-list) :<C-u>Unite ghq<CR>
 " }}}
 " }}}
 " autocmd {{{
