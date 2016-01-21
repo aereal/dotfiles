@@ -3,4 +3,4 @@
 set -e
 
 env PERL5LIB="$PWD/lib:$PWD/local/lib/perl5" \
-  perl $@
+  plenv exec perl $@
