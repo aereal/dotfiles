@@ -24,4 +24,9 @@ autocmd MyInit FileType gitconfig setlocal noexpandtab
 
 autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim echomsg '---> Reload vimrc ...' | NeoBundleClearCache | source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
 
+autocmd MyInit WinEnter    * set cursorline
+autocmd MyInit WinLeave    * set nocursorline
+autocmd MyInit InsertEnter * set nocursorline
+autocmd MyInit InsertLeave * set cursorline
+
 " vim:set foldmethod=marker:
