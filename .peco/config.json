@@ -1,12 +1,22 @@
 {
-  "Prompt": "X | _ | X < ",
+  "Prompt": ">",
   "Keymap": {
     "M-x": "peco.ToggleSelectionAndSelectNext",
     "C-g": "peco.Cancel"
   },
   "Style": {
+    "SavedSelection": [
+      "bold"
+    ],
+    "Selected": [
+      "underline"
+    ],
+    "Query": [
+      "yellow"
+    ],
     "Matched": [
-      "magenta"
+      "cyan",
+      "reverse"
     ]
   }
 }
