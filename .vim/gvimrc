@@ -16,6 +16,9 @@ if has("gui_running")
   colorscheme solarized
   set guifontwide=Osaka-mono:h14
   set guifont=Menlo:h14
+  if exists('&macligatures')
+    set macligatures
+  endif
 endif
 
 let local_gvimrc_path = expand('~/.local.gvimrc')
