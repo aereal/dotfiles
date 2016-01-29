@@ -267,6 +267,21 @@ if whence direnv >/dev/null; then
 fi
 # }}}
 
+# syntax highlight {{{
+if [[ -f "$HOMEBREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source $HOMEBREW_PATH/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+# }}}
+
+# substring-search {{{
+if [[ -f "$HOMEBREW_PATH/opt/zsh-history-substring-search/zsh-history-substring-search.zsh" ]]; then
+  source $HOMEBREW_PATH/opt/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+  bindkey -M vicmd "k" history-substring-search-up
+  bindkey -M vicmd "j" history-substring-search-down
+fi
+# }}}
+
 # tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then
