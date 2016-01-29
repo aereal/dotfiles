@@ -103,6 +103,7 @@ endif " }}}
 if neobundle#tap('indentLine')
   function! neobundle#tapped.hooks.on_source(bundle)
     let g:indentLine_char = '|'
+    let g:indentLine_showFirstIndentLevel = 1
 
     autocmd MyInit FileType * :IndentLinesReset
   endfunction
