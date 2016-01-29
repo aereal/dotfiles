@@ -135,6 +135,9 @@ call unite#custom#default_action('source/ghq/*', 'tabnew_lcd')
 " matcher_project_files: 候補はリポジトリのファイルからのみ
 call unite#custom#source('file_mru', 'matchers', ['converter_relative_abbr', 'matcher_project_files', 'matcher_fuzzy'])
 
+let s:unite_project_ignore_pattern = '\.\(gif\|jpe\?g\|png\|min\.js\|vendor\)'
+call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_project_ignore_pattern)
+
 call unite#custom#profile('default', 'context', {
       \ 'direction' : 'dynamicbottom',
       \ 'prompt_direction': 'below',
