@@ -135,7 +135,7 @@ bindkey -v "^]^G" __widget_cd_repo
 # git {{{
 __widget_git_recent_branches() {
   local selected_branch=$( \
-    git for-each-ref --sort=-committerdate --format="%(refname) -- %(committerdate:relative)" -- refs/heads \
+    git for-each-ref --sort=-committerdate --format="%(refname)	%(committerdate:relative)" -- refs/heads \
     | sed -E 's/refs\/heads\///' \
     | peco --query "$LBUFFER" \
     | cut -f1 \
