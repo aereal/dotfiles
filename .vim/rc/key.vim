@@ -20,3 +20,6 @@ nnoremap L $
 
 nnoremap ]q :<C-u>cnext<CR>
 nnoremap [q :<C-u>cprev<CR>
+
+xnoremap < <gv
+xnoremap > >gv
