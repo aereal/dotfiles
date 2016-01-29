@@ -191,10 +191,32 @@ setopt \
   transient_rprompt
 autoload -U promptinit && promptinit
 
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' max-exports 4
+zstyle ':vcs_info:(git|svn):*' formats '%R' '%S' '%b' '%s'
+zstyle ':vcs_info:(git|svn):*' actionformats '%R' '%S' '%b|%a' '%s'
+zstyle ':vcs_info:*' formats '%R' '%S' '%s:%b' '%s'
+zstyle ':vcs_info:*' actionformats '%R' '%S' '%s:%b|%a' '%s'
+
 __configure_prompt() {
   local ok_yuno="%F{yellow}✘╹◡╹✘%f"
   local bad_yuno="%F{red}✘>﹏<✘%f"
   local command_line="%(?.${ok_yuno}.${bad_yuno}) < "
+
+  psvar=()
+  STY= LANG=en_US.UTF-8 vcs_info
+  repos=`print -nD "$vcs_info_msg_0_"`
+  if [[ -n "$vcs_info_msg_1_" ]]; then
+      vcs="$vcs_info_msg_3_"
+  else
+      vcs=''
+  fi
+  [[ -n "$repos" ]] && psvar[2]="$repos"
+  [[ -n "$vcs_info_msg_1_" ]] && psvar[3]="$vcs_info_msg_1_"
+  [[ -n "$vcs_info_msg_2_" ]] && psvar[1]="$vcs_info_msg_2_"
+
+  local psdirs='[%F{yellow}%3(v|%32<..<%3v%<<|%60<..<%~%<<)%f]'
+  local psvcs='%3(v|[%25<\<<%F{yellow}%2v%f@%F{blue}%1v%f%<<]|)'
 
   local git_is_dirty git_local_changes git_upstream_changes
   if git rev-parse --is-inside-work-tree &>/dev/null; then
@@ -208,7 +230,7 @@ __configure_prompt() {
 
   export PROMPT="${command_line}"
 
-  export RPROMPT="${git_is_dirty}${git_local_changes}${git_upstream_changes}[%~]"
+  export RPROMPT="${psdirs}${git_is_dirty}${git_local_changes}${git_upstream_changes}${psvcs}"
 }
 autoload -Uz add-zsh-hooks
 add-zsh-hook precmd __configure_prompt
