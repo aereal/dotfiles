@@ -88,3 +88,6 @@ repository = 'tpope/vim-fugitive'
 
 [[plugins]]
 repository = 'tyru/eskk.vim'
+
+[[plugins]]
+repository = 'tmhedberg/matchit'
