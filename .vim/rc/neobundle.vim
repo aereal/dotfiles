@@ -150,6 +150,12 @@ if neobundle#tap('vim-smartinput')
           \   'char'  : '<CR>',
           \   'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>",
           \ })
+    call smartinput#define_rule({
+          \ 'at' : '\%#',
+          \ 'char' : '[',
+          \ 'input' : '[%%]<Left><Left>',
+          \ 'filetype': ['tt2html'],
+          \ })
   endfunction
   call neobundle#untap()
 endif " }}}
