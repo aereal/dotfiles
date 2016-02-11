@@ -7,10 +7,6 @@ repository = 'thinca/vim-unite-history'
 on_unite = ['history']
 
 [[plugins]]
-repository = 'Shougo/tabpagebuffer.vim'
-on_unite = ['buffer_tab']
-
-[[plugins]]
 repository = 'sorah/unite-ghq'
 on_unite = ['ghq']
 

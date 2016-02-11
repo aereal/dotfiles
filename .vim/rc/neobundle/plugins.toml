@@ -94,3 +94,6 @@ repository = 'tmhedberg/matchit'
 
 [[plugins]]
 repository = "haya14busa/vim-signjk-motion"
+
+[[plugins]]
+repository = 'Shougo/tabpagebuffer.vim'
