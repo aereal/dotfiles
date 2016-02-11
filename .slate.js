@@ -77,13 +77,4 @@ for (var key in viLikeWindowPlacements) {
 S.bindAll({
   'r:ctrl,cmd': S.op('relaunch'),
   'f:ctrl,cmd,shift': S.op('hint'),
-  // ']:cmd': S.op('shell', {
-  //   command: '/usr/bin/open -a LimeChat'
-  // }),
-  // ';:cmd,shift': S.op('shell', {
-  //   command: '/usr/bin/open -a iTerm'
-  // }),
-  // "[:cmd" : S.op('shell', {
-  //   command: '/usr/bin/open -a MacVim'
-  // })
 });
