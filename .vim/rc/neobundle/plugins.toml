@@ -91,3 +91,6 @@ repository = 'tyru/eskk.vim'
 
 [[plugins]]
 repository = 'tmhedberg/matchit'
+
+[[plugins]]
+repository = "haya14busa/vim-signjk-motion"

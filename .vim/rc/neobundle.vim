@@ -264,6 +264,12 @@ if neobundle#tap('vim-fugitive')
   endfunction
   call neobundle#untap()
 endif " }}}
+" vim-signjk-motion {{{
+if neobundle#tap('vim-signjk-motion')
+  map ;j <Plug>(signjk-j)
+  map ;k <Plug>(signjk-k)
+endif
+" }}}
 
 call neobundle#end()
 
