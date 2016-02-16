@@ -138,9 +138,4 @@ call unite#custom#source('file_mru', 'matchers', ['converter_relative_abbr', 'ma
 let s:unite_project_ignore_pattern = '\.\(gif\|jpe\?g\|png\|min\.js\|vendor\)'
 call unite#custom#source('file_rec/git', 'ignore_pattern', s:unite_project_ignore_pattern)
 
-call unite#custom#profile('default', 'context', {
-      \ 'direction' : 'dynamicbottom',
-      \ 'prompt_direction': 'below',
-      \ })
-
 " vim:set foldmethod=marker:
