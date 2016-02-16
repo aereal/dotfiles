@@ -1,28 +1,7 @@
-if has("gui_macvim")
-  augroup GuiMac
-    autocmd!
-    autocmd GUIEnter * set fullscreen
-  augroup END
-endif
-
-if has('transparency')
-  set transparency=10
-endif
-
 if has("gui_running")
-  let g:solarized_menu=0
-  let g:solarized_contrast="high"
   set bg=dark
-  colorscheme solarized
-  set guifontwide=Osaka-mono:h14
-  set guifont=Menlo:h14
-  if exists('&macligatures')
-    set macligatures
-  endif
-endif
+  colorscheme gruvbox
 
-let local_gvimrc_path = expand('~/.local.gvimrc')
-if filereadable(local_gvimrc_path)
-  exec 'source ' . local_gvimrc_path
+  set guifontwide=SourceHanCodeJP-Regular:h14
+  set guifont=AnonymousPro:h14
 endif
-unlet local_gvimrc_path
