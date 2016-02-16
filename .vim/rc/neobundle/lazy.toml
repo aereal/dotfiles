@@ -1,28 +1,4 @@
 [[plugins]]
-repository = 'Shougo/unite-outline'
-on_unite = ['outline']
-
-[[plugins]]
-repository = 'thinca/vim-unite-history'
-on_unite = ['history']
-
-[[plugins]]
-repository = 'sorah/unite-ghq'
-on_unite = ['ghq']
-
-[[plugins]]
-repository = 'ujihisa/unite-colorscheme'
-on_unite = ['colorscheme']
-
-[[plugins]]
-repository = 'osyo-manga/unite-quickfix'
-on_unite = ['quickfix']
-
-[[plugins]]
-repository = 'eagletmt/unite-haddock'
-on_unite = ['haddock']
-
-[[plugins]]
 repository = 'slim-template/vim-slim'
 on_ft = ['slim']
 
