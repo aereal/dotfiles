@@ -56,6 +56,20 @@ var moveFullOp = slate.op('move', {
   width: 'screenSizeX',
   height: 'screenSizeY'
 });
+var moveCenterOp = (function () {
+  var ratio = 0.75;
+  var op = slate.op('move', {
+    x: function () {
+      return slate.screen().rect().width * ((1 - ratio) / 2);
+    },
+    y: function () {
+      return slate.screen().rect().height * ((1 - ratio) / 2);
+    },
+    width: 'screenSizeX*0.75',
+    height: 'screenSizeY*0.75',
+  });
+  return op;
+})();
 
 var viLikeWindowPlacements = {
   h: pushLeftOp,
@@ -67,6 +81,7 @@ var viLikeWindowPlacements = {
   m: moveBottomRightOp,
   n: moveBottomLeftOp,
   'return': moveFullOp,
+  'space': moveCenterOp,
 };
 
 for (var key in viLikeWindowPlacements) {
