@@ -30,7 +30,7 @@ sub seq_run {
   return List::Util::reduce {
     my ($last_result, $cmd) = ($a, $b);
     $last_result == 0 ? run($cmd) : $last_result;
-  } @_;
+  } 0, @_;
 }
 
 sub run {
