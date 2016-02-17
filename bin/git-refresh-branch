@@ -1,0 +1,43 @@
+#!/usr/bin/env perl
+
+use Carp ();
+use List::Util qw(reduce);
+
+sub main {
+  my ($rollback_ref) = @_;
+
+  Carp::croak 'rollback_ref must be given' unless $rollback_ref;
+
+  my $current_branch = do {
+    my $out = `git symbolic-ref --short HEAD`;
+    chomp $out;
+    $out;
+  };
+  my $old_branch_name = old_branch_name($current_branch);
+  seq_run(
+    ['git', 'branch', '-m', $current_branch, $old_branch_name],
+    ['git', 'checkout', '-b', $current_branch, $rollback_ref],
+  );
+}
+
+sub old_branch_name {
+  my ($name) = @_;
+  my $time = time();
+  return "prev-$time-$name";
+}
+
+sub seq_run {
+  return List::Util::reduce {
+    my ($last_result, $cmd) = ($a, $b);
+    $last_result == 0 ? run($cmd) : $last_result;
+  } @_;
+}
+
+sub run {
+  my ($cmd) = @_;
+  my $line = join ' ', @$cmd;
+  Carp::carp $line;
+  return system @$cmd;
+}
+
+main(@ARGV);
