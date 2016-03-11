@@ -7,6 +7,6 @@ if has("gui_running")
   catch
   endtry
 
-  set guifontwide=SourceHanCodeJP-Regular:h14
-  set guifont=AnonymousPro:h14
+  set guifontwide=SourceHanCodeJP-Regular:h16
+  set guifont=Fantasque\ Sans\ Mono\ Regular:h16
 endif
