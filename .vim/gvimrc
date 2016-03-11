@@ -1,6 +1,10 @@
 if has("gui_running")
   set bg=dark
-  colorscheme gruvbox
+
+  try
+    colorscheme japanesque
+  catch
+  endtry
 
   set guifontwide=SourceHanCodeJP-Regular:h14
   set guifont=AnonymousPro:h14

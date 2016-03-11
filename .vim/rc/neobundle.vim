@@ -11,6 +11,10 @@ if neobundle#load_cache(expand('<sfile>'), '~/.vim/rc/neobundle/plugins.toml', '
   call neobundle#load_toml('~/.vim/rc/neobundle/plugins.toml')
   call neobundle#load_toml('~/.vim/rc/neobundle/lazy.toml', { 'lazy': 1 })
   call neobundle#load_toml('~/.vim/rc/neobundle/operator.toml', { 'lazy': 1, 'depends': ['kana/vim-operator-user'] })
+  NeoBundle 'aereal/vim-colors-japanesque', {
+        \ 'base': expand('~/devel/src/github.com/aereal'),
+        \ 'frozen': 1,
+        \ }
   NeoBundleSaveCache
 endif
 
