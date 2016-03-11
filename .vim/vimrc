@@ -2,12 +2,12 @@
 
 let did_load_filetypes = 1
 
-runtime rc/base.vim
-runtime rc/autocmd.vim
-runtime rc/neobundle.vim
-runtime rc/tab.vim
-runtime rc/key.vim
-runtime rc/command.vim
+runtime rc/00_base.vim
+runtime rc/00_autocmd.vim
+runtime rc/10_neobundle.vim
+runtime rc/20_tab.vim
+runtime rc/20_key.vim
+runtime rc/20_command.vim
 
 if !has('vim_starting')
   echomsg '---> Reload bundles'
