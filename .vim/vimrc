@@ -1,5 +1,7 @@
 " vim:set et foldmethod=marker:
 
+let did_load_filetypes = 1
+
 runtime rc/base.vim
 runtime rc/autocmd.vim
 runtime rc/neobundle.vim

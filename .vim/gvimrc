@@ -1,6 +1,7 @@
 if has("gui_running")
   set bg=dark
 
+if has("gui_running")
   try
     colorscheme japanesque
   catch
