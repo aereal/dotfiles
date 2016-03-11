@@ -7,7 +7,7 @@ endif
 if ! has_key(g:lightline, 'component_visible_condition')
   let g:lightline.component_visible_condition = {}
 endif
-let g:lightline.colorscheme = 'solarized_light'
+let g:lightline.colorscheme = 'japanesque'
 let g:lightline.component.anzu     = '%{anzu#search_status()}'
 let g:lightline.component.fugitive = '%{fugitive#head()}'
 let g:lightline.component.unite    = '%{unite#get_status_string()}'
