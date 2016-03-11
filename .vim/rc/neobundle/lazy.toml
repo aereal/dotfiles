@@ -100,10 +100,6 @@ repository = 'derekwyatt/vim-scala'
 on_ft = ['scala']
 
 [[plugins]]
-repository = 'mpollmeier/vim-scalaConceal'
-on_ft = ['scala']
-
-[[plugins]]
 repository = 'mattn/emmet-vim'
 on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
 
