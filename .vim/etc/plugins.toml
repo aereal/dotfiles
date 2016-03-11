@@ -8,6 +8,9 @@ repo = 'osyo-manga/vim-watchdogs'
 repo = 'osyo-manga/shabadou.vim'
 
 [[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
 repo = 'machakann/vim-textobj-delimited'
 depends = ['kana/vim-textobj-user']
 
