@@ -106,7 +106,7 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 # }}}
 
-# expand childa to $HOME {{{
+# expand backslash to tilde {{{
 # Originally from: https://github.com/cho45/dotfiles/blob/64ea90d17aaf6c46a2cb090f2e12a6e3d7df6034/.zshrc#L245
 expand-to-home-or-complete() { # {{{
   if [ "$LBUFFER" = "" -o "$LBUFFER[-1]" = " " ]; then
