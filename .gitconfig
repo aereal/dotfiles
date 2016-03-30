@@ -121,3 +121,6 @@
 	show = git-diff-highlight | less
 	diff = git-diff-highlight | less
 	grep = false
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/
+	pushInsteadOf = git://github.com/
