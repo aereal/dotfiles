@@ -43,10 +43,6 @@ if dein#tap('vim-ref')
     call mkdir(g:ref_cache_dir, '-p')
   endif
 endif " }}}
-" unite.vim {{{
-if dein#tap('unite.vim')
-  execute 'autocmd MyInit User' 'dein#source#' . g:dein#name 'runtime rc/plugins/unite.vim'
-endif " }}}
 " neocomplete.vim {{{
 if dein#tap('neocomplete.vim')
   let g:neocomplete#enable_at_startup = 1

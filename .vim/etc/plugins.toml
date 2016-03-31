@@ -27,6 +27,12 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
+hook_add = '''
+runtime rc/plugins/unite.added.vim
+'''
+hook_source = '''
+runtime rc/plugins/unite.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
