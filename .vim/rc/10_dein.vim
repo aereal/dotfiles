@@ -8,6 +8,7 @@ if dein#load_cache()
   let plugins_toml = expand('~/.vim/etc/plugins.toml')
   call dein#load_toml(plugins_toml)
   call dein#load_toml(expand('~/.vim/etc/lazy.toml'), { 'lazy': 1 })
+  call dein#load_toml(expand('~/.vim/etc/operator.toml'), { 'lazy': 1, 'depends': ['kana/vim-operator-user'] })
   call dein#save_cache()
 endif
 

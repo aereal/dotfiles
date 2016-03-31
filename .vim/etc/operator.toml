@@ -1,0 +1,14 @@
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+on_map = ['<Plug>(operator-surround-']
+
+[[plugins]]
+repo = 'haya14busa/vim-operator-flashy'
+on_map = ['<Plug>(operator-flashy']
+
+[[plugins]]
+repo = 'emonkak/vim-operator-comment'
+on_map = ['<Plug>(operator-comment)', '<Plug>(operator-uncomment)']
