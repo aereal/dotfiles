@@ -151,3 +151,6 @@ repo = 'sorah/unite-ghq'
 
 [[plugins]]
 repo = 'ujihisa/unite-colorscheme'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'

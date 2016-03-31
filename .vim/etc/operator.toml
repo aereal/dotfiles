@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'kana/vim-operator-user'
-
-[[plugins]]
 repo = 'rhysd/vim-operator-surround'
 on_map = ['<Plug>(operator-surround-']
 
