@@ -1,10 +1,21 @@
 [[plugins]]
 repo = 'rhysd/vim-operator-surround'
 on_map = ['<Plug>(operator-surround-']
+depends = ['vim-operator-user']
+hook_add = '''
+map <silent> sa <Plug>(operator-surround-append)
+map <silent> sd <Plug>(operator-surround-delete)
+map <silent> sr <Plug>(operator-surround-replace)
+'''
 
 [[plugins]]
 repo = 'haya14busa/vim-operator-flashy'
 on_map = ['<Plug>(operator-flashy']
+depends = ['vim-operator-user']
+hook_add = '''
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
+'''
 
 [[plugins]]
 repo = 'emonkak/vim-operator-comment'

@@ -41,6 +41,9 @@ on_ft = ['taskpaper']
 [[plugins]]
 repo = 'motemen/tap-vim'
 on_ft = ['perl']
+hook_add = '''
+let g:tap#use_vimproc = 1
+'''
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
@@ -102,6 +105,9 @@ on_ft = ['scala']
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
+hook_add = '''
+let g:user_emmet_leader_key = '<C-e>'
+'''
 
 [[plugins]]
 repo = 'sudo.vim'
@@ -111,14 +117,38 @@ on_cmd = ['SudoWrite', 'SudoRead']
 repo = 'thinca/vim-ref'
 on_cmd = ['Ref']
 on_unite = ['ref/man', 'ref/perldoc']
+hook_add = '''
+let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
+if !isdirectory(g:ref_cache_dir)
+  call mkdir(g:ref_cache_dir, '-p')
+endif
+'''
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
 on_map = ['<Plug>']
+hook_add = '''
+let g:incsearch#auto_nohlsearch = 1
+'''
+hook_source = '''
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map n <Plug>(incsearch-nohl-n)
+map N <Plug>(incsearch-nohl-N)
+nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+'''
 
 [[plugins]]
 repo = 'h1mesuke/vim-alignta'
 on_cmd = ['Alignta']
+hook_add = '''
+vmap ,a :Alignta
+vmap ,= :Alignta =<CR>
+vmap ,> :Alignta =><CR>
+'''
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -131,3 +161,9 @@ on_ft = ['xslate']
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 on_unite = ['file_mru']
+hook_source = '''
+call unite#custom#source(
+      \ 'file_mru', 'matchers',
+      \ ['matcher_project_files', 'matcher_fuzzy'],
+      \ )
+'''
