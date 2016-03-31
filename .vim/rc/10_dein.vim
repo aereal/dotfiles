@@ -74,7 +74,7 @@ if dein#tap('clang_complete')
   execute 'autocmd MyInit User' 'dein#source#' . g:dein#name 'call s:clang_complete_on_source()'
 endif " }}}
 " tap-vim {{{
-if dein#tap('clang_complete')
+if dein#tap('tap-vim')
   let g:tap#use_vimproc = 1
 endif " }}}
 " vim-hier {{{
