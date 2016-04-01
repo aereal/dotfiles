@@ -16,6 +16,10 @@ if dein#load_state(s:dein_cache_dir)
   call dein#load_toml(s:plugins_toml)
   call dein#load_toml(s:lazy_plugins_toml, { 'lazy': 1 })
   call dein#load_toml(s:operator_plugins_toml, { 'lazy': 1, 'depends': ['vim-operator-user'] })
+  call dein#local('~/devel/src/github.com/aereal', {
+        \ 'frozen': 1,
+        \ 'merged': 1,
+        \ }, ['vim-*'])
 
   call dein#end()
   call dein#save_state()

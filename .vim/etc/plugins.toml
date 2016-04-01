@@ -229,9 +229,6 @@ map ;k <Plug>(signjk-k)
 repo = 'altercation/vim-colors-solarized'
 
 [[plugins]]
-repo = 'aereal/vim-magica-colors'
-
-[[plugins]]
 repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
