@@ -13,3 +13,6 @@ if !has('vim_starting')
   echomsg '---> Reload bundles'
   call neobundle#call_hook('on_source')
 endif
+
+syntax enable
+filetype plugin indent on
