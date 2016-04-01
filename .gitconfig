@@ -106,6 +106,7 @@
 	singlekey = true
 
 [ghq]
+	root = /Users/aereal/devel/src/github.com/aereal/dotfiles/.vim/cache/dein/repos
 	root = /Users/aereal/devel/src
 
 [gitflow "branch"]

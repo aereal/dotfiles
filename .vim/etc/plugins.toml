@@ -1,0 +1,273 @@
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_source = '''
+runtime rc/plugins/quickrun.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+hook_source = '''
+runtime rc/plugins/watchdogs.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/shabadou.vim'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'machakann/vim-textobj-delimited'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repo = 'kana/vim-textobj-indent'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repo = 'kana/vim-textobj-line'
+depends = ['kana/vim-textobj-user']
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+runtime rc/plugins/unite.added.vim
+'''
+hook_source = '''
+runtime rc/plugins/unite.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+vim_version = '7.3.885'
+disabled = '!has("lua")'
+hook_add = '''
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#data_directory = $VIM_CACHE_DIR . '/neocomplete'
+'''
+hook_source = '''
+runtime rc/plugins/neocomplete.vim
+'''
+
+[[plugins]]
+repo = 'jceb/vim-hier'
+hook_source = '''
+let g:hier_enabled = 1
+'''
+
+[[plugins]]
+repo = 'dannyob/quickfixstatus'
+
+[[plugins]]
+repo = 'LeafCage/foldCC'
+hook_source = '''
+set foldtext=FoldCCtext()
+set foldcolumn=4
+'''
+
+[[plugins]]
+repo = 'tyru/current-func-info.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_source = '''
+let g:indentLine_char = '|'
+let g:indentLine_showFirstIndentLevel = 1
+
+autocmd MyInit BufEnter \* :IndentLinesReset<CR>
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_source = '''
+runtime rc/plugins/lightline.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+'''
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add = '''
+nmap \m <Plug>(quickhl-manual-this)
+nmap \M <Plug>(quickhl-manual-reset)
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_add = '''
+let g:neosnippet#disable_select_mode_mappings = 0
+let g:neosnippet#snippets_directory = '~/.vim/snippets'
+'''
+hook_source = '''
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+'''
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+hook_source = '''
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
+call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
+call smartinput#define_rule({
+      \   'at'    : '\s\+\%#',
+      \   'char'  : '<CR>',
+      \   'input' : "<C-o>:call setline('.', substitute(getline('.'), '\\s\\+$', '', ''))<CR><CR>",
+      \ })
+call smartinput#define_rule({
+      \ 'at' : '\%#',
+      \ 'char' : '[',
+      \ 'input' : '[%%]<Left><Left>',
+      \ 'filetype': ['tt2html'],
+      \ })
+'''
+
+[[plugins]]
+repo = 'kana/vim-smartchr'
+hook_add = '''
+inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
+autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+autocmd MyInit FileType ruby*      inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
+autocmd MyInit FileType ruby*      inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
+autocmd MyInit FileType coffee     inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
+autocmd MyInit FileType coffee     inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
+autocmd MyInit FileType typescript inoremap <buffer><expr> \ smartchr#one_of(' => ', '\')
+autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of(' => ', '\')
+autocmd MyInit FileType haskell    inoremap <buffer><expr> = smartchr#loop(' = ', '=')
+autocmd MyInit FileType haskell    inoremap <buffer><expr> . smartchr#one_of('.', ' -> ', ' => ', '.')
+autocmd MyInit FileType haskell    inoremap <buffer><expr> , smartchr#one_of(', ', ' <- ', ',')
+autocmd MyInit FileType perl       inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
+autocmd MyInit FileType perl       inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
+autocmd MyInit FileType perl       inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
+autocmd MyInit FileType vim        inoremap <buffer> = =
+autocmd MyInit FileType html       inoremap <buffer> = =
+autocmd MyInit FileType *sh        inoremap <buffer><expr> = smartchr#loop('=', ' = ', ' != ')
+autocmd MyInit FileType go         inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' != ')
+autocmd MyInit FileType go         inoremap <buffer><expr> , smartchr#loop(', ', '<-', ',')
+'''
+
+[[plugins]]
+repo = 'sickill/vim-pasta'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+build = 'make -f make_mac.mak'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'thinca/vim-localrc'
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+nnoremap [fugitive] <Nop>
+nmap ,g [fugitive]
+
+nnoremap [fugitive]s :<C-u>Gstatus<CR>
+nnoremap [fugitive]c :<C-u>Gcommit<CR>
+nnoremap [fugitive]C :<C-u>Gcommit --amend<CR>
+nnoremap [fugitive]b :<C-u>Gblame<CR>
+nnoremap [fugitive]a :<C-u>Gwrite<CR>
+nnoremap [fugitive]d :<C-u>Gdiff<CR>
+nnoremap [fugitive]D :<C-u>Gdiff --staged<CR>
+
+vmap ,go :Gbrowse<CR>
+
+autocmd MyInit BufReadPost fugitive://* set bufhidden=delete
+'''
+
+[[plugins]]
+repo = 'tyru/eskk.vim'
+hook_source = '''
+let g:eskk#directory = expand('~/.vim/.eskk')
+
+let user_dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
+let large_dictionary = expand('~/Library/Application Support/AquaSKK/SKK-JISYO.L')
+
+if filereadable(user_dictionary)
+  let g:eskk#dictionary = user_dictionary
+endif
+
+if filereadable(large_dictionary)
+  let g:eskk#large_dictionary = large_dictionary
+endif
+
+imap <C-o> <Plug>(eskk:toggle)
+'''
+
+[[plugins]]
+repo = 'tmhedberg/matchit'
+
+[[plugins]]
+repo = "haya14busa/vim-signjk-motion"
+hook_add = '''
+map ;j <Plug>(signjk-j)
+map ;k <Plug>(signjk-k)
+'''
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'hail2u/h2u_colorscheme'
+
+[[plugins]]
+repo = 'muratas/vim-andon'
+
+[[plugins]]
+repo = 'ajh17/Spacegray.vim'
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repo = 'rhysd/vim-color-splatoon'
+
+[[plugins]]
+repo = 'jdkanani/vim-material-theme'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+
+[[plugins]]
+repo = 'scheakur/vim-scheakur'
+
+[[plugins]]
+repo = 'Shougo/tabpagebuffer.vim'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
+repo = 'thinca/vim-unite-history'
+
+[[plugins]]
+repo = 'sorah/unite-ghq'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'

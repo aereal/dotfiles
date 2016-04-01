@@ -1,0 +1,169 @@
+[[plugins]]
+repo = 'slim-template/vim-slim'
+on_ft = ['slim']
+
+[[plugins]]
+repo = 'groenewege/vim-less'
+on_ft = ['less']
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css']
+
+[[plugins]]
+repo = 'hallison/vim-markdown'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'motemen/hatena-vim'
+on_ft = ['hatena']
+
+[[plugins]]
+repo = 'othree/html5.vim'
+on_ft = ['html']
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['typescript', 'javascript']
+
+[[plugins]]
+repo = 'vim-perl/vim-perl'
+on_ft = ['perl']
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'davidoc/taskpaper.vim'
+on_ft = ['taskpaper']
+
+[[plugins]]
+repo = 'motemen/tap-vim'
+on_ft = ['perl']
+hook_add = '''
+let g:tap#use_vimproc = 1
+'''
+
+[[plugins]]
+repo = 'eagletmt/ghcmod-vim'
+external_commands = 'ghc-mod'
+on_ft = ['haskell']
+
+[[plugins]]
+repo = 'eagletmt/ghci-vim'
+external_commands = ['ghc']
+on_ft = ['haskell']
+
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+on_ft = ['haskell']
+external_commands = ['ghc', 'ghc-mod']
+
+[[plugins]]
+repo = 'itchyny/vim-haskell-indent'
+on_ft = ['haskell']
+
+[[plugins]]
+repo = 'Rip-Rip/clang_complete'
+on_ft = ['objc']
+build = 'make'
+
+[[plugins]]
+repo = 'mustache/vim-mustache-handlebars'
+on_ft = ['mustache', 'handlebars']
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = ['fish']
+
+[[plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+on_ft = 'dockerfile'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'kazuho/p5-text-microtemplate'
+name = 'text-microtemplate'
+rtp = 'contrib/vim'
+
+[[plugins]]
+repo = 'keith/swift.vim'
+on_ft = ['swift']
+
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = ['scala']
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'haml', 'slim', 'css', 'tt2html']
+hook_add = '''
+let g:user_emmet_leader_key = '<C-e>'
+'''
+
+[[plugins]]
+repo = 'sudo.vim'
+on_cmd = ['SudoWrite', 'SudoRead']
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_cmd = ['Ref']
+on_unite = ['ref/man', 'ref/perldoc']
+hook_add = '''
+let g:ref_cache_dir = $VIM_CACHE_DIR . '/ref'
+if !isdirectory(g:ref_cache_dir)
+  call mkdir(g:ref_cache_dir, '-p')
+endif
+'''
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+on_map = ['<Plug>']
+hook_add = '''
+let g:incsearch#auto_nohlsearch = 1
+'''
+hook_source = '''
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map n <Plug>(incsearch-nohl-n)
+map N <Plug>(incsearch-nohl-N)
+nmap n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+nmap N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+'''
+
+[[plugins]]
+repo = 'h1mesuke/vim-alignta'
+on_cmd = ['Alignta']
+hook_add = '''
+vmap ,a :Alignta
+vmap ,= :Alignta =<CR>
+vmap ,> :Alignta =><CR>
+'''
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+[[plugins]]
+repo = 'motemen/xslate-vim'
+on_ft = ['xslate']
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_unite = ['file_mru']
+hook_source = '''
+call unite#custom#source(
+      \ 'file_mru', 'matchers',
+      \ ['matcher_project_files', 'matcher_fuzzy'],
+      \ )
+'''
