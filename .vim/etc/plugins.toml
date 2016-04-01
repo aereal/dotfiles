@@ -174,8 +174,7 @@ repo = 'editorconfig/editorconfig-vim'
 repo = 'thinca/vim-localrc'
 
 [[plugins]]
-repo = 'Shougo/neobundle.vim'
-fetch = 1
+repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
