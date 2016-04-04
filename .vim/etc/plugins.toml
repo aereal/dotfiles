@@ -108,15 +108,14 @@ repo = 'Shougo/neosnippet'
 hook_add = '''
 let g:neosnippet#disable_select_mode_mappings = 0
 let g:neosnippet#snippets_directory = '~/.vim/snippets'
-'''
-hook_source = '''
+
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 '''
 
 [[plugins]]
 repo = 'kana/vim-smartinput'
-hook_source = '''
+hook_add = '''
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_BS)',  '<BS>',    '<BS>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_C-h)', '<BS>',    '<C-h>')
 call smartinput#map_to_trigger('i', '<Plug>(smartinput_CR)',  '<Enter>', '<Enter>')
@@ -197,7 +196,8 @@ autocmd MyInit BufReadPost fugitive://* set bufhidden=delete
 
 [[plugins]]
 repo = 'tyru/eskk.vim'
-hook_source = '''
+hook_add = '''
+imap <C-o> <Plug>(eskk:toggle)
 let g:eskk#directory = expand('~/.vim/.eskk')
 
 let user_dictionary = expand('~/Library/Application Support/AquaSKK/skk-jisyo.utf8')
@@ -210,8 +210,6 @@ endif
 if filereadable(large_dictionary)
   let g:eskk#large_dictionary = large_dictionary
 endif
-
-imap <C-o> <Plug>(eskk:toggle)
 '''
 
 [[plugins]]
