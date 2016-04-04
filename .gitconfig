@@ -52,18 +52,6 @@
 	untracked = cyan
 	updated   = yellow
 
-[color "grep"]
-	filename   = cyan
-	function   = yellow
-	linenumber = yellow
-	match      = yellow reverse
-
-[color "interactive"]
-	# prompt
-	# header
-	# help
-	# error
-
 [i18n]
 	commitencoding= utf-8
 
@@ -87,12 +75,6 @@
 [rebase]
 	stat = true
 
-[diff "ruby"]
-	funcname = =
-
-[diff "perl"]
-	funcname = =
-
 [diff "gzip"]
 	textconv = gzcat
 
@@ -109,8 +91,6 @@
 	root = /Users/aereal/devel/src/github.com/aereal/dotfiles/.vim/cache/dein/repos
 	root = /Users/aereal/devel/src
 
-[gitflow "branch"]
-	develop = devel
 [diff]
 	algorithm = histogram
 [include]
