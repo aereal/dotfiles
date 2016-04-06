@@ -1,6 +1,9 @@
 " vim:set et foldmethod=marker:
 
 let did_load_filetypes = 1
+let g:loaded_2html_plugin = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_vimballPlugin = 1
 
 runtime rc/00_base.vim
 runtime rc/00_autocmd.vim
