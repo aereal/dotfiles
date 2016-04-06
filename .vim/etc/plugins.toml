@@ -36,9 +36,6 @@ repo = 'Shougo/unite.vim'
 hook_add = '''
 runtime rc/plugins/unite.added.vim
 '''
-hook_source = '''
-runtime rc/plugins/unite.vim
-'''
 
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
@@ -82,7 +79,7 @@ autocmd MyInit BufEnter \* :IndentLinesReset<CR>
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_source = '''
+hook_add = '''
 runtime rc/plugins/lightline.vim
 '''
 
