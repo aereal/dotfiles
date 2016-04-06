@@ -133,8 +133,6 @@ call smartinput#define_rule({
 repo = 'kana/vim-smartchr'
 hook_add = '''
 inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
-autocmd MyInit FileType coffee     inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
-autocmd MyInit FileType coffee     inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
 '''
 
 [[plugins]]
