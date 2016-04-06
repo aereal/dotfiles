@@ -15,3 +15,7 @@ autocmd BufEnter *.podspec setf ruby
 autocmd BufEnter Podfile   setf ruby
 
 autocmd BufEnter *.hatena setf hatena
+
+autocmd BufEnter *.scala setf scala
+
+autocmd BufEnter *.toml setf toml
