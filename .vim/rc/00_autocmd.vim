@@ -6,12 +6,6 @@ augroup END
 if ! has('gui_running')
   autocmd MyInit BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]://" | silent! exe '!echo -n "k%:t\\"' | endif
 endif " }}}
-" Haskell {{{
-autocmd MyInit FileType haskell setlocal et
-" }}}
-" Perl {{{
-autocmd MyInit FileType perl let b:tap_run_command = expand('~/.vim/bin/prove-wrapper')
-" }}}
 " Markdown {{{
 autocmd MyInit FileType markdown setlocal et ts=4 sts=4 sw=4
 " }}}

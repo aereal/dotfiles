@@ -133,24 +133,8 @@ call smartinput#define_rule({
 repo = 'kana/vim-smartchr'
 hook_add = '''
 inoremap <expr> = smartchr#loop(' = ', ' == ', '=')
-autocmd MyInit FileType javascript inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
-autocmd MyInit FileType ruby*      inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', ' != ')
-autocmd MyInit FileType ruby*      inoremap <buffer><expr> , smartchr#loop(', ', ' => ', ',')
 autocmd MyInit FileType coffee     inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ', '=')
 autocmd MyInit FileType coffee     inoremap <buffer><expr> \ smartchr#one_of(' ->', '\')
-autocmd MyInit FileType typescript inoremap <buffer><expr> \ smartchr#one_of(' => ', '\')
-autocmd MyInit FileType javascript inoremap <buffer><expr> \ smartchr#one_of(' => ', '\')
-autocmd MyInit FileType haskell    inoremap <buffer><expr> = smartchr#loop(' = ', '=')
-autocmd MyInit FileType haskell    inoremap <buffer><expr> . smartchr#one_of('.', ' -> ', ' => ', '.')
-autocmd MyInit FileType haskell    inoremap <buffer><expr> , smartchr#one_of(', ', ' <- ', ',')
-autocmd MyInit FileType perl       inoremap <buffer><expr> . smartchr#one_of('.', '->', '.')
-autocmd MyInit FileType perl       inoremap <buffer><expr> , smartchr#one_of(', ', ' => ', ',')
-autocmd MyInit FileType perl       inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' != ', ' =~ ', ' !~ ', ' <=> ', '=')
-autocmd MyInit FileType vim        inoremap <buffer> = =
-autocmd MyInit FileType html       inoremap <buffer> = =
-autocmd MyInit FileType *sh        inoremap <buffer><expr> = smartchr#loop('=', ' = ', ' != ')
-autocmd MyInit FileType go         inoremap <buffer><expr> = smartchr#loop(' := ', ' = ', ' == ', ' != ')
-autocmd MyInit FileType go         inoremap <buffer><expr> , smartchr#loop(', ', '<-', ',')
 '''
 
 [[plugins]]

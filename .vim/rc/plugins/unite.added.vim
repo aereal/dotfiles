@@ -65,18 +65,6 @@ endif
 " autocmd {{{
 autocmd MyInit FileType unite nmap <buffer><BS> <Plug>(unite_delete_backward_path)
 autocmd MyInit FileType unite call s:unite_my_settings()
-" JavaScript {{{
-autocmd MyInit FileType javascript nnoremap <silent><buffer> <Space>kj :<C-u>Unite -start-insert -default-action=split ref/javascript<CR>
-autocmd MyInit FileType javascript nnoremap <silent><buffer> <Space>kq :<C-u>Unite -start-insert -default-action=split ref/jquery<CR>
-" }}}
-" Ruby {{{
-autocmd MyInit FileType ruby* nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/refe<CR>
-autocmd MyInit FileType ruby* nnoremap <silent><buffer> <S-k>    :<C-u>UniteWithCursorWord -default-action=split ref/refe<CR>
-" }}}
-" Perl {{{
-autocmd MyInit FileType perl    nnoremap <silent><buffer> <Space>k :<C-u>Unite -start-insert -default-action=split ref/perldoc<CR>
-autocmd MyInit FileType perl    nnoremap <silent><buffer> <S-k> :<C-u>UniteWithCursorWord -default-action=split ref/perldoc<CR>
-" }}}
 " }}}
 " Custom sources {{{
 " unite-git-files-conflict {{{
