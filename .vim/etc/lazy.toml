@@ -165,3 +165,7 @@ call unite#custom#source(
       \ ['matcher_project_files', 'matcher_fuzzy'],
       \ )
 '''
+
+[[plugins]]
+repo = 'ensime/ensime-vim'
+on_ft = ['scala']
