@@ -169,3 +169,7 @@ call unite#custom#source(
 [[plugins]]
 repo = 'ensime/ensime-vim'
 on_ft = ['scala']
+
+[[plugins]]
+repo = 'subosito/nginx.vim'
+on_ft = ['nginx']
