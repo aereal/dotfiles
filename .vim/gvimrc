@@ -1,7 +1,6 @@
 let g:macvim_skip_cmd_opt_movement = 1
 
-if has("gui_running")
-  set bg=dark
+set bg=dark
 
 if has("gui_running")
   try
