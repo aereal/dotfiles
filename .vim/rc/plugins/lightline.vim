@@ -14,11 +14,22 @@ let g:lightline.component.unite    = '%{unite#get_status_string()}'
 let g:lightline.component_visible_condition.fugitive = '(exists("*fugitive#head") && ""!=fugitive#head())'
 let g:lightline.component_visible_condition.unite    = '(exists("*unite#get_status_string") && unite#get_status_string()!="")'
 let g:lightline.active = {
+      \ 'right': [
+      \   ['syntastic', 'lineinfo'],
+      \   ['percent'],
+      \   ['fileformat', 'fileencoding', 'filetype'],
+      \ ],
       \ 'left' : [
       \   ['mode', 'paste'],
       \   ['fugitive'],
       \   ['readonly', 'filename', 'modified', 'unite'],
       \ ],
+      \ }
+let g:lightline.component_expand = {
+      \ 'syntastic' : 'SyntasticStatuslineFlag',
+      \ }
+let g:lightline.component_type = {
+      \ 'syntastic' : 'error',
       \ }
 let g:lightline.tabline = {
       \ 'left': [ ['tabs'] ],
