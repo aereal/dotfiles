@@ -20,7 +20,7 @@
 	fdf                = diff --function-context
 	fetch-pulls        = fetch origin +refs/pull/*:refs/remotes/pull/*
 	fix                = commit --amend
-	gr                 = grep --heading --break
+	gr = grep
 	interactive-rebase = rebase --interactive
 	network            = log --graph --all --decorate --oneline
 	onelog             = log --oneline
