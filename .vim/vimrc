@@ -5,6 +5,17 @@ let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
 let g:loaded_vimballPlugin = 1
 
+function! s:OnLoaded() abort
+  if !has('vim_starting')
+    echomsg '---> Reload bundles'
+    call dein#call_hook('source')
+    call dein#call_hook('post_source')
+  endif
+
+  syntax enable
+  filetype plugin indent on
+endfunction
+
 runtime rc/00_base.vim
 runtime rc/00_autocmd.vim
 runtime rc/10_dein.vim
@@ -12,11 +23,4 @@ runtime rc/20_tab.vim
 runtime rc/20_key.vim
 runtime rc/20_command.vim
 
-if !has('vim_starting')
-  echomsg '---> Reload bundles'
-  call dein#call_hook('source')
-  call dein#call_hook('post_source')
-endif
-
-syntax enable
-filetype plugin indent on
+call s:OnLoaded()

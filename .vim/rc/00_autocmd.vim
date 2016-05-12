@@ -16,7 +16,14 @@ autocmd MyInit FileType help,ref-*,tap-result nnoremap <buffer> q :q<CR>
 autocmd MyInit FileType gitconfig setlocal noexpandtab
 " }}}
 
-" autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim echomsg '---> Reload vimrc ...' | NeoBundleClearCache | source $MYVIMRC | if has('gui_running') | source $MYGVIMRC | endif
+function! ReloadConfig() abort
+  call dein#clear_state()
+  source $MYVIMRC
+  if has('gui_running')
+    source $MYGVIMRC
+  endif
+endfunction
+autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim call ReloadConfig()
 
 autocmd MyInit WinEnter    * set cursorline
 autocmd MyInit WinLeave    * set nocursorline
