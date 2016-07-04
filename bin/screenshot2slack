@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+tmp_dir='/tmp'
+format='png'
+file_name="${tmp_dir}/$(date +%s).${format}"
+screencapture -i "${file_name}"
+slackcat $@ "${file_name}"
