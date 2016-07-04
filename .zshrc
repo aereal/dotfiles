@@ -305,6 +305,11 @@ if [[ -f "$HOMEBREW_PATH/opt/zsh-history-substring-search/zsh-history-substring-
 fi
 # }}}
 
+if ! ssh-add -l 2>/dev/null; then
+  echo '---> Add SSH private key'
+  ssh-add
+fi
+
 # tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ]; then
   if $(tmux has-session 2>/dev/null); then
