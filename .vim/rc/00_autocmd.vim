@@ -25,6 +25,31 @@ function! ReloadConfig() abort
 endfunction
 autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim call ReloadConfig()
 
+function! LooksLikePerlProject(project_root) abort
+  let cpanfile = a:project_root . '/cpanfile'
+  if filereadable(cpanfile)
+    return 1
+  else
+    return 0
+  endif
+endfunction
+
+function! ConfigureCartonPath() abort
+  let project_root = getcwd()
+  let is_perl = LooksLikePerlProject(project_root)
+  let t:is_perl_project = is_perl
+  let w:is_perl_project = is_perl
+  if is_perl
+    let paths = [
+          \ project_root . '/lib',
+          \ project_root . '/local/lib/perl5',
+          \ project_root . '/templates',
+          \ ]
+    execute "setlocal path^=" . join(paths, ',')
+  endif
+endfunction
+autocmd MyInit BufEnter,TabEnter * call ConfigureCartonPath()
+
 autocmd MyInit WinEnter    * set cursorline
 autocmd MyInit WinLeave    * set nocursorline
 autocmd MyInit InsertEnter * set nocursorline
