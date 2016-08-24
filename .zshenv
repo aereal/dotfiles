@@ -7,6 +7,8 @@ export EDITOR=vim
 path=(
   $HOME/bin(N-/)
   $DEVEL_PATH/bin(N-/)
+  $HOME/.mysqlenv/bin(N-/)
+  $HOME/.mysqlenv/shims(N-/)
   $HOME/.rbenv/bin(N-/)
   $HOME/.rbenv/shims(N-/)
   $HOME/.plenv/bin(N-/)
