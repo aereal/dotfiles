@@ -2,8 +2,7 @@
 
 set -ue
 
-macvim_wrapper_cmd=${MACVIM_WRAPPER_CMD-"reattach-to-user-namespace"}
-macvim_wrapper_args=${MACVIM_WRAPPER_ARGS-''}
+macvim_wrapper_cmd='reattach-to-user-namespace -l'
 macvim_app="${MACVIM_APP-/Applications/MacVim.app}"
 
 if [[ ! -e $macvim_app ]]; then
@@ -11,4 +10,4 @@ if [[ ! -e $macvim_app ]]; then
   exit 1
 fi
 
-$macvim_wrapper_cmd $macvim_wrapper_args $macvim_app/Contents/MacOS/Vim $@
+reattach-to-user-namespace -l "$macvim_app/Contents/MacOS/Vim" "$@"
