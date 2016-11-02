@@ -249,8 +249,3 @@ repo = 'ujihisa/unite-colorscheme'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
-[[plugins]]
-repo = 'scrooloose/syntastic'
-hook_add = '''
-runtime rc/plugins/syntastic.added.vim
-'''
