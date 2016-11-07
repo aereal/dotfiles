@@ -260,7 +260,7 @@ update_window_title() { # {{{
       echo -n "k$cmd[2]:t\\"
       return
       ;;
-    ls|clear|pwd)
+    ls|gls|clear|pwd)
       echo -n "k$ZSH_NAME\\"
       return
       ;;
