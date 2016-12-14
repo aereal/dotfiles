@@ -104,3 +104,9 @@ snippet     tests
 	sub ${1:test_name} : Tests {
 		${2:#:body}
 	}
+
+snippet todo_test
+	TODO: {
+		local $TODO = '${1:reason}';
+		fail '$1';
+	};
