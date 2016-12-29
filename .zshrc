@@ -239,7 +239,7 @@ add-zsh-hook precmd __configure_prompt
 
 # Show anyenv version {{{
 notify_llenv_version() {
-  for llenv in rbenv plenv ndenv; do
+  for llenv in rbenv plenv ndenv pyenv; do
     llenv_root="${HOME}/.${llenv}" # XXX
     if whence $llenv >/dev/null && [[ "$(${llenv} version-origin)" != "$llenv_root/version" ]]; then
       echo "$fg[yellow]${llenv} changed version: $(${llenv} version-name)$reset_color"

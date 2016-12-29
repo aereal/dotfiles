@@ -9,6 +9,8 @@ path=(
   $DEVEL_PATH/bin(N-/)
   $HOME/.mysqlenv/bin(N-/)
   $HOME/.mysqlenv/shims(N-/)
+  $HOME/.pyenv/bin(N-/)
+  $HOME/.pyenv/shims(N-/)
   $HOME/.rbenv/bin(N-/)
   $HOME/.rbenv/shims(N-/)
   $HOME/.plenv/bin(N-/)
