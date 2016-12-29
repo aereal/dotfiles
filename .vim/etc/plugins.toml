@@ -202,6 +202,36 @@ map ;k <Plug>(signjk-k)
 '''
 
 [[plugins]]
+repo = 'alessandroyorba/sierra'
+
+[[plugins]]
+repo = 'ryanpcmcquen/true-monochrome_vim'
+
+[[plugins]]
+repo = 'toupeira/vim-desertink'
+
+[[plugins]]
+repo = 'crater2150/vim-theme-chroma'
+
+[[plugins]]
+repo = 'KeitaNakamura/neodark.vim'
+
+[[plugins]]
+repo = 'philpl/vim-adventurous'
+
+[[plugins]]
+repo = 'crusoexia/vim-monokai'
+
+[[plugins]]
+repo = 'mbbill/vim-seattle'
+
+[[plugins]]
+repo = 'roosta/vim-srcery'
+
+[[plugins]]
+repo = 'dracula/vim'
+
+[[plugins]]
 repo = 'altercation/vim-colors-solarized'
 
 [[plugins]]
