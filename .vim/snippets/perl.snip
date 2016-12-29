@@ -6,47 +6,16 @@ snippet pl
 	use warnings;
 alias shebang
 
-snippet pm
-	package ${1:Package::Name}
-
-	use strict;
-	use warnings;
-
-snippet tpm
-	package t::${1:Test::Package::Name}
-
-	use strict;
-	use warnings;
-	use Test::More;
-
-	${2}
-
-	done_testing;
-
 snippet use
 	use ${1:Package};
 
 snippet uselib
 	use lib 'lib', glob "${1:Package}";
 
-snippet given
-	given (${1:subject}) {
-		when (${2:condition}) {${3}}
-	}
-
-snippet when
-	when (${1:condition}) {${2}}
-
 snippet ddd
 	require Data::Dumper;
 	sub p ($) { warn Data::Dumper->new(\@_)->Useqq(1)->Terse(1)->Dump(); }
 	${1}
-
-snippet map
-	map { ${1:$_} } ${2:@list}
-
-snippet grep
-	grep { ${1:$_} } ${2:@list}
 
 snippet     sub_self
 options     head
@@ -77,23 +46,11 @@ snippet     package_block
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/lib/', '', 'g'), '/', '::', 'g')`} {
 		${2:#:body}
-	};
+	}
 
 snippet     t
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/t/', 't-', 'g'), '-', '::', 'g')`};
-
-snippet     @
-abbr        expand
-	@{[ ${1:expr} ]}
-
-snippet     h
-abbr        hashref
-	+{ ${1:expr} }
-
-snippet     kv
-abbr        key-value
-	${1:key} => ${2:value},${3:#:}
 
 snippet     subtest
 	subtest ${1:test_name} => sub {
