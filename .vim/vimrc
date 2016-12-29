@@ -23,4 +23,11 @@ runtime rc/20_tab.vim
 runtime rc/20_key.vim
 runtime rc/20_command.vim
 
-call s:OnLoaded()
+if !has('vim_starting')
+  echomsg '---> Reload bundles'
+  call dein#call_hook('source')
+  call dein#call_hook('post_source')
+endif
+
+syntax enable
+filetype plugin indent on

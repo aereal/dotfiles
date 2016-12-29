@@ -16,14 +16,14 @@ autocmd MyInit FileType help,ref-*,tap-result nnoremap <buffer> q :q<CR>
 autocmd MyInit FileType gitconfig setlocal noexpandtab
 " }}}
 
-function! ReloadConfig() abort
-  call dein#clear_state()
-  source $MYVIMRC
-  if has('gui_running')
-    source $MYGVIMRC
-  endif
-endfunction
-autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim call ReloadConfig()
+" function! ReloadConfig() abort
+"   call dein#clear_state()
+"   source $MYVIMRC
+"   if has('gui_running')
+"     source $MYGVIMRC
+"   endif
+" endfunction
+" autocmd MyInit BufWritePost *vimrc,*gvimrc,*/rc/*.vim call ReloadConfig()
 
 function! LooksLikePerlProject(project_root) abort
   let cpanfile = a:project_root . '/cpanfile'
