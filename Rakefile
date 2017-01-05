@@ -1,7 +1,7 @@
 require 'pathname'
 
 # methods
-def env_or_default(env: , default: )
+def env_or_default(env: nil, default: nil)
   ENV.fetch(env, default)
 end
 
@@ -14,7 +14,7 @@ class Recipe
 
   attr_reader :name, :source, :destination
 
-  def initialize(name: , source: , destination: )
+  def initialize(name: nil, source: nil, destination: nil)
     @name        = name
     @source      = ensure_pathname(source)
     @destination = ensure_pathname(destination)
