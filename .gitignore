@@ -12,3 +12,5 @@ src
 .zcompdump
 /.vimperator/info/default/
 /.vim/snippets/*/private/
+.vim/.eskk/log
+.vim/cache
