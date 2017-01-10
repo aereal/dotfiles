@@ -10,4 +10,5 @@ if has("gui_running")
 
   set guifontwide=SourceHanCodeJP-Regular:h14
   set guifont=Fantasque\ Sans\ Mono\ Regular:h14
+  set tranparency=15
 endif
