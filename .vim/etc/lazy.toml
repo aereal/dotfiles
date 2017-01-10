@@ -27,6 +27,10 @@ repo = 'pangloss/vim-javascript'
 on_ft = ['typescript', 'javascript']
 
 [[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+on_ft = ['javascript']
+
+[[plugins]]
 repo = 'vim-perl/vim-perl'
 on_ft = ['perl']
 
