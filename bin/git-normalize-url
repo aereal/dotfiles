@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+ORIGIN = 'origin'
+
+def run(argv)
+  remote, * = ARGV
+  remote ||= ORIGIN
+  prev_remote_url = `git remote get-url #{remote}`.strip
+  if prev_remote_url.start_with?('ssh://')
+    require 'uri'
+    prev_remote_url = URI.parse(prev_remote_url)
+    new_remote_url = '%s@%s:%s' % [prev_remote_url.user, prev_remote_url.host, prev_remote_url.path[1..-1]]
+    system 'git', 'remote', 'set-url', remote, new_remote_url
+    puts "#{prev_remote_url} => #{new_remote_url}"
+  end
+end
+
+run(ARGV)
