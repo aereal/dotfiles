@@ -33,6 +33,7 @@
 	hard-revert-merge-commit = reset --hard ORIG_HEAD
 	medetai = !git rev-list HEAD | grep -E '(.)\\1\\1\\1\\1\\1'
 	pr = pull-request
+	recently-added = log --grep \"Revert\" --invert-grep --diff-filter=A --format=\"\" --name-only
 
 [color]
 	branch      = true
