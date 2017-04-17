@@ -279,3 +279,5 @@ repo = 'ujihisa/unite-colorscheme'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
+[[plugins]]
+repo = 'tpope/vim-rhubarb'
