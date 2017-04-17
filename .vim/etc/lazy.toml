@@ -178,3 +178,10 @@ on_ft = ['nginx']
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+
+[[plugins]]
+repo = 'flowtype/vim-flow'
+on_ft = ['javascript']
+hook_add = '''
+let g:flow#autoclose = 1
+'''
