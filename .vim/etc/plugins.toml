@@ -5,15 +5,6 @@ runtime rc/plugins/quickrun.vim
 '''
 
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-hook_source = '''
-runtime rc/plugins/watchdogs.vim
-'''
-
-[[plugins]]
-repo = 'osyo-manga/shabadou.vim'
-
-[[plugins]]
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
@@ -48,15 +39,6 @@ let g:neocomplete#data_directory = $VIM_CACHE_DIR . '/neocomplete'
 hook_source = '''
 runtime rc/plugins/neocomplete.vim
 '''
-
-[[plugins]]
-repo = 'jceb/vim-hier'
-hook_source = '''
-let g:hier_enabled = 1
-'''
-
-[[plugins]]
-repo = 'dannyob/quickfixstatus'
 
 [[plugins]]
 repo = 'LeafCage/foldCC'
