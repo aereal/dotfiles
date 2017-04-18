@@ -23,6 +23,7 @@ let g:lightline.active = {
       \   ['mode', 'paste'],
       \   ['fugitive'],
       \   ['readonly', 'filename', 'modified', 'unite'],
+      \   ['ale']
       \ ],
       \ }
 let g:lightline.component_expand = {
@@ -30,6 +31,9 @@ let g:lightline.component_expand = {
       \ }
 let g:lightline.component_type = {
       \ 'syntastic' : 'error',
+      \ }
+let g:lightline.component_function = {
+      \ 'ale' : 'ALEGetStatusLine',
       \ }
 let g:lightline.tabline = {
       \ 'left': [ ['tabs'] ],

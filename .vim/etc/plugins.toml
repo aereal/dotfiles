@@ -263,3 +263,22 @@ repo = 'kana/vim-operator-user'
 
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+let g:ale_statusline_format = ['E%d', 'W%d', '']
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 0
+
+let g:ale_javascript_eslint_options = '--quiet'
+let g:ale_linters = { 'javascript': ['eslint', 'flow'] }
+
+let g:ale_perl_perl_executable = 'env PERL5LIB="./local/lib/perl5" perl'
+'''
