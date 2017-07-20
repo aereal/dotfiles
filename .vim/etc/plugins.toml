@@ -8,10 +8,6 @@ runtime rc/plugins/quickrun.vim
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
-repo = 'machakann/vim-textobj-delimited'
-depends = ['kana/vim-textobj-user']
-
-[[plugins]]
 repo = 'kana/vim-textobj-indent'
 depends = ['kana/vim-textobj-user']
 
@@ -73,13 +69,6 @@ nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
-'''
-
-[[plugins]]
-repo = 't9md/vim-quickhl'
-hook_add = '''
-nmap \m <Plug>(quickhl-manual-this)
-nmap \M <Plug>(quickhl-manual-reset)
 '''
 
 [[plugins]]
@@ -174,44 +163,16 @@ endif
 '''
 
 [[plugins]]
-repo = 'tmhedberg/matchit'
-
-[[plugins]]
-repo = "haya14busa/vim-signjk-motion"
-hook_add = '''
-map ;j <Plug>(signjk-j)
-map ;k <Plug>(signjk-k)
-'''
-
-[[plugins]]
-repo = 'alessandroyorba/sierra'
-
-[[plugins]]
-repo = 'ryanpcmcquen/true-monochrome_vim'
-
-[[plugins]]
 repo = 'toupeira/vim-desertink'
-
-[[plugins]]
-repo = 'crater2150/vim-theme-chroma'
 
 [[plugins]]
 repo = 'KeitaNakamura/neodark.vim'
 
 [[plugins]]
-repo = 'philpl/vim-adventurous'
-
-[[plugins]]
 repo = 'crusoexia/vim-monokai'
 
 [[plugins]]
-repo = 'mbbill/vim-seattle'
-
-[[plugins]]
 repo = 'roosta/vim-srcery'
-
-[[plugins]]
-repo = 'dracula/vim'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
@@ -223,25 +184,13 @@ repo = 'nanotech/jellybeans.vim'
 repo = 'hail2u/h2u_colorscheme'
 
 [[plugins]]
-repo = 'muratas/vim-andon'
-
-[[plugins]]
 repo = 'ajh17/Spacegray.vim'
-
-[[plugins]]
-repo = 'junegunn/seoul256.vim'
-
-[[plugins]]
-repo = 'rhysd/vim-color-splatoon'
 
 [[plugins]]
 repo = 'jdkanani/vim-material-theme'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
-
-[[plugins]]
-repo = 'scheakur/vim-scheakur'
 
 [[plugins]]
 repo = 'Shougo/tabpagebuffer.vim'
