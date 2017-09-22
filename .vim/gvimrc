@@ -4,11 +4,12 @@ set bg=dark
 
 if has("gui_running")
   try
-    colorscheme japanesque
+    colorscheme desertink
   catch
+    colorscheme desert
   endtry
 
   set guifontwide=SourceHanCodeJP-Regular:h14
-  set guifont=Fantasque\ Sans\ Mono\ Regular:h14
+  set guifont=FiraMono-Regular:h14
   set tranparency=15
 endif
