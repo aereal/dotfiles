@@ -52,6 +52,14 @@ snippet     t
 options     head
 	package ${1:`substitute(substitute(expand('%:p:r'), '.*/t/', 't-', 'g'), '-', '::', 'g')`};
 
+	sub _require : Test(startup => 1) {
+		require_ok '${2:`substitute(substitute(expand('%:p:r'), '.*/t/', '', 'g'), '-', '::', 'g')`}';
+	}
+
+	${2:#:# body}
+
+	1;
+
 snippet     subtest
 	subtest ${1:test_name} => sub {
 		${2:#:body}
