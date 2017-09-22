@@ -55,4 +55,62 @@ autocmd MyInit WinLeave    * set nocursorline
 autocmd MyInit InsertEnter * set nocursorline
 autocmd MyInit InsertLeave * set cursorline
 
+function! SetupCustomHighlightLinks() abort
+  highlight! link Noise Conceal
+
+  " Perl
+  highlight! link perlVarPlain Identifier
+  highlight! link perlVarPlain2 Identifier
+  highlight! link perlStatementStorage StorageClass
+  highlight! link perlSharpBang Comment
+  highlight! link perlStringStartEnd Conceal
+  highlight! link perlMatchStartEnd Conceal
+  highlight! link perlFunction Statement
+  highlight! link perlSubName Function
+  highlight! link perlOperator Operator
+  highlight! link perlMethod Function
+  highlight! link perlStatementInclude Include
+
+  " JavaScript
+  highlight! link jsObjectKey Type
+  highlight! link jsFuncCall Function
+
+  " HTML
+  highlight! link htmlTag Conceal
+  highlight! link htmlEndTag Conceal
+  highlight! link htmlTagName Identifier
+
+  " TT2
+  highlight! link tt2_tag Conceal
+  highlight! link tt2_bracket_r Conceal
+  highlight! link tt2_operator Conceal
+
+  " TypeScript
+  highlight! link typescriptEndColons Conceal
+  highlight! link typescriptParens Conceal
+  highlight! link typescriptBraces Conceal
+
+  " Git
+  highlight! link gitcommitWarning WarningMsg
+
+  " Fugitive
+  highlight! link FugitiveblameDelimiter Delimiter
+
+  " Ruby
+  highlight! link rubyStringDelimiter Conceal
+
+  " Vim
+  highlight! link vimParenSep Conceal
+
+  " Markdown
+  highlight! link mkdDelimiter Statement
+
+  " YAML
+  highlight! link yamlKeyValueDelimiter Statement
+
+  highlight! link SignColumn LineNr
+endfunction
+
+autocmd MyInit ColorScheme * call SetupCustomHighlightLinks()
+
 " vim:set foldmethod=marker:
