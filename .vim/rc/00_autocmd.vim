@@ -50,10 +50,6 @@ function! ConfigureCartonPath() abort
 endfunction
 autocmd MyInit BufEnter,TabEnter * call ConfigureCartonPath()
 
-autocmd MyInit WinEnter    * set cursorline
-autocmd MyInit WinLeave    * set nocursorline
-autocmd MyInit InsertEnter * set nocursorline
-autocmd MyInit InsertLeave * set cursorline
 
 function! SetupCustomHighlightLinks() abort
   highlight! link Noise Conceal
