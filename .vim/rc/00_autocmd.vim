@@ -45,7 +45,7 @@ function! ConfigureCartonPath() abort
           \ project_root . '/local/lib/perl5',
           \ project_root . '/templates',
           \ ]
-    execute "setlocal path^=" . join(paths, ',')
+    execute "setlocal path+=" . join(paths, ',')
   endif
 endfunction
 autocmd MyInit BufEnter,TabEnter * call ConfigureCartonPath()
