@@ -92,7 +92,7 @@ let g:user_emmet_leader_key = '<C-e>'
 '''
 
 [[plugins]]
-repo = 'sudo.vim'
+repo = 'vim-scripts/sudo.vim'
 on_cmd = ['SudoWrite', 'SudoRead']
 
 [[plugins]]
