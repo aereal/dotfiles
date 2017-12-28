@@ -40,6 +40,13 @@ runtime rc/plugins/neocomplete.vim
 '''
 
 [[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = 'has("nvim")'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
 repo = 'LeafCage/foldCC'
 hook_source = '''
 set foldtext=FoldCCtext()
