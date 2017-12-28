@@ -246,3 +246,10 @@ let g:ale_linters = { 'javascript': ['eslint', 'flow'] }
 
 let g:ale_perl_perl_executable = 'env PERL5LIB="./local/lib/perl5" perl'
 '''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = 'has("nvim")'
+on_cmd = 'Denite'
+hook_add    = 'runtime rc/plugins/denite.added.vim'
+hook_source = 'runtime rc/plugins/denite.sourced.vim'
