@@ -17,9 +17,11 @@ depends = ['kana/vim-textobj-user']
 
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
+if = '!has("nvim")'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
+if = '!has("nvim")'
 hook_add = '''
 runtime rc/plugins/unite.added.vim
 '''
@@ -27,6 +29,7 @@ runtime rc/plugins/unite.added.vim
 [[plugins]]
 repo = 'Shougo/neocomplete.vim'
 vim_version = '7.3.885'
+if = '!has("nvim")'
 disabled = '!has("lua")'
 hook_add = '''
 let g:neocomplete#enable_at_startup = 1

@@ -129,6 +129,7 @@ on_ft = ['xslate']
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
+if = '!has("nvim")'
 on_unite = ['file_mru']
 hook_source = '''
 call unite#custom#source(
