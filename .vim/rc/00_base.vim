@@ -87,7 +87,11 @@ endif
 " }}}
 " Clipboard Integration {{{
 if has('clipboard')
-  set clipboard=unnamed,autoselect
+  if has('nvim')
+    set clipboard+=unnamedplus
+  else
+    set clipboard=unnamed,autoselect
+  endif
 endif
 " }}}
 " fish-shell fix {{{
