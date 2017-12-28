@@ -186,6 +186,11 @@ repo = 'roosta/vim-srcery'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
+if = '!has("nvim")'
+
+[[plugins]]
+repo = 'lifepillar/vim-solarized8'
+if = 'has("nvim")'
 
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
