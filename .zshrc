@@ -27,7 +27,9 @@ set \
   hist_ignore_space \
   inc_append_history \
   share_history \
-  no_flow_control
+  no_flow_control \
+  hist_save_no_dups \
+  hist_ignore_all_dups
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
