@@ -4,7 +4,7 @@ set bg=dark
 
 if has("gui_running")
   try
-    colorscheme desertink
+    colorscheme japanesque
   catch
     colorscheme desert
   endtry

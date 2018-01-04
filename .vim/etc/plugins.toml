@@ -253,3 +253,6 @@ if = 'has("nvim")'
 on_cmd = 'Denite'
 hook_add    = 'runtime rc/plugins/denite.added.vim'
 hook_source = 'runtime rc/plugins/denite.sourced.vim'
+
+[[plugins]]
+repo = 'aereal/vim-colors-japanesque'
