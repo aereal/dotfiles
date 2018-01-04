@@ -36,6 +36,10 @@ manpath=(
 export PAGER=less
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS'
 
+if whence nvim 2>&1 >/dev/null; then
+  EDITOR=nvim
+fi
+
 MACVIM_APP=
 local -a macvim_app_candidates=(
   /opt/homebrew-cask/Caskroom/macvim-kaoriya/*/MacVim.app(N-/)
