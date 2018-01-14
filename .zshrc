@@ -7,6 +7,7 @@ fpath=(
   $HOMEBREW_PATH/share/zsh-completions(N-/)
   $HOMEBREW_PATH/share/zsh/site-functions(N-/)
   $HOMEBREW_PATH/share/zsh/functions(N-/)
+  $HOMEBREW_PATH/opt/docker-completion/share/zsh/site-functions(N-/)
   $fpath
 )
 # }}}
