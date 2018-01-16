@@ -189,6 +189,33 @@ fi
 whence hub >/dev/null 2>&1 && alias git=hub
 # }}}
 
+# abbrev {{{
+setopt extended_glob
+typeset -A abbreviations
+abbreviations=(
+  'Ig' '| rg'
+  'It' '| tail'
+  'Ij' '| jq'
+  'DC' 'docker-compose'
+)
+
+magic-abbrev-expand() {
+  local MATCH
+  LBUFFER=${LBUFFER%%(#m)[-_a-zA-Z0-9]#}
+  LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+  zle self-insert
+}
+
+no-magic-abbrev-expand() {
+  LBUFFER+=' '
+}
+
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey -v " " magic-abbrev-expand
+bindkey -v "^x " no-magic-abbrev-expand
+# }}}
+
 # prompt {{{
 setopt \
   prompt_subst \
