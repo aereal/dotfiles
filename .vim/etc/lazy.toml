@@ -29,6 +29,9 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'vim-perl/vim-perl'
 on_ft = ['perl']
+hook_add = '''
+let g:perl_fold = 0
+'''
 
 [[plugins]]
 repo = 'vim-ruby/vim-ruby'
