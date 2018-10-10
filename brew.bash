@@ -29,7 +29,7 @@ brew install pstree
 brew install reattach-to-user-namespace
 brew install ripgrep
 brew install slackcat
-brew install sshutltle
+brew install sshuttle
 brew install telnet
 brew install tig
 brew install tmux
