@@ -16,7 +16,7 @@ brew install envchain
 brew install exa
 brew install --HEAD motemen/furoshiki2/furoshiki2
 brew install git --with-curl
-brew install tar
+brew install gnu-tar
 brew install go
 brew install hub
 brew install jq
