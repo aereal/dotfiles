@@ -44,7 +44,6 @@ brew install graphviz
 brew install mysql-client
 brew install openssl
 brew install itchyny/rexdep/rexdep
-brew install sbt
 
 # casks
 brew cask install alfred
@@ -56,3 +55,7 @@ brew cask install iterm2
 brew cask install karabiner-elements
 brew cask install slack
 brew cask install visual-studio-code
+
+# JDK-related
+brew cask install homebrew/cask-versions/java8
+brew install sbt
