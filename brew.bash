@@ -53,6 +53,7 @@ brew cask install homebrew/cask-versions/google-chrome-dev
 brew cask install gyazo
 brew cask install iterm2
 brew cask install karabiner-elements
+brew cask install mattr-slate
 brew cask install slack
 brew cask install visual-studio-code
 
