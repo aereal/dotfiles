@@ -49,7 +49,7 @@ brew install itchyny/rexdep/rexdep
 brew cask install alfred
 brew cask install docker
 brew cask install dropbox
-brew cask install google-chrome-dev
+brew cask install homebrew/cask-versions/google-chrome-dev
 brew cask install gyazo
 brew cask install iterm2
 brew cask install karabiner-elements
