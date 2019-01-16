@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# originally written at https://fujimura.hatenablog.com/entry/2018/03/30/181715
+
 set -e
 
 git-check-dirty
