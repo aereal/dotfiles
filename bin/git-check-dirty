@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# refs. https://unix.stackexchange.com/questions/155046/determine-if-git-working-directory-is-clean-from-a-script
+
+if [[ -z "$(git status --short --untracked-files=normal --porcelain)" ]]; then
+  exit 1
+fi
+
+exit 0
