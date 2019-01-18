@@ -4,6 +4,8 @@ set -e
 
 brew update
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # essentials
 brew install awscli
 brew install colordiff
