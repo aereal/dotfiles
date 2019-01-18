@@ -12,6 +12,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # essentials
 brew_install awscli
+brew_install bat
 brew_install colordiff
 brew_install coreutils
 brew_install curl
