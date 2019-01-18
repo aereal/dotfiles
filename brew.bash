@@ -2,50 +2,54 @@
 
 set -e
 
+brew_install() {
+  brew install $@ || :
+}
+
 brew update
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # essentials
-brew install awscli
-brew install colordiff
-brew install coreutils
-brew install curl
-brew install direnv
-brew install docker-completion
-brew install docker-compose-completion
-brew install envchain
-brew install exa
-brew install --HEAD motemen/furoshiki2/furoshiki2
-brew install git --with-curl
-brew install gnu-tar
-brew install go
-brew install hub
-brew install jq
-brew install mackerelio/mackerel-agent/mackerel-agent
-brew install mackerelio/mackerel-agent/mkr
-brew install neovim
-brew install peco
-brew install proctools
-brew install pstree
-brew install reattach-to-user-namespace
-brew install ripgrep
-brew install slackcat
-brew install sshuttle
-brew install telnet
-brew install tig
-brew install tmux
-brew install tree
-brew install zsh --without-etcdir
-brew install zsh-completions
-brew install zsh-history-substring-search
-brew install zsh-syntax-highlighting
+brew_install awscli
+brew_install colordiff
+brew_install coreutils
+brew_install curl
+brew_install direnv
+brew_install docker-completion
+brew_install docker-compose-completion
+brew_install envchain
+brew_install exa
+brew_install --HEAD motemen/furoshiki2/furoshiki2
+brew_install git --with-curl
+brew_install gnu-tar
+brew_install go
+brew_install hub
+brew_install jq
+brew_install mackerelio/mackerel-agent/mackerel-agent
+brew_install mackerelio/mackerel-agent/mkr
+brew_install neovim
+brew_install peco
+brew_install proctools
+brew_install pstree
+brew_install reattach-to-user-namespace
+brew_install ripgrep
+brew_install slackcat
+brew_install sshuttle
+brew_install telnet
+brew_install tig
+brew_install tmux
+brew_install tree
+brew_install zsh --without-etcdir
+brew_install zsh-completions
+brew_install zsh-history-substring-search
+brew_install zsh-syntax-highlighting
 
 # extra
-brew install graphviz
-brew install mysql-client
-brew install openssl
-brew install itchyny/rexdep/rexdep
+brew_install graphviz
+brew_install mysql-client
+brew_install openssl
+brew_install itchyny/rexdep/rexdep
 
 # casks
 brew cask install alfred
@@ -61,4 +65,4 @@ brew cask install visual-studio-code
 
 # JDK-related
 brew cask install homebrew/cask-versions/java8
-brew install sbt
+brew_install sbt
