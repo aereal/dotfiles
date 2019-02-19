@@ -31,7 +31,7 @@
 	current-branch = symbolic-ref --short HEAD
 	curret-remote-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
 	hard-revert-merge-commit = reset --hard ORIG_HEAD
-	medetai = !git rev-list HEAD | grep -E '(.)\\1\\1\\1\\1\\1'
+	medetai = !git rev-list HEAD | rg -P '(.)\\1\\1'
 	pr = pull-request
 	recently-added = log --grep \"Revert\" --invert-grep --diff-filter=A --format=\"\" --name-only
 
