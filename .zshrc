@@ -128,7 +128,7 @@ bindkey -v "\\" expand-to-home-or-complete
 __widget_cd_repo() {
   local selected_repo=$( ghq list | peco )
   if [[ -n "$selected_repo" ]]; then
-    BUFFER="ghq look ${selected_repo}"
+    BUFFER="pushd $(ghq root)/${selected_repo}"
     zle accept-line
   fi
   zle -R -c
