@@ -18,6 +18,7 @@ path=(
   $HOME/.ndenv/bin(N-/)
   $HOME/.ndenv/shims(N-/)
   $GOPATH/bin(N-/)
+  $HOMEBREW_PATH/opt/mysql-client/bin(N-/)
   $HOMEBREW_PATH/opt/coreutils/libexec/gnubin(N-/)
   $HOMEBREW_PATH/bin(N-/)
   /usr/bin(N-/)
