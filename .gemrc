@@ -2,5 +2,5 @@
 :backtrace: true
 :benchmark: false
 :verbose: true
-gem: --no-rdoc --no-ri
+gem: -N
 search: -r
