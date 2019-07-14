@@ -1,4 +1,5 @@
 # environment
+export LC_ALL=ja_JP.UTF-8
 export HOMEBREW_PATH=/usr/local
 export DEVEL_PATH=$HOME/devel
 export GOPATH=$DEVEL_PATH
