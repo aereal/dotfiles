@@ -56,3 +56,7 @@ if (( $#macvim_app_candidates > 0 )); then
   MACVIM_APP="$macvim_app_candidates[1]"
 fi
 export MACVIM_APP
+
+if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home 2>&1 >/dev/null; then
+  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+fi
