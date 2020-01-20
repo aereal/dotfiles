@@ -1,0 +1,27 @@
+---
+
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install config files
+        run: |
+          ln -sfv $PWD/.zshenv ~/
+          ln -sfv $PWD/.zshrc ~/
+          ln -sfv $PWD/.zsh.d ~/
+          ln -sfv $PWD/.tmux.conf ~/
+          ln -sfv $PWD/.tmux.d ~/
+      - name: install software
+        run: |
+          brew update
+          brew install tmux reattach-to-user-namespace zsh zsh-completions zsh-history-substring-search zsh-syntax-highlighting
+      - name: dump env
+        run: |
+          /usr/local/bin/zsh -c 'env'
