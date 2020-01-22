@@ -1,3 +1,7 @@
+# to avoid overwritten PATH via /usr/libexec/path_helper
+# refs. https://github.com/Homebrew/homebrew-core/pull/32074#issuecomment-421381869
+unsetopt GLOBAL_RCS
+
 # environment
 export LC_ALL=ja_JP.UTF-8
 export HOMEBREW_PATH=/usr/local
