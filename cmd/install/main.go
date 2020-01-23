@@ -29,7 +29,10 @@ func run(argv []string) error {
 		root string
 	)
 	flgs.StringVar(&root, "root", os.ExpandEnv("$HOME/.ghq"), "GHQ_ROOT")
-	flgs.Parse(argv[1:])
+	err := flgs.Parse(argv[1:])
+	if err == flag.ErrHelp {
+		return nil
+	}
 
 	dotfilesRepo := &githubRepo{Owner: "aereal", Name: "dotfiles"}
 	repoFullPath, err := assumeInstalledRepo(root, dotfilesRepo)
