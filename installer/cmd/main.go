@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -12,6 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/aereal/dotfiles/installer/repo"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -34,8 +34,8 @@ func run(argv []string) error {
 		return nil
 	}
 
-	dotfilesRepo := &githubRepo{Owner: "aereal", Name: "dotfiles"}
-	repoFullPath, err := assumeInstalledRepo(root, dotfilesRepo)
+	dotfilesRepo := &repo.GithubRepo{Owner: "aereal", Name: "dotfiles"}
+	repoFullPath, err := repo.Install(root, dotfilesRepo)
 	if err != nil {
 		return err
 	}
@@ -118,41 +118,6 @@ func run(argv []string) error {
 		return err
 	}
 
-	return nil
-}
-
-type githubRepo struct {
-	Owner string
-	Name  string
-}
-
-func (r *githubRepo) String() string {
-	return r.Owner + "/" + r.Name
-}
-
-func (r *githubRepo) URLForClone() string {
-	return fmt.Sprintf("https://github.com/%s/%s", r.Owner, r.Name)
-}
-
-func assumeInstalledRepo(root string, repo *githubRepo) (installedPath string, err error) {
-	installedPath = path.Join(root, "src", "github.com", repo.Owner, repo.Name)
-	_, err = os.Stat(installedPath)
-	if os.IsNotExist(err) {
-		err = installRepo(repo, installedPath)
-		return
-	}
-	if err != nil {
-		return
-	}
-	return
-}
-
-func installRepo(repo *githubRepo, dest string) error {
-	log.Printf("try to install repository (%s) to %s", repo.URLForClone(), dest)
-	cmd := exec.Command("git", "clone", "--no-progress", repo.URLForClone(), dest)
-	if err := cmd.Run(); err != nil {
-		return err
-	}
 	return nil
 }
 
