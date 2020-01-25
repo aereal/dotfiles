@@ -8,9 +8,9 @@ import (
 	"os"
 	"os/exec"
 	"path"
-	"path/filepath"
 	"strings"
 
+	"github.com/aereal/dotfiles/installer/dotfiles"
 	"github.com/aereal/dotfiles/installer/repo"
 	"golang.org/x/sync/errgroup"
 )
@@ -45,27 +45,23 @@ func run(argv []string) error {
 		return err
 	}
 
-	toSkip := skipMapping{
-		"test":             true,
-		".dotfiles.ignore": true,
-		".config":          true,
-		"README.md":        true,
-		"cmd":              true,
-		"colors":           true,
-		"osx":              true,
-		".gitmodules":      true,
-		".gitignore":       true,
-		".git":             true,
-		".travis.yml":      true,
-		"Rakefile":         true,
-		"brew.bash":        true,
-	}
-	srcs, err := collectConfigFiles(repoFullPath, toSkip)
-	if err != nil {
-		return err
-	}
-	err = linkFiles(srcs, homeDir)
-	if err != nil {
+	skipper := dotfiles.NewSkipper([]string{
+		"test",
+		".dotfiles.ignore",
+		".config",
+		"README.md",
+		"cmd",
+		"colors",
+		"osx",
+		".gitmodules",
+		".gitignore",
+		".git",
+		".travis.yml",
+		"Rakefile",
+		"brew.bash",
+	})
+	di := dotfiles.NewDotfilesInstaller(repoFullPath, homeDir, skipper)
+	if err := di.Install(); err != nil {
 		return err
 	}
 
@@ -119,57 +115,6 @@ func run(argv []string) error {
 	}
 
 	return nil
-}
-
-func collectConfigFiles(root string, skipper skipper) ([]string, error) {
-	srcs := []string{}
-	matches, err := filepath.Glob("*")
-	if err != nil {
-		return nil, err
-	}
-	for _, base := range matches {
-		if skipper.Skip(base) {
-			continue
-		}
-		srcs = append(srcs, filepath.Join(root, base))
-	}
-	return srcs, nil
-}
-
-func linkFiles(srcs []string, destDir string) error {
-	for _, src := range srcs {
-		dest := filepath.Join(destDir, filepath.Base(src))
-		err := linkFile(src, dest)
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func linkFile(src string, dest string) error {
-	err := os.Symlink(src, dest)
-	if os.IsExist(err) {
-		return nil
-	}
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func isSymlink(mode os.FileMode) bool {
-	return mode&os.ModeSymlink != 0
-}
-
-type skipper interface {
-	Skip(path string) bool
-}
-
-type skipMapping map[string]bool
-
-func (m skipMapping) Skip(path string) bool {
-	return m[path]
 }
 
 type homebrewInstall struct {
