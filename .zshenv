@@ -24,7 +24,7 @@ path=(
   $HOME/.ndenv/shims(N-/)
   $GOPATH/bin(N-/)
   $HOMEBREW_PATH/opt/perl/bin(N-/)
-  $HOMEBREW_PATH/opt/node@10/bin(N-/)
+  $HOMEBREW_PATH/opt/node@12/bin(N-/)
   $HOMEBREW_PATH/lib/ruby/gems/2.6.0/bin(N-/)
   $HOMEBREW_PATH/opt/ruby/bin(N-/)
   $HOMEBREW_PATH/opt/mysql-client/bin(N-/)
