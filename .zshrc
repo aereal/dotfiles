@@ -239,7 +239,7 @@ zstyle ':vcs_info:*' actionformats '%R' '%S' '%s:%b|%a' '%s'
 __configure_prompt() {
   local ok_yuno="%F{yellow}✘╹◡╹✘%f"
   local bad_yuno="%F{red}✘>﹏<✘%f"
-  local command_line="%(?.${ok_yuno}.${bad_yuno}) < "
+  local command_line="[%D{%Y-%m-%d} %*] %(?.${ok_yuno}.${bad_yuno}) < "
 
   psvar=()
   STY= LANG=en_US.UTF-8 vcs_info
