@@ -353,7 +353,7 @@ if [[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completio
 fi
 
 # tmux {{{
-if whence tmux >/dev/null && [ -z "$TMUX" ]; then
+if whence tmux >/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   if $(tmux has-session 2>/dev/null); then
     tmux attach-session -t "${HOST%%.*}"
   else
