@@ -65,3 +65,15 @@ export MACVIM_APP
 if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home 2>&1 >/dev/null; then
   export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 fi
+
+RUBY_CONFIGURE_OPTS=""
+openssl_dir="$HOMEBREW_PATH/opt/openssl@1.1"
+if [[ -d "$openssl_dir" ]]; then
+  RUBY_CONFIGURE_OPTS="${RUBY_CONFIGURE_OPTS} --with-openssl-dir=${openssl_dir}"
+fi
+
+readline_dir="$HOMEBREW_PATH/opt/readline"
+if [[ -d "$readline_dir" ]]; then
+  RUBY_CONFIGURE_OPTS="${RUBY_CONFIGURE_OPTS} --with-readline-dir=${readline_dir}"
+fi
+export RUBY_CONFIGURE_OPTS
