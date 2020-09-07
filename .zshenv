@@ -46,8 +46,8 @@ manpath=(
 export PAGER=less
 export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS'
 
-if whence nvim 2>&1 >/dev/null; then
-  EDITOR=nvim
+if whence code 2>&1 >/dev/null; then
+  EDITOR='code --wait'
 fi
 
 MACVIM_APP=
