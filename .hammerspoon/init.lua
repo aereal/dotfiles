@@ -6,6 +6,7 @@ function viKey:exited() hs.alert'Exit' end
 viKey:bind('', 'escape', function() viKey:exit() end)
 units = {
   enter = { x = 0.0, y = 0.0, w = 1.0, h = 1.0 },
+  spc   = { x = 0.125, y = 0.125, w = 0.75, h = 0.75 },
   h     = { x = 0.0, y = 0.0, w = 0.5, h = 1.0 },
   l     = { x = 0.5, y = 0.0, w = 0.5, h = 1.0 },
   j     = { x = 0.0, y = 0.5, w = 1.0, h = 0.5 },
@@ -17,6 +18,9 @@ units = {
 }
 viKey:bind('', 'return', function()
   hs.window.focusedWindow():move(units.enter)
+end)
+viKey:bind('', 'space', function()
+  hs.window.focusedWindow():move(units.spc)
 end)
 viKey:bind('', 'h', function()
   hs.window.focusedWindow():move(units.h)
