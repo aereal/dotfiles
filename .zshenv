@@ -26,7 +26,7 @@ path=(
   $GOPATH/bin(N-/)
   $HOMEBREW_PATH/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin(N-/)
   $HOMEBREW_PATH/opt/perl/bin(N-/)
-  $HOMEBREW_PATH/opt/node@12/bin(N-/)
+  $HOMEBREW_PATH/opt/node@14/bin(N-/)
   $HOMEBREW_PATH/lib/ruby/gems/2.7.0/bin(N-/)
   $HOMEBREW_PATH/opt/ruby/bin(N-/)
   $HOMEBREW_PATH/opt/mysql-client/bin(N-/)
