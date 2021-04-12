@@ -316,7 +316,7 @@ update_window_title() { # {{{
   $cmd >>(read num rest cmd=(${(z)${(e):-\$jt$num}}) echo -n "k$cmd[1]:t\\") 2>/dev/null
 } # }}}
 
-if [ "$TMUX" ]; then
+if [ "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   add-zsh-hook preexec update_window_title
 fi
 # }}}
