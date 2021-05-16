@@ -22,6 +22,7 @@ path=(
   $HOME/.plenv/shims(N-/)
   $HOME/.ndenv/bin(N-/)
   $HOME/.ndenv/shims(N-/)
+  $HOME/.cargo/bin(N-/)
   $GOPATH/bin(N-/)
   $HOMEBREW_PATH/opt/perl/bin(N-/)
   $HOMEBREW_PATH/opt/node@12/bin(N-/)
