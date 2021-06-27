@@ -107,3 +107,5 @@
 	pushInsteadOf = git://github.com/
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
