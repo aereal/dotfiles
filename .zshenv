@@ -4,10 +4,18 @@ unsetopt GLOBAL_RCS
 
 # environment
 export LC_ALL=ja_JP.UTF-8
-export HOMEBREW_PATH=/usr/local
 export DEVEL_PATH=$HOME/devel
 export GOPATH=$DEVEL_PATH
 export EDITOR=vim
+export HOMEBREW_PATH=/usr/local
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_UPDATE_REPORT_ONLY_INSTALLED=1
+
+if [[ -f $HOMEBREW_PATH/bin/bat ]]; then
+  export HOMEBREW_BAT=1
+fi
 
 path=(
   $HOME/bin(N-/)
