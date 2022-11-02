@@ -91,3 +91,8 @@ if [[ -d "$readline_dir" ]]; then
   RUBY_CONFIGURE_OPTS="${RUBY_CONFIGURE_OPTS} --with-readline-dir=${readline_dir}"
 fi
 export RUBY_CONFIGURE_OPTS
+
+rover_env="$HOME/.rover/env"
+if [[ -f "$rover_env" ]]; then
+  . $rover_env
+fi
