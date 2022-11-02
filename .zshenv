@@ -5,7 +5,6 @@ unsetopt GLOBAL_RCS
 # environment
 export LC_ALL=ja_JP.UTF-8
 export DEVEL_PATH=$HOME/devel
-export GOPATH=$DEVEL_PATH
 export EDITOR=vim
 export HOMEBREW_PATH=/usr/local
 export HOMEBREW_NO_AUTO_UPDATE=1
