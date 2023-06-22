@@ -1,6 +1,6 @@
 hs.window.animationDuration = 0
 
-viKey = hs.hotkey.modal.new('ctrl-cmd', 'delete', 'hammerspoon')
+viKey = hs.hotkey.modal.new('ctrl-cmd-option', 'space', 'hammerspoon')
 function viKey:entered() hs.alert'Enter' end
 function viKey:exited() hs.alert'Exit' end
 viKey:bind('', 'escape', function() viKey:exit() end)
