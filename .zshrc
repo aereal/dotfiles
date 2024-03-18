@@ -352,6 +352,11 @@ if [[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completio
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
+if whence op >/dev/null; then
+  eval "$(op completion zsh)"
+  compdef _op op
+fi
+
 # tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   if $(tmux has-session 2>/dev/null); then
