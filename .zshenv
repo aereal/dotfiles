@@ -32,6 +32,7 @@ path=(
   $HOME/.cargo/bin(N-/)
   $GOPATH/bin(N-/)
   $HOME/.local/share/aquaproj-aqua/bin(N-/)
+  $HOME/.rd/bin(N-/)
   $HOMEBREW_PATH/opt/node@20/bin(N-/)
   $HOMEBREW_PATH/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin(N-/)
   $HOMEBREW_PATH/opt/perl/bin(N-/)
