@@ -177,10 +177,10 @@ bindkey -v "^Ws" tmux_split
 
 # alias {{{
 alias :q=exit
-if whence exa >/dev/null 2>&1; then
-  alias  l='exa -aF'
-  alias ls='exa -aF'
-  alias ll='exa -alF'
+if whence eza >/dev/null 2>&1; then
+  alias  l='eza -aF'
+  alias ls='eza -aF'
+  alias ll='eza -alF'
 else
   if whence gls >/dev/null; then
     alias  l='gls --color=auto -AF'
