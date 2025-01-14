@@ -39,7 +39,7 @@ path=(
   $HOMEBREW_PATH/lib/ruby/gems/2.7.0/bin(N-/)
   $HOMEBREW_PATH/opt/ruby/bin(N-/)
   $HOMEBREW_PATH/opt/mysql-client/bin(N-/)
-  $HOMEBREW_PATH/opt/mysql@5.6/bin(N-/)
+  $HOMEBREW_PATH/opt/mysql-client@8.0/bin(N-/)
   $HOMEBREW_PATH/opt/coreutils/libexec/gnubin(N-/)
   $HOMEBREW_PATH/bin(N-/)
   /usr/bin(N-/)
