@@ -53,17 +53,17 @@ brew_install openssl
 brew_install itchyny/rexdep/rexdep
 
 # casks
-brew cask install alfred
-brew cask install docker
-brew cask install dropbox
-brew cask install homebrew/cask-versions/google-chrome-dev
-brew cask install gyazo
-brew cask install iterm2
-brew cask install karabiner-elements
-brew cask install mattr-slate
-brew cask install slack
-brew cask install visual-studio-code
+brew install --cask alfred
+brew install --cask docker
+brew install --cask dropbox
+brew install --cask homebrew/cask-versions/google-chrome-dev
+brew install --cask gyazo
+brew install --cask iterm2
+brew install --cask karabiner-elements
+brew install --cask mattr-slate
+brew install --cask slack
+brew install --cask visual-studio-code
 
 # JDK-related
-brew cask install homebrew/cask-versions/java8
+brew install --cask homebrew/cask-versions/java8
 brew_install sbt
