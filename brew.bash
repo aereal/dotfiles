@@ -10,41 +10,41 @@ brew update
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-# essentials
-brew_install awscli
-brew_install bat
-brew_install colordiff
-brew_install coreutils
-brew_install curl
-brew_install direnv
-brew_install docker-completion
-brew_install docker-compose-completion
-brew_install envchain
-brew_install exa
 brew_install --HEAD motemen/furoshiki2/furoshiki2
 brew_install git --with-curl
-brew_install gnu-tar
-brew_install go
-brew_install hub
-brew_install jq
-brew_install mackerelio/mackerel-agent/mackerel-agent
-brew_install mackerelio/mackerel-agent/mkr
-brew_install neovim
-brew_install peco
-brew_install proctools
-brew_install pstree
-brew_install reattach-to-user-namespace
-brew_install ripgrep
-brew_install slackcat
-brew_install sshuttle
-brew_install telnet
-brew_install tig
-brew_install tmux
-brew_install tree
 brew_install zsh --without-etcdir
-brew_install zsh-completions
-brew_install zsh-history-substring-search
-brew_install zsh-syntax-highlighting
+brew install \
+  awscli \
+  bat \
+  colordiff \
+  coreutils \
+  curl \
+  direnv \
+  docker-completion \
+  docker-compose-completion \
+  envchain \
+  exa \
+  gnu-tar \
+  go \
+  hub \
+  jq \
+  mackerelio/mackerel-agent/mackerel-agent \
+  mackerelio/mackerel-agent/mkr \
+  neovim \
+  peco \
+  proctools \
+  pstree \
+  reattach-to-user-namespace \
+  ripgrep \
+  slackcat \
+  sshuttle \
+  telnet \
+  tig \
+  tmux \
+  tree \
+  zsh-completions \
+  zsh-history-substring-search \
+  zsh-syntax-highlighting \
 
 # extra
 brew_install graphviz
