@@ -32,6 +32,10 @@
 	curret-remote-branch = rev-parse --abbrev-ref --symbolic-full-name @{u}
 	hard-revert-merge-commit = reset --hard ORIG_HEAD
 	medetai = !git rev-list HEAD | rg -P '(.)\\1\\1'
+	medetai4 = !git rev-list HEAD | rg -P '(.)\\1\\1\\1'
+	medetai5 = !git rev-list HEAD | rg -P '(.)\\1\\1\\1\\1'
+	medetai6 = !git rev-list HEAD | rg -P '(.)\\1\\1\\1\\1\\1'
+	medetai7 = !git rev-list HEAD | rg -P '(.)\\1\\1\\1\\1\\1\\1'
 	pr = pull-request
 	recently-added = log --grep \"Revert\" --invert-grep --diff-filter=A --format=\"\" --name-only
 
