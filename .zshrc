@@ -126,7 +126,7 @@ bindkey -v "\\" expand-to-home-or-complete
 
 # ghq {{{
 __widget_cd_repo() {
-  local selected_repo=$( ghq list | peco )
+  local selected_repo=$( ghq list | fzf )
   if [[ -n "$selected_repo" ]]; then
     BUFFER="pushd $(ghq root)/${selected_repo}"
     zle accept-line
@@ -142,7 +142,7 @@ __widget_git_recent_branches() {
   local selected_branch=$( \
     git for-each-ref --sort=-committerdate --format="%(refname)	%(committerdate:relative)" -- refs/heads \
     | sed -E 's/refs\/heads\///' \
-    | peco --query "$LBUFFER" \
+    | fzf --query "$LBUFFER" \
     | cut -f1 \
     )
   if [[ -n "$selected_branch" ]]; then
