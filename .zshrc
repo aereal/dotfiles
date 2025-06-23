@@ -357,6 +357,8 @@ if whence op >/dev/null; then
   compdef _op op
 fi
 
+FZF_DEFAULT_OPTS='--layout reverse'
+
 # tmux {{{
 if whence tmux >/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; then
   if $(tmux has-session 2>/dev/null); then
@@ -364,9 +366,10 @@ if whence tmux >/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; 
   else
     tmux new-session -s "${HOST%%.*}"
   fi
+  FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --tmux"
 fi
 # }}}
 
-export FZF_DEFAULT_OPTS='--tmux --layout reverse'
+export FZF_DEFAULT_OPTS
 
 # vim:set foldmethod=marker:
