@@ -367,4 +367,6 @@ if whence tmux >/dev/null && [ -z "$TMUX" ] && [ "$TERM_PROGRAM" != "vscode" ]; 
 fi
 # }}}
 
+export FZF_DEFAULT_OPTS='--tmux --layout reverse'
+
 # vim:set foldmethod=marker:
