@@ -42,6 +42,7 @@ path=(
   $HOMEBREW_PATH/opt/mysql-client/bin(N-/)
   $HOMEBREW_PATH/opt/mysql-client@8.0/bin(N-/)
   $HOMEBREW_PATH/opt/coreutils/libexec/gnubin(N-/)
+  $HOMEBREW_PATH/opt/postgresql@16/bin(N-/)
   $HOMEBREW_PATH/bin(N-/)
   /usr/local/go/bin(N-/)
   /mnt/c/Windows(N-/)
