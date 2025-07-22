@@ -2,68 +2,59 @@
 
 set -e
 
-brew_install() {
-  brew install $@ || :
-}
+brew update-if-needed
 
-brew update
+export HOMEBREW_NO_INSTALL_CLEANUP=1
 
-export HOMEBREW_NO_AUTO_UPDATE=1
+echo '-> install casks' >&2
+brew install --cask \
+  1password-cli \
+  aquaskk \
+  font-cascadia-code \
+  font-hackgen \
+  google-cloud-sdk \
+  ghostty \
+  hammerspoon \
+  karabiner-elements \
+  kensingtonworks \
+  rancher \
+  slack \
+  visual-studio-code \
+  vivaldi \
+  witch
 
-brew_install --HEAD motemen/furoshiki2/furoshiki2
-brew_install git --with-curl
-brew_install zsh --without-etcdir
-brew install \
+echo '-> install formulae' >&2
+brew install --formula \
+  aqua \
   awscli \
   bat \
-  colordiff \
   coreutils \
   curl \
   direnv \
-  docker-completion \
-  docker-compose-completion \
-  envchain \
-  exa \
+  eza \
+  fzf \
+  gh \
+  ghq \
+  git \
+  gnu-sed \
   gnu-tar \
   go \
-  hub \
   jq \
-  mackerelio/mackerel-agent/mackerel-agent \
-  mackerelio/mackerel-agent/mkr \
-  neovim \
-  peco \
+  ko \
+  mise \
+  moreutils \
+  mysql-client \
+  openssh \
+  pinact \
+  postgresql@16 \
   proctools \
-  pstree \
+  readline \
   reattach-to-user-namespace \
   ripgrep \
-  slackcat \
-  sshuttle \
-  telnet \
+  shared-mime-info \
   tig \
   tmux \
   tree \
+  zsh \
   zsh-completions \
-  zsh-history-substring-search \
-  zsh-syntax-highlighting \
-
-# extra
-brew_install graphviz
-brew_install mysql-client
-brew_install openssl
-brew_install itchyny/rexdep/rexdep
-
-# casks
-brew install --cask alfred
-brew install --cask docker
-brew install --cask dropbox
-brew install --cask homebrew/cask-versions/google-chrome-dev
-brew install --cask gyazo
-brew install --cask iterm2
-brew install --cask karabiner-elements
-brew install --cask mattr-slate
-brew install --cask slack
-brew install --cask visual-studio-code
-
-# JDK-related
-brew install --cask homebrew/cask-versions/java8
-brew_install sbt
+  zsh-history-syntax-highlight
