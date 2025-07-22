@@ -13,12 +13,13 @@ brew install --cask \
   fantastical \
   font-cascadia-code \
   font-hackgen \
-  google-cloud-sdk \
   ghostty \
+  google-cloud-sdk \
   hammerspoon \
   karabiner-elements \
   kensingtonworks \
   rancher \
+  raycast \
   slack \
   visual-studio-code \
   vivaldi \
