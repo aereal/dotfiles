@@ -58,4 +58,5 @@ brew install --formula \
   tree \
   zsh \
   zsh-completions \
-  zsh-history-syntax-highlight
+  zsh-history-substring-search \
+  zsh-syntax-highlighting
