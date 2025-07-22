@@ -10,6 +10,7 @@ echo '-> install casks' >&2
 brew install --cask \
   1password-cli \
   aquaskk \
+  fantastical \
   font-cascadia-code \
   font-hackgen \
   google-cloud-sdk \
