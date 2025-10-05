@@ -62,7 +62,7 @@ manpath=(
 )
 
 export PAGER=less
-export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS'
+export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --tabs=3'
 
 if whence code 2>&1 >/dev/null; then
   EDITOR='code --wait'
