@@ -1,7 +1,7 @@
 font-family = "Cascadia Code"
 font-family = "HackGen Console"
 font-size = 18
-theme = /Applications/Ghostty.app/Contents/Resources/ghostty/themes/OneHalfLight
+theme = "/Applications/Ghostty.app/Contents/Resources/ghostty/themes/One Half Light"
 cursor-style-blink = true
 copy-on-select = false
 macos-titlebar-style = transparent
