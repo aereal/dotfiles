@@ -48,6 +48,7 @@ path=(
   /mnt/c/Windows(N-/)
   /mnt/c/Windows/System32/OpenSSH(N-/)
   /mnt/c/Users/trast/AppData/Local/Programs/Microsoft\ VS\ Code/bin(N-/)
+  /usr/local/bin(N-/)
   /usr/bin(N-/)
   /usr/sbin(N-/)
   /bin(N-/)
