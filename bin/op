@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+opexe="/mnt/c/Users/trast/AppData/Local/Microsoft/WinGet/Links/op.exe"
+
+if ! [[ -x "$opexe" ]]; then
+  echo '! 1password-cli is not installed'>&2
+  exit 1
+fi
+
+exec "$opexe" $@
