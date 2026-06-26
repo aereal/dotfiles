@@ -1,6 +1,0 @@
-# vim:set ft=ruby:
-
-begin
-  require 'capistrano_colors'
-rescue LoadError
-end

@@ -1,6 +1,0 @@
----
-:backtrace: true
-:benchmark: false
-:verbose: true
-gem: -N
-search: -r
