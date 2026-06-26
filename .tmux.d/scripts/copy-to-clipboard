@@ -1,0 +1,19 @@
+#!/bin/bash
+
+case "$(uname)" in
+  Darwin)
+    exec pbcopy
+    ;;
+  Linux)
+    if command -v clip.exe >/dev/null 2>&1; then
+      exec clip.exe
+    elif [[ -x /mnt/c/Windows/System32/clip.exe ]]; then
+      exec /mnt/c/Windows/System32/clip.exe
+    else
+      cat >/dev/null
+    fi
+    ;;
+  *)
+    cat >/dev/null
+    ;;
+esac

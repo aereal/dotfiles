@@ -1,0 +1,7 @@
+#!/bin/bash
+
+case "$(uname)" in
+  Darwin)
+    /usr/bin/pmset -g ps | /usr/bin/tail -1 | /usr/bin/awk '{ print $3 }' | /usr/bin/sed -e 's/;//g'
+    ;;
+esac
