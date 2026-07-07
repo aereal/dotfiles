@@ -16,6 +16,7 @@ if [[ -f $HOMEBREW_PATH/bin/bat ]]; then
   export HOMEBREW_BAT=1
 fi
 
+typeset -U path
 path=(
   $HOME/bin(N-/)
   $DEVEL_PATH/bin(N-/)
