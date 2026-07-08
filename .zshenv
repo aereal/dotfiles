@@ -69,21 +69,6 @@ export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --tabs=3'
 if whence code 2>&1 >/dev/null; then
   EDITOR='code --wait'
 fi
-MACVIM_APP=
-local -a macvim_app_candidates=(
-  /opt/homebrew-cask/Caskroom/macvim-kaoriya/*/MacVim.app(N-/)
-  $HOMEBREW_PATH/opt/macvim/MacVim.app(N-/)
-  $HOME/Applications/MacVim.app(N-/)
-  /Applications/MacVim.app(N-/)
-)
-if (( $#macvim_app_candidates > 0 )); then
-  MACVIM_APP="$macvim_app_candidates[1]"
-fi
-export MACVIM_APP
-
-if [[ -x /usr/libexec/java_home ]] && /usr/libexec/java_home >/dev/null 2>&1; then
-  export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-fi
 
 RUBY_CONFIGURE_OPTS=""
 openssl_dir="$HOMEBREW_PATH/opt/openssl@1.1"
@@ -96,8 +81,3 @@ if [[ -d "$readline_dir" ]]; then
   RUBY_CONFIGURE_OPTS="${RUBY_CONFIGURE_OPTS} --with-readline-dir=${readline_dir}"
 fi
 export RUBY_CONFIGURE_OPTS
-
-rover_env="$HOME/.rover/env"
-if [[ -f "$rover_env" ]]; then
-  . $rover_env
-fi
