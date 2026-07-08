@@ -21,7 +21,6 @@ path=(
   $HOME/bin(N-/)
   $DEVEL_PATH/bin(N-/)
   $HOME/.cargo/bin(N-/)
-  $GOPATH/bin(N-/)
   $HOME/.local/share/aquaproj-aqua/bin(N-/)
   $HOME/.rd/bin(N-/)
   $HOME/.local/share/mise/shims(N-/)
