@@ -41,11 +41,6 @@ bindkey -v "^R" history-incremental-pattern-search-backward
 bindkey -v "^S" history-incremental-pattern-search-forward
 # }}}
 
-# color {{{
-autoload -Uz colors; colors
-[[ -f "$HOME/.dircolors" ]] && source "$HOME/.dircolors"
-# }}}
-
 # completion {{{
 zmodload -i zsh/complist
 autoload -U compinit && compinit -C
@@ -192,7 +187,6 @@ else
     alias ll='ls -GAFl'
   fi
 fi
-whence hub >/dev/null 2>&1 && alias git=hub
 # }}}
 
 # abbrev {{{
@@ -272,18 +266,6 @@ __configure_prompt() {
 }
 autoload -Uz add-zsh-hooks
 add-zsh-hook precmd __configure_prompt
-# }}}
-
-# Show anyenv version {{{
-notify_llenv_version() {
-  for llenv in rbenv plenv ndenv pyenv; do
-    llenv_root="${HOME}/.${llenv}" # XXX
-    if whence $llenv >/dev/null && [[ "$(${llenv} version-origin)" != "$llenv_root/version" ]]; then
-      echo "$fg[yellow]${llenv} changed version: $(${llenv} version-name)$reset_color"
-    fi
-  done
-}
-add-zsh-hook chpwd notify_llenv_version
 # }}}
 
 # Update current window name {{{
