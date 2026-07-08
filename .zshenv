@@ -69,11 +69,6 @@ export LESS='--LONG-PROMPT --RAW-CONTROL-CHARS --tabs=3'
 if whence code 2>&1 >/dev/null; then
   EDITOR='code --wait'
 fi
-
-if whence code 2>&1 >/dev/null; then
-  EDITOR='code --wait'
-fi
-
 MACVIM_APP=
 local -a macvim_app_candidates=(
   /opt/homebrew-cask/Caskroom/macvim-kaoriya/*/MacVim.app(N-/)
