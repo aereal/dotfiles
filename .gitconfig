@@ -98,8 +98,6 @@
 
 [diff]
 	algorithm = histogram
-[include]
-	path = ~/.secret.gitconfig
 [advice]
 	statusHints = false
 [pager]
@@ -114,3 +112,6 @@
 	rebase = true
 [init]
 	defaultBranch = main
+
+[include]
+	path = ~/.secret.gitconfig
